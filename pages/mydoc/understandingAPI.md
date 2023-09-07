@@ -5,6 +5,7 @@ sidebar: sidebar
 permalink: understandingAPI.html
 folder: mydoc
 summary: "Learn what an API is and how it works in this introduction to APIs and documentation. Includes examples of APIs in action, such as social media, weather apps, and online shopping."
+completed: 3
 ---
 
 In this module, we'll explore the fascinating world of APIs (Application Programming Interfaces). We'll learn what APIs are, how they work, and why they're so important in the tech world.
