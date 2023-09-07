@@ -18,7 +18,7 @@ In today's tech-savvy world, we've got tons of programs and apps, from social me
 
 Now, APIs have two sides to them: **Requests** and **Responses**.
 
-<img src="/https://github.com/gautriv/apidocumentation/blob/master/gif/Request&Response.gif" alt="Requests and Responses in APIs">
+<img src="https://github.com/gautriv/apidocumentation/blob/master/gif/Request&Response.gif" alt="Requests and Responses in APIs">
 
 **Requests:** Imagine you're in that restaurant again. You tell the waiter what you want to eat, and they pass on your order to the kitchen. In tech lingo, that's a request. It's when one program asks another program to do something. For instance, you ask a weather app's API for today's weather in your city.
 
