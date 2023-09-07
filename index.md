@@ -20,16 +20,10 @@ We'll start from the ground up, ensuring you grasp every concept and technique r
 ### Flow of the course
 
 <div class="mermaid">
-graph LR;
-Module1[Module 1: Understanding APIs];
-Module2[Module 2: Types of APIs];
-Module3[Module 3: More on REST API];
-Module4[Module 4: What Technical Writers Document];
-Module5[Module 5: Data Types];
-Module6[Module 6: Fantastic Four];
-Module7[Module 7: Visualizing and Segregating URLs];
-Module8[Module 8: Authenticating and Authorization];
-Module9[Module 9: Information from SMEs];
-Module10[Module 10: Test Yourself];
-Module11[Module 11: JSON and XML];
+flowchart TD
+    A[Christmas] -->|Get money| B(Go shopping)
+    B --> C{Let me think}
+    C -->|One| D[Laptop]
+    C -->|Two| E[iPhone]
+    C -->|Three| F[fa:fa-car Car]   
 </div>
