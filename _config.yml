@@ -1,4 +1,4 @@
-url: https://beingtechnicalwriter.com/gitfortechnicalwriters
+url: https://beingtechnicalwriter.com/apidocumentation/
 plugins:
   - jekyll-mentions
   - jekyll-redirect-from
@@ -13,14 +13,14 @@ kramdown:
   auto_ids: true
   syntax_highlighter: rouge
 
-repository: gautriv/gitfortechnicalwriters
+repository: gautriv/apidocumentation
 
 output: web
 
-site_title: Git for technical writers
+site_title: API Documentation - A step by step guide for technical writers
 
 
-github_editme_path: gautriv/gitfortechnicalwriters.git/blob/gh-pages/
+github_editme_path: gautriv/apidocumentation/blob/gh-pages/
 
 google_analytics: UA-170189185-1
 google_analytics4: G-8VQGBYV0J
@@ -69,11 +69,11 @@ sidebars:
 
 
 ####### jekyll seo tag configuration #######
-title: Git for technical writers
-tagline: Git for technical writers
-description: A guide for technical writers working with Git.
+title: API Documentation
+tagline: A step by step guide for technical writers
+description: A course for technical writers looking to learn each and every aspect of API documentation.
 
-url: https://beingtechnicalwriter.com/gitfortechnicalwriters
+url: https://beingtechnicalwriter.com/apidocumentation/
 social:
   name: Gaurav Trivedi
   links:
