@@ -19,7 +19,7 @@ In today's tech-savvy world, we've got tons of programs and apps, from social me
 Now, APIs have two sides to them: **Requests** and **Responses**.
 
 <video width="320" height="220" controls>
-  <source src="/videos/Request&Response.mp4" type="video/mp4">
+  <source src="https://github.com/gautriv/apidocumentation/blob/master/videos/Request&Response.mp4" type="video/mp4">
   Requests and Responses in APIs
 </video>
 
