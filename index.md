@@ -1,10 +1,11 @@
 ---
 title: "API Documentation: A step by step guide for technical writers"
-keywords: [what is doc-as-code, doc-as-code, getting started with git on windows, getting started with git command line, getting started with git bash, getting started with git and github, getting started with git and gitlab]
+keywords: [API Documentation, Step-by-Step Guide, API Documentation Course
+Learn API Documentation, Non-Technical, API Basics, REST API, Data Types in API, API Authentication, JSON and XML in Documentation, API Documentation Tools, Hands-On Exercises, Lifetime Access, Technical Writing Skills, Master API Documentation, Complete API Reference Documentation, Documentation Best Practices, technical writer, API tutorial, JSON, XML, API reference documentation, API automation, API best practices, API design, API security, API testing, API documentation software]
 tags: [getting_started]
 sidebar: sidebar
 permalink: index.html
-summary: These brief instructions will help you understand what Git is, what is doc-as-code, why technical writers might use it, and how you can quickly get started with Git.
+summary: Join our course to master API documentation, whether you're a seasoned pro or new to tech. We break it down for non-technical folks too. Gain hands-on experience, interactive learning, and community support. By the end, you'll be an API documentation expert. Enroll now and empower your technical writing skills!
 completed: 1
 ---
 
