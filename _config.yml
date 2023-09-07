@@ -1,0 +1,84 @@
+url: https://beingtechnicalwriter.com/gitfortechnicalwriters
+plugins:
+  - jekyll-mentions
+  - jekyll-redirect-from
+  - jekyll-paginate
+  - jekyll-seo
+
+destination: _site
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
+
+repository: gautriv/gitfortechnicalwriters
+
+output: web
+
+site_title: Git for technical writers
+
+
+github_editme_path: gautriv/gitfortechnicalwriters.git/blob/gh-pages/
+
+google_analytics: UA-170189185-1
+google_analytics4: G-8VQGBYV0J
+
+exclude:
+  - .gitignore
+  - vendor
+
+collections:
+  tooltips:
+    output: false
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+      comments: true
+      search: true
+      sidebar: home_sidebar
+      topnav: topnav
+  -
+    scope:
+      path: ""
+      type: "tooltips"
+    values:
+      layout: "page"
+      search: true
+      tooltip: true
+
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+      search: true
+      sidebar: home_sidebar
+      topnav: topnav
+
+sidebars:
+- sidebar
+
+
+####### jekyll seo tag configuration #######
+title: Git for technical writers
+tagline: Git for technical writers
+description: A guide for technical writers working with Git.
+
+url: https://beingtechnicalwriter.com/gitfortechnicalwriters
+social:
+  name: Gaurav Trivedi
+  links:
+    - https://www.linkedin.com/in/gauravtrivedi1988/
+    - https://github.com/gautriv/
+
+lang: en_US
+

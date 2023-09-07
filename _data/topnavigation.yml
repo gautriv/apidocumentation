@@ -1,0 +1,12 @@
+topnavigation:
+
+  - title: Return to Blog
+    url: https://beingtechnicalwriter.com
+  
+dropdowns:
+
+  - title: GitHub repo
+    url: https://google.com
+
+  - title: Log an issue
+    url: https://google.com

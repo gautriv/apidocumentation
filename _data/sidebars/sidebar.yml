@@ -1,0 +1,83 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Table of contents
+  version: 
+  folders:
+
+  - title: Git Tutorial
+    output: web
+    folderitems:
+
+    - title: Get started
+      url: /index.html
+      output: web
+      type: homepage
+
+    - title: Git workflow
+      url: /gitworkflow.html
+      output: web
+
+    - title: Git installation
+      url: /installation.html
+      output: web
+
+    - title: Set up Git
+      url: /setupgit.html
+      output: web
+    
+    - title: First Git command
+      url: /firstgitcommand.html
+      output: web
+
+    - title: Git branches
+      url: /gitbranches.html
+      output: web
+
+    - title: Adding files
+      url: /addingfiles.html
+      output: web
+
+    - title: Git commit
+      url: /gitcommit.html
+      output: web
+
+    - title: Git cheat sheet
+      url: /gitcheatsheet.html
+      output: web
+
+  - title: GitHub Tutorial
+    output: web
+    folderitems:
+
+    - title: Introduction
+      url: /githubintro.html
+      output: web
+      type: homepage
+
+    - title: GitHub Workflow
+      url: /githubworkflow.html
+      output: web
+      type: homepage
+
+    - title: Create a Github Repository
+      url: /createrepo.html
+      output: web
+      type: homepage
+
+    - title: Create a Github Repository using Command Line
+      url: /createrepocommandline.html
+      output: web
+      type: homepage
+
+    - title: Setting up SSH Keys
+      url: /setupssh.html
+      output: web
+      type: homepage
+
+  - title: GitLab
+    output: web
+
+  - title: Troubleshooting
+    output: web

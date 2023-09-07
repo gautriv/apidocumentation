@@ -1,0 +1,18 @@
+footercolumnone:
+
+    - title: About me
+      url: https://beingtechnicalwriter.com/aboutme/
+
+    - title: Contact
+      url: https://beingtechnicalwriter.com/contact/
+
+footercolumntwo:
+
+    - title: Site analytics
+      url: https://beingtechnicalwriter.com/siteanalytics/
+
+footercolumnthree:
+
+    - title: Like the content?
+      url: https://beingtechnicalwriter.com/donate/
+    

@@ -1,0 +1,26 @@
+<div id="navbarcollapse" class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+        {% for item in site.data.topnavigation.topnavigation %}
+        <li class="nav-item">
+            <a class="nav-link" href="https://beingtechnicalwriter.com">{{item.title}}</a>
+        </li>
+        {% endfor %}
+
+        
+        <li class="nav-item dropdown">
+            
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              GitHub
+            </a>
+            
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% for entry in site.data.topnavigation.dropdowns %}
+                <a class="dropdown-item" href="{{entry.url}}">{{entry.title}}</a>
+                {% endfor %}
+            </div>
+            
+          </li>
+          
+    </ul>
+    <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
+</div>
