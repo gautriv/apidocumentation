@@ -5,7 +5,7 @@ Learn API Documentation, Non-Technical, API Basics, REST API, Data Types in API,
 tags: [getting_started]
 sidebar: sidebar
 permalink: index.html
-summary: Join our course to master API documentation, whether you're a seasoned pro or new to tech. We break it down for non-technical folks too. Gain hands-on experience, interactive learning, and community support. By the end, you'll be an API documentation expert. Enroll now and empower your technical writing skills!
+summary: Join our course to master API documentation, whether you're a seasoned pro or new to tech. We break it down for non-technical folks too. Gain hands-on experience and interactive learning. By the end, you'll be an API documentation expert. Enroll now and empower your technical writing skills!
 completed: 1
 ---
 
@@ -64,8 +64,6 @@ We'll start from the ground up, ensuring you grasp every concept and technique r
 * **Hands-On Experience:** Theory is great, but practice makes perfect. You'll roll up your sleeves and dive into real-world exercises, creating documentation that you can proudly showcase in your portfolio.
 
 * **Interactive Learning:** Boredom is not on our syllabus. Expect engaging content, interactive quizzes, and scenarios that'll make you feel like you're solving real problems. Learning has never been this much fun!
-
-* **Community Connection:** Join our lively community of learners and instructors. Ask questions, share insights, and learn from each other's experiences. We're in this together, and we're here to support you every step of the way.
 
 * **Lifetime Access:** Once you're in, you're in for life. You'll have unlimited access to the course material, so you can revisit it whenever you need a refresher or want to stay up-to-date with the ever-evolving world of API documentation.
 
