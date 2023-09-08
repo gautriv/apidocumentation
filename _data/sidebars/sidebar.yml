@@ -19,3 +19,13 @@ entries:
       url: /understandingAPI.html
       output: web
       type: homepage
+  
+    - title: Types of APIs
+      url: /typesofAPI.html
+      output: web
+      type: homepage
+
+    - title: REST APIs
+      url: /restAPI.html
+      output: web
+      type: homepage
