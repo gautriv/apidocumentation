@@ -8,7 +8,48 @@ summary: "Here I introduce the different types of APIs, including REST APIs, SOA
 completed: 2
 ---
 
-OLet's embark on a journey to explore the diverse world of APIs, and I'll explain them in a way that's easy to grasp.
+Let's embark on a journey to explore the diverse world of APIs, and I'll explain them in a way that's easy to grasp.
+
+We've six broad categories of APIs:
+
+1. **Web service APIs:**
+
+* These are like the superheroes of the internet. They help all sorts of websites and apps talk to each other. Some cool ones are REST, SOAP, GraphQL, and more.
+
+
+2. **Library-based APIs:**
+
+* Think of these as ready-made toolboxes for programmers. They come with handy tools (functions or classes) for doing specific jobs, like building stuff in a video game.
+
+3. Class-based APIs (Object-Oriented):
+
+* These are like special toolboxes that organize their tools in a very neat and organized way, just like how your toys might be sorted into different boxes.
+
+4. Functions or routines in an OS:
+
+* The operating system (the boss of your computer) shares some secret codes with programmers. These codes help programs use the computer's special powers.
+
+5. Object remoting APIs:
+
+* Imagine if you could send messages to your friends using magic spells. Object remoting APIs are like those spells, making objects in different places talk to each other.
+
+6. Hardware APIs:
+
+* These are the keys to unlock the superpowers of your computer's hardware, like the graphics card or the sound system.
+
+In this tutorial, we are more interested in understanding Web service APIs. Why? Because 80-90% of the time, you are going to document Web service APIs only.
+
+<img src="./gif/webAPIs.gif" alt="Web APIs">
+
+The Web service API encompasses:
+
+* REST API
+* SOAP API
+* GraphQL
+* WebSockets
+* JSON-RPC
+* XML-RPC
+* gRPC
 
 **REST API (Representational State Transfer)**
 
@@ -35,4 +76,5 @@ Now, let's talk about JSON-RPC and XML-RPC. These are like asking a friend to do
 **gRPC**
 Last but not least, gRPC. Think of gRPC like sending a super efficient and structured letter with a built-in translator. It makes sure both the sender and the receiver understand each other perfectly. gRPC is known for high performance and strong typing, which means it's fast and reliable.
 
-Intrigued by the fascinating world of APIs? Well, guess what? There's more to explore in the next module, where we dive deeper into the superstar of APIs. Get ready for an exciting journey into its intricacies and applications. Stay tuned, and let's unravel the secrets together!
+
+Intrigued by the fascinating world of APIs? Well, guess what? There's more to explore in the next module, where we dive deeper into the **superstar of APIs**. Get ready for an exciting journey into its intricacies and applications. Stay tuned, and let's unravel the secrets together!
