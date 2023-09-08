@@ -12,30 +12,17 @@ Let's embark on a journey to explore the diverse world of APIs, and I'll explain
 
 We've six broad categories of APIs:
 
-1. **Web service APIs:**
+1. **Web service APIs:** These are like the superheroes of the internet. They help all sorts of websites and apps talk to each other. Some cool ones are REST, SOAP, GraphQL, and more.
 
-* These are like the superheroes of the internet. They help all sorts of websites and apps talk to each other. Some cool ones are REST, SOAP, GraphQL, and more.
+2. **Library-based APIs:** Think of these as ready-made toolboxes for programmers. They come with handy tools (functions or classes) for doing specific jobs, like building stuff in a video game.
 
+3. **Class-based APIs (Object-Oriented):** These are like special toolboxes that organize their tools in a very neat and organized way, just like how your toys might be sorted into different boxes.
 
-2. **Library-based APIs:**
+4. **Functions or routines in an OS:** The operating system (the boss of your computer) shares some secret codes with programmers. These codes help programs use the computer's special powers.
 
-* Think of these as ready-made toolboxes for programmers. They come with handy tools (functions or classes) for doing specific jobs, like building stuff in a video game.
+5. **Object remoting APIs:** Imagine if you could send messages to your friends using magic spells. Object remoting APIs are like those spells, making objects in different places talk to each other.
 
-3. Class-based APIs (Object-Oriented):
-
-* These are like special toolboxes that organize their tools in a very neat and organized way, just like how your toys might be sorted into different boxes.
-
-4. Functions or routines in an OS:
-
-* The operating system (the boss of your computer) shares some secret codes with programmers. These codes help programs use the computer's special powers.
-
-5. Object remoting APIs:
-
-* Imagine if you could send messages to your friends using magic spells. Object remoting APIs are like those spells, making objects in different places talk to each other.
-
-6. Hardware APIs:
-
-* These are the keys to unlock the superpowers of your computer's hardware, like the graphics card or the sound system.
+6. **Hardware APIs:** These are the keys to unlock the superpowers of your computer's hardware, like the graphics card or the sound system.
 
 In this tutorial, we are more interested in understanding Web service APIs. Why? Because 80-90% of the time, you are going to document Web service APIs only.
 
