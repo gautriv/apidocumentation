@@ -6,7 +6,7 @@ topnavigation:
 dropdowns:
 
   - title: GitHub repo
-    url: https://google.com
+    url: https://github.com/gautriv/apidocumentation
 
   - title: Log an issue
-    url: https://google.com
+    url: https://github.com/gautriv/apidocumentation/issues/new

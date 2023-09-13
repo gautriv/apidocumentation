@@ -10,8 +10,20 @@ layout: default
 
     {{content}}
 
+    <div class="navigation">
+      {% if page.previous %}
+        <a class="prev-button" href="{{ page.previous.url }}"><i class="fas fa-arrow-left"></i> Previous</a>
+      {% endif %}
+      {% if page.next %}
+        <a class="next-button" href="{{ page.next.url }}">Continue <i class="fas fa-arrow-right"></i></a>
+      {% endif %}
+    </div>
+    
     <h6>Course completed</h6>
     {% include progress.html %}
-    {% include disqus.html %}
+
+    <div class="issue">
+      <p><b>Have an issue? Please provide specific feedback by <a href="https://github.com/gautriv/apidocumentation/issues/new">reporting an issue.</a></b></p>
+    </div>
 
 </div>

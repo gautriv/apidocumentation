@@ -1,14 +1,18 @@
 ---
-title: Module 2 - Types of APIs
+title: Types of APIs
 keywords: [API documentation, What is an API, API examples, Requests and Responses, API, REST API, SOAP API, GraphQL, WebSockets, JSON-RPC, XML-RPC, gRPC, REST APIs]
 sidebar: sidebar
 permalink: typesofAPI.html
 folder: mydoc
 summary: "Here I introduce the different types of APIs, including REST APIs, SOAP APIs, GraphQL, WebSockets, JSON-RPC, XML-RPC, and gRPC. It explains each type of API in a simple and easy-to-understand way, using analogies and examples. The article also discusses the applications of each type of API."
-completed: 2
+completed: 5
+next:
+  url: /restAPI.html
+previous:
+  url: /whatwritersdo.html
 ---
 
-Let's embark on a journey to explore the diverse world of APIs, and I'll explain them in a way that's easy to grasp.
+Let's explore the diverse world of APIs, and I'll explain them in a way that's easy to grasp.
 
 We've six broad categories of APIs:
 

@@ -1,11 +1,13 @@
 ---
-title: Module 3 - REST APIs
+title: REST APIs
 keywords: [REST API, RESTful API, statelessness, caching, documentation, APIs, web development, Statelessness in REST APIs, Caching in REST APIs, REST APIs, Stateless interactions, API documentation]
 sidebar: sidebar
 permalink: restAPI.html
 folder: mydoc
 summary: "This module introduces REST APIs, a popular type of API that uses simple web addresses to help you find and get information from the internet. It covers the concepts of statelessness and caching, and how they are used in REST APIs. The module also provides examples of how REST APIs are used in real-world applications."
-completed: 5
+completed: 7
+previous:
+  url: /typesofAPI.html
 ---
 
 {% include fact.html content="Did You Know About the Superstar of APIs?" %}

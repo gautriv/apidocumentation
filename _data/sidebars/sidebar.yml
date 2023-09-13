@@ -13,10 +13,15 @@ entries:
     - title: Get started
       url: /index.html
       output: web
+      type: homepage    
+
+    - title: Introduction
+      url: /introduction.html
+      output: web
       type: homepage
 
-    - title: Understanding APIs
-      url: /understandingAPI.html
+    - title: API documentation
+      url: /whatwritersdo.html
       output: web
       type: homepage
   

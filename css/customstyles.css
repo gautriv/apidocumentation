@@ -1113,3 +1113,62 @@ pre {
     border-radius: 5px; /* Add rounded corners */
     overflow-x: auto; /* Enable horizontal scrolling */
   }
+
+
+/* Navigation container styles */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 0 0 10px 10px; /* Adds a bottom curve */
+  }
+  
+  /* Previous button styles */
+  .prev-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .prev-button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  /* Next button styles */
+  .next-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .next-button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+
+.recap {
+    background-color: #a2c170;
+    font-weight: bold;
+    font-size: large;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.issue {
+    padding-top: 25px;
+}
+  

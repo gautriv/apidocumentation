@@ -1,14 +1,17 @@
 ---
-title: Module 1 - Understanding APIs
+title: Introduction
 keywords: [API documentation, What is an API, API examples, Requests and Responses, Types of APIs, Importance of APIs, Digital connectivity, Tech world, Online interactions, Digital communication, Tech lingo, Software connectors, Program interactions, Digital convenience, API, application programming interface, documentation, requests, responses, REST API, social media, weather apps, online shopping, introduction to APIs, learn about APIs, how APIs work, examples of APIs, API tutorial, API best practices, API design]
 sidebar: sidebar
-permalink: understandingAPI.html
+permalink: introduction.html
 folder: mydoc
-summary: "Learn what an API is and how it works in this introduction to APIs and documentation. Includes examples of APIs in action, such as social media, weather apps, and online shopping."
-completed: 3
+completed: 2
+next:
+  url: /whatwritersdo.html
+previous:
+  url: /index.html
 ---
 
-In this module, we'll explore the fascinating world of APIs (Application Programming Interfaces). We'll learn what APIs are, how they work, and why they're so important in the tech world.
+In this chapter we'll explore the fascinating world of APIs (Application Programming Interfaces). We'll learn what APIs are, how they work, and why they're so important in the tech world.
 
 ### What is an API?
 Okay, picture this: You're at a restaurant, hungry and ready to order. But you don't need to know how the chef prepares the food; you just pick up the menu, choose your dish, and voilà! The kitchen takes care of the rest. Well, that's kind of how an API (Application Programming Interface) works in the tech world.
@@ -33,4 +36,9 @@ Let's peek at some real-world examples of APIs in action with Requests and Respo
 
 * **Online Shopping**: You're eyeing a cool product, so you request the details. The response? You get the product's name, price, and a dazzling description.
 
-In this module, we've learned the basics of APIs. We've learned what APIs are, how they work, and why they're so important in the tech world. In our next module, we'll dive even deeper, exploring the various types of APIs and further understanding their significance in the ever-evolving digital landscape. Get ready for an exciting journey ahead!
+<div class="recap">
+Recap
+</div>
+The main takeaways from this chapter are:
+* You learned learned what APIs are, how they work, and why they're so important in the tech world.
+

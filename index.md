@@ -6,58 +6,52 @@ tags: [getting_started]
 sidebar: sidebar
 permalink: index.html
 summary: Join our course to master API documentation, whether you're a seasoned pro or new to tech. We break it down for non-technical folks too. Gain hands-on experience and interactive learning. By the end, you'll be an API documentation expert. Enroll now and empower your technical writing skills!
-completed: 1
+completed: 0
+next:
+  url: /introduction.html
+  title: Introduction
 ---
 
-Welcome to the "API Documentation: A step by step guide for technical writers" course, where you'll embark on a journey that promises to enrich your knowledge and empower you to excel in the world of API documentation. Whether you're a seasoned developer, a budding technical writer, or someone who's never even heard of the term "API," this course has something invaluable to offer you.
-Now that we know our intended audience let’s get started.
+Welcome to the "API Documentation: A step by step guide for technical writers" course, where you'll embark on a journey that promises to enrich your knowledge and empower you to excel in the world of API documentation. 
 
-### Are you a non-technical person?
-Don't worry if you're not a tech-savvy person. APIs might seem like a foreign language right now, but by the end of this course, you'll speak it fluently. I've structured the content to cater to beginners, breaking down complex concepts into digestible pieces. You'll find that the world of APIs is not as intimidating as it may seem, and you'll gain a valuable skillset that can open doors in various industries.
-
-### Promise
-We'll start from the ground up, ensuring you grasp every concept and technique required to produce stellar API documentation. By the end, you'll be well-equipped to create documentation that not only informs but also engages your users.
-
-### Flow of the course
+**In this learning path, you'll:**
 
 <div class="mermaid">
   graph LR;  
-  Module1[Module 1: Understanding APIs];
-  Module2[Module 2: Types of APIs];
-  Module3[Module 3: More on REST API];
-  Module4[Module 4: What Technical Writers Document];
-  Module5[Module 5: Data Types];
-  Module6[Module 6: Fantastic Four];
-  Module7[Module 7: Visualizing and Segregating URLs];
-  Module8[Module 8: Authentication & Authorization];
-  Module9[Module 9: Information from SMEs];
-  Module10[Module 10: Test Yourself];
-  Module11[Module 11: JSON and XML];
-  Module12[Module 12: Tools to document APIs]
-  Module13[Module 13: Hands on]
-  Module14[Module 14: Manual Approach: Complete API Reference Documentation];
-  Module15[Module 15: Automation: Complete API Reference Documentation];
-  Module16[Module 16: What's Next?];
+  flow1[Create your first API document.....];
+  flow2[Learn API basics];
+  flow3[Explore Swagger and other such tools to automate API documentation];
+  flow4[Types of APIs];
+  flow5[Anatomy of URL];
+  flow6[HTTP methods];
+  flow7[Endpoints];
+  flow8[Resources];
+  flow9[Paths];
+  flow10[Query Parameters];
+  flow11[Status or error codes];
+  flow12[JSON]
+  flow13[XML]
+  flow14[API testing];
 
-  Module1-->Module2;
-  Module2-->Module3;
-  Module1-->Module4;
-  Module1-->Module5;
-  Module1-->Module6;
-  Module1-->Module7;
-  Module1-->Module8;
-  Module1-->Module9;
-  Module9-->Module10;
-  Module10-->Module11;
-  Module1-->Module12;
-  Module1-->Module13;
-  Module1-->Module14;
-  Module14-->Module15;
-  Module1-->Module16;
+  flow1-->flow2;
+  flow2-->flow3;
+  flow2-->flow4;
+  flow2-->flow5;
+  flow2-->flow6;
+  flow2-->flow7;
+  flow2-->flow8;
+  flow2-->flow9;
+  flow2-->flow10;
+  flow2-->flow11;
+  flow2-->flow12;
+  flow2-->flow13;
+  flow2-->flow14;
 </div>
 
+## Prerequisites
+None
 
-### Course Highlights
+## Course Highlights
 
 * **The ABCs of APIs:** We'll demystify APIs from the ground up, using plain English. No jargon, no tech-speak. Just clear, concise explanations that anyone can understand.
 
