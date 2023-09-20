@@ -1,0 +1,64 @@
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Dropdown</title>
+    <style>
+        /* Style for the button with rounded corners */
+        .example-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin-left: 80px; /* Adjust the margin as needed */
+            margin-bottom: 15px;
+        }
+
+        /* Style for the hidden content (initially hidden) */
+        .example-content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin-left: 80px; /* Adjust the margin as needed */
+        }
+    </style>
+<body>    
+    <!-- Button to toggle the example content -->
+    <button class="example-button" onclick="toggleExamples()">Example questions</button>
+
+    <!-- Example content (initially hidden) -->
+    <div class="example-content" id="exampleDropdown">
+        <p><strong>API Purpose and Functionality:</strong></p>
+        <p><em>Example Question:</em> "Could you explain in simple terms what this API is designed to do and why it's important?"</p>
+
+        <p><strong>Key Features and Endpoints:</strong></p>
+        <p><em>Example Question:</em> "What are the primary features or functionalities that developers can access through this API?"</p>
+
+        <p><strong>Programming Languages and Frameworks:</strong></p>
+        <p><em>Example Question:</em> "Do developers typically use specific programming languages or frameworks when integrating with this API?"</p>
+
+        <p><strong>Authentication and Security:</strong></p>
+        <p><em>Example Question:</em> "What authentication methods or security measures are in place to protect the API and user data?"</p>
+
+        <p><strong>Rate Limits and Usage Guidelines:</strong></p>
+        <p><em>Example Question:</em> "Are there any rate limits or usage guidelines that developers need to be aware of to prevent abuse of the API?"</p>
+
+        <p><strong>Data Formats and Response Types:</strong></p>
+        <p><em>Example Question:</em> "What data formats does the API accept and return (e.g., JSON, XML), and how should developers handle responses?"</p>
+    </div>
+
+    <script>
+        // Function to toggle the example content visibility
+        function toggleExamples() {
+            var exampleDropdown = document.getElementById("exampleDropdown");
+            if (exampleDropdown.style.display === "none" || exampleDropdown.style.display === "") {
+                exampleDropdown.style.display = "block";
+            } else {
+                exampleDropdown.style.display = "none";
+            }
+        }
+    </script>
+</body>

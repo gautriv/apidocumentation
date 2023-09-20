@@ -1,8 +1,8 @@
 ---
-title: Introduction
+title: What is an API?
 keywords: [API documentation, What is an API, API examples, Requests and Responses, Types of APIs, Importance of APIs, Digital connectivity, Tech world, Online interactions, Digital communication, Tech lingo, Software connectors, Program interactions, Digital convenience, API, application programming interface, documentation, requests, responses, REST API, social media, weather apps, online shopping, introduction to APIs, learn about APIs, how APIs work, examples of APIs, API tutorial, API best practices, API design]
 sidebar: sidebar
-permalink: introduction.html
+permalink: whatisanAPI.html
 folder: mydoc
 completed: 2
 next:

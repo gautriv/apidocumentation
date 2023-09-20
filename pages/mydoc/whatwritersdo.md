@@ -6,9 +6,9 @@ permalink: /whatwritersdo.html
 folder: mydoc
 completed: 3
 next:
-  url: https://beingtechnicalwriter.com/apidocumentation/typesofAPI.html
+  url: https://beingtechnicalwriter.com/apidocumentation/informationgathering.html
 previous:
-  url: https://beingtechnicalwriter.com/apidocumentation/introduction.html
+  url: https://beingtechnicalwriter.com/apidocumentation/whatisanAPI.html
 ---
 
 You may be wondering, "What do technical writers document in an API?" This chapter will clear all your confusion. It's perfectly fine if you do not know any of these terms. After all, you are here to learn. So, let's dive in and explore what Technical Writers document in the world of APIs.
@@ -41,9 +41,9 @@ Here are some additional examples of what technical writers might document in an
 
 So, just make sure you know what we document, how we do it; it's something we will talk about later in the course. In essence, Technical Writers craft an essential guide that empowers everyone to understand, navigate, and make the most of the API world.
 
-<div class="recap">
-Recap
-</div>
-The main takeaways from this chapter are:
-* You learned what technical writers document in an API.
-* You learned the basic definitions of all the things that technical writers document.
+{% include recap.html content="The main takeaways from this chapter are:
+<br>
+--> You learned what technical writers document in an API.
+<br>
+--> You learned the basic definitions of all the things that technical writers document.
+" %}

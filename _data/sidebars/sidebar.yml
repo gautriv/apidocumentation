@@ -15,13 +15,18 @@ entries:
       output: web
       type: homepage    
 
-    - title: Introduction
-      url: /introduction.html
+    - title: What is an API?
+      url: /whatisanAPI.html
       output: web
       type: homepage
 
-    - title: API documentation
+    - title: What do Technical Writers document?
       url: /whatwritersdo.html
+      output: web
+      type: homepage
+
+    - title: How do Technical Writers document?
+      url: /informationgathering.html
       output: web
       type: homepage
   
