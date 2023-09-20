@@ -9,6 +9,7 @@
 
 .nav > li.active > a {
     background-color: #347DBE;
+    border-radius: 4px;
 }
 
 .nav > li > a:hover {
