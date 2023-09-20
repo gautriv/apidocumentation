@@ -8,8 +8,8 @@ permalink: index.html
 summary: Join our course to master API documentation, whether you're a seasoned pro or new to tech. We break it down for non-technical folks too. Gain hands-on experience and interactive learning. By the end, you'll be an API documentation expert. Enroll now and empower your technical writing skills!
 completed: 0
 next:
-  url: https://beingtechnicalwriter.com/apidocumentation/introduction.html
-  title: Introduction
+  url: https://beingtechnicalwriter.com/apidocumentation/whatisanAPI.html
+  title: What is an API?
 ---
 
 Welcome to the "API Documentation: A step by step guide for technical writers" course, where you'll embark on a journey that promises to enrich your knowledge and empower you to excel in the world of API documentation. 
