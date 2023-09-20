@@ -6,9 +6,9 @@ permalink: /whatwritersdo.html
 folder: mydoc
 completed: 3
 next:
-  url: /typesofAPI.html
+  url: https://beingtechnicalwriter.com/apidocumentation/typesofAPI.html
 previous:
-  url: /introduction.html
+  url: https://beingtechnicalwriter.com/apidocumentation/introduction.html
 ---
 
 You may be wondering, "What do technical writers document in an API?" This chapter will clear all your confusion. It's perfectly fine if you do not know any of these terms. After all, you are here to learn. So, let's dive in and explore what Technical Writers document in the world of APIs.

@@ -6,9 +6,9 @@ permalink: introduction.html
 folder: mydoc
 completed: 2
 next:
-  url: /whatwritersdo.html
+  url: https://beingtechnicalwriter.com/apidocumentation/whatwritersdo.html
 previous:
-  url: /index.html
+  url: https://beingtechnicalwriter.com/apidocumentation/index.html
 ---
 
 In this chapter we'll explore the fascinating world of APIs (Application Programming Interfaces). We'll learn what APIs are, how they work, and why they're so important in the tech world.
@@ -36,9 +36,7 @@ Let's peek at some real-world examples of APIs in action with Requests and Respo
 
 * **Online Shopping**: You're eyeing a cool product, so you request the details. The response? You get the product's name, price, and a dazzling description.
 
-<div class="recap">
-Recap
-</div>
-The main takeaways from this chapter are:
-* You learned learned what APIs are, how they work, and why they're so important in the tech world.
-
+{% include recap.html content="The main takeaways from this chapter are:
+<br>
+--> You learned what APIs are, how they work, and why they're so important in the tech world.
+" %}
