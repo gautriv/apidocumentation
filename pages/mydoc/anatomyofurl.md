@@ -274,13 +274,72 @@ Let's see everything in detail. Select the appropriate tabs for more information
 
 
 <div id="query" class="tabcontent">
-  <!-- Content for Query Parameters tab -->
-  Your Query Parameters content goes here.
+    <!-- Content for Query Parameters tab -->
+<h2>Query Parameters in URLs</h2>
+<p>In our example URL, the query parameter is: <code>q=cats</code>.</p>
+<p>Query parameters are key-value pairs in a URL that provide additional information to the web server when performing an HTTP request. They are often used in online applications and APIs to send data from the client to the server (typically a web browser or application). The query parameters are separated from the basic URL by a question mark ('?'), whereas they are divided by ampersands ('&').</p>
+<h3>How to recognize Query Parameters</h3>
+<ul>
+<li><strong>Look for the Question Mark ('?'):</strong> Query parameters are typically introduced in a URL using a question mark ('?'). This question mark separates the base URL from the query parameters. For example: <code>https://example.com/search?query=term</code> In this URL, the question mark "?" indicates the start of the query parameters.</li>
+
+<li><strong>Identify Key-Value Pairs:</strong> Query parameters are made up of key-value pairs, in which a key is linked to a value using the equal symbol ('='). Ampersands ('&') separate multiple key-value pairs. For instance, go to <code>https://example.com/search?query=term&category=books</code>. There are two key-value pairs in this URL: <code>query=term</code> and <code>category=books</code>.</li>
+
+<li><strong>Recognize Keys and Values:</strong> The key is the name or identifier of the parameter, and the value is the data associated with that key. In the example above, "query" is the key, and "term" is the value.</li>
+
+<li><strong>Handle Special Characters:</strong> Be aware that both keys and values in query parameters may need to be URL-encoded if they contain special characters or spaces. URL encoding replaces special characters with percent-encoded representations.</li>
+
+<li><strong>Additional Query Parameters:</strong> If there are multiple query parameters, they are separated by ampersands ('&'). For example: <code>https://example.com/search?query=term&category=books&sort=asc</code> In this URL, there are three query parameters: "query=term," "category=books," and "sort=asc."</li>
+
+<li><strong>Query Parameter Order:</strong> The order of query parameters in the URL generally does not matter, as web servers and applications should be able to interpret them correctly regardless of their order.</li>
+
+<li><strong>Repeating Query Parameters:</strong> Query parameters can be repeated multiple times in a URL, separated by ampersands ('&'). This is useful for cases where you need to pass multiple values for the same parameter. For example, the following URL uses multiple query parameters to filter the results of a search: <code>https://example.com/search?q=cats&category=books&category=movies</code> In this example, the category query parameter is repeated twice, with different values for each repetition. This tells the web server to only return results that are both about cats and are either books or movies.</li>
+</ul>
+
+<p>Query parameters are a powerful tool for passing data to web servers and APIs. By understanding how to document query parameters, you can develop effective and error-free documentation.</p>
+
+<div class="question-box">
+  <i class="fas fa-question"></i> Questions to ask yourself about the query parameters:
+<ul>
+  <li>What are query parameters and what is their purpose in a URL?</li>
+  <li>How are query parameters separated from the base URL?</li>
+  <li>What symbol is used to introduce query parameters in a URL?</li>
+  <li>Explain the structure of a key-value pair in query parameters.</li>
+  <li>Why might you need to URL-encode query parameters?</li>
+  <li>How are multiple query parameters separated from each other in a URL?</li>
+  <li>What is the purpose of a fragment identifier in a URL, and how is it different from query parameters?</li>
+  <li>Does the order of query parameters in a URL matter for interpretation?</li>
+  <li>When and why would you repeat a query parameter with different values in a URL?</li>
+  <li>What is the role of query parameters in passing data to web servers and APIs?</li>
+</ul>
+</div>
+
 </div>
 
 <div id="fragment" class="tabcontent">
   <!-- Content for Fragment Identifiers tab -->
-  Your Fragment Identifiers content goes here.
+<h2>Fragment Identifiers in URLs</h2>
+<p>In our example URL, the fragment identifier is: <code>my-fragments</code>.</p>
+<p>Fragment identifiers are a way to identify a specific location within a web page or other resource. They are typically used to link to specific sections of a web page or to provide deep links to specific resources. Fragment identifiers are indicated by a hash sign (#) followed by a unique identifier. For example, the following URL uses a fragment identifier to link to the "Introduction" section of a web page: <code>https://example.com/my-page#Introduction</code></p>
+
+<p>When a user clicks on a link to a fragment identifier, their browser will scroll to the specified location within the resource.</p>
+
+<h3>How to Identify a Fragment Identifier</h3>
+<p>To identify a fragment identifier in a URL, look for the hash sign (#) followed by a unique identifier. The fragment identifier is everything after the hash sign, but it does not include the hash sign itself. For example, in the following URL, the fragment identifier is "myjob": <code>https://example.com/my-page#myjob</code></p>
+
+<p>Fragment identifiers are a useful way to make your web pages and API documentation more user-friendly and informative. By understanding how to identify and use fragment identifiers, you can help your users find the information they need quickly and easily.</p>
+
+<div class="question-box">
+    <i class="fas fa-question"></i> Questions to ask yourself about the fragment identifier:
+    <ul>
+        <li>What is a fragment identifier in a URL, and what is its purpose?</li>
+        <li>How is a fragment identifier indicated in a URL?</li>
+        <li>What is the significance of the hash sign (#) in a fragment identifier?</li>
+        <li>How can fragment identifiers enhance user experience on web pages?</li>
+        <li>Is it possible to have both query parameters and a fragment identifier in the same URL?</li>
+        <li>How can you identify a fragment identifier within a URL?</li>
+    </ul>
+</div>
+
 </div>
 
 <script>

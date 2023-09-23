@@ -1188,6 +1188,12 @@ pre {
     transform: scale(1.05); /* Slight zoom-in on hover */
   }
 
+  .tablink:active, .tablink:focus {
+    background-color: #ff5733; /* Change to your desired active tab color */
+    color: #fff;
+    outline: none; /* Remove the default focus outline if it's unwanted */
+}
+
   .fadeIn {
     animation: fadeIn 0.5s ease;
   }
