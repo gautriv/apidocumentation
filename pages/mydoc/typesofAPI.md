@@ -5,7 +5,7 @@ sidebar: sidebar
 permalink: typesofAPI.html
 folder: mydoc
 summary: "Here I introduce the different types of APIs, including REST APIs, SOAP APIs, GraphQL, WebSockets, JSON-RPC, XML-RPC, and gRPC. It explains each type of API in a simple and easy-to-understand way, using analogies and examples. The article also discusses the applications of each type of API."
-completed: 5
+completed: 7
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/restAPI.html
 previous:

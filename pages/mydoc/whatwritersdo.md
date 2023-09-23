@@ -17,7 +17,7 @@ Imagine you're in a new city, and you want to find the best places to eat, shop,
 
 APIs are like new cities. They're full of possibilities, but they can be confusing to navigate if you don't know where to start. That's where technical writers come in. They create documentation that helps developers understand how to use APIs.
 
-Here are some of the things that technical writers document in APIs:
+Let's consider this: Your project team asks you to document a new endpoint that they have created. They may refer to each endpoint as an API, but essentially they are asking you to create a reference API document. Here are some of the things that you will include in your reference API document:
 
 * **Endpoints:** These are the URLs that developers use to interact with the API.
 * **Methods:** These are the actions that can be performed on an endpoint. For example, a GET method can be used to retrieve data, while a POST method can be used to create new data.
@@ -31,7 +31,7 @@ Here are some of the things that technical writers document in APIs:
 
 Technical writers also document other aspects of APIs, such as the overall architecture, the security features, and the limitations. They strive to create documentation that is clear, concise, and accurate.
 
-Here are some additional examples of what technical writers might document in an API:
+Here are some additional examples of what you might document in an API:
 
 * The required permissions for each method.
 * The expected format of the data that is passed to and returned by the API.

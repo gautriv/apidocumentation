@@ -705,10 +705,6 @@ pre, table code {
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
-pre {
-    margin: 25px 0px;
-}
-
 #json-box-container pre {
     margin: 0px;
 }
@@ -1173,3 +1169,34 @@ pre {
     padding-top: 25px;
 }
   
+
+.tabs {
+    display: flex;
+  }
+
+  .tablink {
+    background-color: #0056b3; /* Tab color */
+    border: 1px solid #0e0f0f; /* Border color matches tab color */
+    color: white; /* Text color */
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add zoom-in effect */
+    cursor: pointer;
+  }
+
+  .tablink:hover {
+    background-color: #003f80; /* Darker color on hover */
+    transform: scale(1.05); /* Slight zoom-in on hover */
+  }
+
+  .fadeIn {
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

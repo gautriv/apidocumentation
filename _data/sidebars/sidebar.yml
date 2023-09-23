@@ -35,7 +35,12 @@ entries:
       output: web
       type: homepage
 
-    - title: REST APIs
+    - title: More on REST APIs
       url: /restAPI.html
+      output: web
+      type: homepage
+
+    - title: Anatomy of URL
+      url: /anatomyofurl.html
       output: web
       type: homepage
