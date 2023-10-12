@@ -4,6 +4,7 @@ plugins:
   - jekyll-redirect-from
   - jekyll-paginate
   - jekyll-seo
+  - jekyll-sitemap
 
 destination: _site
 highlighter: rouge
@@ -22,8 +23,7 @@ site_title: API Documentation - A step by step guide for technical writers
 
 github_editme_path: gautriv/apidocumentation/blob/gh-pages/
 
-google_analytics: UA-170189185-1
-google_analytics4: G-8VQGBYV0J
+google_analytics4: G-8VQGBYV0J6
 
 exclude:
   - .gitignore
