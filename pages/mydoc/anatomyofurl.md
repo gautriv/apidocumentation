@@ -1,12 +1,12 @@
 ---
-title: Anatomy of URL
+title: Anatomy of URL part 1
 keywords: [API documentation, API information gathering, API documentation best practices, API documentation tools, API documentation planning, API documentation structure, API documentation writing, API documentation testing, API documentation review, API documentation publishing, API documentation maintenance, API documentation improvement, Writing API documentation, Understanding API, Identifying target audience, Documentation goals, Gathering API information, Organizing documentation structure, Writing clear content, Including code samples, Testing API documentation, Seeking feedback on documentation, Publishing API documentation, Maintaining API documentation, Continuous improvement in documentation, Technical writing for APIs, API documentation platforms, Effective API documentation, User-friendly API documentation, URLs, API documentation, web addresses, web resources, protocols, domains, paths, query parameters, endpoints, developers, marketers, troubleshoot API issues, track website performance, API development, web development, resources access, API understanding, API usage, API resources, API endpoints, API troubleshoot, API performance tracking, API mastery]
 sidebar: sidebar
 permalink: /anatomyofurl.html
 folder: mydoc
 completed: 12
 next:
-  url: https://beingtechnicalwriter.com/apidocumentation/anatomyofurl.html
+  url: https://beingtechnicalwriter.com/apidocumentation/anatomyofurltwo.html
 previous:
   url: https://beingtechnicalwriter.com/apidocumentation/restAPI.html
 ---
@@ -96,7 +96,7 @@ Let's see everything in detail. Select the appropriate tabs for more information
   <h4>5. PATCH Method (RFC 5789):</h4>
   <p>It's worth noting that there is a standardized PATCH method (as discussed earlier), but there's also an older version of PATCH defined in RFC 5789. The RFC 5789 PATCH method is less commonly used today, and the usage of the newer PATCH method is recommended for partial updates.</p>
 
-  <h2>How to Identify a Protocol in a URL?</h2>
+  <h3>How to Identify a Protocol in a URL?</h3>
   <p>A URL (Uniform Resource Locator) consists of several components, and the protocol is one of them. It specifies how your browser or client should communicate with a web server to retrieve a resource. Here's how to identify the protocol in a URL:</p>
 
   <ol>
@@ -176,7 +176,7 @@ Let's see everything in detail. Select the appropriate tabs for more information
 
   <p>Domains are important in API documentation because they identify the server that hosts the API. When you are using an API, you need to know the domain of the server to send requests to the API.</p>
 
-  <p>For example, the following URL shows the domain of the Google Search API: <a href="https://developers.google.com/search/">https://developers.google.com/search/</a>:</p>
+  <p>For example, the following URL shows the domain of the Google Search API:</p>
   <pre><code>https://developers.google.com/search/</code></pre>
 
   <p>The domain of the Google Search API is <code>developers.google.com</code>. This is the server that hosts the API, and it is the server that you need to send requests to in order to use the API.</p>
@@ -230,7 +230,7 @@ Let's see everything in detail. Select the appropriate tabs for more information
 
   <p>The path of this resource is <code>/search?q={query}</code>, where <code>{query}</code> is a placeholder for the term that the user wants to search for.</p>
 
-  <h2>How to Identify a Path in a URL?</h2>
+  <h3>How to Identify a Path in a URL?</h3>
   <p>
     To identify the path in a URL, follow these steps:
   </p>

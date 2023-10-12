@@ -40,7 +40,12 @@ entries:
       output: web
       type: homepage
 
-    - title: Anatomy of URL
+    - title: Anatomy of URL part 1
       url: /anatomyofurl.html
+      output: web
+      type: homepage
+
+    - title: Anatomy of URL part 2
+      url: /anatomyofurltwo.html
       output: web
       type: homepage
