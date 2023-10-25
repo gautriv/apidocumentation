@@ -1,10 +1,7 @@
-url: https://beingtechnicalwriter.com/apidocumentation/
 plugins:
-  - jekyll-mentions
-  - jekyll-redirect-from
-  - jekyll-paginate
+  - jekyll-feed
   - jekyll-seo
-  - jekyll-sitemap
+  - jemoji
 
 destination: _site
 highlighter: rouge
@@ -14,24 +11,20 @@ kramdown:
   auto_ids: true
   syntax_highlighter: rouge
 
-repository: gautriv/apidocumentation
-
-output: web
-
 site_title: API Documentation - A step by step guide for technical writers
-
-
-github_editme_path: gautriv/apidocumentation/blob/gh-pages/
-
-google_analytics4: G-8VQGBYV0J6
 
 exclude:
   - .gitignore
   - vendor
 
+# Collections
 collections:
-  tooltips:
-    output: false
+  docs:
+    output: true
+  slides:
+    output: true
+  smartphones: 
+    output: true
 
 defaults:
   -
@@ -54,7 +47,7 @@ title: API Documentation
 tagline: A step by step guide for technical writers
 description: A course for technical writers looking to learn each and every aspect of API documentation.
 
-url: https://beingtechnicalwriter.com/apidocumentation/
+url: https://beingtechnicalwriter.com/apidocumentation
 social:
   name: Gaurav Trivedi
   links:
