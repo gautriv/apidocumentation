@@ -44,6 +44,9 @@ Let's see everything in detail. Select the appropriate tabs for more information
   <h2>The Common HTTP Methods</h2>
   <p>HTTP methods, often referred to as HTTP verbs, are fundamental to the functioning of the World Wide Web. They define the actions that can be performed on resources, allowing clients (such as web browsers or applications) to communicate with servers in a structured manner. These methods are so crucial that they are often collectively referred to as CRUD operations, representing Create, Read, Update, and Delete actions on resources. In this section, we'll delve into the five primary HTTP methods: GET, POST, PUT, PATCH, and DELETE, each serving a specific purpose in web development and API design.</p>
 
+  <img src="./images/http_methods.jpg" alt="Top 9 HTTP Request Methods" width="600" title="Top 9 HTTP Request Methods">
+
+
   <h3>1. GET method</h3>
   <ul>
     <li><strong>Request:</strong> A GET request is used to retrieve data from the server. It typically doesn't have a request body, as it's meant for read-only operations. Any data needed for the request is usually sent as query parameters in the URL.</li>
@@ -76,27 +79,37 @@ Let's see everything in detail. Select the appropriate tabs for more information
 
   <h3>6. Other HTTP Methods:</h3>
   <p>While the five primary HTTP methods (GET, POST, PUT, PATCH, DELETE) cover the majority of use cases in web development and API design, there are several other HTTP methods that serve specialized purposes. These less commonly used methods are valuable tools in specific scenarios. In this section, we'll explore some of these lesser-known HTTP methods and their unique roles.</p>
-
-  <h4>1. HEAD Method:</h4>
+<ol>
+    <li>
+      <strong>HEAD Method</strong>
   <p><strong>Purpose:</strong> The HEAD method is similar to GET but without the response body. It is used to retrieve only the headers of a resource, providing metadata about the resource, such as its content type and length.</p>
-  <p>The HEAD method is useful for checking resource availability or obtaining metadata without downloading the entire content.</p>
+  <p>The HEAD method is useful for checking resource availability or obtaining metadata without downloading the entire content.</p> </li>
 
-  <h4>2. OPTIONS Method:</h4>
-  <p><strong>Purpose:</strong> The OPTIONS method is used to request information about the communication options available for a resource. It retrieves details about the supported HTTP methods, headers, and other capabilities of the server.</p>
+
+<li>
+<strong>OPTIONS Method</strong>
+<p><strong>Purpose:</strong> The OPTIONS method is used to request information about the communication options available for a resource. It retrieves details about the supported HTTP methods, headers, and other capabilities of the server.</p>
   <p>The OPTIONS method helps clients understand what actions they can perform on a resource.</p>
 
-  <h4>3. TRACE Method:</h4>
-  <p><strong>Purpose:</strong> The TRACE method is primarily used for diagnostic purposes. It echoes the received request back to the client, allowing it to see how the request was modified by intermediaries (such as proxies or load balancers).</p>
-  <p>TRACE can help in debugging and understanding the request-response flow.</p>
+  </li>
 
-  <h4>4. CONNECT Method:</h4>
-  <p><strong>Purpose:</strong> The CONNECT method is used to establish a network connection to a resource, typically through a proxy server. It is often used for creating secure tunnels for encrypted communication, such as HTTPS.</p>
-  <p>CONNECT is mainly used for setting up secure connections through proxy servers.</p>
+<li>
+<strong>TRACE Method</strong>
+<p><strong>Purpose:</strong> The TRACE method is primarily used for diagnostic purposes. It echoes the received request back to the client, allowing it to see how the request was modified by intermediaries (such as proxies or load balancers).</p>
+  <p>TRACE can help in debugging and understanding the request-response flow.</p> </li>
 
-  <h4>5. PATCH Method (RFC 5789):</h4>
-  <p>It's worth noting that there is a standardized PATCH method (as discussed earlier), but there's also an older version of PATCH defined in RFC 5789. The RFC 5789 PATCH method is less commonly used today, and the usage of the newer PATCH method is recommended for partial updates.</p>
+<li>
+<strong>CONNECT Method</strong>
+ <p><strong>Purpose:</strong> The CONNECT method is used to establish a network connection to a resource, typically through a proxy server. It is often used for creating secure tunnels for encrypted communication, such as HTTPS.</p>
+  <p>CONNECT is mainly used for setting up secure connections through proxy servers.</p> </li>
 
-  <h3>How to Identify a Protocol in a URL?</h3>
+  <li>
+<strong>PATCH Method (RFC 5789)</strong>
+<p>It's worth noting that there is a standardized PATCH method (as discussed earlier), but there's also an older version of PATCH defined in RFC 5789. The RFC 5789 PATCH method is less commonly used today, and the usage of the newer PATCH method is recommended for partial updates.</p> </li>
+
+</ol>
+
+<h2>How to Identify a Protocol in a URL?</h2>
   <p>A URL (Uniform Resource Locator) consists of several components, and the protocol is one of them. It specifies how your browser or client should communicate with a web server to retrieve a resource. Here's how to identify the protocol in a URL:</p>
 
   <ol>
