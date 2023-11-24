@@ -254,3 +254,19 @@ button.btn {
 .footer-right {
   text-align: right;
 }
+
+footer.main-footer a {
+  color: inherit;
+  font-weight: 300;
+  margin-bottom: 7px;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn {
+  border-radius: 24px !important;
+}
