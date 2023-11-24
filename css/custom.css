@@ -270,3 +270,12 @@ footer.main-footer a {
 .btn {
   border-radius: 24px !important;
 }
+
+.footerone {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer.main-footer .copyrights * {
+  margin-bottom: 0;
+}
