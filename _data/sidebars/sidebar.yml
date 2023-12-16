@@ -49,3 +49,18 @@ entries:
       url: /anatomyofurltwo.html
       output: web
       type: homepage
+
+    - title: Understanding data formats
+      url: /dataformats.html
+      output: web
+      type: homepage
+
+    - title: JSON and Its Data Types
+      url: /JSON101.html
+      output: web
+      type: homepage
+
+    - title: XML and Its Data Types
+      url: /XML101.html
+      output: web
+      type: homepage
