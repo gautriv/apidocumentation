@@ -4,7 +4,7 @@ keywords: [API documentation, API information gathering, API documentation best 
 sidebar: sidebar
 permalink: /informationgathering.html
 folder: mydoc
-completed: 5
+completed: 20
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/typesofAPI.html
 previous:

@@ -13,7 +13,13 @@ entries:
     - title: Get started
       url: /index.html
       output: web
-      type: homepage    
+      type: homepage   
+
+    - title: How the internet works?
+      url: /howinternetworks.html
+      output: web
+      type: homepage   
+
 
     - title: What is an API?
       url: /whatisanAPI.html

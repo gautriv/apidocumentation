@@ -4,11 +4,11 @@ keywords: [API documentation, What is an API, API examples, Requests and Respons
 sidebar: sidebar
 permalink: whatisanAPI.html
 folder: mydoc
-completed: 2
+completed: 10
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/whatwritersdo.html
 previous:
-  url: https://beingtechnicalwriter.com/apidocumentation/index.html
+  url: https://beingtechnicalwriter.com/apidocumentation/howinternetworks.html
 ---
 
 An API, which stands for Application Programming Interface, is a collection of rules that govern how two software applications interact with one another.

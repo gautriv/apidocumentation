@@ -19,7 +19,7 @@ Welcome to the "API Documentation: A step by step guide for technical writers" c
 <div class="mermaid">
   graph LR;  
   flow1[What technical writers document.....];
-  flow2[How do they document.....];
+  flow2[How and what do they document.....];
   flow3[Explore Swagger and other such tools to automate API documentation];
   flow4[Types of APIs];
   flow5[Anatomy of URL];

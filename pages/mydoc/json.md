@@ -4,7 +4,7 @@ keywords: [JSON, data format, lightweight, human-readable, key-value pairs, API 
 sidebar: sidebar
 permalink: /JSON101.html
 folder: mydoc
-completed: 12
+completed: 50
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/XML101.html
 previous:

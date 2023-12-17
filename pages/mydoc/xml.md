@@ -4,7 +4,7 @@ keywords: [XML, data format, structured data, complex data, financial reports, s
 sidebar: sidebar
 permalink: /XML101.html
 folder: mydoc
-completed: 12
+completed: 55
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/anatomyofurltwo.html
 previous:
