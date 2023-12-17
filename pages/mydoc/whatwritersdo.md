@@ -17,6 +17,19 @@ Imagine you're in a new city, and you want to find the best places to eat, shop,
 
 APIs are like new cities. They're full of possibilities, but they can be confusing to navigate if you don't know where to start. That's where technical writers come in. They create documentation that helps developers understand how to use APIs.
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 Let's consider this: Your project team asks you to document a new endpoint that they have created. They may refer to each endpoint as an API, but essentially they are asking you to create a reference API document. Here are some of the things that you will include in your reference API document:
 
 * **Endpoints:** These are the URLs that developers use to interact with the API.

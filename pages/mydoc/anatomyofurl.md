@@ -41,6 +41,19 @@ Let's see everything in detail. Select the appropriate tabs for more information
 
   <p>In this chapter, we'll discuss the essential components of HTTP, with a primary focus on the pivotal role played by HTTP methods. Understanding these methods is not only crucial for web developers and programmers but also for technical writers looking to comprehend how data flows across the internet.</p>
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
   <h2>The Common HTTP Methods</h2>
   <p>HTTP methods, often referred to as HTTP verbs, are fundamental to the functioning of the World Wide Web. They define the actions that can be performed on resources, allowing clients (such as web browsers or applications) to communicate with servers in a structured manner. These methods are so crucial that they are often collectively referred to as CRUD operations, representing Create, Read, Update, and Delete actions on resources. In this section, we'll delve into the five primary HTTP methods: GET, POST, PUT, PATCH, and DELETE, each serving a specific purpose in web development and API design.</p>
 
@@ -109,6 +122,19 @@ Let's see everything in detail. Select the appropriate tabs for more information
 
 </ol>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+     crossorigin="anonymous"></script>
+<!-- AddTitleOne -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7149683584202371"
+     data-ad-slot="7422872052"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <h2>How to Identify a Protocol in a URL?</h2>
   <p>A URL (Uniform Resource Locator) consists of several components, and the protocol is one of them. It specifies how your browser or client should communicate with a web server to retrieve a resource. Here's how to identify the protocol in a URL:</p>
 
@@ -171,6 +197,19 @@ Let's see everything in detail. Select the appropriate tabs for more information
 
   <p>Top-level domains (TLDs) and second-level domains (SLDs) are the two types of domains. The top-level domain (TLD) is the last part of the domain, such as <code>.com</code>, <code>.net</code>, or <code>.org</code>. The SLD is the part of the domain that appears before the TLD, such as google in <code>google.com</code>.</p>
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+     crossorigin="anonymous"></script>
+<!-- AddTitleOne -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7149683584202371"
+     data-ad-slot="7422872052"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
   <h3>How do domains work?</h3>
   <p>Imagine you're on a quest to explore the vast landscape of the internet.</p>
   <p>Your trusty guide is your web browser. Whenever you decide to visit a website, here's what happens behind the scenes:</p>
@@ -222,6 +261,19 @@ Let's see everything in detail. Select the appropriate tabs for more information
   <p>The path of a URL is the part of the URL that identifies the specific resource that is being accessed.</p>
 
   <p>Paths can be simple or complex. They can be static or dynamic. Static paths are always the same, while dynamic paths can vary depending on the resource that is being accessed.</p>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+     crossorigin="anonymous"></script>
+<!-- AddTitleOne -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7149683584202371"
+     data-ad-slot="7422872052"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
   <h3>How do paths work?</h3>
   <p>Imagine you're using your web browser to search for adorable cat videos on Google. You type in your query, hit the search button, and magically, a list of cat videos appears on your screen. Ever wondered how this happens behind the scenes? It's all about how the web and APIs (Application Programming Interfaces) work together.</p>
@@ -291,6 +343,20 @@ Let's see everything in detail. Select the appropriate tabs for more information
 <h2>Query Parameters in URLs</h2>
 <p>In our example URL, the query parameter is: <code>q=cats</code>.</p>
 <p>Query parameters are key-value pairs in a URL that provide additional information to the web server when performing an HTTP request. They are often used in online applications and APIs to send data from the client to the server (typically a web browser or application). The query parameters are separated from the basic URL by a question mark ('?'), whereas they are divided by ampersands ('&').</p>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+     crossorigin="anonymous"></script>
+<!-- AddTitleOne -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7149683584202371"
+     data-ad-slot="7422872052"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 <h3>How to recognize Query Parameters</h3>
 <ul>
 <li><strong>Look for the Question Mark ('?'):</strong> Query parameters are typically introduced in a URL using a question mark ('?'). This question mark separates the base URL from the query parameters. For example: <code>https://example.com/search?query=term</code> In this URL, the question mark "?" indicates the start of the query parameters.</li>
@@ -335,6 +401,19 @@ Let's see everything in detail. Select the appropriate tabs for more information
 <p>Fragment identifiers are a way to identify a specific location within a web page or other resource. They are typically used to link to specific sections of a web page or to provide deep links to specific resources. Fragment identifiers are indicated by a hash sign (#) followed by a unique identifier. For example, the following URL uses a fragment identifier to link to the "Introduction" section of a web page: <code>https://example.com/my-page#Introduction</code></p>
 
 <p>When a user clicks on a link to a fragment identifier, their browser will scroll to the specified location within the resource.</p>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+     crossorigin="anonymous"></script>
+<!-- AddTitleOne -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7149683584202371"
+     data-ad-slot="7422872052"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 <h3>How to Identify a Fragment Identifier</h3>
 <p>To identify a fragment identifier in a URL, look for the hash sign (#) followed by a unique identifier. The fragment identifier is everything after the hash sign, but it does not include the hash sign itself. For example, in the following URL, the fragment identifier is "myjob": <code>https://example.com/my-page#myjob</code></p>

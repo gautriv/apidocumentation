@@ -17,6 +17,19 @@ Picture this: You're at a restaurant, hungry and ready to order. But you don't n
 
 Think of it as a menu for computer programs. It's like a magic list that shows all the cool stuff a program can do. And guess what? Other programs can browse this menu and order what they need. It's like a digital cafeteria for software!
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 In today's tech-savvy world, we've got tons of programs and apps, from social media and games to weather forecasts. They all need to chat and share info sometimes, right? That's where APIs come in. They're like the connectors that link these programs together. They're the reason you can share a cute cat picture from your phone to your favorite social media app. Thank APIs for making our digital lives a breeze!
 
 Now, APIs have two sides to them: **Requests** and **Responses**.

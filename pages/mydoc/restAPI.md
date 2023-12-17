@@ -18,6 +18,19 @@ Let me break it down for you.
 
 Imagine you have a massive library with tons of books, each with a label on its spine. Now, if you want a specific book, what do you do? You check the label, find the right shelf, and grab it, right? Well, REST APIs work kinda like that. Instead of books and labels, they use simple web addresses to help you find and get information from the internet. The cool thing is, they're super popular because they're as easy to use as finding a book in a perfectly organized library.
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 **REST is Statelessness**
 
 REST APIs are designed to be stateless. This means that each interaction or request between a client (like a web browser) and a server (which hosts the API) is independent. In other words, the server doesn't retain any information about previous requests from the same client.

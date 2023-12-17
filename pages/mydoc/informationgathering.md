@@ -15,6 +15,19 @@ API documentation is essential for helping users understand and use APIs effecti
 
 {% include note.html content="If you're diving into this chapter and finding some of the technical terms a bit daunting, don't sweat it – that's perfectly fine! We haven't covered them yet, and my main goal in this chapter is to give you a sneak peek into how you will kickstart your journey in documenting APIs once you become an expert. As we progress through the course, we'll delve deep into the nitty-gritty details of these terms and technologies." %}
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## 1. Understand the API: 
 
 * Begin by thoroughly understanding the API's purpose, functionality, and the problem it solves. 

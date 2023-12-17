@@ -15,6 +15,20 @@ Hey there, adventurers! So, you've aced the ABCs of APIs, strolled through the U
 
 Imagine a tidy kitchen pantry, each shelf neatly packed with labeled jars. Well, that's JSON in action! It's like a lightweight, readable recipe for data, built on two cool structures: **objects** and **arrays**.
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
+
 ## Objects
 
 In JSON, objects are like your favorite cereal boxes – a mix of key-value pairs. Keys are like the cereal names, and values are what's inside. They're wrapped up in curly braces `{}`.

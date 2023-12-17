@@ -35,6 +35,19 @@ Let's see everything in detail. Select the appropriate tabs for more information
 
     <p>This endpoint can be used to retrieve the user with the ID 12345 from the API exposed by api.example.com.</p>
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
     <h3>How to Identify an Endpoint?</h3>
 
     <p>To identify an endpoint, look for the following components in the URL:</p>
@@ -81,6 +94,19 @@ Let's see everything in detail. Select the appropriate tabs for more information
     <p>Resources can also be created, updated, and deleted through endpoints. For example, the following endpoint could be used to create a new user:</p>
 
     <pre><code>HTTP POST /users</code></pre>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
     <h3>How to Identify a Resource?</h3>
 

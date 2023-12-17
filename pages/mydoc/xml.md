@@ -17,6 +17,19 @@ Hey, awesome learner! You've already conquered APIs, tackled URLs, and now, it's
 
 Unlike the easy-breezy vibe of JSON, XML loves order and precision. Imagine a super organized library – each book tagged and labeled, chapters and sections neatly defined. That's XML for you – data neatly organized within tags, creating a tree-like structure with attributes adding details like leaves and bark.
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ### Elements
 
 Think of elements as labeled containers in the library, each holding specific data within opening and closing tags. Elements, like `<customer>` or `<product>`, can hold different data types:

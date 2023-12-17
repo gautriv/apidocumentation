@@ -42,6 +42,19 @@ The Web service API encompasses:
 * XML-RPC
 * gRPC
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## REST API (Representational State Transfer)
 
 So, first up, we have the REST API. Imagine it as the simplest way to design apps that talk to each other over the internet. It's like going to a restaurant with a menu. You pick what you want (using simple commands like GET, POST, PUT, or DELETE), and the kitchen (the server) gets it ready and serves it to you. REST is known for being straightforward, scalable, and it works with pretty much anything on the web.
