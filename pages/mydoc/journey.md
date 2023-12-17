@@ -15,23 +15,14 @@ Hey there, curious minds! Great to have you onboard. Before we dive into the fas
 
 Think of your browser as your trusty sidekick, aiding you on a digital adventure. You've got questions, and the web holds the answers. But, how do they all communicate?
 
+<img src="./gif/commpone.gif" alt="Internet working phase one">
+
+<img src="./gif/commptwo.gif" alt="Internet working phase one b">
+
 **Step 1: Asking Nicely - Telling the Computer What You Want**
 
 You tell your browser, "Hey, I want something." Picture it like asking a friend for a favor. Your browser becomes a speedy messenger, firing off a note to the server, asking, "Do you have what they're looking for?"
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-  
 **Step 2: Proving You're You - Showing Your ID**
 
 The server might be a bit cautious and say, "Prove you're you!" Think of it like showing your ID at a cool party. Your browser nudges you, saying, "They just want to make sure you're the real deal. Share your secret code."
@@ -51,6 +42,19 @@ The info might look plain, but your browser has some buddies – HTML, CSS, and 
 **Step 6: Magic Storage Place - Where Computers Keep Stuff**
 
 Behind the scenes, the server has a secret stash – the database. It uses special spells (SQL, MySQL, and Python) to find and keep stuff. Think of it as the hidden library where all the digital things are kept safe.
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 **Step 7: Middleman Talk - Using a Translator (API)**
 
