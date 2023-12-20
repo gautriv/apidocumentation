@@ -29,6 +29,7 @@ The server might be a bit cautious and say, "Prove you're you!" Think of it like
 
 **Step 3: Showing Your Secret Code - Giving Your Password**
 
+<br>
 You type in your secret code (password), and your browser hands it to the server. If it checks out, the server says, "Alright, come on in!"
 
 **Step 4: Getting the Goods - Like Borrowing a Library Book**
@@ -38,6 +39,8 @@ Now, the server hands over the info you wanted. Imagine it's like the librarian 
 **Step 5: Making It Look Nice - Dressing Up the Info**
 
 The info might look plain, but your browser has some buddies – HTML, CSS, and JavaScript. They're like decorators making the info look cool and organized. They're the reason web pages aren't just boring text.
+
+<br>
 
 **Step 6: Magic Storage Place - Where Computers Keep Stuff**
 
