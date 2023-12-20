@@ -6,6 +6,8 @@ permalink: restAPI.html
 folder: mydoc
 summary: "This module introduces REST APIs, a popular type of API that uses simple web addresses to help you find and get information from the internet. It covers the concepts of statelessness and caching, and how they are used in REST APIs. The module also provides examples of how REST APIs are used in real-world applications."
 completed: 30
+next:
+  url: https://beingtechnicalwriter.com/apidocumentation/anatomyofurl.html
 previous:
   url: https://beingtechnicalwriter.com/apidocumentation/typesofAPI.html
 ---
