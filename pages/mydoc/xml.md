@@ -170,4 +170,6 @@ In XML, nesting means placing elements inside other elements, forming a hierarch
 
    In this example, "organization" contains nested "name" and "departments" elements, and so on.
 
-As you venture into the world of XML, you're making amazing progress in understanding API documentation. Coming up, we'll dive into real-life scenarios, showing how XML and its data types smoothly fit into actual API requests and responses. Keep up the fantastic work, and get ready for the exciting chapters ahead!
+As you venture into the world of XML, you're making amazing progress in understanding API documentation. 
+
+Coming up, we'll dive into real-life scenarios, showing how jSON/XML and its data types smoothly fit into actual API requests and responses. Keep up the fantastic work, and get ready for the exciting chapters ahead!
