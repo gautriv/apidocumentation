@@ -115,6 +115,11 @@ By visualizing these data types with familiar UI elements, we bridge the gap bet
 
 Remember, each data type has its own personality and role in the digital narrative. Embrace them, and you'll be well on your way to mastering API documentation with confidence and clarity.
 
+<div class="question-box">
+    <i class="fas fa-question"></i> Could you identify all the data types in this UI?
+    <img src="./images/data-types.png" alt="Data Types">
+</div>
+
 You’ve done an incredible job exploring the personalities of data types and how they come to life in APIs. Now that you’ve got a clear picture of Boolean, String, Number, and their friends, you’re ready to see them in action.
 
 In the next chapter, we’ll take all this knowledge and dive into real-life scenarios of API documentation. You’ll see how these data types fit into actual API requests and responses, making your understanding even more practical and hands-on.
