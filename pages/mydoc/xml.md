@@ -6,9 +6,9 @@ permalink: /XML101.html
 folder: mydoc
 completed: 55
 next:
-  url: https://beingtechnicalwriter.com/apidocumentation/anatomyofurltwo.html
+  url: https://beingtechnicalwriter.com/apidocumentation/visualizingdatatypes.html
 previous:
-  url: https://beingtechnicalwriter.com/apidocumentation/restAPI.html
+  url: https://beingtechnicalwriter.com/apidocumentation/JSON101.html
 ---
 
 Hey, awesome learner! You've already conquered APIs, tackled URLs, and now, it's time to demystify XML (eXtensible Markup Language). Get ready for a journey into the world of XML and its cool data types!

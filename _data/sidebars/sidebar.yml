@@ -70,3 +70,8 @@ entries:
       url: /XML101.html
       output: web
       type: homepage
+
+    - title: Visualizing Data Types
+      url: /visualizingdatatypes.html
+      output: web
+      type: homepage

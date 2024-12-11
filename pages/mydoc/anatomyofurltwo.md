@@ -6,7 +6,7 @@ permalink: /anatomyofurltwo.html
 folder: mydoc
 completed: 40
 next:
-  url: https://beingtechnicalwriter.com/dataformats.html
+  url: https://beingtechnicalwriter.com/apidocumentation/dataformats.html
 previous:
   url: https://beingtechnicalwriter.com/apidocumentation/anatomyofurl.html
 ---
