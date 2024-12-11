@@ -46,8 +46,6 @@ When the info arrives, it’s not exactly glamorous. Think plain, unseasoned tof
 
 Without them? Every site would look like a badly formatted Word document. Yikes.
 
-<br>
-
 **Step 6: Magic Storage Place - Where Computers Keep Stuff**
 
 Behind the scenes, all the magic starts in the database—a giant vault of information. Imagine it as the Hogwarts library, minus the floating candles but with equally nerdy spells like SQL. Whenever the server needs something, it waves its wand (okay, it types a query), and poof—the info is retrieved. No owls required.

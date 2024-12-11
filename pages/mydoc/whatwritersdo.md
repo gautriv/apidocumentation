@@ -70,8 +70,6 @@ Endpoints are the URLs developers use to interact with the API. Think of them as
 
 Endpoints tell developers, “Here’s where you can find what you’re looking for.”
 
----
-
 ### 2. Methods: The Actions You Can Take
 Methods are like verbs—they define what you can do with an endpoint. The most common ones are:
 - **GET**: Retrieve data.
@@ -81,14 +79,11 @@ Methods are like verbs—they define what you can do with an endpoint. The most 
 
 Think of these as the API’s rules of engagement. Each endpoint may allow one or more methods.
 
----
 
 ### 3. Parameters: The Special Requests
 Parameters are like specific instructions you give to the waiter. For instance, “I’ll have the pizza, but hold the olives.” In API terms, these are the values passed in a request, such as:
 - **Query parameters**: `?userID=123` (specifies which user’s data you want).
 - **Path parameters**: `/users/{userID}` (the `{userID}` is dynamic and changes based on your request).
-
----
 
 ### 4. Requests and Their Bodies: The Ask
 When a program interacts with an API, it sends a request. Sometimes, this request includes a “body,” which is just a fancy way of saying “extra details.” For example:
@@ -100,8 +95,6 @@ When a program interacts with an API, it sends a request. Sometimes, this reques
 }
 ```
 This is what the API reads to figure out what you want.
-
----
 
 ### 5. Responses and Their Bodies: The Reply
 After the request, the API responds. The response includes the requested data (if all goes well) or an error message (if something breaks). For example:
@@ -115,8 +108,6 @@ After the request, the API responds. The response includes the requested data (i
   }
 }
 ```
----
-
 ### 6. Examples: The Show-and-Tell
 Developers love examples. They’re like cheat codes for APIs. You provide sample requests and responses so developers can hit the ground running. For instance:
 
@@ -130,8 +121,6 @@ Developers love examples. They’re like cheat codes for APIs. You provide sampl
 }
 ```
 
----
-
 ### 7. Error Messages: The Bad News
 No one likes errors, but they’re inevitable. Your job is to document the possible error messages and what they mean. For example:
 
@@ -140,8 +129,6 @@ No one likes errors, but they’re inevitable. Your job is to document the possi
 - Error 500: Internal Server Error (the API messed up).
 
 Bonus points if you include troubleshooting tips for each error!
-
----
 
 ### 8. Authentication: The Bouncer at the Club
 Before a developer can access an API, they often need to prove they’re allowed in. This is called authentication, and it usually involves:
@@ -152,12 +139,8 @@ Before a developer can access an API, they often need to prove they’re allowed
 
 Think of this as the API saying, “No entry without ID!”
 
----
-
 ### 9. Rate Limits: The Speed Bumps
 Rate limits are restrictions on how many requests a developer can make in a given time. For example, “You can only send 100 requests per minute.” It’s like a speed limit for APIs, ensuring no one abuses the system.
-
----
 
 Technical writers also document other aspects of APIs, such as the overall architecture, the security features, and the limitations. They strive to create documentation that is clear, concise, and accurate.
 
