@@ -124,15 +124,27 @@ Get excited—it’s time to connect the dots and bring your API documentation j
 {% include recap.html content="The main takeaways from this chapter are:
 <br>
 --> Boolean represents true or false values.
+<br>
 --> Boolean is visualized as checkboxes or toggle switches.
+<br>
 --> String holds text values like names or titles.
+<br>
 --> String is visualized as single-line text fields or multi-line text areas.
+<br>
 --> Number represents numeric values like quantity or limits.
+<br>
 --> Number is visualized as steppers or sliders.
+<br>
 --> List holds multiple values in a specific order.
+<br>
 --> List is visualized as dropdown menus or multi-select boxes.
+<br>
 --> Date and Time represent scheduling information.
+<br>
 --> Date and Time are visualized as calendar pickers or time pickers.
+<br>
 --> Enum represents predefined options.
+<br>
 --> Enum is visualized as radio buttons or dropdown menus.
+<br>
 " %}
