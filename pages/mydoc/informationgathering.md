@@ -64,22 +64,16 @@ For example:
 
 When you know your goals, the documentation practically writes itself (okay, not quite, but it helps a ton).
 
+## 4. Gather information (The detective work begins) 
 
-## 4. Gather Information (The Detective Work Begins :) )
+* Once you've identified your audience and documentation objectives, you can start obtaining API data.
 
-Here’s where you channel your inner Sherlock Holmes. To write great documentation, you need all the facts—and that means asking the right questions.
-
-- **Talk to the experts.** Developers, product managers, and SMEs (Subject Matter Experts) are your goldmine of information.
-- **Ask specific questions.** For example:
-  - What are the API’s key endpoints?
-  - What are the common errors users face?
-  - How do you authenticate with the API?
-
-Keep a notebook handy (or a digital equivalent) to jot down everything you learn. No detail is too small!
+    - To obtain important API information, work with Subject Matter Experts (SMEs) and other stakeholders.
+    - Ask relevant questions.
 
     {% include example_dropdown.html %}
 
-## 5. Plan Your Structure: Build the Framework
+## 5. Plan Your Structure
 
 Think of your documentation like a house. You need a solid foundation and clear rooms where everything belongs. Here’s a tried-and-true structure:
 
