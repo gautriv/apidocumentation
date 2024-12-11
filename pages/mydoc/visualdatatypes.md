@@ -146,5 +146,4 @@ Get excited—it’s time to connect the dots and bring your API documentation j
 --> Enum represents predefined options.
 <br>
 --> Enum is visualized as radio buttons or dropdown menus.
-<br>
 " %}
