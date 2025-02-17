@@ -75,3 +75,8 @@ entries:
       url: /visualizingdatatypes.html
       output: web
       type: homepage
+
+    - title: Understanding API Requests and Responses
+      url: /apirequestsresponses.html
+      output: web
+      type: homepage
