@@ -18,7 +18,7 @@ In this chapter, we’ll break down **how to structure API documentation** and w
 {% include note.html content="Good API documentation reduces support tickets and makes an API easy to use. If a developer has to spend hours figuring out how to use your API, something’s wrong!" %}
 
 
-## Structuring API documentation
+## 1. Structuring API documentation
 
 Great API documentation is **well-structured** and **easy to navigate**. Here’s a solid structure to follow:
 
@@ -34,7 +34,7 @@ Great API documentation is **well-structured** and **easy to navigate**. Here’
 
 Developers love **consistency**, so keeping your API documentation well-organized is key!
 
-## 1. Writing a clear API **Introduction**
+## 2. Writing a clear API **Introduction**
 
 Your **Introduction** should tell users **what your API does** and why they should use it. Keep it **short and to the point**.
 
@@ -42,7 +42,7 @@ Your **Introduction** should tell users **what your API does** and why they shou
 > The **BookFinder API** allows developers to search for books, retrieve book details, and manage user reading lists. It supports both **RESTful** and **GraphQL** requests, offering **real-time access** to a large database of books.
 
 
-## 2. Documenting **Authentication**
+## 3. Documenting **Authentication**
 
 APIs often require **authentication** to ensure security. Clearly explain how users can authenticate.
 
@@ -59,7 +59,7 @@ Make sure to include:
 - How to send them (for example, headers, query parameters).
 - Any restrictions (for example, rate limits, expiration).
 
-## Explaining API endpoints and methods
+## 4. Explaining API endpoints and methods
 
 For each **endpoint**, document:
 
@@ -104,7 +104,7 @@ GET https://api.example.com/books?title=harry%20potter
 ```
 
 
-## Error handling and status codes
+## 5. Error handling and status codes
 
 Errors happen! Make sure users **know what to expect** when things go wrong.
 
@@ -126,7 +126,7 @@ Errors happen! Make sure users **know what to expect** when things go wrong.
   "status": 404
 }
 ```
-## Adding code examples for developers
+## 6. Adding code examples for developers
 Developers love working code examples. Include them for multiple programming languages if possible.
 
 ### Example: Calling the API with Python
@@ -154,7 +154,7 @@ fetch("https://api.example.com/books?title=harry%20potter", {
 .then(data => console.log(data));
 ```
 
-## Best Practices for API documentation
+## 7. Best Practices for API documentation
 
 Here are some **quick tips** to make your documentation shine:
 
