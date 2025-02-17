@@ -140,7 +140,7 @@ curl -X GET "https://api.example.com/books?title=harry%20potter" -H "Accept: app
 ```
 This sends a request and retrieves book details.
 
-## Wrapping it up
+## Wrapping it up!
 Congrats! You now understand how API requests and responses work. Whether it’s fetching data, sending new information, or handling errors, you’ve got the basics down.
 
 Now that you know how APIs send and receive data, it’s time to document them effectively! In the next chapter, we’ll dive into how to write clear and structured API documentation that developers will love. Get ready to level up your documentation skills!

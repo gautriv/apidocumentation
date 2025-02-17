@@ -80,3 +80,8 @@ entries:
       url: /apirequestsresponses.html
       output: web
       type: homepage
+
+    - title: Writing API Documentation
+      url: /writingapi.html
+      output: web
+      type: homepage
