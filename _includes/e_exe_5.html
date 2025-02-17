@@ -1,0 +1,188 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert-Level API Documentation - Exercise 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        pre {
+            background-color: #0b0b0b;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <button class="exercise-button" onclick="toggleExercise('exercise5')">Exercise 5</button>
+    <button class="solution-button" onclick="toggleSolution('solution5', 'exercise5')">Solution to Exercise 5</button>
+
+    <!-- Exercise 5 Content -->
+    <div class="exercise-content" id="exercise5">
+        <h3>Challenge: Documenting API Performance & Rate Limits</h3>
+        <p><strong>Scenario:</strong> A high-traffic API needs documentation on **performance best practices, rate limits, and bulk request handling.**</p>
+
+        <h4>Performance Requirements:</h4>
+        <ul>
+            <li>API rate limits: **5000 requests per hour per user**.</li>
+            <li>Supports **Gzip compression** to reduce response payload size.</li>
+            <li>Clients should use **E-Tag caching** to avoid redundant requests.</li>
+            <li>API supports **bulk requests** (max **100 records per request**).</li>
+            <li>Pagination via **Cursor-based and Offset-based methods**.</li>
+        </ul>
+
+        <h4>Your Task:</h4>
+        <p>Write a complete API documentation page covering:</p>
+        <ul>
+            <li><strong>Rate Limiting</strong> - Explain request limits & best practices.</li>
+            <li><strong>Caching Mechanisms</strong> - Document E-Tag, Cache-Control, and Gzip support.</li>
+            <li><strong>Bulk Requests</strong> - Guide users on batching API calls.</li>
+            <li><strong>Pagination Methods</strong> - Explain Offset & Cursor pagination strategies.</li>
+        </ul>
+        <p><strong>Hint:</strong> Use real-world optimizations to improve API efficiency.</p>
+    </div>
+
+    <!-- Solution to Exercise 5 -->
+    <div class="solution-content" id="solution5">
+        <h3>Solution: API Performance & Rate Limit Documentation</h3>
+
+        <h4>1. Rate Limiting</h4>
+        <p>The API limits users to **5000 requests per hour** to prevent excessive load.</p>
+        <pre>
+        Headers:
+        X-RateLimit-Limit: 5000
+        X-RateLimit-Remaining: 4500
+        X-RateLimit-Reset: 1678909876
+        </pre>
+
+        <h4>2. Caching Mechanisms</h4>
+        <p>The API supports **E-Tag caching** and **Gzip compression**:</p>
+        
+        <h5>Using E-Tags:</h5>
+        <pre>
+        GET /data
+        Headers:
+        If-None-Match: "abc123"
+        </pre>
+
+        <h5>Enabling Gzip Compression:</h5>
+        <pre>
+        GET /data
+        Headers:
+        Accept-Encoding: gzip
+        </pre>
+
+        <h4>3. Bulk Requests</h4>
+        <p>Clients can request **up to 100 records** per call:</p>
+        <pre>
+        POST /bulk
+        Body:
+        {
+            "requests": [
+                {"id": 1}, {"id": 2}, {"id": 3}, ..., {"id": 100}
+            ]
+        }
+        </pre>
+
+        <h4>4. Pagination Methods</h4>
+        <p>The API supports **Offset and Cursor-based pagination**:</p>
+
+        <h5>Offset Pagination:</h5>
+        <pre>
+        GET /users?limit=10&offset=20
+        </pre>
+
+        <h5>Cursor Pagination:</h5>
+        <pre>
+        GET /users?cursor=abc123&limit=10
+        </pre>
+
+        <h4>5. Best Practices for Performance Optimization</h4>
+        <ul>
+            <li>**Use Gzip compression** to reduce payload size.</li>
+            <li>**Leverage caching (E-Tag, If-Modified-Since) to minimize API calls.**</li>
+            <li>**Use pagination for large datasets to improve performance.**</li>
+            <li>**Batch multiple requests using bulk API calls.**</li>
+            <li>**Monitor rate limits & optimize requests accordingly.**</li>
+        </ul>
+
+        <h4>6. Error Handling</h4>
+        <p>Common API rate limit errors:</p>
+        <table>
+            <tr>
+                <th>Error Code</th>
+                <th>Message</th>
+                <th>Reason</th>
+            </tr>
+            <tr>
+                <td>429</td>
+                <td>Too Many Requests</td>
+                <td>Rate limit exceeded</td>
+            </tr>
+            <tr>
+                <td>400</td>
+                <td>Invalid Bulk Request</td>
+                <td>Exceeded max batch size (100 records)</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution5").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

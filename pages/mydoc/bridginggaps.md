@@ -33,4 +33,17 @@ APIs are more than just endpoints and responses. To truly **write developer-frie
 These concepts will **set you apart** as an API documentation expert.  
 Let’s bridge the gaps and get ready for the next level!  
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+     crossorigin="anonymous"></script>
+<!-- AddTitleOne -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7149683584202371"
+     data-ad-slot="7422872052"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 {% include bridging_gaps.html %}

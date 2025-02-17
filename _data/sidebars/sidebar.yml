@@ -86,12 +86,12 @@ entries:
       output: web
       type: homepage
 
-    - title: Documenting REST APIs - Beginner
+    - title: Beginner REST API Documentation exercises
       url: /beginnerrestapiexercises.html
       output: web
       type: homepage
 
-    - title: Documenting REST APIs - Intermediate
+    - title: Intermediate REST API Documentation exercises
       url: /intermediaterestapiexercises.html
       output: web
       type: homepage
@@ -103,5 +103,30 @@ entries:
 
     - title: cURL for API documentation
       url: /curl.html
+      output: web
+      type: homepage
+
+    - title: Expert REST API Documentation exercises
+      url: /expertrestapiexercises.html
+      output: web
+      type: homepage
+
+    - title: Developing and testing APIs as a beginner
+      url: /beginnertestingapi.html
+      output: web
+      type: homepage
+
+    - title: Developing and testing APIs as an intermediate
+      url: /intermediatetestingapi.html
+      output: web
+      type: homepage
+
+    - title: Developing and testing APIs as an intermediate
+      url: /expertapitesting.html
+      output: web
+      type: homepage
+
+    - title: Final Words and additional resources
+      url: /finalwords.html
       output: web
       type: homepage

@@ -1,0 +1,220 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        pre {
+            background-color: #0b0b0b;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h3>Step 1: Install & Test an API in Postman</h3>
+    <p>Before we create our own API, let’s first learn how to **interact with an existing API** using Postman.</p>
+
+    <h4>1️⃣ Install Postman</h4>
+    <p>Download and install **Postman** from: <a href="https://www.postman.com/downloads/" target="_blank">https://www.postman.com/downloads/</a></p>
+
+    <h4>2️⃣ Send a GET request in Postman</h4>
+    <p>Open Postman and **send a GET request** to:</p>
+    <pre>
+    https://jsonplaceholder.typicode.com/users
+    </pre>
+    <p>You should see a list of users in JSON format.</p>
+
+    <h4>3️⃣ Send a POST request in Postman</h4>
+    <p>Now, let's try **creating a new user**. In Postman, send a **POST request** to:</p>
+    <pre>
+    https://jsonplaceholder.typicode.com/users
+    </pre>
+    <p>With the following JSON body:</p>
+    <pre>
+    {
+        "name": "John Doe",
+        "email": "john@example.com"
+    }
+    </pre>
+    <p>If successful, you’ll get a **201 Created** response with the new user.</p>
+
+    <h3>Step 2: Create Your Own API Using Python (Flask)</h3>
+    <p>Now, let’s build our own API in Python.</p>
+
+    <h4>1️⃣ Install Python & Flask</h4>
+    <p>If you don’t have Python installed, download it from: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a></p>
+    <p>Next, install Flask by running this command in **VS Code terminal**:</p>
+    <pre>
+    pip install flask
+    </pre>
+
+    <h4>2️⃣ Create a new Python file</h4>
+    <p>Open **VS Code**, create a new file called <code>app.py</code>, and add this code:</p>
+    <pre>
+    from flask import Flask, request, jsonify
+
+    app = Flask(__name__)
+
+    users = [
+        {"id": 1, "name": "Alice", "email": "alice@example.com"},
+        {"id": 2, "name": "Bob", "email": "bob@example.com"}
+    ]
+
+    @app.route('/users', methods=['GET'])
+    def get_users():
+        return jsonify(users)
+
+    @app.route('/users', methods=['POST'])
+    def add_user():
+        new_user = request.json
+        users.append(new_user)
+        return jsonify(new_user), 201
+
+    if __name__ == '__main__':
+        app.run(debug=True)
+    </pre>
+
+    <h4>3️⃣ Run Your API</h4>
+    <p>In the **VS Code terminal**, run:</p>
+    <pre>
+    python app.py
+    </pre>
+    <p>Your API will start at <code>http://127.0.0.1:5000</code></p>
+
+    <h3>Step 3: Test Your API in Postman</h3>
+
+    <h4>Send a GET request</h4>
+    <p>In **Postman**, make a **GET request** to:</p>
+    <pre>
+    http://127.0.0.1:5000/users
+    </pre>
+    <p>You should see a list of users.</p>
+
+    <h4>Send a POST request</h4>
+    <p>Use **Postman** to send a **POST request** with this JSON body:</p>
+    <pre>
+    {
+        "id": 3,
+        "name": "Charlie",
+        "email": "charlie@example.com"
+    }
+    </pre>
+
+    <p>If successful, you’ll see **201 Created** and the new user added.</p>
+
+    <h3>Step 4: Document the API</h3>
+    <p>Now, based on what you’ve built, **write API documentation** covering:</p>
+    <ul>
+        <li>API Overview</li>
+        <li>Endpoints (GET /users, POST /users)</li>
+        <li>Request & Response Formats</li>
+        <li>Status Codes</li>
+        <li>Example Requests</li>
+    </ul>
+
+    <button class="solution-button" onclick="toggleSolution('solution1')">Solution: API Documentation</button>
+
+    <!-- Solution to Documentation -->
+    <div class="solution-content" id="solution1">
+        <h3>Solution: API Documentation</h3>
+
+        <h4>1. Overview</h4>
+        <p>This API allows users to **retrieve a list of users** and **add a new user**.</p>
+
+        <h4>2. Endpoints</h4>
+        <table>
+            <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/users</td>
+                <td>Retrieve the list of users.</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/users</td>
+                <td>Add a new user.</td>
+            </tr>
+        </table>
+
+        <h4>3. Request & Response Formats</h4>
+
+        <h5>GET /users</h5>
+        <pre>
+        Response:
+        [
+            {"id": 1, "name": "Alice", "email": "alice@example.com"},
+            {"id": 2, "name": "Bob", "email": "bob@example.com"}
+        ]
+        </pre>
+
+        <h5>POST /users</h5>
+        <pre>
+        Request Body:
+        {
+            "id": 3,
+            "name": "Charlie",
+            "email": "charlie@example.com"
+        }
+        </pre>
+
+        <h4>4. Status Codes</h4>
+        <table>
+            <tr>
+                <th>Code</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>200</td>
+                <td>OK - Successful GET request.</td>
+            </tr>
+            <tr>
+                <td>201</td>
+                <td>Created - New user added successfully.</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleSolution(solutionId) {
+            var solution = document.getElementById(solutionId);
+            solution.style.display = solution.style.display === "block" ? "none" : "block";
+        }
+    </script>
+
+</body>
+</html>

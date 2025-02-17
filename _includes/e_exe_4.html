@@ -1,0 +1,193 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert-Level API Documentation - Exercise 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        pre {
+            background-color: #0b0b0b;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <button class="exercise-button" onclick="toggleExercise('exercise4')">Exercise 4</button>
+    <button class="solution-button" onclick="toggleSolution('solution4', 'exercise4')">Solution to Exercise 4</button>
+
+    <!-- Exercise 4 Content -->
+    <div class="exercise-content" id="exercise4">
+        <h3>Challenge: Documenting Secure API Authentication</h3>
+        <p><strong>Scenario:</strong> A new API requires **secure authentication** using **OAuth 2.0 and JWT tokens**.</p>
+        
+        <h4>Security Features:</h4>
+        <ul>
+            <li>OAuth 2.0 authentication with **Authorization Code Flow**.</li>
+            <li>API requires **scopes and permissions** to control access.</li>
+            <li>JWT tokens expire after **1 hour** and must be refreshed.</li>
+            <li>API supports **Rate Limiting** (1000 requests/hour per user).</li>
+        </ul>
+
+        <h4>Your Task:</h4>
+        <p>Write a complete API security documentation covering:</p>
+        <ul>
+            <li><strong>Authentication Flows</strong> - Explain OAuth 2.0 & API Key authentication.</li>
+            <li><strong>Token Handling</strong> - Explain JWT tokens, expiry, and refresh mechanisms.</li>
+            <li><strong>Rate Limiting</strong> - Document how users can handle API throttling.</li>
+            <li><strong>Security Best Practices</strong> - Guide developers on securely accessing the API.</li>
+        </ul>
+        <p><strong>Hint:</strong> Use real-world security best practices for clarity.</p>
+    </div>
+
+    <!-- Solution to Exercise 4 -->
+    <div class="solution-content" id="solution4">
+        <h3>Solution: API Security & OAuth Documentation</h3>
+
+        <h4>1. Authentication Flow (OAuth 2.0)</h4>
+        <p>The API uses OAuth 2.0 with **Authorization Code Flow** for secure authentication.</p>
+
+        <h5>🔹 Step 1: Get Authorization Code</h5>
+        <pre>
+        GET https://auth.example.com/oauth/authorize
+        ?client_id=YOUR_CLIENT_ID
+        &response_type=code
+        &redirect_uri=https://yourapp.com/callback
+        &scope=read write
+        </pre>
+
+        <h5>🔹 Step 2: Exchange Code for Access Token</h5>
+        <pre>
+        POST https://auth.example.com/oauth/token
+        Headers:
+        Content-Type: application/x-www-form-urlencoded
+
+        Body:
+        client_id=YOUR_CLIENT_ID
+        client_secret=YOUR_CLIENT_SECRET
+        code=AUTHORIZATION_CODE
+        redirect_uri=https://yourapp.com/callback
+        grant_type=authorization_code
+        </pre>
+
+        <h4>2. Handling JWT Tokens</h4>
+        <p>Access tokens are **JWT-based**, valid for **1 hour**, and include user roles.</p>
+        <pre>
+        {
+            "access_token": "eyJhbGciOiJIUz...",
+            "token_type": "Bearer",
+            "expires_in": 3600
+        }
+        </pre>
+
+        <h4>3. Refreshing Expired Tokens</h4>
+        <pre>
+        POST https://auth.example.com/oauth/token
+        Headers:
+        Content-Type: application/x-www-form-urlencoded
+
+        Body:
+        client_id=YOUR_CLIENT_ID
+        client_secret=YOUR_CLIENT_SECRET
+        refresh_token=YOUR_REFRESH_TOKEN
+        grant_type=refresh_token
+        </pre>
+
+        <h4>4. Rate Limiting</h4>
+        <p>Each user can send **1000 requests per hour**.</p>
+        <pre>
+        Headers:
+        X-RateLimit-Limit: 1000
+        X-RateLimit-Remaining: 200
+        X-RateLimit-Reset: 1678909876
+        </pre>
+
+        <h4>5. Security Best Practices</h4>
+        <ul>
+            <li>Use **HTTPS** for all API calls.</li>
+            <li>Never expose **client secrets** in frontend code.</li>
+            <li>Always **refresh expired tokens** using the refresh token flow.</li>
+            <li>Implement **IP whitelisting** for API access.</li>
+        </ul>
+
+        <h4>6. Error Handling</h4>
+        <p>Common API security errors and their meanings:</p>
+        <table>
+            <tr>
+                <th>Error Code</th>
+                <th>Message</th>
+                <th>Reason</th>
+            </tr>
+            <tr>
+                <td>401</td>
+                <td>Unauthorized</td>
+                <td>Invalid API key or expired token.</td>
+            </tr>
+            <tr>
+                <td>403</td>
+                <td>Forbidden</td>
+                <td>User lacks required permissions.</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution4").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

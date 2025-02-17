@@ -1,0 +1,168 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert-Level API Documentation - Exercise 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        pre {
+            background-color: #0b0b0b;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <button class="exercise-button" onclick="toggleExercise('exercise3')">Exercise 3</button>
+    <button class="solution-button" onclick="toggleSolution('solution3', 'exercise3')">Solution to Exercise 3</button>
+
+    <!-- Exercise 3 Content -->
+    <div class="exercise-content" id="exercise3">
+        <h3>Challenge: Document API Versioning & Deprecation for a User Management API</h3>
+        <p><strong>Scenario:</strong> The **User Management API** is upgrading from **v1 to v2**, introducing new features and removing old ones.</p>
+        
+        <h4>Changes in v2:</h4>
+        <ul>
+            <li>The `/users/{id}` endpoint now returns an **email field**.</li>
+            <li>The `/users/{id}/profile` endpoint is being **deprecated**.</li>
+            <li>Authentication is now **mandatory** via API Key.</li>
+        </ul>
+
+        <h4>API Versioning Strategy</h4>
+        <p>The API supports multiple versions using:</p>
+        <ul>
+            <li><strong>URI Versioning:</strong> <code>/v1/users/{id}</code> → <code>/v2/users/{id}</code></li>
+            <li><strong>Query Parameter Versioning:</strong> <code>/users/{id}?version=2</code></li>
+            <li><strong>Header Versioning:</strong> <code>Accept: application/vnd.api+json; version=2</code></li>
+        </ul>
+
+        <h4>Your Task:</h4>
+        <p>Write a complete API documentation page covering:</p>
+        <ul>
+            <li><strong>Overview</strong> - Explain why versioning is necessary.</li>
+            <li><strong>Versioning Methods</strong> - Describe the API versioning strategy.</li>
+            <li><strong>Deprecation Notices</strong> - Guide users on handling deprecated endpoints.</li>
+            <li><strong>Backward Compatibility</strong> - Explain how to migrate to v2 smoothly.</li>
+        </ul>
+        <p><strong>Hint:</strong> Use best practices to ensure developers transition smoothly.</p>
+    </div>
+
+    <!-- Solution to Exercise 3 -->
+    <div class="solution-content" id="solution3">
+        <h3>Solution: API Versioning & Deprecation Documentation</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **User Management API v2** introduces enhancements while maintaining backward compatibility.</p>
+
+        <h4>2. Versioning Strategy</h4>
+        <p>We support the following versioning methods:</p>
+        <ul>
+            <li><strong>URI Versioning:</strong> Append the version to the URL.</li>
+            <li><strong>Query Parameter:</strong> Specify the version as a query parameter.</li>
+            <li><strong>Header Versioning:</strong> Use custom media type headers.</li>
+        </ul>
+
+        <h4>3. Deprecation Notices</h4>
+        <p>The `/users/{id}/profile` endpoint is deprecated. Use `/users/{id}` instead.</p>
+
+        <h4>4. Backward Compatibility</h4>
+        <p>To migrate smoothly:</p>
+        <ul>
+            <li>Start using `/v2/users/{id}` for retrieving user details.</li>
+            <li>Use API Key authentication.</li>
+            <li>Update any legacy requests that rely on the deprecated `/users/{id}/profile` endpoint.</li>
+        </ul>
+
+        <h4>5. Example Requests</h4>
+        <h5>v1 Request</h5>
+        <pre>
+        GET /v1/users/12345
+        </pre>
+
+        <h5>v2 Request</h5>
+        <pre>
+        GET /v2/users/12345
+        Authorization: Bearer YOUR_API_KEY
+        </pre>
+
+        <h4>6. Error Handling</h4>
+        <p>Common API versioning errors:</p>
+        <table>
+            <tr>
+                <th>Error Code</th>
+                <th>Message</th>
+                <th>Reason</th>
+            </tr>
+            <tr>
+                <td>410</td>
+                <td>Gone</td>
+                <td>The requested API version is no longer supported.</td>
+            </tr>
+            <tr>
+                <td>400</td>
+                <td>Invalid Version</td>
+                <td>The provided version parameter is incorrect.</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution3").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

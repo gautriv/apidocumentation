@@ -1,0 +1,196 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        pre {
+            background-color: #0b0b0b;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <button class="exercise-button" onclick="toggleExercise('exercise1')">Exercise 1</button>
+    <button class="solution-button" onclick="toggleSolution('solution1', 'exercise1')">Solution to Exercise 1</button>
+
+    <!-- Exercise 1 Content -->
+    <div class="exercise-content" id="exercise1">
+        <h3>Challenge: Document a GraphQL API for a Movie Database</h3>
+        <p><strong>Scenario:</strong> You have been asked to document a GraphQL API for a **Movie Database** service. Users can:</p>
+        <ul>
+            <li>Retrieve movie details by title or ID.</li>
+            <li>Search for movies by genre, actor, or director.</li>
+            <li>Add reviews for movies.</li>
+        </ul>
+
+        <h4>GraphQL Schema (To be documented)</h4>
+        <pre>
+        type Movie {
+            id: ID!
+            title: String!
+            genre: String
+            director: String
+            releaseYear: Int
+            rating: Float
+        }
+
+        type Query {
+            getMovieById(id: ID!): Movie
+            searchMovies(genre: String, director: String, actor: String): [Movie]
+        }
+
+        type Mutation {
+            addReview(movieId: ID!, rating: Float!, comment: String): ReviewResponse
+        }
+
+        type ReviewResponse {
+            success: Boolean!
+            message: String!
+        }
+        </pre>
+
+        <h4>Your Task:</h4>
+        <p>Write a complete API documentation page covering:</p>
+        <ul>
+            <li><strong>Overview</strong> - Describe the API and its purpose.</li>
+            <li><strong>GraphQL Endpoints</strong> - Explain how to query and mutate data.</li>
+            <li><strong>Authentication</strong> - Describe how users authenticate (e.g., API Key, OAuth).</li>
+            <li><strong>Request & Response Formats</strong> - Document how users should send queries and handle responses.</li>
+            <li><strong>Error Handling</strong> - Provide guidance on common GraphQL errors.</li>
+        </ul>
+        <p><strong>Hint:</strong> Use GraphQL best practices and real-world examples to make the documentation clear.</p>
+    </div>
+
+    <!-- Solution to Exercise 1 -->
+    <div class="solution-content" id="solution1">
+        <h3>Solution: GraphQL API Documentation for Movie Database</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Movie Database GraphQL API** allows users to fetch movie details, search movies, and add reviews.</p>
+
+        <h4>2. Querying Data</h4>
+        <p>Use the **GraphQL Query Type** to retrieve movie information:</p>
+        <pre>
+        query {
+            getMovieById(id: "tt1234567") {
+                title
+                genre
+                director
+                releaseYear
+            }
+        }
+        </pre>
+
+        <h4>3. Searching for Movies</h4>
+        <p>Search movies by genre, director, or actor:</p>
+        <pre>
+        query {
+            searchMovies(genre: "Action") {
+                title
+                director
+            }
+        }
+        </pre>
+
+        <h4>4. Adding a Review (Mutation)</h4>
+        <p>Users can submit a review using a **GraphQL Mutation**:</p>
+        <pre>
+        mutation {
+            addReview(movieId: "tt1234567", rating: 4.5, comment: "Great movie!") {
+                success
+                message
+            }
+        }
+        </pre>
+
+        <h4>5. Authentication</h4>
+        <p>The API requires an API key for authentication. Pass the key in the request header:</p>
+        <pre>
+        headers: {
+            "Authorization": "Bearer YOUR_API_KEY"
+        }
+        </pre>
+
+        <h4>6. Error Handling</h4>
+        <p>Common GraphQL API errors and their meanings:</p>
+        <table>
+            <tr>
+                <th>Error Code</th>
+                <th>Message</th>
+                <th>Reason</th>
+            </tr>
+            <tr>
+                <td>401</td>
+                <td>Unauthorized</td>
+                <td>Invalid API Key</td>
+            </tr>
+            <tr>
+                <td>404</td>
+                <td>Movie Not Found</td>
+                <td>The requested movie ID does not exist.</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution1").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

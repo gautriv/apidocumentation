@@ -1,5 +1,5 @@
 ---
-title: Beginner REST API Documentation Exercises
+title: Beginner REST API Documentation exercises
 keywords: [REST API documentation, API writing exercises, API reference, API documentation practice, API documentation test, API writing test, Technical Writing API exercises, API documentation challenges, API documentation best practices, hands-on API documentation]
 sidebar: sidebar
 permalink: /beginnerrestapiexercises.html
@@ -35,6 +35,19 @@ These beginner exercises will help you get comfortable with:
 ✔️ Handling API errors and responses effectively.  
 
 Each exercise builds on the last—so by the end of this section, you’ll have **solid experience documenting REST APIs.**  
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+     crossorigin="anonymous"></script>
+<!-- AddTitleOne -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7149683584202371"
+     data-ad-slot="7422872052"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 {% include b_exe_1.html %} <br>
 {% include b_exe_2.html %} <br>

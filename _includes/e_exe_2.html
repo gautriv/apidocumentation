@@ -1,0 +1,204 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        pre {
+            background-color: #0b0b0b;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <button class="exercise-button" onclick="toggleExercise('exercise2')">Exercise 2</button>
+    <button class="solution-button" onclick="toggleSolution('solution2', 'exercise2')">Solution to Exercise 2</button>
+
+    <!-- Exercise 2 Content -->
+    <div class="exercise-content" id="exercise2">
+        <h3>Challenge: Document a gRPC API for a Payment Processing Service</h3>
+        <p><strong>Scenario:</strong> You have been asked to document a **gRPC API** for a **Payment Processing Service**. Users can:</p>
+        <ul>
+            <li>Process a payment using a card or bank transfer.</li>
+            <li>Check the status of a payment by transaction ID.</li>
+            <li>Retrieve a list of all past transactions for a user.</li>
+        </ul>
+
+        <h4>gRPC Service Definition (To be documented)</h4>
+        <pre>
+        syntax = "proto3";
+
+        service PaymentService {
+            rpc ProcessPayment (PaymentRequest) returns (PaymentResponse);
+            rpc GetPaymentStatus (PaymentStatusRequest) returns (PaymentStatusResponse);
+            rpc GetTransactionHistory (TransactionHistoryRequest) returns (TransactionHistoryResponse);
+        }
+
+        message PaymentRequest {
+            string user_id = 1;
+            string payment_method = 2;
+            float amount = 3;
+            string currency = 4;
+        }
+
+        message PaymentResponse {
+            bool success = 1;
+            string transaction_id = 2;
+            string message = 3;
+        }
+
+        message PaymentStatusRequest {
+            string transaction_id = 1;
+        }
+
+        message PaymentStatusResponse {
+            string transaction_id = 1;
+            string status = 2;
+            string message = 3;
+        }
+
+        message TransactionHistoryRequest {
+            string user_id = 1;
+        }
+
+        message TransactionHistoryResponse {
+            repeated PaymentResponse transactions = 1;
+        }
+        </pre>
+
+        <h4>Your Task:</h4>
+        <p>Write a complete API documentation page covering:</p>
+        <ul>
+            <li><strong>Overview</strong> - Describe the API and its purpose.</li>
+            <li><strong>Service Definitions</strong> - Explain the gRPC services and methods.</li>
+            <li><strong>Authentication</strong> - Describe how users authenticate (e.g., API Key, TLS).</li>
+            <li><strong>Request & Response Formats</strong> - Document message structures.</li>
+            <li><strong>Error Handling</strong> - Provide guidance on common gRPC errors.</li>
+        </ul>
+        <p><strong>Hint:</strong> Use gRPC best practices and real-world examples to make the documentation clear.</p>
+    </div>
+
+    <!-- Solution to Exercise 2 -->
+    <div class="solution-content" id="solution2">
+        <h3>Solution: gRPC API Documentation for Payment Processing</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Payment Processing gRPC API** allows users to process payments, check status, and retrieve transaction history.</p>
+
+        <h4>2. Service Definitions</h4>
+        <p>Use the **gRPC Service** to send and retrieve payment data:</p>
+        <pre>
+        rpc ProcessPayment (PaymentRequest) returns (PaymentResponse);
+        rpc GetPaymentStatus (PaymentStatusRequest) returns (PaymentStatusResponse);
+        rpc GetTransactionHistory (TransactionHistoryRequest) returns (TransactionHistoryResponse);
+        </pre>
+
+        <h4>3. Processing a Payment</h4>
+        <p>Clients can process payments by calling the `ProcessPayment` method:</p>
+        <pre>
+        {
+            "user_id": "12345",
+            "payment_method": "credit_card",
+            "amount": 50.00,
+            "currency": "USD"
+        }
+        </pre>
+
+        <h4>4. Checking Payment Status</h4>
+        <p>Check the status of a transaction:</p>
+        <pre>
+        {
+            "transaction_id": "txn_98765"
+        }
+        </pre>
+
+        <h4>5. Authentication</h4>
+        <p>The API requires authentication via TLS or API keys:</p>
+        <pre>
+        metadata: {
+            "Authorization": "Bearer YOUR_API_KEY"
+        }
+        </pre>
+
+        <h4>6. Error Handling</h4>
+        <p>Common gRPC API errors and their meanings:</p>
+        <table>
+            <tr>
+                <th>Error Code</th>
+                <th>Message</th>
+                <th>Reason</th>
+            </tr>
+            <tr>
+                <td>UNAUTHENTICATED</td>
+                <td>Invalid API Key</td>
+                <td>Access denied</td>
+            </tr>
+            <tr>
+                <td>NOT_FOUND</td>
+                <td>Transaction Not Found</td>
+                <td>Invalid transaction ID</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution2").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

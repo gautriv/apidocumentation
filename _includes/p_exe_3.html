@@ -1,0 +1,217 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        pre {
+            background-color: #0b0b0b;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body></body>
+    <h3>Step 1: Set Up JWT Authentication</h3>
+    <p>We’ll now **secure our API using JSON Web Tokens (JWT).**</p>
+
+    <h4>1️⃣ Install the required Python libraries</h4>
+    <pre>
+    pip install flask flask-jwt-extended flask-sqlalchemy
+    </pre>
+
+    <h4>2️⃣ Modify <code>app.py</code> to implement JWT</h4>
+    <pre>
+    from flask import Flask, request, jsonify
+    from flask_sqlalchemy import SQLAlchemy
+    from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+
+    app = Flask(__name__)
+
+    # Configure SQLite database
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+    app.config['JWT_SECRET_KEY'] = 'supersecretkey'
+
+    db = SQLAlchemy(app)
+    jwt = JWTManager(app)
+
+    # User Model
+    class User(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        username = db.Column(db.String(50), unique=True, nullable=False)
+        password = db.Column(db.String(50), nullable=False)
+        role = db.Column(db.String(20), nullable=False)  # admin or user
+
+    @app.before_first_request
+    def create_tables():
+        db.create_all()
+
+    @app.route('/login', methods=['POST'])
+    def login():
+        data = request.json
+        user = User.query.filter_by(username=data['username'], password=data['password']).first()
+        if user:
+            access_token = create_access_token(identity={'username': user.username, 'role': user.role})
+            return jsonify(access_token=access_token)
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    @app.route('/protected', methods=['GET'])
+    @jwt_required()
+    def protected():
+        current_user = get_jwt_identity()
+        return jsonify(message=f"Welcome {current_user['username']}! Your role is {current_user['role']}.")
+
+    if __name__ == '__main__':
+        app.run(debug=True)
+    </pre>
+
+    <h4>3️⃣ Run Your API</h4>
+    <p>Execute the following command:</p>
+    <pre>
+    python app.py
+    </pre>
+
+    <h3>Step 2: Test JWT Authentication in Postman</h3>
+
+    <h4>Generate an access token</h4>
+    <p>Send a **POST request** to:</p>
+    <pre>
+    http://127.0.0.1:5000/login
+    </pre>
+    <p>With this JSON body:</p>
+    <pre>
+    {
+        "username": "admin",
+        "password": "password123"
+    }
+    </pre>
+
+    <p>If successful, you'll receive a **JWT token**.</p>
+
+    <h4>Use the token to access a protected route</h4>
+    <p>Send a **GET request** to:</p>
+    <pre>
+    http://127.0.0.1:5000/protected
+    </pre>
+    <p>Add the **Authorization** header in Postman:</p>
+    <pre>
+    Authorization: Bearer YOUR_ACCESS_TOKEN
+    </pre>
+
+    <h3>Step 3: Implement Role-Based Access Control (RBAC)</h3>
+    <p>Modify the protected route to **allow only admin users**:</p>
+    <pre>
+    @app.route('/admin', methods=['GET'])
+    @jwt_required()
+    def admin():
+        current_user = get_jwt_identity()
+        if current_user['role'] != 'admin':
+            return jsonify({"error": "Access denied"}), 403
+        return jsonify(message="Welcome Admin!")
+    </pre>
+
+    <h3>Step 4: Implement Rate Limiting</h3>
+    <p>We’ll prevent **API abuse** by **limiting requests per user**.</p>
+
+    <h4>1️⃣ Install Flask-Limiter</h4>
+    <pre>
+    pip install flask-limiter
+    </pre>
+
+    <h4>2️⃣ Modify <code>app.py</code></h4>
+    <pre>
+    from flask_limiter import Limiter
+    from flask_limiter.util import get_remote_address
+
+    limiter = Limiter(get_remote_address, app=app, default_limits=["5 per minute"])
+
+    @app.route('/rate-limit-test', methods=['GET'])
+    @limiter.limit("3 per minute")
+    def rate_limited_route():
+        return jsonify(message="This route is rate-limited to 3 requests per minute.")
+    </pre>
+
+    <h3>Step 5: Document the API</h3>
+    <p>Now that you've built an **expert-level API**, document the following:</p>
+    <ul>
+        <li>API Overview</li>
+        <li>Endpoints (Login, Protected, Admin)</li>
+        <li>Authentication (JWT)</li>
+        <li>Role-Based Access Control</li>
+        <li>Rate Limiting</li>
+        <li>Example Requests & Responses</li>
+    </ul>
+
+    <button class="solution-button" onclick="toggleSolution('solution3')">Solution: API Documentation</button>
+
+    <!-- Solution to Documentation -->
+    <div class="solution-content" id="solution3">
+        <h3>Solution: API Documentation</h3>
+
+        <h4>1. Overview</h4>
+        <p>This API provides **secure authentication, role-based access, and rate limiting.**</p>
+
+        <h4>2. Endpoints</h4>
+        <table>
+            <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/login</td>
+                <td>Generate a JWT token.</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/protected</td>
+                <td>Access protected content with a valid token.</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/admin</td>
+                <td>Restricted to admin users only.</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleSolution(solutionId) {
+            var solution = document.getElementById(solutionId);
+            solution.style.display = solution.style.display === "block" ? "none" : "block";
+        }
+    </script>
+
+</body>
+</html>
