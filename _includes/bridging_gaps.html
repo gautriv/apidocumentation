@@ -1,0 +1,153 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .concept-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px 0;
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+
+        .concept-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <button class="concept-button" onclick="toggleConcept('rateLimiting')"> API Rate Limiting – Preventing Abuse & Overuse</button>
+    <div class="concept-content" id="rateLimiting">
+        <p><strong>What is Rate Limiting?</strong> APIs impose rate limits to protect the system from excessive requests.</p>
+        <p><strong>Example Rate Limit Headers:</strong></p>
+        <pre>
+        {
+          "X-RateLimit-Limit": 1000,
+          "X-RateLimit-Remaining": 950,
+          "X-RateLimit-Reset": 1678909876
+        }
+        </pre>
+        <p><strong>How to Document Rate Limits:</strong> Mention limits, errors, and best practices like retry mechanisms.</p>
+    </div>
+
+    <button class="concept-button" onclick="toggleConcept('pagination')"> API Pagination – Handling Large Data Efficiently</button>
+    <div class="concept-content" id="pagination">
+        <p><strong>What is Pagination?</strong> APIs divide large data sets into pages to improve performance.</p>
+        <p><strong>Example Offset & Limit Pagination:</strong></p>
+        <pre>GET /products?limit=10&offset=20</pre>
+        <p><strong>How to Document Pagination:</strong> Explain methods, next page retrieval, and performance tips.</p>
+    </div>
+
+    <button class="concept-button" onclick="toggleConcept('authentication')"> API Authentication – Securing Access</button>
+    <div class="concept-content" id="authentication">
+        <p><strong>What is API Authentication?</strong> Ensures only authorized users can access an API.</p>
+        <p><strong>Example API Key Authentication:</strong></p>
+        <pre>
+        GET /user/profile
+        Authorization: Bearer {your_api_key}
+        </pre>
+        <p><strong>How to Document Authentication:</strong> Explain API Key, OAuth, and JWT methods.</p>
+    </div>
+
+    <button class="concept-button" onclick="toggleConcept('webhooks')"> API Webhooks – Getting Real-Time Updates</button>
+    <div class="concept-content" id="webhooks">
+        <p><strong>What is a Webhook?</strong> APIs send real-time updates to external systems when events occur.</p>
+        <p><strong>Example Webhook Payload:</strong></p>
+        <pre>
+        POST /webhooks/payment
+        {
+          "transaction_id": "txn_98765",
+          "status": "Success",
+          "amount": 50.00
+        }
+        </pre>
+        <p><strong>How to Document Webhooks:</strong> Explain setup, security best practices, and event triggers.</p>
+    </div>
+
+    <button class="concept-button" onclick="toggleConcept('errorHandling')"> API Error Handling – Making Errors Useful for Developers</button>
+    <div class="concept-content" id="errorHandling">
+        <p><strong>What is Error Handling?</strong> APIs return meaningful error responses to help developers debug issues.</p>
+        <p><strong>Common HTTP Error Codes:</strong></p>
+        <table>
+            <tr>
+                <th>Status Code</th>
+                <th>Meaning</th>
+                <th>When to Use?</th>
+            </tr>
+            <tr>
+                <td>200 OK</td>
+                <td>Success</td>
+                <td>Request was successful.</td>
+            </tr>
+            <tr>
+                <td>400 Bad Request</td>
+                <td>Client Error</td>
+                <td>Missing or invalid parameters.</td>
+            </tr>
+            <tr>
+                <td>401 Unauthorized</td>
+                <td>Authentication Error</td>
+                <td>Missing or invalid API key.</td>
+            </tr>
+            <tr>
+                <td>404 Not Found</td>
+                <td>Resource Not Found</td>
+                <td>The requested data does not exist.</td>
+            </tr>
+            <tr>
+                <td>429 Too Many Requests</td>
+                <td>Rate Limit Exceeded</td>
+                <td>Too many API requests in a short time.</td>
+            </tr>
+        </table>
+        <p><strong>How to Document Errors:</strong> List error codes, sample error responses, and troubleshooting guidance.</p>
+    </div>
+
+    <h2> Next Steps?</h2>
+    <p>Now that we’ve covered <strong>Rate Limits, Authentication, Webhooks, Pagination, and Error Handling</strong>, you have a strong foundation.</p>
+    <p>Let's talk about cURL.</p>
+    <script>
+        function toggleConcept(conceptId) {
+            var content = document.getElementById(conceptId);
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 2 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise2')">Exercise 2</button>
+    <button class="solution-button" onclick="toggleSolution('solution2', 'exercise2')">Solution to Exercise 2</button>
+
+    <!-- Exercise 2 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise2">
+        <h3>Exercise 2: Documenting a Currency Exchange API</h3>
+        <p><strong>Scenario:</strong> You are assigned to document the **Currency Exchange API**, which allows users to retrieve real-time currency exchange rates.</p>
+        
+        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
+        <ul>
+            <li>Overview of the API.</li>
+            <li>Endpoints and HTTP methods.</li>
+            <li>Request parameters in a structured table.</li>
+            <li>An example API request (including cURL).</li>
+            <li>A sample response from the API.</li>
+            <li>Response parameters in a structured table.</li>
+            <li>Possible error codes and troubleshooting guidance.</li>
+            <li>Rate limits and authentication details.</li>
+        </ul>
+
+        <h4>Provided API Code:</h4>
+        <p>Below is a sample API request and response:</p>
+
+        <h5>API Request:</h5>
+        <pre>
+        GET https://api.currencyexchange.com/latest?base=USD&target=EUR&apikey=your_api_key
+        </pre>
+
+        <h5>Sample Response:</h5>
+        <pre>
+        {
+            "base_currency": "USD",
+            "target_currency": "EUR",
+            "exchange_rate": 0.85,
+            "last_updated": "2025-02-17T12:00:00Z"
+        }
+        </pre>
+
+        <p><strong>Bonus Challenge:</strong> Explain rate limits and how developers should handle them.</p>
+    </div>
+
+    <!-- Solution to Exercise 2 (Initially Hidden) -->
+    <div class="solution-content" id="solution2">
+        <h3>Solution to Exercise 2</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Currency Exchange API** allows developers to retrieve the latest currency exchange rates in real time. It supports multiple currency pairs and provides accurate conversion rates.</p>
+
+        <h4>2. Endpoints and Methods</h4>
+        <p><strong>GET /latest</strong> – Retrieves the latest exchange rate between two currencies.</p>
+
+        <h4>3. Request Parameters</h4>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>base</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>The base currency (e.g., "USD").</td>
+            </tr>
+            <tr>
+                <td>target</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>The target currency (e.g., "EUR").</td>
+            </tr>
+            <tr>
+                <td>apikey</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>API key for authentication.</td>
+            </tr>
+        </table>
+
+        <h4>4. Sample cURL Request</h4>
+        <pre>
+        curl -X GET "https://api.currencyexchange.com/latest?base=USD&target=EUR&apikey=your_api_key" -H "Accept: application/json"
+        </pre>
+
+        <h4>5. Sample Response</h4>
+        <pre>
+        {
+            "base_currency": "USD",
+            "target_currency": "EUR",
+            "exchange_rate": 0.85,
+            "last_updated": "2025-02-17T12:00:00Z"
+        }
+        </pre>
+
+        <h4>6. Response Parameters</h4>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>base_currency</td>
+                <td>String</td>
+                <td>The base currency used in the conversion.</td>
+            </tr>
+            <tr>
+                <td>target_currency</td>
+                <td>String</td>
+                <td>The target currency.</td>
+            </tr>
+            <tr>
+                <td>exchange_rate</td>
+                <td>Float</td>
+                <td>The conversion rate from base to target currency.</td>
+            </tr>
+            <tr>
+                <td>last_updated</td>
+                <td>String</td>
+                <td>The timestamp when the exchange rate was last updated.</td>
+            </tr>
+        </table>
+
+        <h4>7. Error Codes</h4>
+        <table>
+            <tr>
+                <th>Status Code</th>
+                <th>Message</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>401</td>
+                <td>Unauthorized</td>
+                <td>Invalid or missing API key.</td>
+            </tr>
+            <tr>
+                <td>404</td>
+                <td>Not Found</td>
+                <td>Invalid currency code.</td>
+            </tr>
+            <tr>
+                <td>429</td>
+                <td>Too Many Requests</td>
+                <td>Rate limit exceeded.</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution2").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

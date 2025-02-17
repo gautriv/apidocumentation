@@ -61,17 +61,17 @@ entries:
       output: web
       type: homepage
 
-    - title: JSON and Its Data Types
+    - title: JSON and its data types
       url: /JSON101.html
       output: web
       type: homepage
 
-    - title: XML and Its Data Types
+    - title: XML and its data types
       url: /XML101.html
       output: web
       type: homepage
 
-    - title: Visualizing Data Types
+    - title: Visualizing data types
       url: /visualizingdatatypes.html
       output: web
       type: homepage
@@ -81,7 +81,27 @@ entries:
       output: web
       type: homepage
 
-    - title: Writing API Documentation
+    - title: Writing API documentation
       url: /writingapi.html
+      output: web
+      type: homepage
+
+    - title: Documenting REST APIs - Beginner
+      url: /beginnerrestapiexercises.html
+      output: web
+      type: homepage
+
+    - title: Documenting REST APIs - Intermediate
+      url: /intermediaterestapiexercises.html
+      output: web
+      type: homepage
+
+    - title: Bridging gaps
+      url: /keyconcepts.html
+      output: web
+      type: homepage
+
+    - title: cURL for API documentation
+      url: /curl.html
       output: web
       type: homepage

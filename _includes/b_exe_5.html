@@ -1,0 +1,213 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 5 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise5')">Exercise 5</button>
+    <button class="solution-button" onclick="toggleSolution('solution5', 'exercise5')">Solution to Exercise 5</button>
+
+    <!-- Exercise 5 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise5">
+        <h3>Exercise 5: Documenting a Food Recipe API</h3>
+        <p><strong>Scenario:</strong> You are assigned to document the **Food Recipe API**, which allows users to search for recipes by ingredients, cuisine, and meal type.</p>
+        
+        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
+        <ul>
+            <li>Overview of the API.</li>
+            <li>Endpoints and HTTP methods.</li>
+            <li>Request parameters in a structured table.</li>
+            <li>An example API request (including cURL).</li>
+            <li>A sample response from the API.</li>
+            <li>Response parameters in a structured table.</li>
+            <li>Pagination details.</li>
+            <li>Possible error codes and troubleshooting guidance.</li>
+            <li>Rate limits and caching best practices.</li>
+        </ul>
+
+        <h4>Provided API Code:</h4>
+        <p>Below is a sample API request and response:</p>
+
+        <h5>API Request:</h5>
+        <pre>
+        GET https://api.foodrecipes.com/search?ingredients=tomato,cheese&cuisine=Italian&meal_type=dinner&page=1&apikey=your_api_key
+        </pre>
+
+        <h5>Sample Response:</h5>
+        <pre>
+        {
+            "page": 1,
+            "total_results": 2,
+            "total_pages": 1,
+            "recipes": [
+                {
+                    "title": "Margherita Pizza",
+                    "cuisine": "Italian",
+                    "meal_type": "Dinner",
+                    "ingredients": ["Tomato", "Cheese", "Basil", "Flour"],
+                    "instructions": [
+                        "Preheat oven to 220°C.",
+                        "Spread tomato sauce on pizza base.",
+                        "Add cheese and bake for 15 minutes."
+                    ],
+                    "nutrition": {
+                        "calories": 270,
+                        "protein": "12g",
+                        "fat": "8g",
+                        "carbohydrates": "36g"
+                    }
+                }
+            ]
+        }
+        </pre>
+
+        <p><strong>Bonus Challenge:</strong> Explain how API users should handle rate limits and caching.</p>
+    </div>
+
+    <!-- Solution to Exercise 5 (Initially Hidden) -->
+    <div class="solution-content" id="solution5">
+        <h3>Solution to Exercise 5</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Food Recipe API** allows developers to search for recipes based on ingredients, cuisine, and meal type. It returns a paginated list of results with detailed recipe information, including ingredients, cooking instructions, and nutritional values.</p>
+
+        <h4>2. Endpoints and Methods</h4>
+        <p><strong>GET /search</strong> – Retrieves a list of recipes based on search parameters.</p>
+
+        <h4>3. Request Parameters</h4>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>ingredients</td>
+                <td>String</td>
+                <td>No</td>
+                <td>None</td>
+                <td>Filters recipes by ingredients (comma-separated).</td>
+            </tr>
+            <tr>
+                <td>cuisine</td>
+                <td>String</td>
+                <td>No</td>
+                <td>None</td>
+                <td>Filters recipes by cuisine type (e.g., "Italian").</td>
+            </tr>
+            <tr>
+                <td>meal_type</td>
+                <td>String</td>
+                <td>No</td>
+                <td>None</td>
+                <td>Filters recipes by meal type (e.g., "Dinner").</td>
+            </tr>
+            <tr>
+                <td>page</td>
+                <td>Integer</td>
+                <td>No</td>
+                <td>1</td>
+                <td>Specifies the results page number.</td>
+            </tr>
+            <tr>
+                <td>apikey</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>API key for authentication.</td>
+            </tr>
+        </table>
+
+        <h4>4. Sample cURL Request</h4>
+        <pre>
+        curl -X GET "https://api.foodrecipes.com/search?ingredients=tomato,cheese&cuisine=Italian&meal_type=dinner&page=1&apikey=your_api_key" -H "Accept: application/json"
+        </pre>
+
+        <h4>5. Rate Limits & Caching Best Practices</h4>
+        <p>The API allows **60 requests per hour**. Developers should **cache recipe data** to reduce redundant API calls.</p>
+
+        <h4>6. Error Codes</h4>
+        <table>
+            <tr>
+                <th>Status Code</th>
+                <th>Message</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>401</td>
+                <td>Unauthorized</td>
+                <td>Invalid or missing API key.</td>
+            </tr>
+            <tr>
+                <td>404</td>
+                <td>Not Found</td>
+                <td>No recipes matched the search criteria.</td>
+            </tr>
+            <tr>
+                <td>429</td>
+                <td>Too Many Requests</td>
+                <td>Rate limit exceeded.</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution5").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

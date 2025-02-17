@@ -1,0 +1,195 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 5 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise5')">Exercise 5</button>
+    <button class="solution-button" onclick="toggleSolution('solution5', 'exercise5')">Solution to Exercise 5</button>
+
+    <!-- Exercise 5 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise5">
+        <h3>Exercise 5: Documenting a Weather Forecast API</h3>
+        <p><strong>Scenario:</strong> You are assigned to document the **Weather Forecast API**, which allows users to retrieve real-time weather updates and forecasts.</p>
+        
+        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
+        <ul>
+            <li>Overview of the API.</li>
+            <li>Endpoints and HTTP methods (Current Weather, Forecast, Alerts).</li>
+            <li>Authentication (API key).</li>
+            <li>Request parameters in a structured table.</li>
+            <li>An example API request (including cURL).</li>
+            <li>A sample response from the API.</li>
+            <li>Response parameters in a structured table.</li>
+            <li>Handling invalid locations and exceeded API limits.</li>
+            <li>Rate limits and caching recommendations.</li>
+        </ul>
+
+        <h4>Provided API Code (Some details missing – you must fill them in):</h4>
+        <p>Below is a sample API request and response:</p>
+
+        <h5>API Request (Get Current Weather):</h5>
+        <pre>
+        GET https://api.weatherforecast.com/current?location=New+York&apikey=your_api_key
+        </pre>
+
+        <h5>Sample Response:</h5>
+        <pre>
+        {
+            "location": {
+                "city": "New York",
+                "country": "US",
+                "latitude": 40.7128,
+                "longitude": -74.0060
+            },
+            "current_weather": {
+                "temperature": 18,
+                "humidity": 65,
+                "wind_speed": 5.2,
+                "condition": "Cloudy"
+            },
+            "forecast": [
+                {
+                    "date": "2025-02-18",
+                    "temperature_min": 10,
+                    "temperature_max": 20,
+                    "condition": "Partly Cloudy"
+                }
+            ]
+        }
+        </pre>
+
+        <p><strong>Bonus Challenge:</strong> Document how API users should handle rate limits and caching best practices.</p>
+    </div>
+
+    <!-- Solution to Exercise 5 (Initially Hidden) -->
+    <div class="solution-content" id="solution5">
+        <h3>Solution to Exercise 5</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Weather Forecast API** provides real-time weather updates, hourly and daily forecasts, and severe weather alerts for various locations worldwide.</p>
+
+        <h4>2. Authentication</h4>
+        <p>The API requires an API key for authentication. Each request must include the `apikey` parameter.</p>
+
+        <h4>3. Endpoints and Methods</h4>
+        <ul>
+            <li><strong>GET /current</strong> – Retrieves current weather for a location.</li>
+            <li><strong>GET /forecast</strong> – Retrieves a 7-day weather forecast.</li>
+            <li><strong>GET /alerts</strong> – Retrieves active severe weather alerts.</li>
+        </ul>
+
+        <h4>4. Request Parameters (Current Weather)</h4>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>location</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>The name of the city (e.g., "New York").</td>
+            </tr>
+            <tr>
+                <td>apikey</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>API key for authentication.</td>
+            </tr>
+        </table>
+
+        <h4>5. Sample cURL Request (Getting Current Weather)</h4>
+        <pre>
+        curl -X GET "https://api.weatherforecast.com/current?location=New+York&apikey=your_api_key" -H "Accept: application/json"
+        </pre>
+
+        <h4>6. Error Handling</h4>
+        <p>Common errors include:</p>
+        <table>
+            <tr>
+                <th>Status Code</th>
+                <th>Message</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>401</td>
+                <td>Unauthorized</td>
+                <td>Invalid or missing API key.</td>
+            </tr>
+            <tr>
+                <td>404</td>
+                <td>Location Not Found</td>
+                <td>Invalid city name or location not available.</td>
+            </tr>
+            <tr>
+                <td>429</td>
+                <td>Too Many Requests</td>
+                <td>API rate limit exceeded.</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution5").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

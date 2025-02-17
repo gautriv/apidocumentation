@@ -1,0 +1,209 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 2 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise2')">Exercise 2</button>
+    <button class="solution-button" onclick="toggleSolution('solution2', 'exercise2')">Solution to Exercise 2</button>
+
+    <!-- Exercise 2 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise2">
+        <h3>Exercise 2: Documenting a Ride-Sharing API</h3>
+        <p><strong>Scenario:</strong> You are assigned to document the **Ride-Sharing API**, which allows users to book a ride, track its status, and cancel it if needed.</p>
+        
+        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
+        <ul>
+            <li>Overview of the API.</li>
+            <li>Endpoints and HTTP methods (Booking, Status, Cancellation).</li>
+            <li>Authentication (OAuth tokens).</li>
+            <li>Request parameters in a structured table.</li>
+            <li>An example API request (including cURL).</li>
+            <li>A sample response from the API.</li>
+            <li>Response parameters in a structured table.</li>
+            <li>Handling ride cancellations and unavailable drivers.</li>
+        </ul>
+
+        <h4>Provided API Code (Some details missing – you must fill them in):</h4>
+        <p>Below is a sample API request and response:</p>
+
+        <h5>API Request (Book a Ride):</h5>
+        <pre>
+        POST https://api.ridesharing.com/book
+        Headers:
+        Authorization: Bearer {access_token}
+        Content-Type: application/json
+
+        Body:
+        {
+            "pickup_location": "123 Main St, New York",
+            "dropoff_location": "456 Park Ave, New York",
+            "vehicle_type": "Sedan",
+            "payment_method": "credit_card"
+        }
+        </pre>
+
+        <h5>Sample Response:</h5>
+        <pre>
+        {
+            "ride_id": "ride_987654",
+            "status": "Confirmed",
+            "estimated_fare": 20.50,
+            "driver": {
+                "name": "John Doe",
+                "vehicle": "Toyota Camry",
+                "license_plate": "XYZ-1234",
+                "eta": "5 minutes"
+            }
+        }
+        </pre>
+
+        <p><strong>Bonus Challenge:</strong> Document how users can track and cancel a ride.</p>
+    </div>
+
+    <!-- Solution to Exercise 2 (Initially Hidden) -->
+    <div class="solution-content" id="solution2">
+        <h3>Solution to Exercise 2</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Ride-Sharing API** enables users to book rides, track their status, and cancel rides if necessary. It provides real-time updates on driver availability, estimated fare, and ride status.</p>
+
+        <h4>2. Authentication</h4>
+        <p>The API uses OAuth 2.0 authentication. Clients must request an access token and include it in the `Authorization` header.</p>
+
+        <h4>3. Endpoints and Methods</h4>
+        <ul>
+            <li><strong>POST /book</strong> – Books a new ride.</li>
+            <li><strong>GET /status/{ride_id}</strong> – Retrieves the ride's current status.</li>
+            <li><strong>DELETE /cancel/{ride_id}</strong> – Cancels an ongoing ride.</li>
+        </ul>
+
+        <h4>4. Request Parameters (Booking)</h4>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>pickup_location</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Pickup address for the ride.</td>
+            </tr>
+            <tr>
+                <td>dropoff_location</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Dropoff address for the ride.</td>
+            </tr>
+            <tr>
+                <td>vehicle_type</td>
+                <td>String</td>
+                <td>No</td>
+                <td>Standard</td>
+                <td>Type of vehicle requested (Sedan, SUV, etc.).</td>
+            </tr>
+        </table>
+
+        <h4>5. Sample cURL Request (Booking a Ride)</h4>
+        <pre>
+        curl -X POST "https://api.ridesharing.com/book" 
+        -H "Authorization: Bearer {access_token}" 
+        -H "Content-Type: application/json" 
+        -d '{
+            "pickup_location": "123 Main St, New York",
+            "dropoff_location": "456 Park Ave, New York",
+            "vehicle_type": "Sedan",
+            "payment_method": "credit_card"
+        }'
+        </pre>
+
+        <h4>6. Error Handling</h4>
+        <p>Common errors include:</p>
+        <table>
+            <tr>
+                <th>Status Code</th>
+                <th>Message</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>401</td>
+                <td>Unauthorized</td>
+                <td>Invalid or missing API token.</td>
+            </tr>
+            <tr>
+                <td>404</td>
+                <td>Not Found</td>
+                <td>Ride ID does not exist.</td>
+            </tr>
+            <tr>
+                <td>409</td>
+                <td>Driver Unavailable</td>
+                <td>No drivers are available at the moment.</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution2").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

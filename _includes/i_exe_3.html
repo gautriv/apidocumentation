@@ -1,0 +1,207 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 3 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise3')">Exercise 3</button>
+    <button class="solution-button" onclick="toggleSolution('solution3', 'exercise3')">Solution to Exercise 3</button>
+
+    <!-- Exercise 3 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise3">
+        <h3>Exercise 3: Documenting a Social Media API</h3>
+        <p><strong>Scenario:</strong> You are assigned to document the **Social Media API**, which allows users to post content, retrieve a feed, and like posts.</p>
+        
+        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
+        <ul>
+            <li>Overview of the API.</li>
+            <li>Endpoints and HTTP methods (Post, Feed, Like).</li>
+            <li>Authentication (OAuth tokens, user scopes).</li>
+            <li>Request parameters in a structured table.</li>
+            <li>An example API request (including cURL).</li>
+            <li>A sample response from the API.</li>
+            <li>Response parameters in a structured table.</li>
+            <li>Handling rate limits and access permissions.</li>
+        </ul>
+
+        <h4>Provided API Code (Some details missing – you must fill them in):</h4>
+        <p>Below is a sample API request and response:</p>
+
+        <h5>API Request (Create a Post):</h5>
+        <pre>
+        POST https://api.socialmedia.com/posts
+        Headers:
+        Authorization: Bearer {access_token}
+        Content-Type: application/json
+
+        Body:
+        {
+            "user_id": "user_12345",
+            "content": "Exploring the new Social Media API!",
+            "media_url": "https://example.com/image.jpg"
+        }
+        </pre>
+
+        <h5>Sample Response:</h5>
+        <pre>
+        {
+            "post_id": "post_98765",
+            "status": "Published",
+            "user": {
+                "id": "user_12345",
+                "name": "John Doe",
+                "profile_picture": "https://example.com/johndoe.jpg"
+            },
+            "likes": 0,
+            "timestamp": "2025-02-17T14:00:00Z"
+        }
+        </pre>
+
+        <p><strong>Bonus Challenge:</strong> Document how API users should handle rate limits and permissions.</p>
+    </div>
+
+    <!-- Solution to Exercise 3 (Initially Hidden) -->
+    <div class="solution-content" id="solution3">
+        <h3>Solution to Exercise 3</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Social Media API** allows users to create posts, retrieve their feed, and interact with other users' content through likes.</p>
+
+        <h4>2. Authentication</h4>
+        <p>The API requires OAuth 2.0 authentication. Clients must request an access token and include it in the `Authorization` header.</p>
+
+        <h4>3. Endpoints and Methods</h4>
+        <ul>
+            <li><strong>POST /posts</strong> – Creates a new post.</li>
+            <li><strong>GET /feed</strong> – Retrieves the latest posts from followed users.</li>
+            <li><strong>POST /posts/{post_id}/like</strong> – Likes a post.</li>
+        </ul>
+
+        <h4>4. Request Parameters (Creating a Post)</h4>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>user_id</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Unique identifier of the user.</td>
+            </tr>
+            <tr>
+                <td>content</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Text content of the post.</td>
+            </tr>
+            <tr>
+                <td>media_url</td>
+                <td>String</td>
+                <td>No</td>
+                <td>None</td>
+                <td>URL to an image or video.</td>
+            </tr>
+        </table>
+
+        <h4>5. Sample cURL Request (Creating a Post)</h4>
+        <pre>
+        curl -X POST "https://api.socialmedia.com/posts" 
+        -H "Authorization: Bearer {access_token}" 
+        -H "Content-Type: application/json" 
+        -d '{
+            "user_id": "user_12345",
+            "content": "Exploring the new Social Media API!",
+            "media_url": "https://example.com/image.jpg"
+        }'
+        </pre>
+
+        <h4>6. Error Handling</h4>
+        <p>Common errors include:</p>
+        <table>
+            <tr>
+                <th>Status Code</th>
+                <th>Message</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>401</td>
+                <td>Unauthorized</td>
+                <td>Invalid or missing API token.</td>
+            </tr>
+            <tr>
+                <td>403</td>
+                <td>Forbidden</td>
+                <td>User does not have permission to post.</td>
+            </tr>
+            <tr>
+                <td>429</td>
+                <td>Too Many Requests</td>
+                <td>Rate limit exceeded.</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution3").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

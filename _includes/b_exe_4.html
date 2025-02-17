@@ -1,0 +1,228 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 4 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise4')">Exercise 4</button>
+    <button class="solution-button" onclick="toggleSolution('solution4', 'exercise4')">Solution to Exercise 4</button>
+
+    <!-- Exercise 4 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise4">
+        <h3>Exercise 4: Documenting a Movie Database API</h3>
+        <p><strong>Scenario:</strong> You are assigned to document the **Movie Database API**, which allows users to search for movies by title, year, and genre.</p>
+        
+        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
+        <ul>
+            <li>Overview of the API.</li>
+            <li>Endpoints and HTTP methods.</li>
+            <li>Request parameters in a structured table.</li>
+            <li>An example API request (including cURL).</li>
+            <li>A sample response from the API.</li>
+            <li>Response parameters in a structured table.</li>
+            <li>Pagination details.</li>
+            <li>Possible error codes and troubleshooting guidance.</li>
+        </ul>
+
+        <h4>Provided API Code:</h4>
+        <p>Below is a sample API request and response:</p>
+
+        <h5>API Request:</h5>
+        <pre>
+        GET https://api.moviedb.com/search?title=Inception&year=2010&genre=Sci-Fi&page=1&apikey=your_api_key
+        </pre>
+
+        <h5>Sample Response:</h5>
+        <pre>
+        {
+            "page": 1,
+            "total_results": 1,
+            "total_pages": 1,
+            "movies": [
+                {
+                    "title": "Inception",
+                    "year": 2010,
+                    "genre": "Sci-Fi",
+                    "director": "Christopher Nolan",
+                    "actors": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"],
+                    "ratings": {
+                        "IMDB": 8.8,
+                        "Rotten Tomatoes": "87%"
+                    }
+                }
+            ]
+        }
+        </pre>
+
+        <p><strong>Bonus Challenge:</strong> Explain how API users should handle pagination.</p>
+    </div>
+
+    <!-- Solution to Exercise 4 (Initially Hidden) -->
+    <div class="solution-content" id="solution4">
+        <h3>Solution to Exercise 4</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Movie Database API** allows developers to search for movies based on various filters such as title, year, and genre. It returns a paginated list of results with detailed movie information.</p>
+
+        <h4>2. Endpoints and Methods</h4>
+        <p><strong>GET /search</strong> – Retrieves a list of movies based on search parameters.</p>
+
+        <h4>3. Request Parameters</h4>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>title</td>
+                <td>String</td>
+                <td>No</td>
+                <td>None</td>
+                <td>Filters movies by title.</td>
+            </tr>
+            <tr>
+                <td>year</td>
+                <td>Integer</td>
+                <td>No</td>
+                <td>None</td>
+                <td>Filters movies by release year.</td>
+            </tr>
+            <tr>
+                <td>genre</td>
+                <td>String</td>
+                <td>No</td>
+                <td>None</td>
+                <td>Filters movies by genre (e.g., "Action", "Comedy").</td>
+            </tr>
+            <tr>
+                <td>page</td>
+                <td>Integer</td>
+                <td>No</td>
+                <td>1</td>
+                <td>Specifies the results page number.</td>
+            </tr>
+            <tr>
+                <td>apikey</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>API key for authentication.</td>
+            </tr>
+        </table>
+
+        <h4>4. Sample cURL Request</h4>
+        <pre>
+        curl -X GET "https://api.moviedb.com/search?title=Inception&year=2010&genre=Sci-Fi&page=1&apikey=your_api_key" -H "Accept: application/json"
+        </pre>
+
+        <h4>5. Sample Response</h4>
+        <pre>
+        {
+            "page": 1,
+            "total_results": 1,
+            "total_pages": 1,
+            "movies": [
+                {
+                    "title": "Inception",
+                    "year": 2010,
+                    "genre": "Sci-Fi",
+                    "director": "Christopher Nolan",
+                    "actors": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"],
+                    "ratings": {
+                        "IMDB": 8.8,
+                        "Rotten Tomatoes": "87%"
+                    }
+                }
+            ]
+        }
+        </pre>
+
+        <h4>6. Pagination</h4>
+        <p>The API supports pagination. Use the `page` parameter to retrieve additional results.</p>
+
+        <h4>7. Error Codes</h4>
+        <table>
+            <tr>
+                <th>Status Code</th>
+                <th>Message</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>401</td>
+                <td>Unauthorized</td>
+                <td>Invalid or missing API key.</td>
+            </tr>
+            <tr>
+                <td>404</td>
+                <td>Not Found</td>
+                <td>No movies matched the search criteria.</td>
+            </tr>
+            <tr>
+                <td>500</td>
+                <td>Internal Server Error</td>
+                <td>Unexpected server-side issue.</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution4").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

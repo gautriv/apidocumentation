@@ -1,0 +1,217 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 4 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise4')">Exercise 4</button>
+    <button class="solution-button" onclick="toggleSolution('solution4', 'exercise4')">Solution to Exercise 4</button>
+
+    <!-- Exercise 4 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise4">
+        <h3>Exercise 4: Documenting an E-Commerce API</h3>
+        <p><strong>Scenario:</strong> You are assigned to document the **E-Commerce API**, which allows users to browse products, place orders, and track order status.</p>
+        
+        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
+        <ul>
+            <li>Overview of the API.</li>
+            <li>Endpoints and HTTP methods (Product Search, Order Placement, Order Status).</li>
+            <li>Authentication (API keys, role-based access control).</li>
+            <li>Request parameters in a structured table.</li>
+            <li>An example API request (including cURL).</li>
+            <li>A sample response from the API.</li>
+            <li>Response parameters in a structured table.</li>
+            <li>Handling invalid orders and stock unavailability.</li>
+            <li>Rate limits for API access.</li>
+        </ul>
+
+        <h4>Provided API Code (Some details missing – you must fill them in):</h4>
+        <p>Below is a sample API request and response:</p>
+
+        <h5>API Request (Place an Order):</h5>
+        <pre>
+        POST https://api.ecommerce.com/orders
+        Headers:
+        Authorization: Bearer {api_key}
+        Content-Type: application/json
+
+        Body:
+        {
+            "customer_id": "cust_12345",
+            "items": [
+                {
+                    "product_id": "prod_98765",
+                    "quantity": 2
+                }
+            ],
+            "payment_method": "credit_card",
+            "shipping_address": "789 Commerce St, New York"
+        }
+        </pre>
+
+        <h5>Sample Response:</h5>
+        <pre>
+        {
+            "order_id": "order_56789",
+            "status": "Processing",
+            "total_price": 50.00,
+            "currency": "USD",
+            "estimated_delivery": "2025-02-20",
+            "items": [
+                {
+                    "product_id": "prod_98765",
+                    "name": "Wireless Headphones",
+                    "quantity": 2,
+                    "price_per_unit": 25.00
+                }
+            ]
+        }
+        </pre>
+
+        <p><strong>Bonus Challenge:</strong> Document how users should handle stock unavailability.</p>
+    </div>
+
+    <!-- Solution to Exercise 4 (Initially Hidden) -->
+    <div class="solution-content" id="solution4">
+        <h3>Solution to Exercise 4</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **E-Commerce API** allows customers to browse products, place orders, and track order status in real-time.</p>
+
+        <h4>2. Authentication</h4>
+        <p>The API requires an API key for authentication. Customers and Admins have different access levels.</p>
+
+        <h4>3. Endpoints and Methods</h4>
+        <ul>
+            <li><strong>GET /products</strong> – Retrieves a list of products.</li>
+            <li><strong>POST /orders</strong> – Places a new order.</li>
+            <li><strong>GET /orders/{order_id}</strong> – Retrieves order status.</li>
+        </ul>
+
+        <h4>4. Request Parameters (Placing an Order)</h4>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>customer_id</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Unique identifier of the customer.</td>
+            </tr>
+            <tr>
+                <td>items</td>
+                <td>Array</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>List of products and quantities.</td>
+            </tr>
+        </table>
+
+        <h4>5. Sample cURL Request (Placing an Order)</h4>
+        <pre>
+        curl -X POST "https://api.ecommerce.com/orders" 
+        -H "Authorization: Bearer {api_key}" 
+        -H "Content-Type: application/json" 
+        -d '{
+            "customer_id": "cust_12345",
+            "items": [
+                {
+                    "product_id": "prod_98765",
+                    "quantity": 2
+                }
+            ],
+            "payment_method": "credit_card",
+            "shipping_address": "789 Commerce St, New York"
+        }'
+        </pre>
+
+        <h4>6. Error Handling</h4>
+        <p>Common errors include:</p>
+        <table>
+            <tr>
+                <th>Status Code</th>
+                <th>Message</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>401</td>
+                <td>Unauthorized</td>
+                <td>Invalid or missing API key.</td>
+            </tr>
+            <tr>
+                <td>404</td>
+                <td>Product Not Found</td>
+                <td>The product ID is invalid.</td>
+            </tr>
+            <tr>
+                <td>409</td>
+                <td>Stock Unavailable</td>
+                <td>Product is out of stock.</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution4").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
