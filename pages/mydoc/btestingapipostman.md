@@ -19,6 +19,18 @@ Now that you’ve **documented APIs**, it’s time to take a **hands-on approach
 
 These exercises will give you **real-world experience** with **API development and testing**, helping you **better understand the developer's perspective.**  
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+     crossorigin="anonymous"></script>
+<!-- AddTitleOne -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7149683584202371"
+     data-ad-slot="7422872052"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ## Beginner-Level API Development & Testing Exercises 
 
