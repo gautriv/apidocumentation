@@ -34,30 +34,6 @@ Now, imagine an API as that new city. It’s full of possibilities, but without 
   </script>
 
 ## The Reference API Document: Your Developer’s Guidebook
-Let’s say your project team just created a shiny new endpoint (more on that in a second) and they turn to you, the technical writer, saying, “We need documentation!” Here’s what they really mean: “Please make sense of this technical stuff so developers don’t bombard us with questions.”
-
-So, what exactly goes into this guidebook? Let’s break it down:
-
-1. Endpoints: The API’s Address Book
-Endpoints are the URLs developers use to interact with the API. Think of them as addresses on a map. Each endpoint leads to a specific resource or action. For example:
-
-- GET /users: Fetch a list of users.
-- POST /users: Create a new user.
-
-Endpoints tell developers, “Here’s where you can find what you’re looking for.”
-
-
-What Do Technical Writers Document in an API?
-So, you’re probably sitting there thinking, “Okay, I know APIs are like menus or maps, but what exactly does a technical writer do with them? Do we just stare at code all day and hope inspiration strikes?”
-
-Not quite! Let me guide you through this chapter, where we’ll uncover the role of technical writers in the API world. If you’re feeling a little lost in the terminology, don’t worry—that’s why we’re here. By the end of this, you’ll know exactly what technical writers document and why they’re the unsung heroes of the developer world.
-
-APIs Are Like New Cities
-Picture this: You’ve just landed in a brand-new city. You’re excited to explore, but you have no idea where the best coffee shops are, which streets to avoid, or how to navigate the subway system. Wandering around aimlessly might sound adventurous, but let’s be real—you’d much rather have a map, a guidebook, or even a friendly local to point you in the right direction.
-
-Now, imagine an API as that new city. It’s full of possibilities, but without clear directions, it’s easy to get lost. That’s where we, the technical writers, step in. We create the "guidebook" for APIs, making sure developers know exactly how to get from point A to point B without a detour to frustration-ville.
-
-## The Reference API Document: Your Developer’s Guidebook
 
 Let’s say your project team just created a shiny new endpoint (more on that in a second) and they turn to you, the technical writer, saying, “We need documentation!” Here’s what they really mean: “Please make sense of this technical stuff so developers don’t bombard us with questions.”
 
