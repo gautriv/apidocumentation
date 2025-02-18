@@ -1,0 +1,213 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 2 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise2')">Exercise 2</button>
+    <button class="solution-button" onclick="toggleSolution('solution2', 'exercise2')">Solution to Exercise 2</button>
+
+    <!-- Exercise 2 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise2">
+        <h3>Exercise 2: Documenting Multiple Webhook Events</h3>
+        <p><strong>Scenario:</strong> You are documenting webhooks for a **subscription-based SaaS platform** that sends notifications for various billing events.</p>
+
+        <p><strong>Your Task:</strong> Document the following webhook events:</p>
+        <ul>
+            <li>**subscription.created** – Triggered when a user subscribes.</li>
+            <li>**subscription.renewed** – Fired when a subscription renews automatically.</li>
+            <li>**subscription.canceled** – Sent when a user cancels their subscription.</li>
+        </ul>
+
+        <h4>Webhook Event Details:</h4>
+        <p><strong>Endpoint:</strong> <code>POST /webhooks/subscription</code></p>
+        <p><strong>Destination:</strong> User-provided webhook URL</p>
+
+        <h5>Example Webhook Payload:</h5>
+        <pre>
+        {
+            "event": "subscription.renewed",
+            "data": {
+                "subscription_id": "SUB78910",
+                "user": {
+                    "id": "USR12345",
+                    "email": "john@example.com"
+                },
+                "plan": {
+                    "name": "Premium",
+                    "amount": 49.99,
+                    "currency": "USD"
+                },
+                "status": "active",
+                "renewal_date": "2024-03-01T12:00:00Z"
+            }
+        }
+        </pre>
+    </div>
+
+    <!-- Solution to Exercise 2 (Initially Hidden) -->
+    <div class="solution-content" id="solution2">
+        <h3>Solution to Exercise 2</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Subscription Webhooks** notify SaaS applications when users **subscribe, renew, or cancel their subscriptions**. These webhooks help automate billing, analytics, and customer notifications.</p>
+
+        <h4>2. Webhook Registration</h4>
+        <p>Developers can **subscribe their webhook URLs** using the following API endpoint:</p>
+        <pre>
+        POST /webhooks/register
+        {
+            "event": ["subscription.created", "subscription.renewed", "subscription.canceled"],
+            "url": "https://yourwebhookurl.com/subscription"
+        }
+        </pre>
+        <p>Upon successful registration, they receive a confirmation response.</p>
+
+        <h4>3. Webhook Events</h4>
+        <table>
+            <tr>
+                <th>Event Name</th>
+                <th>Trigger Condition</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>subscription.created</td>
+                <td>When a user subscribes</td>
+                <td>Triggers when a new subscription is created.</td>
+            </tr>
+            <tr>
+                <td>subscription.renewed</td>
+                <td>When a subscription renews</td>
+                <td>Fires when a user’s plan renews automatically.</td>
+            </tr>
+            <tr>
+                <td>subscription.canceled</td>
+                <td>When a user cancels</td>
+                <td>Notifies when a user stops their subscription.</td>
+            </tr>
+        </table>
+
+        <h4>4. Request Format</h4>
+        <p>When a webhook is triggered, the following payload is sent:</p>
+        <pre>
+        {
+            "event": "subscription.renewed",
+            "data": {
+                "subscription_id": "SUB78910",
+                "user": {
+                    "id": "USR12345",
+                    "email": "john@example.com"
+                },
+                "plan": {
+                    "name": "Premium",
+                    "amount": 49.99,
+                    "currency": "USD"
+                },
+                "status": "active",
+                "renewal_date": "2024-03-01T12:00:00Z"
+            }
+        }
+        </pre>
+
+        <h4>5. Expected Response from Client</h4>
+        <p>The client must return **200 OK** to acknowledge the webhook.</p>
+
+        <h4>6. Webhook Security - Verifying Webhooks</h4>
+        <p>Webhooks include an **X-Signature** header for security verification.</p>
+        <pre>
+        import hmac
+        import hashlib
+
+        secret = "your-webhook-secret"
+        payload = '{"event":"subscription.renewed","data":{"subscription_id":"SUB78910"}}'
+        received_signature = "bde67cfaf998c...5af32c"
+
+        calculated_signature = hmac.new(
+            key=secret.encode(),
+            msg=payload.encode(),
+            digestmod=hashlib.sha256
+        ).hexdigest()
+
+        if calculated_signature == received_signature:
+            print("Webhook verified!")
+        else:
+            print("Invalid webhook request.")
+        </pre>
+
+        <h4>7. Webhook Retry Policy</h4>
+        <p>If the webhook fails (does not return **200 OK**), we **retry up to 3 times**.</p>
+
+        <h4>8. Testing Webhooks</h4>
+        <p>Developers can use **Postman** or **cURL** to test webhook responses:</p>
+        <pre>
+        curl -X POST "https://yourwebhookurl.com/subscription" -H "Content-Type: application/json" -d '{
+            "event": "subscription.renewed",
+            "data": {
+                "subscription_id": "SUB78910",
+                "user": {"id": "USR12345", "email": "john@example.com"},
+                "plan": {"name": "Premium", "amount": 49.99, "currency": "USD"},
+                "status": "active",
+                "renewal_date": "2024-03-01T12:00:00Z"
+            }
+        }'
+        </pre>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution2").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

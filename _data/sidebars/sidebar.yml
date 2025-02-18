@@ -131,6 +131,11 @@ entries:
       output: web
       type: homepage
 
+    - title: Beginner Webhook documentation exercises
+      url: /beginnerwebhookexercises.html
+      output: web
+      type: homepage
+
     - title: Final Words and additional resources
       url: /finalwords.html
       output: web

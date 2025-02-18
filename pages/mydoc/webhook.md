@@ -92,7 +92,7 @@ Webhooks can be triggered for different events. Below are some common events tha
 
 You can subscribe to the events you need and ignore the rest.
 
-### Webhook payload format**  
+### Webhook payload format 
 
 When an event is triggered, the webhook sends a **JSON payload** to your configured URL.
 

@@ -1,0 +1,207 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 1 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise1')">Exercise 1</button>
+    <button class="solution-button" onclick="toggleSolution('solution1', 'exercise1')">Solution to Exercise 1</button>
+
+    <!-- Exercise 1 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise1">
+        <h3>Exercise 1: Documenting a Basic Webhook</h3>
+        <p><strong>Scenario:</strong> You are assigned to document a **new webhook for an e-commerce platform** that notifies users when an order is successfully placed.</p>
+
+        <p><strong>Your Task:</strong> Write a structured API reference document covering:</p>
+        <ul>
+            <li>Overview of the webhook.</li>
+            <li>How developers register a webhook URL.</li>
+            <li>Webhook trigger event details.</li>
+            <li>Request format and expected response.</li>
+            <li>Security best practices.</li>
+            <li>Webhook retry policy.</li>
+            <li>How developers can test this webhook.</li>
+        </ul>
+
+        <h4>Webhook Event Details:</h4>
+        <p><strong>Event Name:</strong> <code>order.placed</code></p>
+        <p><strong>Triggered When:</strong> A customer successfully places an order.</p>
+        <p><strong>HTTP Method:</strong> POST</p>
+        <p><strong>Webhook Destination:</strong> User-provided webhook URL</p>
+
+        <h5>Example Webhook Payload:</h5>
+        <pre>
+        {
+            "event": "order.placed",
+            "data": {
+                "order_id": "ORD12345",
+                "customer": {
+                    "name": "Alice Johnson",
+                    "email": "alice@example.com"
+                },
+                "total_amount": 99.99,
+                "currency": "USD",
+                "items": [
+                    {
+                        "product_id": "PROD567",
+                        "name": "Wireless Mouse",
+                        "quantity": 1,
+                        "price": 99.99
+                    }
+                ]
+            }
+        }
+        </pre>
+    </div>
+
+    <!-- Solution to Exercise 1 (Initially Hidden) -->
+    <div class="solution-content" id="solution1">
+        <h3>Solution to Exercise 1</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Order Placed Webhook** notifies subscribed systems whenever a customer places an order. This webhook helps external services update inventory, trigger shipping processes, and notify users in real-time.</p>
+
+        <h4>2. Webhook Registration</h4>
+        <p>Developers can **subscribe their webhook URLs** using the following API endpoint:</p>
+        <pre>
+        POST /webhooks/register
+        {
+            "event": "order.placed",
+            "url": "https://yourwebhookurl.com/order"
+        }
+        </pre>
+        <p>Upon successful registration, they will receive a confirmation response.</p>
+
+        <h4>3. Webhook Trigger Event</h4>
+        <table>
+            <tr>
+                <th>Event Name</th>
+                <th>Trigger Condition</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>order.placed</td>
+                <td>When a customer completes an order</td>
+                <td>Fires when an order is successfully placed on the platform.</td>
+            </tr>
+        </table>
+
+        <h4>4. Request Format</h4>
+        <p>When the webhook is triggered, the following payload is sent to the subscribed webhook URL:</p>
+        <pre>
+        {
+            "event": "order.placed",
+            "data": {
+                "order_id": "ORD12345",
+                "customer": {
+                    "name": "Alice Johnson",
+                    "email": "alice@example.com"
+                },
+                "total_amount": 99.99,
+                "currency": "USD"
+            }
+        }
+        </pre>
+
+        <h4>5. Expected Response from Client</h4>
+        <p>The client must return a **200 OK** status to confirm successful processing of the webhook.</p>
+
+        <h4>6. Webhook Security - Verifying Webhooks</h4>
+        <p>Each webhook request includes an **X-Signature** header for verification.</p>
+        <pre>
+        import hmac
+        import hashlib
+
+        secret = "your-webhook-secret"
+        payload = '{"event":"order.placed","data":{"order_id":"ORD12345"}}'
+        received_signature = "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3"
+
+        calculated_signature = hmac.new(
+            key=secret.encode(),
+            msg=payload.encode(),
+            digestmod=hashlib.sha256
+        ).hexdigest()
+
+        if calculated_signature == received_signature:
+            print("Webhook verified!")
+        else:
+            print("Invalid webhook request.")
+        </pre>
+
+        <h4>7. Webhook Retry Policy</h4>
+        <p>If the webhook fails (does not return **200 OK**), we **retry up to 3 times** with exponential backoff.</p>
+
+        <h4>8. Testing Webhooks</h4>
+        <p>Developers can use **Postman** or **cURL** to test webhook requests:</p>
+        <pre>
+        curl -X POST "https://yourwebhookurl.com/order" -H "Content-Type: application/json" -d '{
+            "event": "order.placed",
+            "data": {
+                "order_id": "ORD12345",
+                "customer": {"name": "Alice Johnson", "email": "alice@example.com"},
+                "total_amount": 99.99,
+                "currency": "USD"
+            }
+        }'
+        </pre>
+
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution1").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

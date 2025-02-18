@@ -19,7 +19,7 @@ This section is all about **getting your hands dirty with real API documentation
 Whether you're new to API documentation or looking to refine your skills, these exercises will help you **bridge the gap between theory and real-world scenarios.**  
 
 **How It Works:**  
-Each section (Beginner, Intermediate, and Advanced) contains **5 hands-on exercises** that simulate **real-world API documentation tasks.**  
+The chapter contains **5 hands-on exercises** that simulate **real-world API documentation tasks.**  
 
 You’ll:  
 - Get an API request (or part of it) and write the documentation.  
