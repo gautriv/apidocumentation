@@ -126,12 +126,12 @@ entries:
       output: web
       type: homepage
 
-    - title: Final Words and additional resources
-      url: /finalwords.html
+    - title: Webhook API reference documentation
+      url: /webhooks.html
       output: web
       type: homepage
 
-    - title: Webhook API reference documentation
-      url: /webhooks.html
+    - title: Final Words and additional resources
+      url: /finalwords.html
       output: web
       type: homepage
