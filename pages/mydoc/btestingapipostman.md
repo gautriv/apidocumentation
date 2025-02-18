@@ -32,6 +32,6 @@ These exercises will give you **real-world experience** with **API development a
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-## Beginner-Level API Development & Testing Exercises 
+## Beginner-Level API development and testing exercises 
 
 {% include p_exe_1.html %}

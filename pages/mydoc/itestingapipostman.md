@@ -32,6 +32,6 @@ By the end of this section, you’ll have a **fully functional API** with **real
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-## Intermediate-Level API Development & Testing Exercise
+## Intermediate-Level API development and testing exercise
 
 {% include p_exe_2.html %}
