@@ -130,3 +130,8 @@ entries:
       url: /finalwords.html
       output: web
       type: homepage
+
+    - title: Webhook API reference documentation
+      url: /webhooks.html
+      output: web
+      type: homepage
