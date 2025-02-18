@@ -111,17 +111,17 @@ entries:
       output: web
       type: homepage
 
-    - title: Developing and testing APIs as a beginner
+    - title: Developing and testing REST API as a beginner
       url: /beginnertestingapi.html
       output: web
       type: homepage
 
-    - title: Developing and testing APIs as an intermediate
+    - title: Developing and testing REST API as an intermediate
       url: /intermediatetestingapi.html
       output: web
       type: homepage
 
-    - title: Developing and testing APIs as an intermediate
+    - title: Developing and testing REST API as an expert
       url: /expertapitesting.html
       output: web
       type: homepage

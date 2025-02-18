@@ -1,5 +1,5 @@
 ---
-title: Developing and Testing an API as a Beginner
+title: Developing and Testing REST API as a Beginner
 keywords: [REST API development, API testing, API writing exercises, API reference, API documentation practice, API development tutorial, Postman API testing, Flask API development, Python API, API authentication, API versioning, hands-on API documentation, API performance optimization, API error handling, API security]
 sidebar: sidebar
 permalink: /beginnertestingapi.html

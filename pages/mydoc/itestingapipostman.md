@@ -1,5 +1,5 @@
 ---
-title: Developing and Testing an API as an Intermediate
+title: Developing and Testing REST API as an Intermediate
 keywords: [REST API development, API testing, API documentation exercises, API reference, API development practice, API authentication, Postman API testing, Flask API development, Python API, API security, hands-on API documentation, API error handling, API logging, API performance optimization]
 sidebar: sidebar
 permalink: /intermediatetestingapi.html

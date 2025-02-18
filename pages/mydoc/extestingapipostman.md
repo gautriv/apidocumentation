@@ -1,5 +1,5 @@
 ---
-title: Developing and Testing an API as an Expert
+title: Developing and Testing REST API as an Expert
 keywords: ["REST API development", "API security", "API authentication", "Postman API testing", "Flask API development", "Python API", "JWT authentication", "Role-Based Access Control (RBAC)", "API logging", "API rate limiting", "API documentation exercises", "API reference", "API performance optimization"]
 sidebar: sidebar
 permalink: /expertapitesting.html
