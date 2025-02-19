@@ -193,7 +193,6 @@ curl -L "https://api.example.com/redirect"
 
 Congratulations! You’re now **fluent in cURL**, ready to test APIs like a pro. But why stop here?
 
-**Next Steps:** Moving to Expert-Level API Documentation
-You now have a deep understanding of cURL! You're fully prepared for **Expert-Level API Documentation challenges.**
+You now have a deep understanding of cURL! You're fully prepared for **intermediate-level API documentation challenges.**
 
 **Ready?**

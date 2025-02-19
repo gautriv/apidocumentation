@@ -8,12 +8,12 @@ completed: 85
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/curl.html
 previous:
-  url: https://beingtechnicalwriter.com/apidocumentation/intermediaterestapiexercises.html
+  url: https://beingtechnicalwriter.com/apidocumentation/beginnerrestapiexercises.html
 ---
 
-You’ve completed the **Beginner and Intermediate API Documentation Exercises—great job!**
+You’ve completed the **Beginner API documentation exercises—great job!**
 
-Now, before we step into **Expert-Level API Documentation**, let’s address some **important API concepts** that are often overlooked but **critical for writing high-quality documentation.**  
+Now, before we step into **intermediate-level API documentation**, let’s address some **important API concepts** that are often overlooked but **critical for writing high-quality documentation.**  
 
 **Why this chapter?**  
 APIs are more than just endpoints and responses. To truly **write developer-friendly documentation**, you need to understand:  

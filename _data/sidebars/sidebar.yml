@@ -91,11 +91,6 @@ entries:
       output: web
       type: homepage
 
-    - title: Intermediate REST API Documentation exercises
-      url: /intermediaterestapiexercises.html
-      output: web
-      type: homepage
-
     - title: Bridging gaps
       url: /keyconcepts.html
       output: web
@@ -103,6 +98,11 @@ entries:
 
     - title: cURL for API documentation
       url: /curl.html
+      output: web
+      type: homepage
+
+    - title: Intermediate REST API Documentation exercises
+      url: /intermediaterestapiexercises.html
       output: web
       type: homepage
 
