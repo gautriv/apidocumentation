@@ -28,7 +28,7 @@ Verify installations:
 ```sh
 python --version
 pip show flask flasgger
-# This install flask and swagger
+# This installs flask and swagger
 ```
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
