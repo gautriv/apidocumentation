@@ -135,7 +135,7 @@ Use `-O` to save a file:
 curl -O https://example.com/file.pdf
 ```
 
----
+
 
 ## Handling API Errors
 
@@ -145,7 +145,7 @@ Use `-i` to see **response headers and status codes**:
 curl -i "https://api.example.com"
 ```
 
----
+
 
 ## Debugging API Calls
 
@@ -165,7 +165,7 @@ Run a request **without extra output**:
 curl -s "https://api.example.com"
 ```
 
----
+
 
 ## Handling Redirects
 
@@ -175,7 +175,7 @@ Some APIs **redirect** requests. Use `-L` to follow them:
 curl -L "https://api.example.com/redirect"
 ```
 
----
+
 
 ## Advanced cURL Flags
 
@@ -189,7 +189,7 @@ curl -L "https://api.example.com/redirect"
 | `-i` | Include response headers | `curl -i "https://api.example.com"` |
 | `-v` | Enable verbose mode | `curl -v "https://api.example.com"` |
 
----
+
 
 Congratulations! You’re now **fluent in cURL**, ready to test APIs like a pro. But why stop here?
 
