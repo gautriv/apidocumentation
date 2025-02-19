@@ -4,7 +4,7 @@ keywords: [API documentation, What is an API, API examples, Requests and Respons
 sidebar: sidebar
 permalink: /whatwritersdo.html
 folder: mydoc
-completed: 15
+completed: 8
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/informationgathering.html
 previous:

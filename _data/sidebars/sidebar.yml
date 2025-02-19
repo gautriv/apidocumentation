@@ -136,6 +136,16 @@ entries:
       output: web
       type: homepage
 
+    - title: Intermediate Webhook documentation exercises
+      url: /intermediatewebhookexercises.html
+      output: web
+      type: homepage
+
+    - title: Expert Webhook documentation exercises
+      url: /expertwebhookexercises.html
+      output: web
+      type: homepage
+
     - title: Final Words and additional resources
       url: /finalwords.html
       output: web

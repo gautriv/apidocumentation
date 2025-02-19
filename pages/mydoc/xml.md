@@ -4,7 +4,7 @@ keywords: [XML, data format, structured data, complex data, financial reports, s
 sidebar: sidebar
 permalink: /XML101.html
 folder: mydoc
-completed: 55
+completed: 26
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/visualizingdatatypes.html
 previous:

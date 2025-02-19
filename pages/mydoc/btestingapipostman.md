@@ -4,7 +4,7 @@ keywords: [REST API development, API testing, API writing exercises, API referen
 sidebar: sidebar
 permalink: /beginnertestingapi.html
 folder: mydoc
-completed: 98
+completed: 56
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/intermediateapi.html
 previous:

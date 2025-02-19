@@ -4,7 +4,7 @@ keywords: ["REST API development", "API security", "API authentication", "Postma
 sidebar: sidebar
 permalink: /expertapitesting.html
 folder: mydoc
-completed: 100
+completed: 64
 previous:
   url: "https://beingtechnicalwriter.com/apidocumentation/intermediatetestingapi.html"
 next:

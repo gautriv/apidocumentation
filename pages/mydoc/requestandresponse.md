@@ -4,7 +4,7 @@ keywords: [API request, API response, API status codes, API request methods, HTT
 sidebar: sidebar
 permalink: /apirequestsresponses.html
 folder: mydoc
-completed: 65
+completed: 30
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/writingapi.html
 previous:

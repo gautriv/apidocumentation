@@ -4,7 +4,7 @@ keywords: [data formats, API communication, data exchange, JSON, XML, data struc
 sidebar: sidebar
 permalink: /dataformats.html
 folder: mydoc
-completed: 45
+completed: 22
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/JSON01.html
 previous:

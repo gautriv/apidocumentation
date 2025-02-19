@@ -4,7 +4,7 @@ keywords: [web development, API documentation, online communication, web design,
 sidebar: sidebar
 permalink: /howinternetworks.html
 folder: mydoc
-completed: 5
+completed: 2
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/whatisanAPI.html
 previous:

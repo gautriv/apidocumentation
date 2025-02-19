@@ -4,7 +4,7 @@ keywords: [data types, API documentation, Boolean data type, String data type, N
 sidebar: sidebar
 permalink: /visualizingdatatypes.html
 folder: mydoc
-completed: 60
+completed: 28
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/XML101.html
 previous:

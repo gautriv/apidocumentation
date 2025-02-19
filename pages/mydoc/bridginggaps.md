@@ -4,7 +4,7 @@ keywords: [REST API documentation, API writing exercises, API reference, API doc
 sidebar: sidebar
 permalink: /keyconcepts.html
 folder: mydoc
-completed: 85
+completed: 40
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/curl.html
 previous:

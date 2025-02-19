@@ -4,7 +4,7 @@ keywords: [API documentation, API reference, Writing API documentation, API endp
 sidebar: sidebar
 permalink: /writingapi.html
 folder: mydoc
-completed: 70
+completed: 32
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/restapidocumentation.html
 previous:

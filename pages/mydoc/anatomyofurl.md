@@ -4,7 +4,7 @@ keywords: [API documentation, API information gathering, API documentation best 
 sidebar: sidebar
 permalink: /anatomyofurl.html
 folder: mydoc
-completed: 35
+completed: 17
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/anatomyofurltwo.html
 previous:
