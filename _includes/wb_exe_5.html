@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 5 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise5')">Exercise 5</button>
+    <button class="solution-button" onclick="toggleSolution('solution5', 'exercise5')">Solution to Exercise 5</button>
+
+    <!-- Exercise 5 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise5">
+        <h3>Exercise 5: Setting Up a Webhook for a Collaboration Platform (UI-based Registration)</h3>
+        <p><strong>Scenario:</strong> You are documenting how users can **set up a webhook in Slack** to receive real-time notifications when messages are posted in a specific channel.</p>
+
+        <p><strong>Key Difference:</strong> Unlike API-based registration, webhooks must be manually **configured in the Slack Webhooks dashboard.**</p>
+
+        <p><strong>Your Task:</strong> Document the following:</p>
+        <ul>
+            <li>How users register the webhook in the Slack UI.</li>
+            <li>Webhook event triggers.</li>
+            <li>Webhook request format.</li>
+            <li>Expected response from the client.</li>
+            <li>Best practices for handling webhook security.</li>
+        </ul>
+
+        <h4>Webhook Registration (UI-Based)</h4>
+        <p>Users must configure their webhook URL in **Slack’s Webhooks UI**:</p>
+        <ol>
+            <li>Log in to the **Slack App Directory**.</li>
+            <li>Navigate to **Manage Apps > Incoming Webhooks**.</li>
+            <li>Click **Add New Webhook to Workspace**.</li>
+            <li>Select the channel where notifications should be sent.</li>
+            <li>Copy the generated **Webhook URL** (e.g., <code>https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX</code>).</li>
+            <li>Save your settings to activate the webhook.</li>
+        </ol>
+
+        <h4>Example Webhook Payload</h4>
+        <pre>
+        {
+            "text": "A new message was posted in #general",
+            "channel": "#general",
+            "username": "BotUser",
+            "timestamp": "2024-03-15T12:00:00Z"
+        }
+        </pre>
+    </div>
+
+    <!-- Solution to Exercise 5 (Initially Hidden) -->
+    <div class="solution-content" id="solution5">
+        <h3>Solution to Exercise 5</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Slack Webhook** allows external applications to send real-time notifications to a Slack channel when an event occurs.</p>
+
+        <h4>2. Webhook Registration (UI-Based)</h4>
+        <p>Users must manually set up the webhook through the **Slack Webhooks dashboard** instead of using an API request.</p>
+
+        <h4>3. Webhook Events</h4>
+        <table>
+            <tr>
+                <th>Event Name</th>
+                <th>Trigger Condition</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>message.posted</td>
+                <td>When a message is posted</td>
+                <td>Triggers when a user sends a new message in the specified Slack channel.</td>
+            </tr>
+        </table>
+
+        <h4>4. Expected Response from Client</h4>
+        <p>The client must return a **200 OK** status to confirm successful webhook processing.</p>
+
+        <h4>5. Webhook Security Considerations</h4>
+        <ul>
+            <li>**Use HTTPS** to prevent data interception.</li>
+            <li>**Verify requests** by checking Slack’s **X-Slack-Signature** header.</li>
+            <li>**Restrict webhook access** to trusted applications only.</li>
+        </ul>
+
+        <h4>6. Webhook Testing</h4>
+        <p>Users can trigger test events in the **Slack Webhooks UI**:</p>
+        <ol>
+            <li>Go to **Manage Apps > Incoming Webhooks**.</li>
+            <li>Click **Test Webhook**.</li>
+            <li>Check if the message appears in the Slack channel.</li>
+        </ol>
+
+        <h4>7. Sample Webhook Response</h4>
+        <pre>
+        {
+            "status": "success",
+            "message": "Webhook received and posted to Slack."
+        }
+        </pre>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution5").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 4 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise4')">Exercise 4</button>
+    <button class="solution-button" onclick="toggleSolution('solution4', 'exercise4')">Solution to Exercise 4</button>
+
+    <!-- Exercise 4 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise4">
+        <h3>Exercise 4: Configuring a Webhook via UI-Based Registration</h3>
+        <p><strong>Scenario:</strong> You are documenting a **webhook for a subscription-based SaaS platform**. The platform allows customers to receive notifications when a user **subscribes**, **updates their plan**, or **cancels their subscription**.</p>
+
+        <p><strong>Key Difference:</strong> Unlike API-based registration, developers must manually **configure their webhook URL in the platform’s dashboard.**</p>
+
+        <p><strong>Your Task:</strong> Document the following:</p>
+        <ul>
+            <li>How users register the webhook in the platform UI.</li>
+            <li>Webhook event triggers.</li>
+            <li>Webhook request format.</li>
+            <li>Expected response from the client.</li>
+            <li>Security considerations.</li>
+        </ul>
+
+        <h4>Webhook Registration (UI-Based)</h4>
+        <p>Users must configure their webhook by following these steps:</p>
+        <ol>
+            <li>Log in to the **SaaS platform dashboard**.</li>
+            <li>Navigate to **Settings > Webhooks**.</li>
+            <li>Enter your webhook URL in the **Webhook URL** field.</li>
+            <li>Select the events you want to subscribe to:</li>
+            <ul>
+                <li><strong>subscription.created</strong> – When a new subscription is created.</li>
+                <li><strong>subscription.updated</strong> – When a user updates their subscription plan.</li>
+                <li><strong>subscription.canceled</strong> – When a subscription is canceled.</li>
+            </ul>
+            <li>Click **Save** to activate the webhook.</li>
+        </ol>
+
+        <h4>Example Webhook Payload</h4>
+        <pre>
+        {
+            "event": "subscription.updated",
+            "data": {
+                "user_id": "USR45678",
+                "plan": "Premium",
+                "status": "active",
+                "updated_at": "2024-03-12T08:30:00Z"
+            }
+        }
+        </pre>
+    </div>
+
+    <!-- Solution to Exercise 4 (Initially Hidden) -->
+    <div class="solution-content" id="solution4">
+        <h3>Solution to Exercise 4</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Subscription Webhook** notifies external systems when users subscribe, update, or cancel their plan.</p>
+
+        <h4>2. Webhook Registration (UI-Based)</h4>
+        <p>Unlike API-based registration, users must **manually enter their webhook URL** in the platform’s dashboard.</p>
+
+        <h4>3. Webhook Events</h4>
+        <table>
+            <tr>
+                <th>Event Name</th>
+                <th>Trigger Condition</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>subscription.created</td>
+                <td>When a new user subscribes</td>
+                <td>Notifies the client when a user signs up for a subscription.</td>
+            </tr>
+            <tr>
+                <td>subscription.updated</td>
+                <td>When a user changes their plan</td>
+                <td>Fires when a user upgrades or downgrades their plan.</td>
+            </tr>
+            <tr>
+                <td>subscription.canceled</td>
+                <td>When a user cancels</td>
+                <td>Triggers when a subscription is terminated.</td>
+            </tr>
+        </table>
+
+        <h4>4. Expected Response from Client</h4>
+        <p>The client must return a **200 OK** status to confirm webhook processing.</p>
+
+        <h4>5. Webhook Security Considerations</h4>
+        <ul>
+            <li>**Use HTTPS** to prevent data interception.</li>
+            <li>**Verify the request origin** by checking the **X-SaaS-Signature** header.</li>
+            <li>**Log all webhook requests for debugging.**</li>
+        </ul>
+
+        <h4>6. Webhook Testing</h4>
+        <p>Users can trigger test events via the **SaaS dashboard**:</p>
+        <ol>
+            <li>Go to **Settings > Webhooks > Test Webhook**.</li>
+            <li>Select an event (e.g., **subscription.updated**).</li>
+            <li>Click **Send Test** to see the webhook response.</li>
+        </ol>
+
+        <h4>7. Sample Webhook Response</h4>
+        <pre>
+        {
+            "status": "success",
+            "message": "Webhook received and processed successfully."
+        }
+        </pre>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution4").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

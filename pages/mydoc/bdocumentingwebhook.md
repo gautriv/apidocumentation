@@ -26,5 +26,9 @@ The chapter contains **5 hands-on exercises** that simulate **real-world API doc
 These exercises **introduce you to basic webhook documentation.** You’ll start with **single events**, learn how to **structure webhook docs**, and gradually **move towards handling more complex scenarios.**  
 
 {% include wb_exe_1.html %} <br>
-{% include wb_exe_2.html %}
+{% include wb_exe_2.html %} <br>
+{% include wb_exe_3.html %} <br>
+{% include wb_exe_4.html %} <br>
+{% include wb_exe_5.html %} <br>
+{% include wb_exe_6.html %}
 

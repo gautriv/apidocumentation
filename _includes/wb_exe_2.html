@@ -53,37 +53,43 @@
 
     <!-- Exercise 2 Content (Initially Hidden) -->
     <div class="exercise-content" id="exercise2">
-        <h3>Exercise 2: Documenting Multiple Webhook Events</h3>
-        <p><strong>Scenario:</strong> You are documenting webhooks for a **subscription-based SaaS platform** that sends notifications for various billing events.</p>
+        <h3>Exercise 2: Documenting Multiple Webhook Events (API-based Registration)</h3>
+        <p><strong>Scenario:</strong> You are documenting webhooks for an **order tracking system** that sends updates when an order's status changes.</p>
 
         <p><strong>Your Task:</strong> Document the following webhook events:</p>
         <ul>
-            <li>**subscription.created** – Triggered when a user subscribes.</li>
-            <li>**subscription.renewed** – Fired when a subscription renews automatically.</li>
-            <li>**subscription.canceled** – Sent when a user cancels their subscription.</li>
+            <li><strong>order.placed</strong> – Triggered when an order is successfully placed.</li>
+            <li><strong>order.shipped</strong> – Fired when an order is shipped.</li>
+            <li><strong>order.delivered</strong> – Sent when the order is successfully delivered.</li>
         </ul>
 
-        <h4>Webhook Event Details:</h4>
-        <p><strong>Endpoint:</strong> <code>POST /webhooks/subscription</code></p>
+        <h4>Webhook Registration</h4>
+        <p>Developers register their webhook using the following API endpoint:</p>
+        <pre>
+        POST /webhooks/register
+        {
+            "events": ["order.placed", "order.shipped", "order.delivered"],
+            "url": "https://yourwebhookurl.com/order-tracking"
+        }
+        </pre>
+
+        <h4>Webhook Event Details</h4>
+        <p><strong>Endpoint:</strong> <code>POST /webhooks/order-tracking</code></p>
         <p><strong>Destination:</strong> User-provided webhook URL</p>
 
-        <h5>Example Webhook Payload:</h5>
+        <h5>Example Webhook Payload</h5>
         <pre>
         {
-            "event": "subscription.renewed",
+            "event": "order.shipped",
             "data": {
-                "subscription_id": "SUB78910",
-                "user": {
-                    "id": "USR12345",
+                "order_id": "ORD67890",
+                "customer": {
+                    "name": "John Doe",
                     "email": "john@example.com"
                 },
-                "plan": {
-                    "name": "Premium",
-                    "amount": 49.99,
-                    "currency": "USD"
-                },
-                "status": "active",
-                "renewal_date": "2024-03-01T12:00:00Z"
+                "status": "shipped",
+                "tracking_number": "TRACK12345",
+                "expected_delivery": "2024-03-05T12:00:00Z"
             }
         }
         </pre>
@@ -94,18 +100,16 @@
         <h3>Solution to Exercise 2</h3>
 
         <h4>1. Overview</h4>
-        <p>The **Subscription Webhooks** notify SaaS applications when users **subscribe, renew, or cancel their subscriptions**. These webhooks help automate billing, analytics, and customer notifications.</p>
+        <p>The **Order Tracking Webhooks** notify subscribed systems when an order moves through various stages: placed, shipped, and delivered.</p>
 
         <h4>2. Webhook Registration</h4>
-        <p>Developers can **subscribe their webhook URLs** using the following API endpoint:</p>
+        <p>Developers must register their webhook URL using the following request:</p>
         <pre>
-        POST /webhooks/register
-        {
-            "event": ["subscription.created", "subscription.renewed", "subscription.canceled"],
-            "url": "https://yourwebhookurl.com/subscription"
-        }
+        curl -X POST "https://api.webhookexample.com/webhook/register" \
+        -H "Authorization: Bearer your_token" \
+        -H "Content-Type: application/json" \
+        -d '{"events": ["order.placed", "order.shipped", "order.delivered"], "callback_url": "https://client.com/webhook-receiver"}'
         </pre>
-        <p>Upon successful registration, they receive a confirmation response.</p>
 
         <h4>3. Webhook Events</h4>
         <table>
@@ -115,83 +119,43 @@
                 <th>Description</th>
             </tr>
             <tr>
-                <td>subscription.created</td>
-                <td>When a user subscribes</td>
-                <td>Triggers when a new subscription is created.</td>
+                <td>order.placed</td>
+                <td>When an order is placed</td>
+                <td>Triggers when a customer successfully places an order.</td>
             </tr>
             <tr>
-                <td>subscription.renewed</td>
-                <td>When a subscription renews</td>
-                <td>Fires when a user’s plan renews automatically.</td>
+                <td>order.shipped</td>
+                <td>When an order is shipped</td>
+                <td>Fires when an order is shipped from the warehouse.</td>
             </tr>
             <tr>
-                <td>subscription.canceled</td>
-                <td>When a user cancels</td>
-                <td>Notifies when a user stops their subscription.</td>
+                <td>order.delivered</td>
+                <td>When an order is delivered</td>
+                <td>Notifies when an order reaches the customer.</td>
             </tr>
         </table>
 
-        <h4>4. Request Format</h4>
-        <p>When a webhook is triggered, the following payload is sent:</p>
-        <pre>
-        {
-            "event": "subscription.renewed",
-            "data": {
-                "subscription_id": "SUB78910",
-                "user": {
-                    "id": "USR12345",
-                    "email": "john@example.com"
-                },
-                "plan": {
-                    "name": "Premium",
-                    "amount": 49.99,
-                    "currency": "USD"
-                },
-                "status": "active",
-                "renewal_date": "2024-03-01T12:00:00Z"
-            }
-        }
-        </pre>
+        <h4>4. Expected Response from Client</h4>
+        <p>The client must return a **200 OK** status to confirm successful processing of the webhook.</p>
 
-        <h4>5. Expected Response from Client</h4>
-        <p>The client must return **200 OK** to acknowledge the webhook.</p>
+        <h4>5. Webhook Security - Verifying Webhooks</h4>
+        <p>Each webhook request includes an **X-Signature** header for verification.</p>
+        <p>Clients must compute an **HMAC-SHA256 hash** of the payload using their secret key and compare it with the received signature.</p>
 
-        <h4>6. Webhook Security - Verifying Webhooks</h4>
-        <p>Webhooks include an **X-Signature** header for security verification.</p>
-        <pre>
-        import hmac
-        import hashlib
+        <h4>6. Webhook Retry Policy</h4>
+        <p>If the webhook fails (does not return **200 OK**), the system **retries up to 3 times** with an increasing delay.</p>
 
-        secret = "your-webhook-secret"
-        payload = '{"event":"subscription.renewed","data":{"subscription_id":"SUB78910"}}'
-        received_signature = "bde67cfaf998c...5af32c"
-
-        calculated_signature = hmac.new(
-            key=secret.encode(),
-            msg=payload.encode(),
-            digestmod=hashlib.sha256
-        ).hexdigest()
-
-        if calculated_signature == received_signature:
-            print("Webhook verified!")
-        else:
-            print("Invalid webhook request.")
-        </pre>
-
-        <h4>7. Webhook Retry Policy</h4>
-        <p>If the webhook fails (does not return **200 OK**), we **retry up to 3 times**.</p>
-
-        <h4>8. Testing Webhooks</h4>
+        <h4>7. Testing Webhooks</h4>
         <p>Developers can use **Postman** or **cURL** to test webhook responses:</p>
         <pre>
-        curl -X POST "https://yourwebhookurl.com/subscription" -H "Content-Type: application/json" -d '{
-            "event": "subscription.renewed",
+        curl -X POST "https://yourwebhookurl.com/order-tracking" -H "Content-Type: application/json" -d '{
+            "event": "order.shipped",
             "data": {
-                "subscription_id": "SUB78910",
-                "user": {"id": "USR12345", "email": "john@example.com"},
-                "plan": {"name": "Premium", "amount": 49.99, "currency": "USD"},
-                "status": "active",
-                "renewal_date": "2024-03-01T12:00:00Z"
+                "order_id": "ORD67890",
+                "customer": {"name": "John Doe", "email": "john@example.com"},
+                "status": "shipped",
+                "tracking_number": "TRACK12345",
+                "expected_delivery": "2024-03-05T12:00:00Z"
             }
         }'
         </pre>

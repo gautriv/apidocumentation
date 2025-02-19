@@ -1,0 +1,198 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 3 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise3')">Exercise 3</button>
+    <button class="solution-button" onclick="toggleSolution('solution3', 'exercise3')">Solution to Exercise 3</button>
+
+    <!-- Exercise 3 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise3">
+        <h3>Exercise 3: Securing Webhooks with Authentication (API-based Registration)</h3>
+        <p><strong>Scenario:</strong> You are documenting a webhook for a **payment gateway** that sends real-time transaction updates. Webhooks must be secured using authentication to prevent unauthorized access.</p>
+
+        <p><strong>Your Task:</strong> Document the following:</p>
+        <ul>
+            <li>Overview of the webhook.</li>
+            <li>How developers register their webhook using an API.</li>
+            <li>Webhook authentication (API keys, secret tokens).</li>
+            <li>Expected webhook request and response format.</li>
+            <li>Webhook retry policy.</li>
+            <li>Best practices for logging and debugging.</li>
+        </ul>
+
+        <h4>Webhook Registration</h4>
+        <p>Developers must register their webhook using an API key:</p>
+        <pre>
+        POST /webhooks/register
+        {
+            "events": ["payment.success", "payment.failed"],
+            "url": "https://yourwebhookurl.com/payment",
+            "api_key": "your_api_key"
+        }
+        </pre>
+
+        <h4>Webhook Event Details</h4>
+        <p><strong>Endpoint:</strong> <code>POST /webhooks/payment</code></p>
+        <p><strong>Destination:</strong> User-provided webhook URL</p>
+
+        <h5>Example Webhook Payload</h5>
+        <pre>
+        {
+            "event": "payment.success",
+            "data": {
+                "transaction_id": "TXN12345",
+                "amount": 150.00,
+                "currency": "USD",
+                "status": "success",
+                "timestamp": "2024-03-10T10:00:00Z"
+            },
+            "signature": "abcd1234efgh5678"
+        }
+        </pre>
+    </div>
+
+    <!-- Solution to Exercise 3 (Initially Hidden) -->
+    <div class="solution-content" id="solution3">
+        <h3>Solution to Exercise 3</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **Payment Webhook** notifies merchants when a transaction succeeds or fails. This webhook helps update transaction records, trigger email notifications, and sync payment statuses.</p>
+
+        <h4>2. Webhook Registration</h4>
+        <p>Developers must register their webhook URL using the following request:</p>
+        <pre>
+        curl -X POST "https://api.paymentgateway.com/webhook/register" \
+        -H "Authorization: Bearer your_api_key" \
+        -H "Content-Type: application/json" \
+        -d '{"events": ["payment.success", "payment.failed"], "callback_url": "https://client.com/webhook-receiver"}'
+        </pre>
+
+        <h4>3. Webhook Events</h4>
+        <table>
+            <tr>
+                <th>Event Name</th>
+                <th>Trigger Condition</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>payment.success</td>
+                <td>When a payment is successfully processed</td>
+                <td>Notifies the client about successful payments.</td>
+            </tr>
+            <tr>
+                <td>payment.failed</td>
+                <td>When a payment fails</td>
+                <td>Alerts the client about failed transactions.</td>
+            </tr>
+        </table>
+
+        <h4>4. Webhook Authentication</h4>
+        <p>Each webhook request includes a **signature** in the payload. Clients must verify this using their secret key.</p>
+        <pre>
+        import hmac
+        import hashlib
+
+        secret = "your-secret-key"
+        payload = '{"event":"payment.success","data":{"transaction_id":"TXN12345"}}'
+        received_signature = "abcd1234efgh5678"
+
+        calculated_signature = hmac.new(
+            key=secret.encode(),
+            msg=payload.encode(),
+            digestmod=hashlib.sha256
+        ).hexdigest()
+
+        if calculated_signature == received_signature:
+            print("Webhook verified!")
+        else:
+            print("Invalid webhook request.")
+        </pre>
+
+        <h4>5. Webhook Retry Policy</h4>
+        <p>If the webhook fails (does not return **200 OK**), the system retries **up to 3 times**.</p>
+
+        <h4>6. Best Practices for Logging and Debugging</h4>
+        <ul>
+            <li>**Log all webhook requests and responses.**</li>
+            <li>**Validate signatures before processing.**</li>
+            <li>**Respond quickly with HTTP 200 OK.**</li>
+            <li>**Monitor logs for failed webhook deliveries.**</li>
+        </ul>
+
+        <h4>7. Testing Webhooks</h4>
+        <p>Developers can use **Postman** or **cURL** to test webhook requests:</p>
+        <pre>
+        curl -X POST "https://yourwebhookurl.com/payment" -H "Content-Type: application/json" -d '{
+            "event": "payment.success",
+            "data": {
+                "transaction_id": "TXN12345",
+                "amount": 150.00,
+                "currency": "USD",
+                "status": "success",
+                "timestamp": "2024-03-10T10:00:00Z"
+            },
+            "signature": "abcd1234efgh5678"
+        }'
+        </pre>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution3").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

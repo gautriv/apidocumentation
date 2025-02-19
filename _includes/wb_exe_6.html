@@ -1,0 +1,170 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 6 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise6')">Exercise 6</button>
+    <button class="solution-button" onclick="toggleSolution('solution6', 'exercise6')">Solution to Exercise 6</button>
+
+    <!-- Exercise 6 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise6">
+        <h3>Exercise 6: Setting Up a Webhook in GitHub (UI-based Registration)</h3>
+        <p><strong>Scenario:</strong> You are documenting how users can **set up a webhook in GitHub** to receive real-time notifications when a repository is updated.</p>
+
+        <p><strong>Key Difference:</strong> Unlike API-based registration, webhooks must be manually **configured in the GitHub Webhooks settings.**</p>
+
+        <p><strong>Your Task:</strong> Document the following:</p>
+        <ul>
+            <li>How users register the webhook in the GitHub UI.</li>
+            <li>Webhook event triggers.</li>
+            <li>Webhook request format.</li>
+            <li>Expected response from the client.</li>
+            <li>Security best practices for handling webhook requests.</li>
+        </ul>
+
+        <h4>Webhook Registration (UI-Based)</h4>
+        <p>Users must configure their webhook URL in **GitHub’s Webhooks UI**:</p>
+        <ol>
+            <li>Log in to **GitHub** and go to your repository.</li>
+            <li>Navigate to **Settings > Webhooks**.</li>
+            <li>Click **Add webhook**.</li>
+            <li>In the **Payload URL** field, enter your webhook endpoint (e.g., <code>https://yourwebhookurl.com/github</code>).</li>
+            <li>Select the **Content Type** as <code>application/json</code>.</li>
+            <li>Choose the events to subscribe to (e.g., **Push Events** and **Pull Requests**).</li>
+            <li>Click **Add webhook** to activate it.</li>
+        </ol>
+
+        <h4>Example Webhook Payload</h4>
+        <pre>
+        {
+            "event": "push",
+            "repository": {
+                "name": "my-repo",
+                "owner": "user123"
+            },
+            "commits": [
+                {
+                    "id": "abc123",
+                    "message": "Updated README",
+                    "timestamp": "2024-03-15T10:30:00Z"
+                }
+            ]
+        }
+        </pre>
+    </div>
+
+    <!-- Solution to Exercise 6 (Initially Hidden) -->
+    <div class="solution-content" id="solution6">
+        <h3>Solution to Exercise 6</h3>
+
+        <h4>1. Overview</h4>
+        <p>The **GitHub Webhook** allows external applications to receive notifications when specific actions occur in a repository, such as a push event or a pull request.</p>
+
+        <h4>2. Webhook Registration (UI-Based)</h4>
+        <p>Unlike API-based registration, users must **manually configure** the webhook in **GitHub’s repository settings**.</p>
+
+        <h4>3. Webhook Events</h4>
+        <table>
+            <tr>
+                <th>Event Name</th>
+                <th>Trigger Condition</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>push</td>
+                <td>When new code is pushed</td>
+                <td>Triggers when commits are pushed to the repository.</td>
+            </tr>
+            <tr>
+                <td>pull_request</td>
+                <td>When a pull request is opened or closed</td>
+                <td>Fires when a developer opens or merges a pull request.</td>
+            </tr>
+        </table>
+
+        <h4>4. Expected Response from Client</h4>
+        <p>The client must return a **200 OK** status to confirm webhook processing.</p>
+
+        <h4>5. Webhook Security Considerations</h4>
+        <ul>
+            <li>**Use HTTPS** to secure webhook payloads.</li>
+            <li>**Verify GitHub’s secret token** to ensure authenticity.</li>
+            <li>**Restrict webhook access** to trusted applications.</li>
+        </ul>
+
+        <h4>6. Webhook Testing</h4>
+        <p>Users can test webhooks in **GitHub’s Webhooks UI**:</p>
+        <ol>
+            <li>Go to **Settings > Webhooks**.</li>
+            <li>Click **Recent Deliveries**.</li>
+            <li>Verify the webhook payload and response.</li>
+        </ol>
+
+        <h4>7. Sample Webhook Response</h4>
+        <pre>
+        {
+            "status": "success",
+            "message": "Webhook received and processed successfully."
+        }
+        </pre>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution6").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
