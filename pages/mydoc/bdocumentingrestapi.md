@@ -30,9 +30,9 @@ The goal? **Help you practice like you’re already working as an API technical 
 
 ## Let’s Start with the Basics!  
 These beginner exercises will help you get comfortable with:  
-✔️ Understanding API requests & responses.  
-✔️ Documenting endpoints, parameters, and authentication.  
-✔️ Handling API errors and responses effectively. 
+- Understanding API requests & responses.  
+- Documenting endpoints, parameters, and authentication.  
+- Handling API errors and responses effectively. 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
      crossorigin="anonymous"></script>
