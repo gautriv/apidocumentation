@@ -63,7 +63,7 @@ APIs support different HTTP methods, and cURL makes it easy to use them:
 | **PUT** | `curl -X PUT "https://api.example.com/users/1" -d '{"name":"John Updated"}' -H "Content-Type: application/json"` | Update data |
 | **DELETE** | `curl -X DELETE "https://api.example.com/users/1"` | Remove data |
 
-##Adding Headers
+## Adding Headers
 
 Want to include headers in your request? Use the `-H` flag:
 
