@@ -4,7 +4,7 @@ keywords: [Webhooks, API documentation, Webhook API writing, Webhook authenticat
 sidebar: sidebar
 permalink: /beginnerwebhookexercises.html
 folder: mydoc
-completed: 76
+completed: 85
 next:
   url: https://beingtechnicalwriter.com/apidocumentation/intermediatewebhookexercises.html
 previous:
