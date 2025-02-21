@@ -46,10 +46,6 @@ Each section contains an **exercise** and its **solution**—but before you peek
 {% include e_exe_4.html %} <br>
 {% include e_exe_5.html %}  
 
----
-
 **Pro Tip:** In real-world API documentation, there are often **gaps in technical details**. If you find anything unclear in these exercises, **ask yourself: How would I clarify this for developers?**  
 
 Once you've completed all **five expert-level exercises**, you'll have the skills to **document APIs at an industry-standard level.**  
-
----

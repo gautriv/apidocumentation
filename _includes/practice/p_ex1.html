@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .exercise-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .exercise-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        pre {
+            background-color: #0b0b0b;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <button class="exercise-button" onclick="toggleExercise('exercise1')">Exercise 1</button>
+
+    <!-- Exercise 1 Content -->
+    <div class="exercise-content" id="exercise1">
+        <h3>Challenge: Identify & Correct Missing Pieces in an API Reference</h3>
+        <p><strong>Scenario:</strong> You have incomplete API documentation for an endpoint that retrieves user details. Your task is to find what’s missing or unclear and propose improvements.</p>
+        
+        <h4>Incomplete API Documentation:</h4>
+        <pre>
+### GET /v1/users/{userId}
+Retrieves a single user's details.
+
+**Path Parameters**:
+- userId
+
+**Example Request**:
+GET /v1/users/12345 HTTP/1.1
+Host: api.example.com
+Authorization: Bearer &lt;token&gt;
+
+Response: 200 OK
+
+{
+  "id": 12345,
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+        </pre>
+        
+        <h4>Observations:</h4>
+        <ul>
+            <li>The documentation lacks details on error responses (e.g., if the user is not found).</li>
+            <li>No information about required headers beyond `Authorization`.</li>
+            <li>No details on potential query parameters or rate limits.</li>
+        </ul>
+        
+        <h4>Tasks:</h4>
+        <ul>
+            <li>Identify at least 3–5 missing or unclear points.</li>
+            <li>Rewrite the API documentation with complete details.</li>
+            <li>Clearly state any assumptions you make.</li>
+        </ul>
+        <p><strong>Hint:</strong> Consider adding error codes, request validation rules, and example responses for failures.</p>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            var exercise = document.getElementById(exerciseId);
+            exercise.style.display = exercise.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
