@@ -47,180 +47,618 @@
     </style>
 </head>
 <body>
-    <!-- Buttons to toggle Exercise 4 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise4')">Exercise 4</button>
-    <button class="solution-button" onclick="toggleSolution('solution4', 'exercise4')">Solution to Exercise 4</button>
-
     <!-- Exercise 4 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise4">
-        <h3>Exercise 4: Documenting a Movie Database API</h3>
-        <p><strong>Scenario:</strong> You are assigned to document the **Movie Database API**, which allows users to search for movies by title, year, and genre.</p>
+    <div class="exercise-container" id="exercise4-container">
+        <div class="exercise-header">
+            <h3 id="exercise4-title">Exercise 4: Documenting API Error Handling</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise4-content', 'solution4-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution4-content', 'exercise4-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
         
-        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
-        <ul>
-            <li>Overview of the API.</li>
-            <li>Endpoints and HTTP methods.</li>
-            <li>Request parameters in a structured table.</li>
-            <li>An example API request (including cURL).</li>
-            <li>A sample response from the API.</li>
-            <li>Response parameters in a structured table.</li>
-            <li>Pagination details.</li>
-            <li>Possible error codes and troubleshooting guidance.</li>
+        <div class="exercise-content scrollable-content" id="exercise4-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You are documenting the error handling for a <strong>Payment Processing API</strong> that handles online transactions for an e-commerce platform.</p>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Your Task</h4>
+                <p>Create a comprehensive error handling documentation section that includes:</p>
+                <ul>
+                    <li>Common HTTP status codes used by the API and their meanings</li>
+                    <li>A detailed description of the error response format</li>
+                    <li>Examples of common error responses</li>
+                    <li>Guidance for developers on handling and troubleshooting errors</li>
+                    <li>Best practices for error management</li>
         </ul>
-
-        <h4>Provided API Code:</h4>
-        <p>Below is a sample API request and response:</p>
-
-        <h5>API Request:</h5>
-        <pre>
-        GET https://api.moviedb.com/search?title=Inception&year=2010&genre=Sci-Fi&page=1&apikey=your_api_key
-        </pre>
-
-        <h5>Sample Response:</h5>
-        <pre>
-        {
-            "page": 1,
-            "total_results": 1,
-            "total_pages": 1,
-            "movies": [
-                {
-                    "title": "Inception",
-                    "year": 2010,
-                    "genre": "Sci-Fi",
-                    "director": "Christopher Nolan",
-                    "actors": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"],
-                    "ratings": {
-                        "IMDB": 8.8,
-                        "Rotten Tomatoes": "87%"
-                    }
-                }
-            ]
-        }
-        </pre>
-
-        <p><strong>Bonus Challenge:</strong> Explain how API users should handle pagination.</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>API Error Information</h4>
+                <p>The Payment Processing API returns errors in the following format:</p>
+                
+                <pre><code class="language-json">{
+  "error": {
+    "code": "invalid_card",
+    "message": "The card number is not valid.",
+    "status": 400,
+    "details": {
+      "field": "card_number",
+      "reason": "failed_validation",
+      "help_url": "https://api.payments.com/docs/errors/invalid_card"
+    },
+    "request_id": "req_123456789"
+  }
+}</code></pre>
+                
+                <p>Some common error codes include:</p>
+                <ul>
+                    <li><code>invalid_card</code>: The card details are invalid</li>
+                    <li><code>insufficient_funds</code>: The card has insufficient funds</li>
+                    <li><code>payment_declined</code>: The payment was declined by the issuer</li>
+                    <li><code>expired_card</code>: The card has expired</li>
+                    <li><code>rate_limit_exceeded</code>: Too many requests made</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Create a section on idempotency keys and how they help prevent duplicate transactions in case of network errors.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution4-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>Payment Processing API: Error Handling</h4>
+                <p>This section explains how errors are represented in the Payment Processing API and provides guidance on handling them effectively.</p>
     </div>
 
-    <!-- Solution to Exercise 4 (Initially Hidden) -->
-    <div class="solution-content" id="solution4">
-        <h3>Solution to Exercise 4</h3>
-
-        <h4>1. Overview</h4>
-        <p>The **Movie Database API** allows developers to search for movies based on various filters such as title, year, and genre. It returns a paginated list of results with detailed movie information.</p>
-
-        <h4>2. Endpoints and Methods</h4>
-        <p><strong>GET /search</strong> – Retrieves a list of movies based on search parameters.</p>
-
-        <h4>3. Request Parameters</h4>
+            <div class="chapter-section">
+                <h4>1. HTTP Status Codes</h4>
+                <p>The API uses standard HTTP status codes to indicate the success or failure of a request:</p>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Status Code</th>
+                                <th>Description</th>
+                                <th>Common Scenarios</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>200 OK</strong></td>
+                                <td>The request was successful</td>
+                                <td>Payment was processed successfully</td>
+                            </tr>
+                            <tr>
+                                <td><strong>201 Created</strong></td>
+                                <td>A new resource was created</td>
+                                <td>New payment method was added</td>
+                            </tr>
+                            <tr>
+                                <td><strong>400 Bad Request</strong></td>
+                                <td>Invalid request parameters</td>
+                                <td>Invalid card details, missing required fields</td>
+                            </tr>
+                            <tr>
+                                <td><strong>401 Unauthorized</strong></td>
+                                <td>Authentication failed</td>
+                                <td>Invalid API key</td>
+                            </tr>
+                            <tr>
+                                <td><strong>402 Payment Required</strong></td>
+                                <td>Payment failed</td>
+                                <td>Card declined, insufficient funds</td>
+                            </tr>
+                            <tr>
+                                <td><strong>403 Forbidden</strong></td>
+                                <td>Permission denied</td>
+                                <td>Account lacks permission for the requested operation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>404 Not Found</strong></td>
+                                <td>Resource not found</td>
+                                <td>Payment ID or customer ID doesn't exist</td>
+                            </tr>
+                            <tr>
+                                <td><strong>422 Unprocessable Entity</strong></td>
+                                <td>Request is valid but cannot be processed</td>
+                                <td>Card verified but transaction blocked by fraud detection</td>
+                            </tr>
+                            <tr>
+                                <td><strong>429 Too Many Requests</strong></td>
+                                <td>Rate limit exceeded</td>
+                                <td>Too many API calls in a short period</td>
+                            </tr>
+                            <tr>
+                                <td><strong>500 Internal Server Error</strong></td>
+                                <td>Server-side error</td>
+                                <td>Unexpected system error</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>2. Error Response Format</h4>
+                <p>All API errors follow a consistent format to make error handling predictable:</p>
+                
+                <div class="comparison-table">
         <table>
+                        <thead>
             <tr>
-                <th>Parameter</th>
+                                <th>Field</th>
                 <th>Type</th>
-                <th>Required</th>
-                <th>Default</th>
                 <th>Description</th>
             </tr>
-            <tr>
-                <td>title</td>
-                <td>String</td>
-                <td>No</td>
-                <td>None</td>
-                <td>Filters movies by title.</td>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>error.code</code></td>
+                                <td>String</td>
+                                <td>A machine-readable identifier for the error</td>
             </tr>
             <tr>
-                <td>year</td>
+                                <td><code>error.message</code></td>
+                <td>String</td>
+                                <td>A human-readable description of the error</td>
+            </tr>
+            <tr>
+                                <td><code>error.status</code></td>
                 <td>Integer</td>
-                <td>No</td>
-                <td>None</td>
-                <td>Filters movies by release year.</td>
+                                <td>The HTTP status code</td>
+                            </tr>
+                            <tr>
+                                <td><code>error.details</code></td>
+                                <td>Object</td>
+                                <td>Additional information about the error (optional)</td>
+                            </tr>
+                            <tr>
+                                <td><code>error.details.field</code></td>
+                                <td>String</td>
+                                <td>The specific field that caused the error (if applicable)</td>
             </tr>
             <tr>
-                <td>genre</td>
+                                <td><code>error.details.reason</code></td>
                 <td>String</td>
-                <td>No</td>
-                <td>None</td>
-                <td>Filters movies by genre (e.g., "Action", "Comedy").</td>
+                                <td>Specific reason for the error</td>
             </tr>
             <tr>
-                <td>page</td>
-                <td>Integer</td>
-                <td>No</td>
-                <td>1</td>
-                <td>Specifies the results page number.</td>
+                                <td><code>error.details.help_url</code></td>
+                                <td>String</td>
+                                <td>URL to documentation about this error</td>
             </tr>
             <tr>
-                <td>apikey</td>
+                                <td><code>error.request_id</code></td>
                 <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>API key for authentication.</td>
+                                <td>A unique identifier for the request (useful for support)</td>
             </tr>
+                        </tbody>
         </table>
-
-        <h4>4. Sample cURL Request</h4>
-        <pre>
-        curl -X GET "https://api.moviedb.com/search?title=Inception&year=2010&genre=Sci-Fi&page=1&apikey=your_api_key" -H "Accept: application/json"
-        </pre>
-
-        <h4>5. Sample Response</h4>
-        <pre>
-        {
-            "page": 1,
-            "total_results": 1,
-            "total_pages": 1,
-            "movies": [
-                {
-                    "title": "Inception",
-                    "year": 2010,
-                    "genre": "Sci-Fi",
-                    "director": "Christopher Nolan",
-                    "actors": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"],
-                    "ratings": {
-                        "IMDB": 8.8,
-                        "Rotten Tomatoes": "87%"
-                    }
-                }
-            ]
-        }
-        </pre>
-
-        <h4>6. Pagination</h4>
-        <p>The API supports pagination. Use the `page` parameter to retrieve additional results.</p>
-
-        <h4>7. Error Codes</h4>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>3. Common Error Examples</h4>
+                
+                <div class="example-box">
+                    <h5>Invalid Card Number (400 Bad Request)</h5>
+                    <pre><code class="language-json">{
+  "error": {
+    "code": "invalid_card",
+    "message": "The card number is not valid.",
+    "status": 400,
+    "details": {
+      "field": "card_number",
+      "reason": "failed_validation",
+      "help_url": "https://api.payments.com/docs/errors/invalid_card"
+    },
+    "request_id": "req_123456789"
+  }
+}</code></pre>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Insufficient Funds (402 Payment Required)</h5>
+                    <pre><code class="language-json">{
+  "error": {
+    "code": "insufficient_funds",
+    "message": "The card has insufficient funds to complete this transaction.",
+    "status": 402,
+    "details": {
+      "reason": "card_declined",
+      "help_url": "https://api.payments.com/docs/errors/insufficient_funds"
+    },
+    "request_id": "req_987654321"
+  }
+}</code></pre>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Rate Limit Exceeded (429 Too Many Requests)</h5>
+                    <pre><code class="language-json">{
+  "error": {
+    "code": "rate_limit_exceeded",
+    "message": "Too many requests. Please try again after 30 seconds.",
+    "status": 429,
+    "details": {
+      "rate_limit": "100 requests per minute",
+      "reset_at": "2025-02-17T12:30:45Z",
+      "help_url": "https://api.payments.com/docs/errors/rate_limit"
+    },
+    "request_id": "req_456789123"
+  }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>4. Error Handling Best Practices</h4>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-check-circle"></i></div>
+                        <span>Best Practices</span>
+                    </div>
+                    <div class="info-box-content">
+                        <ul>
+                            <li><strong>Always check the status code</strong> before processing the response</li>
+                            <li><strong>Log the <code>request_id</code></strong> for troubleshooting purposes</li>
+                            <li><strong>Implement retry logic</strong> with exponential backoff for 429 and 5xx errors</li>
+                            <li><strong>Use the <code>error.code</code></strong> field for programmatic error handling</li>
+                            <li><strong>Display user-friendly messages</strong> based on <code>error.message</code></li>
+                            <li><strong>Check the <code>error.details.field</code></strong> to identify which input needs correction</li>
+                            <li><strong>Use idempotency keys</strong> for payment operations to prevent duplicates</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>5. Handling Card Declines</h4>
+                <p>Payment declines are common in payment processing. Here's how to handle them:</p>
+                
+                <div class="comparison-table">
         <table>
-            <tr>
-                <th>Status Code</th>
-                <th>Message</th>
-                <th>Description</th>
+                        <thead>
+                            <tr>
+                                <th>Error Code</th>
+                                <th>User-Friendly Message</th>
+                                <th>Suggested Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>invalid_card</code></td>
+                                <td>"The card information you entered is incorrect."</td>
+                                <td>Ask user to check and re-enter card details</td>
             </tr>
             <tr>
-                <td>401</td>
-                <td>Unauthorized</td>
-                <td>Invalid or missing API key.</td>
+                                <td><code>expired_card</code></td>
+                                <td>"Your card has expired."</td>
+                                <td>Ask user to use a different card</td>
             </tr>
             <tr>
-                <td>404</td>
-                <td>Not Found</td>
-                <td>No movies matched the search criteria.</td>
+                                <td><code>insufficient_funds</code></td>
+                                <td>"Your card has insufficient funds."</td>
+                                <td>Suggest using a different payment method</td>
             </tr>
             <tr>
-                <td>500</td>
-                <td>Internal Server Error</td>
-                <td>Unexpected server-side issue.</td>
+                                <td><code>payment_declined</code></td>
+                                <td>"Your card was declined by the issuer."</td>
+                                <td>Suggest contacting the card issuer or using a different card</td>
             </tr>
+                        </tbody>
         </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>6. Using Idempotency Keys</h4>
+                <p>Idempotency keys ensure that the same operation isn't performed twice, which is crucial for payment processing.</p>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <span>What are Idempotency Keys?</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>An idempotency key is a unique identifier you generate for a specific request. If a request fails (e.g., due to a network error), you can retry it with the same idempotency key and be assured that the operation will only be performed once.</p>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Example: Creating a Payment with an Idempotency Key</h5>
+                    <pre><code class="language-http">POST https://api.payments.com/v1/payments
+Content-Type: application/json
+Authorization: Bearer sk_test_123456789
+Idempotency-Key: a123b456c789d012
+
+{
+  "amount": 2000,
+  "currency": "usd",
+  "payment_method": "pm_card_visa",
+  "description": "Order #1234"
+}</code></pre>
+                </div>
+                
+                <p>If this request times out or fails due to a network error, you can safely retry it with the same Idempotency-Key, and the API will either:</p>
+                <ul>
+                    <li>Return the result of the previously successful operation, or</li>
+                    <li>Process the request if it hasn't been processed yet</li>
+                </ul>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <span>Important</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>Idempotency keys should be unique for each unique request. They typically expire after 24 hours. Use a UUID or a similar unique string generation method for your idempotency keys.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <style>
+        /* Exercise Container Styling */
+        .exercise-container {
+            margin: 30px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            max-width: 100%;
+            position: relative;
+            width: 100%;
+        }
+        
+        /* Exercise Header */
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #4568dc, #6a85e0);
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .exercise-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        /* Exercise Controls */
+        .exercise-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .exercise-toggle-btn, .solution-toggle-btn {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .exercise-toggle-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .solution-toggle-btn {
+            background-color: #ffd700;
+            color: #333;
+        }
+        
+        .exercise-toggle-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .solution-toggle-btn:hover {
+            background-color: #ffcc00;
+        }
+        
+        .exercise-toggle-icon, .solution-toggle-icon {
+            margin-right: 8px;
+        }
+        
+        /* Content Styling */
+        .exercise-content, .solution-content {
+            padding: 20px;
+            background-color: #fff;
+            max-height: 600px;
+            overflow-y: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Scrollable content */
+        .scrollable-content {
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-height: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .scrollable-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+        
+        /* Table Styling */
+        .comparison-table {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            table-layout: fixed;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+            word-wrap: break-word;
+        }
+        
+        .comparison-table th {
+            background-color: #f5f7ff;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f0f4ff;
+        }
+        
+        /* Code blocks */
+        pre {
+            background-color: #f5f7fa;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            max-width: 100%;
+            white-space: pre-wrap;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        /* Info box and example box responsive fixes */
+        .info-box, .example-box {
+            max-width: 100%;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        
+        /* Chapter section fixes */
+        .chapter-section {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* List styling to prevent overflow */
+        ul, ol {
+            padding-left: 20px;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+        
+        li {
+            word-wrap: break-word;
+        }
+    </style>
 
     <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution4").style.display = "none";
+        function toggleExercise(exerciseId, solutionId) {
+            var exerciseContent = document.getElementById(exerciseId);
+            var solutionContent = document.getElementById(solutionId);
+            var isVisible = exerciseContent.style.display !== 'none';
+            
+            // Always hide solution when toggling exercise
+            solutionContent.style.display = 'none';
+            
+            // Toggle exercise visibility
+            exerciseContent.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text
+            var button = document.querySelector('.exercise-toggle-text');
+            var icon = document.querySelector('.exercise-toggle-icon i');
+            
+            if (isVisible) {
+                button.textContent = 'Show Exercise';
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                button.textContent = 'Hide Exercise';
+                icon.className = 'fas fa-chevron-up';
+            }
+            
+            // Reset solution button text
+            document.querySelector('.solution-toggle-text').textContent = 'View Solution';
+            document.querySelector('.solution-toggle-icon i').className = 'fas fa-lightbulb';
         }
 
         function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
+            var solutionContent = document.getElementById(solutionId);
+            var exerciseContent = document.getElementById(exerciseId);
+            var isVisible = solutionContent.style.display !== 'none';
+            
+            // Always hide exercise when toggling solution
+            exerciseContent.style.display = 'none';
+            
+            // Toggle solution visibility
+            solutionContent.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text
+            var button = document.querySelector('.solution-toggle-text');
+            var icon = document.querySelector('.solution-toggle-icon i');
+            
+            if (isVisible) {
+                button.textContent = 'View Solution';
+                icon.className = 'fas fa-lightbulb';
+            } else {
+                button.textContent = 'Hide Solution';
+                icon.className = 'fas fa-times';
+            }
+            
+            // Reset exercise button text
+            document.querySelector('.exercise-toggle-text').textContent = 'Show Exercise';
+            document.querySelector('.exercise-toggle-icon i').className = 'fas fa-chevron-down';
         }
     </script>
 

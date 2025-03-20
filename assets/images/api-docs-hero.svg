@@ -1,0 +1,37 @@
+<svg width="500" height="400" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background elements -->
+  <rect width="500" height="400" fill="#F8FAFC" />
+  <circle cx="400" cy="100" r="50" fill="#EEF2FF" />
+  <circle cx="100" cy="350" r="70" fill="#EEF2FF" />
+  
+  <!-- Document icon -->
+  <rect x="180" y="80" width="140" height="180" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="3" />
+  <rect x="195" y="110" width="110" height="10" rx="2" fill="#D1D5DB" />
+  <rect x="195" y="130" width="80" height="10" rx="2" fill="#D1D5DB" />
+  <rect x="195" y="150" width="110" height="10" rx="2" fill="#D1D5DB" />
+  <rect x="195" y="170" width="60" height="10" rx="2" fill="#D1D5DB" />
+  <rect x="195" y="190" width="90" height="10" rx="2" fill="#D1D5DB" />
+  <rect x="195" y="210" width="110" height="10" rx="2" fill="#D1D5DB" />
+  <rect x="195" y="230" width="70" height="10" rx="2" fill="#D1D5DB" />
+  
+  <!-- API endpoints -->
+  <rect x="130" y="280" width="240" height="50" rx="8" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="3" />
+  <text x="155" y="310" font-family="monospace" font-size="14" fill="#374151">GET /api/v1/docs</text>
+  <rect x="130" y="340" width="240" height="50" rx="8" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="3" />
+  <text x="155" y="370" font-family="monospace" font-size="14" fill="#374151">POST /api/v1/resources</text>
+  
+  <!-- Decorative code brackets -->
+  <text x="90" y="140" font-family="monospace" font-size="40" fill="#2563EB">{ }</text>
+  <text x="380" y="140" font-family="monospace" font-size="40" fill="#8B5CF6">{ }</text>
+  <text x="80" y="220" font-family="monospace" font-size="30" fill="#9CA3AF">&lt; &gt;</text>
+  <text x="390" y="220" font-family="monospace" font-size="30" fill="#9CA3AF">&lt; &gt;</text>
+  
+  <!-- Connecting lines -->
+  <line x1="150" y1="170" x2="180" y2="170" stroke="#2563EB" stroke-width="2" stroke-dasharray="4" />
+  <line x1="320" y1="170" x2="350" y2="170" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="4" />
+  
+  <!-- Small decorative elements -->
+  <circle cx="90" cy="100" r="10" fill="#10B981" />
+  <circle cx="410" cy="200" r="10" fill="#F59E0B" />
+  <circle cx="250" cy="60" r="8" fill="#EF4444" />
+</svg>

@@ -1,6 +1,6 @@
 plugins:
   - jekyll-feed
-  - jekyll-seo
+  - jekyll-seo-tag
   - jemoji
 
 destination: _site
@@ -13,41 +13,13 @@ kramdown:
 
 site_title: API Documentation - A step by step guide for technical writers
 
-exclude:
-  - .gitignore
-  - vendor
-
-# Collections
-collections:
-  docs:
-    output: true
-  slides:
-    output: true
-  smartphones: 
-    output: true
-
-defaults:
-  -
-    scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "page"
-      comments: true
-      search: true
-      sidebar: home_sidebar
-      topnav: topnav
-      
-sidebars:
-- sidebar
-
-
 ####### jekyll seo tag configuration #######
 title: API Documentation
 tagline: A step by step guide for technical writers
 description: A course for technical writers looking to learn each and every aspect of API documentation.
 
-url: https://beingtechnicalwriter.com/apidocumentation
+url: https://beingtechnicalwriter.com
+baseurl: /apidocumentation
 social:
   name: Gaurav Trivedi
   links:
@@ -55,4 +27,3 @@ social:
     - https://github.com/gautriv/
 
 lang: en_US
-

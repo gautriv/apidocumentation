@@ -1,213 +1,629 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Styling for buttons */
-        .exercise-button, .solution-button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px;
-            margin: 10px;
-            display: inline-block;
-        }
-
-        /* Hidden content by default */
-        .exercise-content, .solution-content {
-            display: none;
-            padding: 15px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            margin: 10px;
-        }
-
-        /* Table styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f0f0f0;
-        }
-    </style>
-</head>
+{% include exe_head.html %}
 <body>
-    <!-- Buttons to toggle Exercise 1 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise1')">Exercise 1</button>
-    <button class="solution-button" onclick="toggleSolution('solution1', 'exercise1')">Solution to Exercise 1</button>
+    <div class="exercise-container" id="exercise1-container">
+        <div class="exercise-header">
+            <h3 id="exercise1-title">Exercise 1: Documenting Payment Processing API</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise1-content', 'solution1-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution1-content', 'exercise1-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
 
-    <!-- Exercise 1 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise1">
-        <h3>Exercise 1: Documenting a Payment Gateway API</h3>
-        <p><strong>Scenario:</strong> You are assigned to document the **Payment Gateway API**, which enables secure online payments.</p>
-        
-        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
-        <ul>
-            <li>Overview of the API.</li>
-            <li>Endpoints and HTTP methods.</li>
-            <li>Authentication mechanism (OAuth, API keys).</li>
-            <li>Request parameters in a structured table.</li>
-            <li>An example API request (including cURL).</li>
-            <li>A sample response from the API.</li>
-            <li>Response parameters in a structured table.</li>
-            <li>Handling failed transactions.</li>
-            <li>Rate limits and API security best practices.</li>
-        </ul>
+        <div class="exercise-content scrollable-content" id="exercise1-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You're documenting a Payment Processing API for a financial technology company. The API allows merchants to process payments, manage refunds, and retrieve transaction reports.</p>
+                </div>
+            </div>
 
-        <h4>Provided API Code (Some details missing – you must fill them in):</h4>
-        <p>Below is a sample API request and response:</p>
+            <div class="chapter-section">
+                <h4>Your Task:</h4>
+                <p>Create comprehensive API documentation that covers:</p>
+                <ul>
+                    <li>Authentication methods (API key and OAuth 2.0)</li>
+                    <li>Multiple endpoints for payment processing, refunds, and reporting</li>
+                    <li>Request parameters including required fields and validation rules</li>
+                    <li>Response formats with successful and error scenarios</li>
+                    <li>Security considerations and best practices</li>
+                </ul>
+            </div>
 
-        <h5>API Request:</h5>
-        <pre>
-        POST https://api.paymentgateway.com/transactions
-        Headers:
-        Authorization: Bearer {access_token}
-        Content-Type: application/json
+            <div class="example-box">
+                <h4>API Information:</h4>
+                <p>The Payment Processing API includes the following endpoints:</p>
+                <ul>
+                    <li><code>/v1/payments</code> - Process a new payment</li>
+                    <li><code>/v1/payments/:id</code> - Retrieve payment details</li>
+                    <li><code>/v1/refunds</code> - Process a refund</li>
+                    <li><code>/v1/reports/transactions</code> - Generate transaction reports</li>
+                </ul>
 
-        Body:
-        {
-            "amount": 100.50,
-            "currency": "USD",
-            "payment_method": "credit_card",
-            "card_number": "**** **** **** 4242",
-            "expiry_date": "12/26",
-            "cvv": "***",
-            "merchant_id": "abc123"
-        }
-        </pre>
+                <p>Authentication requires either:</p>
+                <ul>
+                    <li>API Key (passed in header as <code>X-API-Key</code>)</li>
+                    <li>OAuth 2.0 (Bearer token)</li>
+                </ul>
 
-        <h5>Sample Response:</h5>
-        <pre>
-        {
-            "transaction_id": "txn_789456",
-            "status": "Success",
-            "amount": 100.50,
-            "currency": "USD",
-            "payment_method": "credit_card",
-            "timestamp": "2025-02-17T10:00:00Z"
-        }
-        </pre>
+                <p>All responses are in JSON format and include appropriate HTTP status codes.</p>
+            </div>
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Include documentation for webhook integration that notifies merchants of payment status changes.</p>
+                </div>
+            </div>
+        </div>
 
-        <p><strong>Bonus Challenge:</strong> Document how a merchant should handle failed payments.</p>
+        <div class="solution-content scrollable-content" id="solution1-content" style="display: none;">
+            <h4>Payment Processing API Documentation</h4>
+            <div class="chapter-section">
+                <h4>1. Overview</h4>
+                <p>The Payment Processing API enables merchants to securely process payments, manage refunds, and generate transaction reports. This RESTful API uses standard HTTP methods and returns responses in JSON format.</p>
+            </div>
+            <div class="chapter-section">
+                <h5>Base URL</h5>
+                <p><code>https://api.paymentprocessor.com</code></p>
+            </div>
+
+            <div class="chapter-section">
+                <h5>Authentication</h5>
+                <p>The API supports two authentication methods:</p>
+
+                <h6>API Key Authentication</h6>
+                <p>Include your API key in all requests using the <code>X-API-Key</code> header:</p>
+                <div class="code-example">
+                    <pre><code>X-API-Key: your_api_key_here</code></pre>
+                </div>
+
+                <h6>OAuth 2.0 Authentication</h6>
+                <p>For enhanced security, use OAuth 2.0 with Bearer token:</p>
+                <ol>
+                    <li>Obtain a token by sending client credentials to <code>/v1/oauth/token</code></li>
+                    <li>Include the token in the Authorization header of subsequent requests:</li>
+                </ol>
+                <div class="code-example">
+                    <pre><code>Authorization: Bearer your_access_token</code></pre>
+                </div>
+                <p>Tokens expire after 24 hours and must be refreshed.</p>
+            </div>
+
+            <div class="chapter-section">
+                <h5>Process Payment</h5>
+                <p>Creates a new payment transaction.</p>
+                
+                <div class="endpoint-details">
+                    <p><strong>Endpoint:</strong> <code>POST /v1/payments</code></p>
+                    
+                    <h6>Request Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>amount</td>
+                                    <td>decimal</td>
+                                    <td>Yes</td>
+                                    <td>Transaction amount (min: 0.01)</td>
+                                </tr>
+                                <tr>
+                                    <td>currency</td>
+                                    <td>string</td>
+                                    <td>Yes</td>
+                                    <td>3-letter ISO currency code (e.g., USD, EUR)</td>
+                                </tr>
+                                <tr>
+                                    <td>payment_method</td>
+                                    <td>object</td>
+                                    <td>Yes</td>
+                                    <td>Payment method details object</td>
+                                </tr>
+                                <tr>
+                                    <td>description</td>
+                                    <td>string</td>
+                                    <td>No</td>
+                                    <td>Description of the payment (max 255 chars)</td>
+                                </tr>
+                                <tr>
+                                    <td>metadata</td>
+                                    <td>object</td>
+                                    <td>No</td>
+                                    <td>Additional information as key-value pairs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Payment Method Object</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>type</td>
+                                    <td>string</td>
+                                    <td>Yes</td>
+                                    <td>Payment method type ("card", "bank_transfer", etc.)</td>
+                                </tr>
+                                <tr>
+                                    <td>card</td>
+                                    <td>object</td>
+                                    <td>Conditional</td>
+                                    <td>Required if type is "card"</td>
+                                </tr>
+                                <tr>
+                                    <td>bank_account</td>
+                                    <td>object</td>
+                                    <td>Conditional</td>
+                                    <td>Required if type is "bank_transfer"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Example Request</h6>
+                    <div class="code-example">
+                        <pre><code>POST /v1/payments HTTP/1.1
+Host: api.paymentprocessor.com
+Content-Type: application/json
+X-API-Key: your_api_key_here
+
+{
+  "amount": 100.50,
+  "currency": "USD",
+  "payment_method": {
+    "type": "card",
+    "card": {
+      "number": "4111111111111111",
+      "expiry_month": 12,
+      "expiry_year": 2025,
+      "cvc": "123"
+    }
+  },
+  "description": "Order #12345",
+  "metadata": {
+    "customer_id": "cust_12345",
+    "order_id": "ord_6789"
+  }
+}</code></pre>
+                    </div>
+
+                    <h6>Example Response (Success)</h6>
+                    <div class="code-example">
+                        <pre><code>HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "id": "pay_123456789",
+  "object": "payment",
+  "status": "succeeded",
+  "amount": 100.50,
+  "currency": "USD",
+  "description": "Order #12345",
+  "payment_method": {
+    "type": "card",
+    "last4": "1111",
+    "brand": "Visa",
+    "exp_month": 12,
+    "exp_year": 2025
+  },
+  "created": "2023-06-15T14:23:45Z",
+  "metadata": {
+    "customer_id": "cust_12345",
+    "order_id": "ord_6789"
+  }
+}</code></pre>
+                    </div>
+
+                    <h6>Error Responses</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Status Code</th>
+                                    <th>Error Code</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>400</td>
+                                    <td>invalid_request</td>
+                                    <td>Missing required fields or invalid format</td>
+                                </tr>
+                                <tr>
+                                    <td>401</td>
+                                    <td>authentication_failed</td>
+                                    <td>Invalid or missing API key</td>
+                                </tr>
+                                <tr>
+                                    <td>402</td>
+                                    <td>payment_failed</td>
+                                    <td>Payment could not be processed</td>
+                                </tr>
+                                <tr>
+                                    <td>422</td>
+                                    <td>card_declined</td>
+                                    <td>The card was declined</td>
+                                </tr>
+                                <tr>
+                                    <td>429</td>
+                                    <td>rate_limit_exceeded</td>
+                                    <td>Too many requests in a short period</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>Retrieve Payment</h5>
+                <p>Gets details for a specific payment.</p>
+                
+                <div class="endpoint-details">
+                    <p><strong>Endpoint:</strong> <code>GET /v1/payments/:id</code></p>
+                    
+                    <h6>Path Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>string</td>
+                                    <td>Yes</td>
+                                    <td>Unique payment identifier</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Example Request</h6>
+                    <div class="code-example">
+                        <pre><code>GET /v1/payments/pay_123456789 HTTP/1.1
+Host: api.paymentprocessor.com
+X-API-Key: your_api_key_here</code></pre>
+                    </div>
+
+                    <h6>Example Response</h6>
+                    <div class="code-example">
+                        <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": "pay_123456789",
+  "object": "payment",
+  "status": "succeeded",
+  "amount": 100.50,
+  "currency": "USD",
+  "description": "Order #12345",
+  "payment_method": {
+    "type": "card",
+    "last4": "1111",
+    "brand": "Visa",
+    "exp_month": 12,
+    "exp_year": 2025
+  },
+  "created": "2023-06-15T14:23:45Z",
+  "metadata": {
+    "customer_id": "cust_12345",
+    "order_id": "ord_6789"
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>Process Refund</h5>
+                <p>Initiates a refund for a completed payment.</p>
+                
+                <div class="endpoint-details">
+                    <p><strong>Endpoint:</strong> <code>POST /v1/refunds</code></p>
+                    
+                    <h6>Request Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>payment_id</td>
+                                    <td>string</td>
+                                    <td>Yes</td>
+                                    <td>ID of the payment to refund</td>
+                                </tr>
+                                <tr>
+                                    <td>amount</td>
+                                    <td>decimal</td>
+                                    <td>No</td>
+                                    <td>Amount to refund (defaults to full amount)</td>
+                                </tr>
+                                <tr>
+                                    <td>reason</td>
+                                    <td>string</td>
+                                    <td>No</td>
+                                    <td>Reason for the refund</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Example Request</h6>
+                    <div class="code-example">
+                        <pre><code>POST /v1/refunds HTTP/1.1
+Host: api.paymentprocessor.com
+Content-Type: application/json
+X-API-Key: your_api_key_here
+
+{
+  "payment_id": "pay_123456789",
+  "amount": 50.25,
+  "reason": "Customer request"
+}</code></pre>
+                    </div>
+
+                    <h6>Example Response</h6>
+                    <div class="code-example">
+                        <pre><code>HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "id": "ref_987654321",
+  "object": "refund",
+  "status": "succeeded",
+  "amount": 50.25,
+  "currency": "USD",
+  "payment_id": "pay_123456789",
+  "reason": "Customer request",
+  "created": "2023-06-16T10:15:30Z"
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>Generate Transaction Report</h5>
+                <p>Retrieves a transaction report for a specified time period.</p>
+                
+                <div class="endpoint-details">
+                    <p><strong>Endpoint:</strong> <code>GET /v1/reports/transactions</code></p>
+                    
+                    <h6>Query Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>start_date</td>
+                                    <td>string</td>
+                                    <td>Yes</td>
+                                    <td>Start date in ISO 8601 format (YYYY-MM-DD)</td>
+                                </tr>
+                                <tr>
+                                    <td>end_date</td>
+                                    <td>string</td>
+                                    <td>Yes</td>
+                                    <td>End date in ISO 8601 format (YYYY-MM-DD)</td>
+                                </tr>
+                                <tr>
+                                    <td>type</td>
+                                    <td>string</td>
+                                    <td>No</td>
+                                    <td>Transaction type: "payment", "refund", or "all" (default)</td>
+                                </tr>
+                                <tr>
+                                    <td>limit</td>
+                                    <td>integer</td>
+                                    <td>No</td>
+                                    <td>Number of records to return (default: 50, max: 500)</td>
+                                </tr>
+                                <tr>
+                                    <td>offset</td>
+                                    <td>integer</td>
+                                    <td>No</td>
+                                    <td>Number of records to skip (for pagination)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Example Request</h6>
+                    <div class="code-example">
+                        <pre><code>GET /v1/reports/transactions?start_date=2023-06-01&end_date=2023-06-15&type=payment&limit=10 HTTP/1.1
+Host: api.paymentprocessor.com
+X-API-Key: your_api_key_here</code></pre>
+                    </div>
+
+                    <h6>Example Response</h6>
+                    <div class="code-example">
+                        <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "object": "list",
+  "url": "/v1/reports/transactions",
+  "has_more": true,
+  "data": [
+    {
+      "id": "pay_123456789",
+      "object": "payment",
+      "status": "succeeded",
+      "amount": 100.50,
+      "currency": "USD",
+      "created": "2023-06-15T14:23:45Z"
+    },
+    {
+      "id": "pay_123456788",
+      "object": "payment",
+      "status": "succeeded",
+      "amount": 75.25,
+      "currency": "USD",
+      "created": "2023-06-14T11:17:23Z"
+    }
+  ],
+  "total_count": 143,
+  "summary": {
+    "total_amount": 1543.75,
+    "currency": "USD",
+    "count": 143
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>Webhooks Integration</h5>
+                <p>Webhooks allow you to receive real-time updates about payment events.</p>
+                
+                <h6>Setup Webhook Endpoint</h6>
+                <p>Configure your webhook URL in the merchant dashboard or via API:</p>
+                <div class="code-example">
+                    <pre><code>POST /v1/webhook_endpoints HTTP/1.1
+Host: api.paymentprocessor.com
+Content-Type: application/json
+X-API-Key: your_api_key_here
+
+{
+  "url": "https://your-server.com/webhook",
+  "enabled_events": ["payment.succeeded", "payment.failed", "refund.succeeded"]
+}</code></pre>
+                </div>
+
+                <h6>Webhook Event Types</h6>
+                <div class="table-container">
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Event Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>payment.succeeded</td>
+                                <td>Payment was successful</td>
+                            </tr>
+                            <tr>
+                                <td>payment.failed</td>
+                                <td>Payment attempt failed</td>
+                            </tr>
+                            <tr>
+                                <td>payment.pending</td>
+                                <td>Payment is pending processing</td>
+                            </tr>
+                            <tr>
+                                <td>refund.succeeded</td>
+                                <td>Refund was processed successfully</td>
+                            </tr>
+                            <tr>
+                                <td>refund.failed</td>
+                                <td>Refund attempt failed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h6>Example Webhook Payload</h6>
+                <div class="code-example">
+                    <pre><code>{
+  "id": "evt_123456789",
+  "created": "2023-06-15T14:23:47Z",
+  "type": "payment.succeeded",
+  "data": {
+    "object": {
+      "id": "pay_123456789",
+      "object": "payment",
+      "status": "succeeded",
+      "amount": 100.50,
+      "currency": "USD",
+      "description": "Order #12345",
+      "created": "2023-06-15T14:23:45Z"
+    }
+  }
+}</code></pre>
+                </div>
+
+                <h6>Securing Webhooks</h6>
+                <p>Verify webhook authenticity by checking the <code>X-Signature</code> header:</p>
+                <ol>
+                    <li>Retrieve the signature from the <code>X-Signature</code> header</li>
+                    <li>Calculate HMAC with SHA-256 using your webhook secret and the request body</li>
+                    <li>Compare your signature with the received signature</li>
+                </ol>
+            </div>
+
+            <div class="chapter-section">
+                <h5>Rate Limits and Authentication</h5>
+                <p>The API enforces rate limits to ensure system stability:</p>
+                <ul>
+                    <li>Authentication requests: 10 requests per minute</li>
+                    <li>Payment operations: 100 requests per minute</li>
+                    <li>Get operations: 1000 requests per minute</li>
+                </ul>
+
+                <p>Rate limit headers are included in all responses:</p>
+                <ul>
+                    <li><code>X-RateLimit-Limit</code>: Request limit per minute</li>
+                    <li><code>X-RateLimit-Remaining</code>: Remaining requests for the current minute</li>
+                    <li><code>X-RateLimit-Reset</code>: Timestamp when the rate limit resets</li>
+                </ul>
+
+                <p>Exceeding rate limits will result in a <code>429 Too Many Requests</code> response with a <code>Retry-After</code> header.</p>
+            </div>
+        </div>
     </div>
 
-    <!-- Solution to Exercise 1 (Initially Hidden) -->
-    <div class="solution-content" id="solution1">
-        <h3>Solution to Exercise 1</h3>
-
-        <h4>1. Overview</h4>
-        <p>The **Payment Gateway API** allows merchants to process secure online transactions using various payment methods such as credit cards and digital wallets.</p>
-
-        <h4>2. Authentication</h4>
-        <p>The API uses OAuth 2.0 authentication. To make a request, obtain an access token and include it in the `Authorization` header.</p>
-
-        <h4>3. Endpoints and Methods</h4>
-        <p><strong>POST /transactions</strong> – Initiates a new payment transaction.</p>
-
-        <h4>4. Request Parameters</h4>
-        <table>
-            <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Required</th>
-                <th>Default</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>amount</td>
-                <td>Float</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>The transaction amount.</td>
-            </tr>
-            <tr>
-                <td>currency</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>USD</td>
-                <td>Currency for the transaction.</td>
-            </tr>
-            <tr>
-                <td>payment_method</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>Payment method (e.g., "credit_card").</td>
-            </tr>
-            <tr>
-                <td>merchant_id</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>Unique merchant identifier.</td>
-            </tr>
-        </table>
-
-        <h4>5. Sample cURL Request</h4>
-        <pre>
-        curl -X POST "https://api.paymentgateway.com/transactions" 
-        -H "Authorization: Bearer {access_token}" 
-        -H "Content-Type: application/json" 
-        -d '{
-            "amount": 100.50,
-            "currency": "USD",
-            "payment_method": "credit_card",
-            "merchant_id": "abc123"
-        }'
-        </pre>
-
-        <h4>6. Error Handling</h4>
-        <p>Common errors include:</p>
-        <table>
-            <tr>
-                <th>Status Code</th>
-                <th>Message</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>400</td>
-                <td>Bad Request</td>
-                <td>Missing or invalid parameters.</td>
-            </tr>
-            <tr>
-                <td>401</td>
-                <td>Unauthorized</td>
-                <td>Invalid API token.</td>
-            </tr>
-            <tr>
-                <td>402</td>
-                <td>Payment Required</td>
-                <td>Payment declined by bank.</td>
-            </tr>
-        </table>
-    </div>
-
-    <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution1").style.display = "none";
-        }
-
-        function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
-        }
-    </script>
+   
+    {% include exe_script.html %}
 
 </body>
 </html>

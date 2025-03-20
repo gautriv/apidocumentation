@@ -47,110 +47,586 @@
     </style>
 </head>
 <body>
-    <!-- Buttons to toggle Exercise 5 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise5')">Exercise 5</button>
-    <button class="solution-button" onclick="toggleSolution('solution5', 'exercise5')">Solution to Exercise 5</button>
+    <div class="exercise-container" id="exercise5-container">
+        <div class="exercise-header">
+            <h3 id="exercise5-title">Exercise 5: Documenting Webhook Testing and Troubleshooting</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise5-content', 'solution5-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution5-content', 'exercise5-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="exercise-content scrollable-content" id="exercise5-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You are creating <strong>testing and troubleshooting documentation</strong> for a collaboration platform's webhook system that sends notifications when documents are created, edited, or shared.</p>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Your Task</h4>
+                <p>Write comprehensive testing and troubleshooting documentation for webhook integrators, including:</p>
+                <ul>
+                    <li>How to use the webhook testing tools in the developer dashboard</li>
+                    <li>Local webhook testing methods (using tunneling services like ngrok)</li>
+                    <li>Troubleshooting common webhook failures</li>
+                    <li>Debugging webhook delivery issues</li>
+                    <li>Reading and interpreting webhook logs</li>
+                    <li>Best practices for webhook testing in development and production</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <h4>Available Testing Tools</h4>
+                <p>The platform provides the following testing features:</p>
+                <ul>
+                    <li>A testing interface in the developer dashboard to send sample webhook events</li>
+                    <li>Detailed webhook delivery logs with request/response data</li>
+                    <li>A webhook simulator API endpoint</li>
+                    <li>Debug headers included in webhook payloads for tracing</li>
+                </ul>
 
-    <!-- Exercise 5 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise5">
-        <h3>Exercise 5: Setting Up a Webhook for a Collaboration Platform (UI-based Registration)</h3>
-        <p><strong>Scenario:</strong> You are documenting how users can **set up a webhook in Slack** to receive real-time notifications when messages are posted in a specific channel.</p>
+                <h5>Example Test Webhook API Request</h5>
+                <pre><code>POST /api/v1/webhooks/test
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
 
-        <p><strong>Key Difference:</strong> Unlike API-based registration, webhooks must be manually **configured in the Slack Webhooks dashboard.**</p>
+{
+    "url": "https://your-endpoint.example.com/webhook",
+    "event_type": "document.updated",
+    "custom_payload": {
+        "document_id": "doc_123",
+        "title": "Test Document"
+    }
+}</code></pre>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Create a troubleshooting decision tree to help developers diagnose webhook problems systematically.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution5-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>Webhook Testing and Troubleshooting Guide</h4>
+                <p>This guide helps you verify that your webhook integration is working correctly and troubleshoot any issues that arise. Proper testing will ensure your application reliably receives and processes webhook events from our collaboration platform.</p>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>1. Testing Webhooks in the Developer Dashboard</h4>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-toolbox"></i></div>
+                        <span>Dashboard Testing Tools</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>Our developer dashboard provides several tools to test your webhook integration:</p>
+                        <ol>
+                            <li><strong>Webhook Tester:</strong> Send sample events to your endpoint</li>
+                            <li><strong>Event Logs:</strong> View detailed delivery history</li>
+                            <li><strong>Request Inspector:</strong> Examine specific webhook requests and responses</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Using the Webhook Tester:</h5>
+                    <ol>
+                        <li>Navigate to <strong>Dashboard → Developer → Webhooks → Test</strong></li>
+                        <li>Enter your webhook URL</li>
+                        <li>Select an event type to simulate (e.g., <code>document.updated</code>)</li>
+                        <li>Optionally customize the payload</li>
+                        <li>Click <strong>Send Test Event</strong></li>
+                        <li>View the response from your server in real-time</li>
+                    </ol>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-lightbulb"></i></div>
+                        <span>Pro Tip</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>Use the <strong>Save as Template</strong> feature to save custom webhook payloads for repeated testing. This is particularly useful for testing edge cases or specific payload configurations.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>2. Local Development Testing with Tunneling</h4>
+                
+                <p>During development, you'll need to test webhooks on your local machine. Since webhooks require a publicly accessible URL, you can use tunneling services:</p>
+                
+                <div class="example-box">
+                    <h5>Setting Up Local Testing with ngrok:</h5>
+                    <pre><code class="language-bash"># 1. Install ngrok
+npm install -g ngrok  # or download from ngrok.com
 
-        <p><strong>Your Task:</strong> Document the following:</p>
-        <ul>
-            <li>How users register the webhook in the Slack UI.</li>
-            <li>Webhook event triggers.</li>
-            <li>Webhook request format.</li>
-            <li>Expected response from the client.</li>
-            <li>Best practices for handling webhook security.</li>
-        </ul>
+# 2. Start your local web server (example using Node.js)
+node server.js  # Assumes your server runs on port 3000
 
-        <h4>Webhook Registration (UI-Based)</h4>
-        <p>Users must configure their webhook URL in **Slack’s Webhooks UI**:</p>
-        <ol>
-            <li>Log in to the **Slack App Directory**.</li>
-            <li>Navigate to **Manage Apps > Incoming Webhooks**.</li>
-            <li>Click **Add New Webhook to Workspace**.</li>
-            <li>Select the channel where notifications should be sent.</li>
-            <li>Copy the generated **Webhook URL** (e.g., <code>https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX</code>).</li>
-            <li>Save your settings to activate the webhook.</li>
-        </ol>
+# 3. Start ngrok to create a tunnel to your local server
+ngrok http 3000
 
-        <h4>Example Webhook Payload</h4>
-        <pre>
-        {
-            "text": "A new message was posted in #general",
-            "channel": "#general",
-            "username": "BotUser",
-            "timestamp": "2024-03-15T12:00:00Z"
+# 4. Use the ngrok URL for your webhook configuration
+# Example: https://a1b2c3d4.ngrok.io/webhook</code></pre>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                        <span>Security Note</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>Public tunnels like ngrok expose your local server to the internet. For security:</p>
+                        <ul>
+                            <li>Never use tunneling with production data</li>
+                            <li>Implement proper authentication for your webhook endpoint</li>
+                            <li>Consider using ngrok's authentication features</li>
+                            <li>Use test events rather than real customer data for testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>3. Programmatic Webhook Testing</h4>
+                
+                <p>You can programmatically test webhooks using our API:</p>
+                
+                <div class="example-box">
+                    <h5>Test Webhook API (cURL):</h5>
+                    <pre><code class="language-bash">curl -X POST "https://api.ourplatform.com/v1/webhooks/test" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://your-endpoint.example.com/webhook",
+    "event_type": "document.updated",
+    "custom_payload": {
+      "document_id": "doc_123",
+      "title": "Test Document",
+      "user_id": "usr_456",
+      "timestamp": "2023-08-25T14:15:22Z"
+    }
+  }'</code></pre>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Test Webhook API (JavaScript):</h5>
+                    <pre><code class="language-javascript">const axios = require('axios');
+
+async function testWebhook() {
+  try {
+    const response = await axios.post(
+      'https://api.ourplatform.com/v1/webhooks/test',
+      {
+        url: 'https://your-endpoint.example.com/webhook',
+        event_type: 'document.updated',
+        custom_payload: {
+          document_id: 'doc_123',
+          title: 'Test Document',
+          user_id: 'usr_456',
+          timestamp: '2023-08-25T14:15:22Z'
         }
-        </pre>
-    </div>
-
-    <!-- Solution to Exercise 5 (Initially Hidden) -->
-    <div class="solution-content" id="solution5">
-        <h3>Solution to Exercise 5</h3>
-
-        <h4>1. Overview</h4>
-        <p>The **Slack Webhook** allows external applications to send real-time notifications to a Slack channel when an event occurs.</p>
-
-        <h4>2. Webhook Registration (UI-Based)</h4>
-        <p>Users must manually set up the webhook through the **Slack Webhooks dashboard** instead of using an API request.</p>
-
-        <h4>3. Webhook Events</h4>
-        <table>
-            <tr>
-                <th>Event Name</th>
-                <th>Trigger Condition</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>message.posted</td>
-                <td>When a message is posted</td>
-                <td>Triggers when a user sends a new message in the specified Slack channel.</td>
-            </tr>
-        </table>
-
-        <h4>4. Expected Response from Client</h4>
-        <p>The client must return a **200 OK** status to confirm successful webhook processing.</p>
-
-        <h4>5. Webhook Security Considerations</h4>
-        <ul>
-            <li>**Use HTTPS** to prevent data interception.</li>
-            <li>**Verify requests** by checking Slack’s **X-Slack-Signature** header.</li>
-            <li>**Restrict webhook access** to trusted applications only.</li>
-        </ul>
-
-        <h4>6. Webhook Testing</h4>
-        <p>Users can trigger test events in the **Slack Webhooks UI**:</p>
-        <ol>
-            <li>Go to **Manage Apps > Incoming Webhooks**.</li>
-            <li>Click **Test Webhook**.</li>
-            <li>Check if the message appears in the Slack channel.</li>
-        </ol>
-
-        <h4>7. Sample Webhook Response</h4>
-        <pre>
-        {
-            "status": "success",
-            "message": "Webhook received and posted to Slack."
+      },
+      {
+        headers: {
+          'Authorization': 'Bearer YOUR_API_KEY',
+          'Content-Type': 'application/json'
         }
-        </pre>
+      }
+    );
+    
+    console.log('Test webhook response:', response.data);
+  } catch (error) {
+    console.error('Error testing webhook:', error.response?.data || error.message);
+  }
+}
+
+testWebhook();</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>4. Reading Webhook Logs</h4>
+                
+                <p>Webhook logs provide detailed information about delivery attempts and responses:</p>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Log Field</th>
+                                <th>Description</th>
+                                <th>Troubleshooting Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>request_id</code></td>
+                                <td>Unique identifier for the webhook request</td>
+                                <td>Track a specific webhook through the system</td>
+                            </tr>
+                            <tr>
+                                <td><code>event_type</code></td>
+                                <td>Type of event that triggered the webhook</td>
+                                <td>Verify correct event types are being sent</td>
+                            </tr>
+                            <tr>
+                                <td><code>status</code></td>
+                                <td>Current status (success, failed, pending)</td>
+                                <td>Quickly identify problematic webhooks</td>
+                            </tr>
+                            <tr>
+                                <td><code>attempts</code></td>
+                                <td>Number of delivery attempts made</td>
+                                <td>Identify persistent delivery problems</td>
+                            </tr>
+                            <tr>
+                                <td><code>response_code</code></td>
+                                <td>HTTP status code returned by your server</td>
+                                <td>Verify proper acknowledgment</td>
+                            </tr>
+                            <tr>
+                                <td><code>response_body</code></td>
+                                <td>Response content from your server</td>
+                                <td>Inspect error messages from your endpoint</td>
+                            </tr>
+                            <tr>
+                                <td><code>request_duration</code></td>
+                                <td>Time taken to process the webhook</td>
+                                <td>Identify performance issues</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-search"></i></div>
+                        <span>Advanced Log Filtering</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>The logs view supports advanced filtering:</p>
+                        <ul>
+                            <li><code>status:failed</code> - Show only failed webhook deliveries</li>
+                            <li><code>event_type:document.updated</code> - Filter by specific event type</li>
+                            <li><code>url:example.com</code> - Filter by destination URL</li>
+                            <li><code>after:2023-08-01</code> - Show events after a specific date</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>5. Troubleshooting Common Webhook Issues</h4>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Issue</th>
+                                <th>Possible Causes</th>
+                                <th>Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Webhooks not being received</td>
+                                <td>
+                                    <ul>
+                                        <li>Incorrect webhook URL</li>
+                                        <li>Firewall blocking requests</li>
+                                        <li>Endpoint timeout</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Verify URL in dashboard</li>
+                                        <li>Check firewall rules</li>
+                                        <li>Ensure endpoint responds in < 10 seconds</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Webhook signature verification failing</td>
+                                <td>
+                                    <ul>
+                                        <li>Incorrect secret key</li>
+                                        <li>Mismatched signature algorithm</li>
+                                        <li>Modifying request body before verification</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Verify webhook secret in dashboard</li>
+                                        <li>Use HMAC-SHA256 for verification</li>
+                                        <li>Verify raw request body before parsing</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Duplicate webhook deliveries</td>
+                                <td>
+                                    <ul>
+                                        <li>Inconsistent 2xx responses</li>
+                                        <li>Network timeouts</li>
+                                        <li>Not tracking processed event IDs</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Always return 200 OK after processing</li>
+                                        <li>Implement idempotent processing</li>
+                                        <li>Track processed event IDs</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Slow webhook processing</td>
+                                <td>
+                                    <ul>
+                                        <li>Synchronous processing</li>
+                                        <li>Database bottlenecks</li>
+                                        <li>External API calls in main handler</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Acknowledge quickly, process asynchronously</li>
+                                        <li>Queue webhook events for processing</li>
+                                        <li>Optimize database operations</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>6. Webhook Troubleshooting Decision Tree</h4>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-sitemap"></i></div>
+                        <span>Step-by-Step Troubleshooting</span>
+                    </div>
+                    <div class="info-box-content">
+                        <ol>
+                            <li><strong>Are webhooks showing in your dashboard logs?</strong>
+                                <ul>
+                                    <li>No: Check webhook configuration, verify events are being triggered, contact support</li>
+                                    <li>Yes: Continue to next step</li>
+                                </ul>
+                            </li>
+                            <li><strong>What is the delivery status?</strong>
+                                <ul>
+                                    <li>Success: If not receiving in your app, check internal processing logic</li>
+                                    <li>Failed: Check response codes and continue</li>
+                                </ul>
+                            </li>
+                            <li><strong>What is the HTTP response code?</strong>
+                                <ul>
+                                    <li>4xx: Check URL, authentication, and request validation</li>
+                                    <li>5xx: Check server errors in your logs</li>
+                                    <li>Timeout: Check processing time and server capacity</li>
+                                </ul>
+                            </li>
+                            <li><strong>Is signature verification failing?</strong>
+                                <ul>
+                                    <li>Yes: Verify webhook secret, check signature computation algorithm</li>
+                                    <li>No: Continue to next step</li>
+                                </ul>
+                            </li>
+                            <li><strong>Are you receiving the webhook but not processing correctly?</strong>
+                                <ul>
+                                    <li>Yes: Debug your event handling logic, check for data parsing issues</li>
+                                    <li>No: Contact support with your request_id for further assistance</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Webhook Debugging Code Snippet:</h5>
+                    <pre><code class="language-javascript">// Express middleware for logging webhook requests
+function webhookLogger(req, res, next) {
+  // Clone the request to avoid modifying it
+  const reqBody = JSON.stringify(req.body);
+  
+  // Log the incoming webhook
+  console.log(`
+---- WEBHOOK RECEIVED [${new Date().toISOString()}] ----
+URL: ${req.originalUrl}
+Method: ${req.method}
+Headers: ${JSON.stringify(req.headers)}
+Body: ${reqBody}
+--------------------------------------------
+  `);
+  
+  // Store original response methods
+  const originalSend = res.send;
+  const originalJson = res.json;
+  const startTime = Date.now();
+  
+  // Wrap response methods to log the response
+  res.send = function(body) {
+    const duration = Date.now() - startTime;
+    console.log(`
+---- WEBHOOK RESPONSE [${duration}ms] ----
+Status: ${res.statusCode}
+Body: ${body}
+--------------------------------------------
+    `);
+    return originalSend.apply(this, arguments);
+  };
+  
+  res.json = function(body) {
+    const duration = Date.now() - startTime;
+    console.log(`
+---- WEBHOOK RESPONSE [${duration}ms] ----
+Status: ${res.statusCode}
+Body: ${JSON.stringify(body)}
+--------------------------------------------
+    `);
+    return originalJson.apply(this, arguments);
+  };
+  
+  next();
+}
+
+// Use the middleware for your webhook route
+app.use('/webhook', webhookLogger);</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>7. Production Webhook Testing Best Practices</h4>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Best Practice</th>
+                                <th>Implementation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Use a staging environment</td>
+                                <td>Configure a separate webhook endpoint for testing in your staging environment</td>
+                            </tr>
+                            <tr>
+                                <td>Test all event types</td>
+                                <td>Create automated tests that verify handling of each event type</td>
+                            </tr>
+                            <tr>
+                                <td>Test error scenarios</td>
+                                <td>Simulate failures, timeouts, and malformed payloads</td>
+                            </tr>
+                            <tr>
+                                <td>Monitor webhook performance</td>
+                                <td>Track processing time, error rates, and system impact</td>
+                            </tr>
+                            <tr>
+                                <td>Implement canary testing</td>
+                                <td>Direct a small percentage of webhooks to a new version before full deployment</td>
+                            </tr>
+                            <tr>
+                                <td>Create webhook replay capability</td>
+                                <td>Build a system to replay production webhooks in your test environment</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-exclamation-circle"></i></div>
+                        <span>Production Safeguards</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>When working with webhooks in production, implement these safeguards:</p>
+                        <ul>
+                            <li>Set up alerting for webhook failure patterns</li>
+                            <li>Implement circuit breakers for dependent systems</li>
+                            <li>Create fallback mechanisms for when webhooks are unavailable</li>
+                            <li>Maintain a dashboard of webhook health metrics</li>
+                            <li>Document webhook incident response procedures</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution5").style.display = "none";
+        function toggleExercise(contentId, solutionId) {
+            var content = document.getElementById(contentId);
+            var solution = document.getElementById(solutionId);
+            
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                solution.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.exercise-toggle-text');
+                if (btn) btn.textContent = "Hide Exercise";
+                
+                var icon = content.parentElement.querySelector('.exercise-toggle-icon i');
+                if (icon) icon.className = "fas fa-chevron-up";
+            } else {
+                content.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.exercise-toggle-text');
+                if (btn) btn.textContent = "Show Exercise";
+                
+                var icon = content.parentElement.querySelector('.exercise-toggle-icon i');
+                if (icon) icon.className = "fas fa-chevron-down";
+            }
         }
-
-        function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
+        
+        function toggleSolution(contentId, exerciseId) {
+            var content = document.getElementById(contentId);
+            var exercise = document.getElementById(exerciseId);
+            
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                exercise.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.solution-toggle-text');
+                if (btn) btn.textContent = "Hide Solution";
+                
+                var icon = content.parentElement.querySelector('.solution-toggle-icon i');
+                if (icon) icon.className = "fas fa-lightbulb-off";
+            } else {
+                content.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.solution-toggle-text');
+                if (btn) btn.textContent = "View Solution";
+                
+                var icon = content.parentElement.querySelector('.solution-toggle-icon i');
+                if (icon) icon.className = "fas fa-lightbulb";
+            }
         }
     </script>
-
 </body>
 </html>

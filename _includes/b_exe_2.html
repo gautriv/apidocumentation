@@ -47,168 +47,461 @@
     </style>
 </head>
 <body>
-    <!-- Buttons to toggle Exercise 2 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise2')">Exercise 2</button>
-    <button class="solution-button" onclick="toggleSolution('solution2', 'exercise2')">Solution to Exercise 2</button>
-
     <!-- Exercise 2 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise2">
-        <h3>Exercise 2: Documenting a Currency Exchange API</h3>
-        <p><strong>Scenario:</strong> You are assigned to document the **Currency Exchange API**, which allows users to retrieve real-time currency exchange rates.</p>
+    <div class="exercise-container" id="exercise2-container">
+        <div class="exercise-header">
+            <h3 id="exercise2-title">Exercise 2: Authentication Documentation</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise2-content', 'solution2-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution2-content', 'exercise2-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
         
-        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
-        <ul>
-            <li>Overview of the API.</li>
-            <li>Endpoints and HTTP methods.</li>
-            <li>Request parameters in a structured table.</li>
-            <li>An example API request (including cURL).</li>
-            <li>A sample response from the API.</li>
-            <li>Response parameters in a structured table.</li>
-            <li>Possible error codes and troubleshooting guidance.</li>
-            <li>Rate limits and authentication details.</li>
+        <div class="exercise-content scrollable-content" id="exercise2-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You are documenting the authentication process for a <strong>Task Management API</strong>. This API allows users to create, read, update, and delete tasks using OAuth 2.0 authentication.</p>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Your Task</h4>
+                <p>Document the authentication process, including:</p>
+                <ul>
+                    <li>A brief explanation of OAuth 2.0</li>
+                    <li>Step-by-step guide to obtain an access token</li>
+                    <li>How to include the token in API requests</li>
+                    <li>Token expiration and refresh process</li>
+                    <li>Security best practices</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <h4>API Authentication Information</h4>
+                <p>The Task Management API uses OAuth 2.0 with the following endpoints:</p>
+                
+                <h5>Token Endpoint:</h5>
+                <pre><code>POST https://api.taskmanager.com/oauth/token</code></pre>
+                
+                <h5>Required Parameters for Token Request:</h5>
+                <ul>
+                    <li><code>client_id</code>: Your API client ID</li>
+                    <li><code>client_secret</code>: Your API client secret</li>
+                    <li><code>grant_type</code>: "password" for resource owner flow, "authorization_code" for authorization code flow</li>
+                    <li><code>username</code> and <code>password</code> (for password grant type)</li>
+                    <li><code>scope</code>: "read:tasks write:tasks" (space-separated)</li>
         </ul>
 
-        <h4>Provided API Code:</h4>
-        <p>Below is a sample API request and response:</p>
+                <h5>Sample Token Response:</h5>
+                <pre><code class="language-json">{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "def50200641f9...",
+  "scope": "read:tasks write:tasks"
+}</code></pre>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Include a section on handling common authentication errors with error codes and troubleshooting steps.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution2-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>Task Management API: Authentication</h4>
+                <p>The Task Management API uses OAuth 2.0 to securely authenticate users and authorize access to tasks.</p>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>1. Understanding OAuth 2.0</h4>
+                <p>OAuth 2.0 is an industry-standard protocol that allows secure API authorization in a simple and standard way. It enables applications to obtain limited access to a user's account without exposing the user's password.</p>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <span>Key Concept</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>OAuth 2.0 works by delegating user authentication to the service that hosts the user account and authorizing third-party applications to access that account. This eliminates the need for users to share their credentials with third-party applications.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>2. Obtaining an Access Token</h4>
+                <p>To access the Task Management API, you'll need to obtain an access token by following these steps:</p>
+                
+                <ol>
+                    <li><strong>Register your application</strong> in the API Developer Portal to obtain a <code>client_id</code> and <code>client_secret</code>.</li>
+                    <li><strong>Request an access token</strong> by making a POST request to the token endpoint.</li>
+                </ol>
+                
+                <div class="example-box">
+                    <h5>Token Request</h5>
+                    <pre><code class="language-http">POST https://api.taskmanager.com/oauth/token
+Content-Type: application/x-www-form-urlencoded
 
-        <h5>API Request:</h5>
-        <pre>
-        GET https://api.currencyexchange.com/latest?base=USD&target=EUR&apikey=your_api_key
-        </pre>
-
-        <h5>Sample Response:</h5>
-        <pre>
-        {
-            "base_currency": "USD",
-            "target_currency": "EUR",
-            "exchange_rate": 0.85,
-            "last_updated": "2025-02-17T12:00:00Z"
-        }
-        </pre>
-
-        <p><strong>Bonus Challenge:</strong> Explain rate limits and how developers should handle them.</p>
+client_id=YOUR_CLIENT_ID&
+client_secret=YOUR_CLIENT_SECRET&
+grant_type=password&
+username=user@example.com&
+password=user_password&
+scope=read:tasks write:tasks</code></pre>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Token Response</h5>
+                    <pre><code class="language-json">{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "def50200641f9...",
+  "scope": "read:tasks write:tasks"
+}</code></pre>
+                </div>
     </div>
 
-    <!-- Solution to Exercise 2 (Initially Hidden) -->
-    <div class="solution-content" id="solution2">
-        <h3>Solution to Exercise 2</h3>
+            <div class="chapter-section">
+                <h4>3. Including the Token in API Requests</h4>
+                <p>Once you have an access token, include it in the Authorization header of your API requests:</p>
+                
+                <div class="example-box">
+                    <pre><code class="language-http">GET https://api.taskmanager.com/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</code></pre>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <span>Important</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>Always prefix your access token with <code>Bearer</code> followed by a space in the Authorization header.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>4. Token Expiration and Refresh Process</h4>
+                <p>Access tokens expire after <code>expires_in</code> seconds (typically 3600 seconds or 1 hour). When a token expires, use the refresh token to obtain a new access token without requiring user credentials:</p>
+                
+                <div class="example-box">
+                    <h5>Token Refresh Request</h5>
+                    <pre><code class="language-http">POST https://api.taskmanager.com/oauth/token
+Content-Type: application/x-www-form-urlencoded
 
-        <h4>1. Overview</h4>
-        <p>The **Currency Exchange API** allows developers to retrieve the latest currency exchange rates in real time. It supports multiple currency pairs and provides accurate conversion rates.</p>
-
-        <h4>2. Endpoints and Methods</h4>
-        <p><strong>GET /latest</strong> – Retrieves the latest exchange rate between two currencies.</p>
-
-        <h4>3. Request Parameters</h4>
+client_id=YOUR_CLIENT_ID&
+client_secret=YOUR_CLIENT_SECRET&
+grant_type=refresh_token&
+refresh_token=def50200641f9...</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>5. Security Best Practices</h4>
+                <ul>
+                    <li>Never store <code>client_secret</code> or user credentials in client-side code</li>
+                    <li>Use HTTPS for all API requests</li>
+                    <li>Store tokens securely and never expose them in URLs</li>
+                    <li>Request only the scopes you need</li>
+                    <li>Implement token validation on both client and server</li>
+                    <li>Revoke tokens when they are no longer needed</li>
+                </ul>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>6. Common Authentication Errors</h4>
+                <div class="comparison-table">
         <table>
+                        <thead>
             <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Required</th>
-                <th>Default</th>
+                                <th>Error Code</th>
                 <th>Description</th>
+                                <th>Troubleshooting</th>
+            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>400</strong> Bad Request</td>
+                                <td>Missing or invalid parameters</td>
+                                <td>Check all required parameters are correctly included</td>
             </tr>
             <tr>
-                <td>base</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>The base currency (e.g., "USD").</td>
+                                <td><strong>401</strong> Unauthorized</td>
+                                <td>Invalid credentials or token</td>
+                                <td>Verify credentials or refresh your token</td>
             </tr>
             <tr>
-                <td>target</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>The target currency (e.g., "EUR").</td>
+                                <td><strong>403</strong> Forbidden</td>
+                                <td>Token doesn't have required scopes</td>
+                                <td>Request a new token with the necessary scopes</td>
             </tr>
             <tr>
-                <td>apikey</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>API key for authentication.</td>
+                                <td><strong>429</strong> Too Many Requests</td>
+                                <td>Rate limit exceeded</td>
+                                <td>Implement exponential backoff and retry</td>
             </tr>
+                        </tbody>
         </table>
-
-        <h4>4. Sample cURL Request</h4>
-        <pre>
-        curl -X GET "https://api.currencyexchange.com/latest?base=USD&target=EUR&apikey=your_api_key" -H "Accept: application/json"
-        </pre>
-
-        <h4>5. Sample Response</h4>
-        <pre>
-        {
-            "base_currency": "USD",
-            "target_currency": "EUR",
-            "exchange_rate": 0.85,
-            "last_updated": "2025-02-17T12:00:00Z"
-        }
-        </pre>
-
-        <h4>6. Response Parameters</h4>
-        <table>
-            <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>base_currency</td>
-                <td>String</td>
-                <td>The base currency used in the conversion.</td>
-            </tr>
-            <tr>
-                <td>target_currency</td>
-                <td>String</td>
-                <td>The target currency.</td>
-            </tr>
-            <tr>
-                <td>exchange_rate</td>
-                <td>Float</td>
-                <td>The conversion rate from base to target currency.</td>
-            </tr>
-            <tr>
-                <td>last_updated</td>
-                <td>String</td>
-                <td>The timestamp when the exchange rate was last updated.</td>
-            </tr>
-        </table>
-
-        <h4>7. Error Codes</h4>
-        <table>
-            <tr>
-                <th>Status Code</th>
-                <th>Message</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>401</td>
-                <td>Unauthorized</td>
-                <td>Invalid or missing API key.</td>
-            </tr>
-            <tr>
-                <td>404</td>
-                <td>Not Found</td>
-                <td>Invalid currency code.</td>
-            </tr>
-            <tr>
-                <td>429</td>
-                <td>Too Many Requests</td>
-                <td>Rate limit exceeded.</td>
-            </tr>
-        </table>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <style>
+        /* Exercise Container Styling */
+        .exercise-container {
+            margin: 30px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            max-width: 100%;
+            position: relative;
+            width: 100%;
+        }
+        
+        /* Exercise Header */
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #4568dc, #6a85e0);
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .exercise-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        /* Exercise Controls */
+        .exercise-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .exercise-toggle-btn, .solution-toggle-btn {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .exercise-toggle-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .solution-toggle-btn {
+            background-color: #ffd700;
+            color: #333;
+        }
+        
+        .exercise-toggle-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .solution-toggle-btn:hover {
+            background-color: #ffcc00;
+        }
+        
+        .exercise-toggle-icon, .solution-toggle-icon {
+            margin-right: 8px;
+        }
+        
+        /* Content Styling */
+        .exercise-content, .solution-content {
+            padding: 20px;
+            background-color: #fff;
+            max-height: 600px;
+            overflow-y: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Scrollable content */
+        .scrollable-content {
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-height: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .scrollable-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+        
+        /* Table Styling */
+        .comparison-table {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            table-layout: fixed;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+            word-wrap: break-word;
+        }
+        
+        .comparison-table th {
+            background-color: #f5f7ff;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f0f4ff;
+        }
+        
+        /* Code blocks */
+        pre {
+            background-color: #f5f7fa;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            max-width: 100%;
+            white-space: pre-wrap;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        /* Info box and example box responsive fixes */
+        .info-box, .example-box {
+            max-width: 100%;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        
+        /* Chapter section fixes */
+        .chapter-section {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* List styling to prevent overflow */
+        ul, ol {
+            padding-left: 20px;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+        
+        li {
+            word-wrap: break-word;
+        }
+    </style>
 
     <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution2").style.display = "none";
+        function toggleExercise(exerciseId, solutionId) {
+            var exerciseContent = document.getElementById(exerciseId);
+            var solutionContent = document.getElementById(solutionId);
+            var isVisible = exerciseContent.style.display !== 'none';
+            
+            // Always hide solution when toggling exercise
+            solutionContent.style.display = 'none';
+            
+            // Toggle exercise visibility
+            exerciseContent.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text
+            var button = document.querySelector('.exercise-toggle-text');
+            var icon = document.querySelector('.exercise-toggle-icon i');
+            
+            if (isVisible) {
+                button.textContent = 'Show Exercise';
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                button.textContent = 'Hide Exercise';
+                icon.className = 'fas fa-chevron-up';
+            }
+            
+            // Reset solution button text
+            document.querySelector('.solution-toggle-text').textContent = 'View Solution';
+            document.querySelector('.solution-toggle-icon i').className = 'fas fa-lightbulb';
         }
 
         function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
+            var solutionContent = document.getElementById(solutionId);
+            var exerciseContent = document.getElementById(exerciseId);
+            var isVisible = solutionContent.style.display !== 'none';
+            
+            // Always hide exercise when toggling solution
+            exerciseContent.style.display = 'none';
+            
+            // Toggle solution visibility
+            solutionContent.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text
+            var button = document.querySelector('.solution-toggle-text');
+            var icon = document.querySelector('.solution-toggle-icon i');
+            
+            if (isVisible) {
+                button.textContent = 'View Solution';
+                icon.className = 'fas fa-lightbulb';
+            } else {
+                button.textContent = 'Hide Solution';
+                icon.className = 'fas fa-times';
+            }
+            
+            // Reset exercise button text
+            document.querySelector('.exercise-toggle-text').textContent = 'Show Exercise';
+            document.querySelector('.exercise-toggle-icon i').className = 'fas fa-chevron-down';
         }
     </script>
 

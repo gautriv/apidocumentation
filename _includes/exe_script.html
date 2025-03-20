@@ -1,0 +1,241 @@
+<style>
+    /* Exercise Container Styling */
+    .exercise-container {
+        margin: 30px 0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        max-width: 100%;
+        position: relative;
+        width: 100%;
+    }
+    
+    /* Exercise Header */
+    .exercise-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background: linear-gradient(135deg, #4568dc, #6a85e0);
+        color: white;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .exercise-header h3 {
+        margin: 0;
+        font-size: 1.3rem;
+    }
+    
+    /* Exercise Controls */
+    .exercise-controls {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .exercise-toggle-btn, .solution-toggle-btn {
+        display: flex;
+        align-items: center;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .exercise-toggle-btn {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+    
+    .solution-toggle-btn {
+        background-color: #ffd700;
+        color: #333;
+    }
+    
+    .exercise-toggle-btn:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .solution-toggle-btn:hover {
+        background-color: #ffcc00;
+    }
+    
+    .exercise-toggle-icon, .solution-toggle-icon {
+        margin-right: 8px;
+    }
+    
+    /* Content Styling */
+    .exercise-content, .solution-content {
+        padding: 20px;
+        background-color: #fff;
+        max-height: 600px;
+        overflow-y: auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Scrollable content */
+    .scrollable-content {
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height: 600px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .scrollable-content::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .scrollable-content::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+    
+    .scrollable-content::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 4px;
+    }
+    
+    .scrollable-content::-webkit-scrollbar-thumb:hover {
+        background: #a1a1a1;
+    }
+    
+    /* Table Styling */
+    .comparison-table {
+        width: 100%;
+        overflow-x: auto;
+        margin: 15px 0;
+    }
+    
+    .comparison-table table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        table-layout: fixed;
+    }
+    
+    .comparison-table th, .comparison-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border: 1px solid #e0e0e0;
+        word-wrap: break-word;
+    }
+    
+    .comparison-table th {
+        background-color: #f5f7ff;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .comparison-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    .comparison-table tr:hover {
+        background-color: #f0f4ff;
+    }
+    
+    /* Code blocks */
+    pre {
+        background-color: #f5f7fa;
+        border-radius: 5px;
+        padding: 15px;
+        overflow-x: auto;
+        max-width: 100%;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+    
+    code {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.9em;
+    }
+
+    /* Info box and example box responsive fixes */
+    .info-box, .example-box {
+        max-width: 100%;
+        overflow-x: hidden;
+        box-sizing: border-box;
+    }
+    
+    /* Chapter section fixes */
+    .chapter-section {
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    /* List styling to prevent overflow */
+    ul, ol {
+        padding-left: 20px;
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+    
+    li {
+        word-wrap: break-word;
+    }
+</style>
+
+<script>
+    function toggleExercise(exerciseId, solutionId) {
+        var exerciseContent = document.getElementById(exerciseId);
+        var solutionContent = document.getElementById(solutionId);
+        var isVisible = exerciseContent.style.display !== 'none';
+        
+        // Always hide solution when toggling exercise
+        solutionContent.style.display = 'none';
+        
+        // Toggle exercise visibility
+        exerciseContent.style.display = isVisible ? 'none' : 'block';
+        
+        // Update button text
+        var button = document.querySelector('.exercise-toggle-text');
+        var icon = document.querySelector('.exercise-toggle-icon i');
+        
+        if (isVisible) {
+            button.textContent = 'Show Exercise';
+            icon.className = 'fas fa-chevron-down';
+        } else {
+            button.textContent = 'Hide Exercise';
+            icon.className = 'fas fa-chevron-up';
+        }
+        
+        // Reset solution button text
+        document.querySelector('.solution-toggle-text').textContent = 'View Solution';
+        document.querySelector('.solution-toggle-icon i').className = 'fas fa-lightbulb';
+    }
+    
+    function toggleSolution(solutionId, exerciseId) {
+        var solutionContent = document.getElementById(solutionId);
+        var exerciseContent = document.getElementById(exerciseId);
+        var isVisible = solutionContent.style.display !== 'none';
+        
+        // Always hide exercise when toggling solution
+        exerciseContent.style.display = 'none';
+        
+        // Toggle solution visibility
+        solutionContent.style.display = isVisible ? 'none' : 'block';
+        
+        // Update button text
+        var button = document.querySelector('.solution-toggle-text');
+        var icon = document.querySelector('.solution-toggle-icon i');
+        
+        if (isVisible) {
+            button.textContent = 'View Solution';
+            icon.className = 'fas fa-lightbulb';
+        } else {
+            button.textContent = 'Hide Solution';
+            icon.className = 'fas fa-times';
+        }
+        
+        // Reset exercise button text
+        document.querySelector('.exercise-toggle-text').textContent = 'Show Exercise';
+        document.querySelector('.exercise-toggle-icon i').className = 'fas fa-chevron-down';
+    }
+</script>

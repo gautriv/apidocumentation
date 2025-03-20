@@ -1,0 +1,50 @@
+---
+layout: default
+title: Show Your Appreciation
+description: Support Being Technical Writer and help maintain the blog and courses
+---
+
+<div class="page-header">
+  <div class="container">
+    <h1 class="page-title">Show Your Appreciation</h1>
+  </div>
+</div>
+
+<section class="appreciate-section">
+  <div class="container">
+    <div class="appreciate-content">
+      <div class="appreciate-message">
+        <h2>Thank you!!!</h2>
+        <p>Do you like the content and courses on this blog? Research, testing, and writing require a considerable amount of time. Do you want to appreciate and help me in maintaining this blog?</p>
+      </div>
+
+      <div class="payment-options">
+        <div class="buttons">
+          <button class="payment-btn upi-btn" data-toggle="collapse" data-target="#upiOption">
+            <i class="fas fa-qrcode"></i>
+            UPI
+          </button>
+          <span class="or-divider">Or</span>
+          <button class="payment-btn coffee-btn" data-toggle="collapse" data-target="#coffeeOption">
+            <i class="fas fa-coffee"></i>
+            Buy me a coffee!
+          </button>
+        </div>
+
+        <div class="payment-details">
+          <div class="collapse" id="upiOption">
+            <div class="payment-card">
+              <img src="https://beingtechnicalwriter.s3.ap-south-1.amazonaws.com/images/QRCode.jpeg" alt="UPI QR Code" class="qr-code">
+            </div>
+          </div>
+
+          <div class="collapse" id="coffeeOption">
+            <div class="payment-card">
+              {% include coffee.html %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

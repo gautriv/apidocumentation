@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert-Level API Documentation - Exercise 5</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -58,140 +59,490 @@
     </style>
 </head>
 <body>
-    <button class="exercise-button" onclick="toggleExercise('exercise2')">Exercise 2</button>
-    <button class="solution-button" onclick="toggleSolution('solution2', 'exercise2')">Solution to Exercise 2</button>
+    <!-- Expert Level Exercise 2: gRPC API Documentation -->
 
-    <!-- Exercise 2 Content -->
-    <div class="exercise-content" id="exercise2">
-        <h3>Challenge: Document a gRPC API for a Payment Processing Service</h3>
-        <p><strong>Scenario:</strong> You have been asked to document a **gRPC API** for a **Payment Processing Service**. Users can:</p>
-        <ul>
-            <li>Process a payment using a card or bank transfer.</li>
-            <li>Check the status of a payment by transaction ID.</li>
-            <li>Retrieve a list of all past transactions for a user.</li>
-        </ul>
+    <div class="exercise-container" id="exercise2-container">
+        <div class="exercise-header">
+            <h3 id="exercise2-title">Exercise 2: Document a gRPC API for a Chat Service</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise2-content', 'solution2-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution2-content', 'exercise2-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="exercise-content scrollable-content" id="exercise2-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You're documenting a <strong>gRPC-based Chat Service API</strong> that allows developers to build real-time chat applications. The API supports message delivery, user presence detection, and message history retrieval.</p>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Protocol Buffers (proto3) Definition</h4>
+                <div class="code-block">
+                    <pre><code>syntax = "proto3";
 
-        <h4>gRPC Service Definition (To be documented)</h4>
-        <pre>
-        syntax = "proto3";
+package chatservice;
 
-        service PaymentService {
-            rpc ProcessPayment (PaymentRequest) returns (PaymentResponse);
-            rpc GetPaymentStatus (PaymentStatusRequest) returns (PaymentStatusResponse);
-            rpc GetTransactionHistory (TransactionHistoryRequest) returns (TransactionHistoryResponse);
-        }
+service ChatService {
+  // Send a message to a chat room
+  rpc SendMessage(MessageRequest) returns (MessageResponse) {}
+  
+  // Stream messages from a chat room in real-time
+  rpc SubscribeToMessages(RoomRequest) returns (stream Message) {}
+  
+  // Get user presence status
+  rpc GetUserStatus(UserStatusRequest) returns (UserStatusResponse) {}
+  
+  // Stream user presence updates
+  rpc WatchUserStatus(UserStatusRequest) returns (stream UserStatusUpdate) {}
+}
 
-        message PaymentRequest {
-            string user_id = 1;
-            string payment_method = 2;
-            float amount = 3;
-            string currency = 4;
-        }
+message MessageRequest {
+  string room_id = 1;
+  string user_id = 2;
+  string content = 3;
+  MessageType type = 4;
+}
 
-        message PaymentResponse {
-            bool success = 1;
-            string transaction_id = 2;
-            string message = 3;
-        }
+message MessageResponse {
+  string message_id = 1;
+  bool success = 2;
+  string error_message = 3;
+}
 
-        message PaymentStatusRequest {
-            string transaction_id = 1;
-        }
+message RoomRequest {
+  string room_id = 1;
+  int32 limit = 2;
+}
 
-        message PaymentStatusResponse {
-            string transaction_id = 1;
-            string status = 2;
-            string message = 3;
-        }
+message Message {
+  string message_id = 1;
+  string user_id = 2;
+  string content = 3;
+  int64 timestamp = 4;
+  MessageType type = 5;
+}
 
-        message TransactionHistoryRequest {
-            string user_id = 1;
-        }
+enum MessageType {
+  TEXT = 0;
+  IMAGE = 1;
+  LINK = 2;
+}
 
-        message TransactionHistoryResponse {
-            repeated PaymentResponse transactions = 1;
-        }
-        </pre>
+message UserStatusRequest {
+  string user_id = 1;
+}
 
-        <h4>Your Task:</h4>
-        <p>Write a complete API documentation page covering:</p>
-        <ul>
-            <li><strong>Overview</strong> - Describe the API and its purpose.</li>
-            <li><strong>Service Definitions</strong> - Explain the gRPC services and methods.</li>
-            <li><strong>Authentication</strong> - Describe how users authenticate (e.g., API Key, TLS).</li>
-            <li><strong>Request & Response Formats</strong> - Document message structures.</li>
-            <li><strong>Error Handling</strong> - Provide guidance on common gRPC errors.</li>
-        </ul>
-        <p><strong>Hint:</strong> Use gRPC best practices and real-world examples to make the documentation clear.</p>
-    </div>
+message UserStatusResponse {
+  string user_id = 1;
+  UserStatus status = 2;
+  int64 last_active = 3;
+}
 
-    <!-- Solution to Exercise 2 -->
-    <div class="solution-content" id="solution2">
-        <h3>Solution: gRPC API Documentation for Payment Processing</h3>
+message UserStatusUpdate {
+  string user_id = 1;
+  UserStatus status = 2;
+  int64 timestamp = 3;
+}
 
-        <h4>1. Overview</h4>
-        <p>The **Payment Processing gRPC API** allows users to process payments, check status, and retrieve transaction history.</p>
+enum UserStatus {
+  OFFLINE = 0;
+  ONLINE = 1;
+  AWAY = 2;
+  DO_NOT_DISTURB = 3;
+}</code></pre>
+                </div>
+                
+                <h4>Your Task</h4>
+                <p>Create comprehensive documentation for this gRPC Chat Service API, including:</p>
+                <ul>
+                    <li><strong>Introduction to gRPC</strong> - Brief explanation for developers new to gRPC</li>
+                    <li><strong>Service Overview</strong> - Purpose and capabilities of the Chat Service</li>
+                    <li><strong>Authentication</strong> - How clients authenticate with the service</li>
+                    <li><strong>RPC Method Documentation</strong> - Details for each method including:
+                        <ul>
+                            <li>Purpose</li>
+                            <li>Request/response parameters</li>
+                            <li>Streaming behavior (for streaming methods)</li>
+                            <li>Error codes</li>
+                        </ul>
+                    </li>
+                    <li><strong>Usage Examples</strong> - Code samples showing how to use each method</li>
+                    <li><strong>Best Practices</strong> - Tips for efficient use of the API</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Include a section on handling reconnection scenarios for streaming RPCs, and document how to implement client-side retry logic for different error conditions.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution2-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>Chat Service gRPC API Documentation</h4>
+                
+                <h5>1. Introduction to gRPC</h5>
+                <p>gRPC is a high-performance RPC (Remote Procedure Call) framework that uses HTTP/2 for transport and Protocol Buffers for interface definition. Unlike traditional REST APIs, gRPC offers:</p>
+                <ul>
+                    <li>Strongly typed service definitions</li>
+                    <li>Efficient binary serialization</li>
+                    <li>Bidirectional streaming</li>
+                    <li>Built-in code generation for multiple languages</li>
+                </ul>
+                
+                <h5>2. Chat Service Overview</h5>
+                <p>The Chat Service API enables real-time messaging applications with the following features:</p>
+                <ul>
+                    <li>Sending messages to chat rooms</li>
+                    <li>Receiving real-time message updates via streaming</li>
+                    <li>Checking user online status</li>
+                    <li>Monitoring user presence changes</li>
+                </ul>
+                
+                <h5>3. Authentication</h5>
+                <p>The Chat Service uses gRPC's interceptor mechanism with JWT tokens for authentication:</p>
+                <div class="example-box">
+                    <pre><code>// Add JWT token to metadata
+var metadata = new Metadata();
+metadata.Add("Authorization", "Bearer " + jwt_token);
 
-        <h4>2. Service Definitions</h4>
-        <p>Use the **gRPC Service** to send and retrieve payment data:</p>
-        <pre>
-        rpc ProcessPayment (PaymentRequest) returns (PaymentResponse);
-        rpc GetPaymentStatus (PaymentStatusRequest) returns (PaymentStatusResponse);
-        rpc GetTransactionHistory (TransactionHistoryRequest) returns (TransactionHistoryResponse);
-        </pre>
+// Use the metadata in your gRPC calls
+var call = client.SendMessage(request, metadata);</code></pre>
+                </div>
+                <p>Obtain JWT tokens by calling the <code>AuthService.Login</code> method (documented separately).</p>
+                
+                <h5>4. RPC Methods</h5>
+                
+                <h6>4.1 SendMessage</h6>
+                <p><strong>Purpose:</strong> Sends a message to a specified chat room.</p>
+                <p><strong>Type:</strong> Unary RPC (single request, single response)</p>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request Field</th>
+                                <th>Type</th>
+                                <th>Required</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>room_id</td>
+                                <td>string</td>
+                                <td>Yes</td>
+                                <td>Identifier for the chat room</td>
+                            </tr>
+                            <tr>
+                                <td>user_id</td>
+                                <td>string</td>
+                                <td>Yes</td>
+                                <td>Identifier of the message sender</td>
+                            </tr>
+                            <tr>
+                                <td>content</td>
+                                <td>string</td>
+                                <td>Yes</td>
+                                <td>Message content (text, image URL, or link)</td>
+                            </tr>
+                            <tr>
+                                <td>type</td>
+                                <td>MessageType</td>
+                                <td>Yes</td>
+                                <td>Type of message (TEXT, IMAGE, or LINK)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Response Field</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>message_id</td>
+                                <td>string</td>
+                                <td>Unique identifier for the sent message</td>
+                            </tr>
+                            <tr>
+                                <td>success</td>
+                                <td>bool</td>
+                                <td>Whether the message was sent successfully</td>
+                            </tr>
+                            <tr>
+                                <td>error_message</td>
+                                <td>string</td>
+                                <td>Error details if success is false</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="example-box">
+                    <pre><code>// Example: Sending a text message
+var request = new MessageRequest {
+    RoomId = "room123",
+    UserId = "user456",
+    Content = "Hello everyone!",
+    Type = MessageType.Text
+};
 
-        <h4>3. Processing a Payment</h4>
-        <p>Clients can process payments by calling the `ProcessPayment` method:</p>
-        <pre>
+var response = await client.SendMessageAsync(request);
+Console.WriteLine($"Message sent with ID: {response.MessageId}");</code></pre>
+                </div>
+                
+                <h6>4.2 SubscribeToMessages</h6>
+                <p><strong>Purpose:</strong> Receives real-time message updates from a chat room.</p>
+                <p><strong>Type:</strong> Server streaming RPC (single request, stream of responses)</p>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request Field</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>room_id</td>
+                                <td>string</td>
+                                <td>Identifier for the chat room to subscribe to</td>
+                            </tr>
+                            <tr>
+                                <td>limit</td>
+                                <td>int32</td>
+                                <td>Number of past messages to include (0 for none)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p><strong>Stream Response:</strong> Delivers a stream of Message objects in real-time.</p>
+                
+                <div class="example-box">
+                    <pre><code>// Example: Subscribing to a chat room
+var request = new RoomRequest {
+    RoomId = "room123",
+    Limit = 20  // Get the last 20 messages too
+};
+
+using (var call = client.SubscribeToMessages(request))
+{
+    try
+    {
+        while (await call.ResponseStream.MoveNext(cancellationToken))
         {
-            "user_id": "12345",
-            "payment_method": "credit_card",
-            "amount": 50.00,
-            "currency": "USD"
+            var message = call.ResponseStream.Current;
+            Console.WriteLine($"{message.UserId}: {message.Content}");
         }
-        </pre>
+    }
+    catch (RpcException ex)
+    {
+        Console.WriteLine($"Stream error: {ex.Status.Detail}");
+    }
+}</code></pre>
+                </div>
+                
+                <h6>4.3 GetUserStatus</h6>
+                <p><strong>Purpose:</strong> Retrieves the current status of a user.</p>
+                <p><strong>Type:</strong> Unary RPC (single request, single response)</p>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request Field</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>user_id</td>
+                                <td>string</td>
+                                <td>Identifier of the user</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Response Field</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>user_id</td>
+                                <td>string</td>
+                                <td>Identifier of the user</td>
+                            </tr>
+                            <tr>
+                                <td>status</td>
+                                <td>UserStatus</td>
+                                <td>Current status (OFFLINE, ONLINE, AWAY, or DO_NOT_DISTURB)</td>
+                            </tr>
+                            <tr>
+                                <td>last_active</td>
+                                <td>int64</td>
+                                <td>Unix timestamp of the user's last activity</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h6>4.4 WatchUserStatus</h6>
+                <p><strong>Purpose:</strong> Monitors changes in a user's status.</p>
+                <p><strong>Type:</strong> Server streaming RPC (single request, stream of responses)</p>
+                
+                <div class="example-box">
+                    <pre><code>// Example: Watching for status changes
+var request = new UserStatusRequest {
+    UserId = "user456"
+};
 
-        <h4>4. Checking Payment Status</h4>
-        <p>Check the status of a transaction:</p>
-        <pre>
+using (var call = client.WatchUserStatus(request))
+{
+    try
+    {
+        while (await call.ResponseStream.MoveNext(cancellationToken))
         {
-            "transaction_id": "txn_98765"
+            var update = call.ResponseStream.Current;
+            Console.WriteLine($"User {update.UserId} is now {update.Status}");
         }
-        </pre>
-
-        <h4>5. Authentication</h4>
-        <p>The API requires authentication via TLS or API keys:</p>
-        <pre>
-        metadata: {
-            "Authorization": "Bearer YOUR_API_KEY"
+    }
+    catch (RpcException ex)
+    {
+        Console.WriteLine($"Stream error: {ex.Status.Detail}");
+    }
+}</code></pre>
+                </div>
+                
+                <h5>5. Error Handling</h5>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>gRPC Status Code</th>
+                                <th>Description</th>
+                                <th>Handling Recommendation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>UNAUTHENTICATED</td>
+                                <td>Invalid or missing JWT token</td>
+                                <td>Re-authenticate and obtain a new token</td>
+                            </tr>
+                            <tr>
+                                <td>NOT_FOUND</td>
+                                <td>Room or user not found</td>
+                                <td>Verify IDs are correct</td>
+                            </tr>
+                            <tr>
+                                <td>PERMISSION_DENIED</td>
+                                <td>User lacks permission for the action</td>
+                                <td>Check room access rights</td>
+                            </tr>
+                            <tr>
+                                <td>UNAVAILABLE</td>
+                                <td>Service temporarily unavailable</td>
+                                <td>Implement retry with exponential backoff</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h5>6. Reconnection Strategy</h5>
+                <p>For streaming RPCs, implement this reconnection logic to handle disconnections:</p>
+                <div class="example-box">
+                    <pre><code>async Task SubscribeWithRetry(string roomId)
+{
+    int retryCount = 0;
+    const int maxRetries = 5;
+    TimeSpan delay = TimeSpan.FromSeconds(1);
+    
+    while (retryCount < maxRetries)
+    {
+        try
+        {
+            var request = new RoomRequest { RoomId = roomId };
+            using (var call = client.SubscribeToMessages(request))
+            {
+                await ProcessMessageStream(call.ResponseStream);
+                return; // Success - exit the retry loop
+            }
         }
-        </pre>
-
-        <h4>6. Error Handling</h4>
-        <p>Common gRPC API errors and their meanings:</p>
-        <table>
-            <tr>
-                <th>Error Code</th>
-                <th>Message</th>
-                <th>Reason</th>
-            </tr>
-            <tr>
-                <td>UNAUTHENTICATED</td>
-                <td>Invalid API Key</td>
-                <td>Access denied</td>
-            </tr>
-            <tr>
-                <td>NOT_FOUND</td>
-                <td>Transaction Not Found</td>
-                <td>Invalid transaction ID</td>
-            </tr>
-        </table>
+        catch (RpcException ex) when (
+            ex.StatusCode == StatusCode.Unavailable ||
+            ex.StatusCode == StatusCode.Aborted)
+        {
+            retryCount++;
+            if (retryCount >= maxRetries)
+                throw; // Max retries exceeded
+                
+            Console.WriteLine($"Connection lost. Retrying in {delay.TotalSeconds}s...");
+            await Task.Delay(delay);
+            
+            // Exponential backoff with jitter
+            delay = TimeSpan.FromSeconds(Math.Min(30, Math.Pow(2, retryCount)) 
+                + new Random().NextDouble());
+        }
+        catch (Exception)
+        {
+            // Non-retriable error
+            throw;
+        }
+    }
+}</code></pre>
+                </div>
+                
+                <h5>7. Best Practices</h5>
+                <ul>
+                    <li><strong>Connection Management:</strong> Reuse channel and client instances</li>
+                    <li><strong>Error Handling:</strong> Use specific exception types to handle different errors</li>
+                    <li><strong>Message Size:</strong> Keep messages under 4MB to avoid performance issues</li>
+                    <li><strong>Streaming:</strong> Implement proper cancellation token support for streams</li>
+                    <li><strong>Security:</strong> Always use TLS for secure communication</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <script>
         function toggleExercise(exerciseId) {
             document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution2").style.display = "none";
+            document.getElementById("solution5").style.display = "none";
         }
 
         function toggleSolution(solutionId, exerciseId) {
@@ -202,3 +553,4 @@
 
 </body>
 </html>
+

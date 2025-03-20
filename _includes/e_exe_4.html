@@ -1,193 +1,749 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expert-Level API Documentation - Exercise 4</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
+<!-- Expert Level Exercise 4: API Security Documentation -->
 
-        h2 {
-            color: #007bff;
-        }
-
-        .exercise-button, .solution-button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px;
-            margin: 10px;
-            display: inline-block;
-        }
-
-        .exercise-content, .solution-content {
-            display: none;
-            padding: 15px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            margin: 10px;
-        }
-
-        pre {
-            background-color: #0b0b0b;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        table, th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f0f0f0;
-        }
-    </style>
-</head>
-<body>
-    <button class="exercise-button" onclick="toggleExercise('exercise4')">Exercise 4</button>
-    <button class="solution-button" onclick="toggleSolution('solution4', 'exercise4')">Solution to Exercise 4</button>
-
-    <!-- Exercise 4 Content -->
-    <div class="exercise-content" id="exercise4">
-        <h3>Challenge: Documenting Secure API Authentication</h3>
-        <p><strong>Scenario:</strong> A new API requires **secure authentication** using **OAuth 2.0 and JWT tokens**.</p>
+<div class="exercise-container" id="exercise4-container">
+    <div class="exercise-header">
+        <h3 id="exercise4-title">Exercise 4: Document API Security Best Practices</h3>
+        <div class="exercise-controls">
+            <button class="exercise-toggle-btn" onclick="toggleExercise('exercise4-content', 'solution4-content')">
+                <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                <span class="exercise-toggle-text">Show Exercise</span>
+            </button>
+            <button class="solution-toggle-btn" onclick="toggleSolution('solution4-content', 'exercise4-content')">
+                <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                <span class="solution-toggle-text">View Solution</span>
+            </button>
+        </div>
+    </div>
+    
+    <div class="exercise-content scrollable-content" id="exercise4-content" style="display: none;">
+        <div class="info-box">
+            <div class="info-box-header">
+                <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                <span>Scenario</span>
+            </div>
+            <div class="info-box-content">
+                <p>You work for <strong>HealthData API</strong>, a healthcare data exchange platform that allows authorized applications to access medical records, appointment information, and patient data. Due to the sensitive nature of this data, the security team has asked you to create comprehensive security documentation for API consumers.</p>
+            </div>
+        </div>
         
-        <h4>Security Features:</h4>
-        <ul>
-            <li>OAuth 2.0 authentication with **Authorization Code Flow**.</li>
-            <li>API requires **scopes and permissions** to control access.</li>
-            <li>JWT tokens expire after **1 hour** and must be refreshed.</li>
-            <li>API supports **Rate Limiting** (1000 requests/hour per user).</li>
-        </ul>
+        <div class="chapter-section">
+            <h4>API Security Requirements</h4>
+            <div class="code-block">
+                <pre><code># Authentication Methods
+- OAuth 2.0 with PKCE for web and mobile apps
+- Mutual TLS for server-to-server communication
+- Short-lived access tokens (15 minutes)
+- Refresh tokens with rotation
 
-        <h4>Your Task:</h4>
-        <p>Write a complete API security documentation covering:</p>
-        <ul>
-            <li><strong>Authentication Flows</strong> - Explain OAuth 2.0 & API Key authentication.</li>
-            <li><strong>Token Handling</strong> - Explain JWT tokens, expiry, and refresh mechanisms.</li>
-            <li><strong>Rate Limiting</strong> - Document how users can handle API throttling.</li>
-            <li><strong>Security Best Practices</strong> - Guide developers on securely accessing the API.</li>
-        </ul>
-        <p><strong>Hint:</strong> Use real-world security best practices for clarity.</p>
+# Authorization Schemes
+- Role-based access control (Doctor, Nurse, Admin, Patient)
+- Resource-based permissions
+- Consent management for patient data
+
+# Data Protection
+- All data encrypted in transit (TLS 1.3)
+- PII/PHI data encrypted at rest
+- HIPAA and GDPR compliance requirements
+- Data minimization policies (field filtering)
+
+# Security Controls
+- Rate limiting (100 requests per minute)
+- IP address restrictions
+- Audit logging requirements
+- Threat detection and prevention</code></pre>
+            </div>
+            
+            <h4>Your Task</h4>
+            <p>Create comprehensive security documentation for HealthData API consumers that includes:</p>
+            <ul>
+                <li><strong>Overview</strong> - Security importance in healthcare APIs</li>
+                <li><strong>Authentication Guide</strong> - Detailed instructions for each auth method</li>
+                <li><strong>Authorization Model</strong> - Explanation of roles, permissions, and consent</li>
+                <li><strong>Data Protection</strong> - How sensitive data is secured</li>
+                <li><strong>Security Best Practices</strong> - Guidelines for securely integrating with the API</li>
+                <li><strong>Compliance Requirements</strong> - What developers must do to maintain compliance</li>
+                <li><strong>Security Incident Response</strong> - Process for reporting and handling security incidents</li>
+            </ul>
+        </div>
+        
+        <div class="info-box">
+            <div class="info-box-header">
+                <div class="icon"><i class="fas fa-star"></i></div>
+                <span>Bonus Challenge</span>
+            </div>
+            <div class="info-box-content">
+                <p>Include a section on "Security Implementation Examples" with code samples showing proper implementation of authentication, authorization, and data protection in various programming languages.</p>
+            </div>
+        </div>
     </div>
+    
+    <div class="solution-content scrollable-content" id="solution4-content" style="display: none;">
+        <div class="chapter-section">
+            <h4>HealthData API Security Documentation</h4>
+            
+            <h5>1. Introduction to Healthcare API Security</h5>
+            <p>The HealthData API provides access to sensitive protected health information (PHI) and personally identifiable information (PII). This security documentation outlines the measures required to protect this data and maintain compliance with healthcare regulations.</p>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                    <span>Security First</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Healthcare data breaches cost an average of $429 per record, the highest of any industry. Proper security implementation is not just a compliance requirement—it's essential for protecting patients and maintaining trust.</p>
+                </div>
+            </div>
+            
+            <h5>2. Authentication</h5>
+            <p>HealthData API supports multiple authentication methods depending on your integration type:</p>
+            
+            <h6>2.1 OAuth 2.0 with PKCE (for Web and Mobile Apps)</h6>
+            <p>Use the Authorization Code flow with PKCE for patient-facing applications:</p>
+            <div class="example-box">
+                <pre><code>// Step 1: Generate a code verifier and challenge
+const codeVerifier = generateRandomString(64);
+const codeChallenge = base64UrlEncode(sha256(codeVerifier));
 
-    <!-- Solution to Exercise 4 -->
-    <div class="solution-content" id="solution4">
-        <h3>Solution: API Security & OAuth Documentation</h3>
+// Step 2: Redirect to authorization URL
+const authUrl = `https://auth.healthdata.api/authorize?
+  response_type=code&
+  client_id=YOUR_CLIENT_ID&
+  redirect_uri=YOUR_REDIRECT_URI&
+  code_challenge=${codeChallenge}&
+  code_challenge_method=S256&
+  scope=patient.read appointment.write`;
 
-        <h4>1. Authentication Flow (OAuth 2.0)</h4>
-        <p>The API uses OAuth 2.0 with **Authorization Code Flow** for secure authentication.</p>
+// Step 3: Exchange code for tokens
+const tokenResponse = await fetch('https://auth.healthdata.api/token', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body: new URLSearchParams({
+    grant_type: 'authorization_code',
+    code: receivedCode,
+    redirect_uri: YOUR_REDIRECT_URI,
+    client_id: YOUR_CLIENT_ID,
+    code_verifier: codeVerifier
+  })
+});</code></pre>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <span>Security Warning</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Never store access tokens in localStorage or cookies without additional protections. For web applications, use HttpOnly cookies with the Secure and SameSite flags set.</p>
+                </div>
+            </div>
+            
+            <h6>2.2 Mutual TLS (for Server-to-Server Integrations)</h6>
+            <p>For backend services, use mutual TLS authentication:</p>
+            <ol>
+                <li>Generate a client certificate through the Developer Portal</li>
+                <li>Use the certificate and private key in all API requests</li>
+                <li>Rotate certificates every 90 days</li>
+            </ol>
+            
+            <div class="example-box">
+                <pre><code># Example using cURL
+curl --cert client.crt --key client.key https://api.healthdata.api/v1/patients/12345</code></pre>
+            </div>
+            
+            <h6>2.3 Token Lifecycle Management</h6>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Token Type</th>
+                            <th>Lifetime</th>
+                            <th>Storage Recommendations</th>
+                            <th>Rotation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Access Token</td>
+                            <td>15 minutes</td>
+                            <td>In-memory only</td>
+                            <td>Auto-expires</td>
+                        </tr>
+                        <tr>
+                            <td>Refresh Token</td>
+                            <td>24 hours</td>
+                            <td>Secure HTTP-only cookie or secure storage</td>
+                            <td>Rotated on each use</td>
+                        </tr>
+                        <tr>
+                            <td>ID Token</td>
+                            <td>15 minutes</td>
+                            <td>In-memory for session duration</td>
+                            <td>Auto-expires</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h5>3. Authorization Model</h5>
+            
+            <h6>3.1 Role-Based Access Control</h6>
+            <p>Access to API resources is controlled by roles:</p>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Scope Format</th>
+                            <th>Access Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Patient</td>
+                            <td><code>patient:*</code></td>
+                            <td>Can read and manage their own records only</td>
+                        </tr>
+                        <tr>
+                            <td>Doctor</td>
+                            <td><code>doctor:*</code></td>
+                            <td>Can access assigned patients' records and manage medical data</td>
+                        </tr>
+                        <tr>
+                            <td>Nurse</td>
+                            <td><code>nurse:*</code></td>
+                            <td>Can view patient data and update specific fields</td>
+                        </tr>
+                        <tr>
+                            <td>Admin</td>
+                            <td><code>admin:*</code></td>
+                            <td>Can manage users and system settings, but not medical data</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h6>3.2 Resource-Based Permissions</h6>
+            <p>Each resource type has specific permission levels:</p>
+            <div class="example-box">
+                <pre><code>// Scope format: [role].[resource].[action]
+patient.record.read     // Read patient records
+patient.record.write    // Write patient records
+appointment.create      // Create appointments
+billing.read            // Read billing information</code></pre>
+            </div>
+            
+            <h6>3.3 Consent Management</h6>
+            <p>Patient data access requires explicit consent records. The API will return a <code>403 Forbidden</code> response if:</p>
+            <ul>
+                <li>No valid consent record exists for the requested data</li>
+                <li>The consent has expired</li>
+                <li>The consent scope doesn't cover the requested operation</li>
+            </ul>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-check-circle"></i></div>
+                    <span>Consent Verification</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Always check the <code>consentVerified</code> field in API responses. If <code>false</code>, you must prompt the user to provide consent before displaying or using the data.</p>
+                </div>
+            </div>
+            
+            <h5>4. Data Protection</h5>
+            
+            <h6>4.1 Encryption in Transit</h6>
+            <ul>
+                <li>All API endpoints require TLS 1.3</li>
+                <li>Older TLS versions are rejected</li>
+                <li>Strong cipher suites enforced</li>
+                <li>HSTS implemented with a 1-year duration</li>
+            </ul>
+            
+            <h6>4.2 Data Encryption</h6>
+            <p>Sensitive fields in responses are encrypted with your public key. Decrypt them before use:</p>
+            <div class="example-box">
+                <pre><code>// Example of decrypting a protected field
+const patientData = await api.getPatient(patientId);
 
-        <h5>🔹 Step 1: Get Authorization Code</h5>
-        <pre>
-        GET https://auth.example.com/oauth/authorize
-        ?client_id=YOUR_CLIENT_ID
-        &response_type=code
-        &redirect_uri=https://yourapp.com/callback
-        &scope=read write
-        </pre>
+// Decrypt the SSN field using your private key
+const decryptedSSN = await decryptWithPrivateKey(
+  patientData.ssn.encryptedValue,
+  privateKey
+);</code></pre>
+            </div>
+            
+            <h6>4.3 Data Minimization</h6>
+            <p>Request only the data you need using field filtering:</p>
+            <div class="example-box">
+                <pre><code>// Only request necessary fields
+GET /v1/patients/12345?fields=name,age,medications
 
-        <h5>🔹 Step 2: Exchange Code for Access Token</h5>
-        <pre>
-        POST https://auth.example.com/oauth/token
-        Headers:
-        Content-Type: application/x-www-form-urlencoded
+// Instead of requesting all data
+GET /v1/patients/12345</code></pre>
+            </div>
+            
+            <h5>5. Security Controls</h5>
+            
+            <h6>5.1 Rate Limiting</h6>
+            <p>The API enforces rate limits to prevent abuse:</p>
+            <ul>
+                <li>Standard tier: 100 requests per minute</li>
+                <li>Premium tier: 300 requests per minute</li>
+                <li>Rate limit headers included in all responses</li>
+            </ul>
+            
+            <div class="example-box">
+                <pre><code>// Rate limit headers
+X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 86
+X-RateLimit-Reset: 1629375767</code></pre>
+            </div>
+            
+            <h6>5.2 IP Restrictions</h6>
+            <p>For server applications, register allowed IP ranges in the Developer Portal. Requests from unregistered IPs will be rejected.</p>
+            
+            <h6>5.3 Audit Logging</h6>
+            <p>You must implement comprehensive audit logging for all API interactions:</p>
+            <ul>
+                <li>Log all data access events</li>
+                <li>Capture the user identity, timestamp, and accessed resources</li>
+                <li>Maintain logs for at least 7 years (HIPAA requirement)</li>
+                <li>Make logs available for compliance audits</li>
+            </ul>
+            
+            <h5>6. Compliance Requirements</h5>
+            
+            <h6>6.1 HIPAA Compliance</h6>
+            <p>All API consumers must:</p>
+            <ul>
+                <li>Sign a Business Associate Agreement (BAA)</li>
+                <li>Implement appropriate safeguards for PHI</li>
+                <li>Report any security incidents within 24 hours</li>
+                <li>Train staff on HIPAA requirements</li>
+                <li>Document your security policies and procedures</li>
+            </ul>
+            
+            <h6>6.2 GDPR Compliance</h6>
+            <p>For applications serving EU patients:</p>
+            <ul>
+                <li>Provide clear data processing notifications</li>
+                <li>Implement data subject access requests (DSARs) capabilities</li>
+                <li>Establish a process for right to be forgotten requests</li>
+                <li>Document the legal basis for processing health data</li>
+            </ul>
+            
+            <h5>7. Security Incident Response</h5>
+            <p>If you discover a security vulnerability or incident:</p>
+            <ol>
+                <li>Report it immediately to <code>security@healthdata.api</code></li>
+                <li>Include "SECURITY INCIDENT" in the subject line</li>
+                <li>Do not disclose the vulnerability publicly until it has been addressed</li>
+                <li>Provide detailed steps to reproduce the issue</li>
+            </ol>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clock"></i></div>
+                    <span>Incident Timeline</span>
+                </div>
+                <div class="info-box-content">
+                    <ul>
+                        <li><strong>Acknowledgment:</strong> Within 4 hours</li>
+                        <li><strong>Initial assessment:</strong> Within 24 hours</li>
+                        <li><strong>Mitigation plan:</strong> Within 48 hours</li>
+                        <li><strong>Resolution:</strong> Timeline provided after assessment</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h5>8. Security Implementation Examples</h5>
+            
+            <h6>8.1 Node.js Implementation</h6>
+            <div class="example-box">
+                <pre><code>const axios = require('axios');
+const crypto = require('crypto');
 
-        Body:
-        client_id=YOUR_CLIENT_ID
-        client_secret=YOUR_CLIENT_SECRET
-        code=AUTHORIZATION_CODE
-        redirect_uri=https://yourapp.com/callback
-        grant_type=authorization_code
-        </pre>
+// Setup axios instance with proper security headers
+const api = axios.create({
+  baseURL: 'https://api.healthdata.api/v1',
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+    'X-API-Version': '1.0',
+    'User-Agent': 'HealthApp/1.0'
+  }
+});
 
-        <h4>2. Handling JWT Tokens</h4>
-        <p>Access tokens are **JWT-based**, valid for **1 hour**, and include user roles.</p>
-        <pre>
-        {
-            "access_token": "eyJhbGciOiJIUz...",
-            "token_type": "Bearer",
-            "expires_in": 3600
+// Token refresh interceptor
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response?.status === 401 && error.config) {
+      try {
+        // Get new token using refresh token
+        const newToken = await refreshAccessToken();
+        
+        // Update authorization header and retry request
+        error.config.headers['Authorization'] = `Bearer ${newToken}`;
+        return api(error.config);
+      } catch (refreshError) {
+        // Handle refresh failure - redirect to login
+        return Promise.reject(refreshError);
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
+// Encrypt sensitive data before sending
+async function encryptSensitiveData(data, publicKey) {
+  return crypto.publicEncrypt(
+    {
+      key: publicKey,
+      padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
+    },
+    Buffer.from(JSON.stringify(data))
+  ).toString('base64');
+}
+
+// Decrypt sensitive fields in responses
+async function decryptSensitiveData(encryptedData, privateKey) {
+  return JSON.parse(
+    crypto.privateDecrypt(
+      {
+        key: privateKey,
+        padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
+      },
+      Buffer.from(encryptedData, 'base64')
+    ).toString()
+  );
+}
+
+// Audit logging function
+function auditLog(event, resource, action, status) {
+  const logEntry = {
+    timestamp: new Date().toISOString(),
+    event,
+    resource,
+    action,
+    status,
+    user: getCurrentUser(),
+    ipAddress: getUserIP()
+  };
+  
+  // Store log securely
+  secureLogger.log(logEntry);
+}</code></pre>
+            </div>
+            
+            <h6>8.2 Mobile App Security Example (Swift)</h6>
+            <div class="example-box">
+                <pre><code>import Foundation
+import Security
+import CommonCrypto
+
+class SecureAPIClient {
+    // Secure storage for refresh token using Keychain
+    private func storeRefreshToken(_ token: String) {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: "refreshToken",
+            kSecAttrService as String: "com.healthapp.api",
+            kSecValueData as String: token.data(using: .utf8)!,
+            kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
+        ]
+        
+        SecItemDelete(query as CFDictionary)
+        SecItemAdd(query as CFDictionary, nil)
+    }
+    
+    // Retrieve token securely
+    private func getRefreshToken() -> String? {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: "refreshToken",
+            kSecAttrService as String: "com.healthapp.api",
+            kSecReturnData as String: true
+        ]
+        
+        var result: AnyObject?
+        let status = SecItemCopyMatching(query as CFDictionary, &result)
+        
+        guard status == errSecSuccess,
+              let data = result as? Data,
+              let token = String(data: data, encoding: .utf8) else {
+            return nil
         }
-        </pre>
-
-        <h4>3. Refreshing Expired Tokens</h4>
-        <pre>
-        POST https://auth.example.com/oauth/token
-        Headers:
-        Content-Type: application/x-www-form-urlencoded
-
-        Body:
-        client_id=YOUR_CLIENT_ID
-        client_secret=YOUR_CLIENT_SECRET
-        refresh_token=YOUR_REFRESH_TOKEN
-        grant_type=refresh_token
-        </pre>
-
-        <h4>4. Rate Limiting</h4>
-        <p>Each user can send **1000 requests per hour**.</p>
-        <pre>
-        Headers:
-        X-RateLimit-Limit: 1000
-        X-RateLimit-Remaining: 200
-        X-RateLimit-Reset: 1678909876
-        </pre>
-
-        <h4>5. Security Best Practices</h4>
-        <ul>
-            <li>Use **HTTPS** for all API calls.</li>
-            <li>Never expose **client secrets** in frontend code.</li>
-            <li>Always **refresh expired tokens** using the refresh token flow.</li>
-            <li>Implement **IP whitelisting** for API access.</li>
-        </ul>
-
-        <h4>6. Error Handling</h4>
-        <p>Common API security errors and their meanings:</p>
-        <table>
-            <tr>
-                <th>Error Code</th>
-                <th>Message</th>
-                <th>Reason</th>
-            </tr>
-            <tr>
-                <td>401</td>
-                <td>Unauthorized</td>
-                <td>Invalid API key or expired token.</td>
-            </tr>
-            <tr>
-                <td>403</td>
-                <td>Forbidden</td>
-                <td>User lacks required permissions.</td>
-            </tr>
-        </table>
+        
+        return token
+    }
+    
+    // Biometric authentication before accessing PHI
+    func authenticateUserForPHIAccess(completion: @escaping (Bool) -> Void) {
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Authenticate to view health data"
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, error in
+                DispatchQueue.main.async {
+                    completion(success)
+                }
+            }
+        } else {
+            completion(false)
+        }
+    }
+    
+    // Certificate pinning implementation
+    private func setupCertificatePinning() {
+        let session = URLSession(configuration: .default, delegate: CertificatePinningDelegate(), delegateQueue: nil)
+        // Use this session for all API requests
+    }
+}</code></pre>
+            </div>
+        </div>
     </div>
+</div>
 
-    <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution4").style.display = "none";
+<style>
+    /* Exercise Container Styling */
+    .exercise-container {
+        margin: 30px 0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        max-width: 100%;
+        position: relative;
+        width: 100%;
+    }
+    
+    /* Exercise Header */
+    .exercise-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background: linear-gradient(135deg, #4568dc, #6a85e0);
+        color: white;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .exercise-header h3 {
+        margin: 0;
+        font-size: 1.3rem;
+    }
+    
+    /* Exercise Controls */
+    .exercise-controls {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .exercise-toggle-btn, .solution-toggle-btn {
+        display: flex;
+        align-items: center;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .exercise-toggle-btn {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+    
+    .solution-toggle-btn {
+        background-color: #ffd700;
+        color: #333;
+    }
+    
+    .exercise-toggle-btn:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .solution-toggle-btn:hover {
+        background-color: #ffcc00;
+    }
+    
+    .exercise-toggle-icon, .solution-toggle-icon {
+        margin-right: 8px;
+    }
+    
+    /* Content Styling */
+    .exercise-content, .solution-content {
+        padding: 20px;
+        background-color: #fff;
+        max-height: 600px;
+        overflow-y: auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Scrollable content */
+    .scrollable-content {
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height: 600px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .scrollable-content::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .scrollable-content::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+    
+    .scrollable-content::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 4px;
+    }
+    
+    .scrollable-content::-webkit-scrollbar-thumb:hover {
+        background: #a1a1a1;
+    }
+    
+    /* Table Styling */
+    .comparison-table {
+        width: 100%;
+        overflow-x: auto;
+        margin: 15px 0;
+    }
+    
+    .comparison-table table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        table-layout: fixed;
+    }
+    
+    .comparison-table th, .comparison-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border: 1px solid #e0e0e0;
+        word-wrap: break-word;
+    }
+    
+    .comparison-table th {
+        background-color: #f5f7ff;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .comparison-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    .comparison-table tr:hover {
+        background-color: #f0f4ff;
+    }
+    
+    /* Code blocks */
+    pre {
+        background-color: #f5f7fa;
+        border-radius: 5px;
+        padding: 15px;
+        overflow-x: auto;
+        max-width: 100%;
+        white-space: pre-wrap;
+    }
+    
+    code {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.9em;
+    }
+
+    /* Info box and example box responsive fixes */
+    .info-box, .example-box {
+        max-width: 100%;
+        overflow-x: hidden;
+        box-sizing: border-box;
+    }
+    
+    /* Chapter section fixes */
+    .chapter-section {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* List styling to prevent overflow */
+    ul, ol {
+        padding-left: 20px;
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+    
+    li {
+        word-wrap: break-word;
+    }
+</style>
+
+<script>
+    function toggleExercise(exerciseId, solutionId) {
+        var exerciseContent = document.getElementById(exerciseId);
+        var solutionContent = document.getElementById(solutionId);
+        var isVisible = exerciseContent.style.display !== 'none';
+        
+        // Always hide solution when toggling exercise
+        solutionContent.style.display = 'none';
+        
+        // Toggle exercise visibility
+        exerciseContent.style.display = isVisible ? 'none' : 'block';
+        
+        // Update button text
+        var button = document.querySelector('.exercise-toggle-text');
+        var icon = document.querySelector('.exercise-toggle-icon i');
+        
+        if (isVisible) {
+            button.textContent = 'Show Exercise';
+            icon.className = 'fas fa-chevron-down';
+        } else {
+            button.textContent = 'Hide Exercise';
+            icon.className = 'fas fa-chevron-up';
         }
+        
+        // Reset solution button text
+        document.querySelector('.solution-toggle-text').textContent = 'View Solution';
+        document.querySelector('.solution-toggle-icon i').className = 'fas fa-lightbulb';
+    }
 
-        function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
+    function toggleSolution(solutionId, exerciseId) {
+        var solutionContent = document.getElementById(solutionId);
+        var exerciseContent = document.getElementById(exerciseId);
+        var isVisible = solutionContent.style.display !== 'none';
+        
+        // Always hide exercise when toggling solution
+        exerciseContent.style.display = 'none';
+        
+        // Toggle solution visibility
+        solutionContent.style.display = isVisible ? 'none' : 'block';
+        
+        // Update button text
+        var button = document.querySelector('.solution-toggle-text');
+        var icon = document.querySelector('.solution-toggle-icon i');
+        
+        if (isVisible) {
+            button.textContent = 'View Solution';
+            icon.className = 'fas fa-lightbulb';
+        } else {
+            button.textContent = 'Hide Solution';
+            icon.className = 'fas fa-times';
         }
-    </script>
-
-</body>
-</html>
+        
+        // Reset exercise button text
+        document.querySelector('.exercise-toggle-text').textContent = 'Show Exercise';
+        document.querySelector('.exercise-toggle-icon i').className = 'fas fa-chevron-down';
+    }
+</script> 

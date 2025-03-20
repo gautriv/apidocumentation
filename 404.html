@@ -3,23 +3,13 @@ permalink: /404.html
 layout: default
 ---
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
-
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+<section class="error-section">
+  <div class="container">
+    <div class="error-content">
+      <h1 class="error-title">404</h1>
+      <p class="error-message">Page not found</p>
+      <p class="error-description">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+      <a href="{{ '/' | relative_url }}" class="btn btn-primary">Return to Home Page</a>
+    </div>
+  </div>
+</section>

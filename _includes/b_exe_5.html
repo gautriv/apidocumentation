@@ -47,165 +47,890 @@
     </style>
 </head>
 <body>
-    <!-- Buttons to toggle Exercise 5 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise5')">Exercise 5</button>
-    <button class="solution-button" onclick="toggleSolution('solution5', 'exercise5')">Solution to Exercise 5</button>
-
     <!-- Exercise 5 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise5">
-        <h3>Exercise 5: Documenting a Food Recipe API</h3>
-        <p><strong>Scenario:</strong> You are assigned to document the **Food Recipe API**, which allows users to search for recipes by ingredients, cuisine, and meal type.</p>
+    <div class="exercise-container" id="exercise5-container">
+        <div class="exercise-header">
+            <h3 id="exercise5-title">Exercise 5: OpenAPI Specification Creation</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise5-content', 'solution5-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution5-content', 'exercise5-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
         
-        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
-        <ul>
-            <li>Overview of the API.</li>
-            <li>Endpoints and HTTP methods.</li>
-            <li>Request parameters in a structured table.</li>
-            <li>An example API request (including cURL).</li>
-            <li>A sample response from the API.</li>
-            <li>Response parameters in a structured table.</li>
-            <li>Pagination details.</li>
-            <li>Possible error codes and troubleshooting guidance.</li>
-            <li>Rate limits and caching best practices.</li>
+        <div class="exercise-content scrollable-content" id="exercise5-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You are a technical writer for a weather forecasting service that provides detailed weather data via its REST API. The development team has asked you to create an OpenAPI Specification (OAS) document to improve the developer experience.</p>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Your Task</h4>
+                <p>Create an OpenAPI Specification document (in YAML format) for the Weather Forecast API that includes:</p>
+                <ul>
+                    <li>Basic API information (title, version, description)</li>
+                    <li>Server information</li>
+                    <li>Authentication requirements (API key)</li>
+                    <li>Path definitions for at least two endpoints</li>
+                    <li>Request parameters and their descriptions</li>
+                    <li>Response schemas</li>
+                    <li>Examples for both requests and responses</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <h4>API Information</h4>
+                <p>The Weather Forecast API has the following main endpoints:</p>
+                <ul>
+                    <li><code>GET /current</code> - Get current weather data for a specific location</li>
+                    <li><code>GET /forecast</code> - Get a 5-day forecast for a specific location</li>
+                    <li><code>GET /historical</code> - Get historical weather data for a specific location and date range</li>
         </ul>
 
-        <h4>Provided API Code:</h4>
-        <p>Below is a sample API request and response:</p>
+                <p>Each endpoint requires an API key for authentication and a location parameter (either by city name, coordinates, or zip code).</p>
+                
+                <p>The API returns JSON responses with HTTP status codes to indicate success or failure.</p>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Add a schema component definition that can be reused across multiple endpoints and document potential error responses.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution5-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>OpenAPI Specification for Weather Forecast API</h4>
+                <p>Below is a complete OpenAPI Specification (v3.0.3) for the Weather Forecast API:</p>
+            </div>
+            
+            <div class="example-box">
+                <pre><code class="language-yaml">openapi: 3.0.3
+info:
+  title: Weather Forecast API
+  description: |
+    The Weather Forecast API provides detailed weather data including current conditions, 
+    5-day forecasts, and historical weather information. This API is designed for developers 
+    who need reliable weather data for applications, websites, or services.
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@weatherapi.example.com
+    url: https://weatherapi.example.com/support
+  
+servers:
+  - url: https://api.weatherapi.example.com/v1
+    description: Production server
+  - url: https://sandbox.weatherapi.example.com/v1
+    description: Sandbox environment for testing
 
-        <h5>API Request:</h5>
-        <pre>
-        GET https://api.foodrecipes.com/search?ingredients=tomato,cheese&cuisine=Italian&meal_type=dinner&page=1&apikey=your_api_key
-        </pre>
+security:
+  - ApiKeyAuth: []
+  
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+      description: API key for authentication
+  
+  schemas:
+    WeatherData:
+      type: object
+      required:
+        - temperature
+        - humidity
+        - wind_speed
+        - conditions
+      properties:
+        temperature:
+          type: object
+          properties:
+            value:
+              type: number
+              description: Temperature value
+            unit:
+              type: string
+              enum: [celsius, fahrenheit]
+              description: Temperature unit
+        humidity:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: Humidity percentage
+        wind_speed:
+          type: object
+          properties:
+            value:
+              type: number
+              description: Wind speed value
+            unit:
+              type: string
+              enum: [kph, mph]
+              description: Wind speed unit
+        wind_direction:
+          type: string
+          description: Wind direction (N, S, E, W, NE, etc.)
+        conditions:
+          type: string
+          description: Weather conditions (e.g., Clear, Cloudy, Rain)
+        precipitation:
+          type: object
+          properties:
+            value:
+              type: number
+              description: Precipitation amount
+            unit:
+              type: string
+              enum: [mm, inches]
+              description: Precipitation unit
+    
+    Location:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City name
+        country:
+          type: string
+          description: Country name
+        coordinates:
+          type: object
+          properties:
+            latitude:
+              type: number
+              format: float
+              description: Latitude coordinate
+            longitude:
+              type: number
+              format: float
+              description: Longitude coordinate
+    
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+        details:
+          type: object
+          description: Additional error details
+  
+  parameters:
+    locationParam:
+      name: location
+      in: query
+      description: Location name (city, town, etc.)
+      required: false
+      schema:
+        type: string
+    
+    coordinatesParam:
+      name: coordinates
+      in: query
+      description: Latitude and longitude (format "lat,lon")
+      required: false
+      schema:
+        type: string
+        pattern: '^-?[0-9]{1,2}(\.[0-9]+)?,-?[0-9]{1,3}(\.[0-9]+)?$'
+    
+    zipCodeParam:
+      name: zip
+      in: query
+      description: Zip/postal code and country code (format "12345,us")
+      required: false
+      schema:
+        type: string
+    
+    unitsParam:
+      name: units
+      in: query
+      description: Unit system to use
+      required: false
+      schema:
+        type: string
+        enum:
+          - metric
+          - imperial
+        default: metric
 
-        <h5>Sample Response:</h5>
-        <pre>
-        {
-            "page": 1,
-            "total_results": 2,
-            "total_pages": 1,
-            "recipes": [
-                {
-                    "title": "Margherita Pizza",
-                    "cuisine": "Italian",
-                    "meal_type": "Dinner",
-                    "ingredients": ["Tomato", "Cheese", "Basil", "Flour"],
-                    "instructions": [
-                        "Preheat oven to 220°C.",
-                        "Spread tomato sauce on pizza base.",
-                        "Add cheese and bake for 15 minutes."
-                    ],
-                    "nutrition": {
-                        "calories": 270,
-                        "protein": "12g",
-                        "fat": "8g",
-                        "carbohydrates": "36g"
-                    }
-                }
-            ]
+paths:
+  /current:
+    get:
+      summary: Get current weather data
+      description: Retrieves current weather conditions for a specific location
+      operationId: getCurrentWeather
+      parameters:
+        - $ref: '#/components/parameters/locationParam'
+        - $ref: '#/components/parameters/coordinatesParam'
+        - $ref: '#/components/parameters/zipCodeParam'
+        - $ref: '#/components/parameters/unitsParam'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  location:
+                    $ref: '#/components/schemas/Location'
+                  current:
+                    $ref: '#/components/schemas/WeatherData'
+                  last_updated:
+                    type: string
+                    format: date-time
+              example:
+                location:
+                  city: "London"
+                  country: "United Kingdom"
+                  coordinates:
+                    latitude: 51.5074
+                    longitude: -0.1278
+                current:
+                  temperature:
+                    value: 18.5
+                    unit: "celsius"
+                  humidity: 65
+                  wind_speed:
+                    value: 12
+                    unit: "kph"
+                  wind_direction: "SW"
+                  conditions: "Partly Cloudy"
+                  precipitation:
+                    value: 0
+                    unit: "mm"
+                last_updated: "2025-02-15T14:30:00Z"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: "invalid_location"
+                message: "Location parameter is missing or invalid"
+                details:
+                  required_params: ["location OR coordinates OR zip"]
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: "invalid_api_key"
+                message: "Invalid or missing API key"
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: "rate_limit_exceeded"
+                message: "API rate limit exceeded"
+                details:
+                  rate_limit: "60 requests per minute"
+                  reset_at: "2025-02-15T14:35:00Z"
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: "internal_error"
+                message: "Internal server error"
+  
+  /forecast:
+    get:
+      summary: Get weather forecast
+      description: Retrieves a 5-day weather forecast for a specific location
+      operationId: getForecast
+      parameters:
+        - $ref: '#/components/parameters/locationParam'
+        - $ref: '#/components/parameters/coordinatesParam'
+        - $ref: '#/components/parameters/zipCodeParam'
+        - $ref: '#/components/parameters/unitsParam'
+        - name: days
+          in: query
+          description: Number of days to forecast (1-7)
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 7
+            default: 5
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  location:
+                    $ref: '#/components/schemas/Location'
+                  forecast:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          format: date
+                        day:
+                          $ref: '#/components/schemas/WeatherData'
+                        night:
+                          $ref: '#/components/schemas/WeatherData'
+              example:
+                location:
+                  city: "New York"
+                  country: "United States"
+                  coordinates:
+                    latitude: 40.7128
+                    longitude: -74.0060
+                forecast:
+                  - date: "2025-02-16"
+                    day:
+                      temperature:
+                        value: 24
+                        unit: "celsius"
+                      humidity: 45
+                      wind_speed:
+                        value: 10
+                        unit: "kph"
+                      wind_direction: "NW"
+                      conditions: "Sunny"
+                      precipitation:
+                        value: 0
+                        unit: "mm"
+                    night:
+                      temperature:
+                        value: 15
+                        unit: "celsius"
+                      humidity: 65
+                      wind_speed:
+                        value: 5
+                        unit: "kph"
+                      wind_direction: "N"
+                      conditions: "Clear"
+                      precipitation:
+                        value: 0
+                        unit: "mm"
+                  - date: "2025-02-17"
+                    day:
+                      temperature:
+                        value: 23
+                        unit: "celsius"
+                      humidity: 50
+                      wind_speed:
+                        value: 12
+                        unit: "kph"
+                      wind_direction: "W"
+                      conditions: "Partly Cloudy"
+                      precipitation:
+                        value: 0
+                        unit: "mm"
+                    night:
+                      temperature:
+                        value: 14
+                        unit: "celsius"
+                      humidity: 70
+                      wind_speed:
+                        value: 8
+                        unit: "kph"
+                      wind_direction: "NW"
+                      conditions: "Cloudy"
+                      precipitation:
+                        value: 2
+                        unit: "mm"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+  /historical:
+    get:
+      summary: Get historical weather data
+      description: Retrieves historical weather data for a specific location and date range
+      operationId: getHistoricalWeather
+      parameters:
+        - $ref: '#/components/parameters/locationParam'
+        - $ref: '#/components/parameters/coordinatesParam'
+        - $ref: '#/components/parameters/zipCodeParam'
+        - $ref: '#/components/parameters/unitsParam'
+        - name: start_date
+          in: query
+          description: Start date (format YYYY-MM-DD)
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          description: End date (format YYYY-MM-DD)
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  location:
+                    $ref: '#/components/schemas/Location'
+                  historical:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: string
+                          format: date
+                        weather:
+                          $ref: '#/components/schemas/WeatherData'
+              example:
+                location:
+                  city: "Sydney"
+                  country: "Australia"
+                  coordinates:
+                    latitude: -33.8688
+                    longitude: 151.2093
+                historical:
+                  - date: "2025-01-15"
+                    weather:
+                      temperature:
+                        value: 32
+                        unit: "celsius"
+                      humidity: 60
+                      wind_speed:
+                        value: 15
+                        unit: "kph"
+                      wind_direction: "SE"
+                      conditions: "Hot and Sunny"
+                      precipitation:
+                        value: 0
+                        unit: "mm"
+                  - date: "2025-01-16"
+                    weather:
+                      temperature:
+                        value: 34
+                        unit: "celsius"
+                      humidity: 65
+                      wind_speed:
+                        value: 18
+                        unit: "kph"
+                      wind_direction: "E"
+                      conditions: "Hot and Humid"
+                      precipitation:
+                        value: 5
+                        unit: "mm"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: "data_not_found"
+                message: "No historical data available for the specified date range"
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'</code></pre>
+    </div>
+
+            <div class="chapter-section">
+                <h4>Key Components of the OpenAPI Specification</h4>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-list"></i></div>
+                        <span>Specification Structure</span>
+                    </div>
+                    <div class="info-box-content">
+                        <ol>
+                            <li><strong>Basic Information:</strong> The specification includes the API title, description, version, and contact information.</li>
+                            <li><strong>Servers:</strong> Production and sandbox environments are defined.</li>
+                            <li><strong>Security:</strong> API key authentication is specified as a security requirement.</li>
+                            <li><strong>Reusable Components:</strong>
+                                <ul>
+                                    <li>Schemas for common data structures (WeatherData, Location, Error)</li>
+                                    <li>Parameters for location, coordinates, zip code, and units</li>
+                                    <li>Security schemes for API key authentication</li>
+                                </ul>
+                            </li>
+                            <li><strong>Path Operations:</strong> Detailed specifications for each endpoint including:
+                                <ul>
+                                    <li>Parameters and validation rules</li>
+                                    <li>Response schemas with examples</li>
+                                    <li>Error responses</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Benefits of This Approach</h4>
+                
+                <div class="comparison-table">
+        <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Benefit</th>
+            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Reusable Components</td>
+                                <td>Reduces duplication and ensures consistency across endpoints</td>
+            </tr>
+            <tr>
+                                <td>Data Schema Definitions</td>
+                                <td>Provides clear expectations about data structure and types</td>
+            </tr>
+            <tr>
+                                <td>Parameter Validation</td>
+                                <td>Helps developers understand constraints and requirements</td>
+            </tr>
+            <tr>
+                                <td>Examples</td>
+                                <td>Makes it easier to understand the expected request/response format</td>
+            </tr>
+            <tr>
+                                <td>Error Documentation</td>
+                                <td>Helps developers handle error conditions appropriately</td>
+            </tr>
+                        </tbody>
+        </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>How to Use This Specification</h4>
+                <p>This OpenAPI Specification can be used to:</p>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-cogs"></i></div>
+                        <span>Implementation</span>
+                    </div>
+                    <div class="info-box-content">
+                        <ul>
+                            <li>Generate interactive API documentation with tools like Swagger UI or ReDoc</li>
+                            <li>Create mock servers for testing</li>
+                            <li>Generate client libraries in multiple programming languages</li>
+                            <li>Validate API requests and responses</li>
+                            <li>Enable API discoverability and integration with developer tools</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Exercise Container Styling */
+        .exercise-container {
+            margin: 30px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            max-width: 100%;
+            position: relative;
+            width: 100%;
         }
-        </pre>
+        
+        /* Exercise Header */
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #4568dc, #6a85e0);
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .exercise-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        /* Exercise Controls */
+        .exercise-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .exercise-toggle-btn, .solution-toggle-btn {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .exercise-toggle-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .solution-toggle-btn {
+            background-color: #ffd700;
+            color: #333;
+        }
+        
+        .exercise-toggle-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .solution-toggle-btn:hover {
+            background-color: #ffcc00;
+        }
+        
+        .exercise-toggle-icon, .solution-toggle-icon {
+            margin-right: 8px;
+        }
+        
+        /* Content Styling */
+        .exercise-content, .solution-content {
+            padding: 20px;
+            background-color: #fff;
+            max-height: 600px;
+            overflow-y: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-        <p><strong>Bonus Challenge:</strong> Explain how API users should handle rate limits and caching.</p>
-    </div>
+        /* Scrollable content */
+        .scrollable-content {
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-height: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .scrollable-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+        
+        /* Table Styling */
+        .comparison-table {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            table-layout: fixed;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+            word-wrap: break-word;
+        }
+        
+        .comparison-table th {
+            background-color: #f5f7ff;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f0f4ff;
+        }
+        
+        /* Code blocks */
+        pre {
+            background-color: #f5f7fa;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            max-width: 100%;
+            white-space: pre-wrap;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
 
-    <!-- Solution to Exercise 5 (Initially Hidden) -->
-    <div class="solution-content" id="solution5">
-        <h3>Solution to Exercise 5</h3>
-
-        <h4>1. Overview</h4>
-        <p>The **Food Recipe API** allows developers to search for recipes based on ingredients, cuisine, and meal type. It returns a paginated list of results with detailed recipe information, including ingredients, cooking instructions, and nutritional values.</p>
-
-        <h4>2. Endpoints and Methods</h4>
-        <p><strong>GET /search</strong> – Retrieves a list of recipes based on search parameters.</p>
-
-        <h4>3. Request Parameters</h4>
-        <table>
-            <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Required</th>
-                <th>Default</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>ingredients</td>
-                <td>String</td>
-                <td>No</td>
-                <td>None</td>
-                <td>Filters recipes by ingredients (comma-separated).</td>
-            </tr>
-            <tr>
-                <td>cuisine</td>
-                <td>String</td>
-                <td>No</td>
-                <td>None</td>
-                <td>Filters recipes by cuisine type (e.g., "Italian").</td>
-            </tr>
-            <tr>
-                <td>meal_type</td>
-                <td>String</td>
-                <td>No</td>
-                <td>None</td>
-                <td>Filters recipes by meal type (e.g., "Dinner").</td>
-            </tr>
-            <tr>
-                <td>page</td>
-                <td>Integer</td>
-                <td>No</td>
-                <td>1</td>
-                <td>Specifies the results page number.</td>
-            </tr>
-            <tr>
-                <td>apikey</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>API key for authentication.</td>
-            </tr>
-        </table>
-
-        <h4>4. Sample cURL Request</h4>
-        <pre>
-        curl -X GET "https://api.foodrecipes.com/search?ingredients=tomato,cheese&cuisine=Italian&meal_type=dinner&page=1&apikey=your_api_key" -H "Accept: application/json"
-        </pre>
-
-        <h4>5. Rate Limits & Caching Best Practices</h4>
-        <p>The API allows **60 requests per hour**. Developers should **cache recipe data** to reduce redundant API calls.</p>
-
-        <h4>6. Error Codes</h4>
-        <table>
-            <tr>
-                <th>Status Code</th>
-                <th>Message</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>401</td>
-                <td>Unauthorized</td>
-                <td>Invalid or missing API key.</td>
-            </tr>
-            <tr>
-                <td>404</td>
-                <td>Not Found</td>
-                <td>No recipes matched the search criteria.</td>
-            </tr>
-            <tr>
-                <td>429</td>
-                <td>Too Many Requests</td>
-                <td>Rate limit exceeded.</td>
-            </tr>
-        </table>
-    </div>
+        /* Info box and example box responsive fixes */
+        .info-box, .example-box {
+            max-width: 100%;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        
+        /* Chapter section fixes */
+        .chapter-section {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* List styling to prevent overflow */
+        ul, ol {
+            padding-left: 20px;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+        
+        li {
+            word-wrap: break-word;
+        }
+    </style>
 
     <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution5").style.display = "none";
+        function toggleExercise(exerciseId, solutionId) {
+            var exerciseContent = document.getElementById(exerciseId);
+            var solutionContent = document.getElementById(solutionId);
+            var isVisible = exerciseContent.style.display !== 'none';
+            
+            // Always hide solution when toggling exercise
+            solutionContent.style.display = 'none';
+            
+            // Toggle exercise visibility
+            exerciseContent.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text
+            var button = document.querySelector('.exercise-toggle-text');
+            var icon = document.querySelector('.exercise-toggle-icon i');
+            
+            if (isVisible) {
+                button.textContent = 'Show Exercise';
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                button.textContent = 'Hide Exercise';
+                icon.className = 'fas fa-chevron-up';
+            }
+            
+            // Reset solution button text
+            document.querySelector('.solution-toggle-text').textContent = 'View Solution';
+            document.querySelector('.solution-toggle-icon i').className = 'fas fa-lightbulb';
         }
 
         function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
+            var solutionContent = document.getElementById(solutionId);
+            var exerciseContent = document.getElementById(exerciseId);
+            var isVisible = solutionContent.style.display !== 'none';
+            
+            // Always hide exercise when toggling solution
+            exerciseContent.style.display = 'none';
+            
+            // Toggle solution visibility
+            solutionContent.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text
+            var button = document.querySelector('.solution-toggle-text');
+            var icon = document.querySelector('.solution-toggle-icon i');
+            
+            if (isVisible) {
+                button.textContent = 'View Solution';
+                icon.className = 'fas fa-lightbulb';
+            } else {
+                button.textContent = 'Hide Solution';
+                icon.className = 'fas fa-times';
+            }
+            
+            // Reset exercise button text
+            document.querySelector('.exercise-toggle-text').textContent = 'Show Exercise';
+            document.querySelector('.exercise-toggle-icon i').className = 'fas fa-chevron-down';
         }
     </script>
 

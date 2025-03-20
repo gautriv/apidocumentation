@@ -1,207 +1,645 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Styling for buttons */
-        .exercise-button, .solution-button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px;
-            margin: 10px;
-            display: inline-block;
-        }
-
-        /* Hidden content by default */
-        .exercise-content, .solution-content {
-            display: none;
-            padding: 15px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            margin: 10px;
-        }
-
-        /* Table styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f0f0f0;
-        }
-    </style>
-</head>
+{% include exe_head.html %}
 <body>
-    <!-- Buttons to toggle Exercise 3 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise3')">Exercise 3</button>
-    <button class="solution-button" onclick="toggleSolution('solution3', 'exercise3')">Solution to Exercise 3</button>
-
-    <!-- Exercise 3 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise3">
-        <h3>Exercise 3: Documenting a Social Media API</h3>
-        <p><strong>Scenario:</strong> You are assigned to document the **Social Media API**, which allows users to post content, retrieve a feed, and like posts.</p>
+    <div class="exercise-container" id="exercise3-container">
+        <div class="exercise-header">
+            <h4 id="exercise3-title">Exercise 3: Documenting a Social Media API</h4>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise3-content', 'solution3-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution3-content', 'exercise3-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
         
-        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
-        <ul>
-            <li>Overview of the API.</li>
-            <li>Endpoints and HTTP methods (Post, Feed, Like).</li>
-            <li>Authentication (OAuth tokens, user scopes).</li>
-            <li>Request parameters in a structured table.</li>
-            <li>An example API request (including cURL).</li>
-            <li>A sample response from the API.</li>
-            <li>Response parameters in a structured table.</li>
-            <li>Handling rate limits and access permissions.</li>
-        </ul>
+        <div class="exercise-content scrollable-content" id="exercise3-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You are assigned to document the <strong>Social Media API</strong>, which allows users to post content, retrieve a feed, and like posts.</p>
+                </div>
+            </div>
+            <div class="chapter-section">
+                <h4>Your Task:</h4>
+                <p>Write an API reference document covering:</p>
+                <ul>
+                    <li>Overview of the API.</li>
+                    <li>Endpoints and HTTP methods (Post, Feed, Like).</li>
+                    <li>Authentication (OAuth tokens, user scopes).</li>
+                    <li>Request parameters in a structured table.</li>
+                    <li>An example API request (including cURL).</li>
+                    <li>A sample response from the API.</li>
+                    <li>Response parameters in a structured table.</li>
+                    <li>Handling rate limits and access permissions.</li>
+                </ul>
+            </div>
 
-        <h4>Provided API Code (Some details missing – you must fill them in):</h4>
-        <p>Below is a sample API request and response:</p>
+            <div class="example-box">
+                <h4>Provided API Code (Some details missing – you must fill them in):</h4>
+                <p>Below is a sample API request and response:</p>
 
-        <h5>API Request (Create a Post):</h5>
-        <pre>
-        POST https://api.socialmedia.com/posts
-        Headers:
-        Authorization: Bearer {access_token}
-        Content-Type: application/json
+                <h5>API Request (Create a Post):</h5>
+                <div class="code-example">
+                    <pre><code>POST https://api.socialmedia.com/posts
+Headers:
+Authorization: Bearer {access_token}
+Content-Type: application/json
 
-        Body:
-        {
-            "user_id": "user_12345",
-            "content": "Exploring the new Social Media API!",
-            "media_url": "https://example.com/image.jpg"
-        }
-        </pre>
+Body:
+{
+    "user_id": "user_12345",
+    "content": "Exploring the new Social Media API!",
+    "media_url": "https://example.com/image.jpg"
+}</code></pre>
+                </div>
 
-        <h5>Sample Response:</h5>
-        <pre>
+                <h5>Sample Response:</h5>
+                <div class="code-example">
+                    <pre><code>{
+    "post_id": "post_98765",
+    "status": "Published",
+    "user": {
+        "id": "user_12345",
+        "name": "John Doe",
+        "profile_picture": "https://example.com/johndoe.jpg"
+    },
+    "likes": 0,
+    "timestamp": "2025-02-17T14:00:00Z"
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Document how API users should handle rate limits and permissions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="solution-content scrollable-content" id="solution3-content" style="display: none;">
+            <h4>Social Media API Documentation</h4>
+            <div class="chapter-section">
+                <h4>1. Overview</h4>
+                <p>The <strong>Social Media API</strong> allows users to create posts, retrieve their feed, and interact with other users' content through likes. It enables application developers to integrate social media functionality into their apps.</p>
+            </div>
+
+            <div class="chapter-section">
+                <h5>2. Authentication</h5>
+                <p>The API requires OAuth 2.0 authentication. Clients must request an access token and include it in the <code>Authorization</code> header.</p>
+                
+                <div class="endpoint-details">
+                    <h6>Required Scopes:</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Scope</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>post:read</td>
+                                    <td>Access to read posts and feeds</td>
+                                </tr>
+                                <tr>
+                                    <td>post:write</td>
+                                    <td>Permission to create and edit posts</td>
+                                </tr>
+                                <tr>
+                                    <td>post:interact</td>
+                                    <td>Ability to like and comment on posts</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>OAuth Flow:</h6>
+                    <p>Request an access token with the required scopes:</p>
+                    <div class="code-example">
+                        <pre><code>POST https://api.socialmedia.com/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&
+client_id=YOUR_CLIENT_ID&
+client_secret=YOUR_CLIENT_SECRET&
+code=AUTHORIZATION_CODE&
+redirect_uri=YOUR_REDIRECT_URI&
+scope=post:read post:write post:interact</code></pre>
+                    </div>
+                    
+                    <p>Include the token in all API requests:</p>
+                    <div class="code-example">
+                        <pre><code>Authorization: Bearer {access_token}</code></pre>
+                    </div>
+                    <p>Access tokens expire after 24 hours and will need to be refreshed.</p>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>3. Endpoints and Methods</h5>
+                <div class="table-container">
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Endpoint</th>
+                                <th>Description</th>
+                                <th>Required Scope</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>POST</td>
+                                <td>/posts</td>
+                                <td>Creates a new post</td>
+                                <td>post:write</td>
+                            </tr>
+                            <tr>
+                                <td>GET</td>
+                                <td>/feed</td>
+                                <td>Retrieves the latest posts from followed users</td>
+                                <td>post:read</td>
+                            </tr>
+                            <tr>
+                                <td>POST</td>
+                                <td>/posts/{post_id}/like</td>
+                                <td>Likes a post</td>
+                                <td>post:interact</td>
+                            </tr>
+                            <tr>
+                                <td>DELETE</td>
+                                <td>/posts/{post_id}/like</td>
+                                <td>Unlikes a post</td>
+                                <td>post:interact</td>
+                            </tr>
+                            <tr>
+                                <td>GET</td>
+                                <td>/posts/{post_id}</td>
+                                <td>Retrieves a specific post</td>
+                                <td>post:read</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>4. Create a Post</h5>
+                <p>Creates a new social media post.</p>
+                
+                <div class="endpoint-details">
+                    <p><strong>Endpoint:</strong> <code>POST /posts</code></p>
+                    
+                    <h6>Request Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>user_id</td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>Unique identifier of the user</td>
+                                </tr>
+                                <tr>
+                                    <td>content</td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>Text content of the post (max 500 characters)</td>
+                                </tr>
+                                <tr>
+                                    <td>media_url</td>
+                                    <td>String</td>
+                                    <td>No</td>
+                                    <td>URL to an image or video</td>
+                                </tr>
+                                <tr>
+                                    <td>visibility</td>
+                                    <td>String</td>
+                                    <td>No</td>
+                                    <td>Post visibility: "public", "followers", or "private" (default: "public")</td>
+                                </tr>
+                                <tr>
+                                    <td>tags</td>
+                                    <td>Array</td>
+                                    <td>No</td>
+                                    <td>Array of hashtags for the post</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Example cURL Request</h6>
+                    <div class="code-example">
+                        <pre><code>curl -X POST "https://api.socialmedia.com/posts" \
+-H "Authorization: Bearer {access_token}" \
+-H "Content-Type: application/json" \
+-d '{
+    "user_id": "user_12345",
+    "content": "Exploring the new Social Media API!",
+    "media_url": "https://example.com/image.jpg",
+    "visibility": "public",
+    "tags": ["API", "SocialMedia", "Coding"]
+}'</code></pre>
+                    </div>
+
+                    <h6>Example Response</h6>
+                    <div class="code-example">
+                        <pre><code>{
+    "post_id": "post_98765",
+    "status": "Published",
+    "user": {
+        "id": "user_12345",
+        "name": "John Doe",
+        "profile_picture": "https://example.com/johndoe.jpg"
+    },
+    "content": "Exploring the new Social Media API!",
+    "media_url": "https://example.com/image.jpg",
+    "visibility": "public",
+    "tags": ["API", "SocialMedia", "Coding"],
+    "likes": 0,
+    "timestamp": "2025-02-17T14:00:00Z"
+}</code></pre>
+                    </div>
+
+                    <h6>Response Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>post_id</td>
+                                    <td>String</td>
+                                    <td>Unique identifier for the post</td>
+                                </tr>
+                                <tr>
+                                    <td>status</td>
+                                    <td>String</td>
+                                    <td>Publication status: "Published", "Pending", "Failed"</td>
+                                </tr>
+                                <tr>
+                                    <td>user</td>
+                                    <td>Object</td>
+                                    <td>Information about the post author</td>
+                                </tr>
+                                <tr>
+                                    <td>content</td>
+                                    <td>String</td>
+                                    <td>Text content of the post</td>
+                                </tr>
+                                <tr>
+                                    <td>media_url</td>
+                                    <td>String</td>
+                                    <td>URL to attached media (if provided)</td>
+                                </tr>
+                                <tr>
+                                    <td>visibility</td>
+                                    <td>String</td>
+                                    <td>Post visibility level</td>
+                                </tr>
+                                <tr>
+                                    <td>tags</td>
+                                    <td>Array</td>
+                                    <td>Hashtags associated with the post</td>
+                                </tr>
+                                <tr>
+                                    <td>likes</td>
+                                    <td>Integer</td>
+                                    <td>Number of likes the post has received</td>
+                                </tr>
+                                <tr>
+                                    <td>timestamp</td>
+                                    <td>String</td>
+                                    <td>ISO 8601 timestamp when the post was created</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>5. Retrieve Feed</h5>
+                <p>Gets the latest posts from followed users.</p>
+                
+                <div class="endpoint-details">
+                    <p><strong>Endpoint:</strong> <code>GET /feed</code></p>
+                    
+                    <h6>Query Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>user_id</td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>User whose feed to retrieve</td>
+                                </tr>
+                                <tr>
+                                    <td>limit</td>
+                                    <td>Integer</td>
+                                    <td>No</td>
+                                    <td>Number of posts to return (default: 20, max: 100)</td>
+                                </tr>
+                                <tr>
+                                    <td>since</td>
+                                    <td>String</td>
+                                    <td>No</td>
+                                    <td>Return posts newer than this timestamp (ISO 8601)</td>
+                                </tr>
+                                <tr>
+                                    <td>cursor</td>
+                                    <td>String</td>
+                                    <td>No</td>
+                                    <td>Pagination cursor from previous response</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Example cURL Request</h6>
+                    <div class="code-example">
+                        <pre><code>curl -X GET "https://api.socialmedia.com/feed?user_id=user_12345&limit=10" \
+-H "Authorization: Bearer {access_token}"</code></pre>
+                    </div>
+
+                    <h6>Example Response</h6>
+                    <div class="code-example">
+                        <pre><code>{
+    "data": [
         {
             "post_id": "post_98765",
-            "status": "Published",
             "user": {
-                "id": "user_12345",
-                "name": "John Doe",
-                "profile_picture": "https://example.com/johndoe.jpg"
+                "id": "user_54321",
+                "name": "Jane Smith",
+                "profile_picture": "https://example.com/janesmith.jpg"
             },
-            "likes": 0,
-            "timestamp": "2025-02-17T14:00:00Z"
+            "content": "Just launched our new API features!",
+            "likes": 42,
+            "timestamp": "2025-02-17T13:30:00Z"
+        },
+        {
+            "post_id": "post_98764",
+            "user": {
+                "id": "user_65432",
+                "name": "Alex Johnson",
+                "profile_picture": "https://example.com/alexj.jpg"
+            },
+            "content": "Working on a new project with the team",
+            "media_url": "https://example.com/project.jpg",
+            "likes": 28,
+            "timestamp": "2025-02-17T12:15:00Z"
         }
-        </pre>
+    ],
+    "paging": {
+        "cursors": {
+            "before": "QVFIUjRfQ...",
+            "after": "QVFIUmx5dV..."
+        },
+        "next": "https://api.socialmedia.com/feed?user_id=user_12345&limit=10&cursor=QVFIUmx5dV..."
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
 
-        <p><strong>Bonus Challenge:</strong> Document how API users should handle rate limits and permissions.</p>
+            <div class="chapter-section">
+                <h5>6. Like a Post</h5>
+                <p>Adds a like to a specific post.</p>
+                
+                <div class="endpoint-details">
+                    <p><strong>Endpoint:</strong> <code>POST /posts/{post_id}/like</code></p>
+                    
+                    <h6>Path Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>post_id</td>
+                                    <td>String</td>
+                                    <td>Unique post identifier</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Request Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>user_id</td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>User ID of the person liking the post</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Example cURL Request</h6>
+                    <div class="code-example">
+                        <pre><code>curl -X POST "https://api.socialmedia.com/posts/post_98765/like" \
+-H "Authorization: Bearer {access_token}" \
+-H "Content-Type: application/json" \
+-d '{
+    "user_id": "user_12345"
+}'</code></pre>
+                    </div>
+
+                    <h6>Example Response</h6>
+                    <div class="code-example">
+                        <pre><code>{
+    "success": true,
+    "post_id": "post_98765",
+    "likes": 43,
+    "user_has_liked": true
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>7. Rate Limits and Permissions</h5>
+                <h6>Rate Limits</h6>
+                <p>The API enforces rate limits to ensure system stability:</p>
+                <div class="table-container">
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Endpoint</th>
+                                <th>Rate Limit</th>
+                                <th>Time Window</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>POST /posts</td>
+                                <td>10 requests</td>
+                                <td>15 minutes</td>
+                            </tr>
+                            <tr>
+                                <td>GET /feed</td>
+                                <td>100 requests</td>
+                                <td>15 minutes</td>
+                            </tr>
+                            <tr>
+                                <td>POST /posts/{post_id}/like</td>
+                                <td>50 requests</td>
+                                <td>15 minutes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p>Rate limit information is included in response headers:</p>
+                <ul>
+                    <li><code>X-RateLimit-Limit</code>: Maximum number of requests</li>
+                    <li><code>X-RateLimit-Remaining</code>: Remaining requests in the current time window</li>
+                    <li><code>X-RateLimit-Reset</code>: Time when the rate limit will reset (Unix timestamp)</li>
+                </ul>
+                
+                <h6>Handling Rate Limits</h6>
+                <p>When a rate limit is exceeded, the API returns a <code>429 Too Many Requests</code> status code. Best practices:</p>
+                <ol>
+                    <li>Implement exponential backoff when receiving 429 responses</li>
+                    <li>Cache responses where possible to reduce API calls</li>
+                    <li>Monitor the rate limit headers to avoid reaching limits</li>
+                    <li>Distribute API usage evenly across the time window</li>
+                </ol>
+                
+                <h6>Permission Handling</h6>
+                <p>When insufficient permissions are detected, the API returns a <code>403 Forbidden</code> status code with details:</p>
+                <div class="code-example">
+                    <pre><code>{
+    "error": {
+        "type": "insufficient_permissions",
+        "message": "The provided access token does not have the required scope: post:write",
+        "required_scope": "post:write"
+    }
+}</code></pre>
+                </div>
+                
+                <p>Best practices for permission handling:</p>
+                <ul>
+                    <li>Request all necessary scopes during authentication</li>
+                    <li>Implement a user-friendly reauthentication flow when insufficient permissions are detected</li>
+                    <li>Check required permissions in your application before making API calls</li>
+                    <li>Handle permission errors gracefully with clear user messaging</li>
+                </ul>
+            </div>
+
+            <div class="chapter-section">
+                <h5>8. Error Handling</h5>
+                <p>All error responses follow a standard format:</p>
+                <div class="code-example">
+                    <pre><code>{
+    "error": {
+        "type": "error_type",
+        "message": "Human-readable error message",
+        "code": 1234
+    }
+}</code></pre>
+                </div>
+                
+                <p>Common errors include:</p>
+                <div class="table-container">
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Status Code</th>
+                                <th>Error Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>400</td>
+                                <td>invalid_request</td>
+                                <td>Missing or invalid parameters</td>
+                            </tr>
+                            <tr>
+                                <td>401</td>
+                                <td>authentication_error</td>
+                                <td>Invalid or missing access token</td>
+                            </tr>
+                            <tr>
+                                <td>403</td>
+                                <td>insufficient_permissions</td>
+                                <td>Token lacks required scopes</td>
+                            </tr>
+                            <tr>
+                                <td>404</td>
+                                <td>not_found</td>
+                                <td>Requested resource does not exist</td>
+                            </tr>
+                            <tr>
+                                <td>413</td>
+                                <td>content_too_large</td>
+                                <td>Content exceeds allowed size</td>
+                            </tr>
+                            <tr>
+                                <td>429</td>
+                                <td>rate_limit_exceeded</td>
+                                <td>Too many requests in the time window</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Solution to Exercise 3 (Initially Hidden) -->
-    <div class="solution-content" id="solution3">
-        <h3>Solution to Exercise 3</h3>
-
-        <h4>1. Overview</h4>
-        <p>The **Social Media API** allows users to create posts, retrieve their feed, and interact with other users' content through likes.</p>
-
-        <h4>2. Authentication</h4>
-        <p>The API requires OAuth 2.0 authentication. Clients must request an access token and include it in the `Authorization` header.</p>
-
-        <h4>3. Endpoints and Methods</h4>
-        <ul>
-            <li><strong>POST /posts</strong> – Creates a new post.</li>
-            <li><strong>GET /feed</strong> – Retrieves the latest posts from followed users.</li>
-            <li><strong>POST /posts/{post_id}/like</strong> – Likes a post.</li>
-        </ul>
-
-        <h4>4. Request Parameters (Creating a Post)</h4>
-        <table>
-            <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Required</th>
-                <th>Default</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>user_id</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>Unique identifier of the user.</td>
-            </tr>
-            <tr>
-                <td>content</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>Text content of the post.</td>
-            </tr>
-            <tr>
-                <td>media_url</td>
-                <td>String</td>
-                <td>No</td>
-                <td>None</td>
-                <td>URL to an image or video.</td>
-            </tr>
-        </table>
-
-        <h4>5. Sample cURL Request (Creating a Post)</h4>
-        <pre>
-        curl -X POST "https://api.socialmedia.com/posts" 
-        -H "Authorization: Bearer {access_token}" 
-        -H "Content-Type: application/json" 
-        -d '{
-            "user_id": "user_12345",
-            "content": "Exploring the new Social Media API!",
-            "media_url": "https://example.com/image.jpg"
-        }'
-        </pre>
-
-        <h4>6. Error Handling</h4>
-        <p>Common errors include:</p>
-        <table>
-            <tr>
-                <th>Status Code</th>
-                <th>Message</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>401</td>
-                <td>Unauthorized</td>
-                <td>Invalid or missing API token.</td>
-            </tr>
-            <tr>
-                <td>403</td>
-                <td>Forbidden</td>
-                <td>User does not have permission to post.</td>
-            </tr>
-            <tr>
-                <td>429</td>
-                <td>Too Many Requests</td>
-                <td>Rate limit exceeded.</td>
-            </tr>
-        </table>
-    </div>
-
-    <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution3").style.display = "none";
-        }
-
-        function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
-        }
-    </script>
+    {% include exe_script.html %}
 
 </body>
 </html>
+
+

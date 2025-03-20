@@ -59,117 +59,548 @@
     </style>
 </head>
 <body>
-    <button class="exercise-button" onclick="toggleExercise('exercise5')">Exercise 5</button>
-    <button class="solution-button" onclick="toggleSolution('solution5', 'exercise5')">Solution to Exercise 5</button>
-
     <!-- Exercise 5 Content -->
-    <div class="exercise-content" id="exercise5">
-        <h3>Challenge: Documenting API Performance & Rate Limits</h3>
-        <p><strong>Scenario:</strong> A high-traffic API needs documentation on **performance best practices, rate limits, and bulk request handling.**</p>
-
-        <h4>Performance Requirements:</h4>
-        <ul>
-            <li>API rate limits: **5000 requests per hour per user**.</li>
-            <li>Supports **Gzip compression** to reduce response payload size.</li>
-            <li>Clients should use **E-Tag caching** to avoid redundant requests.</li>
-            <li>API supports **bulk requests** (max **100 records per request**).</li>
-            <li>Pagination via **Cursor-based and Offset-based methods**.</li>
-        </ul>
-
-        <h4>Your Task:</h4>
-        <p>Write a complete API documentation page covering:</p>
-        <ul>
-            <li><strong>Rate Limiting</strong> - Explain request limits & best practices.</li>
-            <li><strong>Caching Mechanisms</strong> - Document E-Tag, Cache-Control, and Gzip support.</li>
-            <li><strong>Bulk Requests</strong> - Guide users on batching API calls.</li>
-            <li><strong>Pagination Methods</strong> - Explain Offset & Cursor pagination strategies.</li>
-        </ul>
-        <p><strong>Hint:</strong> Use real-world optimizations to improve API efficiency.</p>
-    </div>
-
-    <!-- Solution to Exercise 5 -->
-    <div class="solution-content" id="solution5">
-        <h3>Solution: API Performance & Rate Limit Documentation</h3>
-
-        <h4>1. Rate Limiting</h4>
-        <p>The API limits users to **5000 requests per hour** to prevent excessive load.</p>
-        <pre>
-        Headers:
-        X-RateLimit-Limit: 5000
-        X-RateLimit-Remaining: 4500
-        X-RateLimit-Reset: 1678909876
-        </pre>
-
-        <h4>2. Caching Mechanisms</h4>
-        <p>The API supports **E-Tag caching** and **Gzip compression**:</p>
+    <div class="exercise-container" id="exercise5-container">
+        <div class="exercise-header">
+            <h3 id="exercise5-title">Exercise 5: Document API Performance Optimization</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise5-content', 'solution5-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution5-content', 'exercise5-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
         
-        <h5>Using E-Tags:</h5>
-        <pre>
-        GET /data
-        Headers:
-        If-None-Match: "abc123"
-        </pre>
+        <div class="exercise-content scrollable-content" id="exercise5-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You're documenting the <strong>E-commerce Platform API</strong> which powers an online marketplace with millions of products and thousands of concurrent users. The engineering team has implemented several performance optimizations and wants you to create a comprehensive performance guide for API consumers to ensure they use the API efficiently.</p>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Performance Facts Sheet</h4>
+                <div class="code-block">
+                    <pre><code># API Performance Optimization Features
 
-        <h5>Enabling Gzip Compression:</h5>
-        <pre>
-        GET /data
-        Headers:
-        Accept-Encoding: gzip
-        </pre>
+Data Retrieval:
+- Partial response support (field filtering)
+- Pagination with cursor-based navigation
+- Bulk operations for multiple resources
+- Conditional requests (ETag/If-None-Match)
+- Sparse fieldsets for complex resources
 
-        <h4>3. Bulk Requests</h4>
-        <p>Clients can request **up to 100 records** per call:</p>
-        <pre>
-        POST /bulk
-        Body:
-        {
-            "requests": [
-                {"id": 1}, {"id": 2}, {"id": 3}, ..., {"id": 100}
-            ]
-        }
-        </pre>
+Caching System:
+- Cache-Control headers for all GET endpoints
+- ETags for resource versioning
+- Max-age values vary by resource type
+- Cache invalidation via webhooks
 
-        <h4>4. Pagination Methods</h4>
-        <p>The API supports **Offset and Cursor-based pagination**:</p>
+Optimized Formats:
+- JSON by default, with GZIP compression
+- Protocol Buffers support for high-throughput clients
+- Support for If-Modified-Since headers
+- Binary formats for image/file uploads
 
-        <h5>Offset Pagination:</h5>
-        <pre>
-        GET /users?limit=10&offset=20
-        </pre>
+Performance Tiers:
+- Standard tier: 100 requests/minute, 2MB max payload
+- Business tier: 500 requests/minute, 10MB max payload
+- Enterprise tier: 2000 requests/minute, 50MB max payload</code></pre>
+                </div>
+                
+                <h4>Your Task</h4>
+                <p>Create a comprehensive API performance optimization guide that includes:</p>
+                <ul>
+                    <li><strong>Introduction</strong> - The importance of API performance and overview of available optimizations</li>
+                    <li><strong>Data Efficiency</strong> - How to request only the data you need</li>
+                    <li><strong>Caching Strategy</strong> - Implementation guide for proper caching</li>
+                    <li><strong>Request Optimization</strong> - Best practices for reducing API calls</li>
+                    <li><strong>Bulk Operations</strong> - How to use batch endpoints effectively</li>
+                    <li><strong>Response Formats</strong> - Choosing the right format for different use cases</li>
+                    <li><strong>Performance Monitoring</strong> - How to measure and improve client-side performance</li>
+                    <li><strong>Common Pitfalls</strong> - Anti-patterns to avoid</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Include a section with benchmarks comparing optimized vs. unoptimized API usage patterns. Use realistic data to show the performance impact of following vs. ignoring the optimization guidelines.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution5-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>E-commerce Platform API Performance Optimization Guide</h4>
+                
+                <h5>1. Introduction</h5>
+                <p>Optimizing API usage can dramatically improve the performance, scalability, and user experience of your application. This guide provides strategies to minimize latency, reduce bandwidth consumption, and handle high volumes of data efficiently when integrating with our E-commerce Platform API.</p>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-bolt"></i></div>
+                        <span>Performance Impact</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>Our data shows that applications implementing these optimization techniques experience up to 70% faster response times, 80% reduction in bandwidth usage, and can handle 5x more concurrent users.</p>
+                    </div>
+                </div>
+                
+                <h5>2. Data Efficiency Techniques</h5>
+                
+                <h6>2.1 Field Filtering</h6>
+                <p>Request only the fields you need using the <code>fields</code> parameter:</p>
+                <div class="example-box">
+                    <pre><code># Inefficient: Retrieves all product data
+GET /api/products/12345
 
-        <h5>Cursor Pagination:</h5>
-        <pre>
-        GET /users?cursor=abc123&limit=10
-        </pre>
+# Efficient: Retrieves only required fields
+GET /api/products/12345?fields=id,name,price,inventory_status</code></pre>
+                </div>
+                
+                <p>This significantly reduces response size for resources with many fields:</p>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Approach</th>
+                                <th>Response Size</th>
+                                <th>Transfer Time (3G)</th>
+                                <th>Parse Time (Mobile)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Full Product Object</td>
+                                <td>32KB</td>
+                                <td>~300ms</td>
+                                <td>~150ms</td>
+                            </tr>
+                            <tr>
+                                <td>Filtered Fields</td>
+                                <td>1.5KB</td>
+                                <td>~40ms</td>
+                                <td>~15ms</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h6>2.2 Pagination Optimization</h6>
+                <p>We use cursor-based pagination for optimal performance:</p>
+                <div class="example-box">
+                    <pre><code># First page request
+GET /api/products?limit=50
 
-        <h4>5. Best Practices for Performance Optimization</h4>
-        <ul>
-            <li>**Use Gzip compression** to reduce payload size.</li>
-            <li>**Leverage caching (E-Tag, If-Modified-Since) to minimize API calls.**</li>
-            <li>**Use pagination for large datasets to improve performance.**</li>
-            <li>**Batch multiple requests using bulk API calls.**</li>
-            <li>**Monitor rate limits & optimize requests accordingly.**</li>
-        </ul>
+# Response includes cursor
+{
+  "data": [...],
+  "pagination": {
+    "next_cursor": "fGlkPTEwMDA1",
+    "has_more": true
+  }
+}
 
-        <h4>6. Error Handling</h4>
-        <p>Common API rate limit errors:</p>
-        <table>
-            <tr>
-                <th>Error Code</th>
-                <th>Message</th>
-                <th>Reason</th>
-            </tr>
-            <tr>
-                <td>429</td>
-                <td>Too Many Requests</td>
-                <td>Rate limit exceeded</td>
-            </tr>
-            <tr>
-                <td>400</td>
-                <td>Invalid Bulk Request</td>
-                <td>Exceeded max batch size (100 records)</td>
-            </tr>
-        </table>
+# Subsequent request with cursor
+GET /api/products?limit=50&cursor=fGlkPTEwMDA1</code></pre>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <span>Why Cursor-Based?</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>Unlike offset-based pagination, cursor pagination maintains consistent performance regardless of the page depth and is resilient to items being added or removed between requests.</p>
+                    </div>
+                </div>
+                
+                <p><strong>Best Practices:</strong></p>
+                <ul>
+                    <li>Start with a reasonable page size (20-50 items)</li>
+                    <li>Implement infinite scrolling instead of pagination controls</li>
+                    <li>Pre-fetch the next page when users reach 75% of the current page</li>
+                    <li>Store cursors in application state to enable quick back/forward navigation</li>
+                </ul>
+                
+                <h6>2.3 Sparse Fieldsets for Nested Resources</h6>
+                <p>For complex objects with nested resources, use dot notation to request specific nested fields:</p>
+                <div class="example-box">
+                    <pre><code># Retrieve only specific nested properties
+GET /api/orders/12345?fields=id,status,total,customer.name,customer.email,items.product_id,items.quantity</code></pre>
+                </div>
+                
+                <h5>3. Caching Strategy</h5>
+                
+                <h6>3.1 HTTP Caching</h6>
+                <p>All GET endpoints return appropriate cache headers. Implement HTTP caching in your client:</p>
+                <div class="example-box">
+                    <pre><code># Example Response Headers
+Cache-Control: max-age=3600, must-revalidate
+ETag: "33a64df551425fcc55e4d42a148795d9f25f89d4"</code></pre>
+                </div>
+                
+                <p><strong>Implement proper cache validation:</strong></p>
+                <div class="example-box">
+                    <pre><code># Send If-None-Match header with the ETag value
+GET /api/products/12345
+If-None-Match: "33a64df551425fcc55e4d42a148795d9f25f89d4"
+
+# Server responds with 304 Not Modified if unchanged
+HTTP/1.1 304 Not Modified
+Cache-Control: max-age=3600, must-revalidate
+ETag: "33a64df551425fcc55e4d42a148795d9f25f89d4"</code></pre>
+                </div>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Resource Type</th>
+                                <th>Cache Duration</th>
+                                <th>Validation Strategy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Product catalog</td>
+                                <td>1 hour</td>
+                                <td>ETag</td>
+                            </tr>
+                            <tr>
+                                <td>Category listings</td>
+                                <td>4 hours</td>
+                                <td>ETag</td>
+                            </tr>
+                            <tr>
+                                <td>Product reviews</td>
+                                <td>15 minutes</td>
+                                <td>ETag</td>
+                            </tr>
+                            <tr>
+                                <td>Inventory status</td>
+                                <td>30 seconds</td>
+                                <td>Time-based</td>
+                            </tr>
+                            <tr>
+                                <td>User-specific data</td>
+                                <td>No caching</td>
+                                <td>N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h6>3.2 Client-Side Cache Implementation</h6>
+                <p>Example client-side cache implementation:</p>
+                <div class="example-box">
+                    <pre><code>// JavaScript HTTP client with caching
+class CachingAPIClient {
+  constructor() {
+    this.cache = new Map();
+    this.etags = new Map();
+  }
+
+  async get(url, params = {}) {
+    const fullUrl = this.buildUrl(url, params);
+    const cacheKey = this.getCacheKey(fullUrl);
+    
+    // Check if we have a cached response and etag
+    const cachedResponse = this.cache.get(cacheKey);
+    const etag = this.etags.get(cacheKey);
+    
+    const headers = {};
+    if (etag) {
+      headers['If-None-Match'] = etag;
+    }
+    
+    try {
+      const response = await fetch(fullUrl, { headers });
+      
+      if (response.status === 304) {
+        // Not modified, use cached response
+        return cachedResponse;
+      }
+      
+      // Store new etag if present
+      const newEtag = response.headers.get('ETag');
+      if (newEtag) {
+        this.etags.set(cacheKey, newEtag);
+      }
+      
+      // Cache the new response
+      const data = await response.json();
+      this.cache.set(cacheKey, data);
+      
+      return data;
+    } catch (error) {
+      // On network error, use cached version if available
+      if (cachedResponse) {
+        console.warn('Network error, using cached data');
+        return cachedResponse;
+      }
+      throw error;
+    }
+  }
+}</code></pre>
+                </div>
+                
+                <h6>3.3 Cache Invalidation with Webhooks</h6>
+                <p>Register for webhooks to receive real-time notifications when data changes:</p>
+                <div class="example-box">
+                    <pre><code># Example webhook payload when a product is updated
+{
+  "event": "product.updated",
+  "resource_id": "12345",
+  "timestamp": "2023-07-21T15:32:10Z",
+  "changes": ["price", "inventory"]
+}</code></pre>
+                </div>
+                <p>Use these events to selectively invalidate your cache instead of using short TTLs.</p>
+                
+                <h5>4. Request Optimization</h5>
+                
+                <h6>4.1 Bulk Operations</h6>
+                <p>Use bulk endpoints for multiple operations instead of individual requests:</p>
+                <div class="example-box">
+                    <pre><code># Inefficient: Multiple separate requests
+POST /api/cart/items  (Add item 1)
+POST /api/cart/items  (Add item 2)
+POST /api/cart/items  (Add item 3)
+
+# Efficient: Single bulk request
+POST /api/cart/items/bulk
+{
+  "items": [
+    { "product_id": "1001", "quantity": 2 },
+    { "product_id": "1002", "quantity": 1 },
+    { "product_id": "1003", "quantity": 3 }
+  ]
+}</code></pre>
+                </div>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>API Endpoint</th>
+                                <th>Single Request Limit</th>
+                                <th>Bulk Endpoint</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Products</td>
+                                <td>100 items</td>
+                                <td><code>/api/products/bulk</code></td>
+                            </tr>
+                            <tr>
+                                <td>Orders</td>
+                                <td>50 orders</td>
+                                <td><code>/api/orders/bulk</code></td>
+                            </tr>
+                            <tr>
+                                <td>Inventory updates</td>
+                                <td>200 updates</td>
+                                <td><code>/api/inventory/bulk</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h6>4.2 Conditional Requests</h6>
+                <p>Use conditional requests to avoid unnecessary processing:</p>
+                <div class="example-box">
+                    <pre><code># Only update if version matches
+PUT /api/products/12345
+If-Match: "33a64df551425fcc55e4d42a148795d9f25f89d4"
+{
+  "price": 29.99,
+  "inventory": 100
+}</code></pre>
+                </div>
+                <p>This prevents race conditions and unnecessary writes.</p>
+                
+                <h5>5. Response Format Optimization</h5>
+                
+                <h6>5.1 Compression</h6>
+                <p>Always request compressed responses by sending the Accept-Encoding header:</p>
+                <div class="example-box">
+                    <pre><code>Accept-Encoding: gzip, deflate</code></pre>
+                </div>
+                <p>This typically reduces response size by 70-90%.</p>
+                
+                <h6>5.2 Protocol Buffers for High-Throughput</h6>
+                <p>For applications requiring maximum performance, use Protocol Buffers:</p>
+                <div class="example-box">
+                    <pre><code># Request with Protocol Buffers
+GET /api/products
+Accept: application/x-protobuf</code></pre>
+                </div>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>Size</th>
+                                <th>Parse Time</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>JSON</td>
+                                <td>Medium</td>
+                                <td>Medium</td>
+                                <td>Most applications</td>
+                            </tr>
+                            <tr>
+                                <td>JSON (gzipped)</td>
+                                <td>Small</td>
+                                <td>Medium</td>
+                                <td>Bandwidth-constrained clients</td>
+                            </tr>
+                            <tr>
+                                <td>Protocol Buffers</td>
+                                <td>Very small</td>
+                                <td>Very fast</td>
+                                <td>High-throughput services</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h5>6. Performance Monitoring</h5>
+                
+                <h6>6.1 API Metrics</h6>
+                <p>The API provides performance headers in all responses:</p>
+                <div class="example-box">
+                    <pre><code>X-Response-Time: 85ms
+X-RateLimit-Remaining: 86
+X-RateLimit-Reset: 1629375767</code></pre>
+                </div>
+                <p>Monitor these metrics to identify performance bottlenecks.</p>
+                
+                <h6>6.2 Client-Side Performance Measurement</h6>
+                <div class="example-box">
+                    <pre><code>// Measure complete request cycle
+const startTime = performance.now();
+
+const response = await api.get('/products', { 
+  fields: 'id,name,price',
+  limit: 20
+});
+
+const endTime = performance.now();
+const totalTime = endTime - startTime;
+
+// Log performance metrics
+console.log(`API request took ${totalTime}ms`);
+console.log(`Network time: ${response.headers.get('X-Response-Time')}`);
+console.log(`Client processing time: ${totalTime - parseInt(response.headers.get('X-Response-Time'))}`);
+
+// Implement monitoring to detect slow requests
+if (totalTime > 500) {
+  logPerformanceIssue({
+    endpoint: '/products',
+    params: { fields: 'id,name,price', limit: 20 },
+    totalTime,
+    timestamp: new Date()
+  });
+}</code></pre>
+                </div>
+                
+                <h5>7. Performance Benchmarks</h5>
+                <p>The following benchmarks compare optimized vs. unoptimized API usage for common e-commerce operations:</p>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Operation</th>
+                                <th>Unoptimized</th>
+                                <th>Optimized</th>
+                                <th>Improvement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Product catalog (100 items)</td>
+                                <td>740ms / 245KB</td>
+                                <td>180ms / 32KB</td>
+                                <td>76% faster, 87% smaller</td>
+                            </tr>
+                            <tr>
+                                <td>Shopping cart update (5 items)</td>
+                                <td>620ms (5 requests)</td>
+                                <td>140ms (1 request)</td>
+                                <td>77% faster</td>
+                            </tr>
+                            <tr>
+                                <td>Order details with customer info</td>
+                                <td>350ms / 112KB</td>
+                                <td>120ms / 8KB</td>
+                                <td>66% faster, 93% smaller</td>
+                            </tr>
+                            <tr>
+                                <td>Product search with filtering</td>
+                                <td>890ms / 380KB</td>
+                                <td>210ms / 42KB</td>
+                                <td>76% faster, 89% smaller</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+                        <span>Mobile Impact</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>On mobile devices, these optimizations create an even more significant impact. Optimized API calls on a 4G connection are typically 3-5x faster and use 80-95% less data, improving battery life and reducing data usage.</p>
+                    </div>
+                </div>
+                
+                <h5>8. Common Performance Pitfalls</h5>
+                <ul>
+                    <li><strong>Excessive polling</strong> - Use webhooks instead of polling for changes</li>
+                    <li><strong>Chatty API patterns</strong> - Consolidate multiple requests into fewer requests</li>
+                    <li><strong>Over-fetching data</strong> - Use field filtering consistently</li>
+                    <li><strong>Ignoring caching headers</strong> - Implement proper HTTP cache handling</li>
+                    <li><strong>Sequential requests</strong> - Use bulk operations and concurrent requests</li>
+                    <li><strong>Synchronous processing</strong> - Use background processing for non-critical operations</li>
+                </ul>
+                
+                <h5>9. Performance Checklist</h5>
+                <p>Use this checklist when implementing any E-commerce API integration:</p>
+                <ul>
+                    <li>☐ Implement field filtering for all requests</li>
+                    <li>☐ Use cursor-based pagination with appropriate page sizes</li>
+                    <li>☐ Enable HTTP compression</li>
+                    <li>☐ Implement proper cache validation with ETags</li>
+                    <li>☐ Subscribe to webhooks for real-time updates</li>
+                    <li>☐ Use bulk operations for multiple items</li>
+                    <li>☐ Implement conditional requests for updates</li>
+                    <li>☐ Set up performance monitoring</li>
+                    <li>☐ Test performance on slow networks</li>
+                    <li>☐ Optimize for mobile clients</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <script>

@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert-Level API Documentation - Exercise 5</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -58,132 +59,230 @@
     </style>
 </head>
 <body>
-    <button class="exercise-button" onclick="toggleExercise('exercise1')">Exercise 1</button>
-    <button class="solution-button" onclick="toggleSolution('solution1', 'exercise1')">Solution to Exercise 1</button>
+    <!-- Expert Level Exercise 1: GraphQL API Documentation -->
+    <div class="exercise-container" id="exercise1-container">
+        <div class="exercise-header">
+            <h3 id="exercise1-title">Exercise 1: Document a GraphQL API for a Movie Database</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise1-content', 'solution1-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution1-content', 'exercise1-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="exercise-content scrollable-content" id="exercise1-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You have been asked to document a GraphQL API for a <strong>Movie Database</strong> service. Users can:</p>
+                    <ul>
+                        <li>Retrieve movie details by title or ID.</li>
+                        <li>Search for movies by genre, actor, or director.</li>
+                        <li>Add reviews for movies.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>GraphQL Schema (To be documented)</h4>
+                <div class="code-block">
+                    <pre><code>type Movie {
+    id: ID!
+    title: String!
+    genre: String
+    director: String
+    releaseYear: Int
+    rating: Float
+}
 
-    <!-- Exercise 1 Content -->
-    <div class="exercise-content" id="exercise1">
-        <h3>Challenge: Document a GraphQL API for a Movie Database</h3>
-        <p><strong>Scenario:</strong> You have been asked to document a GraphQL API for a **Movie Database** service. Users can:</p>
-        <ul>
-            <li>Retrieve movie details by title or ID.</li>
-            <li>Search for movies by genre, actor, or director.</li>
-            <li>Add reviews for movies.</li>
-        </ul>
+type Query {
+    getMovieById(id: ID!): Movie
+    searchMovies(genre: String, director: String, actor: String): [Movie]
+}
 
-        <h4>GraphQL Schema (To be documented)</h4>
-        <pre>
-        type Movie {
-            id: ID!
-            title: String!
-            genre: String
-            director: String
-            releaseYear: Int
-            rating: Float
-        }
+type Mutation {
+    addReview(movieId: ID!, rating: Float!, comment: String): ReviewResponse
+}
 
-        type Query {
-            getMovieById(id: ID!): Movie
-            searchMovies(genre: String, director: String, actor: String): [Movie]
-        }
-
-        type Mutation {
-            addReview(movieId: ID!, rating: Float!, comment: String): ReviewResponse
-        }
-
-        type ReviewResponse {
-            success: Boolean!
-            message: String!
-        }
-        </pre>
-
-        <h4>Your Task:</h4>
-        <p>Write a complete API documentation page covering:</p>
-        <ul>
-            <li><strong>Overview</strong> - Describe the API and its purpose.</li>
-            <li><strong>GraphQL Endpoints</strong> - Explain how to query and mutate data.</li>
-            <li><strong>Authentication</strong> - Describe how users authenticate (e.g., API Key, OAuth).</li>
-            <li><strong>Request & Response Formats</strong> - Document how users should send queries and handle responses.</li>
-            <li><strong>Error Handling</strong> - Provide guidance on common GraphQL errors.</li>
-        </ul>
-        <p><strong>Hint:</strong> Use GraphQL best practices and real-world examples to make the documentation clear.</p>
-    </div>
-
-    <!-- Solution to Exercise 1 -->
-    <div class="solution-content" id="solution1">
-        <h3>Solution: GraphQL API Documentation for Movie Database</h3>
-
-        <h4>1. Overview</h4>
-        <p>The **Movie Database GraphQL API** allows users to fetch movie details, search movies, and add reviews.</p>
-
-        <h4>2. Querying Data</h4>
-        <p>Use the **GraphQL Query Type** to retrieve movie information:</p>
-        <pre>
-        query {
-            getMovieById(id: "tt1234567") {
+type ReviewResponse {
+    success: Boolean!
+    message: String!
+}</code></pre>
+                </div>
+                
+                <h4>Your Task</h4>
+                <p>Write a complete API documentation page covering:</p>
+                <ul>
+                    <li><strong>Overview</strong> - Describe the API and its purpose.</li>
+                    <li><strong>GraphQL Endpoints</strong> - Explain how to query and mutate data.</li>
+                    <li><strong>Authentication</strong> - Describe how users authenticate (e.g., API Key, OAuth).</li>
+                    <li><strong>Request & Response Formats</strong> - Document how users should send queries and handle responses.</li>
+                    <li><strong>Error Handling</strong> - Provide guidance on common GraphQL errors.</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Include instructions for pagination and working with large result sets in GraphQL.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution1-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>GraphQL API Documentation for Movie Database</h4>
+                
+                <h5>1. Overview</h5>
+                <p>The <strong>Movie Database GraphQL API</strong> allows developers to access movie information, perform searches, and submit reviews. This API uses GraphQL to provide flexible, efficient data retrieval with a single endpoint.</p>
+                
+                <h5>2. Authentication</h5>
+                <p>The API requires an API key for authentication. Include your API key in all requests:</p>
+                <div class="example-box">
+                    <pre><code>headers: {
+    "Authorization": "Bearer YOUR_API_KEY"
+}</code></pre>
+                </div>
+                <p>To obtain an API key, register at <code>https://api.moviedatabase.com/register</code>.</p>
+                
+                <h5>3. GraphQL Endpoint</h5>
+                <p>All requests should be sent as POST to:</p>
+                <div class="example-box">
+                    <pre><code>https://api.moviedatabase.com/graphql</code></pre>
+                </div>
+                
+                <h5>4. Querying Data</h5>
+                <p>To retrieve movie details by ID:</p>
+                <div class="example-box">
+                    <pre><code>query {
+    getMovieById(id: "tt1234567") {
+        title
+        genre
+        director
+        releaseYear
+        rating
+    }
+}</code></pre>
+                </div>
+                
+                <h5>5. Searching Movies</h5>
+                <p>To search for movies based on criteria:</p>
+                <div class="example-box">
+                    <pre><code>query {
+    searchMovies(genre: "Action", director: "Christopher Nolan") {
+        id
+        title
+        releaseYear
+        rating
+    }
+}</code></pre>
+                </div>
+                
+                <h5>6. Adding Reviews (Mutations)</h5>
+                <p>To submit a movie review:</p>
+                <div class="example-box">
+                    <pre><code>mutation {
+    addReview(
+        movieId: "tt1234567", 
+        rating: 4.5, 
+        comment: "Great performances and cinematography!"
+    ) {
+        success
+        message
+    }
+}</code></pre>
+                </div>
+                
+                <h5>7. Response Format</h5>
+                <p>All responses follow this format:</p>
+                <div class="example-box">
+                    <pre><code>{
+    "data": {
+        // Requested fields appear here
+    },
+    "errors": [
+        // Any errors appear here (if applicable)
+    ]
+}</code></pre>
+                </div>
+                
+                <h5>8. Error Handling</h5>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Error Type</th>
+                                <th>Description</th>
+                                <th>Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Authentication Error</td>
+                                <td>Invalid or missing API key</td>
+                                <td>Verify your API key and authorization header format</td>
+                            </tr>
+                            <tr>
+                                <td>Validation Error</td>
+                                <td>Invalid input values</td>
+                                <td>Check parameter types and required fields</td>
+                            </tr>
+                            <tr>
+                                <td>Not Found Error</td>
+                                <td>Requested resource doesn't exist</td>
+                                <td>Verify the movie ID exists</td>
+                            </tr>
+                            <tr>
+                                <td>Rate Limit Error</td>
+                                <td>Too many requests</td>
+                                <td>Implement exponential backoff or request higher limits</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h5>9. Pagination</h5>
+                <p>For large result sets, implement pagination with cursor-based navigation:</p>
+                <div class="example-box">
+                    <pre><code>query {
+    searchMovies(
+        genre: "Action",
+        first: 10,
+        after: "cursor_string_here"
+    ) {
+        edges {
+            node {
+                id
                 title
-                genre
-                director
-                releaseYear
             }
+            cursor
         }
-        </pre>
-
-        <h4>3. Searching for Movies</h4>
-        <p>Search movies by genre, director, or actor:</p>
-        <pre>
-        query {
-            searchMovies(genre: "Action") {
-                title
-                director
-            }
+        pageInfo {
+            hasNextPage
+            endCursor
         }
-        </pre>
-
-        <h4>4. Adding a Review (Mutation)</h4>
-        <p>Users can submit a review using a **GraphQL Mutation**:</p>
-        <pre>
-        mutation {
-            addReview(movieId: "tt1234567", rating: 4.5, comment: "Great movie!") {
-                success
-                message
-            }
-        }
-        </pre>
-
-        <h4>5. Authentication</h4>
-        <p>The API requires an API key for authentication. Pass the key in the request header:</p>
-        <pre>
-        headers: {
-            "Authorization": "Bearer YOUR_API_KEY"
-        }
-        </pre>
-
-        <h4>6. Error Handling</h4>
-        <p>Common GraphQL API errors and their meanings:</p>
-        <table>
-            <tr>
-                <th>Error Code</th>
-                <th>Message</th>
-                <th>Reason</th>
-            </tr>
-            <tr>
-                <td>401</td>
-                <td>Unauthorized</td>
-                <td>Invalid API Key</td>
-            </tr>
-            <tr>
-                <td>404</td>
-                <td>Movie Not Found</td>
-                <td>The requested movie ID does not exist.</td>
-            </tr>
-        </table>
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
         function toggleExercise(exerciseId) {
             document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution1").style.display = "none";
+            document.getElementById("solution5").style.display = "none";
         }
 
         function toggleSolution(solutionId, exerciseId) {

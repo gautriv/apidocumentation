@@ -1,112 +1,155 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="{{ site.lang | default: "en-US" }}">
 <head>
-    {% include google_analytics.html %}
-    {% include head.html %}
-    {% include adsense.html %}
-    <script>
-        $(document).ready(function() {
-            // Initialize navgoco with default options
-            $("#mysidebar").navgoco({
-                caretHtml: '',
-                accordion: true,
-                openClass: 'active', // open
-                save: false, // leave false or nav highlighting doesn't work right
-                cookie: {
-                    name: 'navgoco',
-                    expires: false,
-                    path: '/'
-                },
-                slide: {
-                    duration: 400,
-                    easing: 'swing'
-                }
-            });
-
-            $("#collapseAll").click(function(e) {
-                e.preventDefault();
-                $("#mysidebar").navgoco('toggle', false);
-            });
-
-            $("#expandAll").click(function(e) {
-                e.preventDefault();
-                $("#mysidebar").navgoco('toggle', true);
-            });
-
-        });
-
-    </script>
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("#tg-sb-link").click(function() {
-                $("#tg-sb-sidebar").toggle();
-                $("#tg-sb-content").toggleClass('col-md-9');
-                $("#tg-sb-content").toggleClass('col-md-12');
-                $("#tg-sb-icon").toggleClass('fa-toggle-on');
-                $("#tg-sb-icon").toggleClass('fa-toggle-off');
-            });
-        });
-    </script>
-    {% if page.datatable == true %}
-    <!-- Include the standard DataTables bits -->
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css">
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
-    <!-- First, this walks through the tables that occur between ...-begin
-         and ...-end and add the "datatable" class to them.
-         Then it invokes DataTable's standard initializer
-         Credit here: http://www.beardedhacker.com/blog/2015/08/28/add-class-attribute-to-markdown-table/
-      -->
-    <script>
-      $(document).ready(function(){
-          $('div.datatable-begin').nextUntil('div.datatable-end', 'table').addClass('display');
-          $('table.display').DataTable( {
-              paging: true,
-              stateSave: true,
-              searching: true
-          });
-       });
-    </script>
-    {% endif %}
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+  {% include adsense.html %}
+  {% include google_analytics.html %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <link rel="icon" href="{{ "/favicon.ico" | relative_url }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ "/favicon.ico" | relative_url }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
      crossorigin="anonymous"></script>
 </head>
-
 <body>
-    <header class="header">
-        <!-- Main Navbar-->
-        {% include topnavigation.html %}
-    </header>
-    <section class="intro">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    {% include sidebar.html %}
-                </div>
-                <div class="col-lg-9">
-                    {{content}}
-                </div>
+  <div class="page-wrapper">
+    <header class="site-header">
+      <div class="container">
+        <div class="site-logo">
+          <a href="{{ "/" | relative_url }}" class="logo-link">
+            <i class="fas fa-keyboard logo-icon"></i>
+            <div class="logo-content">
+              <span class="logo-title">API Documentation Course</span>
+              <span class="logo-subtitle">from the house of <span class="brand-highlight">Being Technical Writer</span></span>
             </div>
+          </a>
         </div>
-    </section>
-    
-    <!-- Page Footer-->
-    <footer class="main-footer">
-        {% include footer.html %}
+        <nav class="main-nav">
+          <button class="menu-toggle" aria-expanded="false">
+            <span class="menu-icon"></span>
+            <span class="sr-only">Menu</span>
+          </button>
+          <ul class="nav-menu">
+            <li><a href="{{ "/" | relative_url }}" class="nav-link{% if page.url == '/' %} active{% endif %}">Home</a></li>
+            <li><a href="{{ "/about/" | relative_url }}" class="nav-link{% if page.url contains '/about/' %} active{% endif %}">About</a></li>
+            <li><a href="{{ "/modules/" | relative_url }}" class="nav-link{% if page.url contains '/modules/' %} active{% endif %}">Course Modules</a></li>
+            <li><a href="{{ "/resources/" | relative_url }}" class="nav-link{% if page.url contains '/resources/' %} active{% endif %}">Resources</a></li>
+            <li><a href="https://beingtechnicalwriter.com" class="nav-link" target="_blank">Return to Blog</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    {% if page.url contains '/modules/' %}
+    <div class="course-progress-container">
+      <div class="container">
+        <div class="progress-info">
+          <span class="progress-label">Course Progress:</span>
+          <span class="progress-percentage">0%</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <main class="main-content">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <div class="site-logo">
+              <i class="fas fa-keyboard"></i>
+              <span class="logo-text">Being Technical Writer</span>
+            </div>
+            <p class="footer-tagline">Empowering technical writers with insights, innovations, and industry best practices to excel in the ever-evolving world of technical communication.</p>
+            <div class="social-icons">
+              <a href="https://github.com/gautriv" target="_blank"><i class="fab fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/gauravtrivedi1988/" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="https://twitter.com/beingtechwriter" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="https://beingtechnicalwriter.quora.com" target="_blank"><i class="fab fa-quora"></i></a>
+              <a href="https://www.youtube.com/channel/UCBrWnqQ9J3ZG_XKq6Ts1-_w" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="footer-nav">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="{{ "/about/" | relative_url }}">About me</a></li>
+              <li><a href="{{ "/contact/" | relative_url }}">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-resources">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="{{ "/analytics/" | relative_url }}">Site analytics</a></li>
+            </ul>
+          </div>
+          <div class="footer-premium">
+            <h3>Premium Courses</h3>
+            <p>Contact me for one-on-one mentoring sessions.</p>
+            <button class="cta-button" data-toggle="modal" data-target="#appreciateModal">Like the content?</button>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Being Technical Writer. The opinions expressed in this blog are my own, and not those of my employer.</p>
+          <p><a href="{{ "/privacy/" | relative_url }}">Privacy policy</a></p>
+        </div>
+      </div>
     </footer>
+  </div>
 
-    <!-- Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script> 
+  <!-- Appreciate Modal -->
+  <div class="modal" id="appreciateModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Thank you!!!</h2>
+          <button type="button" class="close-modal" aria-label="Close">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="appreciate">
+            <p>Do you like the content and courses on this blog? Research, testing, and writing require a considerable amount of time. Do you want to appreciate and help me in maintaining this blog?</p>
+          </div>
+
+          <div class="appreciate2">
+            <div class="payment-buttons">
+              <button class="btn btn-primary" data-toggle="collapse" data-target="#TypeOne">
+                UPI
+              </button>
+              <span class="or-text">Or</span>
+              <button class="btn btn-primary" data-toggle="collapse" data-target="#TypeTwo">
+                Buy me a coffee!
+              </button>
+            </div>
+
+            <div class="collapse" id="TypeOne">
+              <div class="card card-body">
+                <img src="https://beingtechnicalwriter.s3.ap-south-1.amazonaws.com/images/QRCode.jpeg" alt="UPI" class="qr-code">
+              </div>
+            </div>
+
+            <div class="collapse" id="TypeTwo">
+              <div class="card card-body">
+                {% include coffee.html %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
 </body>
-
-</html>
+</html> 

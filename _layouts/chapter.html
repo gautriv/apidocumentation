@@ -1,0 +1,140 @@
+---
+layout: default
+---
+
+<section class="chapter-header">
+  <div class="container">
+    <div class="chapter-breadcrumb">
+      <a href="{{ "/modules/" | relative_url }}">Modules</a> / 
+      <a href="{{ "/modules/" | append: page.module_id | append: "/" | relative_url }}">{{ page.module_title }}</a> / 
+      <span>Chapter {{ page.chapter_number }}</span>
+    </div>
+    <h1 class="chapter-title">{{ page.title }}</h1>
+    <div class="chapter-meta">
+      <div class="chapter-number">Chapter {{ page.chapter_number }}</div>
+      <div class="chapter-module">{{ page.module_title }}</div>
+    </div>
+    <p class="chapter-description">{{ page.description }}</p>
+    <div class="chapter-completion-marker" data-module="{{ page.module_id }}" data-chapter="{{ page.chapter_number }}"></div>
+  </div>
+</section>
+
+<section class="chapter-content">
+  <div class="container">
+    <div class="content-wrapper">
+      <div class="main-content">
+        {{ content }}
+        
+        <div class="chapter-controls">
+          {% if page.prev_chapter %}
+          <a href="{{ page.prev_chapter | relative_url }}" class="prev-chapter">
+            <div class="chapter-arrow">
+              <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="chapter-nav-content">
+              <span class="chapter-nav-label">Previous</span>
+              <div class="chapter-nav-title">{{ page.prev_title }}</div>
+            </div>
+          </a>
+          {% else %}
+          <div></div>
+          {% endif %}
+          
+          {% if page.next_chapter %}
+          <a href="{{ page.next_chapter | relative_url }}" class="next-chapter">
+            <div class="chapter-nav-content">
+              <span class="chapter-nav-label">Next</span>
+              <div class="chapter-nav-title">{{ page.next_title }}</div>
+            </div>
+            <div class="chapter-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+          </a>
+          {% else %}
+          <a href="{{ "/modules/" | relative_url }}" class="next-chapter">
+            <div class="chapter-nav-content">
+              <span class="chapter-nav-label">Next</span>
+              <div class="chapter-nav-title">Return to Modules</div>
+            </div>
+            <div class="chapter-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="sidebar">
+        <div class="chapter-navigation">
+          <div class="chapter-nav-header">
+            <h3 class="chapter-nav-title">{{ page.module_title }} Chapters</h3>
+          </div>
+          <ul class="chapter-nav-list">
+            {% for chapter in page.module_chapters %}
+            <li class="chapter-nav-item{% if chapter.number == page.chapter_number %} active{% endif %}" data-module="{{ page.module_id }}" data-chapter="{{ chapter.number }}">
+              <a href="{{ chapter.url | relative_url }}" class="chapter-nav-link">
+                <span class="chapter-num">{{ chapter.number }}</span>
+                <span class="chapter-title">{{ chapter.title }}</span>
+                {% if progressData and progressData.completedChapters[page.module_id] and progressData.completedChapters[page.module_id] contains chapter.number %}
+                <span class="chapter-complete-icon"><i class="fas fa-check-circle"></i></span>
+                {% endif %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="sidebar-ad">
+          <div class="ad-container">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371" crossorigin="anonymous"></script>
+            <!-- AddTitleOne -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-7149683584202371"
+                data-ad-slot="7422872052"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+        
+        {% if page.resources %}
+        <div class="resources">
+          <h4>Additional Resources</h4>
+          <ul>
+            {% for resource in page.resources %}
+            <li><a href="{{ resource.url }}" target="_blank">{{ resource.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        
+        <div class="next-module">
+          <h4>Want to Jump Ahead?</h4>
+          <a href="{{ "/modules/" | relative_url }}" class="next-module-link">
+            View All Modules <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="support-section">
+          <div class="support-content">
+            <h4>Found value in the course?</h4>
+            <p>Your support fuels my work!</p>
+            <a href="https://www.buymeacoffee.com/gauravtrivedi" target="_blank" class="support-button">
+              <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important; border:none;">
+            </a>
+          </div>
+        </div>
+
+        <div class="feedback-section">
+          <h4>Have an issue?</h4>
+          <p>Please provide specific feedback by <a href="https://github.com/gautriv/apidocumentation/issues/new" target="_blank">reporting an issue</a>.</p>
+        </div>
+
+        {% include multiplex.html %}
+      </div>
+    </div>
+  </div>
+</section> 

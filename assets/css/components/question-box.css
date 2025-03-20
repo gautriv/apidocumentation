@@ -1,0 +1,205 @@
+/* Interactive Question Box Component - Improved Version */
+.question-box {
+  background: #ffffff;
+  border-radius: 12px;
+  margin: 2rem 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.question-box:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.question-box-header {
+  background: linear-gradient(90deg, #4338ca, #3b82f6);
+  color: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.question-box-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  z-index: 1;
+}
+
+.question-box-header .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1rem;
+  z-index: 2;
+}
+
+.question-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  text-align: left;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0;
+  z-index: 2;
+}
+
+.toggle-icon {
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+  margin-left: 8px;
+}
+
+.question-box.active .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.question-box-content {
+  background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.3s ease;
+  max-height: 0 !important;
+  padding: 0 !important;
+}
+
+.question-box.active .question-box-content {
+  max-height: 1000px !important;
+  padding: 1.5rem !important;
+}
+
+.questions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: question-counter;
+}
+
+.question-item {
+  position: relative;
+  padding: 0.85rem 0.85rem 0.85rem 3.2rem;
+  border-radius: 8px;
+  margin-bottom: 0.85rem;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  counter-increment: question-counter;
+  border-left: 3px solid #3b82f6;
+}
+
+.question-item:hover {
+  background: #f9fafc;
+  transform: translateX(3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.question-item::before {
+  content: counter(question-counter);
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  background: #3b82f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.question-item:nth-child(3n+1)::before {
+  background: #4f46e5;
+}
+
+.question-item:nth-child(3n+2)::before {
+  background: #2563eb;
+}
+
+.question-item:nth-child(3n+3)::before {
+  background: #3b82f6;
+}
+
+.question-item:nth-child(3n+1) {
+  border-left-color: #4f46e5;
+}
+
+.question-item:nth-child(3n+2) {
+  border-left-color: #2563eb;
+}
+
+.question-item:nth-child(3n+3) {
+  border-left-color: #3b82f6;
+}
+
+.questions-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 1rem;
+}
+
+.questions-list-grid .question-item {
+  margin: 0;
+  height: 100%;
+}
+
+/* Add this to ensure question toggle is properly visible in all browsers */
+.question-toggle span:first-child {
+  flex: 1;
+  margin-right: 8px;
+}
+
+/* Ensure the text wraps properly on smaller screens */
+@media (max-width: 768px) {
+  .questions-list-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .question-box-header {
+    padding: 0.85rem 1rem;
+  }
+  
+  .question-toggle {
+    font-size: 1rem;
+  }
+  
+  .question-item {
+    padding: 0.75rem 0.75rem 0.75rem 2.8rem;
+  }
+  
+  .question-item::before {
+    left: 0.6rem;
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+  }
+  
+  .toggle-icon {
+    font-size: 1rem;
+  }
+} 

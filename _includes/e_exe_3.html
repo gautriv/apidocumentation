@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expert-Level API Documentation - Exercise 3</title>
+    <title>Expert-Level API Documentation - Exercise 5</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -59,103 +59,366 @@
     </style>
 </head>
 <body>
-    <button class="exercise-button" onclick="toggleExercise('exercise3')">Exercise 3</button>
-    <button class="solution-button" onclick="toggleSolution('solution3', 'exercise3')">Solution to Exercise 3</button>
+    <!-- Expert Level Exercise 3: API Versioning Documentation -->
 
-    <!-- Exercise 3 Content -->
-    <div class="exercise-content" id="exercise3">
-        <h3>Challenge: Document API Versioning & Deprecation for a User Management API</h3>
-        <p><strong>Scenario:</strong> The **User Management API** is upgrading from **v1 to v2**, introducing new features and removing old ones.</p>
+    <div class="exercise-container" id="exercise3-container">
+        <div class="exercise-header">
+            <h3 id="exercise3-title">Exercise 3: Document API Versioning Strategy</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise3-content', 'solution3-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution3-content', 'exercise3-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
         
-        <h4>Changes in v2:</h4>
-        <ul>
-            <li>The `/users/{id}` endpoint now returns an **email field**.</li>
-            <li>The `/users/{id}/profile` endpoint is being **deprecated**.</li>
-            <li>Authentication is now **mandatory** via API Key.</li>
-        </ul>
+        <div class="exercise-content scrollable-content" id="exercise3-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You're working as a technical writer for <strong>FinSync</strong>, a financial services API company. The development team is preparing to launch version 2.0 of their Payment Processing API, which introduces breaking changes. Your job is to create comprehensive documentation for the API versioning strategy.</p>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>API Changes Summary</h4>
+                <div class="code-block">
+                    <pre><code>Version 1.0 (Current):
+GET /api/payments
+  - Returns basic payment information
+  - Simple pagination with "page" and "limit" parameters
+  - Supports basic filtering by date
 
-        <h4>API Versioning Strategy</h4>
-        <p>The API supports multiple versions using:</p>
-        <ul>
-            <li><strong>URI Versioning:</strong> <code>/v1/users/{id}</code> → <code>/v2/users/{id}</code></li>
-            <li><strong>Query Parameter Versioning:</strong> <code>/users/{id}?version=2</code></li>
-            <li><strong>Header Versioning:</strong> <code>Accept: application/vnd.api+json; version=2</code></li>
-        </ul>
+POST /api/payments
+  - Required fields: amount, currency, description
+  - Authentication: API Key in header
 
-        <h4>Your Task:</h4>
-        <p>Write a complete API documentation page covering:</p>
-        <ul>
-            <li><strong>Overview</strong> - Explain why versioning is necessary.</li>
-            <li><strong>Versioning Methods</strong> - Describe the API versioning strategy.</li>
-            <li><strong>Deprecation Notices</strong> - Guide users on handling deprecated endpoints.</li>
-            <li><strong>Backward Compatibility</strong> - Explain how to migrate to v2 smoothly.</li>
-        </ul>
-        <p><strong>Hint:</strong> Use best practices to ensure developers transition smoothly.</p>
-    </div>
+Version 2.0 (New):
+GET /api/payments
+  - Returns extended payment information including fees and exchange rates
+  - Cursor-based pagination with "cursor" and "limit" parameters
+  - Advanced filtering with query language
+  - New response format with metadata section
 
-    <!-- Solution to Exercise 3 -->
-    <div class="solution-content" id="solution3">
-        <h3>Solution: API Versioning & Deprecation Documentation</h3>
+POST /api/payments
+  - New required fields: amount, currency, description, source, destination
+  - Authentication: OAuth 2.0 required
+  - Idempotency support with X-Idempotency-Key header</code></pre>
+                </div>
+                
+                <h4>Versioning Strategy Notes</h4>
+                <ul>
+                    <li>Version 1.0 will be supported for 12 months after Version 2.0 launch</li>
+                    <li>Customers will specify version via URL path (/v1/ or /v2/)</li>
+                    <li>Some endpoints will be available in both versions, others only in v2</li>
+                    <li>Rate limits will differ between versions</li>
+                </ul>
+                
+                <h4>Your Task</h4>
+                <p>Create comprehensive API versioning documentation that includes:</p>
+                <ul>
+                    <li><strong>Overview</strong> - Explain the versioning approach and timelines</li>
+                    <li><strong>Version selection</strong> - How clients should specify which version to use</li>
+                    <li><strong>Breaking changes</strong> - Clear documentation of what's changed</li>
+                    <li><strong>Migration guide</strong> - Step-by-step instructions for upgrading</li>
+                    <li><strong>Deprecation policy</strong> - Schedule and support details</li>
+                    <li><strong>Testing strategy</strong> - How clients can test before migrating</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Include a section on how to handle scenarios where clients need to make calls to both API versions during a transition period, with code examples showing parallel API calls and response handling.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution3-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>FinSync API Versioning Documentation</h4>
+                
+                <h5>1. API Versioning Overview</h5>
+                <p>FinSync's Payment Processing API uses a path-based versioning strategy to provide stability while allowing for innovation. This document outlines our approach to API versioning, breaking changes, and migration strategies.</p>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-calendar"></i></div>
+                        <span>Key Dates</span>
+                    </div>
+                    <div class="info-box-content">
+                        <ul>
+                            <li><strong>March 15, 2023:</strong> Version 2.0 Release</li>
+                            <li><strong>September 15, 2023:</strong> Version 1.0 Deprecation Warning</li>
+                            <li><strong>March 15, 2024:</strong> Version 1.0 End of Life</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h5>2. Version Selection</h5>
+                <p>Specify the API version in the URL path using <code>/v1/</code> or <code>/v2/</code> prefix:</p>
+                
+                <div class="example-box">
+                    <pre><code># Version 1.0 (Legacy)
+GET https://api.finsync.com/v1/payments
 
-        <h4>1. Overview</h4>
-        <p>The **User Management API v2** introduces enhancements while maintaining backward compatibility.</p>
+# Version 2.0 (Current)
+GET https://api.finsync.com/v2/payments</code></pre>
+                </div>
+                
+                <p>All requests without a version prefix will default to v1 until deprecation, then v2.</p>
+                
+                <h5>3. Breaking Changes in Version 2.0</h5>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Version 1.0</th>
+                                <th>Version 2.0</th>
+                                <th>Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Authentication</td>
+                                <td>API Key</td>
+                                <td>OAuth 2.0</td>
+                                <td>High - Authentication flow changes required</td>
+                            </tr>
+                            <tr>
+                                <td>Pagination</td>
+                                <td>Page-based</td>
+                                <td>Cursor-based</td>
+                                <td>Medium - Pagination logic needs updates</td>
+                            </tr>
+                            <tr>
+                                <td>Required Fields</td>
+                                <td>Basic fields</td>
+                                <td>Extended fields</td>
+                                <td>High - Additional data collection needed</td>
+                            </tr>
+                            <tr>
+                                <td>Response Format</td>
+                                <td>Simple JSON</td>
+                                <td>Metadata + data structure</td>
+                                <td>Medium - Response parsing needs updates</td>
+                            </tr>
+                            <tr>
+                                <td>Rate Limits</td>
+                                <td>100 requests/min</td>
+                                <td>300 requests/min</td>
+                                <td>Low - Beneficial change</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h5>4. Migration Guide</h5>
+                
+                <p>Follow these steps to migrate from v1 to v2:</p>
+                
+                <ol>
+                    <li><strong>Update Authentication:</strong>
+                        <div class="example-box">
+                            <pre><code># V1: API Key
+curl -X GET https://api.finsync.com/v1/payments \
+  -H "Authorization: ApiKey YOUR_API_KEY"
 
-        <h4>2. Versioning Strategy</h4>
-        <p>We support the following versioning methods:</p>
-        <ul>
-            <li><strong>URI Versioning:</strong> Append the version to the URL.</li>
-            <li><strong>Query Parameter:</strong> Specify the version as a query parameter.</li>
-            <li><strong>Header Versioning:</strong> Use custom media type headers.</li>
-        </ul>
+# V2: OAuth 2.0
+curl -X GET https://api.finsync.com/v2/payments \
+  -H "Authorization: Bearer YOUR_OAUTH_TOKEN"</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Implement Cursor Pagination:</strong>
+                        <div class="example-box">
+                            <pre><code># V1: Page-based pagination
+GET /v1/payments?page=2&limit=100
 
-        <h4>3. Deprecation Notices</h4>
-        <p>The `/users/{id}/profile` endpoint is deprecated. Use `/users/{id}` instead.</p>
+# V2: Cursor-based pagination
+GET /v2/payments?cursor=pay_123xyz&limit=100</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Update Payment Creation:</strong>
+                        <div class="example-box">
+                            <pre><code># V1: Create payment
+POST /v1/payments
+{
+  "amount": 100.00,
+  "currency": "USD",
+  "description": "Invoice payment"
+}
 
-        <h4>4. Backward Compatibility</h4>
-        <p>To migrate smoothly:</p>
-        <ul>
-            <li>Start using `/v2/users/{id}` for retrieving user details.</li>
-            <li>Use API Key authentication.</li>
-            <li>Update any legacy requests that rely on the deprecated `/users/{id}/profile` endpoint.</li>
-        </ul>
+# V2: Create payment
+POST /v2/payments
+{
+  "amount": 100.00,
+  "currency": "USD",
+  "description": "Invoice payment",
+  "source": "bank_account_1234",
+  "destination": "vendor_5678"
+}</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Add Idempotency Support:</strong>
+                        <div class="example-box">
+                            <pre><code># V2: Idempotent request
+POST /v2/payments
+-H "X-Idempotency-Key: unique-request-id-123"
+{
+  // payment details
+}</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Update Response Handling:</strong>
+                        <div class="example-box">
+                            <pre><code># V1 Response
+{
+  "id": "pay_123",
+  "amount": 100.00,
+  "currency": "USD",
+  "status": "completed"
+}
 
-        <h4>5. Example Requests</h4>
-        <h5>v1 Request</h5>
-        <pre>
-        GET /v1/users/12345
-        </pre>
-
-        <h5>v2 Request</h5>
-        <pre>
-        GET /v2/users/12345
-        Authorization: Bearer YOUR_API_KEY
-        </pre>
-
-        <h4>6. Error Handling</h4>
-        <p>Common API versioning errors:</p>
-        <table>
-            <tr>
-                <th>Error Code</th>
-                <th>Message</th>
-                <th>Reason</th>
-            </tr>
-            <tr>
-                <td>410</td>
-                <td>Gone</td>
-                <td>The requested API version is no longer supported.</td>
-            </tr>
-            <tr>
-                <td>400</td>
-                <td>Invalid Version</td>
-                <td>The provided version parameter is incorrect.</td>
-            </tr>
-        </table>
+# V2 Response
+{
+  "metadata": {
+    "request_id": "req_abc123",
+    "timestamp": "2023-03-15T14:30:00Z"
+  },
+  "data": {
+    "id": "pay_123",
+    "amount": 100.00,
+    "currency": "USD",
+    "status": "completed",
+    "fees": {
+      "amount": 2.50,
+      "currency": "USD"
+    },
+    "exchange_rate": null
+  }
+}</code></pre>
+                        </div>
+                    </li>
+                </ol>
+                
+                <h5>5. Deprecation Policy</h5>
+                <p>Our approach to API deprecation follows these principles:</p>
+                <ul>
+                    <li><strong>12-month support</strong> for previous versions after a new version launch</li>
+                    <li><strong>Email notifications</strong> at 6 months, 3 months, and 1 month before end-of-life</li>
+                    <li><strong>Response headers</strong> with deprecation warnings on all v1 responses</li>
+                    <li><strong>Frozen feature set</strong> - no new features added to deprecated versions</li>
+                    <li><strong>Critical security fixes only</strong> during deprecation period</li>
+                </ul>
+                
+                <h5>6. Testing Strategy</h5>
+                <p>We provide several options to safely test v2 before fully migrating:</p>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-flask"></i></div>
+                        <span>Testing Options</span>
+                    </div>
+                    <div class="info-box-content">
+                        <ul>
+                            <li><strong>Sandbox Environment:</strong> https://sandbox.api.finsync.com/v2/</li>
+                            <li><strong>Test Accounts:</strong> Available in the developer dashboard</li>
+                            <li><strong>Request Validation Tool:</strong> Validate v2 requests without processing them using the <code>X-Test-Only: true</code> header</li>
+                            <li><strong>Version Comparison Tool:</strong> Compare v1 and v2 responses with <code>/v1/compare/{endpoint}</code></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h5>7. Parallel API Version Usage</h5>
+                <p>During migration, you may need to use both API versions simultaneously. Here's how to manage this scenario:</p>
+                
+                <div class="example-box">
+                    <pre><code>// JavaScript example for dual version support
+async function getPaymentDetails(paymentId) {
+  // Try v2 endpoint first
+  try {
+    const v2Response = await fetch(`https://api.finsync.com/v2/payments/${paymentId}`, {
+      headers: {
+        'Authorization': `Bearer ${oauthToken}`
+      }
+    });
+    
+    if (v2Response.ok) {
+      const data = await v2Response.json();
+      return {
+        version: 'v2',
+        payment: data.data,
+        metadata: data.metadata
+      };
+    }
+  } catch (error) {
+    console.log('V2 API request failed, falling back to V1');
+  }
+  
+  // Fall back to v1 if v2 fails
+  const v1Response = await fetch(`https://api.finsync.com/v1/payments/${paymentId}`, {
+    headers: {
+      'Authorization': `ApiKey ${apiKey}`
+    }
+  });
+  
+  if (v1Response.ok) {
+    const data = await v1Response.json();
+    return {
+      version: 'v1',
+      payment: data,
+      metadata: null
+    };
+  }
+  
+  throw new Error('Payment details not available');
+}</code></pre>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <span>Feature Flag Approach</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>Consider using feature flags in your application to gradually roll out v2 API usage:</p>
+                        <pre><code>// Example feature flag implementation
+if (featureFlags.useV2PaymentAPI) {
+  // Use v2 endpoints
+} else {
+  // Use v1 endpoints
+}</code></pre>
+                    </div>
+                </div>
+                
+                <h5>8. Support Channels</h5>
+                <p>During your migration, we offer enhanced support through these channels:</p>
+                <ul>
+                    <li><strong>Migration Office Hours:</strong> Tuesdays and Thursdays, 10am-12pm ET</li>
+                    <li><strong>Migration Slack Channel:</strong> #v2-migration</li>
+                    <li><strong>Migration Support Email:</strong> v2support@finsync.com</li>
+                    <li><strong>Migration Guide Repository:</strong> github.com/finsync/v2-migration-examples</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <script>
         function toggleExercise(exerciseId) {
             document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution3").style.display = "none";
+            document.getElementById("solution5").style.display = "none";
         }
 
         function toggleSolution(solutionId, exerciseId) {

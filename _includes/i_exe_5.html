@@ -1,195 +1,616 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Styling for buttons */
-        .exercise-button, .solution-button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px;
-            margin: 10px;
-            display: inline-block;
-        }
-
-        /* Hidden content by default */
-        .exercise-content, .solution-content {
-            display: none;
-            padding: 15px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            margin: 10px;
-        }
-
-        /* Table styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f0f0f0;
-        }
-    </style>
-</head>
+{% include exe_head.html %}
 <body>
-    <!-- Buttons to toggle Exercise 5 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise5')">Exercise 5</button>
-    <button class="solution-button" onclick="toggleSolution('solution5', 'exercise5')">Solution to Exercise 5</button>
-
-    <!-- Exercise 5 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise5">
-        <h3>Exercise 5: Documenting a Weather Forecast API</h3>
-        <p><strong>Scenario:</strong> You are assigned to document the **Weather Forecast API**, which allows users to retrieve real-time weather updates and forecasts.</p>
-        
-        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
-        <ul>
-            <li>Overview of the API.</li>
-            <li>Endpoints and HTTP methods (Current Weather, Forecast, Alerts).</li>
-            <li>Authentication (API key).</li>
-            <li>Request parameters in a structured table.</li>
-            <li>An example API request (including cURL).</li>
-            <li>A sample response from the API.</li>
-            <li>Response parameters in a structured table.</li>
-            <li>Handling invalid locations and exceeded API limits.</li>
-            <li>Rate limits and caching recommendations.</li>
-        </ul>
-
-        <h4>Provided API Code (Some details missing – you must fill them in):</h4>
-        <p>Below is a sample API request and response:</p>
-
-        <h5>API Request (Get Current Weather):</h5>
-        <pre>
-        GET https://api.weatherforecast.com/current?location=New+York&apikey=your_api_key
-        </pre>
-
-        <h5>Sample Response:</h5>
-        <pre>
-        {
-            "location": {
-                "city": "New York",
-                "country": "US",
-                "latitude": 40.7128,
-                "longitude": -74.0060
-            },
-            "current_weather": {
-                "temperature": 18,
-                "humidity": 65,
-                "wind_speed": 5.2,
-                "condition": "Cloudy"
-            },
-            "forecast": [
-                {
-                    "date": "2025-02-18",
-                    "temperature_min": 10,
-                    "temperature_max": 20,
-                    "condition": "Partly Cloudy"
-                }
-            ]
-        }
-        </pre>
-
-        <p><strong>Bonus Challenge:</strong> Document how API users should handle rate limits and caching best practices.</p>
+  <div class="exercise-container" id="exercise5-container">
+    <div class="exercise-header">
+        <h3 id="exercise5-title">Exercise 5: Documenting a Weather Forecast API</h3>
+        <div class="exercise-controls">
+            <button class="exercise-toggle-btn" onclick="toggleExercise('exercise5-content', 'solution5-content')">
+                <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                <span class="exercise-toggle-text">Show Exercise</span>
+            </button>
+            <button class="solution-toggle-btn" onclick="toggleSolution('solution5-content', 'exercise5-content')">
+                <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                <span class="solution-toggle-text">View Solution</span>
+            </button>
+        </div>
     </div>
 
-    <!-- Solution to Exercise 5 (Initially Hidden) -->
-    <div class="solution-content" id="solution5">
-        <h3>Solution to Exercise 5</h3>
+    <div class="exercise-content scrollable-content" id="exercise5-content" style="display: none;">
+      <div class="info-box">
+          <div class="info-box-header">
+              <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+              <span>Scenario</span>
+          </div>
+          <div class="info-box-content">
+            <p>You are assigned to document the <strong>Weather Forecast API</strong>, which allows users to retrieve real-time weather updates and forecasts.</p>
+          </div>
+      </div>
 
+    <div class="chapter-section">
+      <h4>Your Task:</h4>
+      <p>Write an API reference document covering:</p>
+      <ul>
+        <li>Overview of the API.</li>
+        <li>Endpoints and HTTP methods (Current Weather, Forecast, Alerts).</li>
+        <li>Authentication (API key).</li>
+        <li>Request parameters in a structured table.</li>
+        <li>An example API request (including cURL).</li>
+        <li>A sample response from the API.</li>
+        <li>Response parameters in a structured table.</li>
+        <li>Handling invalid locations and exceeded API limits.</li>
+        <li>Rate limits and caching recommendations.</li>
+      </ul>
+    </div>
+
+    <div class="example-box">
+      <h4>Provided API Code (Some details missing – you must fill them in):</h4>
+      <p>Below is a sample API request and response:</p>
+
+      <h5>API Request (Get Current Weather):</h5>
+      <div class="code-example">
+        <pre><code>GET https://api.weatherforecast.com/current?location=New+York&apikey=your_api_key</code></pre>
+      </div>
+
+      <h5>Sample Response:</h5>
+      <div class="code-example">
+        <pre><code>{
+    "location": {
+        "city": "New York",
+        "country": "US",
+        "latitude": 40.7128,
+        "longitude": -74.0060
+    },
+    "current_weather": {
+        "temperature": 18,
+        "humidity": 65,
+        "wind_speed": 5.2,
+        "condition": "Cloudy"
+    },
+    "forecast": [
+        {
+            "date": "2025-02-18",
+            "temperature_min": 10,
+            "temperature_max": 20,
+            "condition": "Partly Cloudy"
+        }
+    ]
+}</code></pre>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-header">
+          <div class="icon"><i class="fas fa-star"></i></div>
+          <span>Bonus Challenge</span>
+      </div>
+      <div class="info-box-content">
+        <p>Document how API users should handle rate limits and caching best practices.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="solution-content scrollable-content" id="solution5-content" style="display: none;">
+    <h4>Weather Forecast API Documentation</h4>
+    <div class="chapter-section">
         <h4>1. Overview</h4>
-        <p>The **Weather Forecast API** provides real-time weather updates, hourly and daily forecasts, and severe weather alerts for various locations worldwide.</p>
+        <p>The <strong>Weather Forecast API</strong> provides real-time weather updates, hourly and daily forecasts, and severe weather alerts for various locations worldwide. The API offers comprehensive weather data including temperature, humidity, wind speed, and precipitation forecasts.</p>
+    </div>
 
-        <h4>2. Authentication</h4>
-        <p>The API requires an API key for authentication. Each request must include the `apikey` parameter.</p>
+    <div class="chapter-section">
+      <h5>2. Authentication</h5>
+      <p>The API requires an API key for authentication. Each request must include the <code>apikey</code> parameter.</p>
+      
+      <div class="endpoint-details">
+        <p>To acquire an API key:</p>
+        <ol>
+          <li>Register for a free or paid account at <code>https://developer.weatherforecast.com</code></li>
+          <li>Navigate to the API Keys section in your dashboard</li>
+          <li>Generate a new API key</li>
+        </ol>
+        
+        <p>Include your API key with every request as a query parameter:</p>
+        <div class="code-example">
+          <pre><code>GET https://api.weatherforecast.com/current?location=New+York&apikey=your_api_key</code></pre>
+        </div>
+        
+        <p>API keys are tied to specific subscription plans with varying rate limits and feature access.</p>
+      </div>
+    </div>
 
-        <h4>3. Endpoints and Methods</h4>
-        <ul>
-            <li><strong>GET /current</strong> – Retrieves current weather for a location.</li>
-            <li><strong>GET /forecast</strong> – Retrieves a 7-day weather forecast.</li>
-            <li><strong>GET /alerts</strong> – Retrieves active severe weather alerts.</li>
-        </ul>
-
-        <h4>4. Request Parameters (Current Weather)</h4>
-        <table>
+    <div class="chapter-section">
+      <h5>3. Endpoints and Methods</h5>
+      <div class="table-container">
+        <table class="params-table">
+          <thead>
             <tr>
+              <th>Method</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GET</td>
+              <td>/current</td>
+              <td>Retrieves current weather for a location</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/forecast</td>
+              <td>Retrieves a 7-day weather forecast</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/forecast/hourly</td>
+              <td>Retrieves hourly forecasts for the next 48 hours</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/alerts</td>
+              <td>Retrieves active severe weather alerts</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/historical</td>
+              <td>Retrieves historical weather data (premium feature)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h5>4. Current Weather</h5>
+      <p>Retrieves current weather conditions for a specified location.</p>
+      
+      <div class="endpoint-details">
+        <p><strong>Endpoint:</strong> <code>GET /current</code></p>
+        
+        <h6>Request Parameters</h6>
+        <div class="table-container">
+          <table class="params-table">
+            <thead>
+              <tr>
                 <th>Parameter</th>
                 <th>Type</th>
                 <th>Required</th>
                 <th>Default</th>
                 <th>Description</th>
-            </tr>
-            <tr>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
                 <td>location</td>
                 <td>String</td>
-                <td>Yes</td>
+                <td>Yes*</td>
                 <td>None</td>
-                <td>The name of the city (e.g., "New York").</td>
-            </tr>
-            <tr>
+                <td>City name (e.g., "New York", "London")</td>
+              </tr>
+              <tr>
+                <td>lat</td>
+                <td>Float</td>
+                <td>Yes*</td>
+                <td>None</td>
+                <td>Latitude coordinate</td>
+              </tr>
+              <tr>
+                <td>lon</td>
+                <td>Float</td>
+                <td>Yes*</td>
+                <td>None</td>
+                <td>Longitude coordinate</td>
+              </tr>
+              <tr>
+                <td>zip</td>
+                <td>String</td>
+                <td>Yes*</td>
+                <td>None</td>
+                <td>ZIP code with optional country code (e.g., "10001,us")</td>
+              </tr>
+              <tr>
+                <td>units</td>
+                <td>String</td>
+                <td>No</td>
+                <td>"standard"</td>
+                <td>Units of measurement: "standard" (Kelvin), "metric" (Celsius), "imperial" (Fahrenheit)</td>
+              </tr>
+              <tr>
+                <td>lang</td>
+                <td>String</td>
+                <td>No</td>
+                <td>"en"</td>
+                <td>Language for condition descriptions (e.g., "en", "es", "fr")</td>
+              </tr>
+              <tr>
                 <td>apikey</td>
                 <td>String</td>
                 <td>Yes</td>
                 <td>None</td>
-                <td>API key for authentication.</td>
-            </tr>
-        </table>
+                <td>Your API authentication key</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>* At least one location parameter (location, lat/lon pair, or zip) is required.</p>
 
-        <h4>5. Sample cURL Request (Getting Current Weather)</h4>
-        <pre>
-        curl -X GET "https://api.weatherforecast.com/current?location=New+York&apikey=your_api_key" -H "Accept: application/json"
-        </pre>
+        <h6>Example cURL Request</h6>
+        <div class="code-example">
+          <pre><code>curl -X GET "https://api.weatherforecast.com/current?location=New+York&units=metric&apikey=your_api_key" \
+-H "Accept: application/json"</code></pre>
+        </div>
 
-        <h4>6. Error Handling</h4>
-        <p>Common errors include:</p>
-        <table>
-            <tr>
-                <th>Status Code</th>
-                <th>Message</th>
+        <h6>Example Response</h6>
+        <div class="code-example">
+          <pre><code>{
+    "location": {
+        "city": "New York",
+        "country": "US",
+        "latitude": 40.7128,
+        "longitude": -74.0060,
+        "timezone": "America/New_York",
+        "time": "2025-02-18T14:30:00-05:00"
+    },
+    "current_weather": {
+        "temperature": 18,
+        "feels_like": 16.5,
+        "humidity": 65,
+        "pressure": 1012,
+        "wind_speed": 5.2,
+        "wind_direction": 240,
+        "wind_gust": 8.7,
+        "condition": "Cloudy",
+        "condition_code": 804,
+        "visibility": 10000,
+        "uv_index": 2
+    },
+    "forecast": [
+        {
+            "date": "2025-02-18",
+            "temperature_min": 10,
+            "temperature_max": 20,
+            "condition": "Partly Cloudy",
+            "condition_code": 802,
+            "precipitation_chance": 20,
+            "precipitation_amount": 0
+        }
+    ]
+}</code></pre>
+        </div>
+
+        <h6>Response Parameters</h6>
+        <div class="table-container">
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
                 <th>Description</th>
-            </tr>
-            <tr>
-                <td>401</td>
-                <td>Unauthorized</td>
-                <td>Invalid or missing API key.</td>
-            </tr>
-            <tr>
-                <td>404</td>
-                <td>Location Not Found</td>
-                <td>Invalid city name or location not available.</td>
-            </tr>
-            <tr>
-                <td>429</td>
-                <td>Too Many Requests</td>
-                <td>API rate limit exceeded.</td>
-            </tr>
-        </table>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>location</td>
+                <td>Object</td>
+                <td>Information about the requested location</td>
+              </tr>
+              <tr>
+                <td>current_weather</td>
+                <td>Object</td>
+                <td>Current weather conditions</td>
+              </tr>
+              <tr>
+                <td>forecast</td>
+                <td>Array</td>
+                <td>Brief forecast for today</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
-    <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution5").style.display = "none";
-        }
+    <div class="chapter-section">
+      <h5>5. Weather Forecast</h5>
+      <p>Retrieves a 7-day weather forecast for a specified location.</p>
+      
+      <div class="endpoint-details">
+        <p><strong>Endpoint:</strong> <code>GET /forecast</code></p>
+        
+        <h6>Request Parameters</h6>
+        <div class="table-container">
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>location</td>
+                <td>String</td>
+                <td>Yes*</td>
+                <td>None</td>
+                <td>City name (e.g., "New York", "London")</td>
+              </tr>
+              <tr>
+                <td>days</td>
+                <td>Integer</td>
+                <td>No</td>
+                <td>7</td>
+                <td>Number of forecast days (1-14, premium plans only for >7)</td>
+              </tr>
+              <tr>
+                <td>units</td>
+                <td>String</td>
+                <td>No</td>
+                <td>"standard"</td>
+                <td>Units of measurement</td>
+              </tr>
+              <tr>
+                <td>apikey</td>
+                <td>String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Your API authentication key</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-        function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
-        }
-    </script>
+        <h6>Example Response</h6>
+        <div class="code-example">
+          <pre><code>{
+    "location": {
+        "city": "New York",
+        "country": "US",
+        "latitude": 40.7128,
+        "longitude": -74.0060
+    },
+    "forecast": [
+        {
+            "date": "2025-02-18",
+            "temperature_min": 10,
+            "temperature_max": 20,
+            "feels_like_min": 8,
+            "feels_like_max": 18,
+            "sunrise": "06:45",
+            "sunset": "17:30",
+            "condition": "Partly Cloudy",
+            "condition_code": 802,
+            "humidity": 65,
+            "wind_speed": 5.2,
+            "wind_direction": 240,
+            "precipitation_chance": 20,
+            "precipitation_amount": 0,
+            "uv_index": 2
+        },
+        // Additional days follow...
+    ]
+}</code></pre>
+        </div>
+      </div>
+    </div>
 
-</body>
-</html>
+    <div class="chapter-section">
+      <h5>6. Weather Alerts</h5>
+      <p>Retrieves active severe weather alerts for a location.</p>
+      
+      <div class="endpoint-details">
+        <p><strong>Endpoint:</strong> <code>GET /alerts</code></p>
+        
+        <h6>Example Response</h6>
+        <div class="code-example">
+          <pre><code>{
+    "location": {
+        "city": "New York",
+        "country": "US"
+    },
+    "alerts": [
+        {
+            "alert_id": "NWS-IDP-PROD-4348765-3638720",
+            "title": "Flood Watch",
+            "description": "The National Weather Service has issued a Flood Watch...",
+            "severity": "Moderate",
+            "time_issued": "2025-02-18T09:30:00-05:00",
+            "time_expires": "2025-02-19T18:00:00-05:00",
+            "source": "National Weather Service",
+            "areas_affected": [
+                "New York County",
+                "Kings County",
+                "Queens County"
+            ]
+        }
+    ]
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h5>7. Rate Limits and Caching</h5>
+      
+      <h6>Rate Limits</h6>
+      <div class="table-container">
+        <table class="params-table">
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Rate Limit</th>
+              <th>Time Window</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Free</td>
+              <td>60 calls</td>
+              <td>Per day</td>
+            </tr>
+            <tr>
+              <td>Basic</td>
+              <td>1,000 calls</td>
+              <td>Per day</td>
+            </tr>
+            <tr>
+              <td>Pro</td>
+              <td>50,000 calls</td>
+              <td>Per day</td>
+            </tr>
+            <tr>
+              <td>Enterprise</td>
+              <td>Unlimited</td>
+              <td>Custom</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p>The API includes rate limit information in response headers:</p>
+      <ul>
+        <li><code>X-RateLimit-Limit</code>: Your daily limit</li>
+        <li><code>X-RateLimit-Remaining</code>: Calls remaining today</li>
+        <li><code>X-RateLimit-Reset</code>: Time when the limit resets (Unix timestamp)</li>
+      </ul>
+      
+      <h6>Caching Recommendations</h6>
+      <p>Weather data changes at predictable intervals. We recommend implementing caching using these guidelines:</p>
+      
+      <div class="table-container">
+        <table class="params-table">
+          <thead>
+            <tr>
+              <th>Endpoint</th>
+              <th>Recommended Cache Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>/current</td>
+              <td>10-15 minutes</td>
+            </tr>
+            <tr>
+              <td>/forecast</td>
+              <td>1-3 hours</td>
+            </tr>
+            <tr>
+              <td>/forecast/hourly</td>
+              <td>30-60 minutes</td>
+            </tr>
+            <tr>
+              <td>/alerts</td>
+              <td>5-10 minutes</td>
+            </tr>
+            <tr>
+              <td>/historical</td>
+              <td>Indefinite (data doesn't change)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p>The API provides cache control headers:</p>
+      <ul>
+        <li><code>Cache-Control: max-age=X</code>: Suggested caching time in seconds</li>
+        <li><code>ETag</code>: Entity tag for conditional requests</li>
+        <li><code>Last-Modified</code>: Timestamp of when the data was last updated</li>
+      </ul>
+      
+      <div class="endpoint-details">
+        <h6>Implementing Conditional Requests</h6>
+        <p>Use ETags to prevent unnecessary data transfer:</p>
+        <ol>
+          <li>Save the <code>ETag</code> value from your initial response</li>
+          <li>On subsequent requests, include the <code>If-None-Match</code> header with your saved ETag</li>
+          <li>If data hasn't changed, the API will return <code>304 Not Modified</code> without response body</li>
+        </ol>
+        
+        <div class="code-example">
+          <pre><code>curl -X GET "https://api.weatherforecast.com/current?location=New+York&apikey=your_api_key" \
+-H "If-None-Match: \"a8d7b42f\""</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter-section">
+      <h5>8. Error Handling</h5>
+      <p>All errors return a consistent JSON structure:</p>
+      <div class="code-example">
+        <pre><code>{
+    "error": {
+        "code": "error_code",
+        "message": "Human-readable error message",
+        "details": {} // Optional additional information
+    }
+}</code></pre>
+      </div>
+      
+      <div class="table-container">
+        <table class="params-table">
+          <thead>
+            <tr>
+              <th>Status Code</th>
+              <th>Error Code</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>400</td>
+              <td>invalid_request</td>
+              <td>Missing or invalid parameters</td>
+            </tr>
+            <tr>
+              <td>401</td>
+              <td>unauthorized</td>
+              <td>Invalid or missing API key</td>
+            </tr>
+            <tr>
+              <td>404</td>
+              <td>location_not_found</td>
+              <td>The specified location could not be found</td>
+            </tr>
+            <tr>
+              <td>429</td>
+              <td>rate_limit_exceeded</td>
+              <td>You have exceeded your rate limit</td>
+            </tr>
+            <tr>
+              <td>503</td>
+              <td>service_unavailable</td>
+              <td>Service is temporarily unavailable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <h6>Handling Invalid Locations</h6>
+      <p>When a location cannot be found, the API returns a <code>404</code> error:</p>
+      <div class="code-example">
+        <pre><code>{
+    "error": {
+        "code": "location_not_found",
+        "message": "The location 'Atlantis' could not be found",
+        "details": {
+            "suggestions": [
+                "Atlanta, US",
+                "Atlantic City, US"
+            ]
+        }
+    }
+}</code></pre>
+      </div>
+      
+      <p>Best practices for location handling:</p>
+      <ul>
+        <li>Use latitude/longitude coordinates when possible for more accurate results</li>
+        <li>Implement autocomplete functionality using the <code>/locations/search</code> endpoint</li>
+        <li>Display suggested alternatives when a location isn't found</li>
+      </ul>
+    </div>
+  </div>
+
+
+{% include exe_script.html %}

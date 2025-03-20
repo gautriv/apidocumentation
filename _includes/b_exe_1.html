@@ -47,165 +47,490 @@
     </style>
 </head>
 <body>
-    <!-- Buttons to toggle Exercise 1 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise1')">Exercise 1</button>
-    <button class="solution-button" onclick="toggleSolution('solution1', 'exercise1')">Solution to Exercise 1</button>
-
-    <!-- Exercise 1 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise1">
-        <h3>Exercise 1: Documenting a Weather API</h3>
-        <p><strong>Scenario:</strong> You are assigned to document the **Weather Forecast API**, which provides real-time weather updates for a given city.</p>
+    <div class="exercise-container" id="exercise1-container">
+        <div class="exercise-header">
+            <h3 id="exercise1-title">Exercise 1: Documenting a Weather API</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise1-content', 'solution1-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution1-content', 'exercise1-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
         
-        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
-        <ul>
-            <li>Overview of the API.</li>
-            <li>Endpoints and HTTP methods.</li>
-            <li>Request parameters in a structured table.</li>
-            <li>An example API request (including cURL and why it's used).</li>
-            <li>A sample response from the API.</li>
-            <li>Response parameters in a structured table.</li>
-            <li>Possible error codes and troubleshooting guidance.</li>
-        </ul>
+        <div class="exercise-content scrollable-content" id="exercise1-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You are assigned to document the <strong>Weather Forecast API</strong>, which provides real-time weather updates for a given city.</p>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Your Task</h4>
+                <p>Write an API reference document covering:</p>
+                <ul>
+                    <li>Overview of the API</li>
+                    <li>Endpoints and HTTP methods</li>
+                    <li>Request parameters in a structured table</li>
+                    <li>An example API request (including cURL and why it's used)</li>
+                    <li>A sample response from the API</li>
+                    <li>Response parameters in a structured table</li>
+                    <li>Possible error codes and troubleshooting guidance</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <h4>Provided API Code</h4>
+                <p>Below is a sample API request and response:</p>
+                
+                <h5>API Request:</h5>
+                <pre><code>GET https://api.weatherforecast.com/weather?city=London&units=metric&apikey=your_api_key</code></pre>
+                
+                <h5>Sample Response:</h5>
+                <pre><code class="language-json">{
+  "city": "London",
+  "temperature": "15°C",
+  "humidity": "72%",
+  "wind_speed": "10 km/h",
+  "condition": "Partly Cloudy"
+}</code></pre>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Add details about rate limits and authentication (if applicable).</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution1-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>1. Overview</h4>
+                <p>The <strong>Weather Forecast API</strong> provides real-time weather information for a given city. It delivers weather conditions such as temperature, humidity, and wind speed. This API is ideal for developers building weather-based applications or services.</p>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>2. Endpoints and Methods</h4>
+                <p><strong>GET /weather</strong> – Retrieves current weather data for a specified city.</p>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>3. Request Parameters</h4>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Required</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>city</code></td>
+                                <td>String</td>
+                                <td>Yes</td>
+                                <td>None</td>
+                                <td>Name of the city to fetch weather data for.</td>
+                            </tr>
+                            <tr>
+                                <td><code>units</code></td>
+                                <td>String</td>
+                                <td>No</td>
+                                <td>Kelvin</td>
+                                <td>Units for temperature (e.g., "metric" for Celsius, "imperial" for Fahrenheit).</td>
+                            </tr>
+                            <tr>
+                                <td><code>apikey</code></td>
+                                <td>String</td>
+                                <td>Yes</td>
+                                <td>None</td>
+                                <td>API key for authentication.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>4. Sample cURL Request</h4>
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <span>Why Use cURL?</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>cURL is a command-line tool used to make API requests without a web browser. It helps developers test APIs quickly and automate requests in scripts.</p>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <pre><code>curl -X GET "https://api.weatherforecast.com/weather?city=London&units=metric&apikey=your_api_key" -H "Accept: application/json"</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>5. Response Parameters</h4>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>city</code></td>
+                                <td>String</td>
+                                <td>Name of the city.</td>
+                            </tr>
+                            <tr>
+                                <td><code>temperature</code></td>
+                                <td>String</td>
+                                <td>Current temperature with units.</td>
+                            </tr>
+                            <tr>
+                                <td><code>humidity</code></td>
+                                <td>String</td>
+                                <td>Current humidity percentage.</td>
+                            </tr>
+                            <tr>
+                                <td><code>wind_speed</code></td>
+                                <td>String</td>
+                                <td>Wind speed in km/h or mph.</td>
+                            </tr>
+                            <tr>
+                                <td><code>condition</code></td>
+                                <td>String</td>
+                                <td>Short description of the weather (e.g., "Sunny").</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>6. Error Codes</h4>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Status Code</th>
+                                <th>Message</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>401</strong></td>
+                                <td>Unauthorized</td>
+                                <td>Invalid or missing API key.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>404</strong></td>
+                                <td>Not Found</td>
+                                <td>City not found in the database.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>500</strong></td>
+                                <td>Internal Server Error</td>
+                                <td>Unexpected server-side issue.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>7. Rate Limits and Authentication</h4>
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                        <span>Authentication</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>The Weather Forecast API uses API key authentication. To obtain an API key:</p>
+                        <ol>
+                            <li>Create an account on the Weather Forecast developer portal</li>
+                            <li>Navigate to "API Keys" in your dashboard</li>
+                            <li>Generate a new API key</li>
+                            <li>Include this key in all API requests using the <code>apikey</code> parameter</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <span>Rate Limits</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>The following rate limits apply to the Weather Forecast API:</p>
+                        <ul>
+                            <li>Free tier: 60 requests per hour</li>
+                            <li>Developer tier: 1,000 requests per hour</li>
+                            <li>Enterprise tier: 10,000 requests per hour</li>
+                        </ul>
+                        <p>If you exceed these limits, the API will return a <strong>429 Too Many Requests</strong> status code.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <h4>Provided API Code:</h4>
-        <p>Below is a sample API request and response:</p>
-
-        <h5>API Request:</h5>
-        <pre>
-        GET https://api.weatherforecast.com/weather?city=London&units=metric&apikey=your_api_key
-        </pre>
-
-        <h5>Sample Response:</h5>
-        <pre>
-        {
-            "city": "London",
-            "temperature": "15°C",
-            "humidity": "72%",
-            "wind_speed": "10 km/h",
-            "condition": "Partly Cloudy"
+    <style>
+        /* Exercise Container Styling */
+        .exercise-container {
+            margin: 30px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            max-width: 100%;
+            position: relative;
+            width: 100%;
         }
-        </pre>
+        
+        /* Exercise Header */
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #4568dc, #6a85e0);
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .exercise-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        /* Exercise Controls */
+        .exercise-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .exercise-toggle-btn, .solution-toggle-btn {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .exercise-toggle-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .solution-toggle-btn {
+            background-color: #ffd700;
+            color: #333;
+        }
+        
+        .exercise-toggle-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .solution-toggle-btn:hover {
+            background-color: #ffcc00;
+        }
+        
+        .exercise-toggle-icon, .solution-toggle-icon {
+            margin-right: 8px;
+        }
+        
+        /* Content Styling */
+        .exercise-content, .solution-content {
+            padding: 20px;
+            background-color: #fff;
+            max-height: 600px;
+            overflow-y: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-        <p><strong>Bonus Challenge:</strong> Add details about rate limits and authentication (if applicable).</p>
-    </div>
+        /* Scrollable content */
+        .scrollable-content {
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-height: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .scrollable-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+        
+        /* Table Styling */
+        .comparison-table {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            table-layout: fixed;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+            word-wrap: break-word;
+        }
+        
+        .comparison-table th {
+            background-color: #f5f7ff;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f0f4ff;
+        }
+        
+        /* Code blocks */
+        pre {
+            background-color: #f5f7fa;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            max-width: 100%;
+            white-space: pre-wrap;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
 
-    <!-- Solution to Exercise 1 (Initially Hidden) -->
-    <div class="solution-content" id="solution1">
-        <h3>Solution to Exercise 1</h3>
-
-        <h4>1. Overview</h4>
-        <p>The **Weather Forecast API** provides real-time weather information for a given city. It delivers weather conditions such as temperature, humidity, and wind speed. This API is ideal for developers building weather-based applications or services.</p>
-
-        <h4>2. Endpoints and Methods</h4>
-        <p><strong>GET /weather</strong> – Retrieves current weather data for a specified city.</p>
-
-        <h4>3. Request Parameters</h4>
-        <table>
-            <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Required</th>
-                <th>Default</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>city</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>Name of the city to fetch weather data for.</td>
-            </tr>
-            <tr>
-                <td>units</td>
-                <td>String</td>
-                <td>No</td>
-                <td>Kelvin</td>
-                <td>Units for temperature (e.g., "metric" for Celsius, "imperial" for Fahrenheit).</td>
-            </tr>
-            <tr>
-                <td>apikey</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>API key for authentication.</td>
-            </tr>
-        </table>
-
-        <h4>4. Sample cURL Request</h4>
-        <p><strong>Why Use cURL?</strong> cURL is a command-line tool used to make API requests without a web browser. It helps developers test APIs quickly and automate requests in scripts.</p>
-
-        <pre>
-        curl -X GET "https://api.weatherforecast.com/weather?city=London&units=metric&apikey=your_api_key" -H "Accept: application/json"
-        </pre>
-
-        <h4>5. Response Parameters</h4>
-        <table>
-            <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>city</td>
-                <td>String</td>
-                <td>Name of the city.</td>
-            </tr>
-            <tr>
-                <td>temperature</td>
-                <td>String</td>
-                <td>Current temperature with units.</td>
-            </tr>
-            <tr>
-                <td>humidity</td>
-                <td>String</td>
-                <td>Current humidity percentage.</td>
-            </tr>
-            <tr>
-                <td>wind_speed</td>
-                <td>String</td>
-                <td>Wind speed in km/h or mph.</td>
-            </tr>
-            <tr>
-                <td>condition</td>
-                <td>String</td>
-                <td>Short description of the weather (e.g., "Sunny").</td>
-            </tr>
-        </table>
-
-        <h4>6. Error Codes</h4>
-        <table>
-            <tr>
-                <th>Status Code</th>
-                <th>Message</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>401</td>
-                <td>Unauthorized</td>
-                <td>Invalid or missing API key.</td>
-            </tr>
-            <tr>
-                <td>404</td>
-                <td>Not Found</td>
-                <td>City not found in the database.</td>
-            </tr>
-            <tr>
-                <td>500</td>
-                <td>Internal Server Error</td>
-                <td>Unexpected server-side issue.</td>
-            </tr>
-        </table>
-    </div>
+        /* Info box and example box responsive fixes */
+        .info-box, .example-box {
+            max-width: 100%;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        
+        /* Chapter section fixes */
+        .chapter-section {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* List styling to prevent overflow */
+        ul, ol {
+            padding-left: 20px;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+        
+        li {
+            word-wrap: break-word;
+        }
+    </style>
 
     <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution1").style.display = "none";
+        function toggleExercise(exerciseId, solutionId) {
+            var exerciseContent = document.getElementById(exerciseId);
+            var solutionContent = document.getElementById(solutionId);
+            var isVisible = exerciseContent.style.display !== 'none';
+            
+            // Always hide solution when toggling exercise
+            solutionContent.style.display = 'none';
+            
+            // Toggle exercise visibility
+            exerciseContent.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text
+            var button = document.querySelector('.exercise-toggle-text');
+            var icon = document.querySelector('.exercise-toggle-icon i');
+            
+            if (isVisible) {
+                button.textContent = 'Show Exercise';
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                button.textContent = 'Hide Exercise';
+                icon.className = 'fas fa-chevron-up';
+            }
+            
+            // Reset solution button text
+            document.querySelector('.solution-toggle-text').textContent = 'View Solution';
+            document.querySelector('.solution-toggle-icon i').className = 'fas fa-lightbulb';
         }
-
+        
         function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
+            var solutionContent = document.getElementById(solutionId);
+            var exerciseContent = document.getElementById(exerciseId);
+            var isVisible = solutionContent.style.display !== 'none';
+            
+            // Always hide exercise when toggling solution
+            exerciseContent.style.display = 'none';
+            
+            // Toggle solution visibility
+            solutionContent.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text
+            var button = document.querySelector('.solution-toggle-text');
+            var icon = document.querySelector('.solution-toggle-icon i');
+            
+            if (isVisible) {
+                button.textContent = 'View Solution';
+                icon.className = 'fas fa-lightbulb';
+            } else {
+                button.textContent = 'Hide Solution';
+                icon.className = 'fas fa-times';
+            }
+            
+            // Reset exercise button text
+            document.querySelector('.exercise-toggle-text').textContent = 'Show Exercise';
+            document.querySelector('.exercise-toggle-icon i').className = 'fas fa-chevron-down';
         }
     </script>
 

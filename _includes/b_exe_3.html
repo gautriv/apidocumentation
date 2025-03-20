@@ -47,178 +47,769 @@
     </style>
 </head>
 <body>
-    <!-- Buttons to toggle Exercise 3 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise3')">Exercise 3</button>
-    <button class="solution-button" onclick="toggleSolution('solution3', 'exercise3')">Solution to Exercise 3</button>
-
     <!-- Exercise 3 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise3">
-        <h3>Exercise 3: Documenting a Flight Status API</h3>
-        <p><strong>Scenario:</strong> You are assigned to document the **Flight Status API**, which allows users to retrieve real-time flight status based on flight number and date.</p>
+    <div class="exercise-container" id="exercise3-container">
+        <div class="exercise-header">
+            <h3 id="exercise3-title">Exercise 3: Documenting API Endpoints</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise3-content', 'solution3-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution3-content', 'exercise3-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
         
-        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
-        <ul>
-            <li>Overview of the API.</li>
-            <li>Endpoints and HTTP methods.</li>
-            <li>Request parameters in a structured table.</li>
-            <li>An example API request (including cURL).</li>
-            <li>A sample response from the API.</li>
-            <li>Response parameters in a structured table.</li>
-            <li>Possible error codes and troubleshooting guidance.</li>
+        <div class="exercise-content scrollable-content" id="exercise3-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You are documenting a <strong>Library Management API</strong> that allows users to manage books, patrons, and borrowing records for a library system.</p>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Your Task</h4>
+                <p>Document the following book-related endpoints of the API:</p>
+                <ul>
+                    <li>GET /books - List all books</li>
+                    <li>GET /books/{id} - Get a specific book</li>
+                    <li>POST /books - Add a new book</li>
+                    <li>PUT /books/{id} - Update a book</li>
+                    <li>DELETE /books/{id} - Delete a book</li>
+                </ul>
+                <p>For each endpoint, include:</p>
+                <ul>
+                    <li>Description of what the endpoint does</li>
+                    <li>Request parameters (path, query, and body as applicable)</li>
+                    <li>Sample request</li>
+                    <li>Sample response</li>
+                    <li>Possible status codes</li>
         </ul>
-
-        <h4>Provided API Code:</h4>
-        <p>Below is a sample API request and response:</p>
-
-        <h5>API Request:</h5>
-        <pre>
-        GET https://api.flightstatus.com/status?flight_number=AI302&date=2025-02-17&apikey=your_api_key
-        </pre>
-
-        <h5>Sample Response:</h5>
-        <pre>
-        {
-            "flight_number": "AI302",
-            "airline": "Air India",
-            "status": "On Time",
-            "departure": {
-                "airport": "Indira Gandhi International Airport (DEL)",
-                "scheduled_time": "2025-02-17T14:30:00Z"
-            },
-            "arrival": {
-                "airport": "Heathrow Airport (LHR)",
-                "scheduled_time": "2025-02-17T18:45:00Z"
-            }
-        }
-        </pre>
-
-        <p><strong>Bonus Challenge:</strong> Explain how API users should handle delays or canceled flights.</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>API Information</h4>
+                <p>The base URL for the API is: <code>https://api.library.com/v1</code></p>
+                
+                <h5>Sample Book Object:</h5>
+                <pre><code class="language-json">{
+  "id": "123",
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "isbn": "9780743273565",
+  "publication_year": 1925,
+  "genre": "Fiction",
+  "available": true,
+  "copies": 3
+}</code></pre>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Document pagination for the GET /books endpoint and explain how users can filter books by genre or availability.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution3-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>Library Management API: Book Endpoints</h4>
+                <p>Base URL: <code>https://api.library.com/v1</code></p>
+                <p>All endpoints require authentication via Bearer token.</p>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>1. List All Books</h4>
+                <div class="comparison-table">
+                    <table>
+                        <tr>
+                            <th>Method</th>
+                            <td><code>GET</code></td>
+                        </tr>
+                        <tr>
+                            <th>Endpoint</th>
+                            <td><code>/books</code></td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>Retrieves a paginated list of books in the library collection.</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h5>Query Parameters</h5>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Required</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>page</code></td>
+                                <td>Integer</td>
+                                <td>No</td>
+                                <td>Page number (default: 1)</td>
+                            </tr>
+                            <tr>
+                                <td><code>limit</code></td>
+                                <td>Integer</td>
+                                <td>No</td>
+                                <td>Items per page (default: 20, max: 100)</td>
+                            </tr>
+                            <tr>
+                                <td><code>genre</code></td>
+                                <td>String</td>
+                                <td>No</td>
+                                <td>Filter books by genre</td>
+                            </tr>
+                            <tr>
+                                <td><code>available</code></td>
+                                <td>Boolean</td>
+                                <td>No</td>
+                                <td>Filter by availability (true/false)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Example Request</h5>
+                    <pre><code>GET https://api.library.com/v1/books?page=1&limit=10&genre=Fiction&available=true
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</code></pre>
+                    
+                    <h5>Example Response (200 OK)</h5>
+                    <pre><code class="language-json">{
+  "books": [
+    {
+      "id": "123",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "isbn": "9780743273565",
+      "publication_year": 1925,
+      "genre": "Fiction",
+      "available": true,
+      "copies": 3
+    },
+    {
+      "id": "124",
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "isbn": "9780061120084",
+      "publication_year": 1960,
+      "genre": "Fiction",
+      "available": true,
+      "copies": 2
+    }
+  ],
+  "pagination": {
+    "total_items": 45,
+    "total_pages": 5,
+    "current_page": 1,
+    "items_per_page": 10
+  }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>2. Get a Specific Book</h4>
+                <div class="comparison-table">
+                    <table>
+                        <tr>
+                            <th>Method</th>
+                            <td><code>GET</code></td>
+                        </tr>
+                        <tr>
+                            <th>Endpoint</th>
+                            <td><code>/books/{id}</code></td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>Retrieves detailed information about a specific book.</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h5>Path Parameters</h5>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>id</code></td>
+                                <td>String</td>
+                                <td>The unique identifier of the book</td>
+                            </tr>
+                        </tbody>
+                    </table>
     </div>
 
-    <!-- Solution to Exercise 3 (Initially Hidden) -->
-    <div class="solution-content" id="solution3">
-        <h3>Solution to Exercise 3</h3>
-
-        <h4>1. Overview</h4>
-        <p>The **Flight Status API** provides real-time flight tracking and status updates. Developers can use this API to track flights, departure times, arrival times, and delay notifications.</p>
-
-        <h4>2. Endpoints and Methods</h4>
-        <p><strong>GET /status</strong> – Retrieves the latest flight status.</p>
-
-        <h4>3. Request Parameters</h4>
+                <div class="example-box">
+                    <h5>Example Request</h5>
+                    <pre><code>GET https://api.library.com/v1/books/123
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</code></pre>
+                    
+                    <h5>Example Response (200 OK)</h5>
+                    <pre><code class="language-json">{
+  "id": "123",
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "isbn": "9780743273565",
+  "publication_year": 1925,
+  "genre": "Fiction",
+  "available": true,
+  "copies": 3,
+  "description": "The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
+  "publisher": "Scribner",
+  "borrowing_history": {
+    "times_borrowed": 27,
+    "last_borrowed": "2024-01-15T14:23:45Z"
+  }
+}</code></pre>
+                </div>
+                
+                <h5>Status Codes</h5>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>200</td>
+                                <td>Book found and returned successfully</td>
+                            </tr>
+                            <tr>
+                                <td>404</td>
+                                <td>Book not found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>3. Add a New Book</h4>
+                <div class="comparison-table">
         <table>
+                        <tr>
+                            <th>Method</th>
+                            <td><code>POST</code></td>
+                        </tr>
+                        <tr>
+                            <th>Endpoint</th>
+                            <td><code>/books</code></td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>Adds a new book to the library collection.</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h5>Request Body Parameters</h5>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
             <tr>
                 <th>Parameter</th>
                 <th>Type</th>
                 <th>Required</th>
-                <th>Default</th>
                 <th>Description</th>
             </tr>
-            <tr>
-                <td>flight_number</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>Unique flight number (e.g., AI302).</td>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>title</code></td>
+                                <td>String</td>
+                                <td>Yes</td>
+                                <td>The title of the book</td>
             </tr>
             <tr>
-                <td>date</td>
+                                <td><code>author</code></td>
                 <td>String</td>
                 <td>Yes</td>
-                <td>None</td>
-                <td>The flight date (format: YYYY-MM-DD).</td>
+                                <td>The author of the book</td>
             </tr>
             <tr>
-                <td>apikey</td>
+                                <td><code>isbn</code></td>
                 <td>String</td>
                 <td>Yes</td>
-                <td>None</td>
-                <td>API key for authentication.</td>
+                                <td>International Standard Book Number</td>
+                            </tr>
+                            <tr>
+                                <td><code>publication_year</code></td>
+                                <td>Integer</td>
+                                <td>Yes</td>
+                                <td>Year the book was published</td>
             </tr>
+            <tr>
+                                <td><code>genre</code></td>
+                <td>String</td>
+                <td>Yes</td>
+                                <td>Genre of the book</td>
+                            </tr>
+                            <tr>
+                                <td><code>copies</code></td>
+                                <td>Integer</td>
+                                <td>Yes</td>
+                                <td>Number of copies available</td>
+                            </tr>
+                            <tr>
+                                <td><code>description</code></td>
+                                <td>String</td>
+                                <td>No</td>
+                                <td>Description of the book</td>
+                            </tr>
+                            <tr>
+                                <td><code>publisher</code></td>
+                                <td>String</td>
+                                <td>No</td>
+                                <td>Publisher of the book</td>
+            </tr>
+                        </tbody>
         </table>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Example Request</h5>
+                    <pre><code class="language-http">POST https://api.library.com/v1/books
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
 
-        <h4>4. Sample cURL Request</h4>
-        <pre>
-        curl -X GET "https://api.flightstatus.com/status?flight_number=AI302&date=2025-02-17&apikey=your_api_key" -H "Accept: application/json"
-        </pre>
-
-        <h4>5. Sample Response</h4>
-        <pre>
-        {
-            "flight_number": "AI302",
-            "airline": "Air India",
-            "status": "On Time",
-            "departure": {
-                "airport": "Indira Gandhi International Airport (DEL)",
-                "scheduled_time": "2025-02-17T14:30:00Z"
-            },
-            "arrival": {
-                "airport": "Heathrow Airport (LHR)",
-                "scheduled_time": "2025-02-17T18:45:00Z"
-            }
-        }
-        </pre>
-
-        <h4>6. Response Parameters</h4>
+{
+  "title": "1984",
+  "author": "George Orwell",
+  "isbn": "9780451524935",
+  "publication_year": 1949,
+  "genre": "Dystopian Fiction",
+  "copies": 5,
+  "description": "A dystopian novel about a totalitarian regime.",
+  "publisher": "Penguin Books"
+}</code></pre>
+                    
+                    <h5>Example Response (201 Created)</h5>
+                    <pre><code class="language-json">{
+  "id": "125",
+  "title": "1984",
+  "author": "George Orwell",
+  "isbn": "9780451524935",
+  "publication_year": 1949,
+  "genre": "Dystopian Fiction",
+  "available": true,
+  "copies": 5,
+  "description": "A dystopian novel about a totalitarian regime.",
+  "publisher": "Penguin Books"
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>4. Update a Book</h4>
+                <div class="comparison-table">
         <table>
+                        <tr>
+                            <th>Method</th>
+                            <td><code>PUT</code></td>
+                        </tr>
+                        <tr>
+                            <th>Endpoint</th>
+                            <td><code>/books/{id}</code></td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>Updates information for an existing book.</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h5>Path Parameters</h5>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
             <tr>
                 <th>Parameter</th>
                 <th>Type</th>
                 <th>Description</th>
             </tr>
+                        </thead>
+                        <tbody>
             <tr>
-                <td>flight_number</td>
+                                <td><code>id</code></td>
                 <td>String</td>
-                <td>Unique flight number.</td>
+                                <td>The unique identifier of the book</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p>The request body is the same as for the POST request, but all fields are optional. Only the provided fields will be updated.</p>
+                
+                <div class="example-box">
+                    <h5>Example Request</h5>
+                    <pre><code class="language-http">PUT https://api.library.com/v1/books/123
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "copies": 5,
+  "available": false
+}</code></pre>
+                    
+                    <h5>Example Response (200 OK)</h5>
+                    <pre><code class="language-json">{
+  "id": "123",
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "isbn": "9780743273565",
+  "publication_year": 1925,
+  "genre": "Fiction",
+  "available": false,
+  "copies": 5
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>5. Delete a Book</h4>
+                <div class="comparison-table">
+                    <table>
+                        <tr>
+                            <th>Method</th>
+                            <td><code>DELETE</code></td>
             </tr>
             <tr>
-                <td>airline</td>
-                <td>String</td>
-                <td>Airline name.</td>
+                            <th>Endpoint</th>
+                            <td><code>/books/{id}</code></td>
             </tr>
             <tr>
-                <td>status</td>
-                <td>String</td>
-                <td>Flight status (e.g., "On Time", "Delayed").</td>
+                            <th>Description</th>
+                            <td>Removes a book from the library collection.</td>
             </tr>
         </table>
-
-        <h4>7. Error Codes</h4>
+                </div>
+                
+                <h5>Path Parameters</h5>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>id</code></td>
+                                <td>String</td>
+                                <td>The unique identifier of the book</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Example Request</h5>
+                    <pre><code>DELETE https://api.library.com/v1/books/123
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</code></pre>
+                    
+                    <h5>Example Response (204 No Content)</h5>
+                    <p>This endpoint returns a 204 status code with no response body when successful.</p>
+                </div>
+                
+                <h5>Status Codes</h5>
+                <div class="comparison-table">
         <table>
+                        <thead>
             <tr>
-                <th>Status Code</th>
-                <th>Message</th>
+                                <th>Code</th>
                 <th>Description</th>
             </tr>
+                        </thead>
+                        <tbody>
             <tr>
-                <td>401</td>
-                <td>Unauthorized</td>
-                <td>Invalid or missing API key.</td>
+                                <td>204</td>
+                                <td>Book successfully deleted</td>
             </tr>
             <tr>
                 <td>404</td>
-                <td>Not Found</td>
-                <td>Flight not found for the given date.</td>
+                                <td>Book not found</td>
             </tr>
             <tr>
-                <td>500</td>
-                <td>Internal Server Error</td>
-                <td>Unexpected server-side issue.</td>
+                                <td>403</td>
+                                <td>Cannot delete book that is currently borrowed</td>
             </tr>
+                        </tbody>
         </table>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <style>
+        /* Exercise Container Styling */
+        .exercise-container {
+            margin: 30px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            max-width: 100%;
+            position: relative;
+            width: 100%;
+        }
+        
+        /* Exercise Header */
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #4568dc, #6a85e0);
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .exercise-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        /* Exercise Controls */
+        .exercise-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .exercise-toggle-btn, .solution-toggle-btn {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .exercise-toggle-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .solution-toggle-btn {
+            background-color: #ffd700;
+            color: #333;
+        }
+        
+        .exercise-toggle-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .solution-toggle-btn:hover {
+            background-color: #ffcc00;
+        }
+        
+        .exercise-toggle-icon, .solution-toggle-icon {
+            margin-right: 8px;
+        }
+        
+        /* Content Styling */
+        .exercise-content, .solution-content {
+            padding: 20px;
+            background-color: #fff;
+            max-height: 600px;
+            overflow-y: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Scrollable content */
+        .scrollable-content {
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-height: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .scrollable-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+        
+        /* Table Styling */
+        .comparison-table {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            table-layout: fixed;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+            word-wrap: break-word;
+        }
+        
+        .comparison-table th {
+            background-color: #f5f7ff;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f0f4ff;
+        }
+        
+        /* Code blocks */
+        pre {
+            background-color: #f5f7fa;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            max-width: 100%;
+            white-space: pre-wrap;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        /* Info box and example box responsive fixes */
+        .info-box, .example-box {
+            max-width: 100%;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        
+        /* Chapter section fixes */
+        .chapter-section {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* List styling to prevent overflow */
+        ul, ol {
+            padding-left: 20px;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+        
+        li {
+            word-wrap: break-word;
+        }
+    </style>
+
     <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution3").style.display = "none";
+        function toggleExercise(exerciseId, solutionId) {
+            var exerciseContent = document.getElementById(exerciseId);
+            var solutionContent = document.getElementById(solutionId);
+            var isVisible = exerciseContent.style.display !== 'none';
+            
+            // Always hide solution when toggling exercise
+            solutionContent.style.display = 'none';
+            
+            // Toggle exercise visibility
+            exerciseContent.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text
+            var button = document.querySelector('.exercise-toggle-text');
+            var icon = document.querySelector('.exercise-toggle-icon i');
+            
+            if (isVisible) {
+                button.textContent = 'Show Exercise';
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                button.textContent = 'Hide Exercise';
+                icon.className = 'fas fa-chevron-up';
+            }
+            
+            // Reset solution button text
+            document.querySelector('.solution-toggle-text').textContent = 'View Solution';
+            document.querySelector('.solution-toggle-icon i').className = 'fas fa-lightbulb';
         }
 
         function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
+            var solutionContent = document.getElementById(solutionId);
+            var exerciseContent = document.getElementById(exerciseId);
+            var isVisible = solutionContent.style.display !== 'none';
+            
+            // Always hide exercise when toggling solution
+            exerciseContent.style.display = 'none';
+            
+            // Toggle solution visibility
+            solutionContent.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text
+            var button = document.querySelector('.solution-toggle-text');
+            var icon = document.querySelector('.solution-toggle-icon i');
+            
+            if (isVisible) {
+                button.textContent = 'View Solution';
+                icon.className = 'fas fa-lightbulb';
+            } else {
+                button.textContent = 'Hide Solution';
+                icon.className = 'fas fa-times';
+            }
+            
+            // Reset exercise button text
+            document.querySelector('.exercise-toggle-text').textContent = 'Show Exercise';
+            document.querySelector('.exercise-toggle-icon i').className = 'fas fa-chevron-down';
         }
     </script>
-
 </body>
 </html>

@@ -47,127 +47,410 @@
     </style>
 </head>
 <body>
-    <!-- Buttons to toggle Exercise 4 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise4')">Exercise 4</button>
-    <button class="solution-button" onclick="toggleSolution('solution4', 'exercise4')">Solution to Exercise 4</button>
+    <div class="exercise-container" id="exercise3-container">
+        <div class="exercise-header">
+            <h3 id="exercise3-title">Exercise 3: Documenting Webhook Security</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise3-content', 'solution3-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution3-content', 'exercise3-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="exercise-content scrollable-content" id="exercise3-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You are documenting <strong>security features for a CRM platform's webhook system</strong> that allows developers to receive notifications about customer data changes.</p>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Your Task</h4>
+                <p>Create comprehensive security documentation for the webhook system, including:</p>
+                <ul>
+                    <li>Webhook signature verification process</li>
+                    <li>Best practices for securing webhook endpoints</li>
+                    <li>IP whitelisting options</li>
+                    <li>Authentication mechanisms</li>
+                    <li>Example code for signature verification in multiple languages</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <h4>Webhook Security Information</h4>
+                <p>The CRM platform implements the following security measures:</p>
+                <ul>
+                    <li>Each webhook request includes an <code>X-Webhook-Signature</code> header</li>
+                    <li>Signatures are generated using HMAC-SHA256</li>
+                    <li>Each customer account has a unique webhook secret</li>
+                    <li>All webhook traffic is sent over HTTPS</li>
+                    <li>Webhook requests include a timestamp to prevent replay attacks</li>
+                </ul>
 
-    <!-- Exercise 4 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise4">
-        <h3>Exercise 4: Configuring a Webhook via UI-Based Registration</h3>
-        <p><strong>Scenario:</strong> You are documenting a **webhook for a subscription-based SaaS platform**. The platform allows customers to receive notifications when a user **subscribes**, **updates their plan**, or **cancels their subscription**.</p>
+                <h5>Example Webhook Request Headers</h5>
+                <pre><code>POST /webhook-receiver HTTP/1.1
+Host: your-server.com
+Content-Type: application/json
+X-Webhook-Signature: sha256=7b5f36d2eb6a45fab0d5a0c67e2b854c0bc6b2926225dbe13aeef6596eb9e302
+X-Webhook-Timestamp: 1627984192</code></pre>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Include a "Security Checklist" section with common webhook security vulnerabilities and how to prevent them.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution3-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>Webhook Security Documentation</h4>
+                <p>This guide covers security best practices for integrating with our CRM platform's webhook system. Implementing these measures will help ensure that webhook data is securely transmitted and that you can verify the authenticity of webhook requests.</p>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>1. Webhook Signature Verification</h4>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                        <span>Why Verify Signatures?</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>Signature verification ensures that:</p>
+                        <ul>
+                            <li>The webhook request was sent by our platform and not by a malicious third party</li>
+                            <li>The payload was not tampered with during transmission</li>
+                            <li>You're not processing duplicate or replayed webhook events</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h5>How Signature Verification Works</h5>
+                <ol>
+                    <li>Every webhook request includes an <code>X-Webhook-Signature</code> header</li>
+                    <li>The signature is created by generating an HMAC-SHA256 hash of the request body using your webhook secret</li>
+                    <li>Your application should compute the same hash and compare it with the provided signature</li>
+                    <li>Only process the webhook if the signatures match</li>
+                </ol>
+                
+                <div class="example-box">
+                    <h5>Python Example:</h5>
+                    <pre><code class="language-python">import hmac
+import hashlib
+from flask import Flask, request, jsonify
 
-        <p><strong>Key Difference:</strong> Unlike API-based registration, developers must manually **configure their webhook URL in the platform’s dashboard.**</p>
+app = Flask(__name__)
+WEBHOOK_SECRET = "your_webhook_secret"  # Store securely, not in code
 
-        <p><strong>Your Task:</strong> Document the following:</p>
-        <ul>
-            <li>How users register the webhook in the platform UI.</li>
-            <li>Webhook event triggers.</li>
-            <li>Webhook request format.</li>
-            <li>Expected response from the client.</li>
-            <li>Security considerations.</li>
-        </ul>
+@app.route('/webhook', methods=['POST'])
+def handle_webhook():
+    # Get the signature from the header
+    signature_header = request.headers.get('X-Webhook-Signature')
+    if not signature_header or not signature_header.startswith('sha256='):
+        return jsonify({"error": "Invalid signature header"}), 401
+    
+    received_signature = signature_header.replace('sha256=', '')
+    
+    # Get the request body as bytes
+    payload_body = request.data
+    
+    # Compute the expected signature
+    expected_signature = hmac.new(
+        key=WEBHOOK_SECRET.encode(),
+        msg=payload_body,
+        digestmod=hashlib.sha256
+    ).hexdigest()
+    
+    # Compare signatures using a constant-time comparison function
+    if not hmac.compare_digest(received_signature, expected_signature):
+        return jsonify({"error": "Signature verification failed"}), 401
+    
+    # Process the webhook...
+    return jsonify({"success": True}), 200</code></pre>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Node.js Example:</h5>
+                    <pre><code class="language-javascript">const crypto = require('crypto');
+const express = require('express');
+const app = express();
 
-        <h4>Webhook Registration (UI-Based)</h4>
-        <p>Users must configure their webhook by following these steps:</p>
-        <ol>
-            <li>Log in to the **SaaS platform dashboard**.</li>
-            <li>Navigate to **Settings > Webhooks**.</li>
-            <li>Enter your webhook URL in the **Webhook URL** field.</li>
-            <li>Select the events you want to subscribe to:</li>
-            <ul>
-                <li><strong>subscription.created</strong> – When a new subscription is created.</li>
-                <li><strong>subscription.updated</strong> – When a user updates their subscription plan.</li>
-                <li><strong>subscription.canceled</strong> – When a subscription is canceled.</li>
-            </ul>
-            <li>Click **Save** to activate the webhook.</li>
-        </ol>
+const WEBHOOK_SECRET = 'your_webhook_secret'; // Store securely, not in code
 
-        <h4>Example Webhook Payload</h4>
-        <pre>
-        {
-            "event": "subscription.updated",
-            "data": {
-                "user_id": "USR45678",
-                "plan": "Premium",
-                "status": "active",
-                "updated_at": "2024-03-12T08:30:00Z"
-            }
-        }
-        </pre>
-    </div>
+app.use(express.json({
+  verify: (req, res, buf) => {
+    // Store the raw body for signature verification
+    req.rawBody = buf;
+  }
+}));
 
-    <!-- Solution to Exercise 4 (Initially Hidden) -->
-    <div class="solution-content" id="solution4">
-        <h3>Solution to Exercise 4</h3>
+app.post('/webhook', (req, res) => {
+  const signature = req.headers['x-webhook-signature'];
+  
+  if (!signature || !signature.startsWith('sha256=')) {
+    return res.status(401).json({ error: 'Invalid signature header' });
+  }
+  
+  const receivedSignature = signature.replace('sha256=', '');
+  
+  // Compute expected signature
+  const expectedSignature = crypto
+    .createHmac('sha256', WEBHOOK_SECRET)
+    .update(req.rawBody)
+    .digest('hex');
+  
+  // Use timing-safe comparison
+  const signatureValid = crypto.timingSafeEqual(
+    Buffer.from(receivedSignature),
+    Buffer.from(expectedSignature)
+  );
+  
+  if (!signatureValid) {
+    return res.status(401).json({ error: 'Signature verification failed' });
+  }
+  
+  // Process the webhook...
+  res.json({ success: true });
+});</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>2. Securing Your Webhook Endpoint</h4>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Security Measure</th>
+                                <th>Implementation</th>
+                                <th>Benefit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HTTPS Only</td>
+                                <td>Only accept webhook requests over HTTPS</td>
+                                <td>Prevents eavesdropping and man-in-the-middle attacks</td>
+                            </tr>
+                            <tr>
+                                <td>Signature Verification</td>
+                                <td>Verify the <code>X-Webhook-Signature</code> header</td>
+                                <td>Ensures the request is from our platform and hasn't been tampered with</td>
+                            </tr>
+                            <tr>
+                                <td>Timestamp Validation</td>
+                                <td>Check the <code>X-Webhook-Timestamp</code> header</td>
+                                <td>Prevents replay attacks by rejecting old requests</td>
+                            </tr>
+                            <tr>
+                                <td>IP Whitelisting</td>
+                                <td>Only accept requests from our IP ranges</td>
+                                <td>Adds an additional layer of verification</td>
+                            </tr>
+                            <tr>
+                                <td>Idempotency</td>
+                                <td>Track processed webhook IDs</td>
+                                <td>Prevents duplicate processing of the same event</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>3. IP Whitelisting</h4>
+                
+                <p>For additional security, you can whitelist the IP addresses that our webhook servers use to send webhook events:</p>
+                
+                <div class="example-box">
+                    <pre><code>192.0.2.1/32
+198.51.100.0/24
+203.0.113.0/24</code></pre>
+                    <p>These IP ranges are for illustration only. Please refer to our dashboard for the current list of IP ranges.</p>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <span>Important Note</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>IP ranges may change occasionally due to infrastructure updates. We recommend:</p>
+                        <ul>
+                            <li>Implementing signature verification as your primary security mechanism</li>
+                            <li>Using IP whitelisting as a secondary layer</li>
+                            <li>Subscribing to our operations mailing list to receive notifications of IP range changes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>4. Validating Webhook Timestamps</h4>
+                
+                <p>Each webhook includes an <code>X-Webhook-Timestamp</code> header containing a Unix timestamp. You should:</p>
+                
+                <ol>
+                    <li>Extract the timestamp from the header</li>
+                    <li>Compare it with your current time</li>
+                    <li>Reject requests that are too old (e.g., more than 5 minutes)</li>
+                </ol>
+                
+                <div class="example-box">
+                    <h5>Timestamp Validation Example (Python):</h5>
+                    <pre><code class="language-python">import time
 
-        <h4>1. Overview</h4>
-        <p>The **Subscription Webhook** notifies external systems when users subscribe, update, or cancel their plan.</p>
+# In your webhook handler:
+timestamp_header = request.headers.get('X-Webhook-Timestamp')
+if not timestamp_header:
+    return jsonify({"error": "Missing timestamp header"}), 401
 
-        <h4>2. Webhook Registration (UI-Based)</h4>
-        <p>Unlike API-based registration, users must **manually enter their webhook URL** in the platform’s dashboard.</p>
-
-        <h4>3. Webhook Events</h4>
-        <table>
-            <tr>
-                <th>Event Name</th>
-                <th>Trigger Condition</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>subscription.created</td>
-                <td>When a new user subscribes</td>
-                <td>Notifies the client when a user signs up for a subscription.</td>
-            </tr>
-            <tr>
-                <td>subscription.updated</td>
-                <td>When a user changes their plan</td>
-                <td>Fires when a user upgrades or downgrades their plan.</td>
-            </tr>
-            <tr>
-                <td>subscription.canceled</td>
-                <td>When a user cancels</td>
-                <td>Triggers when a subscription is terminated.</td>
-            </tr>
-        </table>
-
-        <h4>4. Expected Response from Client</h4>
-        <p>The client must return a **200 OK** status to confirm webhook processing.</p>
-
-        <h4>5. Webhook Security Considerations</h4>
-        <ul>
-            <li>**Use HTTPS** to prevent data interception.</li>
-            <li>**Verify the request origin** by checking the **X-SaaS-Signature** header.</li>
-            <li>**Log all webhook requests for debugging.**</li>
-        </ul>
-
-        <h4>6. Webhook Testing</h4>
-        <p>Users can trigger test events via the **SaaS dashboard**:</p>
-        <ol>
-            <li>Go to **Settings > Webhooks > Test Webhook**.</li>
-            <li>Select an event (e.g., **subscription.updated**).</li>
-            <li>Click **Send Test** to see the webhook response.</li>
-        </ol>
-
-        <h4>7. Sample Webhook Response</h4>
-        <pre>
-        {
-            "status": "success",
-            "message": "Webhook received and processed successfully."
-        }
-        </pre>
+try:
+    webhook_timestamp = int(timestamp_header)
+    current_timestamp = int(time.time())
+    
+    # Check if the webhook is older than 5 minutes (300 seconds)
+    if current_timestamp - webhook_timestamp > 300:
+        return jsonify({"error": "Webhook too old"}), 401
+except ValueError:
+    return jsonify({"error": "Invalid timestamp"}), 401</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>5. Security Checklist</h4>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Security Risk</th>
+                                <th>Prevention Measure</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Forged webhook requests</td>
+                                <td>Implement signature verification</td>
+                            </tr>
+                            <tr>
+                                <td>Man-in-the-middle attacks</td>
+                                <td>Use HTTPS for webhook endpoints</td>
+                            </tr>
+                            <tr>
+                                <td>Replay attacks</td>
+                                <td>Validate webhook timestamps and track processed event IDs</td>
+                            </tr>
+                            <tr>
+                                <td>Exposed webhook secrets</td>
+                                <td>Store secrets securely in environment variables or a secrets manager</td>
+                            </tr>
+                            <tr>
+                                <td>DDoS attacks</td>
+                                <td>Implement rate limiting and consider a WAF</td>
+                            </tr>
+                            <tr>
+                                <td>Payload tampering</td>
+                                <td>Verify signatures to detect any payload modifications</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>6. Rotating Webhook Secrets</h4>
+                
+                <p>We recommend regularly rotating your webhook secrets as a security best practice:</p>
+                
+                <ol>
+                    <li>Generate a new webhook secret in our dashboard</li>
+                    <li>Update your application to use the new secret</li>
+                    <li>Verify your application can process webhooks with the new secret</li>
+                    <li>Delete the old webhook secret from our dashboard</li>
+                </ol>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-key"></i></div>
+                        <span>Secret Management Tips</span>
+                    </div>
+                    <div class="info-box-content">
+                        <ul>
+                            <li>Don't hardcode webhook secrets in your codebase</li>
+                            <li>Use environment variables or a secure secrets manager</li>
+                            <li>Rotate secrets at least every 90 days</li>
+                            <li>Immediately rotate secrets if you suspect they've been compromised</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution4").style.display = "none";
+        function toggleExercise(contentId, solutionId) {
+            var content = document.getElementById(contentId);
+            var solution = document.getElementById(solutionId);
+            
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                solution.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.exercise-toggle-text');
+                if (btn) btn.textContent = "Hide Exercise";
+                
+                var icon = content.parentElement.querySelector('.exercise-toggle-icon i');
+                if (icon) icon.className = "fas fa-chevron-up";
+            } else {
+                content.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.exercise-toggle-text');
+                if (btn) btn.textContent = "Show Exercise";
+                
+                var icon = content.parentElement.querySelector('.exercise-toggle-icon i');
+                if (icon) icon.className = "fas fa-chevron-down";
+            }
         }
-
-        function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
+        
+        function toggleSolution(contentId, exerciseId) {
+            var content = document.getElementById(contentId);
+            var exercise = document.getElementById(exerciseId);
+            
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                exercise.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.solution-toggle-text');
+                if (btn) btn.textContent = "Hide Solution";
+                
+                var icon = content.parentElement.querySelector('.solution-toggle-icon i');
+                if (icon) icon.className = "fas fa-lightbulb-off";
+            } else {
+                content.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.solution-toggle-text');
+                if (btn) btn.textContent = "View Solution";
+                
+                var icon = content.parentElement.querySelector('.solution-toggle-icon i');
+                if (icon) icon.className = "fas fa-lightbulb";
+            }
         }
     </script>
-
 </body>
 </html>

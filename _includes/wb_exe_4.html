@@ -47,152 +47,492 @@
     </style>
 </head>
 <body>
-    <!-- Buttons to toggle Exercise 3 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise3')">Exercise 3</button>
-    <button class="solution-button" onclick="toggleSolution('solution3', 'exercise3')">Solution to Exercise 3</button>
+    <div class="exercise-container" id="exercise4-container">
+        <div class="exercise-header">
+            <h3 id="exercise4-title">Exercise 4: Documenting Webhook Delivery and Reliability</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise4-content', 'solution4-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution4-content', 'exercise4-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="exercise-content scrollable-content" id="exercise4-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You are documenting the <strong>delivery and reliability features</strong> of a cloud service's webhook system that notifies subscribers about infrastructure status changes.</p>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Your Task</h4>
+                <p>Create documentation covering the webhook delivery system's reliability features:</p>
+                <ul>
+                    <li>Retry policies and exponential backoff</li>
+                    <li>Webhook delivery guarantees (at-least-once vs. exactly-once)</li>
+                    <li>Handling webhook failures</li>
+                    <li>Webhook event ordering</li>
+                    <li>How to implement idempotent webhook handlers</li>
+                    <li>Webhook monitoring and debugging tools</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <h4>Delivery System Information</h4>
+                <p>The platform provides the following reliability features:</p>
+                <ul>
+                    <li>Webhook events include a unique <code>event_id</code> for deduplication</li>
+                    <li>Failed deliveries are retried up to 16 times over 24 hours with exponential backoff</li>
+                    <li>A dashboard shows delivery status and allows manual retries</li>
+                    <li>Webhooks include a <code>sequence_number</code> field to track event order</li>
+                </ul>
 
-    <!-- Exercise 3 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise3">
-        <h3>Exercise 3: Securing Webhooks with Authentication (API-based Registration)</h3>
-        <p><strong>Scenario:</strong> You are documenting a webhook for a **payment gateway** that sends real-time transaction updates. Webhooks must be secured using authentication to prevent unauthorized access.</p>
+                <h5>Example Webhook Payload</h5>
+                <pre><code class="language-json">{
+    "event_id": "evt_9f8dh23hf9823hf982h3f",
+    "event_type": "server.status_changed",
+    "sequence_number": 42,
+    "created_at": "2023-08-15T12:30:45Z",
+    "attempt_number": 1,
+    "data": {
+        "server_id": "srv_123456",
+        "status": "rebooting",
+        "previous_status": "running"
+    }
+}</code></pre>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Add guidance for implementing a "dead letter queue" for handling persistently failing webhooks.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution4-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>Webhook Delivery and Reliability Documentation</h4>
+                <p>This guide covers how our webhook delivery system operates and best practices for building reliable webhook consumers that can handle the challenges of distributed systems.</p>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>1. Webhook Delivery Guarantees</h4>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-check-circle"></i></div>
+                        <span>At-Least-Once Delivery</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>Our webhook system implements <strong>at-least-once delivery</strong>, which means:</p>
+                        <ul>
+                            <li>Every webhook event will be delivered at least once</li>
+                            <li>In rare cases, the same event may be delivered multiple times</li>
+                            <li>You must design your webhook handlers to be idempotent (safe to process the same event multiple times)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Idempotent Handler Example (Node.js):</h5>
+                    <pre><code class="language-javascript">// Store processed event IDs to prevent duplicate processing
+const processedEvents = new Set();
 
-        <p><strong>Your Task:</strong> Document the following:</p>
-        <ul>
-            <li>Overview of the webhook.</li>
-            <li>How developers register their webhook using an API.</li>
-            <li>Webhook authentication (API keys, secret tokens).</li>
-            <li>Expected webhook request and response format.</li>
-            <li>Webhook retry policy.</li>
-            <li>Best practices for logging and debugging.</li>
-        </ul>
+app.post('/webhook', async (req, res) => {
+  const { event_id, event_type, data } = req.body;
 
-        <h4>Webhook Registration</h4>
-        <p>Developers must register their webhook using an API key:</p>
-        <pre>
-        POST /webhooks/register
-        {
-            "events": ["payment.success", "payment.failed"],
-            "url": "https://yourwebhookurl.com/payment",
-            "api_key": "your_api_key"
-        }
-        </pre>
+  // Check if we've already processed this event
+  if (processedEvents.has(event_id)) {
+    console.log(`Event ${event_id} already processed, skipping`);
+    // Still return 200 to acknowledge receipt
+    return res.status(200).send('OK');
+  }
 
-        <h4>Webhook Event Details</h4>
-        <p><strong>Endpoint:</strong> <code>POST /webhooks/payment</code></p>
-        <p><strong>Destination:</strong> User-provided webhook URL</p>
+  try {
+    // Process the event based on its type
+    switch (event_type) {
+      case 'server.status_changed':
+        await updateServerStatus(data);
+        break;
+      // Handle other event types...
+    }
 
-        <h5>Example Webhook Payload</h5>
-        <pre>
-        {
-            "event": "payment.success",
-            "data": {
-                "transaction_id": "TXN12345",
-                "amount": 150.00,
-                "currency": "USD",
-                "status": "success",
-                "timestamp": "2024-03-10T10:00:00Z"
-            },
-            "signature": "abcd1234efgh5678"
-        }
-        </pre>
-    </div>
+    // Mark this event as processed
+    processedEvents.add(event_id);
+    
+    // In production, you'd store this in a persistent database
+    // and implement an expiration policy for older event IDs
+    
+    res.status(200).send('OK');
+  } catch (error) {
+    console.error(`Error processing webhook ${event_id}:`, error);
+    // Return a 500 error to trigger a retry
+    res.status(500).send('Processing failed');
+  }
+});</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>2. Retry Policy and Backoff</h4>
+                
+                <p>When your endpoint fails to respond with a 2xx status code, our system automatically retries delivery with exponential backoff:</p>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Attempt</th>
+                                <th>Delay</th>
+                                <th>Time Since First Attempt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Initial delivery</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>10 seconds</td>
+                                <td>10 seconds</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>30 seconds</td>
+                                <td>40 seconds</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>1 minute</td>
+                                <td>1 minute, 40 seconds</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>3 minutes</td>
+                                <td>4 minutes, 40 seconds</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>10 minutes</td>
+                                <td>14 minutes, 40 seconds</td>
+                            </tr>
+                            <tr>
+                                <td>7-16</td>
+                                <td>30 minutes</td>
+                                <td>Up to 24 hours</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <span>Important Note on Responses</span>
+                    </div>
+                    <div class="info-box-content">
+                        <ul>
+                            <li>Return <strong>HTTP 200-299</strong> when your server has successfully received and processed the webhook</li>
+                            <li>Return <strong>HTTP 4xx</strong> for permanent failures that should not be retried (invalid data, etc.)</li>
+                            <li>Return <strong>HTTP 5xx</strong> or timeout for temporary failures that should be retried</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>3. Event Ordering and Sequence Numbers</h4>
+                
+                <p>Each webhook includes a <code>sequence_number</code> field to help you preserve event ordering:</p>
+                
+                <div class="example-box">
+                    <pre><code class="language-javascript">// Example of using sequence numbers to handle out-of-order events
+const lastProcessedSequence = {};
 
-    <!-- Solution to Exercise 3 (Initially Hidden) -->
-    <div class="solution-content" id="solution3">
-        <h3>Solution to Exercise 3</h3>
+function processEvent(event) {
+  const { event_type, sequence_number, data } = event;
+  
+  // Track sequence numbers per event type
+  if (!lastProcessedSequence[event_type]) {
+    lastProcessedSequence[event_type] = 0;
+  }
+  
+  // Check if this is a stale event (older than what we've already processed)
+  if (sequence_number < lastProcessedSequence[event_type]) {
+    console.log(`Skipping stale event ${event_type} with sequence ${sequence_number}`);
+    return;
+  }
+  
+  // Process the event...
+  
+  // Update the last processed sequence number
+  lastProcessedSequence[event_type] = sequence_number;
+}</code></pre>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <span>Handling Event Ordering</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>While we send events in order, they may be received out of order due to network conditions or retries. Consider these strategies:</p>
+                        <ul>
+                            <li>Use sequence numbers to detect and handle out-of-order events</li>
+                            <li>For events where order matters, implement a holding pattern for processing events in sequence</li>
+                            <li>If absolute ordering is critical, consider queuing events locally and processing them after sorting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>4. Webhook Monitoring and Debugging</h4>
+                
+                <p>Our platform provides tools to help you monitor and debug webhook deliveries:</p>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Description</th>
+                                <th>Access Point</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Webhook Logs</td>
+                                <td>Complete delivery history including request/response data</td>
+                                <td>Dashboard → Webhooks → Event Logs</td>
+                            </tr>
+                            <tr>
+                                <td>Manual Retries</td>
+                                <td>Manually trigger a retry for failed webhook deliveries</td>
+                                <td>Dashboard → Webhooks → Failed Events</td>
+                            </tr>
+                            <tr>
+                                <td>Delivery Statistics</td>
+                                <td>Success rates, average response times, and failure analysis</td>
+                                <td>Dashboard → Webhooks → Analytics</td>
+                            </tr>
+                            <tr>
+                                <td>Test Webhooks</td>
+                                <td>Send test events to verify your webhook endpoint setup</td>
+                                <td>Dashboard → Webhooks → Test Event</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Webhook Testing Endpoint</h5>
+                    <p>Use this endpoint to validate your webhook receiver implementation:</p>
+                    <pre><code>POST https://api.example.com/v1/webhooks/test
+Content-Type: application/json
+Authorization: Bearer your_api_key
 
-        <h4>1. Overview</h4>
-        <p>The **Payment Webhook** notifies merchants when a transaction succeeds or fails. This webhook helps update transaction records, trigger email notifications, and sync payment statuses.</p>
+{
+  "url": "https://your-server.com/webhook",
+  "event_type": "server.status_changed"
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>5. Implementing a Dead Letter Queue</h4>
+                
+                <p>For handling persistently failing webhooks, we recommend implementing a dead letter queue (DLQ):</p>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                        <span>Dead Letter Queue Implementation</span>
+                    </div>
+                    <div class="info-box-content">
+                        <ol>
+                            <li>Create a secondary storage mechanism for failed webhook events</li>
+                            <li>After a certain number of failures or time threshold, move events to the DLQ</li>
+                            <li>Set up a separate process to periodically retry or manually review these events</li>
+                            <li>Implement a notification system to alert you of DLQ events</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Sample DLQ Implementation (Python/Redis):</h5>
+                    <pre><code class="language-python">import redis
+import json
+import time
+from datetime import datetime
 
-        <h4>2. Webhook Registration</h4>
-        <p>Developers must register their webhook URL using the following request:</p>
-        <pre>
-        curl -X POST "https://api.paymentgateway.com/webhook/register" \
-        -H "Authorization: Bearer your_api_key" \
-        -H "Content-Type: application/json" \
-        -d '{"events": ["payment.success", "payment.failed"], "callback_url": "https://client.com/webhook-receiver"}'
-        </pre>
+# Connect to Redis
+r = redis.Redis(host='localhost', port=6379, db=0)
 
-        <h4>3. Webhook Events</h4>
-        <table>
-            <tr>
-                <th>Event Name</th>
-                <th>Trigger Condition</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>payment.success</td>
-                <td>When a payment is successfully processed</td>
-                <td>Notifies the client about successful payments.</td>
-            </tr>
-            <tr>
-                <td>payment.failed</td>
-                <td>When a payment fails</td>
-                <td>Alerts the client about failed transactions.</td>
-            </tr>
-        </table>
+# Constants
+MAX_RETRY_ATTEMPTS = 5
+DLQ_KEY = 'webhook:dlq'
 
-        <h4>4. Webhook Authentication</h4>
-        <p>Each webhook request includes a **signature** in the payload. Clients must verify this using their secret key.</p>
-        <pre>
-        import hmac
-        import hashlib
-
-        secret = "your-secret-key"
-        payload = '{"event":"payment.success","data":{"transaction_id":"TXN12345"}}'
-        received_signature = "abcd1234efgh5678"
-
-        calculated_signature = hmac.new(
-            key=secret.encode(),
-            msg=payload.encode(),
-            digestmod=hashlib.sha256
-        ).hexdigest()
-
-        if calculated_signature == received_signature:
-            print("Webhook verified!")
+def handle_webhook(webhook_data):
+    event_id = webhook_data.get('event_id')
+    attempt_number = webhook_data.get('attempt_number', 1)
+    
+    try:
+        # Process the webhook...
+        process_webhook_data(webhook_data)
+        return True
+    except Exception as e:
+        # If we've exceeded max retries, move to DLQ
+        if attempt_number >= MAX_RETRY_ATTEMPTS:
+            move_to_dlq(webhook_data, str(e))
+            return False
         else:
-            print("Invalid webhook request.")
-        </pre>
+            # Update attempt number and schedule retry
+            webhook_data['attempt_number'] = attempt_number + 1
+            schedule_retry(webhook_data)
+            return False
 
-        <h4>5. Webhook Retry Policy</h4>
-        <p>If the webhook fails (does not return **200 OK**), the system retries **up to 3 times**.</p>
+def move_to_dlq(webhook_data, error):
+    """Move a failed webhook to the dead letter queue"""
+    dlq_entry = {
+        'webhook_data': webhook_data,
+        'error': error,
+        'moved_at': datetime.utcnow().isoformat(),
+        'retries': webhook_data.get('attempt_number', 1)
+    }
+    
+    # Add to the DLQ set in Redis
+    r.sadd(DLQ_KEY, json.dumps(dlq_entry))
+    
+    # Optionally, send an alert
+    send_dlq_alert(webhook_data['event_id'], error)
 
-        <h4>6. Best Practices for Logging and Debugging</h4>
-        <ul>
-            <li>**Log all webhook requests and responses.**</li>
-            <li>**Validate signatures before processing.**</li>
-            <li>**Respond quickly with HTTP 200 OK.**</li>
-            <li>**Monitor logs for failed webhook deliveries.**</li>
-        </ul>
-
-        <h4>7. Testing Webhooks</h4>
-        <p>Developers can use **Postman** or **cURL** to test webhook requests:</p>
-        <pre>
-        curl -X POST "https://yourwebhookurl.com/payment" -H "Content-Type: application/json" -d '{
-            "event": "payment.success",
-            "data": {
-                "transaction_id": "TXN12345",
-                "amount": 150.00,
-                "currency": "USD",
-                "status": "success",
-                "timestamp": "2024-03-10T10:00:00Z"
-            },
-            "signature": "abcd1234efgh5678"
-        }'
-        </pre>
+def process_dlq_items():
+    """Process items from the dead letter queue"""
+    # Get all items from the DLQ
+    dlq_items = r.smembers(DLQ_KEY)
+    
+    for item_json in dlq_items:
+        item = json.loads(item_json)
+        
+        # Attempt to reprocess
+        success = handle_webhook(item['webhook_data'])
+        
+        if success:
+            # If successful, remove from DLQ
+            r.srem(DLQ_KEY, item_json)
+            
+            # Log the recovery
+            print(f"Successfully recovered DLQ item: {item['webhook_data']['event_id']}")</code></pre>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>6. Best Practices Summary</h4>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Best Practice</th>
+                                <th>Implementation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Implement idempotency</td>
+                                <td>Track processed event IDs to handle duplicate deliveries</td>
+                            </tr>
+                            <tr>
+                                <td>Fast responses</td>
+                                <td>Respond to webhooks quickly (under 3 seconds) and process asynchronously</td>
+                            </tr>
+                            <tr>
+                                <td>Handle ordering</td>
+                                <td>Use sequence numbers to process events in order</td>
+                            </tr>
+                            <tr>
+                                <td>Monitor failures</td>
+                                <td>Set up alerts for repeated webhook failures</td>
+                            </tr>
+                            <tr>
+                                <td>Graceful degradation</td>
+                                <td>Design systems to function (perhaps with reduced features) during webhook outages</td>
+                            </tr>
+                            <tr>
+                                <td>Implement DLQ</td>
+                                <td>Create a dead letter queue for persistently failing webhooks</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution3").style.display = "none";
+        function toggleExercise(contentId, solutionId) {
+            var content = document.getElementById(contentId);
+            var solution = document.getElementById(solutionId);
+            
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                solution.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.exercise-toggle-text');
+                if (btn) btn.textContent = "Hide Exercise";
+                
+                var icon = content.parentElement.querySelector('.exercise-toggle-icon i');
+                if (icon) icon.className = "fas fa-chevron-up";
+            } else {
+                content.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.exercise-toggle-text');
+                if (btn) btn.textContent = "Show Exercise";
+                
+                var icon = content.parentElement.querySelector('.exercise-toggle-icon i');
+                if (icon) icon.className = "fas fa-chevron-down";
+            }
         }
-
-        function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
+        
+        function toggleSolution(contentId, exerciseId) {
+            var content = document.getElementById(contentId);
+            var exercise = document.getElementById(exerciseId);
+            
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                exercise.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.solution-toggle-text');
+                if (btn) btn.textContent = "Hide Solution";
+                
+                var icon = content.parentElement.querySelector('.solution-toggle-icon i');
+                if (icon) icon.className = "fas fa-lightbulb-off";
+            } else {
+                content.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.solution-toggle-text');
+                if (btn) btn.textContent = "View Solution";
+                
+                var icon = content.parentElement.querySelector('.solution-toggle-icon i');
+                if (icon) icon.className = "fas fa-lightbulb";
+            }
         }
     </script>
-
 </body>
 </html>

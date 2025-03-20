@@ -1,217 +1,643 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Styling for buttons */
-        .exercise-button, .solution-button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px;
-            margin: 10px;
-            display: inline-block;
-        }
-
-        /* Hidden content by default */
-        .exercise-content, .solution-content {
-            display: none;
-            padding: 15px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            margin: 10px;
-        }
-
-        /* Table styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f0f0f0;
-        }
-    </style>
-</head>
+{% include exe_head.html %}
 <body>
-    <!-- Buttons to toggle Exercise 4 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise4')">Exercise 4</button>
-    <button class="solution-button" onclick="toggleSolution('solution4', 'exercise4')">Solution to Exercise 4</button>
+    <div class="exercise-container" id="exercise4-container">
+        <div class="exercise-header">
+            <h3>Exercise 4: Documenting an E-Commerce API</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise4-content', 'solution4-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution4-content', 'exercise4-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
 
-    <!-- Exercise 4 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise4">
-        <h3>Exercise 4: Documenting an E-Commerce API</h3>
-        <p><strong>Scenario:</strong> You are assigned to document the **E-Commerce API**, which allows users to browse products, place orders, and track order status.</p>
-        
-        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
-        <ul>
-            <li>Overview of the API.</li>
-            <li>Endpoints and HTTP methods (Product Search, Order Placement, Order Status).</li>
-            <li>Authentication (API keys, role-based access control).</li>
-            <li>Request parameters in a structured table.</li>
-            <li>An example API request (including cURL).</li>
-            <li>A sample response from the API.</li>
-            <li>Response parameters in a structured table.</li>
-            <li>Handling invalid orders and stock unavailability.</li>
-            <li>Rate limits for API access.</li>
-        </ul>
+        <div class="exercise-content scrollable-content" id="exercise4-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You are assigned to document the <strong>E-Commerce API</strong>, which allows users to browse products, place orders, and track order status.</p>
+                </div>
+            </div>
 
-        <h4>Provided API Code (Some details missing – you must fill them in):</h4>
-        <p>Below is a sample API request and response:</p>
+            <div class="chapter-section">
+                <h4>Your Task:</h4>
+                <p>Write an API reference document covering:</p>
+                <ul>
+                    <li>Overview of the API.</li>
+                    <li>Endpoints and HTTP methods (Product Search, Order Placement, Order Status).</li>
+                    <li>Authentication (API keys, role-based access control).</li>
+                    <li>Request parameters in a structured table.</li>
+                    <li>An example API request (including cURL).</li>
+                    <li>A sample response from the API.</li>
+                    <li>Response parameters in a structured table.</li>
+                    <li>Handling invalid orders and stock unavailability.</li>
+                    <li>Rate limits for API access.</li>
+                </ul>
+            </div>
 
-        <h5>API Request (Place an Order):</h5>
-        <pre>
-        POST https://api.ecommerce.com/orders
-        Headers:
-        Authorization: Bearer {api_key}
-        Content-Type: application/json
+            <div class="example-box">
+                <h4>Provided API Code (Some details missing – you must fill them in):</h4>
+                <p>Below is a sample API request and response:</p>
 
-        Body:
+                <h5>API Request (Place an Order):</h5>
+                <div class="code-example">
+                    <pre><code>POST https://api.ecommerce.com/orders
+Headers:
+Authorization: Bearer {api_key}
+Content-Type: application/json
+
+Body:
+{
+    "customer_id": "cust_12345",
+    "items": [
         {
-            "customer_id": "cust_12345",
-            "items": [
-                {
-                    "product_id": "prod_98765",
-                    "quantity": 2
-                }
-            ],
-            "payment_method": "credit_card",
-            "shipping_address": "789 Commerce St, New York"
+            "product_id": "prod_98765",
+            "quantity": 2
         }
-        </pre>
+    ],
+    "payment_method": "credit_card",
+    "shipping_address": "789 Commerce St, New York"
+}</code></pre>
+                </div>
 
-        <h5>Sample Response:</h5>
-        <pre>
+                <h5>Sample Response:</h5>
+                <div class="code-example">
+                    <pre><code>{
+    "order_id": "order_56789",
+    "status": "Processing",
+    "total_price": 50.00,
+    "currency": "USD",
+    "estimated_delivery": "2025-02-20",
+    "items": [
         {
-            "order_id": "order_56789",
+            "product_id": "prod_98765",
+            "name": "Wireless Headphones",
+            "quantity": 2,
+            "price_per_unit": 25.00
+        }
+    ]
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Document how users should handle stock unavailability.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="solution-content scrollable-content" id="solution4-content" style="display: none;">
+            <h4>E-Commerce API Documentation</h4>
+            <div class="chapter-section">
+                <h4>1. Overview</h4>
+                <p>The <strong>E-Commerce API</strong> allows customers to browse products, place orders, and track order status in real-time. This RESTful API enables seamless integration of e-commerce functionality into various applications.</p>
+            </div>
+
+            <div class="chapter-section">
+                <h5>2. Authentication</h5>
+                <p>The API uses API key authentication with role-based access control (RBAC). Different roles (Customer, Admin, Vendor) have different access levels.</p>
+                
+                <div class="endpoint-details">
+                    <h6>API Key Authentication:</h6>
+                    <p>Include your API key in all requests using the <code>Authorization</code> header:</p>
+                    <div class="code-example">
+                        <pre><code>Authorization: Bearer {api_key}</code></pre>
+                    </div>
+                    
+                    <h6>Access Levels:</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Role</th>
+                                    <th>Access Level</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Customer</td>
+                                    <td>Basic</td>
+                                    <td>Can browse products, place orders, view order history</td>
+                                </tr>
+                                <tr>
+                                    <td>Vendor</td>
+                                    <td>Intermediate</td>
+                                    <td>Can manage their own products, view their sales</td>
+                                </tr>
+                                <tr>
+                                    <td>Admin</td>
+                                    <td>Full</td>
+                                    <td>Complete access to all endpoints and operations</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p>To request an API key, register through the developer portal at <code>https://developers.ecommerce.com</code>.</p>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>3. Endpoints and Methods</h5>
+                <div class="table-container">
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Endpoint</th>
+                                <th>Description</th>
+                                <th>Required Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>GET</td>
+                                <td>/products</td>
+                                <td>Search and browse products</td>
+                                <td>Any</td>
+                            </tr>
+                            <tr>
+                                <td>GET</td>
+                                <td>/products/{product_id}</td>
+                                <td>Get details of a specific product</td>
+                                <td>Any</td>
+                            </tr>
+                            <tr>
+                                <td>POST</td>
+                                <td>/orders</td>
+                                <td>Place a new order</td>
+                                <td>Customer, Admin</td>
+                            </tr>
+                            <tr>
+                                <td>GET</td>
+                                <td>/orders/{order_id}</td>
+                                <td>Get order status</td>
+                                <td>Customer (own orders), Admin (all orders)</td>
+                            </tr>
+                            <tr>
+                                <td>PUT</td>
+                                <td>/orders/{order_id}/cancel</td>
+                                <td>Cancel an order</td>
+                                <td>Customer (own orders), Admin</td>
+                            </tr>
+                            <tr>
+                                <td>GET</td>
+                                <td>/inventory/{product_id}</td>
+                                <td>Check product inventory</td>
+                                <td>Vendor, Admin</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>4. Place an Order</h5>
+                <p>Creates a new order for products.</p>
+                
+                <div class="endpoint-details">
+                    <p><strong>Endpoint:</strong> <code>POST /orders</code></p>
+                    
+                    <h6>Request Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>customer_id</td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>Unique identifier of the customer</td>
+                                </tr>
+                                <tr>
+                                    <td>items</td>
+                                    <td>Array</td>
+                                    <td>Yes</td>
+                                    <td>List of products and quantities to order</td>
+                                </tr>
+                                <tr>
+                                    <td>payment_method</td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>Payment method: "credit_card", "paypal", etc.</td>
+                                </tr>
+                                <tr>
+                                    <td>shipping_address</td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>Delivery address for the order</td>
+                                </tr>
+                                <tr>
+                                    <td>coupon_code</td>
+                                    <td>String</td>
+                                    <td>No</td>
+                                    <td>Discount coupon if applicable</td>
+                                </tr>
+                                <tr>
+                                    <td>notes</td>
+                                    <td>String</td>
+                                    <td>No</td>
+                                    <td>Special instructions for the order</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Items Object Structure</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>product_id</td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>Unique identifier of the product</td>
+                                </tr>
+                                <tr>
+                                    <td>quantity</td>
+                                    <td>Integer</td>
+                                    <td>Yes</td>
+                                    <td>Number of items to order (min: 1)</td>
+                                </tr>
+                                <tr>
+                                    <td>options</td>
+                                    <td>Object</td>
+                                    <td>No</td>
+                                    <td>Product options (size, color, etc.)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Example cURL Request</h6>
+                    <div class="code-example">
+                        <pre><code>curl -X POST "https://api.ecommerce.com/orders" \
+-H "Authorization: Bearer {api_key}" \
+-H "Content-Type: application/json" \
+-d '{
+    "customer_id": "cust_12345",
+    "items": [
+        {
+            "product_id": "prod_98765",
+            "quantity": 2,
+            "options": {
+                "color": "black",
+                "size": "medium"
+            }
+        },
+        {
+            "product_id": "prod_45678",
+            "quantity": 1
+        }
+    ],
+    "payment_method": "credit_card",
+    "shipping_address": "789 Commerce St, New York",
+    "notes": "Please deliver in the evening"
+}'</code></pre>
+                    </div>
+
+                    <h6>Example Response</h6>
+                    <div class="code-example">
+                        <pre><code>{
+    "order_id": "order_56789",
+    "status": "Processing",
+    "total_price": 89.95,
+    "currency": "USD",
+    "estimated_delivery": "2025-02-20",
+    "items": [
+        {
+            "product_id": "prod_98765",
+            "name": "Wireless Headphones",
+            "quantity": 2,
+            "price_per_unit": 25.00,
+            "options": {
+                "color": "black",
+                "size": "medium"
+            }
+        },
+        {
+            "product_id": "prod_45678",
+            "name": "Portable Charger",
+            "quantity": 1,
+            "price_per_unit": 39.95
+        }
+    ],
+    "shipping_address": "789 Commerce St, New York",
+    "payment_info": {
+        "method": "credit_card",
+        "masked_number": "****-****-****-1234",
+        "status": "Authorized"
+    }
+}</code></pre>
+                    </div>
+
+                    <h6>Response Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order_id</td>
+                                    <td>String</td>
+                                    <td>Unique identifier for the order</td>
+                                </tr>
+                                <tr>
+                                    <td>status</td>
+                                    <td>String</td>
+                                    <td>Order status: "Processing", "Shipped", "Delivered", "Canceled"</td>
+                                </tr>
+                                <tr>
+                                    <td>total_price</td>
+                                    <td>Number</td>
+                                    <td>Total cost of the order</td>
+                                </tr>
+                                <tr>
+                                    <td>currency</td>
+                                    <td>String</td>
+                                    <td>Currency code (USD, EUR, etc.)</td>
+                                </tr>
+                                <tr>
+                                    <td>estimated_delivery</td>
+                                    <td>String</td>
+                                    <td>Expected delivery date</td>
+                                </tr>
+                                <tr>
+                                    <td>items</td>
+                                    <td>Array</td>
+                                    <td>List of ordered products</td>
+                                </tr>
+                                <tr>
+                                    <td>shipping_address</td>
+                                    <td>String</td>
+                                    <td>Delivery address</td>
+                                </tr>
+                                <tr>
+                                    <td>payment_info</td>
+                                    <td>Object</td>
+                                    <td>Payment method details</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>5. Get Order Status</h5>
+                <p>Retrieves the current status of an order.</p>
+                
+                <div class="endpoint-details">
+                    <p><strong>Endpoint:</strong> <code>GET /orders/{order_id}</code></p>
+                    
+                    <h6>Path Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>order_id</td>
+                                    <td>String</td>
+                                    <td>Unique order identifier</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Example cURL Request</h6>
+                    <div class="code-example">
+                        <pre><code>curl -X GET "https://api.ecommerce.com/orders/order_56789" \
+-H "Authorization: Bearer {api_key}"</code></pre>
+                    </div>
+
+                    <h6>Example Response</h6>
+                    <div class="code-example">
+                        <pre><code>{
+    "order_id": "order_56789",
+    "status": "Shipped",
+    "tracking_number": "1Z999AA10123456784",
+    "shipping_carrier": "UPS",
+    "estimated_delivery": "2025-02-20",
+    "status_history": [
+        {
             "status": "Processing",
-            "total_price": 50.00,
-            "currency": "USD",
-            "estimated_delivery": "2025-02-20",
-            "items": [
-                {
-                    "product_id": "prod_98765",
-                    "name": "Wireless Headphones",
-                    "quantity": 2,
-                    "price_per_unit": 25.00
-                }
-            ]
+            "timestamp": "2025-02-17T14:30:00Z"
+        },
+        {
+            "status": "Packed",
+            "timestamp": "2025-02-18T10:15:00Z"
+        },
+        {
+            "status": "Shipped",
+            "timestamp": "2025-02-18T16:45:00Z"
         }
-        </pre>
+    ],
+    "items": [
+        {
+            "product_id": "prod_98765",
+            "name": "Wireless Headphones",
+            "quantity": 2,
+            "status": "Shipped"
+        },
+        {
+            "product_id": "prod_45678",
+            "name": "Portable Charger",
+            "quantity": 1,
+            "status": "Shipped"
+        }
+    ]
+}</code></pre>
+                    </div>
+                </div>
+            </div>
 
-        <p><strong>Bonus Challenge:</strong> Document how users should handle stock unavailability.</p>
+            <div class="chapter-section">
+                <h5>6. Handling Stock Unavailability</h5>
+                <p>When ordering products with insufficient stock, the API returns a <code>409 Conflict</code> response:</p>
+                
+                <div class="code-example">
+                    <pre><code>{
+    "error": {
+        "code": "stock_unavailable",
+        "message": "Some items in your order are out of stock or have insufficient quantity",
+        "details": [
+            {
+                "product_id": "prod_98765",
+                "name": "Wireless Headphones",
+                "requested_quantity": 2,
+                "available_quantity": 1
+            }
+        ]
+    }
+}</code></pre>
+                </div>
+                
+                <h6>Best Practices for Handling Stock Issues:</h6>
+                <ol>
+                    <li><strong>Check Inventory Before Ordering:</strong> Use the <code>GET /inventory/{product_id}</code> endpoint to verify stock before placing an order.</li>
+                    <li><strong>Handle Partial Fulfillment:</strong> If only some items are available, consider placing a partial order.</li>
+                    <li><strong>Implement Back-order Logic:</strong> Allow customers to place orders for out-of-stock items and fulfill them when stock is replenished.</li>
+                    <li><strong>Set Up Stock Notifications:</strong> Use the <code>POST /notifications/stock</code> endpoint to receive alerts when products are back in stock.</li>
+                </ol>
+                
+                <div class="endpoint-details">
+                    <p><strong>Inventory Check Endpoint:</strong> <code>GET /inventory/{product_id}</code></p>
+                    
+                    <h6>Example Response</h6>
+                    <div class="code-example">
+                        <pre><code>{
+    "product_id": "prod_98765",
+    "name": "Wireless Headphones",
+    "available_quantity": 1,
+    "reserved_quantity": 2,
+    "restock_date": "2025-02-25"
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>7. Rate Limits</h5>
+                <p>To ensure system stability, the API enforces the following rate limits:</p>
+                <div class="table-container">
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Endpoint</th>
+                                <th>Rate Limit</th>
+                                <th>Time Window</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>GET /products</td>
+                                <td>100 requests</td>
+                                <td>1 minute</td>
+                            </tr>
+                            <tr>
+                                <td>POST /orders</td>
+                                <td>30 requests</td>
+                                <td>1 minute</td>
+                            </tr>
+                            <tr>
+                                <td>GET /orders/{order_id}</td>
+                                <td>60 requests</td>
+                                <td>1 minute</td>
+                            </tr>
+                            <tr>
+                                <td>All other endpoints</td>
+                                <td>50 requests</td>
+                                <td>1 minute</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p>When rate limits are exceeded, the API returns a <code>429 Too Many Requests</code> response with a <code>Retry-After</code> header indicating when you can resume making requests.</p>
+            </div>
+
+            <div class="chapter-section">
+                <h5>8. Error Handling</h5>
+                <p>Common errors include:</p>
+                <div class="table-container">
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Status Code</th>
+                                <th>Error Code</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>400</td>
+                                <td>invalid_request</td>
+                                <td>Missing or invalid parameters</td>
+                            </tr>
+                            <tr>
+                                <td>401</td>
+                                <td>unauthorized</td>
+                                <td>Invalid or missing API key</td>
+                            </tr>
+                            <tr>
+                                <td>403</td>
+                                <td>forbidden</td>
+                                <td>Insufficient permissions for the operation</td>
+                            </tr>
+                            <tr>
+                                <td>404</td>
+                                <td>not_found</td>
+                                <td>Resource not found (product, order, etc.)</td>
+                            </tr>
+                            <tr>
+                                <td>409</td>
+                                <td>stock_unavailable</td>
+                                <td>Product is out of stock or has insufficient quantity</td>
+                            </tr>
+                            <tr>
+                                <td>429</td>
+                                <td>rate_limit_exceeded</td>
+                                <td>Too many requests in a short period</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h6>Example Error Response</h6>
+                <div class="code-example">
+                    <pre><code>{
+    "error": {
+        "code": "invalid_request",
+        "message": "Missing required field: customer_id",
+        "request_id": "req_abcdef123456"
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Solution to Exercise 4 (Initially Hidden) -->
-    <div class="solution-content" id="solution4">
-        <h3>Solution to Exercise 4</h3>
-
-        <h4>1. Overview</h4>
-        <p>The **E-Commerce API** allows customers to browse products, place orders, and track order status in real-time.</p>
-
-        <h4>2. Authentication</h4>
-        <p>The API requires an API key for authentication. Customers and Admins have different access levels.</p>
-
-        <h4>3. Endpoints and Methods</h4>
-        <ul>
-            <li><strong>GET /products</strong> – Retrieves a list of products.</li>
-            <li><strong>POST /orders</strong> – Places a new order.</li>
-            <li><strong>GET /orders/{order_id}</strong> – Retrieves order status.</li>
-        </ul>
-
-        <h4>4. Request Parameters (Placing an Order)</h4>
-        <table>
-            <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Required</th>
-                <th>Default</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>customer_id</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>Unique identifier of the customer.</td>
-            </tr>
-            <tr>
-                <td>items</td>
-                <td>Array</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>List of products and quantities.</td>
-            </tr>
-        </table>
-
-        <h4>5. Sample cURL Request (Placing an Order)</h4>
-        <pre>
-        curl -X POST "https://api.ecommerce.com/orders" 
-        -H "Authorization: Bearer {api_key}" 
-        -H "Content-Type: application/json" 
-        -d '{
-            "customer_id": "cust_12345",
-            "items": [
-                {
-                    "product_id": "prod_98765",
-                    "quantity": 2
-                }
-            ],
-            "payment_method": "credit_card",
-            "shipping_address": "789 Commerce St, New York"
-        }'
-        </pre>
-
-        <h4>6. Error Handling</h4>
-        <p>Common errors include:</p>
-        <table>
-            <tr>
-                <th>Status Code</th>
-                <th>Message</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>401</td>
-                <td>Unauthorized</td>
-                <td>Invalid or missing API key.</td>
-            </tr>
-            <tr>
-                <td>404</td>
-                <td>Product Not Found</td>
-                <td>The product ID is invalid.</td>
-            </tr>
-            <tr>
-                <td>409</td>
-                <td>Stock Unavailable</td>
-                <td>Product is out of stock.</td>
-            </tr>
-        </table>
-    </div>
-
-    <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution4").style.display = "none";
-        }
-
-        function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
-        }
-    </script>
+    
+    {% include exe_script.html %}
 
 </body>
 </html>

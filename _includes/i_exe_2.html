@@ -47,161 +47,704 @@
     </style>
 </head>
 <body>
-    <!-- Buttons to toggle Exercise 2 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise2')">Exercise 2</button>
-    <button class="solution-button" onclick="toggleSolution('solution2', 'exercise2')">Solution to Exercise 2</button>
+    <div class="exercise-container" id="exercise2-container">
+        <div class="exercise-header">
+            <h3 id="exercise2-title">Exercise 2: Documenting a Ride-Sharing API</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise2-content', 'solution2-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution2-content', 'exercise2-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
 
-    <!-- Exercise 2 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise2">
-        <h3>Exercise 2: Documenting a Ride-Sharing API</h3>
-        <p><strong>Scenario:</strong> You are assigned to document the **Ride-Sharing API**, which allows users to book a ride, track its status, and cancel it if needed.</p>
+        <div class="exercise-content scrollable-content" id="exercise2-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You are assigned to document the <strong>Ride-Sharing API</strong>, which allows users to book a ride, track its status, and cancel it if needed.</p>
+                </div>
+            </div>
+    
+            <div class="chapter-section">
+                <h4>Your Task</h4>
+                <p>Write an API reference document covering:</p>
+                <ul>
+                    <li>Overview of the API.</li>
+                    <li>Endpoints and HTTP methods (Booking, Status, Cancellation).</li>
+                    <li>Authentication (OAuth tokens).</li>
+                    <li>Request parameters in a structured table.</li>
+                    <li>An example API request (including cURL).</li>
+                    <li>A sample response from the API.</li>
+                    <li>Response parameters in a structured table.</li>
+                    <li>Handling ride cancellations and unavailable drivers.</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>Provided API Code (Some details missing – you must fill them in):</h4>
+                <p>Below is a sample API request and response:</p>
+
+                <h5>API Request (Book a Ride):</h5>
+                <div class="code-example">
+                    <pre><code>POST https://api.ridesharing.com/book
+Headers:
+Authorization: Bearer {access_token}
+Content-Type: application/json
+
+Body:
+{
+    "pickup_location": "123 Main St, New York",
+    "dropoff_location": "456 Park Ave, New York",
+    "vehicle_type": "Sedan",
+    "payment_method": "credit_card"
+}</code></pre>
+                </div>
+
+                <h5>Sample Response:</h5>
+                <div class="code-example">
+                    <pre><code>{
+    "ride_id": "ride_987654",
+    "status": "Confirmed",
+    "estimated_fare": 20.50,
+    "driver": {
+        "name": "John Doe",
+        "vehicle": "Toyota Camry",
+        "license_plate": "XYZ-1234",
+        "eta": "5 minutes"
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Document how users can track and cancel a ride.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="solution-content scrollable-content" id="solution2-content" style="display: none;">
+        <div class="chapter-section">
+            <h4>1. Overview</h4>
+            <p>The <strong>Ride-Sharing API</strong> enables users to book rides, track their status, and cancel rides if necessary. It provides real-time updates on driver availability, estimated fare, and ride status.</p>
+        </div>
+
+            <div class="chapter-section">
+                <h5>2. Authentication</h5>
+                <p>The API uses OAuth 2.0 authentication. Clients must request an access token and include it in the <code>Authorization</code> header.</p>
+                
+                <div class="endpoint-details">
+                    <h6>OAuth Flow:</h6>
+                    <ol>
+                        <li>Register your application in the developer portal to obtain client credentials.</li>
+                        <li>Exchange client credentials for an access token:</li>
+                    </ol>
+                    <div class="code-example">
+                        <pre><code>POST https://api.ridesharing.com/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&
+client_id=YOUR_CLIENT_ID&
+client_secret=YOUR_CLIENT_SECRET</code></pre>
+                    </div>
+                    <p>Include the token in all API requests:</p>
+                    <div class="code-example">
+                        <pre><code>Authorization: Bearer {access_token}</code></pre>
+                    </div>
+                    <p>Access tokens expire after 60 minutes and will need to be refreshed.</p>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>3. Endpoints and Methods</h5>
+                <div class="table-container">
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Endpoint</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>POST</td>
+                                <td>/book</td>
+                                <td>Books a new ride</td>
+                            </tr>
+                            <tr>
+                                <td>GET</td>
+                                <td>/status/{ride_id}</td>
+                                <td>Retrieves the ride's current status</td>
+                            </tr>
+                            <tr>
+                                <td>DELETE</td>
+                                <td>/cancel/{ride_id}</td>
+                                <td>Cancels an ongoing ride</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>4. Book a Ride</h5>
+                <p>Creates a new ride booking.</p>
+                
+                <div class="endpoint-details">
+                    <p><strong>Endpoint:</strong> <code>POST /book</code></p>
+                    
+                    <h6>Request Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pickup_location</td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>None</td>
+                                    <td>Pickup address for the ride</td>
+                                </tr>
+                                <tr>
+                                    <td>dropoff_location</td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>None</td>
+                                    <td>Dropoff address for the ride</td>
+                                </tr>
+                                <tr>
+                                    <td>vehicle_type</td>
+                                    <td>String</td>
+                                    <td>No</td>
+                                    <td>Standard</td>
+                                    <td>Type of vehicle requested (Sedan, SUV, etc.)</td>
+                                </tr>
+                                <tr>
+                                    <td>payment_method</td>
+                                    <td>String</td>
+                                    <td>Yes</td>
+                                    <td>None</td>
+                                    <td>Payment method to use (credit_card, wallet, etc.)</td>
+                                </tr>
+                                <tr>
+                                    <td>scheduled_time</td>
+                                    <td>ISO 8601</td>
+                                    <td>No</td>
+                                    <td>Now</td>
+                                    <td>Future time to schedule the ride</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Example cURL Request</h6>
+                    <div class="code-example">
+                        <pre><code>curl -X POST "https://api.ridesharing.com/book" \
+-H "Authorization: Bearer {access_token}" \
+-H "Content-Type: application/json" \
+-d '{
+    "pickup_location": "123 Main St, New York",
+    "dropoff_location": "456 Park Ave, New York",
+    "vehicle_type": "Sedan",
+    "payment_method": "credit_card"
+}'</code></pre>
+                    </div>
+
+                    <h6>Example Response</h6>
+                    <div class="code-example">
+                        <pre><code>{
+    "ride_id": "ride_987654",
+    "status": "Confirmed",
+    "estimated_fare": 20.50,
+    "driver": {
+        "name": "John Doe",
+        "vehicle": "Toyota Camry",
+        "license_plate": "XYZ-1234",
+        "eta": "5 minutes"
+    }
+}</code></pre>
+                    </div>
+
+                    <h6>Response Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ride_id</td>
+                                    <td>String</td>
+                                    <td>Unique identifier for the ride</td>
+                                </tr>
+                                <tr>
+                                    <td>status</td>
+                                    <td>String</td>
+                                    <td>Current status of the ride (Confirmed, In Progress, Completed, Cancelled)</td>
+                                </tr>
+                                <tr>
+                                    <td>estimated_fare</td>
+                                    <td>Number</td>
+                                    <td>Estimated cost of the ride in local currency</td>
+                                </tr>
+                                <tr>
+                                    <td>driver</td>
+                                    <td>Object</td>
+                                    <td>Driver and vehicle details</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>5. Track Ride Status</h5>
+                <p>Retrieves the current status of a ride.</p>
+                
+                <div class="endpoint-details">
+                    <p><strong>Endpoint:</strong> <code>GET /status/{ride_id}</code></p>
+                    
+                    <h6>Path Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ride_id</td>
+                                    <td>String</td>
+                                    <td>Unique ride identifier</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Example cURL Request</h6>
+                    <div class="code-example">
+                        <pre><code>curl -X GET "https://api.ridesharing.com/status/ride_987654" \
+-H "Authorization: Bearer {access_token}"</code></pre>
+                    </div>
+
+                    <h6>Example Response</h6>
+                    <div class="code-example">
+                        <pre><code>{
+    "ride_id": "ride_987654",
+    "status": "In Progress",
+    "pickup_time": "2023-06-15T14:30:00Z",
+    "current_location": {
+        "latitude": 40.7128,
+        "longitude": -74.0060
+    },
+    "estimated_arrival_time": "2023-06-15T14:45:00Z",
+    "distance_remaining": 2.5
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>6. Cancel a Ride</h5>
+                <p>Cancels an ongoing ride.</p>
+                
+                <div class="endpoint-details">
+                    <p><strong>Endpoint:</strong> <code>DELETE /cancel/{ride_id}</code></p>
+                    
+                    <h6>Path Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ride_id</td>
+                                    <td>String</td>
+                                    <td>Unique ride identifier</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Query Parameters</h6>
+                    <div class="table-container">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Required</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>reason</td>
+                                    <td>String</td>
+                                    <td>No</td>
+                                    <td>Reason for cancellation</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6>Example cURL Request</h6>
+                    <div class="code-example">
+                        <pre><code>curl -X DELETE "https://api.ridesharing.com/cancel/ride_987654?reason=change_of_plans" \
+-H "Authorization: Bearer {access_token}"</code></pre>
+                    </div>
+
+                    <h6>Example Response</h6>
+                    <div class="code-example">
+                        <pre><code>{
+    "ride_id": "ride_987654",
+    "status": "Cancelled",
+    "cancellation_time": "2023-06-15T14:25:00Z",
+    "cancellation_fee": 5.00,
+    "message": "Ride successfully cancelled"
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>7. Error Handling</h5>
+                <p>Common errors include:</p>
+                <div class="table-container">
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Status Code</th>
+                                <th>Error Code</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>400</td>
+                                <td>bad_request</td>
+                                <td>Missing or invalid parameters</td>
+                            </tr>
+                            <tr>
+                                <td>401</td>
+                                <td>unauthorized</td>
+                                <td>Invalid or missing access token</td>
+                            </tr>
+                            <tr>
+                                <td>404</td>
+                                <td>ride_not_found</td>
+                                <td>Ride ID does not exist</td>
+                            </tr>
+                            <tr>
+                                <td>409</td>
+                                <td>driver_unavailable</td>
+                                <td>No drivers are available at the moment</td>
+                            </tr>
+                            <tr>
+                                <td>422</td>
+                                <td>too_late_to_cancel</td>
+                                <td>Cannot cancel ride as driver is already arriving</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h6>Example Error Response</h6>
+                <div class="code-example">
+                    <pre><code>{
+    "error": {
+        "code": "driver_unavailable",
+        "message": "No drivers are available in your area at this time",
+        "status": 409
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h5>8. Rate Limits</h5>
+                <p>The API enforces rate limits to ensure system stability:</p>
+                <ul>
+                    <li>Booking: 10 requests per minute</li>
+                    <li>Status checks: 60 requests per minute</li>
+                    <li>Cancellations: 5 requests per minute</li>
+                </ul>
+                <p>Exceeding rate limits will result in a <code>429 Too Many Requests</code> response.</p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Exercise Container Styling */
+        .exercise-container {
+            margin: 30px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            max-width: 100%;
+            position: relative;
+            width: 100%;
+        }
         
-        <p><strong>Your Task:</strong> Write an API reference document covering:</p>
-        <ul>
-            <li>Overview of the API.</li>
-            <li>Endpoints and HTTP methods (Booking, Status, Cancellation).</li>
-            <li>Authentication (OAuth tokens).</li>
-            <li>Request parameters in a structured table.</li>
-            <li>An example API request (including cURL).</li>
-            <li>A sample response from the API.</li>
-            <li>Response parameters in a structured table.</li>
-            <li>Handling ride cancellations and unavailable drivers.</li>
-        </ul>
-
-        <h4>Provided API Code (Some details missing – you must fill them in):</h4>
-        <p>Below is a sample API request and response:</p>
-
-        <h5>API Request (Book a Ride):</h5>
-        <pre>
-        POST https://api.ridesharing.com/book
-        Headers:
-        Authorization: Bearer {access_token}
-        Content-Type: application/json
-
-        Body:
-        {
-            "pickup_location": "123 Main St, New York",
-            "dropoff_location": "456 Park Ave, New York",
-            "vehicle_type": "Sedan",
-            "payment_method": "credit_card"
+        /* Exercise Header */
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #4568dc, #6a85e0);
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
         }
-        </pre>
-
-        <h5>Sample Response:</h5>
-        <pre>
-        {
-            "ride_id": "ride_987654",
-            "status": "Confirmed",
-            "estimated_fare": 20.50,
-            "driver": {
-                "name": "John Doe",
-                "vehicle": "Toyota Camry",
-                "license_plate": "XYZ-1234",
-                "eta": "5 minutes"
-            }
+        
+        .exercise-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
         }
-        </pre>
+        
+        /* Exercise Controls */
+        .exercise-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .exercise-toggle-btn, .solution-toggle-btn {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .exercise-toggle-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .solution-toggle-btn {
+            background-color: #ffd700;
+            color: #333;
+        }
+        
+        .exercise-toggle-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .solution-toggle-btn:hover {
+            background-color: #ffcc00;
+        }
+        
+        .exercise-toggle-icon, .solution-toggle-icon {
+            margin-right: 8px;
+        }
+        
+        /* Content Styling */
+        .exercise-content, .solution-content {
+            padding: 20px;
+            background-color: #fff;
+            max-height: 600px;
+            overflow-y: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-        <p><strong>Bonus Challenge:</strong> Document how users can track and cancel a ride.</p>
-    </div>
+        /* Scrollable content */
+        .scrollable-content {
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-height: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .scrollable-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+        
+        /* Table Styling */
+        .comparison-table {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            table-layout: fixed;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+            word-wrap: break-word;
+        }
+        
+        .comparison-table th {
+            background-color: #f5f7ff;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f0f4ff;
+        }
+        
+        /* Code blocks */
+        pre {
+            background-color: #f5f7fa;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            max-width: 100%;
+            white-space: pre-wrap;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
 
-    <!-- Solution to Exercise 2 (Initially Hidden) -->
-    <div class="solution-content" id="solution2">
-        <h3>Solution to Exercise 2</h3>
-
-        <h4>1. Overview</h4>
-        <p>The **Ride-Sharing API** enables users to book rides, track their status, and cancel rides if necessary. It provides real-time updates on driver availability, estimated fare, and ride status.</p>
-
-        <h4>2. Authentication</h4>
-        <p>The API uses OAuth 2.0 authentication. Clients must request an access token and include it in the `Authorization` header.</p>
-
-        <h4>3. Endpoints and Methods</h4>
-        <ul>
-            <li><strong>POST /book</strong> – Books a new ride.</li>
-            <li><strong>GET /status/{ride_id}</strong> – Retrieves the ride's current status.</li>
-            <li><strong>DELETE /cancel/{ride_id}</strong> – Cancels an ongoing ride.</li>
-        </ul>
-
-        <h4>4. Request Parameters (Booking)</h4>
-        <table>
-            <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Required</th>
-                <th>Default</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>pickup_location</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>Pickup address for the ride.</td>
-            </tr>
-            <tr>
-                <td>dropoff_location</td>
-                <td>String</td>
-                <td>Yes</td>
-                <td>None</td>
-                <td>Dropoff address for the ride.</td>
-            </tr>
-            <tr>
-                <td>vehicle_type</td>
-                <td>String</td>
-                <td>No</td>
-                <td>Standard</td>
-                <td>Type of vehicle requested (Sedan, SUV, etc.).</td>
-            </tr>
-        </table>
-
-        <h4>5. Sample cURL Request (Booking a Ride)</h4>
-        <pre>
-        curl -X POST "https://api.ridesharing.com/book" 
-        -H "Authorization: Bearer {access_token}" 
-        -H "Content-Type: application/json" 
-        -d '{
-            "pickup_location": "123 Main St, New York",
-            "dropoff_location": "456 Park Ave, New York",
-            "vehicle_type": "Sedan",
-            "payment_method": "credit_card"
-        }'
-        </pre>
-
-        <h4>6. Error Handling</h4>
-        <p>Common errors include:</p>
-        <table>
-            <tr>
-                <th>Status Code</th>
-                <th>Message</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>401</td>
-                <td>Unauthorized</td>
-                <td>Invalid or missing API token.</td>
-            </tr>
-            <tr>
-                <td>404</td>
-                <td>Not Found</td>
-                <td>Ride ID does not exist.</td>
-            </tr>
-            <tr>
-                <td>409</td>
-                <td>Driver Unavailable</td>
-                <td>No drivers are available at the moment.</td>
-            </tr>
-        </table>
-    </div>
+        /* Info box and example box responsive fixes */
+        .info-box, .example-box {
+            max-width: 100%;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        
+        /* Chapter section fixes */
+        .chapter-section {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* List styling to prevent overflow */
+        ul, ol {
+            padding-left: 20px;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+        
+        li {
+            word-wrap: break-word;
+        }
+    </style>
 
     <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution2").style.display = "none";
+        function toggleExercise(exerciseId, solutionId) {
+            var exerciseContent = document.getElementById(exerciseId);
+            var solutionContent = document.getElementById(solutionId);
+            var isVisible = exerciseContent.style.display !== 'none';
+            
+            // Always hide solution when toggling exercise
+            solutionContent.style.display = 'none';
+            
+            // Toggle exercise visibility
+            exerciseContent.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text
+            var button = document.querySelector('.exercise-toggle-text');
+            var icon = document.querySelector('.exercise-toggle-icon i');
+            
+            if (isVisible) {
+                button.textContent = 'Show Exercise';
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                button.textContent = 'Hide Exercise';
+                icon.className = 'fas fa-chevron-up';
+            }
+            
+            // Reset solution button text
+            document.querySelector('.solution-toggle-text').textContent = 'View Solution';
+            document.querySelector('.solution-toggle-icon i').className = 'fas fa-lightbulb';
         }
-
+        
         function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
+            var solutionContent = document.getElementById(solutionId);
+            var exerciseContent = document.getElementById(exerciseId);
+            var isVisible = solutionContent.style.display !== 'none';
+            
+            // Always hide exercise when toggling solution
+            exerciseContent.style.display = 'none';
+            
+            // Toggle solution visibility
+            solutionContent.style.display = isVisible ? 'none' : 'block';
+            
+            // Update button text
+            var button = document.querySelector('.solution-toggle-text');
+            var icon = document.querySelector('.solution-toggle-icon i');
+            
+            if (isVisible) {
+                button.textContent = 'View Solution';
+                icon.className = 'fas fa-lightbulb';
+            } else {
+                button.textContent = 'Hide Solution';
+                icon.className = 'fas fa-times';
+            }
+            
+            // Reset exercise button text
+            document.querySelector('.exercise-toggle-text').textContent = 'Show Exercise';
+            document.querySelector('.exercise-toggle-icon i').className = 'fas fa-chevron-down';
         }
     </script>
 

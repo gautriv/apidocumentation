@@ -47,131 +47,546 @@
     </style>
 </head>
 <body>
-    <!-- Buttons to toggle Exercise 2 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise2')">Exercise 2</button>
-    <button class="solution-button" onclick="toggleSolution('solution2', 'exercise2')">Solution to Exercise 2</button>
+    <div class="exercise-container" id="exercise2-container">
+        <div class="exercise-header">
+            <h3 id="exercise2-title">Exercise 2: Documenting Multiple Webhook Events</h3>
+            <div class="exercise-controls">
+                <button class="exercise-toggle-btn" onclick="toggleExercise('exercise2-content', 'solution2-content')">
+                    <span class="exercise-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                    <span class="exercise-toggle-text">Show Exercise</span>
+                </button>
+                <button class="solution-toggle-btn" onclick="toggleSolution('solution2-content', 'exercise2-content')">
+                    <span class="solution-toggle-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="solution-toggle-text">View Solution</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="exercise-content scrollable-content" id="exercise2-content" style="display: none;">
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Scenario</span>
+                </div>
+                <div class="info-box-content">
+                    <p>You are documenting a <strong>payment processing platform's webhooks</strong> that notify merchants about different payment events.</p>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Your Task</h4>
+                <p>Create comprehensive documentation for multiple payment-related webhook events:</p>
+                <ul>
+                    <li>Payment success</li>
+                    <li>Payment failure</li>
+                    <li>Refund processed</li>
+                    <li>Subscription renewal</li>
+                </ul>
+                <p>For each event, document:</p>
+                <ul>
+                    <li>Event name and trigger conditions</li>
+                    <li>Payload structure with detailed field descriptions</li>
+                    <li>Common use cases for the event</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <h4>Webhook Event Structure</h4>
+                <p>All webhook events follow this basic structure:</p>
+                <pre><code class="language-json">{
+    "event_type": "[EVENT_TYPE]",
+    "timestamp": "2023-07-20T15:31:49Z",
+    "version": "1.0",
+    "data": {
+        // Event-specific data
+    }
+}</code></pre>
 
-    <!-- Exercise 2 Content (Initially Hidden) -->
-    <div class="exercise-content" id="exercise2">
-        <h3>Exercise 2: Documenting Multiple Webhook Events (API-based Registration)</h3>
-        <p><strong>Scenario:</strong> You are documenting webhooks for an **order tracking system** that sends updates when an order's status changes.</p>
-
-        <p><strong>Your Task:</strong> Document the following webhook events:</p>
-        <ul>
-            <li><strong>order.placed</strong> – Triggered when an order is successfully placed.</li>
-            <li><strong>order.shipped</strong> – Fired when an order is shipped.</li>
-            <li><strong>order.delivered</strong> – Sent when the order is successfully delivered.</li>
-        </ul>
-
-        <h4>Webhook Registration</h4>
-        <p>Developers register their webhook using the following API endpoint:</p>
-        <pre>
-        POST /webhooks/register
-        {
-            "events": ["order.placed", "order.shipped", "order.delivered"],
-            "url": "https://yourwebhookurl.com/order-tracking"
+                <h4>Example Event Types</h4>
+                <ul>
+                    <li><code>payment.succeeded</code></li>
+                    <li><code>payment.failed</code></li>
+                    <li><code>refund.processed</code></li>
+                    <li><code>subscription.renewed</code></li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <span>Bonus Challenge</span>
+                </div>
+                <div class="info-box-content">
+                    <p>Add a section on "Migrating Between Webhook Versions" that explains how developers should handle changes to webhook payload structures over time.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-content scrollable-content" id="solution2-content" style="display: none;">
+            <div class="chapter-section">
+                <h4>Payment Processing Platform Webhooks</h4>
+                <p>Our webhook system allows you to receive real-time notifications about payment events. By subscribing to these webhooks, you can automate your business processes like order fulfillment, inventory management, and customer notifications.</p>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>Common Webhook Properties</h4>
+                <p>All webhook events share these common properties:</p>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>event_type</code></td>
+                                <td>String</td>
+                                <td>Identifies the type of event that occurred</td>
+                            </tr>
+                            <tr>
+                                <td><code>timestamp</code></td>
+                                <td>String</td>
+                                <td>ISO 8601 timestamp when the event occurred</td>
+                            </tr>
+                            <tr>
+                                <td><code>version</code></td>
+                                <td>String</td>
+                                <td>API version of the webhook payload</td>
+                            </tr>
+                            <tr>
+                                <td><code>data</code></td>
+                                <td>Object</td>
+                                <td>Event-specific data payload</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>1. Payment Success Event</h4>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <span>Event Details</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p><strong>Event Type:</strong> <code>payment.succeeded</code></p>
+                        <p><strong>Triggered When:</strong> A payment is successfully processed and funds are secured</p>
+                        <p><strong>Common Use Cases:</strong> Order fulfillment, inventory updates, sending receipts</p>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Example Payload:</h5>
+                    <pre><code class="language-json">{
+    "event_type": "payment.succeeded",
+    "timestamp": "2023-07-20T15:31:49Z",
+    "version": "1.0",
+    "data": {
+        "payment_id": "pay_8fh489f94hf984hf9h4",
+        "amount": 42.99,
+        "currency": "USD",
+        "status": "succeeded",
+        "payment_method": {
+            "type": "card",
+            "last4": "4242",
+            "brand": "visa",
+            "exp_month": 12,
+            "exp_year": 2025
+        },
+        "customer": {
+            "id": "cus_9f84h984hf984hf",
+            "email": "customer@example.com"
+        },
+        "metadata": {
+            "order_id": "order_98f4h89h4f948"
         }
-        </pre>
-
-        <h4>Webhook Event Details</h4>
-        <p><strong>Endpoint:</strong> <code>POST /webhooks/order-tracking</code></p>
-        <p><strong>Destination:</strong> User-provided webhook URL</p>
-
-        <h5>Example Webhook Payload</h5>
-        <pre>
-        {
-            "event": "order.shipped",
-            "data": {
-                "order_id": "ORD67890",
-                "customer": {
-                    "name": "John Doe",
-                    "email": "john@example.com"
-                },
-                "status": "shipped",
-                "tracking_number": "TRACK12345",
-                "expected_delivery": "2024-03-05T12:00:00Z"
-            }
+    }
+}</code></pre>
+                </div>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>payment_id</code></td>
+                                <td>String</td>
+                                <td>Unique identifier for the payment</td>
+                            </tr>
+                            <tr>
+                                <td><code>amount</code></td>
+                                <td>Number</td>
+                                <td>Amount that was charged</td>
+                            </tr>
+                            <tr>
+                                <td><code>currency</code></td>
+                                <td>String</td>
+                                <td>Three-letter ISO currency code</td>
+                            </tr>
+                            <tr>
+                                <td><code>status</code></td>
+                                <td>String</td>
+                                <td>Current status of the payment</td>
+                            </tr>
+                            <tr>
+                                <td><code>payment_method</code></td>
+                                <td>Object</td>
+                                <td>Details about the payment method used</td>
+                            </tr>
+                            <tr>
+                                <td><code>customer</code></td>
+                                <td>Object</td>
+                                <td>Information about the customer</td>
+                            </tr>
+                            <tr>
+                                <td><code>metadata</code></td>
+                                <td>Object</td>
+                                <td>Additional data attached to the payment</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>2. Payment Failed Event</h4>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <span>Event Details</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p><strong>Event Type:</strong> <code>payment.failed</code></p>
+                        <p><strong>Triggered When:</strong> A payment attempt fails due to card decline, insufficient funds, or other reasons</p>
+                        <p><strong>Common Use Cases:</strong> Notifying customers of failed payments, retrying payments, order status updates</p>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Example Payload:</h5>
+                    <pre><code class="language-json">{
+    "event_type": "payment.failed",
+    "timestamp": "2023-07-20T15:35:22Z",
+    "version": "1.0",
+    "data": {
+        "payment_id": "pay_8fh489f94hf984h1234",
+        "amount": 42.99,
+        "currency": "USD",
+        "status": "failed",
+        "error": {
+            "code": "card_declined",
+            "message": "Your card was declined",
+            "decline_code": "insufficient_funds"
+        },
+        "payment_method": {
+            "type": "card",
+            "last4": "0341",
+            "brand": "visa",
+            "exp_month": 12,
+            "exp_year": 2025
+        },
+        "customer": {
+            "id": "cus_9f84h984hf984hf",
+            "email": "customer@example.com"
         }
-        </pre>
-    </div>
-
-    <!-- Solution to Exercise 2 (Initially Hidden) -->
-    <div class="solution-content" id="solution2">
-        <h3>Solution to Exercise 2</h3>
-
-        <h4>1. Overview</h4>
-        <p>The **Order Tracking Webhooks** notify subscribed systems when an order moves through various stages: placed, shipped, and delivered.</p>
-
-        <h4>2. Webhook Registration</h4>
-        <p>Developers must register their webhook URL using the following request:</p>
-        <pre>
-        curl -X POST "https://api.webhookexample.com/webhook/register" \
-        -H "Authorization: Bearer your_token" \
-        -H "Content-Type: application/json" \
-        -d '{"events": ["order.placed", "order.shipped", "order.delivered"], "callback_url": "https://client.com/webhook-receiver"}'
-        </pre>
-
-        <h4>3. Webhook Events</h4>
-        <table>
-            <tr>
-                <th>Event Name</th>
-                <th>Trigger Condition</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>order.placed</td>
-                <td>When an order is placed</td>
-                <td>Triggers when a customer successfully places an order.</td>
-            </tr>
-            <tr>
-                <td>order.shipped</td>
-                <td>When an order is shipped</td>
-                <td>Fires when an order is shipped from the warehouse.</td>
-            </tr>
-            <tr>
-                <td>order.delivered</td>
-                <td>When an order is delivered</td>
-                <td>Notifies when an order reaches the customer.</td>
-            </tr>
-        </table>
-
-        <h4>4. Expected Response from Client</h4>
-        <p>The client must return a **200 OK** status to confirm successful processing of the webhook.</p>
-
-        <h4>5. Webhook Security - Verifying Webhooks</h4>
-        <p>Each webhook request includes an **X-Signature** header for verification.</p>
-        <p>Clients must compute an **HMAC-SHA256 hash** of the payload using their secret key and compare it with the received signature.</p>
-
-        <h4>6. Webhook Retry Policy</h4>
-        <p>If the webhook fails (does not return **200 OK**), the system **retries up to 3 times** with an increasing delay.</p>
-
-        <h4>7. Testing Webhooks</h4>
-        <p>Developers can use **Postman** or **cURL** to test webhook responses:</p>
-        <pre>
-        curl -X POST "https://yourwebhookurl.com/order-tracking" -H "Content-Type: application/json" -d '{
-            "event": "order.shipped",
-            "data": {
-                "order_id": "ORD67890",
-                "customer": {"name": "John Doe", "email": "john@example.com"},
-                "status": "shipped",
-                "tracking_number": "TRACK12345",
-                "expected_delivery": "2024-03-05T12:00:00Z"
-            }
-        }'
-        </pre>
+    }
+}</code></pre>
+                </div>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>error</code></td>
+                                <td>Object</td>
+                                <td>Information about why the payment failed</td>
+                            </tr>
+                            <tr>
+                                <td><code>error.code</code></td>
+                                <td>String</td>
+                                <td>Error code explaining the failure</td>
+                            </tr>
+                            <tr>
+                                <td><code>error.message</code></td>
+                                <td>String</td>
+                                <td>Human-readable message explaining the error</td>
+                            </tr>
+                            <tr>
+                                <td><code>error.decline_code</code></td>
+                                <td>String</td>
+                                <td>Specific reason code provided by the payment processor</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>3. Refund Processed Event</h4>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <span>Event Details</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p><strong>Event Type:</strong> <code>refund.processed</code></p>
+                        <p><strong>Triggered When:</strong> A refund has been successfully processed</p>
+                        <p><strong>Common Use Cases:</strong> Updating order status, inventory restocking, notifying customers</p>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Example Payload:</h5>
+                    <pre><code class="language-json">{
+    "event_type": "refund.processed",
+    "timestamp": "2023-07-21T09:15:33Z",
+    "version": "1.0",
+    "data": {
+        "refund_id": "ref_98f4h89f4h98f4h",
+        "payment_id": "pay_8fh489f94hf984hf9h4",
+        "amount": 42.99,
+        "currency": "USD",
+        "status": "succeeded",
+        "reason": "customer_requested",
+        "customer": {
+            "id": "cus_9f84h984hf984hf",
+            "email": "customer@example.com"
+        },
+        "metadata": {
+            "order_id": "order_98f4h89h4f948"
+        }
+    }
+}</code></pre>
+                </div>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>refund_id</code></td>
+                                <td>String</td>
+                                <td>Unique identifier for the refund</td>
+                            </tr>
+                            <tr>
+                                <td><code>payment_id</code></td>
+                                <td>String</td>
+                                <td>Identifier of the original payment that was refunded</td>
+                            </tr>
+                            <tr>
+                                <td><code>reason</code></td>
+                                <td>String</td>
+                                <td>Reason for the refund</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>4. Subscription Renewal Event</h4>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <span>Event Details</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p><strong>Event Type:</strong> <code>subscription.renewed</code></p>
+                        <p><strong>Triggered When:</strong> A subscription is automatically renewed and payment is successful</p>
+                        <p><strong>Common Use Cases:</strong> Updating subscription status, extending service period, sending renewal receipts</p>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Example Payload:</h5>
+                    <pre><code class="language-json">{
+    "event_type": "subscription.renewed",
+    "timestamp": "2023-07-25T00:01:05Z",
+    "version": "1.0",
+    "data": {
+        "subscription_id": "sub_9f84h984hf984h",
+        "payment_id": "pay_8f9h498fh394f3h",
+        "plan": {
+            "id": "plan_premium_monthly",
+            "name": "Premium Plan",
+            "interval": "month"
+        },
+        "current_period_start": "2023-07-25T00:00:00Z",
+        "current_period_end": "2023-08-25T00:00:00Z",
+        "amount": 19.99,
+        "currency": "USD",
+        "status": "active",
+        "customer": {
+            "id": "cus_9f84h984hf984hf",
+            "email": "customer@example.com"
+        }
+    }
+}</code></pre>
+                </div>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>subscription_id</code></td>
+                                <td>String</td>
+                                <td>Unique identifier for the subscription</td>
+                            </tr>
+                            <tr>
+                                <td><code>plan</code></td>
+                                <td>Object</td>
+                                <td>Details about the subscription plan</td>
+                            </tr>
+                            <tr>
+                                <td><code>current_period_start</code></td>
+                                <td>String</td>
+                                <td>Start date for the current billing period</td>
+                            </tr>
+                            <tr>
+                                <td><code>current_period_end</code></td>
+                                <td>String</td>
+                                <td>End date for the current billing period</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chapter-section">
+                <h4>5. Migrating Between Webhook Versions</h4>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-code-branch"></i></div>
+                        <span>Version Migration Strategy</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p>When we make changes to our webhook payload structure, we follow these principles:</p>
+                        <ul>
+                            <li>We never remove fields from existing webhook payloads in the same version</li>
+                            <li>New fields may be added to existing webhook versions in a backward-compatible way</li>
+                            <li>Major structural changes are introduced in new API versions</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h5>Version Compatibility Example:</h5>
+                    <p>When processing webhooks, check the <code>version</code> field to determine the payload structure:</p>
+                    <pre><code class="language-javascript">function processWebhook(payload) {
+    const version = payload.version;
+    
+    if (version === "1.0") {
+        // Handle version 1.0 payload structure
+    } else if (version === "2.0") {
+        // Handle version 2.0 payload structure
+    } else {
+        // Handle unknown version
+        console.warn(`Unknown webhook version: ${version}`);
+        // Use best-effort processing with defaults
+    }
+}</code></pre>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon"><i class="fas fa-clock"></i></div>
+                        <span>Webhook Version Timeline</span>
+                    </div>
+                    <div class="info-box-content">
+                        <p><strong>Version 1.0:</strong> Current version</p>
+                        <p><strong>Version 2.0:</strong> Planned for Q1 2024 with enhanced metadata and customer objects</p>
+                        <p>Each version will be supported for at least 12 months after a new version is released. We recommend building your integration to check the version field and handle multiple versions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        function toggleExercise(exerciseId) {
-            document.getElementById(exerciseId).style.display = "block";
-            document.getElementById("solution2").style.display = "none";
+        function toggleExercise(contentId, solutionId) {
+            var content = document.getElementById(contentId);
+            var solution = document.getElementById(solutionId);
+            
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                solution.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.exercise-toggle-text');
+                if (btn) btn.textContent = "Hide Exercise";
+                
+                var icon = content.parentElement.querySelector('.exercise-toggle-icon i');
+                if (icon) icon.className = "fas fa-chevron-up";
+            } else {
+                content.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.exercise-toggle-text');
+                if (btn) btn.textContent = "Show Exercise";
+                
+                var icon = content.parentElement.querySelector('.exercise-toggle-icon i');
+                if (icon) icon.className = "fas fa-chevron-down";
+            }
         }
-
-        function toggleSolution(solutionId, exerciseId) {
-            document.getElementById(solutionId).style.display = "block";
-            document.getElementById(exerciseId).style.display = "none";
+        
+        function toggleSolution(contentId, exerciseId) {
+            var content = document.getElementById(contentId);
+            var exercise = document.getElementById(exerciseId);
+            
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                exercise.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.solution-toggle-text');
+                if (btn) btn.textContent = "Hide Solution";
+                
+                var icon = content.parentElement.querySelector('.solution-toggle-icon i');
+                if (icon) icon.className = "fas fa-lightbulb-off";
+            } else {
+                content.style.display = "none";
+                
+                var btn = content.parentElement.querySelector('.solution-toggle-text');
+                if (btn) btn.textContent = "View Solution";
+                
+                var icon = content.parentElement.querySelector('.solution-toggle-icon i');
+                if (icon) icon.className = "fas fa-lightbulb";
+            }
         }
     </script>
-
 </body>
 </html>

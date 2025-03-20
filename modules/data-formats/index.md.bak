@@ -1,0 +1,193 @@
+---
+layout: default
+title: "Data Formats"
+module_id: "data-formats"
+---
+
+<section class="module-header">
+  <div class="container">
+    <div class="module-breadcrumb">
+      <a href="{{ "/modules/" | relative_url }}">Modules</a> / <span>Data Formats</span>
+    </div>
+    <h1 class="module-title">Data Formats</h1>
+    <p class="module-description">Learn about the various data formats used in APIs, including JSON, XML, YAML, and Protobuf, and how to effectively document them for API consumers.</p>
+    <div class="module-completion-marker" data-module="data-formats"></div>
+  </div>
+</section>
+
+<section class="module-content">
+  <div class="container">
+    <div class="content-wrapper">
+      <div class="main-content">
+        <div class="module-section">
+          <h2 id="module-overview">Module Overview</h2>
+          <p>Data formats are essential for storing and exchanging information between applications. In API documentation, understanding different data formats is crucial for clearly explaining how data is structured, transmitted, and received. This module explores the most common data formats used in APIs and provides guidance on how to document them effectively.</p>
+          
+          <h3>Learning Objectives</h3>
+          <ul>
+            <li>Understand the structure and syntax of common API data formats</li>
+            <li>Learn how to document data models and schemas for different formats</li>
+            <li>Recognize when to use specific data formats based on API requirements</li>
+            <li>Develop skills for clearly explaining data structures to API consumers</li>
+            <li>Master techniques for providing helpful examples of data payloads</li>
+          </ul>
+        </div>
+        
+        <div class="module-section">
+          <h2 id="chapters">Module Chapters</h2>
+          
+          <div class="chapters-grid">
+            <div class="chapter-card">
+              <div class="chapter-number">Chapter 1</div>
+              <div class="chapter-content">
+                <h3>Understanding Data Formats</h3>
+                <p>Learn about different data formats used in APIs, including structured formats like JSON and XML, as well as the various data types that comprise them.</p>
+                <ul class="chapter-topics">
+                  <li>JSON syntax and structure</li>
+                  <li>JSON data types and validation</li>
+                  <li>JSON Schema for documentation</li>
+                  <li>Best practices for JSON examples</li>
+                </ul>
+                
+                <h3>Understanding Data Formats</h3>
+                <p>Learn about different data formats used in APIs, including structured formats like JSON and XML, as well as the various data types that comprise them.</p>
+                <ul class="chapter-topics">
+                  <li>Structured vs. Unstructured Data</li>
+                  <li>Common API Data Types</li>
+                  <li>Introduction to JSON Format</li>
+                  <li>API Request and Response Data Formats</li>
+                </ul>
+
+                <h3>Understanding Data Formats</h3>
+                <p>Learn about different data formats used in APIs, including structured formats like JSON and XML, as well as the various data types that comprise them.</p>
+                <ul class="chapter-topics">
+                  <li>Structured vs. Unstructured Data</li>
+                  <li>Common API Data Types</li>
+                  <li>Introduction to JSON Format</li>
+                  <li>API Request and Response Data Formats</li>
+                </ul>
+                <a href="{{ "/dataformats.html" | relative_url }}" class="chapter-link">Start Chapter <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+            
+            <div class="chapter-card">
+              <div class="chapter-number">Chapter 2</div>
+              <div class="chapter-content">
+                <h3>XML: Extensible Markup Language</h3>
+                <p>Learn about XML, its hierarchical structure, elements, attributes, and techniques for clear documentation.</p>
+                <ul class="chapter-topics">
+                  <li>XML structure and syntax</li>
+                  <li>Elements, attributes, and namespaces</li>
+                  <li>XML Schema (XSD) for validation</li>
+                  <li>Documenting complex XML structures</li>
+                </ul>
+                <a href="{{ "/dataformat-xml.html" | relative_url }}" class="chapter-link">Start Chapter <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+            
+            <div class="chapter-card">
+              <div class="chapter-number">Chapter 3</div>
+              <div class="chapter-content">
+                <h3>YAML: YAML Ain't Markup Language</h3>
+                <p>Discover YAML, its human-readable format, indentation-based structure, and applications in API configuration.</p>
+                <ul class="chapter-topics">
+                  <li>YAML syntax and structure</li>
+                  <li>Indentation and nested objects</li>
+                  <li>YAML in OpenAPI/Swagger</li>
+                  <li>Converting between YAML and JSON</li>
+                </ul>
+                <a href="{{ "/dataformat-yaml.html" | relative_url }}" class="chapter-link">Start Chapter <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+            
+            <div class="chapter-card">
+              <div class="chapter-number">Chapter 4</div>
+              <div class="chapter-content">
+                <h3>Protobuf and Other Binary Formats</h3>
+                <p>Explore binary data formats like Protocol Buffers, their advantages for performance, and documentation approaches.</p>
+                <ul class="chapter-topics">
+                  <li>Introduction to Protocol Buffers</li>
+                  <li>.proto files and message definitions</li>
+                  <li>Binary formats vs. text formats</li>
+                  <li>Documenting binary data structures</li>
+                </ul>
+                <a href="{{ "/dataformat-protobuf.html" | relative_url }}" class="chapter-link">Start Chapter <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="module-section">
+          <h2 id="additional-resources">Additional Resources</h2>
+          <div class="resources-list">
+            <div class="resource-item">
+              <div class="resource-icon"><i class="fas fa-book"></i></div>
+              <div class="resource-content">
+                <h4>JSON Schema Documentation</h4>
+                <p>The official documentation for JSON Schema, with examples and validation rules.</p>
+                <a href="https://json-schema.org/understanding-json-schema/" target="_blank" rel="noopener">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            
+            <div class="resource-item">
+              <div class="resource-icon"><i class="fas fa-book"></i></div>
+              <div class="resource-content">
+                <h4>XML Schema (XSD) Tutorial</h4>
+                <p>A comprehensive guide to XML Schema Definition (XSD) for validating XML documents.</p>
+                <a href="https://www.w3schools.com/xml/schema_intro.asp" target="_blank" rel="noopener">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            
+            <div class="resource-item">
+              <div class="resource-icon"><i class="fas fa-book"></i></div>
+              <div class="resource-content">
+                <h4>YAML Specification</h4>
+                <p>The official YAML specification with detailed explanations of syntax and features.</p>
+                <a href="https://yaml.org/spec/" target="_blank" rel="noopener">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            
+            <div class="resource-item">
+              <div class="resource-icon"><i class="fas fa-book"></i></div>
+              <div class="resource-content">
+                <h4>Protocol Buffers Developer Guide</h4>
+                <p>Google's official guide to Protocol Buffers with examples and best practices.</p>
+                <a href="https://developers.google.com/protocol-buffers/docs/overview" target="_blank" rel="noopener">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sidebar">
+        <div class="module-progress">
+          <h3 class="sidebar-title">Your Progress</h3>
+          <div class="progress-indicator" data-module="data-formats">
+            <div class="progress-circle">
+              <div class="progress-circle-inner">
+                <span class="progress-percentage">0%</span>
+              </div>
+            </div>
+            <div class="progress-label">
+              <span>0 of 4 chapters completed</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="table-of-contents">
+          <h3 class="sidebar-title">On This Page</h3>
+          <ul>
+            <li><a href="#module-overview">Module Overview</a></li>
+            <li><a href="#chapters">Module Chapters</a></li>
+            <li><a href="#additional-resources">Additional Resources</a></li>
+          </ul>
+        </div>
+        
+        <div class="module-cta">
+          <h3 class="sidebar-title">Get Started</h3>
+          <a href="{{ "/dataformats.html" | relative_url }}" class="btn btn-primary btn-block">Begin Chapter 1</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
