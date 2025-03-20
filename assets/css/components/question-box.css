@@ -176,30 +176,120 @@
 
 /* Ensure the text wraps properly on smaller screens */
 @media (max-width: 768px) {
-  .questions-list-grid {
-    grid-template-columns: 1fr;
+  .question-box {
+    margin: 1.5rem 0;
+    border-radius: 8px;
   }
-  
+
   .question-box-header {
     padding: 0.85rem 1rem;
   }
-  
+
+  .question-box-header .icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    font-size: 0.9rem;
+  }
+
   .question-toggle {
     font-size: 1rem;
   }
-  
+
+  .toggle-icon {
+    font-size: 1rem;
+    margin-left: 6px;
+  }
+
+  .question-box.active .question-box-content {
+    padding: 1.25rem !important;
+  }
+
   .question-item {
     padding: 0.75rem 0.75rem 0.75rem 2.8rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
   }
-  
+
   .question-item::before {
     left: 0.6rem;
     width: 24px;
     height: 24px;
     font-size: 0.75rem;
   }
-  
+
+  .questions-list-grid {
+    grid-template-columns: 1fr;
+    grid-gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .question-box {
+    margin: 1.25rem 0;
+    border-radius: 6px;
+  }
+
+  .question-box-header {
+    padding: 0.75rem 0.875rem;
+  }
+
+  .question-box-header .icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    font-size: 0.85rem;
+  }
+
+  .question-toggle {
+    font-size: 0.95rem;
+  }
+
   .toggle-icon {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    margin-left: 5px;
+  }
+
+  .question-box.active .question-box-content {
+    padding: 1rem !important;
+  }
+
+  .question-item {
+    padding: 0.7rem 0.7rem 0.7rem 2.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .question-item::before {
+    left: 0.5rem;
+    width: 22px;
+    height: 22px;
+    font-size: 0.7rem;
+  }
+
+  .questions-list-grid {
+    grid-gap: 0.6rem;
+  }
+}
+
+/* Improve touch targets for mobile */
+@media (hover: none) {
+  .question-toggle {
+    padding: 0.5rem 0;
+    min-height: 44px;
+  }
+
+  .question-item {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Support for landscape orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .question-box.active .question-box-content {
+    max-height: 300px !important;
+    overflow-y: auto;
   }
 } 

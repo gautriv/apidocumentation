@@ -1,0 +1,557 @@
+---
+layout: default
+title: Basic OpenAPI Specification Exercise
+permalink: /practice-exercises/openapi-weather-api/
+---
+
+<div class="container">
+  <div class="module-breadcrumb">
+    <a href="{{ "/" | relative_url }}">Home</a> &gt;
+    <a href="{{ "/practice-exercises/" | relative_url }}">Practice Exercises</a> &gt;
+    <span>Basic OpenAPI Specification</span>
+  </div>
+
+  <div class="module-header">
+    <h1 class="module-title">Exercise #1: Basic OpenAPI Specification</h1>
+    <p class="module-description">Learn how to create a basic OpenAPI specification for a simple weather API</p>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="main-content">
+      <section class="module-section">
+        <h2>Exercise Description</h2>
+        <p>In this exercise, you will create a basic OpenAPI 3.0 specification for a simple weather API that allows users to get current weather conditions and forecasts for a city. This exercise will help you understand the structure of OpenAPI documents and how to document API endpoints, parameters, responses, and schemas.</p>
+        
+        <div class="info-box">
+          <div class="info-box-header">
+            <i class="fas fa-info-circle icon"></i>
+            <span>Exercise Objectives</span>
+          </div>
+          <div class="info-box-content">
+            <ul>
+              <li>Understand the structure of OpenAPI 3.0 specifications</li>
+              <li>Document API endpoints and their parameters</li>
+              <li>Define request and response schemas</li>
+              <li>Add examples and descriptions to make the API more user-friendly</li>
+              <li>Create a specification that can be rendered with Swagger UI</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="module-section">
+        <h2>API Requirements</h2>
+        <p>The weather API you will document should include the following endpoints:</p>
+        
+        <div class="endpoint-example">
+          <p>1. Get the current weather for a city:</p>
+          <code>GET /weather/current/{city}</code>
+          
+          <p>2. Get a 5-day forecast for a city:</p>
+          <code>GET /weather/forecast/{city}</code>
+          
+          <p>3. Get historical weather data for a city:</p>
+          <code>GET /weather/history/{city}</code>
+        </div>
+        
+        <h3>Parameters</h3>
+        <div class="param-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Location</th>
+                <th>Required</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>city</code></td>
+                <td>string</td>
+                <td>path</td>
+                <td>Yes</td>
+                <td>The name of the city to get weather information for</td>
+              </tr>
+              <tr>
+                <td><code>units</code></td>
+                <td>string</td>
+                <td>query</td>
+                <td>No</td>
+                <td>Units of measurement. Options: <code>metric</code> (default), <code>imperial</code></td>
+              </tr>
+              <tr>
+                <td><code>lang</code></td>
+                <td>string</td>
+                <td>query</td>
+                <td>No</td>
+                <td>Language for weather descriptions. Default: <code>en</code></td>
+              </tr>
+              <tr>
+                <td><code>days</code></td>
+                <td>integer</td>
+                <td>query</td>
+                <td>No</td>
+                <td>Number of days for historical data (1-30). Only applicable for the history endpoint.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h3>Example Response</h3>
+        <div class="example-box">
+          <h4>Current Weather Response</h4>
+          <pre><code>{
+  "city": "London",
+  "country": "GB",
+  "timestamp": "2023-05-15T12:00:00Z",
+  "weather": {
+    "temperature": 18.5,
+    "feels_like": 17.8,
+    "humidity": 65,
+    "pressure": 1012,
+    "description": "Partly cloudy",
+    "wind": {
+      "speed": 12.5,
+      "direction": "SW"
+    }
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="module-section">
+        <h2>Your Task</h2>
+        <p>Create a complete OpenAPI 3.0 specification in YAML format that documents the weather API described above. Your specification should include:</p>
+        
+        <ul>
+          <li>API information (title, description, version, etc.)</li>
+          <li>Server information</li>
+          <li>Path definitions for all three endpoints</li>
+          <li>Parameter definitions (path and query parameters)</li>
+          <li>Response schemas for all endpoints</li>
+          <li>Component schemas for reusable objects</li>
+          <li>Examples for requests and responses</li>
+          <li>Descriptions for all components to make the API user-friendly</li>
+        </ul>
+        
+        <div class="info-box">
+          <div class="info-box-header">
+            <i class="fas fa-lightbulb icon"></i>
+            <span>Tip</span>
+          </div>
+          <div class="info-box-content">
+            <p>You can use the <a href="https://editor.swagger.io/" target="_blank">Swagger Editor</a> to create and validate your OpenAPI specification. It provides real-time validation and a preview of how your documentation will look.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="module-section">
+        <h2>Submission Guidelines</h2>
+        <p>To complete this exercise:</p>
+        
+        <ol>
+          <li>Create a YAML file containing your OpenAPI specification</li>
+          <li>Validate your specification using the Swagger Editor or another OpenAPI validator</li>
+          <li>Save the file as <code>weather-api.yaml</code></li>
+          <li>Create a README.md file explaining your design decisions and any assumptions you made</li>
+        </ol>
+        
+        <p>Optional: Deploy your API documentation using a tool like <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> or <a href="https://redocly.com/" target="_blank">Redocly</a> and include the link in your README.md.</p>
+      </section>
+
+      <div class="exercise-solution">
+        <button class="solution-toggle" id="solutionToggle">
+          <i class="fas fa-lightbulb"></i>
+          View Example Solution
+        </button>
+        
+        <div class="solution-content" id="solutionContent">
+          <h3>Example Solution</h3>
+          <p>Here's an example OpenAPI specification for the weather API:</p>
+          
+          <div class="example-box">
+            <pre><code>openapi: 3.0.3
+info:
+  title: Weather API
+  description: |
+    A simple API for retrieving weather information for cities around the world.
+    This API provides current weather conditions, forecasts, and historical data.
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@weatherapi.example.com
+    url: https://www.weatherapi.example.com/support
+  
+servers:
+  - url: https://api.weatherapi.example.com/v1
+    description: Production server
+  - url: https://dev.weatherapi.example.com/v1
+    description: Development server
+
+paths:
+  /weather/current/{city}:
+    get:
+      summary: Get current weather for a city
+      description: Returns the current weather conditions for the specified city
+      operationId: getCurrentWeather
+      parameters:
+        - $ref: '#/components/parameters/CityParam'
+        - $ref: '#/components/parameters/UnitsParam'
+        - $ref: '#/components/parameters/LangParam'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrentWeather'
+              example:
+                city: London
+                country: GB
+                timestamp: "2023-05-15T12:00:00Z"
+                weather:
+                  temperature: 18.5
+                  feels_like: 17.8
+                  humidity: 65
+                  pressure: 1012
+                  description: "Partly cloudy"
+                  wind:
+                    speed: 12.5
+                    direction: "SW"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  
+  /weather/forecast/{city}:
+    get:
+      summary: Get weather forecast for a city
+      description: Returns a 5-day weather forecast for the specified city
+      operationId: getWeatherForecast
+      parameters:
+        - $ref: '#/components/parameters/CityParam'
+        - $ref: '#/components/parameters/UnitsParam'
+        - $ref: '#/components/parameters/LangParam'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forecast'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /weather/history/{city}:
+    get:
+      summary: Get historical weather data for a city
+      description: Returns historical weather data for the specified city
+      operationId: getHistoricalWeather
+      parameters:
+        - $ref: '#/components/parameters/CityParam'
+        - $ref: '#/components/parameters/UnitsParam'
+        - $ref: '#/components/parameters/LangParam'
+        - $ref: '#/components/parameters/DaysParam'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoricalWeather'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+components:
+  parameters:
+    CityParam:
+      name: city
+      in: path
+      description: The name of the city to get weather information for
+      required: true
+      schema:
+        type: string
+      example: London
+    
+    UnitsParam:
+      name: units
+      in: query
+      description: Units of measurement
+      required: false
+      schema:
+        type: string
+        enum: [metric, imperial]
+        default: metric
+      example: metric
+    
+    LangParam:
+      name: lang
+      in: query
+      description: Language for weather descriptions
+      required: false
+      schema:
+        type: string
+        default: en
+      example: en
+    
+    DaysParam:
+      name: days
+      in: query
+      description: Number of days for historical data (1-30)
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 30
+        default: 7
+      example: 7
+  
+  schemas:
+    WeatherInfo:
+      type: object
+      properties:
+        temperature:
+          type: number
+          description: Temperature in degrees Celsius (metric) or Fahrenheit (imperial)
+        feels_like:
+          type: number
+          description: What the temperature feels like
+        humidity:
+          type: integer
+          description: Humidity percentage
+          minimum: 0
+          maximum: 100
+        pressure:
+          type: integer
+          description: Atmospheric pressure in hPa
+        description:
+          type: string
+          description: Weather condition description
+        wind:
+          type: object
+          properties:
+            speed:
+              type: number
+              description: Wind speed in m/s (metric) or mph (imperial)
+            direction:
+              type: string
+              description: Wind direction (N, NE, E, SE, S, SW, W, NW)
+          required:
+            - speed
+            - direction
+      required:
+        - temperature
+        - humidity
+        - description
+    
+    CurrentWeather:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City name
+        country:
+          type: string
+          description: Country code (ISO 3166-1 alpha-2)
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of the weather data
+        weather:
+          $ref: '#/components/schemas/WeatherInfo'
+      required:
+        - city
+        - timestamp
+        - weather
+    
+    ForecastDay:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          description: Forecast date
+        weather:
+          $ref: '#/components/schemas/WeatherInfo'
+      required:
+        - date
+        - weather
+    
+    Forecast:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City name
+        country:
+          type: string
+          description: Country code (ISO 3166-1 alpha-2)
+        forecast:
+          type: array
+          description: 5-day forecast
+          items:
+            $ref: '#/components/schemas/ForecastDay'
+      required:
+        - city
+        - forecast
+    
+    HistoricalDay:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          description: Historical date
+        weather:
+          $ref: '#/components/schemas/WeatherInfo'
+      required:
+        - date
+        - weather
+    
+    HistoricalWeather:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City name
+        country:
+          type: string
+          description: Country code (ISO 3166-1 alpha-2)
+        history:
+          type: array
+          description: Historical weather data
+          items:
+            $ref: '#/components/schemas/HistoricalDay'
+      required:
+        - city
+        - history
+    
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+        - code
+        - message
+  
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 400
+            message: "Invalid city name"
+    
+    NotFound:
+      description: City not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 404
+            message: "City not found"
+    
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 500
+            message: "Internal server error"</code></pre>
+          </div>
+          
+          <h3>Solution Explanation</h3>
+          <p>This OpenAPI specification includes:</p>
+          
+          <ul>
+            <li><strong>API Information</strong>: Title, description, version, and contact information</li>
+            <li><strong>Servers</strong>: Production and development server URLs</li>
+            <li><strong>Paths</strong>: Three endpoints for current weather, forecast, and historical data</li>
+            <li><strong>Parameters</strong>: Path and query parameters defined as reusable components</li>
+            <li><strong>Schemas</strong>: Reusable schemas for weather information and response objects</li>
+            <li><strong>Responses</strong>: Success and error responses with examples</li>
+          </ul>
+          
+          <p>The specification uses component references extensively to promote reusability and maintainability. This approach makes it easier to update the API documentation as the API evolves.</p>
+        </div>
+      </div>
+
+      <div class="chapter-controls">
+        <a href="{{ "/practice-exercises/" | relative_url }}" class="prev-chapter">
+          <i class="fas fa-arrow-left chapter-arrow"></i>
+          <div class="chapter-nav-content">
+            <span class="chapter-nav-label">Back to</span>
+            <span class="chapter-nav-title">Practice Exercises</span>
+          </div>
+        </a>
+        <a href="{{ "/practice-exercises/restful-ecommerce-api/" | relative_url }}" class="next-chapter">
+          <div class="chapter-nav-content">
+            <span class="chapter-nav-label">Next Exercise</span>
+            <span class="chapter-nav-title">Documenting RESTful Endpoints</span>
+          </div>
+          <i class="fas fa-arrow-right chapter-arrow"></i>
+        </a>
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="table-of-contents">
+        <h4>In This Exercise</h4>
+        <ul>
+          <li><a href="#exercise-description">Exercise Description</a></li>
+          <li><a href="#api-requirements">API Requirements</a></li>
+          <li><a href="#your-task">Your Task</a></li>
+          <li><a href="#submission-guidelines">Submission Guidelines</a></li>
+        </ul>
+      </div>
+      
+      <div class="table-of-contents next-exercises">
+        <h4>More Exercises</h4>
+        <ul>
+          <li><a href="{{ "/practice-exercises/restful-ecommerce-api/" | relative_url }}">Documenting RESTful Endpoints</a></li>
+          <li><a href="{{ "/practice-exercises/error-handling-auth-api/" | relative_url }}">API Error Handling Documentation</a></li>
+          <li><a href="{{ "/practice-exercises/oauth-jwt-authentication/" | relative_url }}">API Authentication Documentation</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const solutionToggle = document.getElementById('solutionToggle');
+    const solutionContent = document.getElementById('solutionContent');
+    
+    solutionToggle.addEventListener('click', function() {
+      solutionContent.classList.toggle('visible');
+      if (solutionContent.classList.contains('visible')) {
+        solutionToggle.innerHTML = '<i class="fas fa-times"></i> Hide Example Solution';
+      } else {
+        solutionToggle.innerHTML = '<i class="fas fa-lightbulb"></i> View Example Solution';
+      }
+    });
+  });
+</script> 

@@ -98,13 +98,110 @@
 @media (max-width: 768px) {
   .chapter-takeaways {
     margin: 2rem 0;
+    border-radius: 8px;
+    border-left-width: 4px;
   }
-  
+
+  .chapter-takeaways::before {
+    width: 100px;
+    height: 100px;
+  }
+
   .chapter-takeaways-header {
     padding: 1rem 1.5rem;
+    font-size: 1.1rem;
   }
-  
+
+  .chapter-takeaways-header::before {
+    font-size: 1.2rem;
+  }
+
   .chapter-takeaways-content {
     padding: 1.25rem 1.5rem;
+  }
+
+  .chapter-takeaways-list {
+    padding-left: 1.25rem;
+  }
+
+  .chapter-takeaways-list li {
+    margin-bottom: 0.6rem;
+    padding-left: 0.4rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Optimize animations for mobile */
+  .chapter-takeaways-list li {
+    animation: fadeInUp 0.3s ease forwards;
+  }
+
+  .chapter-takeaways-list li:nth-child(1) { animation-delay: 0.05s; }
+  .chapter-takeaways-list li:nth-child(2) { animation-delay: 0.1s; }
+  .chapter-takeaways-list li:nth-child(3) { animation-delay: 0.15s; }
+  .chapter-takeaways-list li:nth-child(4) { animation-delay: 0.2s; }
+  .chapter-takeaways-list li:nth-child(5) { animation-delay: 0.25s; }
+  .chapter-takeaways-list li:nth-child(6) { animation-delay: 0.3s; }
+  .chapter-takeaways-list li:nth-child(7) { animation-delay: 0.35s; }
+  .chapter-takeaways-list li:nth-child(8) { animation-delay: 0.4s; }
+  .chapter-takeaways-list li:nth-child(9) { animation-delay: 0.45s; }
+}
+
+@media (max-width: 480px) {
+  .chapter-takeaways {
+    margin: 1.5rem 0;
+    border-radius: 6px;
+    border-left-width: 3px;
+  }
+
+  .chapter-takeaways::before {
+    width: 80px;
+    height: 80px;
+  }
+
+  .chapter-takeaways-header {
+    padding: 0.875rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  .chapter-takeaways-header::before {
+    font-size: 1.1rem;
+  }
+
+  .chapter-takeaways-content {
+    padding: 1rem 1.25rem;
+  }
+
+  .chapter-takeaways-list {
+    padding-left: 1rem;
+  }
+
+  .chapter-takeaways-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.35rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+/* Improve touch targets for mobile */
+@media (hover: none) {
+  .chapter-takeaways-list li {
+    padding: 0.5rem 0 0.5rem 0.5rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Support for landscape orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .chapter-takeaways {
+    margin: 1.25rem 0;
+  }
+
+  .chapter-takeaways-content {
+    max-height: 300px;
+    overflow-y: auto;
   }
 } 
