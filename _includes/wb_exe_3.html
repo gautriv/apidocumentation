@@ -5,58 +5,124 @@
     <style>
         /* Styling for buttons */
         .exercise-button, .solution-button {
-            background-color: #007bff;
+            background-color: #4a6ef5;
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px 24px;
             cursor: pointer;
             border: none;
-            border-radius: 10px;
-            margin: 10px;
+            border-radius: 8px;
+            margin: 12px 8px;
             display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .exercise-button:hover, .solution-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .exercise-button {
+            background-color: #4a6ef5;
+        }
+        
+        .solution-button {
+            background-color: #28a745;
         }
 
         /* Hidden content by default */
         .exercise-content, .solution-content {
             display: none;
-            padding: 15px;
-            border: 1px solid #ccc;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
             background-color: #f9f9f9;
-            border-radius: 10px;
-            margin: 10px;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .exercise-content h3, .solution-content h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         /* Table styling */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         table, th, td {
-            border: 1px solid #ccc;
+            border: 1px solid #e0e0e0;
         }
 
         th, td {
-            padding: 10px;
+            padding: 12px 15px;
             text-align: left;
         }
 
         th {
-            background-color: #f0f0f0;
+            background-color: #f0f5ff;
+            font-weight: bold;
+            color: #344563;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8fafd;
+        }
+        
+        /* Code block styling */
+        pre {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #4a6ef5;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+        
+        /* List styling */
+        ul, ol {
+            padding-left: 25px;
+        }
+        
+        ul li, ol li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        /* Highlight important text */
+        strong {
+            color: #2c3e50;
+        }
+        
+        code {
+            background-color: #f0f4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
     <!-- Buttons to toggle Exercise 4 and its Solution -->
-    <button class="exercise-button" onclick="toggleExercise('exercise4')">Exercise 4</button>
-    <button class="solution-button" onclick="toggleSolution('solution4', 'exercise4')">Solution to Exercise 4</button>
+    <button class="exercise-button" onclick="toggleExercise('exercise4')">Exercise 3</button>
+    <button class="solution-button" onclick="toggleSolution('solution4', 'exercise4')">Solution to Exercise 3</button>
 
     <!-- Exercise 4 Content (Initially Hidden) -->
     <div class="exercise-content" id="exercise4">
-        <h3>Exercise 4: Configuring a Webhook via UI-Based Registration</h3>
-        <p><strong>Scenario:</strong> You are documenting a **webhook for a subscription-based SaaS platform**. The platform allows customers to receive notifications when a user **subscribes**, **updates their plan**, or **cancels their subscription**.</p>
+        <h3>Exercise 3: Configuring a Webhook via UI-Based Registration</h3>
+        <p><strong>Scenario:</strong> You are documenting a <strong>webhook for a subscription-based SaaS platform</strong>. The platform allows customers to receive notifications when a user <strong>subscribes</strong>, <strong>updates their plan</strong>, or <strong>cancels their subscription</strong>.</p>
 
-        <p><strong>Key Difference:</strong> Unlike API-based registration, developers must manually **configure their webhook URL in the platform’s dashboard.**</p>
+        <p><strong>Key Difference:</strong> Unlike API-based registration, developers must manually <strong>configure their webhook URL in the platform's dashboard.</strong></p>
 
         <p><strong>Your Task:</strong> Document the following:</p>
         <ul>
@@ -70,41 +136,40 @@
         <h4>Webhook Registration (UI-Based)</h4>
         <p>Users must configure their webhook by following these steps:</p>
         <ol>
-            <li>Log in to the **SaaS platform dashboard**.</li>
-            <li>Navigate to **Settings > Webhooks**.</li>
-            <li>Enter your webhook URL in the **Webhook URL** field.</li>
+            <li>Log in to the <strong>SaaS platform dashboard</strong>.</li>
+            <li>Navigate to <strong>Settings > Webhooks</strong>.</li>
+            <li>Enter your webhook URL in the <strong>Webhook URL</strong> field.</li>
             <li>Select the events you want to subscribe to:</li>
             <ul>
-                <li><strong>subscription.created</strong> – When a new subscription is created.</li>
-                <li><strong>subscription.updated</strong> – When a user updates their subscription plan.</li>
-                <li><strong>subscription.canceled</strong> – When a subscription is canceled.</li>
+                <li><code>subscription.created</code> – When a new subscription is created.</li>
+                <li><code>subscription.updated</code> – When a user updates their subscription plan.</li>
+                <li><code>subscription.canceled</code> – When a subscription is canceled.</li>
             </ul>
-            <li>Click **Save** to activate the webhook.</li>
+            <li>Click <strong>Save</strong> to activate the webhook.</li>
         </ol>
 
         <h4>Example Webhook Payload</h4>
         <pre>
-        {
-            "event": "subscription.updated",
-            "data": {
-                "user_id": "USR45678",
-                "plan": "Premium",
-                "status": "active",
-                "updated_at": "2024-03-12T08:30:00Z"
-            }
-        }
-        </pre>
+{
+    "event": "subscription.updated",
+    "data": {
+        "user_id": "USR45678",
+        "plan": "Premium",
+        "status": "active",
+        "updated_at": "2024-03-12T08:30:00Z"
+    }
+}</pre>
     </div>
 
     <!-- Solution to Exercise 4 (Initially Hidden) -->
     <div class="solution-content" id="solution4">
-        <h3>Solution to Exercise 4</h3>
+        <h3>Solution to Exercise 3</h3>
 
         <h4>1. Overview</h4>
-        <p>The **Subscription Webhook** notifies external systems when users subscribe, update, or cancel their plan.</p>
+        <p>The <strong>Subscription Webhook</strong> notifies external systems when users subscribe, update, or cancel their plan.</p>
 
         <h4>2. Webhook Registration (UI-Based)</h4>
-        <p>Unlike API-based registration, users must **manually enter their webhook URL** in the platform’s dashboard.</p>
+        <p>Unlike API-based registration, users must <strong>manually enter their webhook URL</strong> in the platform's dashboard.</p>
 
         <h4>3. Webhook Events</h4>
         <table>
@@ -114,47 +179,46 @@
                 <th>Description</th>
             </tr>
             <tr>
-                <td>subscription.created</td>
+                <td><code>subscription.created</code></td>
                 <td>When a new user subscribes</td>
                 <td>Notifies the client when a user signs up for a subscription.</td>
             </tr>
             <tr>
-                <td>subscription.updated</td>
+                <td><code>subscription.updated</code></td>
                 <td>When a user changes their plan</td>
                 <td>Fires when a user upgrades or downgrades their plan.</td>
             </tr>
             <tr>
-                <td>subscription.canceled</td>
+                <td><code>subscription.canceled</code></td>
                 <td>When a user cancels</td>
                 <td>Triggers when a subscription is terminated.</td>
             </tr>
         </table>
 
         <h4>4. Expected Response from Client</h4>
-        <p>The client must return a **200 OK** status to confirm webhook processing.</p>
+        <p>The client must return a <strong>200 OK</strong> status to confirm webhook processing.</p>
 
         <h4>5. Webhook Security Considerations</h4>
         <ul>
-            <li>**Use HTTPS** to prevent data interception.</li>
-            <li>**Verify the request origin** by checking the **X-SaaS-Signature** header.</li>
-            <li>**Log all webhook requests for debugging.**</li>
+            <li><strong>Use HTTPS</strong> to prevent data interception.</li>
+            <li><strong>Verify the request origin</strong> by checking the <strong>X-SaaS-Signature</strong> header.</li>
+            <li><strong>Log all webhook requests for debugging.</strong></li>
         </ul>
 
         <h4>6. Webhook Testing</h4>
-        <p>Users can trigger test events via the **SaaS dashboard**:</p>
+        <p>Users can trigger test events via the <strong>SaaS dashboard</strong>:</p>
         <ol>
-            <li>Go to **Settings > Webhooks > Test Webhook**.</li>
-            <li>Select an event (e.g., **subscription.updated**).</li>
-            <li>Click **Send Test** to see the webhook response.</li>
+            <li>Go to <strong>Settings > Webhooks > Test Webhook</strong>.</li>
+            <li>Select an event (e.g., <code>subscription.updated</code>).</li>
+            <li>Click <strong>Send Test</strong> to see the webhook response.</li>
         </ol>
 
         <h4>7. Sample Webhook Response</h4>
         <pre>
-        {
-            "status": "success",
-            "message": "Webhook received and processed successfully."
-        }
-        </pre>
+{
+    "status": "success",
+    "message": "Webhook received and processed successfully."
+}</pre>
     </div>
 
     <script>

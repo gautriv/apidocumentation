@@ -1,0 +1,88 @@
+<div class="key-takeaways-container">
+    <div class="key-takeaways-header">
+        <div class="key-takeaways-icon">
+            <i class="fas fa-lightbulb"></i>
+        </div>
+        <h3 class="key-takeaways-title">Key Takeaways</h3>
+    </div>
+    <div class="key-takeaways-content">
+        {{ include.content }}
+    </div>
+</div>
+
+<style>
+.key-takeaways-container {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e6ecf5 100%);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin: 2rem 0;
+    overflow: hidden;
+    border-left: 5px solid #3498db;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.key-takeaways-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.key-takeaways-header {
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    padding: 1rem 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.key-takeaways-icon {
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.key-takeaways-icon i {
+    font-size: 1.25rem;
+    color: white;
+}
+
+.key-takeaways-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.key-takeaways-content {
+    padding: 1.5rem;
+    color: #2c3e50;
+}
+
+.key-takeaways-content ul {
+    margin-bottom: 0;
+    padding-left: 1.5rem;
+}
+
+.key-takeaways-content li {
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 0.5rem;
+}
+
+.key-takeaways-content li:last-child {
+    margin-bottom: 0;
+}
+
+/* Animation for the key takeaways */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.key-takeaways-container {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+</style> 

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    
+    <!-- Scripts -->
+    <script src="{{ "/assets/js/main.js" | relative_url }}" defer></script>
+    <script src="{{ "/assets/js/doc.js" | relative_url }}" defer></script>
+    <script src="{{ "/assets/js/appreciate.js" | relative_url }}" defer></script>
+    
+    <!-- Google Analytics -->
+    {% include google_analytics.html %}
+    
+    <!-- Google AdSense -->
+    {% include adsense.html %}
+    
+    <style>
+        /* Existing styles */
+        
+        /* Special styling for the course completion link */
+        .completion-link {
+            background: linear-gradient(135deg, #4a6ef5 0%, #12b3f8 100%);
+            color: white !important;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 10px 0;
+            display: inline-block;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .completion-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Header -->
+        {% include header.html %}
+        
+        <!-- Progress Bar and Back to Top -->
+        {% include progress-and-navigation.html %}
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="documentation-layout">
+                    <!-- Sidebar -->
+                    <aside class="docs-sidebar">
+                        <div class="sidebar-container">
+                            <div class="search-container">
+                                <input type="text" id="search-input" placeholder="Search documentation...">
+                            </div>
+                            
+                            <button class="toggle-toc" aria-expanded="false">
+                                <i class="fas fa-bars"></i>
+                                <span>Table of Contents</span>
+                            </button>
+                            
+                            <nav class="sidebar-nav">
+                                <h3>Introduction to APIs</h3>
+                                <ul>
+                                    <li><a href="{{ '/howinternetworks.html' | relative_url }}">How the Internet Works?</a></li>
+                                    <li><a href="{{ '/whatisanapi.html' | relative_url }}">What is an API?</a></li>
+                                </ul>
+                                
+                                <h3>Role of Technical Writers</h3>
+                                <ul>
+                                    <li><a href="{{ '/whatwritersdo.html' | relative_url }}">What do Technical Writers document?</a></li>
+                                    <li><a href="{{ '/informationgathering.html' | relative_url }}">How do Technical Writers document?</a></li>
+                                </ul>
+                                
+                                <h3>API Types and Concepts</h3>
+                                <ul>
+                                    <li><a href="{{ '/typesofAPI.html' | relative_url }}">Types of APIs</a></li>
+                                    <li><a href="{{ '/restAPI.html' | relative_url }}">More on REST APIs</a></li>
+                                    <li><a href="{{ '/anatomyofurl.html' | relative_url }}">Anatomy of URL part 1</a></li>
+                                    <li><a href="{{ '/anatomyofurltwo.html' | relative_url }}">Anatomy of URL part 2</a></li>
+                                </ul>
+                                
+                                <h3>Data Formats in APIs</h3>
+                                <ul>
+                                    <li><a href="{{ '/dataformats.html' | relative_url }}">Understanding data formats</a></li>
+                                    <li><a href="{{ '/JSON101.html' | relative_url }}">JSON and its data types</a></li>
+                                    <li><a href="{{ '/XML101.html' | relative_url }}">XML and its data types</a></li>
+                                    <li><a href="{{ '/visualizingdatatypes.html' | relative_url }}">Visualizing data types</a></li>
+                                </ul>
+                                
+                                <h3>API Requests and Documentation</h3>
+                                <ul>
+                                    <li><a href="{{ '/apirequestsresponses.html' | relative_url }}">Understanding API Requests and Responses</a></li>
+                                    <li><a href="{{ '/writingapi.html' | relative_url }}">Writing API documentation</a></li>
+                                    <li><a href="{{ '/keyconcepts.html' | relative_url }}">Bridging gaps</a></li>
+                                    <li><a href="{{ '/curl.html' | relative_url }}">cURL for API documentation</a></li>                                    
+                                </ul>
+                                
+                                <h3>REST API Documentation Exercises</h3>
+                                <ul>
+                                    <li><a href="{{ '/beginnerrestapiexercises.html' | relative_url }}">Beginner REST API Documentation exercises</a></li>
+                                    <li><a href="{{ '/intermediaterestapiexercises.html' | relative_url }}">Intermediate REST API Documentation exercises</a></li>
+                                    <li><a href="{{ '/expertrestapiexercises.html' | relative_url }}">Expert REST API Documentation exercises</a></li>
+                                </ul>
+                                
+                                <h3>Developing and Testing APIs</h3>
+                                <ul>
+                                    <li><a href="{{ '/beginnertestingapi.html' | relative_url }}">Developing and testing REST API as a beginner</a></li>
+                                    <li><a href="{{ '/intermediatetestingapi.html' | relative_url }}">Developing and testing REST API as an intermediate</a></li>
+                                    <li><a href="{{ '/expertapitesting.html' | relative_url }}">Developing and testing REST API as an expert</a></li>
+                                </ul>
+                                
+                                <h3>Webhook Documentation</h3>
+                                <ul>
+                                    <li><a href="{{ '/webhooks.html' | relative_url }}">Webhook API reference documentation</a></li>
+                                    <li><a href="{{ '/beginnerwebhookexercises.html' | relative_url }}">Beginner Webhook documentation exercises</a></li>
+                                    <li><a href="{{ '/intermediatewebhookexercises.html' | relative_url }}">Intermediate Webhook documentation exercises</a></li>
+                                    <li><a href="{{ '/expertwebhookexercises.html' | relative_url }}">Expert Webhook documentation exercises</a></li>
+                                    <li><a href="{{ '/course-completion.html' | relative_url }}" class="completion-link">🎉 Course Completion</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </aside>
+                    
+                    <!-- Main Content Area -->
+                    <div class="docs-content">
+                        <div class="doc-header">
+                            <h1>{{ page.title }}</h1>
+                            {% if page.description %}
+                                <p class="doc-description">{{ page.description }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="doc-content">
+                            {{ content }}
+                        </div>
+                        
+                        <div class="doc-footer">
+                            {% unless page.url == '/documentation.html' %}
+                            <div class="doc-footer-nav">
+                                {% if page.previous_page.url %}
+                                <!-- Use manual previous URL if defined in frontmatter -->
+                                <a href="{{ page.previous_page.url | relative_url }}" class="prev-page">
+                                    <i class="fas fa-arrow-left"></i> Previous: {{ page.previous_page.title }}
+                                </a>
+                                {% elsif page.previous %}
+                                <!-- Fall back to automatic previous if manual not defined -->
+                                <a href="{{ page.previous.url | relative_url }}" class="prev-page">
+                                    <i class="fas fa-arrow-left"></i> Previous: {{ page.previous.title }}
+                                </a>
+                                {% endif %}
+                                
+                                {% if page.next_page.url %}
+                                <!-- Use manual next URL if defined in frontmatter -->
+                                <a href="{{ page.next_page.url | relative_url }}" class="next-page">
+                                    Next: {{ page.next_page.title }} <i class="fas fa-arrow-right"></i>
+                                </a>
+                                {% elsif page.next %}
+                                <!-- Fall back to automatic next if manual not defined -->
+                                <a href="{{ page.next.url | relative_url }}" class="next-page">
+                                    Next: {{ page.next.title }} <i class="fas fa-arrow-right"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+
+                            <!-- Progress bar shown on every page except documentation.html -->
+                            {% include course-progress.html %}
+                                
+                            <!-- Support and Feedback shown only at chapter endings -->
+                            {% assign current_chapter = page.url | split: '/' | last | split: '.' | first | split: '-' | first %}
+                            {% if page.next %}
+                                {% assign next_chapter = page.next.url | split: '/' | last | split: '.' | first | split: '-' | first %}
+                                {% if current_chapter != next_chapter or page.url contains 'finalwords' %}
+                                    {% include support-and-feedback.html %}
+                                {% endif %}
+                            {% else %}
+                                {% include support-and-feedback.html %}
+                            {% endif %}
+                            {% endunless %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        {% include footer.html %}
+    </div>
+
+    <!-- Support Modal -->
+    {% include support-modal.html %}
+    
+    <!-- Appreciate Modal -->
+    {% include appreciate-modal.html %}
+</body>
+</html> 

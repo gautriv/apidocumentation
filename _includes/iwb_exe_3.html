@@ -1,0 +1,498 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #4a6ef5;
+            color: #fff;
+            padding: 12px 24px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            margin: 12px 8px;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .exercise-button:hover, .solution-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .exercise-button {
+            background-color: #4a6ef5;
+        }
+        
+        .solution-button {
+            background-color: #28a745;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .exercise-content h3, .solution-content h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #e0e0e0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f5ff;
+            font-weight: bold;
+            color: #344563;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8fafd;
+        }
+        
+        /* Code block styling */
+        pre {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #4a6ef5;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+        
+        /* List styling */
+        ul, ol {
+            padding-left: 25px;
+        }
+        
+        ul li, ol li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        /* Highlight important text */
+        strong {
+            color: #2c3e50;
+        }
+        
+        code {
+            background-color: #f0f4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        /* Filter expressions styling */
+        .filter-example {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .note-box {
+            background-color: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .tip-box {
+            background-color: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 3 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise3')">Exercise 3</button>
+    <button class="solution-button" onclick="toggleSolution('solution3', 'exercise3')">Solution to Exercise 3</button>
+
+    <!-- Exercise 3 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise3">
+        <h3>Exercise 3: Documenting Conditional Webhook Triggers</h3>
+        <p><strong>Scenario:</strong> You're documenting a webhook system for an <strong>e-commerce platform</strong> that allows merchants to set up <strong>conditional triggers</strong> for webhook notifications. Instead of receiving all events, merchants can define specific criteria that determine when webhooks are sent.</p>
+
+        <p><strong>Key Challenge:</strong> You need to document how the filter expressions work and guide users on creating effective conditions for their webhook triggers.</p>
+
+        <h4>Conditional Webhook System</h4>
+        <p>The platform supports the following event types:</p>
+        <ul>
+            <li><code>order.created</code> - When a new order is placed</li>
+            <li><code>order.updated</code> - When an order's status or details change</li>
+            <li><code>order.fulfilled</code> - When an order is marked as fulfilled</li>
+            <li><code>product.created</code> - When a new product is added</li>
+            <li><code>product.updated</code> - When a product is modified</li>
+            <li><code>customer.created</code> - When a new customer account is created</li>
+        </ul>
+
+        <p>For each event type, merchants can define filter conditions using a JSON-based filter expression syntax.</p>
+
+        <h4>Filter Expression Examples</h4>
+        <div class="filter-example">
+        <pre>
+// Only trigger on high-value orders (over $100)
+{
+  "event": "order.created",
+  "filter": {
+    "data.order.total_amount": {
+      "$gt": 100
+    }
+  }
+}
+
+// Only trigger when products in a specific category are updated
+{
+  "event": "product.updated",
+  "filter": {
+    "data.product.category": "electronics"
+  }
+}
+
+// Only trigger for VIP customers
+{
+  "event": "order.created",
+  "filter": {
+    "data.customer.tier": "vip"
+  }
+}</pre>
+        </div>
+
+        <h4>Your Task</h4>
+        <p>Create comprehensive webhook documentation that covers:</p>
+        <ol>
+            <li>How to set up conditional webhook triggers</li>
+            <li>The filter expression syntax, including all supported operators</li>
+            <li>Best practices for designing efficient filter conditions</li>
+            <li>Complex filter examples with logical operators (AND, OR)</li>
+            <li>Limitations and performance considerations</li>
+        </ol>
+
+        <h4>Operators Available for Filter Expressions</h4>
+        <ul>
+            <li><code>$eq</code> - Equal to</li>
+            <li><code>$ne</code> - Not equal to</li>
+            <li><code>$gt</code> - Greater than</li>
+            <li><code>$gte</code> - Greater than or equal to</li>
+            <li><code>$lt</code> - Less than</li>
+            <li><code>$lte</code> - Less than or equal to</li>
+            <li><code>$in</code> - Value exists in array</li>
+            <li><code>$nin</code> - Value does not exist in array</li>
+            <li><code>$contains</code> - String contains substring</li>
+            <li><code>$and</code> - Logical AND of conditions</li>
+            <li><code>$or</code> - Logical OR of conditions</li>
+        </ul>
+
+        <h4>Webhook Endpoint Registration Example</h4>
+        <pre>
+POST /v1/webhooks
+{
+  "url": "https://merchant-site.com/webhook",
+  "description": "High value order notifications",
+  "event_filters": [
+    {
+      "event": "order.created",
+      "filter": {
+        "$and": [
+          { "data.order.total_amount": { "$gt": 200 } },
+          { "data.order.currency": "USD" },
+          { "data.order.items": { "$gt": 3 } }
+        ]
+      }
+    }
+  ]
+}</pre>
+    </div>
+
+    <!-- Solution to Exercise 3 (Initially Hidden) -->
+    <div class="solution-content" id="solution3">
+        <h3>Solution to Exercise 3: Conditional Webhook Triggers Documentation</h3>
+
+        <h4>1. Introduction to Conditional Webhooks</h4>
+        <p>Our conditional webhook system allows you to receive notifications only when specific criteria are met, helping you:</p>
+        <ul>
+            <li>Reduce webhook traffic by filtering out irrelevant events</li>
+            <li>Create targeted integrations for specific business scenarios</li>
+            <li>Process only the data that matters to your workflow</li>
+            <li>Implement complex business logic directly in your webhook subscriptions</li>
+        </ul>
+
+        <div class="tip-box">
+            <p><strong>Pro Tip:</strong> Instead of handling filtering logic in your application, offload it to our webhook filtering system to reduce unnecessary traffic and processing.</p>
+        </div>
+
+        <h4>2. Setting Up Conditional Webhook Triggers</h4>
+        <p>To create a webhook with conditional triggers, you'll use the <code>/v1/webhooks</code> endpoint with an <code>event_filters</code> array that defines your conditions:</p>
+
+        <h5>Basic Setup</h5>
+        <pre>
+POST /v1/webhooks
+{
+  "url": "https://your-endpoint.com/webhooks",
+  "description": "Order notifications for electronics",
+  "event_filters": [
+    {
+      "event": "order.created",
+      "filter": {
+        "data.order.items.category": "electronics"
+      }
+    }
+  ]
+}</pre>
+
+        <p>Each entry in the <code>event_filters</code> array contains:</p>
+        <ul>
+            <li><code>event</code>: The webhook event type to filter</li>
+            <li><code>filter</code>: A JSON object defining the conditions that must be met to trigger the webhook</li>
+        </ul>
+
+        <h4>3. Filter Expression Syntax</h4>
+        <p>Our filter expression syntax uses a path-based approach to access nested properties in webhook payloads, combined with comparison operators.</p>
+
+        <h5>Property Paths</h5>
+        <p>Use dot notation to access nested fields in the payload:</p>
+        <ul>
+            <li><code>data.order.id</code> - Accesses the order ID</li>
+            <li><code>data.customer.email</code> - Accesses the customer email</li>
+            <li><code>data.order.items[0].sku</code> - Accesses the SKU of the first item</li>
+        </ul>
+
+        <h5>Comparison Operators</h5>
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td><code>$eq</code></td>
+                <td>Equal to (default if operator omitted)</td>
+                <td><code>{"data.order.status": {"$eq": "shipped"}}</code> or simply <code>{"data.order.status": "shipped"}</code></td>
+            </tr>
+            <tr>
+                <td><code>$ne</code></td>
+                <td>Not equal to</td>
+                <td><code>{"data.order.status": {"$ne": "canceled"}}</code></td>
+            </tr>
+            <tr>
+                <td><code>$gt</code></td>
+                <td>Greater than</td>
+                <td><code>{"data.order.total_amount": {"$gt": 100}}</code></td>
+            </tr>
+            <tr>
+                <td><code>$gte</code></td>
+                <td>Greater than or equal to</td>
+                <td><code>{"data.order.items.length": {"$gte": 5}}</code></td>
+            </tr>
+            <tr>
+                <td><code>$lt</code></td>
+                <td>Less than</td>
+                <td><code>{"data.product.inventory": {"$lt": 10}}</code></td>
+            </tr>
+            <tr>
+                <td><code>$lte</code></td>
+                <td>Less than or equal to</td>
+                <td><code>{"data.order.shipping_weight": {"$lte": 20}}</code></td>
+            </tr>
+            <tr>
+                <td><code>$in</code></td>
+                <td>Value exists in array</td>
+                <td><code>{"data.order.tags": {"$in": ["urgent", "priority"]}}</code></td>
+            </tr>
+            <tr>
+                <td><code>$nin</code></td>
+                <td>Value does not exist in array</td>
+                <td><code>{"data.order.status": {"$nin": ["canceled", "refunded"]}}</code></td>
+            </tr>
+            <tr>
+                <td><code>$contains</code></td>
+                <td>String contains substring</td>
+                <td><code>{"data.product.description": {"$contains": "limited edition"}}</code></td>
+            </tr>
+        </table>
+
+        <h5>Logical Operators</h5>
+        <p>Combine multiple conditions using logical operators:</p>
+
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td><code>$and</code></td>
+                <td>All conditions must be true</td>
+                <td><pre>{"$and": [
+  {"data.order.total": {"$gt": 100}},
+  {"data.order.items.length": {"$gt": 5}}
+]}</pre></td>
+            </tr>
+            <tr>
+                <td><code>$or</code></td>
+                <td>At least one condition must be true</td>
+                <td><pre>{"$or": [
+  {"data.customer.tier": "vip"},
+  {"data.order.total": {"$gt": 500}}
+]}</pre></td>
+            </tr>
+        </table>
+
+        <h4>4. Complex Filter Examples</h4>
+
+        <h5>Example 1: High-value international orders</h5>
+        <div class="filter-example">
+        <pre>
+{
+  "event": "order.created",
+  "filter": {
+    "$and": [
+      { "data.order.total_amount": { "$gt": 200 } },
+      { "data.order.currency": { "$ne": "USD" } },
+      { "data.order.shipping.country": { "$ne": "US" } }
+    ]
+  }
+}</pre>
+        </div>
+
+        <h5>Example 2: Low inventory alerts for popular products</h5>
+        <div class="filter-example">
+        <pre>
+{
+  "event": "product.updated",
+  "filter": {
+    "$and": [
+      { "data.product.inventory": { "$lt": 10 } },
+      { "$or": [
+        { "data.product.category": "electronics" },
+        { "data.product.tags": { "$in": ["bestseller", "featured"] } }
+      ]}
+    ]
+  }
+}</pre>
+        </div>
+
+        <h5>Example 3: VIP customer purchases in specific categories</h5>
+        <div class="filter-example">
+        <pre>
+{
+  "event": "order.created",
+  "filter": {
+    "$and": [
+      { "data.customer.tier": "vip" },
+      { "data.order.items": { 
+        "$contains": { "category": { "$in": ["jewelry", "luxury"] } }
+      }}
+    ]
+  }
+}</pre>
+        </div>
+
+        <h4>5. Best Practices for Filter Design</h4>
+        <ol>
+            <li><strong>Keep filters specific</strong> - Target only the events you actually need to process</li>
+            <li><strong>Limit complexity</strong> - Overly complex filters can impact webhook delivery performance</li>
+            <li><strong>Use a logical structure</strong> - Group related conditions with logical operators for clarity</li>
+            <li><strong>Test your filters</strong> - Use our webhook testing endpoint to verify filter behavior before deployment</li>
+            <li><strong>Consider fallbacks</strong> - Create a separate webhook subscription for critical events without filters</li>
+        </ol>
+
+        <h4>6. Limitations and Performance Considerations</h4>
+        
+        <table>
+            <tr>
+                <th>Limitation</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td>Maximum filter depth</td>
+                <td>Up to 5 levels of nested properties</td>
+            </tr>
+            <tr>
+                <td>Maximum logical operators</td>
+                <td>Up to 10 AND/OR conditions per filter</td>
+            </tr>
+            <tr>
+                <td>Maximum filter expressions</td>
+                <td>Up to 20 expressions per webhook subscription</td>
+            </tr>
+            <tr>
+                <td>Array filtering</td>
+                <td>Only basic array operations supported (no custom array filtering)</td>
+            </tr>
+        </table>
+
+        <div class="note-box">
+            <p><strong>Performance Note:</strong> Complex filters may slightly increase webhook processing time. For time-sensitive applications, use simpler filters or consider subscribing to unfiltered events.</p>
+        </div>
+
+        <h4>7. Testing Conditional Webhooks</h4>
+        <p>To test your conditional webhook filters before implementing them in production:</p>
+        <pre>
+POST /v1/webhooks/test
+{
+  "event": "order.created",
+  "filter": {
+    "data.order.total_amount": { "$gt": 100 }
+  },
+  "sample_payload": {
+    "data": {
+      "order": {
+        "id": "ord_test_123",
+        "total_amount": 125.50,
+        "currency": "USD"
+      }
+    }
+  }
+}</pre>
+        <p>The response will indicate whether the filter would match the sample payload and trigger a webhook notification.</p>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution3").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html> 

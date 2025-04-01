@@ -1,0 +1,124 @@
+<div class="support-feedback-container">
+  <div class="support-feedback-grid">
+    <div class="support-section">
+      <div class="support-content">
+        <div class="support-icon">
+          <i class="fas fa-coffee"></i>
+        </div>
+        <h4>Found value in the course?</h4>
+        <p>Your support fuels my work!</p>
+        <a href="https://www.buymeacoffee.com/gauravtrivedi" target="_blank" class="support-button">
+          <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: 180px !important; border:none;">
+        </a>
+      </div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-content">
+        <div class="feedback-icon">
+          <i class="fas fa-comment-dots"></i>
+        </div>
+        <h4>Have an issue?</h4>
+        <p>Help improve the course by <a href="https://github.com/gautriv/apidocumentation/issues/new" target="_blank">reporting an issue</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.support-feedback-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.support-feedback-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.support-section,
+.feedback-section {
+  text-align: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.support-section:hover,
+.feedback-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.support-icon,
+.feedback-icon {
+  font-size: 2rem;
+  color: #3b82f6;
+  margin-bottom: 1rem;
+}
+
+.support-content h4,
+.feedback-content h4 {
+  color: #1e293b;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.support-content p,
+.feedback-content p {
+  color: #64748b;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.support-button {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.support-button:hover {
+  transform: translateY(-2px);
+}
+
+.feedback-content a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.feedback-content a:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .support-feedback-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .support-section,
+  .feedback-section {
+    padding: 1.25rem;
+  }
+
+  .support-icon,
+  .feedback-icon {
+    font-size: 1.75rem;
+  }
+
+  .support-content h4,
+  .feedback-content h4 {
+    font-size: 1.1rem;
+  }
+}
+</style> 

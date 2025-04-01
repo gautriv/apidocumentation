@@ -1,0 +1,40 @@
+<!-- Appreciate Modal -->
+<div class="modal" id="appreciateModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Thank you!!!</h2>
+                <button type="button" class="close-modal" aria-label="Close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="appreciate">
+                    <p>Do you like the content and courses on this blog? Research, testing, and writing require a considerable amount of time. Do you want to appreciate and help me in maintaining this blog?</p>
+                </div>
+
+                <div class="appreciate2">
+                    <div class="payment-buttons">
+                        <button class="btn btn-primary" data-toggle="collapse" data-target="#TypeOne">
+                            <i class="fas fa-qrcode"></i> UPI
+                        </button>
+                        <span class="or-text">Or</span>
+                        <button class="btn btn-primary" data-toggle="collapse" data-target="#TypeTwo">
+                            <i class="fas fa-mug-hot"></i> Buy me a coffee!
+                        </button>
+                    </div>
+
+                    <div class="collapse" id="TypeOne">
+                        <div class="card card-body">
+                            <img src="https://beingtechnicalwriter.s3.ap-south-1.amazonaws.com/images/QRCode.jpeg" alt="UPI" class="qr-code">
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="TypeTwo">
+                        <div class="card card-body">
+                            {% include coffee.html %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

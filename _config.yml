@@ -1,58 +1,86 @@
-plugins:
-  - jekyll-feed
-  - jekyll-seo
-  - jemoji
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
 
-destination: _site
-highlighter: rouge
+title: API Documentation Course
+description: >-
+  A comprehensive course on creating world-class API documentation for developers.
+  Learn how to document RESTful APIs, OpenAPI/Swagger, and more.
+baseurl: "/apidocumentation" # the subpath of your site, e.g. /blog
+url: "https://beingtechnicalwriter.com" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Build settings
 markdown: kramdown
+highlighter: rouge
 kramdown:
   input: GFM
-  auto_ids: true
   syntax_highlighter: rouge
+permalink: pretty
 
-site_title: API Documentation - A step by step guide for technical writers
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
+# SEO settings
+twitter:
+  username: yourusername
+  card: summary
+social:
+  name: Your Company
+  links:
+    - https://twitter.com/yourusername
+    - https://www.facebook.com/yourcompany
+    - https://www.linkedin.com/company/yourcompany
+    - https://github.com/yourcompany
+
+# Exclude from processing
 exclude:
-  - .gitignore
-  - vendor
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - README.md
 
 # Collections
 collections:
   docs:
     output: true
-  slides:
-    output: true
-  smartphones: 
-    output: true
+    permalink: /:basename/
 
+# Default layouts
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
-      type: "pages"
+      type: "docs"
     values:
-      layout: "page"
-      comments: true
-      search: true
-      sidebar: home_sidebar
-      topnav: topnav
-      
-sidebars:
-- sidebar
-
-
-####### jekyll seo tag configuration #######
-title: API Documentation
-tagline: A step by step guide for technical writers
-description: A course for technical writers looking to learn each and every aspect of API documentation.
-
-url: https://beingtechnicalwriter.com/apidocumentation
-social:
-  name: Gaurav Trivedi
-  links:
-    - https://www.linkedin.com/in/gauravtrivedi1988/
-    - https://github.com/gautriv/
-
-lang: en_US
-
+      layout: "doc"
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"

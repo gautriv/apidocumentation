@@ -1,0 +1,176 @@
+{% comment %}
+    Enhanced Trivia Template - A versatile, modern trivia/fact component
+    
+    Parameters:
+    - content: The main content of the trivia fact (required)
+    - title: Optional custom title (default: "Did You Know?")
+    - icon: Custom icon class from Font Awesome (default: fa-lightbulb-o)
+    - type: Style variant (fun, tech, history, mind-blowing, important) (default: fun)
+    - animate: Boolean to enable entrance animation (default: true)
+    - theme: Visual theme (light, dark, gradient) (default: gradient)
+{% endcomment %}
+
+<div class="trivia-container 
+    trivia-type-{% if include.type %}{{ include.type }}{% else %}fun{% endif %} 
+    {% if include.theme %}trivia-theme-{{ include.theme }}{% else %}trivia-theme-gradient{% endif %}
+    {% if include.animate != false %}trivia-animate{% endif %}">
+    
+    <div class="trivia-icon">
+        <i class="fa {% if include.icon %}{{ include.icon }}{% else %}fa-lightbulb-o{% endif %}"></i>
+    </div>
+    
+    <div class="trivia-content">
+        <div class="trivia-title">
+            {% if include.title %}{{ include.title }}{% else %}Did You Know?{% endif %}
+        </div>
+        <div class="trivia-text">
+            {{ include.content }}
+        </div>
+    </div>
+</div>
+
+<style>
+/* Base trivia container */
+.trivia-container {
+    display: flex;
+    margin: 2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trivia-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon section */
+.trivia-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    font-size: 2rem;
+    padding: 1.5rem;
+    color: white;
+}
+
+/* Content section */
+.trivia-content {
+    flex: 1;
+    padding: 1.5rem;
+}
+
+.trivia-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+}
+
+.trivia-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Animation */
+@keyframes trivia-fade-in {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.trivia-animate {
+    animation: trivia-fade-in 0.8s ease-out forwards;
+}
+
+/* Type variants */
+.trivia-type-fun .trivia-icon {
+    background-color: #FFAE42;
+}
+
+.trivia-type-tech .trivia-icon {
+    background-color: #2C7BE5;
+}
+
+.trivia-type-history .trivia-icon {
+    background-color: #8B4513;
+}
+
+.trivia-type-mind-blowing .trivia-icon {
+    background-color: #9C27B0;
+}
+
+.trivia-type-important .trivia-icon {
+    background-color: #D73A49;
+}
+
+/* Theme variants */
+.trivia-theme-light {
+    background-color: #FFFFFF;
+    color: #2E3338;
+    border-left: 6px solid transparent;
+}
+
+.trivia-theme-light.trivia-type-fun {
+    border-color: #FFAE42;
+}
+
+.trivia-theme-light.trivia-type-tech {
+    border-color: #2C7BE5;
+}
+
+.trivia-theme-light.trivia-type-history {
+    border-color: #8B4513;
+}
+
+.trivia-theme-light.trivia-type-mind-blowing {
+    border-color: #9C27B0;
+}
+
+.trivia-theme-light.trivia-type-important {
+    border-color: #D73A49;
+}
+
+.trivia-theme-dark {
+    background-color: #2D3748;
+    color: #F7FAFC;
+}
+
+.trivia-theme-gradient.trivia-type-fun {
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,240,210,1) 100%);
+    color: #2E3338;
+}
+
+.trivia-theme-gradient.trivia-type-tech {
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(230,240,255,1) 100%);
+    color: #2E3338;
+}
+
+.trivia-theme-gradient.trivia-type-history {
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,235,225,1) 100%);
+    color: #2E3338;
+}
+
+.trivia-theme-gradient.trivia-type-mind-blowing {
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,230,255,1) 100%);
+    color: #2E3338;
+}
+
+.trivia-theme-gradient.trivia-type-important {
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,235,235,1) 100%);
+    color: #2E3338;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .trivia-container {
+        flex-direction: column;
+    }
+    
+    .trivia-icon {
+        min-width: 100%;
+        padding: 1rem;
+    }
+}
+</style> 

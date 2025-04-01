@@ -1,0 +1,264 @@
+/* Privacy Policy Page Styles */
+
+/* Hero Section */
+.privacy-hero {
+    position: relative;
+    background: linear-gradient(135deg, #98b6e0 0%, #4479ea 100%);
+    color: white;
+    padding: 100px 0 70px;
+    border-radius: 0 0 30px 30px;
+    overflow: hidden;
+    margin-bottom: 60px;
+  }
+
+.privacy-hero .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.privacy-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(255,255,255,0.03)"/></svg>');
+  background-size: 100px 100px;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.page-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.text-muted {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-top: 0;
+  font-style: italic;
+  animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+/* Main Content */
+.privacy-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.privacy-content {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 40px;
+  margin-bottom: 60px;
+}
+
+.privacy-block {
+  margin-bottom: 40px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 40px;
+}
+
+.privacy-block:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.privacy-block h2 {
+  font-size: 1.8rem;
+  color: #2a4365;
+  margin-bottom: 20px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.privacy-block h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #3182ce, #4299e1);
+  border-radius: 3px;
+}
+
+.privacy-block h3 {
+  font-size: 1.3rem;
+  color: #2c5282;
+  margin: 25px 0 15px;
+  font-weight: 600;
+}
+
+.privacy-block p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+.privacy-block ul {
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+
+.privacy-block li {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #4a5568;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 5px;
+}
+
+.privacy-block a {
+  color: #3182ce;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px dotted #3182ce;
+  transition: all 0.2s ease;
+}
+
+.privacy-block a:hover {
+  color: #2c5282;
+  border-bottom-color: #2c5282;
+}
+
+/* Table of Contents */
+.privacy-toc {
+  background-color: #f8fafc;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 40px;
+  border-left: 4px solid #3182ce;
+}
+
+.toc-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2a4365;
+  margin-bottom: 20px;
+}
+
+.toc-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  columns: 2;
+  column-gap: 30px;
+}
+
+.toc-item {
+  margin-bottom: 12px;
+  break-inside: avoid;
+}
+
+.toc-link {
+  display: inline-block;
+  color: #4a5568;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.4;
+  padding: 5px 0;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.toc-link:hover {
+  color: #3182ce;
+  border-bottom-color: #3182ce;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    color: #000;
+    background: #fff;
+  }
+  
+  .privacy-hero {
+    background: none;
+    color: #000;
+    padding: 20px 0;
+    margin-bottom: 30px;
+  }
+  
+  .privacy-content {
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  .page-title {
+    font-size: 24pt;
+  }
+  
+  .privacy-block h2 {
+    font-size: 18pt;
+    page-break-after: avoid;
+  }
+  
+  .privacy-block h3 {
+    font-size: 14pt;
+    page-break-after: avoid;
+  }
+  
+  .privacy-block {
+    page-break-inside: avoid;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.2rem;
+  }
+  
+  .privacy-hero {
+    padding: 60px 0 40px;
+  }
+  
+  .privacy-content {
+    padding: 30px 20px;
+  }
+  
+  .privacy-block h2 {
+    font-size: 1.6rem;
+  }
+  
+  .privacy-block h3 {
+    font-size: 1.2rem;
+  }
+  
+  .toc-list {
+    columns: 1;
+  }
+} 

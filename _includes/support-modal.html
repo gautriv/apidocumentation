@@ -1,0 +1,196 @@
+<div class="modal" id="supportModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Support This Project</h2>
+                <button type="button" class="close-modal" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="appreciate">
+                    <p>If you found this documentation helpful, consider supporting the project to help maintain and improve it!</p>
+                </div>
+                
+                <div class="payment-buttons">
+                    {% include coffee.html %}
+                    <span class="or-text">or</span>
+                    <button type="button" data-toggle="collapse" data-target="#cryptoSupport" class="btn btn-secondary">
+                        Crypto
+                    </button>
+                </div>
+                
+                <div class="collapse" id="cryptoSupport">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Scan this QR code to send BTC:</p>
+                            <p><small>bc1q8s6u4jgpxnhanq7xmup57qkylkrwgqq3hgq6yz</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.modal-dialog {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal.active .modal-dialog {
+    transform: translateY(0);
+}
+
+.modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #1e293b;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #64748b;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.close-modal:hover {
+    color: #1e293b;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.appreciate {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.appreciate p {
+    color: #64748b;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.payment-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.or-text {
+    color: #64748b;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-secondary {
+    background: #475569;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: #334155;
+}
+
+.card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-body p {
+    margin: 0;
+    color: #64748b;
+}
+
+.card-body small {
+    color: #94a3b8;
+    font-family: 'Roboto Mono', monospace;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('supportModal');
+    const closeBtn = modal.querySelector('.close-modal');
+    const supportBtn = document.querySelector('[data-target="#supportModal"]');
+
+    function openModal() {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    supportBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+});
+</script> 

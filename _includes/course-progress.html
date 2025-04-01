@@ -1,0 +1,201 @@
+<div class="course-progress">
+  <div class="progress-header">
+    <div class="progress-icon">
+      <i class="fas fa-graduation-cap"></i>
+    </div>
+    <div class="progress-message">Start your learning journey!</div>
+  </div>
+  
+  <div class="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+  
+  <div class="progress-info">
+    <div class="progress-stats">
+      <span class="progress-text">Course Progress</span>
+      <span class="progress-percentage">0%</span>
+    </div>
+    <div class="progress-details">
+      <span class="completed-pages">0</span> of <span class="total-pages">0</span> pages completed
+    </div>
+  </div>
+</div>
+
+<style>
+.course-progress {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.progress-icon {
+  width: 40px;
+  height: 40px;
+  background: #eff6ff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-icon i {
+  font-size: 1.25rem;
+  color: #3b82f6;
+}
+
+.progress-message {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1e293b;
+  transition: color 0.3s ease;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.progress-text {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.progress-percentage {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 1rem;
+}
+
+.progress-details {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.completed-pages {
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+.total-pages {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Progress message states */
+.progress-message[data-progress="0"] {
+  color: #64748b;
+}
+
+.progress-message[data-progress="25"] {
+  color: #3b82f6;
+}
+
+.progress-message[data-progress="50"] {
+  color: #10b981;
+}
+
+.progress-message[data-progress="75"] {
+  color: #8b5cf6;
+}
+
+.progress-message[data-progress="100"] {
+  color: #f59e0b;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get unique documentation pages only
+  const allLinks = Array.from(document.querySelectorAll('.sidebar-nav a'));
+  
+  // Filter out duplicate links by URL and exclude non-content links
+  const uniqueLinks = allLinks.filter((link, index, self) => {
+    const href = link.getAttribute('href');
+    // Skip index/home pages and check for duplicates
+    return href && 
+           !href.includes('index.html') &&
+           !href.includes('documentation.html') &&
+           index === self.findIndex(l => l.getAttribute('href') === href);
+  });
+  
+  const totalPages = uniqueLinks.length;
+  
+  // Get completed pages from localStorage
+  const completedPages = JSON.parse(localStorage.getItem('completedPages') || '[]');
+  const currentPage = window.location.pathname;
+  
+  // Mark current page as completed if not already
+  if (!completedPages.includes(currentPage)) {
+    completedPages.push(currentPage);
+    localStorage.setItem('completedPages', JSON.stringify(completedPages));
+  }
+  
+  // Calculate progress - ensure it never exceeds 100%
+  const uniqueCompletedPages = [...new Set(completedPages)];
+  const progress = Math.min((uniqueCompletedPages.length / totalPages) * 100, 100);
+  
+  // Update progress bar
+  document.querySelector('.progress-fill').style.width = `${progress}%`;
+  
+  // Update percentage
+  document.querySelector('.progress-percentage').textContent = `${Math.round(progress)}%`;
+  
+  // Update page count
+  document.querySelector('.completed-pages').textContent = Math.min(uniqueCompletedPages.length, totalPages);
+  document.querySelector('.total-pages').textContent = totalPages;
+  
+  // Update progress message
+  const progressMessage = document.querySelector('.progress-message');
+  if (progress === 0) {
+    progressMessage.textContent = "Start your learning journey!";
+    progressMessage.setAttribute('data-progress', '0');
+  } else if (progress < 25) {
+    progressMessage.textContent = "Great start! Keep going!";
+    progressMessage.setAttribute('data-progress', '25');
+  } else if (progress < 50) {
+    progressMessage.textContent = "You're making good progress!";
+    progressMessage.setAttribute('data-progress', '50');
+  } else if (progress < 75) {
+    progressMessage.textContent = "You're more than halfway there!";
+    progressMessage.setAttribute('data-progress', '75');
+  } else if (progress < 100) {
+    progressMessage.textContent = "Almost there! Keep pushing!";
+    progressMessage.setAttribute('data-progress', '75');
+  } else {
+    progressMessage.textContent = "Congratulations! You've completed the course! 🎉";
+    progressMessage.setAttribute('data-progress', '100');
+  }
+});
+</script> 

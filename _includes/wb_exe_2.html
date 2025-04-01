@@ -5,44 +5,110 @@
     <style>
         /* Styling for buttons */
         .exercise-button, .solution-button {
-            background-color: #007bff;
+            background-color: #4a6ef5;
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px 24px;
             cursor: pointer;
             border: none;
-            border-radius: 10px;
-            margin: 10px;
+            border-radius: 8px;
+            margin: 12px 8px;
             display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .exercise-button:hover, .solution-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .exercise-button {
+            background-color: #4a6ef5;
+        }
+        
+        .solution-button {
+            background-color: #28a745;
         }
 
         /* Hidden content by default */
         .exercise-content, .solution-content {
             display: none;
-            padding: 15px;
-            border: 1px solid #ccc;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
             background-color: #f9f9f9;
-            border-radius: 10px;
-            margin: 10px;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .exercise-content h3, .solution-content h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         /* Table styling */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         table, th, td {
-            border: 1px solid #ccc;
+            border: 1px solid #e0e0e0;
         }
 
         th, td {
-            padding: 10px;
+            padding: 12px 15px;
             text-align: left;
         }
 
         th {
-            background-color: #f0f0f0;
+            background-color: #f0f5ff;
+            font-weight: bold;
+            color: #344563;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8fafd;
+        }
+        
+        /* Code block styling */
+        pre {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #4a6ef5;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+        
+        /* List styling */
+        ul {
+            padding-left: 25px;
+        }
+        
+        ul li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        /* Highlight important text */
+        strong {
+            color: #2c3e50;
+        }
+        
+        code {
+            background-color: #f0f4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
         }
     </style>
 </head>
@@ -54,7 +120,7 @@
     <!-- Exercise 2 Content (Initially Hidden) -->
     <div class="exercise-content" id="exercise2">
         <h3>Exercise 2: Documenting Multiple Webhook Events (API-based Registration)</h3>
-        <p><strong>Scenario:</strong> You are documenting webhooks for an **order tracking system** that sends updates when an order's status changes.</p>
+        <p><strong>Scenario:</strong> You are documenting webhooks for an <strong>order tracking system</strong> that sends updates when an order's status changes.</p>
 
         <p><strong>Your Task:</strong> Document the following webhook events:</p>
         <ul>
@@ -66,12 +132,11 @@
         <h4>Webhook Registration</h4>
         <p>Developers register their webhook using the following API endpoint:</p>
         <pre>
-        POST /webhooks/register
-        {
-            "events": ["order.placed", "order.shipped", "order.delivered"],
-            "url": "https://yourwebhookurl.com/order-tracking"
-        }
-        </pre>
+POST /webhooks/register
+{
+    "events": ["order.placed", "order.shipped", "order.delivered"],
+    "url": "https://yourwebhookurl.com/order-tracking"
+}</pre>
 
         <h4>Webhook Event Details</h4>
         <p><strong>Endpoint:</strong> <code>POST /webhooks/order-tracking</code></p>
@@ -79,20 +144,19 @@
 
         <h5>Example Webhook Payload</h5>
         <pre>
-        {
-            "event": "order.shipped",
-            "data": {
-                "order_id": "ORD67890",
-                "customer": {
-                    "name": "John Doe",
-                    "email": "john@example.com"
-                },
-                "status": "shipped",
-                "tracking_number": "TRACK12345",
-                "expected_delivery": "2024-03-05T12:00:00Z"
-            }
-        }
-        </pre>
+{
+    "event": "order.shipped",
+    "data": {
+        "order_id": "ORD67890",
+        "customer": {
+            "name": "John Doe",
+            "email": "john@example.com"
+        },
+        "status": "shipped",
+        "tracking_number": "TRACK12345",
+        "expected_delivery": "2024-03-05T12:00:00Z"
+    }
+}</pre>
     </div>
 
     <!-- Solution to Exercise 2 (Initially Hidden) -->
@@ -100,16 +164,15 @@
         <h3>Solution to Exercise 2</h3>
 
         <h4>1. Overview</h4>
-        <p>The **Order Tracking Webhooks** notify subscribed systems when an order moves through various stages: placed, shipped, and delivered.</p>
+        <p>The <strong>Order Tracking Webhooks</strong> notify subscribed systems when an order moves through various stages: placed, shipped, and delivered.</p>
 
         <h4>2. Webhook Registration</h4>
         <p>Developers must register their webhook URL using the following request:</p>
         <pre>
-        curl -X POST "https://api.webhookexample.com/webhook/register" \
-        -H "Authorization: Bearer your_token" \
-        -H "Content-Type: application/json" \
-        -d '{"events": ["order.placed", "order.shipped", "order.delivered"], "callback_url": "https://client.com/webhook-receiver"}'
-        </pre>
+curl -X POST "https://api.webhookexample.com/webhook/register" \
+-H "Authorization: Bearer your_token" \
+-H "Content-Type: application/json" \
+-d '{"events": ["order.placed", "order.shipped", "order.delivered"], "callback_url": "https://client.com/webhook-receiver"}'</pre>
 
         <h4>3. Webhook Events</h4>
         <table>
@@ -119,46 +182,45 @@
                 <th>Description</th>
             </tr>
             <tr>
-                <td>order.placed</td>
+                <td><code>order.placed</code></td>
                 <td>When an order is placed</td>
                 <td>Triggers when a customer successfully places an order.</td>
             </tr>
             <tr>
-                <td>order.shipped</td>
+                <td><code>order.shipped</code></td>
                 <td>When an order is shipped</td>
                 <td>Fires when an order is shipped from the warehouse.</td>
             </tr>
             <tr>
-                <td>order.delivered</td>
+                <td><code>order.delivered</code></td>
                 <td>When an order is delivered</td>
                 <td>Notifies when an order reaches the customer.</td>
             </tr>
         </table>
 
         <h4>4. Expected Response from Client</h4>
-        <p>The client must return a **200 OK** status to confirm successful processing of the webhook.</p>
+        <p>The client must return a <strong>200 OK</strong> status to confirm successful processing of the webhook.</p>
 
         <h4>5. Webhook Security - Verifying Webhooks</h4>
-        <p>Each webhook request includes an **X-Signature** header for verification.</p>
-        <p>Clients must compute an **HMAC-SHA256 hash** of the payload using their secret key and compare it with the received signature.</p>
+        <p>Each webhook request includes an <strong>X-Signature</strong> header for verification.</p>
+        <p>Clients must compute an <strong>HMAC-SHA256 hash</strong> of the payload using their secret key and compare it with the received signature.</p>
 
         <h4>6. Webhook Retry Policy</h4>
-        <p>If the webhook fails (does not return **200 OK**), the system **retries up to 3 times** with an increasing delay.</p>
+        <p>If the webhook fails (does not return <strong>200 OK</strong>), the system <strong>retries up to 3 times</strong> with an increasing delay.</p>
 
         <h4>7. Testing Webhooks</h4>
-        <p>Developers can use **Postman** or **cURL** to test webhook responses:</p>
+        <p>Developers can use <strong>Postman</strong> or <strong>cURL</strong> to test webhook responses:</p>
         <pre>
-        curl -X POST "https://yourwebhookurl.com/order-tracking" -H "Content-Type: application/json" -d '{
-            "event": "order.shipped",
-            "data": {
-                "order_id": "ORD67890",
-                "customer": {"name": "John Doe", "email": "john@example.com"},
-                "status": "shipped",
-                "tracking_number": "TRACK12345",
-                "expected_delivery": "2024-03-05T12:00:00Z"
-            }
-        }'
-        </pre>
+curl -X POST "https://yourwebhookurl.com/order-tracking" -H "Content-Type: application/json" -d '{
+    "event": "order.shipped",
+    "data": {
+        "order_id": "ORD67890",
+        "customer": {"name": "John Doe", "email": "john@example.com"},
+        "status": "shipped",
+        "tracking_number": "TRACK12345",
+        "expected_delivery": "2024-03-05T12:00:00Z"
+    }
+}'</pre>
     </div>
 
     <script>

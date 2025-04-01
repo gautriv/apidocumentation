@@ -1,0 +1,537 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #4a6ef5;
+            color: #fff;
+            padding: 12px 24px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            margin: 12px 8px;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .exercise-button:hover, .solution-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .exercise-button {
+            background-color: #4a6ef5;
+        }
+        
+        .solution-button {
+            background-color: #28a745;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .exercise-content h3, .solution-content h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #e0e0e0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f5ff;
+            font-weight: bold;
+            color: #344563;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8fafd;
+        }
+        
+        /* Code block styling */
+        pre {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #4a6ef5;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+        
+        /* List styling */
+        ul, ol {
+            padding-left: 25px;
+        }
+        
+        ul li, ol li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        /* Highlight important text */
+        strong {
+            color: #2c3e50;
+        }
+        
+        code {
+            background-color: #f0f4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        /* Diagram styling */
+        .system-diagram {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+        }
+        
+        .note-box {
+            background-color: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box {
+            background-color: #ffebee;
+            border-left: 5px solid #f44336;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 3 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise3')">Exercise 3</button>
+    <button class="solution-button" onclick="toggleSolution('solution3', 'exercise3')">Solution to Exercise 3</button>
+
+    <!-- Exercise 3 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise3">
+        <h3>Exercise 3: Documenting High-Throughput Webhook Systems</h3>
+        <p><strong>Scenario:</strong> You're documenting a <strong>high-volume cloud infrastructure platform</strong> that generates millions of events per minute across its vast customer base. The platform has implemented a sophisticated <strong>high-throughput webhook delivery system</strong> to handle this scale reliably.</p>
+
+        <p><strong>Key Challenge:</strong> You need to document the architecture, patterns, and best practices for extremely high-volume webhook delivery while explaining the inherent tradeoffs and implementation considerations.</p>
+
+        <h4>System Scale Overview</h4>
+        <ul>
+            <li><strong>Event Volume:</strong> 10+ million events generated per minute</li>
+            <li><strong>Webhook Throughput:</strong> 150,000+ deliveries per second during peak load</li>
+            <li><strong>Webhook Endpoints:</strong> 50,000+ registered across thousands of customers</li>
+            <li><strong>Global Distribution:</strong> Multi-region webhook processors with cross-region redundancy</li>
+            <li><strong>Delivery SLA:</strong> 99.99% delivery success for critical events within 30 seconds</li>
+        </ul>
+
+        <h4>High-Throughput Architecture</h4>
+        <div class="system-diagram">
+        <pre>
+┌──────────────┐   ┌───────────────┐   ┌─────────────────┐   ┌───────────────┐   ┌──────────────┐
+│ Event        │──▶│ Event         │──▶│ Priority-Based   │──▶│ Webhook       │──▶│ Customer     │
+│ Sources      │   │ Aggregators   │   │ Delivery Queues  │   │ Processors    │   │ Endpoints    │
+└──────────────┘   └───────────────┘   └─────────────────┘   └───────────────┘   └──────────────┘
+                         │                      ▲                     │
+                         ▼                      │                     ▼
+                   ┌───────────────┐     ┌─────────────────┐   ┌───────────────┐
+                   │ Event         │     │ Delivery        │   │ Webhook       │
+                   │ Partitioners  │────▶│ Schedulers      │◀──│ Analytics     │
+                   └───────────────┘     └─────────────────┘   └───────────────┘</pre>
+        </div>
+
+        <h4>Key System Components</h4>
+        <table>
+            <tr>
+                <th>Component</th>
+                <th>Description</th>
+                <th>Scale Characteristics</th>
+            </tr>
+            <tr>
+                <td>Event Aggregators</td>
+                <td>Collect and normalize events from distributed sources</td>
+                <td>Auto-scaling, region-aware ingestion points</td>
+            </tr>
+            <tr>
+                <td>Event Partitioners</td>
+                <td>Distribute events by customer, priority, and region</td>
+                <td>Consistent hashing for customer affinity</td>
+            </tr>
+            <tr>
+                <td>Delivery Queues</td>
+                <td>Priority-based event queuing with back-pressure handling</td>
+                <td>Multi-tiered queues with priority scheduling</td>
+            </tr>
+            <tr>
+                <td>Webhook Processors</td>
+                <td>Stateless workers that deliver webhooks to endpoints</td>
+                <td>Horizontally scaled delivery fleet with circuit breakers</td>
+            </tr>
+            <tr>
+                <td>Delivery Schedulers</td>
+                <td>Optimize delivery timing based on endpoint capacity</td>
+                <td>Adaptive rate control with endpoint learning</td>
+            </tr>
+        </table>
+
+        <h4>Throughput Optimization Strategies</h4>
+        <ul>
+            <li><strong>Event Batching:</strong> Combining multiple events into single webhook payloads</li>
+            <li><strong>Delivery Windowing:</strong> Aggregating events within time windows before delivery</li>
+            <li><strong>Dynamic Rate Limiting:</strong> Adjusting delivery rates based on endpoint responsiveness</li>
+            <li><strong>Fan-Out Architecture:</strong> Parallel webhook processing across multiple regions</li>
+            <li><strong>Adaptive Backoff:</strong> Intelligent retry mechanisms based on endpoint behavior patterns</li>
+        </ul>
+
+        <h4>Your Task</h4>
+        <p>Create comprehensive documentation that:</p>
+        <ol>
+            <li>Explains how the high-throughput webhook system works at scale</li>
+            <li>Details configuration options for customers with high event volumes</li>
+            <li>Documents best practices for building webhook consumers that can handle extreme volumes</li>
+            <li>Provides clear guidance on reliability trade-offs at different throughput levels</li>
+            <li>Includes example patterns for webhook processing at scale with code samples</li>
+        </ol>
+
+        <div class="warning-box">
+            <p><strong>Important:</strong> Your documentation must address both the technical implementation details and operational considerations that customers need to understand when receiving millions of webhooks.</p>
+        </div>
+    </div>
+
+    <!-- Solution to Exercise 3 (Initially Hidden) -->
+    <div class="solution-content" id="solution3">
+        <h3>Solution to Exercise 3: High-Throughput Webhook Documentation</h3>
+
+        <h4>1. High-Throughput Webhook Architecture</h4>
+        <p>Our high-throughput webhook system is designed to handle massive event volumes across our global infrastructure while maintaining reliability, ordering guarantees, and delivery SLAs.</p>
+
+        <h5>System Components and Data Flow</h5>
+        <div class="system-diagram">
+        <pre>
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                                Event Generation                               │
+└──────────────────────────────────────────────────────────────────────────────┘
+                   │                  │                   │
+                   ▼                  ▼                   ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                              Event Aggregation                                │
+│  ┌─────────────────┐    ┌─────────────────┐     ┌─────────────────┐          │
+│  │ Region A        │    │ Region B        │     │ Region C        │          │
+│  │ Aggregators     │    │ Aggregators     │     │ Aggregators     │          │
+└──┴─────────────────┴────┴─────────────────┴─────┴─────────────────┴──────────┘
+                   │                  │                   │
+                   ▼                  ▼                   ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                            Stream Processing Layer                            │
+│  ┌─────────────────┐    ┌─────────────────┐     ┌─────────────────┐          │
+│  │ Event           │    │ Filtering &amp;     │     │ Transformation │          │
+│  │ Partitioning    │───▶│ Enrichment      │────▶│ &amp; Normalization │          │
+└──┴─────────────────┴────┴─────────────────┴─────┴─────────────────┴──────────┘
+                                             │
+                                             ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                              Delivery Management                              │
+│  ┌─────────────────┐    ┌─────────────────┐     ┌─────────────────┐          │
+│  │ Priority        │    │ Rate            │     │ Batch           │          │
+│  │ Queuing         │───▶│ Control         │────▶│ Optimization    │          │
+└──┴─────────────────┴────┴─────────────────┴─────┴─────────────────┴──────────┘
+                                             │
+                                             ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                             Webhook Delivery Fleet                            │
+│  ┌─────────────────┐    ┌─────────────────┐     ┌─────────────────┐          │
+│  │ Region A        │    │ Region B        │     │ Region C        │          │
+│  │ Processors      │    │ Processors      │     │ Processors      │          │
+└──┴─────────────────┴────┴─────────────────┴─────┴─────────────────┴──────────┘
+                   │                  │                   │
+                   ▼                  ▼                   ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                            Customer Endpoints                                 │
+└──────────────────────────────────────────────────────────────────────────────┘</pre>
+        </div>
+
+        <p>This architecture enables us to handle extreme event volumes through several key mechanisms:</p>
+        <ul>
+            <li><strong>Event Partitioning:</strong> Consistent hashing ensures events for the same customer or resource are processed together</li>
+            <li><strong>Regional Processing:</strong> Events are processed in the region closest to the webhook destination</li>
+            <li><strong>Dynamic Scaling:</strong> Each component automatically scales based on current load and queue depth</li>
+            <li><strong>Multi-tiered Storage:</strong> Events flow through progressively more durable storage as they approach delivery</li>
+        </ul>
+
+        <div class="note-box">
+            <p><strong>Scale Note:</strong> Our webhook system is designed to handle sustained loads of 150,000+ webhook deliveries per second with the ability to burst to 300,000+ during peak periods without degradation.</p>
+        </div>
+
+        <h4>2. Configuration for High-Volume Recipients</h4>
+        <p>Enterprise customers receiving high webhook volumes can configure several parameters to optimize their webhook processing:</p>
+
+        <h5>Batching Configuration</h5>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Description</th>
+                <th>Recommended Setting</th>
+            </tr>
+            <tr>
+                <td>Batch Size</td>
+                <td>Maximum number of events in a single batch</td>
+                <td>100-1000 based on event complexity</td>
+            </tr>
+            <tr>
+                <td>Batch Window</td>
+                <td>Maximum time to wait before sending a batch</td>
+                <td>1-5 seconds for most use cases</td>
+            </tr>
+            <tr>
+                <td>Min Batch Size</td>
+                <td>Minimum events to collect before sending</td>
+                <td>10-50 for efficient processing</td>
+            </tr>
+            <tr>
+                <td>Batch Grouping</td>
+                <td>How to group events into batches</td>
+                <td>By event type or resource ID</td>
+            </tr>
+        </table>
+
+        <h5>Rate Control Configuration</h5>
+        <pre>
+// Example webhook configuration for high-volume endpoint
+PATCH /api/v2/webhook-endpoints/{endpoint_id}
+{
+  "high_volume_settings": {
+    "delivery_mode": "optimized_throughput",
+    "max_concurrent_requests": 50,
+    "batching": {
+      "enabled": true,
+      "max_size": 500,
+      "window_seconds": 2,
+      "min_size": 25,
+      "group_by": "event_type"
+    },
+    "rate_limits": {
+      "max_requests_per_second": 100,
+      "enable_adaptive_throttling": true,
+      "burst_factor": 1.5
+    },
+    "connection_pooling": {
+      "pool_size": 25,
+      "keep_alive_seconds": 120
+    }
+  }
+}</pre>
+
+        <h4>3. Building High-Volume Webhook Consumers</h4>
+        <p>To handle extremely high webhook volumes, implement these architectural patterns in your webhook consumers:</p>
+
+        <h5>Consumer Architecture Patterns</h5>
+        <ul>
+            <li><strong>Asynchronous Processing:</strong> Immediately acknowledge receipt, then process asynchronously</li>
+            <li><strong>Queue-Based Architecture:</strong> Place incoming webhooks into internal queues for processing</li>
+            <li><strong>Worker Pool Model:</strong> Use a pool of workers to process webhooks in parallel</li>
+            <li><strong>Circuit Breakers:</strong> Implement circuit breakers for downstream dependencies</li>
+            <li><strong>Graceful Degradation:</strong> Design systems to prioritize critical events during load spikes</li>
+        </ul>
+
+        <h5>Example: High-Performance Webhook Consumer</h5>
+        <pre>
+// Node.js example with worker threads for parallelism
+const express = require('express');
+const { Worker, isMainThread, parentPort, workerData } = require('worker_threads');
+const app = express();
+const WORKER_COUNT = 10;
+
+// Create worker pool
+const workers = [];
+for (let i = 0; i < WORKER_COUNT; i++) {
+  workers.push(new Worker('./webhook_worker.js'));
+}
+
+// Simple round-robin distribution
+let currentWorker = 0;
+
+// Webhook endpoint - quickly acknowledge receipt
+app.post('/webhooks/high-volume', express.json({ limit: '10mb' }), (req, res) => {
+  // Immediately acknowledge receipt
+  res.status(202).send({ received: true });
+  
+  // Queue validation (perform minimal synchronous validation)
+  const event = req.body;
+  if (!validateSignature(event, req.headers)) {
+    console.error('Invalid webhook signature');
+    return;
+  }
+  
+  // Dispatch to worker for processing
+  workers[currentWorker].postMessage(event);
+  currentWorker = (currentWorker + 1) % WORKER_COUNT;
+});
+
+// webhook_worker.js - processes events in separate threads
+if (!isMainThread) {
+  parentPort.on('message', async (event) => {
+    try {
+      // Group multiple events if this is a batch webhook
+      const events = event.batch === true ? event.events : [event];
+      
+      // Process each event with appropriate backpressure
+      const eventQueue = events.map(e => processEvent(e));
+      await Promise.all(eventQueue);
+    } catch (error) {
+      console.error('Error processing webhook batch:', error);
+    }
+  });
+  
+  async function processEvent(event) {
+    // Process based on event type with appropriate throttling
+    // for downstream systems...
+  }
+}</pre>
+
+        <h4>4. Reliability Trade-offs at Scale</h4>
+        <p>When operating at extreme scales, certain trade-offs become necessary. Here's how our system balances these concerns:</p>
+
+        <table>
+            <tr>
+                <th>Factor</th>
+                <th>Trade-off</th>
+                <th>Our Approach</th>
+            </tr>
+            <tr>
+                <td>Real-time vs. Throughput</td>
+                <td>Higher throughput typically increases latency</td>
+                <td>Event prioritization with different SLAs by event importance</td>
+            </tr>
+            <tr>
+                <td>Ordering vs. Parallelism</td>
+                <td>Strict ordering limits parallelism</td>
+                <td>Consistent partitioning preserves order within meaningful boundaries</td>
+            </tr>
+            <tr>
+                <td>Retry Aggressiveness</td>
+                <td>More retries increase reliability but can overload recipients</td>
+                <td>Adaptive retry policies based on endpoint health metrics</td>
+            </tr>
+            <tr>
+                <td>Batching Level</td>
+                <td>Larger batches improve efficiency but increase per-failure impact</td>
+                <td>Dynamic batch sizing based on event types and endpoint performance</td>
+            </tr>
+            <tr>
+                <td>Delivery Guarantees</td>
+                <td>Stronger guarantees require more resources</td>
+                <td>Tiered guarantees: at-least-once for all, exactly-once for critical events</td>
+            </tr>
+        </table>
+
+        <h5>SLA and Performance Expectations</h5>
+        <p>Our webhook delivery guarantees vary by event priority level:</p>
+        <ul>
+            <li><strong>P0 (Critical)</strong>: 99.99% delivery within 30 seconds, retries for up to 24 hours</li>
+            <li><strong>P1 (High)</strong>: 99.9% delivery within 1 minute, retries for up to 12 hours</li>
+            <li><strong>P2 (Standard)</strong>: 99.5% delivery within 5 minutes, retries for up to 6 hours</li>
+            <li><strong>P3 (Bulk)</strong>: 99% delivery within 15 minutes, retries for up to 1 hour</li>
+        </ul>
+
+        <div class="warning-box">
+            <p><strong>Performance Note:</strong> During extreme traffic spikes that exceed system capacity, events are prioritized by their priority level, which may lead to temporary delays for lower-priority webhooks.</p>
+        </div>
+
+        <h4>5. Monitoring and Troubleshooting</h4>
+        <p>When operating at scale, effective monitoring becomes essential for detecting and resolving issues before they impact your systems.</p>
+
+        <h5>Key Metrics to Monitor</h5>
+        <ul>
+            <li><strong>Webhook Backlog:</strong> Number of events waiting to be delivered</li>
+            <li><strong>Delivery Success Rate:</strong> Percentage of successful deliveries</li>
+            <li><strong>End-to-End Latency:</strong> Time from event creation to delivery acknowledgement</li>
+            <li><strong>Retry Rate:</strong> Percentage of webhooks requiring retries</li>
+            <li><strong>Endpoint Performance:</strong> Response time and error rate for your endpoints</li>
+        </ul>
+
+        <h5>Webhook Analytics API</h5>
+        <pre>
+// Retrieve webhook delivery analytics
+GET /api/v2/analytics/webhooks
+{
+  "time_range": "6h",
+  "metrics": ["success_rate", "latency_p95", "throughput", "retry_rate"],
+  "dimensions": ["event_type", "endpoint_domain"],
+  "filters": {
+    "event_type": ["resource.created", "resource.updated"]
+  }
+}</pre>
+
+        <h5>Handling System Degradation</h5>
+        <p>During periods of system degradation, implement these strategies:</p>
+        <ol>
+            <li><strong>Selective Processing:</strong> Process only business-critical webhooks</li>
+            <li><strong>Increased Batching:</strong> Accept larger batches to reduce HTTP overhead</li>
+            <li><strong>Graceful Shutdown:</strong> Properly drain webhooks when scaling down</li>
+            <li><strong>Response Code Optimization:</strong> Return appropriate status codes to influence retry behavior</li>
+        </ol>
+
+        <div class="note-box">
+            <p><strong>Best Practice:</strong> Implement a "replay" mechanism that allows you to request missed or failed webhooks after resolving endpoint issues.</p>
+        </div>
+
+        <pre>
+// Request replay of potentially missed webhooks
+POST /api/v2/webhooks/replay
+{
+  "endpoint_id": "whep_1234567890",
+  "start_time": "2024-06-01T00:00:00Z",
+  "end_time": "2024-06-01T02:00:00Z",
+  "event_types": ["resource.updated", "resource.deleted"],
+  "delivery_mode": "bulk_batches"
+}</pre>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution3").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html> 

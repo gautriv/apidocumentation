@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto+Mono&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Page specific CSS -->
+    {% if page.custom_css %}
+    {% for stylesheet in page.custom_css %}
+    <link rel="stylesheet" href="{{ stylesheet | prepend: '/assets/css/' | append: '.css' | relative_url }}">
+    {% endfor %}
+    {% endif %}
+    
+    <!-- Favicon -->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ "/favicon.ico" | relative_url }}" type="image/x-icon">
+    
+    <!-- Scripts -->
+    <script src="{{ "/assets/js/main.js" | relative_url }}" defer></script>
+    <script src="{{ "/assets/js/appreciate.js" | relative_url }}" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+     crossorigin="anonymous"></script>
+    
+    <!-- Page specific JS -->
+    {% if page.custom_js %}
+    {% for js_file in page.custom_js %}
+    <script src="{{ js_file | prepend: '/assets/js/' | append: '.js' | relative_url }}" defer></script>
+    {% endfor %}
+    {% endif %}
+    
+    <!-- Google Analytics -->
+    {% include google_analytics.html %}
+    
+    <!-- Google AdSense -->
+    {% include adsense.html %}
+</head>
+<body>
+    <div class="page-wrapper practice-exercise-page">
+        <!-- Header -->
+        {% include header.html %}
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            {{ content }}
+        </main>
+        
+        <!-- Footer -->
+        {% include footer.html %}
+    </div>
+
+    <!-- Appreciate Modal -->
+    {% include appreciate-modal.html %}
+</body>
+</html> 

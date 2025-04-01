@@ -1,0 +1,128 @@
+---
+layout: doc
+---
+
+<article class="chapter">
+  {% if page.image %}
+  <div class="chapter-header-image">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" />
+  </div>
+  {% endif %}
+  
+  <div class="chapter-content">
+    {{ content }}
+  </div>
+  
+  <div class="chapter-navigation">
+    {% assign docs = site.docs | sort: "order" %}
+    {% for doc in docs %}
+      {% if doc.url == page.url %}
+        {% assign doc_index = forloop.index0 %}
+        {% assign prev_index = doc_index | minus: 1 %}
+        {% assign next_index = doc_index | plus: 1 %}
+        
+        <div class="chapter-nav-container">
+          {% if prev_index >= 0 %}
+            {% assign prev_doc = docs[prev_index] %}
+            <a href="{{ prev_doc.url | relative_url }}" class="chapter-nav prev">
+              <span class="nav-arrow">←</span>
+              <span class="nav-title">{{ prev_doc.title }}</span>
+            </a>
+          {% else %}
+            <span class="chapter-nav-placeholder"></span>
+          {% endif %}
+          
+          {% if next_index < docs.size %}
+            {% assign next_doc = docs[next_index] %}
+            <a href="{{ next_doc.url | relative_url }}" class="chapter-nav next">
+              <span class="nav-title">{{ next_doc.title }}</span>
+              <span class="nav-arrow">→</span>
+            </a>
+          {% else %}
+            <span class="chapter-nav-placeholder"></span>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  
+  <div class="chapter-meta">
+    <div class="chapter-tags">
+      {% if page.tags %}
+        <span class="meta-label">Tags:</span>
+        {% for tag in page.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      {% endif %}
+    </div>
+    
+    <div class="reading-time">
+      {% assign words = content | number_of_words %}
+      {% assign reading_time = words | divided_by: 180 | plus: 1 %}
+      <span class="meta-label">Reading time:</span>
+      <span class="time">{{ reading_time }} min read</span>
+    </div>
+    
+    {% if page.last_updated %}
+    <div class="last-updated">
+      <span class="meta-label">Last updated:</span>
+      <time datetime="{{ page.last_updated | date_to_xmlschema }}">{{ page.last_updated | date: "%B %d, %Y" }}</time>
+    </div>
+    {% endif %}
+  </div>
+  
+  <div class="chapter-feedback">
+    <h3>Was this chapter helpful?</h3>
+    <div class="feedback-buttons">
+      <button class="feedback-btn" data-value="yes">Yes</button>
+      <button class="feedback-btn" data-value="no">No</button>
+    </div>
+    <div class="feedback-form" style="display: none;">
+      <textarea placeholder="How can we improve this chapter?"></textarea>
+      <button class="submit-feedback">Submit Feedback</button>
+    </div>
+    <div class="feedback-thanks" style="display: none;">
+      Thank you for your feedback!
+    </div>
+  </div>
+</article>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Reading progress bar
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+
+    window.addEventListener('scroll', function() {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (scrollTop / scrollHeight) * 100;
+      progressBar.style.width = scrolled + '%';
+    });
+
+    // Feedback form
+    const feedbackBtns = document.querySelectorAll('.feedback-btn');
+    const feedbackForm = document.querySelector('.feedback-form');
+    const feedbackThanks = document.querySelector('.feedback-thanks');
+
+    feedbackBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const value = this.getAttribute('data-value');
+        if (value === 'no') {
+          feedbackForm.style.display = 'block';
+        } else {
+          feedbackThanks.style.display = 'block';
+        }
+        feedbackBtns.forEach(b => b.disabled = true);
+      });
+    });
+
+    document.querySelector('.submit-feedback').addEventListener('click', function() {
+      feedbackForm.style.display = 'none';
+      feedbackThanks.style.display = 'block';
+      // In a real implementation, we would send this data to a server
+      console.log('Feedback submitted:', document.querySelector('.feedback-form textarea').value);
+    });
+  });
+</script> 

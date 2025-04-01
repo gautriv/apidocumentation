@@ -1,0 +1,220 @@
+{% comment %}
+    Enhanced Dropdown Template - A versatile, modern dropdown component
+    
+    Parameters:
+    - title: The dropdown button text (required)
+    - content: The main content of the dropdown (required)
+    - icon: Custom icon class from Font Awesome (default: fa-caret-down)
+    - type: Style variant (primary, success, warning, danger, info) (default: primary)
+    - expanded: Boolean to set initial expanded state (default: false)
+    - theme: Visual theme (light, dark, gradient) (default: light)
+    - width: Custom width (default: auto)
+    - animation: Animation type (fade, slide, bounce) (default: fade)
+{% endcomment %}
+
+<div class="enhanced-dropdown 
+    dropdown-type-{% if include.type %}{{ include.type }}{% else %}primary{% endif %} 
+    {% if include.theme %}dropdown-theme-{{ include.theme }}{% else %}dropdown-theme-light{% endif %}
+    {% if include.animation %}dropdown-animation-{{ include.animation }}{% else %}dropdown-animation-fade{% endif %}
+    {% if include.expanded %}dropdown-expanded{% endif %}"
+    {% if include.width %}style="width: {{ include.width }};"{% endif %}>
+    
+    <button class="dropdown-trigger" aria-expanded="{% if include.expanded %}true{% else %}false{% endif %}">
+        <span class="dropdown-title">{{ include.title }}</span>
+        <span class="dropdown-icon">
+            <i class="fa {% if include.icon %}{{ include.icon }}{% else %}fa-caret-down{% endif %}"></i>
+        </span>
+    </button>
+    
+    <div class="dropdown-content {% unless include.expanded %}dropdown-hidden{% endunless %}">
+        {{ include.content }}
+    </div>
+</div>
+
+<style>
+.enhanced-dropdown {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.enhanced-dropdown:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+.dropdown-trigger {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1.05rem;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.dropdown-trigger:focus {
+    outline: none;
+}
+
+.dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+.dropdown-expanded .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.dropdown-hidden {
+    display: none;
+}
+
+/* Type-based styling */
+.dropdown-type-primary .dropdown-trigger {
+    background-color: #007bff;
+    color: white;
+}
+
+.dropdown-type-success .dropdown-trigger {
+    background-color: #28a745;
+    color: white;
+}
+
+.dropdown-type-warning .dropdown-trigger {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.dropdown-type-danger .dropdown-trigger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.dropdown-type-info .dropdown-trigger {
+    background-color: #17a2b8;
+    color: white;
+}
+
+/* Theme variants */
+.dropdown-theme-light .dropdown-content {
+    background-color: #ffffff;
+}
+
+.dropdown-theme-dark {
+    color: #e2e8f0;
+}
+
+.dropdown-theme-dark .dropdown-content {
+    background-color: #2d3748;
+    border-top-color: rgba(255,255,255,0.1);
+}
+
+.dropdown-theme-gradient .dropdown-trigger {
+    background: linear-gradient(135deg, var(--primary-color, #007bff) 0%, var(--secondary-color, #6610f2) 100%);
+    color: white;
+}
+
+/* Animation variants */
+.dropdown-animation-fade .dropdown-content {
+    transition: opacity 0.3s ease-in-out, max-height 0.5s ease;
+}
+
+.dropdown-animation-slide .dropdown-content {
+    transition: max-height 0.4s cubic-bezier(0.86, 0, 0.07, 1), opacity 0.3s ease-in-out;
+}
+
+.dropdown-animation-bounce .dropdown-content {
+    transition: max-height 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease-in-out;
+}
+
+/* Button hover effects */
+.dropdown-trigger:hover {
+    filter: brightness(1.1);
+}
+
+/* Accessible focus styles */
+.dropdown-trigger:focus {
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+}
+
+.dropdown-type-success .dropdown-trigger:focus {
+    box-shadow: 0 0 0 3px rgba(40,167,69,0.25);
+}
+
+.dropdown-type-warning .dropdown-trigger:focus {
+    box-shadow: 0 0 0 3px rgba(255,193,7,0.25);
+}
+
+.dropdown-type-danger .dropdown-trigger:focus {
+    box-shadow: 0 0 0 3px rgba(220,53,69,0.25);
+}
+
+.dropdown-type-info .dropdown-trigger:focus {
+    box-shadow: 0 0 0 3px rgba(23,162,184,0.25);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Find all dropdown triggers
+    const triggers = document.querySelectorAll('.dropdown-trigger');
+    
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            // Get the parent dropdown and the content
+            const dropdown = this.closest('.enhanced-dropdown');
+            const content = dropdown.querySelector('.dropdown-content');
+            const icon = dropdown.querySelector('.dropdown-icon');
+            
+            // Toggle expanded state
+            dropdown.classList.toggle('dropdown-expanded');
+            
+            // Toggle aria-expanded attribute for accessibility
+            const expanded = dropdown.classList.contains('dropdown-expanded');
+            this.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            
+            // Toggle content visibility
+            if (expanded) {
+                content.classList.remove('dropdown-hidden');
+                
+                // For animation purposes, set a specific height
+                if (dropdown.classList.contains('dropdown-animation-fade') || 
+                    dropdown.classList.contains('dropdown-animation-slide') ||
+                    dropdown.classList.contains('dropdown-animation-bounce')) {
+                    
+                    // Allow animation to work by setting max-height
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + 'px';
+                }
+            } else {
+                // For animations
+                if (dropdown.classList.contains('dropdown-animation-fade') || 
+                    dropdown.classList.contains('dropdown-animation-slide') ||
+                    dropdown.classList.contains('dropdown-animation-bounce')) {
+                    
+                    content.style.maxHeight = '0';
+                    
+                    // Hide after animation completes
+                    setTimeout(() => {
+                        content.classList.add('dropdown-hidden');
+                    }, 300);
+                } else {
+                    content.classList.add('dropdown-hidden');
+                }
+            }
+        });
+    });
+});
+</script> 

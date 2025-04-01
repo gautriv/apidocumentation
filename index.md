@@ -1,66 +1,118 @@
 ---
-title: "API Documentation: A step by step guide for technical writers"
-keywords: [API Documentation, Step-by-Step Guide, API Documentation Course
-Learn API Documentation, Non-Technical, API Basics, REST API, Data Types in API, API Authentication, JSON and XML in Documentation, API Documentation Tools, Hands-On Exercises, Lifetime Access, Technical Writing Skills, Master API Documentation, Complete API Reference Documentation, Documentation Best Practices, technical writer, API tutorial, JSON, XML, API reference documentation, API automation, API best practices, API design, API security, API testing, API documentation software]
-tags: [getting_started]
-sidebar: sidebar
-permalink: index.html
-summary: Join our course to master API documentation, whether you're a seasoned pro or new to tech. We break it down for non-technical folks too. Gain hands-on experience and interactive learning. By the end, you'll be an API documentation expert. Enroll now and empower your technical writing skills!
-completed: 0
-next:
-  url: https://beingtechnicalwriter.com/apidocumentation/whatisanAPI.html
-  title: What is an API?
+layout: home
+title: API Documentation Course
 ---
 
-Welcome to the "API Documentation: A step by step guide for technical writers" course, where you'll embark on a journey that promises to enrich your knowledge and empower you to excel in the world of API documentation. 
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Master API Documentation</h1>
+            <p class="hero-description">Learn how to create clear, concise, and developer-friendly API documentation that meets industry standards.</p>
+            <div class="hero-buttons">
+                <a href="{{ '/documentation.html' | relative_url }}" class="btn btn-primary btn-large">Start Learning</a>
+                <a href="#curriculum" class="btn btn-secondary btn-large">View Curriculum</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="{{ "/assets/images/api-docs-hero.svg" | relative_url }}" alt="API Documentation Illustration">
+        </div>
+    </div>
+</section>
 
-**In this learning path, you'll:**
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <h2 class="section-title">Why This Course?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-book-reader feature-icon"></i>
+                <h3 class="feature-title">Comprehensive Curriculum</h3>
+                <p class="feature-description">Cover all aspects of API documentation from basics to advanced topics like OpenAPI and GraphQL documentation.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-laptop-code feature-icon"></i>
+                <h3 class="feature-title">Practical Exercises</h3>
+                <p class="feature-description">Apply what you learn with hands-on exercises and real-world documentation projects.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-industry feature-icon"></i>
+                <h3 class="feature-title">Industry Expertise</h3>
+                <p class="feature-description">Learn from experienced technical writers who have documented APIs for leading tech companies.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-check-circle feature-icon"></i>
+                <h3 class="feature-title">Industry Standards</h3>
+                <p class="feature-description">Align your documentation with best practices and industry standards like OpenAPI Specification.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div class="mermaid">
-  graph LR;  
-  flow1[What technical writers document.....];
-  flow2[How and what do they document.....];
-  flow3[Explore Swagger and other such tools to automate API documentation];
-  flow4[Types of APIs];
-  flow5[Anatomy of URL];
-  flow6[HTTP methods];
-  flow7[Endpoints];
-  flow8[Resources];
-  flow9[Paths];
-  flow10[Query Parameters];
-  flow11[Status or error codes];
-  flow12[JSON]
-  flow13[XML]
-  flow14[API testing];
+<!-- Curriculum Section -->
+<section id="curriculum" class="curriculum-section">
+    <div class="container">
+        <h2 class="section-title">Course Curriculum</h2>
+        <div class="curriculum-list">
+            <div class="curriculum-item">
+                <div class="curriculum-header">
+                    <h3 class="module-title">Module 1: API Documentation Fundamentals</h3>
+                    <span class="module-lessons">4 Lessons</span>
+                </div>
+                <div class="curriculum-content">
+                    <ul class="lessons-list">
+                        <li>Introduction to API Documentation</li>
+                        <li>Understanding Your Audience</li>
+                        <li>Documentation Types and Formats</li>
+                        <li>Setting Up Your Documentation Environment</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="curriculum-item">
+                <div class="curriculum-header">
+                    <h3 class="module-title">Module 2: RESTful API Concepts</h3>
+                    <span class="module-lessons">5 Lessons</span>
+                </div>
+                <div class="curriculum-content">
+                    <ul class="lessons-list">
+                        <li>REST Architecture Principles</li>
+                        <li>HTTP Methods and Status Codes</li>
+                        <li>Authentication and Authorization</li>
+                        <li>Request and Response Formats</li>
+                        <li>Error Handling Documentation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="curriculum-item">
+                <div class="curriculum-header">
+                    <h3 class="module-title">Module 3: API Reference Documentation</h3>
+                    <span class="module-lessons">6 Lessons</span>
+                </div>
+                <div class="curriculum-content">
+                    <ul class="lessons-list">
+                        <li>Endpoint Documentation Structure</li>
+                        <li>Parameters and Data Types</li>
+                        <li>Request and Response Examples</li>
+                        <li>OpenAPI Specification (Swagger)</li>
+                        <li>GraphQL Schema Documentation</li>
+                        <li>API Versioning Documentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="curriculum-cta">
+            <a href="{{ '/documentation.html' | relative_url }}" class="btn btn-primary">Start Learning Now</a>
+        </div>
+    </div>
+</section>
 
-  flow1-->flow2;
-  flow2-->flow3;
-  flow2-->flow4;
-  flow2-->flow5;
-  flow2-->flow6;
-  flow2-->flow7;
-  flow2-->flow8;
-  flow2-->flow9;
-  flow2-->flow10;
-  flow2-->flow11;
-  flow2-->flow12;
-  flow2-->flow13;
-  flow2-->flow14;
-</div>
-
-## Prerequisites
-None
-
-## Course Highlights
-
-* **The ABCs of APIs:** We'll demystify APIs from the ground up, using plain English. No jargon, no tech-speak. Just clear, concise explanations that anyone can understand.
-
-* **Hands-On Experience:** Theory is great, but practice makes perfect. You'll roll up your sleeves and dive into real-world exercises, creating documentation that you can proudly showcase in your portfolio.
-
-* **Interactive Learning:** Boredom is not on our syllabus. Expect engaging content, interactive quizzes, and scenarios that'll make you feel like you're solving real problems. Learning has never been this much fun!
-
-* **Lifetime Access:** Once you're in, you're in for life. You'll have unlimited access to the course material, so you can revisit it whenever you need a refresher or want to stay up-to-date with the ever-evolving world of API documentation.
-
-By the end of this course, you won't just be a technical writer; you'll be an API documentation maestro! You'll have the knowledge and skills to create documentation that not only guides users but also empowers them.
-
-So, what are you waiting for? Join us on this exciting journey, and let's master API documentation together—one step at a time.
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Become an API Documentation Expert?</h2>
+            <p class="cta-description">Start your journey today and take your technical writing career to the next level.</p>
+            <a href="{{ '/documentation.html' | relative_url }}" class="btn btn-primary btn-large">Start Learning</a>
+        </div>
+    </div>
+</section> 

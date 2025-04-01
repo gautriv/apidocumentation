@@ -1,0 +1,68 @@
+{% comment %}
+  This template creates a standardized question box that can be used across documentation.
+  
+  Parameters:
+  - title: Optional title for the question box (default: "Questions to consider:")
+  - questions: An array of questions to display
+  - icon: Optional icon class (default: 'fas fa-question')
+  - color: Optional accent color (default: '#3a87ad')
+{% endcomment %}
+
+<div class="question-box" {% if include.color %}style="border-left-color: {{ include.color }};"{% endif %}>
+  <div class="question-box-header">
+    <i class="{{ include.icon | default: 'fas fa-question' }}" {% if include.color %}style="color: {{ include.color }};"{% endif %}></i>
+    {% if include.title %}
+      <span class="question-box-title">{{ include.title }}</span>
+    {% else %}
+      <span class="question-box-title">Questions to consider:</span>
+    {% endif %}
+  </div>
+  
+  <ul class="question-list">
+    {% for question in include.questions %}
+      <li>{{ question }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<style>
+.question-box {
+  background-color: #f8f9fa;
+  border-left: 4px solid #3a87ad;
+  padding: 16px 20px;
+  margin: 20px 0;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.question-box-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.question-box i {
+  color: #3a87ad;
+  margin-right: 10px;
+  font-size: 1.1em;
+}
+
+.question-box-title {
+  font-size: 1.05em;
+}
+
+.question-list {
+  margin: 0;
+  padding-left: 25px;
+}
+
+.question-list li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.question-list li:last-child {
+  margin-bottom: 0;
+}
+</style> 

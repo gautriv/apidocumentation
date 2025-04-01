@@ -1,0 +1,117 @@
+<!-- Progress Bar -->
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+
+<style>
+/* Progress Bar Styles */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  width: 0%;
+  transition: width 0.2s ease-out;
+}
+
+/* Back to Top Button Styles */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #3b82f6;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Progress Bar
+  const progressBar = document.getElementById('progressBar');
+  const backToTop = document.getElementById('backToTop');
+
+  // Update progress bar
+  function updateProgress() {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight - windowHeight;
+    const scrolled = window.scrollY;
+    const progress = (scrolled / documentHeight) * 100;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  // Show/hide back to top button
+  function toggleBackToTop() {
+    if (window.scrollY > 300) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  }
+
+  // Scroll to top
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Event listeners
+  window.addEventListener('scroll', () => {
+    updateProgress();
+    toggleBackToTop();
+  });
+
+  // Initial check
+  updateProgress();
+  toggleBackToTop();
+});
+</script> 

@@ -5,7 +5,7 @@
     {% for post in site.posts limit:3 %}
     <div class="blog-posts"><a href="{{post.url}}">
             <div class="item d-flex align-items-center">
-                <div class="image"><img src="{{ post.image | prepend: site.baseurl }}"
+                <div class="image"><img src="{{ post.image | relative_url }}"
                     alt="..." class="img-fluid"> 
                 </div>
                 <div class="title">{{post.title}}</div>

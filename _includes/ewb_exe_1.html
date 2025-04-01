@@ -1,0 +1,613 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #4a6ef5;
+            color: #fff;
+            padding: 12px 24px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            margin: 12px 8px;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .exercise-button:hover, .solution-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .exercise-button {
+            background-color: #4a6ef5;
+        }
+        
+        .solution-button {
+            background-color: #28a745;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .exercise-content h3, .solution-content h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #e0e0e0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f5ff;
+            font-weight: bold;
+            color: #344563;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8fafd;
+        }
+        
+        /* Code block styling */
+        pre {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #4a6ef5;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+        
+        /* List styling */
+        ul, ol {
+            padding-left: 25px;
+        }
+        
+        ul li, ol li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        /* Highlight important text */
+        strong {
+            color: #2c3e50;
+        }
+        
+        code {
+            background-color: #f0f4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        /* Timeline styling */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: 0px;
+            background-color: white;
+            border: 4px solid #4a6ef5;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item .timeline-content {
+            padding: 20px 25px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            border-left: 4px solid #4a6ef5;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .note-box {
+            background-color: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box {
+            background-color: #ffebee;
+            border-left: 5px solid #f44336;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 1 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise1')">Exercise 1</button>
+    <button class="solution-button" onclick="toggleSolution('solution1', 'exercise1')">Solution to Exercise 1</button>
+
+    <!-- Exercise 1 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise1">
+        <h3>Exercise 1: Documenting Webhook Versioning and Deprecation Policies</h3>
+        <p><strong>Scenario:</strong> You're leading technical documentation for a global <strong>payment processing platform</strong> that's planning a major overhaul of its webhook system. The platform serves thousands of enterprise clients who depend on these webhooks for critical business operations. You need to create comprehensive documentation that explains the versioning strategy, migration paths, and deprecation policies.</p>
+
+        <p><strong>Key Challenge:</strong> You must document complex versioning concepts and deprecation timelines while providing guidance that minimizes disruption to customers' integrations.</p>
+
+        <h4>Versioning and Deprecation Plan</h4>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>Current State (v1)</h5>
+                    <p>Existing webhook system with inconsistent event naming, limited metadata, and basic delivery guarantees.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>New Version (v2)</h5>
+                    <p>Complete redesign with standardized event naming, enhanced metadata, improved delivery guarantees, and new features.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>Deprecation Timeline</h5>
+                    <p>18-month transition period with both versions running in parallel; v1 webhooks will be decommissioned after this period.</p>
+                </div>
+            </div>
+        </div>
+
+        <h4>Key Changes in v2 Webhooks</h4>
+        <ul>
+            <li><strong>Event Naming:</strong> Standardized hierarchy with domain-based prefixes (e.g., <code>payment.status.updated</code> instead of <code>payment_status_change</code>)</li>
+            <li><strong>Payload Structure:</strong> New JSON schema with consistent fields and enhanced metadata</li>
+            <li><strong>Versioned Event Types:</strong> Each event type has its own version (e.g., <code>payment.refund.created@v2</code>)</li>
+            <li><strong>Event Schema Registry:</strong> New API endpoint to fetch event schemas programmatically</li>
+            <li><strong>Idempotency Improvements:</strong> Enhanced handling of duplicate events with new idempotency keys</li>
+            <li><strong>Delivery Guarantees:</strong> At-least-once delivery with strict ordering within event types</li>
+        </ul>
+
+        <h4>Migration Complexities</h4>
+        <ul>
+            <li>Some v1 events are being split into multiple v2 events</li>
+            <li>Field names and data types have changed significantly</li>
+            <li>Authentication and signature verification use a new algorithm</li>
+            <li>Rate limiting policies are different</li>
+            <li>Webhook registration requires new parameters</li>
+            <li>Parallel processing may be affected by new ordering guarantees</li>
+        </ul>
+
+        <h4>Your Task</h4>
+        <p>Create comprehensive documentation that:</p>
+        <ol>
+            <li>Explains the webhook versioning system and how clients should interpret version numbers</li>
+            <li>Details the deprecation policy and timeline with clear milestones</li>
+            <li>Provides a comprehensive migration guide from v1 to v2</li>
+            <li>Includes a feature comparison table between webhook versions</li>
+            <li>Offers code examples for handling both versions during the transition period</li>
+            <li>Addresses backward and forward compatibility concerns</li>
+            <li>Documents testing procedures to validate migrations</li>
+        </ol>
+
+        <div class="warning-box">
+            <p><strong>Important:</strong> Your documentation will be the primary resource for thousands of customers during this critical transition. It must be clear, accurate, and considerate of the technical challenges involved.</p>
+        </div>
+    </div>
+
+    <!-- Solution to Exercise 1 (Initially Hidden) -->
+    <div class="solution-content" id="solution1">
+        <h3>Solution to Exercise 1: Webhook Versioning and Deprecation Documentation</h3>
+
+        <h4>1. Webhook Versioning System</h4>
+        <p>Our webhook platform uses a multi-level versioning system to give you maximum flexibility and control over your integrations.</p>
+
+        <h5>Version Structure and Components</h5>
+        <table>
+            <tr>
+                <th>Component</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>Platform Version</td>
+                <td>Major version of the entire webhook platform</td>
+                <td>v1, v2</td>
+            </tr>
+            <tr>
+                <td>Event Type Version</td>
+                <td>Version of a specific event type's schema</td>
+                <td>payment.refund.created@v2</td>
+            </tr>
+            <tr>
+                <td>Schema Version</td>
+                <td>Specific version of an event's JSON schema</td>
+                <td>payment.schema.v2.3</td>
+            </tr>
+        </table>
+
+        <p>Each webhook carries version information in multiple places:</p>
+        <pre>
+POST /your-endpoint HTTP/1.1
+Host: your-server.com
+Content-Type: application/json
+X-Webhook-Version: v2
+X-Webhook-Event-Type: payment.status.updated@v2
+X-Webhook-Schema-Version: payment.schema.v2.1
+
+{
+  "meta": {
+    "version": "v2",
+    "event_type": "payment.status.updated",
+    "event_type_version": "v2",
+    "schema_version": "payment.schema.v2.1",
+    "generated_at": "2024-06-01T12:00:00Z"
+  },
+  "data": {
+    // Event-specific payload
+  }
+}</pre>
+
+        <h5>Versioning Principles</h5>
+        <ul>
+            <li><strong>Platform Versions (v1, v2)</strong>: Major changes to the overall webhook system architecture that may require significant client updates.</li>
+            <li><strong>Event Type Versions</strong>: Changes to the structure or semantics of a specific event type. These follow a simplified major version only (v1, v2) pattern.</li>
+            <li><strong>Schema Versions</strong>: Minor revisions that add fields but maintain backward compatibility. These use semantic versioning (vMajor.Minor).</li>
+        </ul>
+
+        <div class="note-box">
+            <p><strong>Note:</strong> We use explicit versioning rather than content negotiation to ensure that webhook handlers can process payloads without relying on HTTP request information that might be lost when webhooks are stored or forwarded.</p>
+        </div>
+
+        <h4>2. Deprecation Policy and Timeline</h4>
+
+        <p>Our deprecation policy is designed to give you ample time to migrate while maintaining the reliability you expect.</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>June 1, 2024: v2 Launch (Dual Operation Phase Begins)</h5>
+                    <ul>
+                        <li>v2 webhooks become available for all customers</li>
+                        <li>v1 continues to function normally</li>
+                        <li>Detailed migration guides published</li>
+                        <li>Migration testing tools released</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>September 1, 2024: Feature Freeze on v1</h5>
+                    <ul>
+                        <li>No new features added to v1 webhooks</li>
+                        <li>Only critical bug fixes and security patches applied to v1</li>
+                        <li>New webhook event types only available on v2</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>January 1, 2025: Deprecation Warning Phase</h5>
+                    <ul>
+                        <li>Deprecation headers added to all v1 webhook responses</li>
+                        <li>Regular email reminders sent to API administrators</li>
+                        <li>Dashboard warnings displayed for v1 webhook usage</li>
+                        <li>Migration analytics available in dashboard</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>June 1, 2025: Limited Support Phase</h5>
+                    <ul>
+                        <li>v1 webhook support limited to critical issues only</li>
+                        <li>New integrations prevented from using v1 webhooks</li>
+                        <li>Automatic daily webhook delivery tests for v1 discontinued</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>December 1, 2025: End of Life (Decommissioning)</h5>
+                    <ul>
+                        <li>v1 webhooks decommissioned completely</li>
+                        <li>Any remaining v1 webhook registrations automatically disabled</li>
+                        <li>All customers must use v2 webhooks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <p><strong>Important:</strong> After December 1, 2025, v1 webhooks will no longer be delivered. Any business-critical integrations must be migrated to v2 before this date.</p>
+        </div>
+
+        <h4>3. Comprehensive Migration Guide</h4>
+
+        <h5>Step 1: Understand the Changes</h5>
+        <p>Review the full <a href="#">feature comparison table</a> to understand all differences between v1 and v2.</p>
+
+        <h5>Step 2: Register for v2 Webhooks</h5>
+        <pre>
+POST /api/v2/webhook-endpoints
+Authorization: Bearer your_api_token
+Content-Type: application/json
+
+{
+  "url": "https://your-server.com/webhooks/v2",
+  "description": "Payment events for order processing",
+  "version": "v2",
+  "events": ["payment.*"],
+  "metadata": {
+    "team": "payments-team",
+    "environment": "production"
+  },
+  "security": {
+    "signature_algorithm": "sha256",
+    "transport_security": "tls_1_2_or_higher"
+  }
+}</pre>
+
+        <h5>Step 3: Implement Dual Processing</h5>
+        <p>Set up your webhook handler to process both v1 and v2 webhooks during the transition period:</p>
+        <pre>
+// Example Node.js webhook handler for dual processing
+app.post('/webhooks/v2', (req, res) => {
+  // Always acknowledge receipt
+  res.status(200).send('Webhook received');
+  
+  // Determine version
+  const webhookVersion = req.headers['x-webhook-version'] || 'v1';
+  const eventType = req.headers['x-webhook-event-type'] || req.body.event_type;
+  
+  // Process based on version
+  if (webhookVersion === 'v2') {
+    // Extract data using v2 structure
+    const eventData = req.body.data;
+    const metadata = req.body.meta;
+    
+    // Route to appropriate handler
+    processV2Webhook(eventType, eventData, metadata);
+  } else {
+    // Legacy v1 processing
+    processV1Webhook(req.body);
+  }
+});</pre>
+
+        <h5>Step 4: Update Event Mapping</h5>
+        <p>Many v1 events have been restructured in v2. Use our event mapping reference to ensure you process all necessary events:</p>
+
+        <table>
+            <tr>
+                <th>v1 Event</th>
+                <th>v2 Equivalent(s)</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td><code>payment_status_change</code></td>
+                <td><code>payment.status.updated</code></td>
+                <td>Field <code>new_status</code> renamed to <code>status.current</code></td>
+            </tr>
+            <tr>
+                <td><code>payment_refunded</code></td>
+                <td><code>payment.refund.created</code></td>
+                <td>Contains additional metadata about the refund reason</td>
+            </tr>
+            <tr>
+                <td><code>payment_failed</code></td>
+                <td><code>payment.authorization.failed</code> or <code>payment.capture.failed</code></td>
+                <td>Split into two distinct events based on failure stage</td>
+            </tr>
+            <tr>
+                <td><code>dispute_created</code></td>
+                <td><code>payment.dispute.created</code></td>
+                <td>Now includes the standard metadata envelope</td>
+            </tr>
+        </table>
+
+        <h5>Step 5: Update Signature Verification</h5>
+        <p>v2 uses an enhanced signature algorithm that verifies both the headers and payload:</p>
+        <pre>
+// v2 Signature Verification in Node.js
+function verifyV2Signature(payload, headers, secret) {
+  const timestamp = headers['x-webhook-timestamp'];
+  const signature = headers['x-webhook-signature-256'];
+  
+  // Check timestamp freshness (within 5 minutes)
+  const timestampDate = new Date(timestamp);
+  const now = new Date();
+  const fiveMinutesAgo = new Date(now - 5 * 60 * 1000);
+  
+  if (timestampDate < fiveMinutesAgo) {
+    return false; // Potential replay attack
+  }
+  
+  // Compute expected signature
+  const signedContent = `${timestamp}.${JSON.stringify(payload)}`;
+  const hmac = crypto.createHmac('sha256', secret);
+  const expectedSignature = hmac.update(signedContent).digest('hex');
+  
+  // Use constant-time comparison
+  return crypto.timingSafeEqual(
+    Buffer.from(expectedSignature, 'hex'),
+    Buffer.from(signature, 'hex')
+  );
+}</pre>
+
+        <h5>Step 6: Test Your Migration</h5>
+        <p>Use our testing tools to verify your v2 webhook integration:</p>
+        <ol>
+            <li><strong>Webhook Simulator:</strong> Send simulated v2 webhooks to your endpoint</li>
+            <li><strong>Parallel Delivery:</strong> Enable duplicate delivery of events in both v1 and v2 formats</li>
+            <li><strong>Event Logging:</strong> Verify processing of both versions in our enhanced event logs</li>
+            <li><strong>Migration Analytics:</strong> Track your progress toward full v2 adoption</li>
+        </ol>
+
+        <div class="note-box">
+            <p><strong>Tip:</strong> Start by migrating non-critical event handling to v2 first, then gradually migrate your business-critical webhooks after testing.</p>
+        </div>
+
+        <h4>4. Feature Comparison</h4>
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>v1 Webhooks</th>
+                <th>v2 Webhooks</th>
+            </tr>
+            <tr>
+                <td>Event Naming</td>
+                <td>Inconsistent snake_case</td>
+                <td>Standardized dot.notation.hierarchy</td>
+            </tr>
+            <tr>
+                <td>Payload Structure</td>
+                <td>Flat, event-specific structure</td>
+                <td>Consistent envelope with metadata and data separation</td>
+            </tr>
+            <tr>
+                <td>Idempotency</td>
+                <td>Basic event ID</td>
+                <td>Enhanced with event ID, sequence, and timestamp</td>
+            </tr>
+            <tr>
+                <td>Delivery Guarantees</td>
+                <td>At-least-once, best effort</td>
+                <td>At-least-once with strict ordering within event types</td>
+            </tr>
+            <tr>
+                <td>Retry Policy</td>
+                <td>Fixed 3 retries</td>
+                <td>Configurable retries with exponential backoff</td>
+            </tr>
+            <tr>
+                <td>Security</td>
+                <td>Basic HMAC signature</td>
+                <td>Enhanced HMAC with timestamp binding</td>
+            </tr>
+            <tr>
+                <td>Customization</td>
+                <td>Limited filtering options</td>
+                <td>Advanced filtering, batching, and throttling controls</td>
+            </tr>
+            <tr>
+                <td>Monitoring</td>
+                <td>Basic delivery logs</td>
+                <td>Comprehensive analytics, tracing, and alerting</td>
+            </tr>
+            <tr>
+                <td>Schema Information</td>
+                <td>Static documentation only</td>
+                <td>Dynamic schema registry with programmatic access</td>
+            </tr>
+        </table>
+
+        <h4>5. Backward and Forward Compatibility</h4>
+        <p>We've designed v2 webhooks with several compatibility features to ease migration:</p>
+        <ul>
+            <li><strong>Optional v1 Compatibility Mode:</strong> Receive v2 webhooks with an additional <code>v1_compatible</code> field containing data mapped to the v1 format</li>
+            <li><strong>Field-Level Stability:</strong> Core fields will never be removed during a minor schema version update</li>
+            <li><strong>Forward Port Critical Changes:</strong> Critical security fixes will be applied to both v1 and v2 during the transition</li>
+            <li><strong>Versioned Endpoints:</strong> Your existing v1 endpoint registration will continue to receive v1 webhooks</li>
+        </ul>
+
+        <p>To enable v1 compatibility mode (recommended for early migration):</p>
+        <pre>
+POST /api/v2/webhook-endpoints
+{
+  ...
+  "compatibility": {
+    "include_v1_format": true
+  }
+}</pre>
+
+        <div class="note-box">
+            <p><strong>Note:</strong> V1 compatibility mode adds approximately 30% overhead to payload size but simplifies migration by allowing you to gradually refactor your code.</p>
+        </div>
+
+        <h4>6. Testing and Validation</h4>
+        <p>Use these tools to validate your v2 webhook integration:</p>
+        <ol>
+            <li><strong>Webhook Debugger:</strong> Interactive tool to inspect live webhook deliveries and compare v1 vs v2</li>
+            <li><strong>Event Catalog:</strong> Browse and search all available webhook events with sample payloads</li>
+            <li><strong>Migration Validator:</strong> Analyze your webhook handlers to detect potential migration issues</li>
+            <li><strong>Test Event Generator:</strong> Generate test events for any scenario to validate your handling logic</li>
+        </ol>
+
+        <p>We recommend this testing sequence:</p>
+        <ol>
+            <li>Set up a staging environment that can receive both v1 and v2 webhooks</li>
+            <li>Use the Test Event Generator to send pairs of equivalent v1 and v2 events</li>
+            <li>Verify that your business logic produces identical outcomes from both formats</li>
+            <li>Enable parallel delivery to your production environment</li>
+            <li>Monitor error rates and processing discrepancies</li>
+            <li>Gradually switch to v2-only handlers as confidence increases</li>
+        </ol>
+
+        <h4>7. Support Resources</h4>
+        <p>We're committed to making your migration as smooth as possible:</p>
+        <ul>
+            <li><strong>Migration Office Hours:</strong> Weekly video sessions with our API engineers</li>
+            <li><strong>Dedicated Migration Support:</strong> Priority support for v1 to v2 migration issues</li>
+            <li><strong>Migration Checklist:</strong> Detailed step-by-step validation checklist</li>
+            <li><strong>Client Libraries:</strong> Updated SDK versions with support for both webhook versions</li>
+        </ul>
+
+        <div class="warning-box">
+            <p><strong>Important:</strong> Start your migration early. Our experience shows most customers need 3-6 months to fully migrate complex webhook integrations.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution1").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html> 

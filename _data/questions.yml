@@ -1,0 +1,94 @@
+# Questions for Anatomy of URL components
+
+# Questions for Protocol section
+protocol:
+  - "What protocol is being used in the URL?"
+  - "Is the communication secure (HTTPS) or insecure (HTTP)?"
+  - "Is this protocol appropriate for the type of data being transmitted?"
+  - "Are there any specific security considerations related to this protocol?"
+  - "Does the API documentation specify which protocol should be used?"
+  - "Are there any protocol-specific headers or parameters required?"
+
+# Questions for Domain section
+domain:
+  - "What organization does this domain belong to?"
+  - "Is this a production or testing/sandbox environment?"
+  - "Does the API use a dedicated subdomain (like api.example.com)?"
+  - "Does the documentation specify alternate domains for different environments?"
+  - "Are there regional or geographical variations of the domain?"
+  - "Are there any security implications related to this domain (certificates, etc.)?"
+
+# Questions for Path section
+path:
+  - "What resource or functionality does this path point to?"
+  - "Are there any variable segments (path parameters) in this path?"
+  - "Does the path follow RESTful conventions for resource naming?"
+  - "Is the path case-sensitive?"
+  - "Are there alternative paths for the same resource?"
+  - "How does this path fit into the overall API structure?"
+
+# Questions for Query Parameters section
+query_parameters:
+  - "What query parameters are available for this endpoint?"
+  - "Which parameters are required and which are optional?"
+  - "What are the default values for optional parameters?"
+  - "Are there constraints on parameter values (min/max, format, etc.)?"
+  - "How do these parameters affect the API response?"
+  - "Are there any parameter combinations that are invalid or require special handling?"
+
+# Questions for Fragment Identifiers section
+fragment:
+  - "What is a fragment identifier in a URL, and what is its purpose?"
+  - "How is a fragment identifier indicated in a URL?"
+  - "What is the significance of the hash sign (#) in a fragment identifier?"
+  - "How can fragment identifiers enhance user experience on web pages?"
+  - "Is it possible to have both query parameters and a fragment identifier in the same URL?"
+  - "How can you identify a fragment identifier within a URL?"
+
+# Questions for Endpoints section
+endpoints:
+  - "What is the purpose of the endpoint in this API?"
+  - "What is the full URL of the endpoint, including the protocol, domain, path, and query parameters?"
+  - "What HTTP methods can be used with this endpoint (for example, GET, POST, PUT, DELETE)?"
+  - "What type of data does this endpoint return (for example, JSON, XML)?"
+  - "Are there any specific security considerations for this endpoint (for example, authentication or authorization requirements)?"
+  - "Is the endpoint documented, and if so, where can you find the documentation?"
+
+# Questions for Resources section
+resources:
+  - "What is the purpose of this resource in the context of the API?"
+  - "What data does this resource represent (for example, user, product, order)?"
+  - "What is the structure and schema of this resource's data (for example, fields, attributes)?"
+  - "How can you uniquely identify this resource (for example, ID, URL, or other key)?"
+  - "What operations can you perform on this resource (for example, read, create, update, delete)?"
+  - "Are there any relationships between this resource and other resources in the API?"
+  - "What are the common use cases for accessing or modifying this resource?"
+  - "Are there any specific access control or permissions associated with this resource?"
+  - "How is this resource represented in API responses (for example, JSON, XML)?"
+
+# Questions for URL Encoding section
+url_encoding:
+  - "Which special characters need to be encoded in this URL?"
+  - "How are spaces represented in URL-encoded form?"
+  - "What happens if you don't properly encode special characters in URLs?"
+  - "Are there differences in how different programming languages handle URL encoding?"
+  - "How do you decode URL-encoded strings?"
+  - "Which characters have special meanings in URLs and need to be encoded?"
+
+# Questions for URL Design section
+url_design:
+  - "Does the URL follow RESTful design principles?"
+  - "Is the URL human-readable and intuitive?"
+  - "Does the URL use plural nouns for collections?"
+  - "How deep is the URL hierarchy, and is it appropriate?"
+  - "Is versioning incorporated into the URL structure?"
+  - "Does the URL avoid exposing implementation details?"
+
+# Questions for Security section
+url_security:
+  - "Does the URL contain any sensitive information that should be removed?"
+  - "Is HTTPS being used to protect the URL during transmission?"
+  - "Could the URL be susceptible to path traversal attacks?"
+  - "Are there any URL length limitations to consider?"
+  - "Should any of the parameters be moved to the request body for security purposes?"
+  - "Are there input validation measures for URL components?"

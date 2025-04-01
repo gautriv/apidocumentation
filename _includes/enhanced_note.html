@@ -1,0 +1,194 @@
+{% comment %}
+    Enhanced Note Template - A versatile, modern note component
+    
+    Parameters:
+    - title: Optional title for the note (default: "Note")
+    - content: The main content of the note (required)
+    - type: Style variant (primary, success, warning, danger, info) (default: primary)
+    - icon: Custom icon class from Font Awesome (default varies by type)
+    - collapsible: Boolean to make note expandable/collapsible (default: false)
+    - expanded: Boolean to set initial expanded state (default: true)
+    - theme: Visual theme (light, dark, gradient) (default: light)
+{% endcomment %}
+
+<div class="enhanced-note enhanced-note-{% if include.type %}{{ include.type }}{% else %}primary{% endif %} {% if include.theme %}note-theme-{{ include.theme }}{% else %}note-theme-light{% endif %} {% if include.collapsible %}note-collapsible{% endif %}">
+    <div class="note-header">
+        {% assign note_icon = include.icon %}
+        {% unless note_icon %}
+            {% case include.type %}
+                {% when 'success' %}
+                    {% assign note_icon = 'fa-check-circle' %}
+                {% when 'warning' %}
+                    {% assign note_icon = 'fa-exclamation-triangle' %}
+                {% when 'danger' %}
+                    {% assign note_icon = 'fa-exclamation-circle' %}
+                {% when 'info' %}
+                    {% assign note_icon = 'fa-info-circle' %}
+                {% else %}
+                    {% assign note_icon = 'fa-info-circle' %}
+            {% endcase %}
+        {% endunless %}
+        
+        <span class="note-icon"><i class="fa {{ note_icon }}"></i></span>
+        <span class="note-title">{% if include.title %}{{ include.title }}{% else %}Note{% endif %}</span>
+        
+        {% if include.collapsible %}
+        <span class="note-toggle">
+            <i class="fa {% if include.expanded == false %}fa-plus{% else %}fa-minus{% endif %}"></i>
+        </span>
+        {% endif %}
+    </div>
+    
+    <div class="note-content {% if include.collapsible and include.expanded == false %}collapsed{% endif %}">
+        {{ include.content }}
+    </div>
+</div>
+
+<style>
+.enhanced-note {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.enhanced-note:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.note-header {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.note-icon {
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+.note-title {
+    flex-grow: 1;
+    font-size: 1.1em;
+}
+
+.note-toggle {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    padding: 5px;
+}
+
+.note-toggle:hover {
+    transform: scale(1.2);
+}
+
+.note-content {
+    padding: 16px;
+    transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.note-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+}
+
+/* Type-based styling */
+.enhanced-note-primary {
+    border-left: 4px solid #007bff;
+}
+.enhanced-note-primary .note-header {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+}
+
+.enhanced-note-success {
+    border-left: 4px solid #28a745;
+}
+.enhanced-note-success .note-header {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+}
+
+.enhanced-note-warning {
+    border-left: 4px solid #ffc107;
+}
+.enhanced-note-warning .note-header {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #d39e00;
+}
+
+.enhanced-note-danger {
+    border-left: 4px solid #dc3545;
+}
+.enhanced-note-danger .note-header {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+.enhanced-note-info {
+    border-left: 4px solid #17a2b8;
+}
+.enhanced-note-info .note-header {
+    background-color: rgba(23, 162, 184, 0.1);
+    color: #17a2b8;
+}
+
+/* Theme variants */
+.note-theme-dark {
+    background-color: #2d3748;
+    color: #e2e8f0;
+}
+.note-theme-dark .note-header {
+    border-bottom-color: rgba(255,255,255,0.1);
+}
+
+.note-theme-gradient .note-header {
+    background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+}
+
+/* Add animation for collapsible notes */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.note-collapsible .note-header:hover {
+    animation: pulse 1s infinite;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Find all collapsible notes
+    const toggleButtons = document.querySelectorAll('.note-toggle');
+    
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Toggle the collapsed class on the content
+            const noteContent = this.closest('.enhanced-note').querySelector('.note-content');
+            noteContent.classList.toggle('collapsed');
+            
+            // Toggle the icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-plus')) {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            } else {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+        });
+    });
+});
+</script> 

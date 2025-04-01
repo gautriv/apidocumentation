@@ -1,0 +1,77 @@
+---
+layout: practice-exercise
+title: Contact Me
+description: Get in touch with me for any questions about the API documentation course or technical writing.
+custom_css:
+  - contact
+custom_js:
+  - contact
+---
+
+<section class="contact-hero">
+  <div class="container">
+    <h1 class="page-title">Contact Me</h1>
+    <p class="page-description">Have questions about the course or technical writing? I'd love to hear from you!</p>
+  </div>
+</section>
+
+<div class="contact-container">
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <h2>Let's Connect</h2>
+      <p>Feel free to reach out with any questions about:</p>
+      <ul class="contact-topics">
+        <li><i class="fas fa-book"></i> Course content and modules</li>
+        <li><i class="fas fa-graduation-cap"></i> Technical writing career advice</li>
+        <li><i class="fas fa-laptop-code"></i> API documentation best practices</li>
+        <li><i class="fas fa-users"></i> Mentoring opportunities</li>
+      </ul>
+      <div class="contact-social">
+        <h3>Connect with me on</h3>
+        <div class="social-links">
+          <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer" class="social-link">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer" class="social-link">
+            <i class="fab fa-twitter"></i>
+            <span>Twitter</span>
+          </a>
+          <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer" class="social-link">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="contact-form-wrapper">
+      <form id="contactForm" class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your name">
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="Your email address">
+        </div>
+        
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required placeholder="What's this about?">
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="Your message" rows="5"></textarea>
+        </div>
+        
+        <button type="submit" class="submit-button">
+          <span class="button-text">Send Message</span>
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div> 

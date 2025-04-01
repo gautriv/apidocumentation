@@ -1,0 +1,30 @@
+<!-- Header -->
+<header class="site-header">
+    <div class="container">
+        <div class="site-logo">
+            <a href="{{ "/" | relative_url }}" class="logo-link">
+              <i class="fas fa-keyboard logo-icon"></i>
+              <div class="logo-content">
+                <span class="logo-title">API Documentation Course</span>
+                <span class="logo-subtitle">from the house of <span class="brand-highlight">Being Technical Writer</span></span>
+              </div>
+            </a>
+          </div>
+        
+        <nav class="main-nav">
+            <button class="menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="menu-icon"></span>
+                <span class="sr-only">Menu</span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="{{ "/" | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Home</a></li>
+                <li><a href="{{ '/documentation.html' | relative_url }}" class="nav-link {% if page.url contains '.html' %}active{% endif %}">Course</a></li>
+                <li><a href="{{ "/about" | relative_url }}" class="nav-link {% if page.url == '/about/' %}active{% endif %}">About</a></li>
+                <li><a href="{{ "/practice-exercises"" | relative_url }}" class="nav-link {% if page.url == '/exercises/' %}active{% endif %}">Exercises</a></li>
+                <li><a href="{{ "/resources" | relative_url }}" class="nav-link {% if page.url == '/resources/' %}active{% endif %}">Resources</a></li>
+                <li><a href="https://beingtechnicalwriter.com" class="nav-link {% if page.url contains '/blog/' %}active{% endif %}">Return to Blog</a></li>
+            </ul>
+        </nav>
+    </div>
+</header> 

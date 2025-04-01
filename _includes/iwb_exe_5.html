@@ -1,0 +1,563 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #4a6ef5;
+            color: #fff;
+            padding: 12px 24px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            margin: 12px 8px;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .exercise-button:hover, .solution-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .exercise-button {
+            background-color: #4a6ef5;
+        }
+        
+        .solution-button {
+            background-color: #28a745;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .exercise-content h3, .solution-content h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #e0e0e0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f5ff;
+            font-weight: bold;
+            color: #344563;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8fafd;
+        }
+        
+        /* Code block styling */
+        pre {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #4a6ef5;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+        
+        /* List styling */
+        ul, ol {
+            padding-left: 25px;
+        }
+        
+        ul li, ol li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        /* Highlight important text */
+        strong {
+            color: #2c3e50;
+        }
+        
+        code {
+            background-color: #f0f4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        /* Info boxes */
+        .note-box {
+            background-color: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box {
+            background-color: #ffebee;
+            border-left: 5px solid #f44336;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .solution-box {
+            background-color: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        /* Debug steps styling */
+        .troubleshooting-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .troubleshooting-step {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .troubleshooting-step h5 {
+            margin-top: 0;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #4a6ef5;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 5 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise5')">Exercise 5</button>
+    <button class="solution-button" onclick="toggleSolution('solution5', 'exercise5')">Solution to Exercise 5</button>
+
+    <!-- Exercise 5 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise5">
+        <h3>Exercise 5: Documenting Webhook Troubleshooting and Debugging</h3>
+        <p><strong>Scenario:</strong> You are creating a <strong>troubleshooting guide</strong> for a complex webhook system used in an <strong>e-commerce platform</strong>. Integrators often encounter issues with webhook deliveries, and the support team needs comprehensive documentation to help users diagnose and resolve these problems.</p>
+
+        <p><strong>Key Challenge:</strong> You need to document common webhook issues, their root causes, troubleshooting methodologies, and resolution steps in a way that's accessible to users with varying technical expertise.</p>
+
+        <h4>Webhook System Overview</h4>
+        <p>The webhook system has the following components:</p>
+        <ul>
+            <li><strong>Event Sources</strong>: Various services that generate events (orders, customers, inventory)</li>
+            <li><strong>Event Queue</strong>: Internal message queue that stores events before delivery</li>
+            <li><strong>Delivery Service</strong>: Service responsible for sending webhook payloads to endpoints</li>
+            <li><strong>Retry System</strong>: Handles retries for failed webhook deliveries</li>
+            <li><strong>Webhook Logs</strong>: Records of webhook delivery attempts and responses</li>
+            <li><strong>Admin Dashboard</strong>: UI for configuring and monitoring webhooks</li>
+        </ul>
+
+        <h4>Common Webhook Issues</h4>
+        <p>Users frequently report the following problems:</p>
+        <ul>
+            <li>Webhooks not being received at all</li>
+            <li>Intermittent webhook delivery</li>
+            <li>Duplicate webhook deliveries</li>
+            <li>Out-of-order webhook deliveries</li>
+            <li>Webhook delivery delays</li>
+            <li>Invalid webhook signatures</li>
+            <li>HTTP response errors from webhook endpoints</li>
+        </ul>
+
+        <h4>Troubleshooting Interfaces</h4>
+        <p>Users have access to several tools for debugging:</p>
+        <ul>
+            <li>Webhook logs in the admin dashboard</li>
+            <li>Webhook replay functionality</li>
+            <li>Webhook test endpoint for simulating deliveries</li>
+            <li>Event viewer for seeing triggered events</li>
+            <li>API endpoints for querying webhook deliveries</li>
+        </ul>
+
+        <h4>Your Task</h4>
+        <p>Create a comprehensive troubleshooting guide that:</p>
+        <ol>
+            <li>Documents a methodical approach to diagnosing webhook issues</li>
+            <li>Provides solutions for common webhook problems</li>
+            <li>Includes examples of debugging using available tools</li>
+            <li>Offers guidance for implementers of webhook consumers</li>
+            <li>Creates a decision tree for resolving different webhook failure scenarios</li>
+        </ol>
+
+        <h4>Example Error Log</h4>
+        <pre>
+{
+  "webhook_id": "wh_123456",
+  "event_id": "evt_789012",
+  "endpoint_url": "https://mystore.com/webhook-receiver",
+  "delivery_attempt": 3,
+  "timestamp": "2024-05-14T08:22:15Z",
+  "status": "failed",
+  "status_code": 503,
+  "error": "Service Unavailable",
+  "response_body": "Server too busy, try again later",
+  "headers_sent": {
+    "Content-Type": "application/json",
+    "X-Webhook-Signature": "sha256=7b52009b64fd0a2a49e6d8a939753077792b0554",
+    "X-Webhook-ID": "wh_123456",
+    "User-Agent": "MyEcommerce-Webhook/1.0"
+  },
+  "next_retry": "2024-05-14T08:32:15Z"
+}</pre>
+    </div>
+
+    <!-- Solution to Exercise 5 (Initially Hidden) -->
+    <div class="solution-content" id="solution5">
+        <h3>Solution to Exercise 5: Webhook Troubleshooting Guide</h3>
+
+        <h4>1. Introduction to Webhook Troubleshooting</h4>
+        <p>Webhooks are asynchronous, distributed systems that involve multiple components. When issues occur, a systematic approach to troubleshooting can help identify and resolve problems quickly.</p>
+
+        <div class="note-box">
+            <p><strong>Before You Begin:</strong> Collect as much information as possible about the issue, including webhook identifiers, timestamps, event types, and any error messages you've received or observed.</p>
+        </div>
+
+        <h4>2. Systematic Debugging Approach</h4>
+        
+        <div class="troubleshooting-flow">
+            <div class="troubleshooting-step">
+                <h5><span class="step-number">1</span> Verify Webhook Configuration</h5>
+                <ul>
+                    <li>Confirm the webhook endpoint URL is correct and accessible from the internet</li>
+                    <li>Check that your webhook is subscribed to the expected event types</li>
+                    <li>Verify authentication settings (signature verification secret, etc.)</li>
+                    <li>Ensure SSL/TLS certificates are valid if using HTTPS endpoints</li>
+                </ul>
+                <div class="solution-box">
+                    <p><strong>Debugging Action:</strong> Visit <strong>Admin Dashboard → Webhooks → Configuration</strong> to verify all settings.</p>
+                </div>
+            </div>
+            
+            <div class="troubleshooting-step">
+                <h5><span class="step-number">2</span> Check Webhook Delivery Logs</h5>
+                <ul>
+                    <li>Review recent webhook delivery attempts in the admin dashboard</li>
+                    <li>Look for failed attempts, status codes, and error messages</li>
+                    <li>Check if events are being triggered but failing to deliver</li>
+                    <li>Note any patterns in failures (time of day, event types, etc.)</li>
+                </ul>
+                <div class="solution-box">
+                    <p><strong>Debugging Action:</strong> Go to <strong>Admin Dashboard → Webhooks → Delivery Logs</strong> and filter by event type, status, and time period.</p>
+                </div>
+            </div>
+            
+            <div class="troubleshooting-step">
+                <h5><span class="step-number">3</span> Test Your Webhook Endpoint</h5>
+                <ul>
+                    <li>Use the webhook tester to send a test payload to your endpoint</li>
+                    <li>Check if your endpoint responds correctly with HTTP 200 status</li>
+                    <li>Verify that your server can process the webhook payload format</li>
+                    <li>Test with different event types if applicable</li>
+                </ul>
+                <div class="solution-box">
+                    <p><strong>Debugging Action:</strong> Use <strong>Admin Dashboard → Webhooks → Test Endpoint</strong> or make an API call to <code>/api/v1/webhooks/test</code>.</p>
+                </div>
+            </div>
+            
+            <div class="troubleshooting-step">
+                <h5><span class="step-number">4</span> Verify Event Generation</h5>
+                <ul>
+                    <li>Confirm that the events you expect are actually being generated</li>
+                    <li>Check event logs to see if events are triggered but not delivered</li>
+                    <li>Test triggering an event manually if possible</li>
+                </ul>
+                <div class="solution-box">
+                    <p><strong>Debugging Action:</strong> Visit <strong>Admin Dashboard → Events → Event Log</strong> to verify events are being created.</p>
+                </div>
+            </div>
+            
+            <div class="troubleshooting-step">
+                <h5><span class="step-number">5</span> Inspect Your Webhook Consumer</h5>
+                <ul>
+                    <li>Check server logs for incoming webhook requests</li>
+                    <li>Verify that your consumer returns HTTP 200 status promptly</li>
+                    <li>Check for timeouts, connection resets, or other network issues</li>
+                    <li>Monitor server resources during webhook processing</li>
+                </ul>
+                <div class="solution-box">
+                    <p><strong>Debugging Action:</strong> Implement detailed logging in your webhook consumer and monitor server logs during webhook receipt.</p>
+                </div>
+            </div>
+        </div>
+
+        <h4>3. Common Webhook Issues and Solutions</h4>
+        
+        <table>
+            <tr>
+                <th width="30%">Issue</th>
+                <th width="30%">Possible Causes</th>
+                <th width="40%">Solutions</th>
+            </tr>
+            <tr>
+                <td><strong>No webhooks received</strong></td>
+                <td>
+                    <ul>
+                        <li>Incorrect endpoint URL</li>
+                        <li>Events not being triggered</li>
+                        <li>Firewall blocking requests</li>
+                        <li>Webhook subscription inactive</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Verify endpoint URL and test with webhook tester</li>
+                        <li>Check event logs to confirm events are triggered</li>
+                        <li>Configure firewall to allow our IP ranges</li>
+                        <li>Ensure webhook subscription is active in dashboard</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Intermittent delivery</strong></td>
+                <td>
+                    <ul>
+                        <li>Rate limiting</li>
+                        <li>Unreliable consumer service</li>
+                        <li>Network instability</li>
+                        <li>Timeout issues</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Check rate limit headers in webhook logs</li>
+                        <li>Implement health checks for your webhook consumer</li>
+                        <li>Use a more stable hosting environment</li>
+                        <li>Increase response timeout in your server</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Duplicate webhooks</strong></td>
+                <td>
+                    <ul>
+                        <li>Retry system sending multiple times</li>
+                        <li>Non-idempotent event handling</li>
+                        <li>Multiple webhook subscriptions</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Implement idempotent webhook processing</li>
+                        <li>Track received webhook IDs to detect duplicates</li>
+                        <li>Check for multiple subscriptions to the same event</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Invalid signatures</strong></td>
+                <td>
+                    <ul>
+                        <li>Incorrect webhook secret</li>
+                        <li>Payload modification in transit</li>
+                        <li>Character encoding issues</li>
+                        <li>Hashing algorithm mismatch</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Verify webhook secret in dashboard</li>
+                        <li>Use exact string comparison for signature</li>
+                        <li>Check for UTF-8 encoding issues</li>
+                        <li>Ensure you're using the correct hashing algorithm</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Delivery delays</strong></td>
+                <td>
+                    <ul>
+                        <li>System backpressure</li>
+                        <li>Rate limiting</li>
+                        <li>Server queue congestion</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Monitor system status page for backpressure</li>
+                        <li>Consider batch webhooks for high-volume endpoints</li>
+                        <li>Optimize webhook processing to reduce response time</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <h4>4. Webhook Failure Decision Tree</h4>
+        
+        <div class="diagram">
+            <pre>
+Is the webhook received at all?
+├── NO
+│   ├── Check webhook logs
+│   │   ├── No delivery attempts → Check event generation and subscription
+│   │   └── Failed delivery attempts → Check error codes
+│   │       ├── 4xx errors → Fix endpoint configuration issues
+│   │       └── 5xx errors → Fix server-side issues
+│   └── Check firewall/network configuration
+└── YES, but with issues
+    ├── Signature validation failure
+    │   └── Check webhook secret and signature validation code
+    ├── Processing errors
+    │   └── Debug webhook consumer code
+    ├── Duplicates received
+    │   └── Implement idempotency checks
+    └── Out of order delivery
+        └── Implement event sequencing</pre>
+        </div>
+
+        <h4>5. Advanced Debugging Techniques</h4>
+
+        <h5>Using the Webhook Replay Feature</h5>
+        <p>For failed webhooks, you can use the replay feature to resend them:</p>
+        <pre>
+// API endpoint for webhook replay
+POST /api/v1/webhooks/{webhook_id}/replay
+Authorization: Bearer your_api_token</pre>
+
+        <p>This will send the exact same payload again, with a new delivery timestamp and a header indicating it's a replay.</p>
+
+        <h5>Implementing a Debug Mode Consumer</h5>
+        <p>Create a debugging webhook consumer that logs everything:</p>
+        <pre>
+// Example Node.js debug mode webhook handler
+app.post('/webhook-debug', (req, res) => {
+  // Log all request details
+  console.log('==== WEBHOOK DEBUG ====');
+  console.log('HEADERS:', JSON.stringify(req.headers, null, 2));
+  console.log('BODY:', JSON.stringify(req.body, null, 2));
+  
+  // Verify signature
+  const signature = req.headers['x-webhook-signature'];
+  const isValid = verifySignature(req.body, signature, WEBHOOK_SECRET);
+  console.log('SIGNATURE VALID:', isValid);
+  
+  // Always respond with success
+  res.status(200).send('Debug webhook received');
+  
+  // Log to permanent storage
+  logToDatabase({
+    webhook_id: req.headers['x-webhook-id'],
+    timestamp: new Date(),
+    body: req.body,
+    headers: req.headers,
+    signature_valid: isValid
+  });
+});</pre>
+
+        <div class="note-box">
+            <p><strong>Tip:</strong> Register this debug endpoint as a secondary webhook consumer during troubleshooting to compare with your primary webhook endpoint.</p>
+        </div>
+
+        <h5>Checking Webhook Status via API</h5>
+        <p>Query webhook delivery status programmatically:</p>
+        <pre>
+// Get details about a specific webhook delivery
+GET /api/v1/webhook-deliveries/{webhook_id}
+Authorization: Bearer your_api_token
+
+// Get recent delivery attempts for your endpoint
+GET /api/v1/webhook-endpoints/{endpoint_id}/deliveries
+Authorization: Bearer your_api_token</pre>
+
+        <h4>6. Preventive Measures and Best Practices</h4>
+        
+        <ol>
+            <li><strong>Implement robust error handling</strong> - Your webhook consumer should gracefully handle unexpected payload formats or fields.</li>
+            <li><strong>Respond quickly</strong> - Always respond with HTTP 200 as soon as you receive the webhook, then process asynchronously.</li>
+            <li><strong>Use idempotency keys</strong> - Process webhooks idempotently using the webhook ID to prevent duplicate processing.</li>
+            <li><strong>Implement exponential backoff</strong> - If your consumer calls back to our API, use exponential backoff for retries.</li>
+            <li><strong>Monitor webhook health</strong> - Set up monitoring for webhook deliveries and processing.</li>
+            <li><strong>Log extensively</strong> - Keep detailed logs of webhook receipts, processing, and any errors.</li>
+            <li><strong>Set up alerts</strong> - Create alerts for webhook delivery failures and processing errors.</li>
+            <li><strong>Regular testing</strong> - Periodically test your webhook endpoint with the webhook tester.</li>
+        </ol>
+
+        <div class="warning-box">
+            <p><strong>Critical:</strong> Never store webhook secrets in client-side code or public repositories. Always use environment variables or secure secret management solutions.</p>
+        </div>
+
+        <h4>7. Getting Support</h4>
+        <p>If you've gone through all troubleshooting steps and still have issues, contact our support team with the following information:</p>
+        <ul>
+            <li>Webhook IDs for failed deliveries</li>
+            <li>Event IDs if available</li>
+            <li>Timestamps of expected/missing webhooks</li>
+            <li>Server logs showing incoming requests or errors</li>
+            <li>Screenshots of webhook dashboard configuration</li>
+            <li>Any error messages displayed</li>
+        </ul>
+
+        <pre>
+// Example support API endpoint
+POST /api/v1/support/webhook-issue
+{
+  "webhook_id": "wh_123456",
+  "description": "Webhooks not being received despite events triggering",
+  "troubleshooting_steps": "Verified configuration, tested endpoint, checked logs",
+  "contact_email": "developer@yourcompany.com"
+}</pre>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution5").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html> 

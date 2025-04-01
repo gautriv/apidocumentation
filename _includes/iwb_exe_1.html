@@ -1,0 +1,346 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styling for buttons */
+        .exercise-button, .solution-button {
+            background-color: #4a6ef5;
+            color: #fff;
+            padding: 12px 24px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            margin: 12px 8px;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .exercise-button:hover, .solution-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .exercise-button {
+            background-color: #4a6ef5;
+        }
+        
+        .solution-button {
+            background-color: #28a745;
+        }
+
+        /* Hidden content by default */
+        .exercise-content, .solution-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .exercise-content h3, .solution-content h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #e0e0e0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f5ff;
+            font-weight: bold;
+            color: #344563;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8fafd;
+        }
+        
+        /* Code block styling */
+        pre {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #4a6ef5;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+        
+        /* List styling */
+        ul, ol {
+            padding-left: 25px;
+        }
+        
+        ul li, ol li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        /* Highlight important text */
+        strong {
+            color: #2c3e50;
+        }
+        
+        code {
+            background-color: #f0f4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        /* Diagram styling */
+        .event-hierarchy {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons to toggle Exercise 1 and its Solution -->
+    <button class="exercise-button" onclick="toggleExercise('exercise1')">Exercise 1</button>
+    <button class="solution-button" onclick="toggleSolution('solution1', 'exercise1')">Solution to Exercise 1</button>
+
+    <!-- Exercise 1 Content (Initially Hidden) -->
+    <div class="exercise-content" id="exercise1">
+        <h3>Exercise 1: Documenting Complex Event Hierarchies</h3>
+        <p><strong>Scenario:</strong> You're working on documentation for a <strong>financial services API</strong> that sends webhooks for various payment-related events. The API uses a <strong>hierarchical event structure</strong> where events have parent-child relationships to provide more specific notifications.</p>
+
+        <p><strong>Key Challenge:</strong> Users need to understand how the event hierarchy works, including <strong>event inheritance</strong> and <strong>contextual data</strong> available at each level.</p>
+
+        <h4>Event Hierarchy Diagram</h4>
+        <div class="event-hierarchy">
+            <pre>
+payment
+├── payment.created
+├── payment.updated
+│   ├── payment.updated.amount
+│   └── payment.updated.method
+├── payment.authorized
+├── payment.captured
+└── payment.failed
+    ├── payment.failed.insufficient_funds
+    ├── payment.failed.card_declined
+    └── payment.failed.expired_card</pre>
+        </div>
+
+        <h4>Your Task</h4>
+        <p>Create comprehensive webhook documentation that explains:</p>
+        <ol>
+            <li>How the event hierarchy works and why it's used</li>
+            <li>The relationship between parent and child events</li>
+            <li>How to subscribe to different levels of the hierarchy</li>
+            <li>Data inheritance across the event hierarchy</li>
+            <li>Best practices for handling hierarchical events</li>
+        </ol>
+
+        <h4>Webhook Registration Example</h4>
+        <pre>
+POST /v2/webhooks
+{
+    "url": "https://example.com/webhook-endpoint",
+    "events": [
+        "payment.created",
+        "payment.failed.*"  // Subscribe to all payment failure events
+    ],
+    "metadata": {
+        "description": "Production payment notification endpoint"
+    }
+}</pre>
+
+        <h4>Example Event Payload</h4>
+        <pre>
+{
+    "id": "evt_123456789",
+    "created": "2024-05-15T14:30:00Z",
+    "type": "payment.failed.insufficient_funds",
+    "parent_type": "payment.failed",
+    "data": {
+        "payment_id": "pay_987654321",
+        "amount": 99.99,
+        "currency": "USD",
+        "customer_id": "cus_12345",
+        "failure_reason": "The card has insufficient funds to complete this transaction",
+        "failure_code": "insufficient_funds",
+        "payment_method": {
+            "type": "card",
+            "last4": "4242",
+            "exp_month": 12,
+            "exp_year": 2025
+        }
+    }
+}</pre>
+    </div>
+
+    <!-- Solution to Exercise 1 (Initially Hidden) -->
+    <div class="solution-content" id="solution1">
+        <h3>Solution to Exercise 1: Hierarchical Events Documentation</h3>
+
+        <h4>1. Event Hierarchies Overview</h4>
+        <p>Our payment system uses <strong>hierarchical event structures</strong> to provide both broad and granular notifications about payment activities. This approach allows you to:</p>
+        <ul>
+            <li>Subscribe to general event categories or specific sub-events</li>
+            <li>Filter webhook notifications based on your specific needs</li>
+            <li>Receive contextually rich data with appropriate detail levels</li>
+        </ul>
+
+        <h4>2. Parent-Child Event Relationships</h4>
+        <p>Events follow a <strong>dot-notation hierarchy</strong> that establishes parent-child relationships:</p>
+        <table>
+            <tr>
+                <th>Relationship</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>Parent event</td>
+                <td>A broader category of notification</td>
+                <td><code>payment.failed</code></td>
+            </tr>
+            <tr>
+                <td>Child event</td>
+                <td>A specific sub-category with additional context</td>
+                <td><code>payment.failed.insufficient_funds</code></td>
+            </tr>
+            <tr>
+                <td>Sibling events</td>
+                <td>Events that share the same parent</td>
+                <td><code>payment.failed.card_declined</code> and <code>payment.failed.expired_card</code></td>
+            </tr>
+        </table>
+
+        <p>Child events always contain the parent event type in their name, separated by dots. For example, <code>payment.updated.amount</code> is a child of <code>payment.updated</code>, which is a child of <code>payment</code>.</p>
+
+        <h4>3. Subscribing to Event Hierarchies</h4>
+        <p>You can subscribe to events at any level of the hierarchy:</p>
+        <table>
+            <tr>
+                <th>Subscription Pattern</th>
+                <th>Description</th>
+                <th>Events Received</th>
+            </tr>
+            <tr>
+                <td><code>payment</code></td>
+                <td>Subscribe to all payment events</td>
+                <td>All payment events at any level</td>
+            </tr>
+            <tr>
+                <td><code>payment.failed</code></td>
+                <td>Subscribe to all payment failure events</td>
+                <td><code>payment.failed</code> and all its children</td>
+            </tr>
+            <tr>
+                <td><code>payment.failed.insufficient_funds</code></td>
+                <td>Subscribe to a specific failure reason only</td>
+                <td>Only the specified event</td>
+            </tr>
+            <tr>
+                <td><code>payment.failed.*</code></td>
+                <td>Wildcard subscription to all children of payment.failed</td>
+                <td>All specific payment failure events but not the parent</td>
+            </tr>
+        </table>
+
+        <div class="note-box">
+            <p><strong>Note:</strong> When using a wildcard (<code>*</code>) subscription, you will <em>only</em> receive events that exactly match the specified pattern level. For example, <code>payment.*</code> will send <code>payment.created</code> but not <code>payment.updated.amount</code>.</p>
+        </div>
+
+        <h4>4. Data Inheritance and Context</h4>
+        <p>Child events inherit all properties from their parent events, with additional contextual information specific to the sub-event:</p>
+        <ul>
+            <li>All events include the standard event properties (<code>id</code>, <code>created</code>, <code>type</code>)</li>
+            <li>Child events include a <code>parent_type</code> field indicating their parent event type</li>
+            <li>Child events contain more specific data related to their particular context</li>
+        </ul>
+
+        <h5>Example of Data Inheritance</h5>
+        <table>
+            <tr>
+                <th>Event Type</th>
+                <th>Inherited Data</th>
+                <th>Additional Contextual Data</th>
+            </tr>
+            <tr>
+                <td><code>payment.failed</code></td>
+                <td>Basic payment data (ID, amount, customer)</td>
+                <td>General failure information</td>
+            </tr>
+            <tr>
+                <td><code>payment.failed.insufficient_funds</code></td>
+                <td>All payment.failed data</td>
+                <td>Specific failure reason and code</td>
+            </tr>
+        </table>
+
+        <h4>5. Best Practices for Handling Hierarchical Events</h4>
+        <p>To effectively work with our hierarchical event structure:</p>
+        <ol>
+            <li><strong>Use the most specific subscription level needed</strong> - Subscribe to the most specific events you need to minimize unnecessary notifications.</li>
+            <li><strong>Process events based on hierarchy</strong> - Build handlers that check both the specific event type and its parents.</li>
+            <li><strong>Implement pattern matching</strong> - Use pattern matching in your code to handle related events with similar logic.</li>
+            <li><strong>Consider monitoring parent events</strong> - For critical flows, consider subscribing to both specific events and their parents as a fallback.</li>
+        </ol>
+
+        <h5>Sample Code for Event Handling</h5>
+        <pre>
+// Example Node.js webhook handler
+app.post('/webhook-endpoint', (req, res) => {
+    const event = req.body;
+    
+    // Acknowledge receipt immediately
+    res.status(200).send({received: true});
+    
+    // Process based on event hierarchy
+    if (event.type.startsWith('payment.failed')) {
+        // Handle all payment failures
+        handlePaymentFailure(event);
+        
+        // Additional handling for specific failure types
+        if (event.type === 'payment.failed.insufficient_funds') {
+            notifyCustomerAboutInsufficientFunds(event.data);
+        } else if (event.type === 'payment.failed.card_declined') {
+            suggestAlternativePaymentMethod(event.data);
+        }
+    }
+});</pre>
+    </div>
+
+    <script>
+        function toggleExercise(exerciseId) {
+            document.getElementById(exerciseId).style.display = "block";
+            document.getElementById("solution1").style.display = "none";
+        }
+
+        function toggleSolution(solutionId, exerciseId) {
+            document.getElementById(solutionId).style.display = "block";
+            document.getElementById(exerciseId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html> 

@@ -1,0 +1,191 @@
+<!-- Related Resources Template -->
+<div class="resources-container">
+    <div class="resources-header">
+        <i class="fas fa-link resources-icon"></i>
+        <h3>{{ include.title | default: "Related Resources" }}</h3>
+    </div>
+    
+    <div class="resources-content">
+        {% if include.description %}
+        <p class="resources-description">{{ include.description }}</p>
+        {% endif %}
+        
+        <div class="resources-grid">
+            {% if include.internal_links %}
+            <div class="resources-section">
+                <h4><i class="fas fa-book"></i> Course Materials</h4>
+                <ul class="resources-list internal-resources">
+                    {% assign links = include.internal_links | split: "|" %}
+                    {% for link in links %}
+                        {% assign parts = link | split: "," %}
+                        <li>
+                            <a href="{{ parts[1] | relative_url }}" class="resource-link internal-link">
+                                {{ parts[0] }}
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            
+            {% if include.external_links %}
+            <div class="resources-section">
+                <h4><i class="fas fa-external-link-alt"></i> External Resources</h4>
+                <ul class="resources-list external-resources">
+                    {% assign links = include.external_links | split: "|" %}
+                    {% for link in links %}
+                        {% assign parts = link | split: "," %}
+                        <li>
+                            <a href="{{ parts[1] }}" target="_blank" rel="noopener" class="resource-link external-link">
+                                {{ parts[0] }}
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            
+            {% if include.tools %}
+            <div class="resources-section">
+                <h4><i class="fas fa-tools"></i> Tools & APIs</h4>
+                <ul class="resources-list tools-resources">
+                    {% assign links = include.tools | split: "|" %}
+                    {% for link in links %}
+                        {% assign parts = link | split: "," %}
+                        <li>
+                            <a href="{{ parts[1] }}" target="_blank" rel="noopener" class="resource-link tools-link">
+                                {{ parts[0] }}
+                                <i class="fas fa-wrench"></i>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+.resources-container {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(to right, #f8f9fa, #ffffff);
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #3498db;
+}
+
+.resources-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.resources-icon {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    color: #3498db;
+}
+
+.resources-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.resources-description {
+    font-size: 1rem;
+    color: #5a6c7d;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.resources-section h4 {
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #34495e;
+    display: flex;
+    align-items: center;
+}
+
+.resources-section h4 i {
+    margin-right: 0.5rem;
+    color: #7f8c8d;
+}
+
+.resources-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.resources-list li {
+    margin-bottom: 0.5rem;
+}
+
+.resource-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    background-color: #ffffff;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #2980b9;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid #e9ecef;
+}
+
+.resource-link:hover {
+    background-color: #f8f9fa;
+    color: #3498db;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+
+.resource-link i {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+}
+
+.resource-link:hover i {
+    transform: translateX(3px);
+    opacity: 1;
+}
+
+.internal-link {
+    color: #2980b9;
+}
+
+.external-link {
+    color: #16a085;
+}
+
+.tools-link {
+    color: #8e44ad;
+}
+
+@media (max-width: 768px) {
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resources-container {
+        padding: 1.25rem;
+    }
+}
+</style> 
