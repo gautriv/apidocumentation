@@ -34,7 +34,7 @@ custom_js:
 
 <div class="resources-container">
   <div class="resources-intro">
-    <p>We've curated a collection of the most valuable resources to help you create world-class API documentation. Whether you're a technical writer, developer, or product manager, these tools, guides, reference materials, and communities will enhance your documentation skills and streamline your workflow.</p>
+    <p>I've curated a collection of the most valuable resources to help you create world-class API documentation. Whether you're a technical writer, developer, or product manager, these tools, guides, reference materials, and communities will enhance your documentation skills and streamline your workflow.</p>
   </div>
   
   <div class="resources-grid">

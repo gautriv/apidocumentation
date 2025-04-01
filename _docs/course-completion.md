@@ -142,7 +142,7 @@ The documentation you've created throughout this course provides excellent mater
 <div class="practice-section">
   <div class="practice-content">
     <h3>🏋️‍♀️ Ready to Apply Your Knowledge?</h3>
-    <p>While completing this course is a significant achievement, continuous practice is the key to mastery. We've created a dedicated section with real-world API documentation exercises to help you further refine your skills.</p>
+    <p>While completing this course is a significant achievement, continuous practice is the key to mastery. I've created a dedicated section with real-world API documentation exercises to help you further refine your skills.</p>
     
     <p>Our <a href="{{ "/practice-exercises/" | relative_url }}" class="practice-link">Practice Exercises</a> include:</p>
     
