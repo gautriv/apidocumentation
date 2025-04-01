@@ -55,6 +55,19 @@ custom_js:
         <a href="https://www.postman.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Explore Postman <i class="fas fa-external-link-alt"></i></a>
       </div>
     </div>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
     
     <div class="resource-card">
       <div class="resource-content">
