@@ -152,6 +152,19 @@ Pagination allows APIs to return large sets of data in manageable chunks, improv
 - Provide examples of **navigating through pages**
 - Recommend **performance optimizations** (e.g., ideal page sizes)
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## 3. API Authentication & Security – Protecting Data Access
 
 Authentication verifies user identity, while authorization determines what they can access. Both are crucial for API security.
@@ -227,6 +240,20 @@ Authentication verifies user identity, while authorization determines what they 
 - Explain **scopes and permissions** for OAuth/JWT
 - Address **security best practices** (token storage, etc.)
 
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## 4. API Webhooks – Enabling Real-time Updates
 
 Webhooks are HTTP callbacks that notify external systems when specific events occur, allowing for event-driven architecture.
@@ -295,6 +322,20 @@ X-Webhook-Signature: sha256=...
 - Document **security measures** (signatures, HTTPS)
 - Include **retry logic** and failure handling
 - Offer **testing tools** for webhook verification
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## 5. API Error Handling – Making Errors Actionable
 

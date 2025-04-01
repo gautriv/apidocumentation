@@ -70,6 +70,19 @@ Once your request is made, the kitchen (backend system) cooks up the response. J
 - Your weather app responds with the day's forecast: sunny, 25°C, and no rain. (Time to hit the beach!)
 - Your Spotify server responds with "Shake It Off" by Taylor Swift. (Dance party, anyone?)
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## APIs in Action: Real-World API Examples
 
 APIs aren't just tech mumbo jumbo—they're everywhere! Here are a few ways you interact with them daily (without even realizing it):

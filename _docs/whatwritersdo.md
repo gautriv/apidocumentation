@@ -106,6 +106,19 @@ No one likes errors, but they're inevitable. Your job is to document the possibl
 
 Bonus points if you include troubleshooting tips for each error!
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ### 8. Authentication: The Bouncer at the Club
 Before a developer can access an API, they often need to prove they're allowed in. This is called authentication, and it usually involves:
 

@@ -30,6 +30,19 @@ The above URL has following components, and we document all of them if present:
 * **Query parameters**: `q=cats`
 * **Fragment identifier**: `my-fragment`
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## URL Components: The Essential Building Blocks of API Endpoints
 
 Understanding URL structure is critical for API documentation, as each component serves a specific purpose in API requests. Let's explore each component in detail. Click on the buttons below to learn about each part of the URL.
@@ -243,6 +256,20 @@ Understanding URL structure is critical for API documentation, as each component
   "
 %}
 
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
 ## Additional URL Component Considerations
 
 Now that you've explored each part of a URL in detail, let's review some additional considerations about them:

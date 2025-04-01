@@ -77,6 +77,19 @@ Moving on to WebSockets. These are like having a phone call where you can talk a
 
 Now, let's talk about JSON-RPC and XML-RPC. These are like asking a friend to do something specific for you, and your friend knows exactly what you want. It's a way for one program to request a particular action from another program. These types are handy because they can work with different programming languages, making them a good choice for big, distributed systems.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## gRPC
 
 Last but not least, gRPC. Think of gRPC like sending a super efficient and structured letter with a built-in translator. It makes sure both the sender and the receiver understand each other perfectly. gRPC is known for high performance and strong typing, which means it's fast and reliable.

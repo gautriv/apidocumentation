@@ -73,6 +73,19 @@ custom_js:
         <a href="https://spec.openapis.org/oas/latest.html" target="_blank" rel="noopener noreferrer" class="resource-link">View Specification <i class="fas fa-external-link-alt"></i></a>
       </div>
     </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
     
     <div class="resource-card">
       <div class="resource-content">
@@ -109,6 +122,19 @@ custom_js:
         <a href="https://httpstatuses.com/" target="_blank" rel="noopener noreferrer" class="resource-link">View Reference <i class="fas fa-external-link-alt"></i></a>
       </div>
     </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
     
     <div class="resource-card">
       <div class="resource-content">
@@ -136,6 +162,21 @@ custom_js:
         <a href="https://json-schema.org/" target="_blank" rel="noopener noreferrer" class="resource-link">View Reference <i class="fas fa-external-link-alt"></i></a>
       </div>
     </div>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+
     
     <div class="resource-card">
       <div class="resource-content">

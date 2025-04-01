@@ -34,6 +34,19 @@ By the end of this hands-on guide, you'll be able to:
 
 Let's dive in and start building!
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Setting Up Your Development Environment
 
 Before we start coding, you'll need to prepare your development environment with the necessary tools.
@@ -125,7 +138,6 @@ def home():
 if __name__ == '__main__':
     app.run(debug=True)
 ```
-
 ### Step 2: Run Your API
 
 Save the file and run it with Python:
@@ -166,6 +178,20 @@ Try these two ways to access your new API:
 }</pre>
   </div>
 </div>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## Creating CRUD Endpoints
 
@@ -549,6 +575,20 @@ with open("swagger.yaml", "r") as f:
     swagger_template = yaml.safe_load(f)
 Swagger(app, template=swagger_template)
 ```
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 
 ## API Documentation Best Practices
 
