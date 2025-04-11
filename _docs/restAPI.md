@@ -15,8 +15,7 @@ previous_page:
 {% include trivia.html 
   type="tech" 
   icon="fa-star" 
-  title="The Superstar of APIs" 
-  content="REST APIs dominate the web development world, powering over 80% of all web services. They're behind virtually every app you use daily—from social media and weather apps to banking and streaming services. Their simple design and versatility have made them the preferred choice for modern API development since 2000."
+  title="Did you know we have an API that's a superstar among APIs?"
 %}
 
 Okay, so there's this one type of API that's like the superstar of the tech world, and it's called a *REST API.* You must understand it as it'll help you documenting APIs a lot better.
