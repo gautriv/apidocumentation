@@ -9,13 +9,13 @@ next_page:
   url: /apirequestsresponses.html
   title: "Understanding API Requests and Responses"
 previous_page:
-  url: /xml101.html
+  url: /XML101.html
   title: "XML and Its Data Types"
 ---
 
 So, you've come this far in your journey—bravo! 
 
-Before we dive into real-life scenarios with [JSON](/apidocumentation/JSON101.html)/[XML](/apidocumentation/xml101.html) and API requests, let's take a quick pause to set the stage. Understanding data types is key to making sense of how [APIs work](/apidocumentation/whatisanapi.html) and communicate. Think of this chapter as a quick detour—a fun, visual pit stop to explore the personalities of data types and how they show up in APIs.
+Before we dive into real-life scenarios with [JSON](/apidocumentation/JSON101.html)/[XML](/apidocumentation/XML101.html) and API requests, let's take a quick pause to set the stage. Understanding data types is key to making sense of how [APIs work](/apidocumentation/whatisanapi.html) and communicate. Think of this chapter as a quick detour—a fun, visual pit stop to explore the personalities of data types and how they show up in APIs.
 
 Don't worry—this isn't as technical as it sounds! Data types are like characters in a story, each with its own role and style. Some are straightforward (like the "Yes or No" types), while others love details. Our goal? To help you visualize them so you're ready to tackle real-world scenarios with confidence. Let's dive in!
 
