@@ -1,1 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /assets/
+Disallow: /*.json$
+Disallow: /*?*
+
+# Allow Google search engine to access everything
+User-agent: Googlebot
+Allow: /
+
+# Allow Bingbot search engine to access everything
+User-agent: Bingbot
+Allow: /
+
+# Optimize crawl rate
+Crawl-delay: 1
+
 Sitemap: https://beingtechnicalwriter.com/apidocumentation/sitemap.xml

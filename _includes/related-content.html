@@ -1,0 +1,223 @@
+<!-- Related Content Section with Schema.org Markup -->
+<section class="related-content">
+    <h3 class="related-heading">Related Content</h3>
+    <div class="related-items">
+        {% if include.related_docs %}
+            {% for doc in include.related_docs limit:3 %}
+                <div class="related-item">
+                    <div class="related-item-content">
+                        <h4>
+                            <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+                        </h4>
+                        {% if doc.description %}
+                        <p>{{ doc.description | truncate: 100 }}</p>
+                        {% endif %}
+                        <div class="related-meta">
+                            {% if doc.reading_time %}
+                            <span class="reading-time"><i class="far fa-clock"></i> {{ doc.reading_time }} min read</span>
+                            {% endif %}
+                            {% if doc.level %}
+                            <span class="doc-level">{{ doc.level }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% elsif site.related_posts %}
+            {% for post in site.related_posts limit:3 %}
+                <div class="related-item">
+                    <div class="related-item-content">
+                        <h4>
+                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                        </h4>
+                        {% if post.description %}
+                        <p>{{ post.description | truncate: 100 }}</p>
+                        {% endif %}
+                        <div class="related-meta">
+                            {% if post.date %}
+                            <span class="post-date"><i class="far fa-calendar"></i> {{ post.date | date: "%b %d, %Y" }}</span>
+                            {% endif %}
+                            {% if post.category %}
+                            <span class="post-category">{{ post.category }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <!-- Default related content if none provided -->
+            <div class="related-item">
+                <div class="related-item-content">
+                    <h4>
+                        <a href="{{ '/whatisanapi.html' | relative_url }}">What is an API?</a>
+                    </h4>
+                    <p>Learn the fundamentals of APIs and how they enable applications to communicate with each other.</p>
+                    <div class="related-meta">
+                        <span class="reading-time"><i class="far fa-clock"></i> 5 min read</span>
+                        <span class="doc-level">Beginner</span>
+                    </div>
+                </div>
+            </div>
+            <div class="related-item">
+                <div class="related-item-content">
+                    <h4>
+                        <a href="{{ '/restAPI.html' | relative_url }}">REST API Fundamentals</a>
+                    </h4>
+                    <p>Explore how RESTful APIs work and the core principles that make them so popular.</p>
+                    <div class="related-meta">
+                        <span class="reading-time"><i class="far fa-clock"></i> 8 min read</span>
+                        <span class="doc-level">Intermediate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="related-item">
+                <div class="related-item-content">
+                    <h4>
+                        <a href="{{ '/writingapi.html' | relative_url }}">Writing API Documentation</a>
+                    </h4>
+                    <p>Master the art of creating clear, comprehensive API documentation that developers love.</p>
+                    <div class="related-meta">
+                        <span class="reading-time"><i class="far fa-clock"></i> 10 min read</span>
+                        <span class="doc-level">Intermediate</span>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- ItemList Schema for Related Content -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {% if include.related_docs %}
+      {% for doc in include.related_docs limit:3 %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.index }},
+          "url": "{{ site.url }}{{ site.baseurl }}{{ doc.url }}",
+          "name": "{{ doc.title }}"
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% elsif site.related_posts %}
+      {% for post in site.related_posts limit:3 %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.index }},
+          "url": "{{ site.url }}{{ site.baseurl }}{{ post.url }}",
+          "name": "{{ post.title }}"
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% else %}
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "url": "{{ site.url }}{{ site.baseurl }}/whatisanapi.html",
+        "name": "What is an API?"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "url": "{{ site.url }}{{ site.baseurl }}/restAPI.html",
+        "name": "REST API Fundamentals"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "url": "{{ site.url }}{{ site.baseurl }}/writingapi.html",
+        "name": "Writing API Documentation"
+      }
+    {% endif %}
+  ]
+}
+</script>
+
+<style>
+.related-content {
+    margin: 2.5rem 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.related-heading {
+    font-size: 1.25rem;
+    color: #0f172a;
+    margin-bottom: 1.25rem;
+}
+
+.related-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.related-item {
+    background-color: #f8fafc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.related-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.related-item-content {
+    padding: 1.25rem;
+}
+
+.related-item h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.related-item h4 a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.related-item h4 a:hover {
+    color: #1e40af;
+}
+
+.related-item p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #4b5563;
+    margin-bottom: 1rem;
+}
+
+.related-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.reading-time, .post-date {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.doc-level, .post-category {
+    padding: 0.2rem 0.5rem;
+    background-color: #e2e8f0;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+@media (max-width: 640px) {
+    .related-items {
+        grid-template-columns: 1fr;
+    }
+}
+</style> 

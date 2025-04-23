@@ -1,0 +1,85 @@
+{% if include.video_id %}
+<!-- Video Embed with Schema.org markup -->
+<div class="video-container">
+    <iframe 
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/{{ include.video_id }}" 
+        title="{{ include.title | default: 'API Documentation Tutorial' }}"
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+        loading="lazy">
+    </iframe>
+    
+    <div class="video-description">
+        <h3>{{ include.title | default: 'Video Tutorial' }}</h3>
+        {% if include.description %}
+        <p>{{ include.description }}</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- VideoObject Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "{{ include.title | default: 'API Documentation Tutorial' }}",
+  "description": "{{ include.description | default: 'Learn about API documentation best practices and techniques' }}",
+  "thumbnailUrl": "https://img.youtube.com/vi/{{ include.video_id }}/maxresdefault.jpg",
+  "uploadDate": "{{ include.upload_date | default: site.time | date_to_xmlschema }}",
+  "duration": "{{ include.duration | default: 'PT10M' }}",
+  "contentUrl": "https://www.youtube.com/watch?v={{ include.video_id }}",
+  "embedUrl": "https://www.youtube.com/embed/{{ include.video_id }}",
+  "interactionStatistic": {
+    "@type": "InteractionCounter",
+    "interactionType": "https://schema.org/WatchAction",
+    "userInteractionCount": "{{ include.view_count | default: '1000' }}"
+  },
+  "regionsAllowed": "US,CA,GB,AU"
+}
+</script>
+
+<style>
+.video-container {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin: 2rem 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+.video-description {
+    padding: 1rem 1.5rem;
+}
+
+.video-description h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #1e293b;
+}
+
+.video-description p {
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+    .video-container {
+        margin: 1.5rem 0;
+    }
+    
+    .video-description {
+        padding: 0.75rem 1rem;
+    }
+}
+</style>
+{% endif %} 

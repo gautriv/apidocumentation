@@ -18,12 +18,15 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: API Documentation Course
+title: "API Documentation Course | Learn REST API Documentation"
+email: trivedi.gaurav30@gmail.com
 description: >-
-  A comprehensive course on creating world-class API documentation for developers.
-  Learn how to document RESTful APIs, OpenAPI/Swagger, and more.
+  Master API documentation with our comprehensive course. Learn RESTful API documentation, 
+  OpenAPI/Swagger, and industry best practices. Boost your technical writing career today.
 baseurl: "/apidocumentation" # the subpath of your site, e.g. /blog
 url: "https://beingtechnicalwriter.com" # the base hostname & protocol for your site, e.g. http://example.com
+author: Technical Writing Expert
+logo: /assets/images/api-docs-logo.png
 
 # Build settings
 markdown: kramdown
@@ -41,15 +44,19 @@ plugins:
 
 # SEO settings
 twitter:
-  username: yourusername
-  card: summary
+  username: beingtechwriter
+  card: summary_large_image
+facebook:
+  app_id: 12345678910
+  publisher: https://www.facebook.com/beingtechwriter
+  admins: beingtechwriter
 social:
-  name: Your Company
+  name: Being Technical Writer
   links:
-    - https://twitter.com/yourusername
-    - https://www.facebook.com/yourcompany
-    - https://www.linkedin.com/company/yourcompany
-    - https://github.com/yourcompany
+    - https://twitter.com/beingtechwriter
+    - https://www.facebook.com/beingtechwriter
+    - https://www.linkedin.com/company/beingtechwriter
+    - https://github.com/beingtechwriter
 
 # Exclude from processing
 exclude:

@@ -1,0 +1,90 @@
+{% if include.src %}
+<!-- SEO-Optimized Responsive Image -->
+<figure class="optimized-image{% if include.class %} {{ include.class }}{% endif %}">
+    <picture>
+        {% if include.webp_src %}
+        <source 
+            srcset="{{ include.webp_src | relative_url }}" 
+            type="image/webp"
+            {% if include.media %}media="{{ include.media }}"{% endif %}
+        >
+        {% endif %}
+        
+        <img 
+            src="{{ include.src | relative_url }}" 
+            alt="{{ include.alt }}"
+            width="{{ include.width | default: '800' }}"
+            height="{{ include.height | default: '600' }}"
+            {% if include.loading != 'eager' %}loading="lazy"{% else %}loading="eager"{% endif %}
+            {% if include.sizes %}sizes="{{ include.sizes }}"{% endif %}
+            {% if include.srcset %}srcset="{{ include.srcset }}"{% endif %}
+            {% if include.style %}style="{{ include.style }}"{% endif %}
+        >
+    </picture>
+    
+    {% if include.caption %}
+    <figcaption>{{ include.caption }}</figcaption>
+    {% endif %}
+</figure>
+
+<style>
+.optimized-image {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.optimized-image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.optimized-image figcaption {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: #4b5563;
+    background-color: #f8f9fa;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    text-align: center;
+}
+
+.optimized-image.full-width {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.optimized-image.centered {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.optimized-image.float-left {
+    float: left;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+    max-width: 50%;
+}
+
+.optimized-image.float-right {
+    float: right;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    max-width: 50%;
+}
+
+@media (max-width: 640px) {
+    .optimized-image.float-left,
+    .optimized-image.float-right {
+        float: none;
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+    }
+}
+</style>
+{% endif %} 

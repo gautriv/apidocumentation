@@ -1,0 +1,18 @@
+{% if page.speakable %}
+<!-- Speakable Schema for Voice Search Optimization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      {% for selector in page.speakable_selectors %}
+      "{{ selector }}"{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  },
+  "url": "{{ site.url }}{{ site.baseurl }}{{ page.url }}"
+}
+</script>
+{% endif %} 

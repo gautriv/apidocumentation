@@ -9,6 +9,28 @@ next_page:
 previous_page:
   url: /restAPI.html
   title: "REST APIs"
+image: /assets/images/api-docs-anatomyofurl.svg
+last_modified_at: 2023-10-15T09:00:00+00:00
+author_name: Technical Writing Expert
+author_description: Senior technical writer with 8+ years of experience documenting APIs and developer platforms
+author_expertise: 
+  - "API Documentation"
+  - "Technical Writing"
+  - "Developer Experience"
+  - "URL Structure"
+reading_time: 15
+level: Intermediate
+speakable: true
+speakable_selectors:
+  - ".doc-content h1" 
+  - ".doc-content h2"
+  - ".doc-content p:first-of-type"
+  - "#url-components"
+  - "#protocol"
+  - "#domain-name"
+  - "#path"
+  - "#query-parameters"
+  - "#fragment-identifiers"
 ---
 
 In the previous chapter, you learned about the main components of a REST API. I promised to dive deeper into the terms and definitions so that you have a clear understanding of them. So here we go.
@@ -43,7 +65,7 @@ The above URL has following components, and we document all of them if present:
       (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
 
-## URL Components: The Essential Building Blocks of API Endpoints
+## URL Components: The Essential Building Blocks of API Endpoints {#url-components}
 
 Understanding URL structure is critical for API documentation, as each component serves a specific purpose in API requests. Let's explore each component in detail. Click on the buttons below to learn about each part of the URL.
 
@@ -274,7 +296,7 @@ Understanding URL structure is critical for API documentation, as each component
 
 Now that you've explored each part of a URL in detail, let's review some additional considerations about them:
 
-### Protocol Considerations
+### Protocol Considerations {#protocol}
 
 {% include question_box.html 
   title="Questions to ask yourself about the protocol:"
@@ -283,7 +305,7 @@ Now that you've explored each part of a URL in detail, let's review some additio
   questions=site.data.questions.protocol
 %}
 
-### Domain Name Considerations
+### Domain Name Considerations {#domain-name}
 
 {% include question_box.html 
   title="Questions to ask yourself about the domain name:"
@@ -292,7 +314,7 @@ Now that you've explored each part of a URL in detail, let's review some additio
   questions=site.data.questions.domain
 %}
 
-### Path Considerations
+### Path Considerations {#path}
 
 {% include question_box.html 
   title="Questions to ask yourself about the path:"
@@ -301,7 +323,7 @@ Now that you've explored each part of a URL in detail, let's review some additio
   questions=site.data.questions.path
 %}
 
-### Query Parameter Considerations
+### Query Parameter Considerations {#query-parameters}
 
 {% include question_box.html 
   title="Questions to ask yourself about query parameters:"
@@ -310,7 +332,7 @@ Now that you've explored each part of a URL in detail, let's review some additio
   questions=site.data.questions.query_parameters
 %}
 
-### Fragment Identifier Considerations
+### Fragment Identifier Considerations {#fragment-identifiers}
 
 {% include question_box.html 
   title="Questions to ask yourself about the fragment identifier:"

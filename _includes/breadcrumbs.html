@@ -1,0 +1,93 @@
+<!-- Breadcrumb Navigation -->
+<nav aria-label="breadcrumb" class="breadcrumbs-container">
+    <ol class="breadcrumbs">
+        <li class="breadcrumb-item"><a href="{{ site.baseurl }}/">Home</a></li>
+        {% assign crumbs = page.url | split: '/' %}
+        {% assign current_path = '' %}
+        {% for crumb in crumbs offset: 1 %}
+            {% unless crumb == '' %}
+                {% assign current_path = current_path | append: '/' | append: crumb %}
+                {% if forloop.last %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+                {% else %}
+                    {% assign crumb_url = crumb | replace: '.html', '' %}
+                    {% assign pretty_crumb = crumb_url | replace: '-', ' ' | capitalize %}
+                    <li class="breadcrumb-item"><a href="{{ site.baseurl }}{{ current_path }}">{{ pretty_crumb }}</a></li>
+                {% endif %}
+            {% endunless %}
+        {% endfor %}
+    </ol>
+</nav>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site.url }}{{ site.baseurl }}/"
+    }{% assign position = 2 %}{% for crumb in crumbs offset: 1 %}{% unless crumb == '' %}{% assign current_path = current_path | append: '/' | append: crumb %},
+    {
+      "@type": "ListItem",
+      "position": {{ position }},
+      "name": "{% if forloop.last %}{{ page.title }}{% else %}{{ crumb | replace: '.html', '' | replace: '-', ' ' | capitalize }}{% endif %}",
+      "item": "{{ site.url }}{{ site.baseurl }}{{ current_path }}"
+    }{% assign position = position | plus: 1 %}{% endunless %}{% endfor %}
+  ]
+}
+</script>
+
+<style>
+.breadcrumbs-container {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-top: 10px;
+}
+
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "›";
+    padding: 0 8px;
+    color: #6c757d;
+}
+
+.breadcrumb-item a {
+    color: #4a6ef5;
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+    color: #12b3f8;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+@media (max-width: 576px) {
+    .breadcrumbs {
+        font-size: 0.8rem;
+    }
+    
+    .breadcrumb-item + .breadcrumb-item::before {
+        padding: 0 5px;
+    }
+}
+</style> 

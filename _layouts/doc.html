@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% include meta-tags.html %}
+    {% include speakable.html %}
+    {% include author-schema.html %}
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
@@ -58,6 +62,9 @@
         <!-- Main Content -->
         <main class="main-content">
             <div class="container">
+                <!-- Breadcrumbs -->
+                {% include breadcrumbs.html %}
+                
                 <div class="documentation-layout">
                     <!-- Sidebar -->
                     <aside class="docs-sidebar">
@@ -142,6 +149,9 @@
                                 <p class="doc-description">{{ page.description }}</p>
                             {% endif %}
                         </div>
+                        
+                        <!-- Table of Contents -->
+                        {% include toc.html %}
                         
                         <div class="doc-content">
                             {{ content }}

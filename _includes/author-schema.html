@@ -1,0 +1,50 @@
+{% if page.author_name or site.author %}
+<!-- Author Schema for E-E-A-T Enhancement -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{ page.author_name | default: site.author }}",
+  {% if page.author_url or site.author_url %}
+  "url": "{{ page.author_url | default: site.author_url }}",
+  {% endif %}
+  {% if page.author_image or site.author_image %}
+  "image": "{{ site.url }}{{ site.baseurl }}{{ page.author_image | default: site.author_image }}",
+  {% endif %}
+  {% if page.author_description or site.author_description %}
+  "description": "{{ page.author_description | default: site.author_description | strip_html | strip_newlines | truncate: 160 }}",
+  {% endif %}
+  "jobTitle": "{{ page.author_job_title | default: 'Technical Writer' }}",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "{{ page.author_company | default: site.title }}"
+  },
+  "knowsAbout": [
+    {% if page.author_expertise %}
+      {% for expertise in page.author_expertise %}
+      "{{ expertise }}"{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% else %}
+      "API Documentation",
+      "Technical Writing",
+      "REST APIs",
+      "API Design",
+      "Developer Documentation"
+    {% endif %}
+  ],
+  "sameAs": [
+    {% if page.author_social %}
+      {% for social in page.author_social %}
+      "{{ social }}"{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    {% else %}
+      {% if site.social.links %}
+        {% for social in site.social.links %}
+        "{{ social }}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+  ]
+}
+</script>
+{% endif %} 

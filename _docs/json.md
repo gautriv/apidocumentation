@@ -9,6 +9,26 @@ next_page:
 previous_page:
   url: /dataformats.html
   title: "Understanding Data Formats"
+image: /assets/images/api-docs-json.svg
+last_modified_at: 2023-10-15T09:00:00+00:00
+author_name: Technical Writing Expert
+author_description: Senior technical writer with 8+ years of experience documenting APIs and developer platforms
+author_expertise: 
+  - "API Documentation"
+  - "Technical Writing"
+  - "Developer Experience"
+  - "JSON Data Formats"
+reading_time: 12
+level: Beginner
+speakable: true
+speakable_selectors:
+  - ".doc-content h1" 
+  - ".doc-content h2"
+  - ".doc-content p:first-of-type"
+  - "#json-objects"
+  - "#json-arrays"
+  - "#json-data-types"
+  - "#nesting-in-json"
 ---
 
 Hey there, adventurers! So, you've aced the [ABCs of APIs](/apidocumentation/whatisanapi.html), strolled through the [URL jungle](/apidocumentation/anatomyofurl.html), and cracked the code on [data formats](/apidocumentation/dataformats.html). Now, buckle up for the exciting ride into the secret language of APIs – JSON!
@@ -29,7 +49,7 @@ Imagine a tidy kitchen pantry, each shelf neatly packed with labeled jars. Well,
   </script>
   
 
-## JSON Objects: The Building Blocks of API Data
+## JSON Objects: The Building Blocks of API Data {#json-objects}
 
 In JSON, objects are like your favorite cereal boxes – a mix of key-value pairs. Keys are like the cereal names, and values are what's inside. They're wrapped up in curly braces `{}`.
 
@@ -66,7 +86,7 @@ Objects are your go-to for describing things with lots of details – think user
 }
 ```
 
-## JSON Arrays: Organizing Collections in APIs
+## JSON Arrays: Organizing Collections in APIs {#json-arrays}
 
 Now, imagine a shopping list – that's a JSON array! It's an ordered lineup of goodies, all wrapped up in square brackets `[]`.
 
@@ -96,7 +116,7 @@ Arrays are perfect for making lists – like products, categories, or anything t
 
 Now, let's talk about the superheroes of JSON – its data types!
 
-## JSON Data Types: The Essential Elements
+## JSON Data Types: The Essential Elements {#json-data-types}
 
 Understanding JSON data types is crucial when working with API requests and responses. Here are the primary types you'll encounter:
 
@@ -188,7 +208,7 @@ Understanding JSON data types is crucial when working with API requests and resp
 
    The "superpower" key embraces null, signaling a superhero power vacuum.
 
-## Nesting in JSON: Creating Complex API Data Structures
+## Nesting in JSON: Creating Complex API Data Structures {#nesting-in-json}
 
 Picture nesting as superheroes forming squads – one inside the other, creating a power-packed hierarchy. API responses often contain deeply nested structures to represent complex relationships.
 
