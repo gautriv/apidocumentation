@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8fafc"/>
+  
+  <!-- Background Elements -->
+  <rect x="50" y="50" width="700" height="300" rx="8" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+  <rect x="70" y="80" width="660" height="50" rx="4" fill="#f1f5f9"/>
+  
+  <!-- Title Text -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e293b">API Documentation Tools Comparison</text>
+  
+  <!-- Header Row -->
+  <text x="120" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Tool</text>
+  <text x="250" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Features</text>
+  <text x="400" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Usability</text>
+  <text x="550" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Price</text>
+  <text x="670" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Rating</text>
+  
+  <!-- Data Rows -->
+  <g transform="translate(0,60)">
+    <!-- Swagger -->
+    <rect x="70" y="80" width="660" height="40" rx="4" fill="white"/>
+    <text x="120" y="105" font-family="Arial, sans-serif" font-size="14" fill="#1e293b">Swagger</text>
+    <text x="250" y="105" font-family="Arial, sans-serif" font-size="14" fill="#1e293b">★★★★★</text>
+    <text x="400" y="105" font-family="Arial, sans-serif" font-size="14" fill="#1e293b">★★★★☆</text>
+    <text x="550" y="105" font-family="Arial, sans-serif" font-size="14" fill="#1e293b">Free</text>
+    <text x="670" y="105" font-family="Arial, sans-serif" font-size="14" fill="#f59e0b">4.8/5</text>
+    
+    <!-- Postman -->
+    <rect x="70" y="125" width="660" height="40" rx="4" fill="#f8fafc"/>
+    <text x="120" y="150" font-family="Arial, sans-serif" font-size="14" fill="#1e293b">Postman</text>
+    <text x="250" y="150" font-family="Arial, sans-serif" font-size="14" fill="#1e293b">★★★★☆</text>
+    <text x="400" y="150" font-family="Arial, sans-serif" font-size="14" fill="#1e293b">★★★★★</text>
+    <text x="550" y="150" font-family="Arial, sans-serif" font-size="14" fill="#1e293b">Free-$99</text>
+    <text x="670" y="150" font-family="Arial, sans-serif" font-size="14" fill="#f59e0b">4.9/5</text>
+    
+    <!-- ReadMe -->
+    <rect x="70" y="170" width="660" height="40" rx="4" fill="white"/>
+    <text x="120" y="195" font-family="Arial, sans-serif" font-size="14" fill="#1e293b">ReadMe</text>
+    <text x="250" y="195" font-family="Arial, sans-serif" font-size="14" fill="#1e293b">★★★★☆</text>
+    <text x="400" y="195" font-family="Arial, sans-serif" font-size="14" fill="#1e293b">★★★★★</text>
+    <text x="550" y="195" font-family="Arial, sans-serif" font-size="14" fill="#1e293b">$59-$499</text>
+    <text x="670" y="195" font-family="Arial, sans-serif" font-size="14" fill="#f59e0b">4.7/5</text>
+  </g>
+  
+  <!-- Decorative Elements -->
+  <circle cx="50" cy="350" r="20" fill="#4a6ef5" opacity="0.2"/>
+  <circle cx="750" cy="50" r="30" fill="#4a6ef5" opacity="0.2"/>
+  <circle cx="700" cy="350" r="15" fill="#4a6ef5" opacity="0.2"/>
+</svg> 

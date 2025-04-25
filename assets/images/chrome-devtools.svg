@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8fafc"/>
+  
+  <!-- Main Container -->
+  <rect x="30" y="30" width="540" height="240" rx="8" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <!-- Browser Chrome -->
+  <rect x="30" y="30" width="540" height="30" rx="8 8 0 0" fill="#f1f5f9"/>
+  
+  <!-- Tab -->
+  <rect x="50" y="30" width="120" height="30" rx="8 8 0 0" fill="#4a6ef5"/>
+  <text x="110" y="50" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">DevTools</text>
+  
+  <!-- Window Controls -->
+  <circle cx="45" cy="45" r="5" fill="#ef4444"/>
+  <circle cx="525" cy="45" r="5" fill="#22c55e"/>
+  <circle cx="545" cy="45" r="5" fill="#f59e0b"/>
+  
+  <!-- DevTools Panel -->
+  <rect x="30" y="60" width="540" height="30" fill="#1e1e1e"/>
+  <text x="50" y="80" font-family="Arial, sans-serif" font-size="12" fill="white">Elements</text>
+  <text x="120" y="80" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">Console</text>
+  <text x="180" y="80" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">Network</text>
+  <text x="240" y="80" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">Performance</text>
+  <text x="330" y="80" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">Memory</text>
+  <text x="390" y="80" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">Application</text>
+  <text x="470" y="80" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">Security</text>
+  <text x="530" y="80" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">...</text>
+  
+  <!-- DevTools Content -->
+  <rect x="30" y="90" width="540" height="180" fill="#1e1e1e"/>
+  
+  <!-- Elements Panel -->
+  <rect x="30" y="90" width="200" height="180" fill="#1e1e1e"/>
+  <text x="40" y="110" font-family="monospace" font-size="11" fill="#9ca3af">&lt;html&gt;</text>
+  <text x="50" y="130" font-family="monospace" font-size="11" fill="#9ca3af">&lt;head&gt;...&lt;/head&gt;</text>
+  <text x="50" y="150" font-family="monospace" font-size="11" fill="#9ca3af">&lt;body&gt;</text>
+  <text x="60" y="170" font-family="monospace" font-size="11" fill="#4a6ef5">&lt;div class="container"&gt;</text>
+  <text x="70" y="190" font-family="monospace" font-size="11" fill="#9ca3af">&lt;h1&gt;Page Title&lt;/h1&gt;</text>
+  <text x="70" y="210" font-family="monospace" font-size="11" fill="#9ca3af">&lt;p&gt;Content...&lt;/p&gt;</text>
+  <text x="60" y="230" font-family="monospace" font-size="11" fill="#9ca3af">&lt;/div&gt;</text>
+  <text x="50" y="250" font-family="monospace" font-size="11" fill="#9ca3af">&lt;/body&gt;</text>
+  <text x="40" y="270" font-family="monospace" font-size="11" fill="#9ca3af">&lt;/html&gt;</text>
+  
+  <!-- Properties Panel -->
+  <rect x="230" y="90" width="340" height="180" fill="#2d2d2d"/>
+  <text x="250" y="110" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Styles</text>
+  <text x="350" y="110" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">Computed</text>
+  <text x="430" y="110" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">Layout</text>
+  <text x="490" y="110" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">Event Listeners</text>
+  
+  <!-- CSS Properties -->
+  <text x="250" y="140" font-family="monospace" font-size="11" fill="#e879f9">.container {</text>
+  <text x="270" y="160" font-family="monospace" font-size="11" fill="#38bdf8">width<tspan fill="white">: </tspan><tspan fill="#a3e635">100%</tspan>;</text>
+  <text x="270" y="180" font-family="monospace" font-size="11" fill="#38bdf8">max-width<tspan fill="white">: </tspan><tspan fill="#a3e635">1200px</tspan>;</text>
+  <text x="270" y="200" font-family="monospace" font-size="11" fill="#38bdf8">margin<tspan fill="white">: </tspan><tspan fill="#a3e635">0 auto</tspan>;</text>
+  <text x="270" y="220" font-family="monospace" font-size="11" fill="#38bdf8">padding<tspan fill="white">: </tspan><tspan fill="#a3e635">20px</tspan>;</text>
+  <text x="250" y="240" font-family="monospace" font-size="11" fill="#e879f9">}</text>
+</svg> 

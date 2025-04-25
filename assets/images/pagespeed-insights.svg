@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8fafc"/>
+  
+  <!-- Main Container -->
+  <rect x="30" y="30" width="540" height="240" rx="8" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <!-- PageSpeed Insights Header -->
+  <rect x="30" y="30" width="540" height="50" rx="8" fill="#0066FF"/>
+  <text x="70" y="60" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">PageSpeed Insights</text>
+  <circle cx="545" cy="55" r="12" fill="white" opacity="0.5"/>
+  <path d="M545,50 L545,60 M540,55 L550,55" stroke="white" stroke-width="2"/>
+  
+  <!-- Search Bar -->
+  <rect x="50" y="100" width="500" height="40" rx="20" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="120" y="125" font-family="Arial, sans-serif" font-size="14" fill="#64748b">https://yourdomain.com</text>
+  <circle cx="80" cy="120" r="10" fill="none" stroke="#64748b" stroke-width="2"/>
+  <line x1="88" y1="128" x2="95" y2="135" stroke="#64748b" stroke-width="2"/>
+  <rect x="430" y="105" width="80" height="30" rx="15" fill="#0066FF"/>
+  <text x="470" y="125" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="white">ANALYZE</text>
+  
+  <!-- Results Section -->
+  <text x="50" y="175" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Performance Score</text>
+  
+  <!-- Score Gauge -->
+  <circle cx="100" cy="210" r="25" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="2"/>
+  <path d="M100,210 L100,185" stroke="#22c55e" stroke-width="3" transform="rotate(45, 100, 210)"/>
+  <text x="100" y="215" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1e293b">92</text>
+  
+  <!-- Metrics -->
+  <g transform="translate(150, 195)">
+    <!-- LCP -->
+    <rect width="110" height="30" rx="4" fill="#dcfce7" stroke="#22c55e" stroke-width="1"/>
+    <text x="55" y="20" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#166534">LCP: 1.8s</text>
+    
+    <!-- FID -->
+    <rect x="120" width="110" height="30" rx="4" fill="#dcfce7" stroke="#22c55e" stroke-width="1"/>
+    <text x="175" y="20" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#166534">FID: 16ms</text>
+    
+    <!-- CLS -->
+    <rect x="240" width="110" height="30" rx="4" fill="#dcfce7" stroke="#22c55e" stroke-width="1"/>
+    <text x="295" y="20" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#166534">CLS: 0.05</text>
+  </g>
+</svg> 

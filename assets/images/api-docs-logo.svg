@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="none"/>
+  
+  <!-- Logo Background -->
+  <circle cx="100" cy="100" r="90" fill="#4a6ef5"/>
+  <circle cx="100" cy="100" r="75" fill="white"/>
+  
+  <!-- API Text -->
+  <text x="100" y="85" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#4a6ef5">API</text>
+  
+  <!-- Doc Text -->
+  <text x="100" y="130" font-family="Arial, sans-serif" font-size="26" font-weight="bold" text-anchor="middle" fill="#1e293b">DOCS</text>
+  
+  <!-- Decorative Elements -->
+  <path d="M40,60 L70,60" stroke="#4a6ef5" stroke-width="5" stroke-linecap="round"/>
+  <path d="M130,60 L160,60" stroke="#4a6ef5" stroke-width="5" stroke-linecap="round"/>
+  <path d="M40,140 L70,140" stroke="#1e293b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M130,140 L160,140" stroke="#1e293b" stroke-width="5" stroke-linecap="round"/>
+  
+  <!-- Code Brackets -->
+  <path d="M35,100 L50,80 L35,60" stroke="#4a6ef5" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M165,100 L150,80 L165,60" stroke="#4a6ef5" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M35,100 L50,120 L35,140" stroke="#1e293b" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M165,100 L150,120 L165,140" stroke="#1e293b" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> 

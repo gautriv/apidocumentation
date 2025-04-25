@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8fafc"/>
+  
+  <!-- Main Container -->
+  <rect x="30" y="30" width="540" height="240" rx="8" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="30" y="30" width="540" height="50" rx="8 8 0 0" fill="#1a73e8"/>
+  <text x="240" y="60" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">Google Search Console</text>
+  
+  <!-- Navigation Menu -->
+  <rect x="30" y="80" width="540" height="30" fill="#f8fafc"/>
+  <text x="70" y="100" font-family="Arial, sans-serif" font-size="12" fill="#1a73e8" font-weight="bold">Overview</text>
+  <text x="140" y="100" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Performance</text>
+  <text x="230" y="100" font-family="Arial, sans-serif" font-size="12" fill="#64748b">URL Inspection</text>
+  <text x="330" y="100" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Index</text>
+  <text x="380" y="100" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Experience</text>
+  <text x="460" y="100" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Settings</text>
+  
+  <!-- Report Title -->
+  <text x="50" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Page Experience</text>
+  <text x="50" y="150" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Core Web Vitals assessment based on Chrome User Experience Report data</text>
+  
+  <!-- Report Graph -->
+  <rect x="50" y="170" width="500" height="80" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Graph Legend -->
+  <circle cx="70" cy="190" r="5" fill="#22c55e"/>
+  <text x="85" y="194" font-family="Arial, sans-serif" font-size="12" fill="#1e293b">Good</text>
+  
+  <circle cx="140" cy="190" r="5" fill="#f59e0b"/>
+  <text x="155" y="194" font-family="Arial, sans-serif" font-size="12" fill="#1e293b">Needs Improvement</text>
+  
+  <circle cx="270" cy="190" r="5" fill="#ef4444"/>
+  <text x="285" y="194" font-family="Arial, sans-serif" font-size="12" fill="#1e293b">Poor</text>
+  
+  <!-- Graph Bars -->
+  <rect x="80" y="210" width="140" height="20" rx="4" fill="#22c55e"/>
+  <rect x="220" y="210" width="40" height="20" rx="0" fill="#f59e0b"/>
+  <rect x="260" y="210" width="20" height="20" rx="0 4 4 0" fill="#ef4444"/>
+  <text x="150" y="225" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">70%</text>
+  <text x="240" y="225" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">20%</text>
+  <text x="270" y="225" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="white">10%</text>
+  
+  <!-- URL Stats -->
+  <text x="380" y="195" font-family="Arial, sans-serif" font-size="12" fill="#1e293b">URLs in this report: 124</text>
+  <text x="380" y="215" font-family="Arial, sans-serif" font-size="12" fill="#1e293b">Last updated: May 1, 2023</text>
+  <text x="380" y="235" font-family="Arial, sans-serif" font-size="12" fill="#1e293b">Device: Mobile</text>
+</svg> 
