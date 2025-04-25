@@ -1,0 +1,233 @@
+{% assign faq_data = site.data[include.data_file] %}
+
+<section class="faq-section" id="faq">
+  <h2>{{ include.title | default: "Frequently Asked Questions" }}</h2>
+  
+  {% if include.description %}
+  <p class="faq-description">{{ include.description }}</p>
+  {% endif %}
+  
+  <div class="faq-container">
+    {% for category in faq_data.categories %}
+      {% if faq_data.categories.size > 1 %}
+        <h3 class="faq-category-title">{{ category.name }}</h3>
+      {% endif %}
+      
+      <div class="faq-list">
+        {% for faq in category.items %}
+          {% assign faq_unique_id = forloop.index | append: '-' | append: forloop.parentloop.index %}
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-{{ faq_unique_id }}">
+              <span class="question-text">{{ faq.question }}</span>
+              <span class="faq-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq-{{ faq_unique_id }}" hidden>
+              {{ faq.answer | markdownify }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for category in faq_data.categories %}
+      {% for faq in category.items %}
+        {
+          "@type": "Question",
+          "name": {{ faq.question | jsonify }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ faq.answer | strip_html | jsonify }}
+          }
+        }{% unless forloop.last and forloop.parentloop.last %},{% endunless %}
+      {% endfor %}
+    {% endfor %}
+  ]
+}
+</script>
+
+<style>
+.faq-section {
+  margin: 40px 0;
+  padding-top: 20px;
+}
+
+.faq-description {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  color: #4a5568;
+}
+
+.faq-category-title {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+  color: #2d3748;
+}
+
+.faq-list {
+  margin-bottom: 30px;
+}
+
+.faq-item {
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.faq-question {
+  position: relative;
+  width: 100%;
+  padding: 18px 24px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #2d3748;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.faq-question:hover {
+  background-color: #f7fafc;
+}
+
+.faq-question[aria-expanded="true"] {
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f8f9fb;
+}
+
+.question-text {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.faq-icon {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4a6ef5;
+}
+
+.faq-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-minus {
+  display: none;
+}
+
+.faq-question[aria-expanded="true"] .icon-plus {
+  display: none;
+}
+
+.faq-question[aria-expanded="true"] .icon-minus {
+  display: block;
+}
+
+.faq-answer {
+  padding: 20px 24px;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.faq-answer p:first-child {
+  margin-top: 0;
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-answer a {
+  color: #4a6ef5;
+  text-decoration: none;
+}
+
+.faq-answer a:hover {
+  text-decoration: underline;
+}
+
+.faq-answer code {
+  background: #edf2f7;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+@media (max-width: 768px) {
+  .faq-question {
+    padding: 16px 16px;
+  }
+  
+  .faq-icon {
+    right: 16px;
+  }
+  
+  .faq-answer {
+    padding: 16px;
+  }
+}
+</style>
+
+<script>
+// Wait for the document to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize FAQ functionality
+  initFAQs();
+});
+
+// In case DOMContentLoaded already fired, call it now too
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+  initFAQs();
+}
+
+function initFAQs() {
+  const faqButtons = document.querySelectorAll('.faq-section .faq-question');
+  
+  faqButtons.forEach(button => {
+    // Remove any existing event listeners first (to prevent duplicates)
+    button.removeEventListener('click', toggleFAQ);
+    // Add the event listener using a named function so we can remove it if needed
+    button.addEventListener('click', toggleFAQ);
+  });
+}
+
+function toggleFAQ() {
+  // Get the current state
+  const expanded = this.getAttribute('aria-expanded') === 'true';
+  
+  // Toggle the expanded state
+  this.setAttribute('aria-expanded', !expanded);
+  
+  // Get the associated answer element
+  const answerId = this.getAttribute('aria-controls');
+  const answerElement = document.getElementById(answerId);
+  
+  // Toggle visibility
+  if (expanded) {
+    answerElement.setAttribute('hidden', '');
+  } else {
+    answerElement.removeAttribute('hidden');
+  }
+}
+</script> 

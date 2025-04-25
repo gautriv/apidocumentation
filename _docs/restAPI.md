@@ -19,7 +19,7 @@ author_expertise:
   - "API Best Practices"
   - "Developer Experience"
   - "Technical Documentation"
-author_image: /assets/images/author-profile.jpg
+author_image: /assets/images/gaurav.svg
 reading_time: 12
 level: Intermediate
 speakable: true
@@ -585,6 +585,12 @@ As promised, in our [upcoming chapter on URL anatomy]({{ '/anatomyofurl.html' | 
   content="The term REST was coined by Roy Fielding in his 2000 PhD dissertation. REST wasn't designed for the web we know today but has become so fundamental that it's hard to imagine the web without it. While most developers use REST daily, fewer than 1% of implementations fully comply with all six of Fielding's original architectural constraints!"
 %}
 
+{% include faq-section.html 
+  title="Frequently Asked Questions About REST APIs"
+  description="Get answers to the most commonly asked questions about REST APIs to help you understand, implement, and troubleshoot your API development."
+  data_file="rest_api_faqs"
+%}
+
 {% include key_takeaways.html content="
 <ul>
   <li>REST APIs are the most popular type of web API due to their simplicity and efficiency</li>
@@ -599,7 +605,7 @@ As promised, in our [upcoming chapter on URL anatomy]({{ '/anatomyofurl.html' | 
 " %}
 
 <div class="author-cta">
-  <img src="/assets/images/author-profile.jpg" alt="Technical Writing Expert" class="author-image">
+  <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
   <div class="author-message">
     <h4>Was this guide helpful?</h4>
     <p>If you found this REST API guide valuable, please share it with your colleagues or on social media. Your feedback helps us improve our content!</p>

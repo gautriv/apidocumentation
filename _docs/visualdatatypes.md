@@ -126,6 +126,102 @@ Last but not least, **Enum** (short for Enumeration) represents a set of predefi
 
 *Imagine setting your user profile and selecting your country from a dropdown list. That's Enum in action.*
 
+## Common Data Type Visualization Problems and Solutions
+
+<div class="data-type-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Problem</th>
+        <th>Symptom</th>
+        <th>Solution</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><i class="fas fa-toggle-on"></i> <strong>Boolean confusion</strong></td>
+        <td>Users unsure if checkbox means "true" when checked or unchecked</td>
+        <td>Add clear labels next to checkbox (e.g., "Enable feature")</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-font"></i> <strong>String length uncertainty</strong></td>
+        <td>Users not knowing maximum character limits</td>
+        <td>Add visible character counters or length indicators</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-sort-numeric-up"></i> <strong>Number range ambiguity</strong></td>
+        <td>Users entering invalid numeric values</td>
+        <td>Use sliders with visible min/max or add validation messages</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-list-ul"></i> <strong>List selection limitations</strong></td>
+        <td>Users trying to select multiple items in single-select lists</td>
+        <td>Clearly indicate if multiple selection is allowed with "Select one" or "Select multiple" labels</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-calendar-alt"></i> <strong>Date format inconsistency</strong></td>
+        <td>Users entering dates in various formats</td>
+        <td>Use calendar pickers instead of free text input for dates</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-tasks"></i> <strong>Enum selection clarity</strong></td>
+        <td>Users not understanding limited options</td>
+        <td>Use radio buttons for small sets of options with clear labels</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-sitemap"></i> <strong>Complex nested data display</strong></td>
+        <td>Users confused by hierarchical data structure</td>
+        <td>Use expandable sections, tree views, or tabbed interfaces</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+.data-type-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.data-type-table thead tr {
+  background-color: #0073b7;
+  color: #ffffff;
+  text-align: left;
+}
+
+.data-type-table th,
+.data-type-table td {
+  padding: 12px 15px;
+}
+
+.data-type-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.data-type-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.data-type-table tbody tr:last-of-type {
+  border-bottom: 2px solid #0073b7;
+}
+
+.data-type-table tbody tr:hover {
+  background-color: #f1f9ff;
+}
+
+.data-type-table i {
+  margin-right: 10px;
+  color: #0073b7;
+}
+</style>
+
 ## Data Types in API Documentation: Making the Abstract Concrete
 
 By visualizing these data types with familiar UI elements, we bridge the gap between abstract concepts and practical understanding. As you document APIs, associating data types with their visual counterparts can make the information more accessible and engaging for your audience.
@@ -144,6 +240,12 @@ Remember, each data type has its own personality and role in the digital narrati
     <img src="./assets/images/data-types.png" alt="Data Types in UI Elements">
 </div>
 
+{% include faq-section.html 
+  title="Frequently Asked Questions About Data Type Visualization"
+  description="Get answers to common questions about visualizing different data types in APIs and user interfaces."
+  data_file="visualization_faqs"
+%}
+
 {% include key_takeaways.html content="
 <ul>
   <li>Boolean data types (true/false) are best visualized with checkboxes or toggles</li>
@@ -161,6 +263,75 @@ You've done an incredible job exploring the personalities of data types and how 
 In the next chapter, we'll take all this knowledge and dive into real-life scenarios of API documentation. You'll see how these data types fit into actual API requests and responses, making your understanding even more practical and hands-on.
 
 Get excited—it's time to connect the dots and bring your API documentation journey to the next level. See you there!
+
+<div class="author-cta">
+  <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
+  <div class="author-message">
+    <h4>Was this guide helpful?</h4>
+    <p>If you found this data visualization guide valuable, please share it with your colleagues or on social media. Your feedback helps us improve our content!</p>
+    <div class="social-share">
+      <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text=Check out this excellent data visualization guide" class="share-button twitter">Share on Twitter</a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title=Visualizing Data Types in API Documentation" class="share-button linkedin">Share on LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<style>
+.author-cta {
+  display: flex;
+  background: #f8f9fb;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px 0;
+  border: 1px solid #e2e8f0;
+  gap: 20px;
+  align-items: center;
+}
+.author-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.author-message {
+  flex: 1;
+}
+.author-message h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.author-message p {
+  margin-bottom: 12px;
+}
+.social-share {
+  display: flex;
+  gap: 10px;
+}
+.share-button {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
+}
+.twitter {
+  background: #1DA1F2;
+}
+.linkedin {
+  background: #0077B5;
+}
+@media (max-width: 600px) {
+  .author-cta {
+    flex-direction: column;
+    text-align: center;
+  }
+  .social-share {
+    justify-content: center;
+  }
+}
+</style>
 
 {% include related_resources.html 
   title="Data Type Resources"

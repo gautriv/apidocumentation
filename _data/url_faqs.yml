@@ -1,0 +1,68 @@
+categories:
+  - name: "URL Basics & Structure"
+    items:
+      - question: "What are the main components of a URL?"
+        answer: "A URL (Uniform Resource Locator) consists of five main components: protocol (e.g., https://), domain name (e.g., example.com), path (e.g., /products), query parameters (e.g., ?id=123), and fragment identifiers (e.g., #section1). Each component serves a specific purpose in locating and accessing resources on the web."
+
+      - question: "What's the difference between http:// and https:// in URLs?"
+        answer: "HTTP (Hypertext Transfer Protocol) and HTTPS (HTTP Secure) both facilitate web communication, but HTTPS adds a crucial security layer. HTTP sends data in plain text, making it vulnerable to eavesdropping, while HTTPS encrypts data using SSL/TLS protocols. This encryption protects sensitive information like passwords and payment details. Modern APIs and websites should always use HTTPS for security."
+
+      - question: "How do query parameters work in URLs?"
+        answer: "Query parameters appear after a question mark (?) in a URL and are formatted as key-value pairs separated by ampersands (&). For example: `example.com/search?query=api&page=2`. They allow you to send additional information to the server, such as search terms, filter criteria, or pagination details. When documenting APIs, always specify which query parameters are required versus optional, their data types, and default values."
+        
+      - question: "What are fragment identifiers and when should they be used?"
+        answer: "Fragment identifiers appear after a hash symbol (#) in a URL (e.g., `example.com/page#section3`) and point to specific sections within a webpage. They're processed by the browser, not the server, meaning they aren't sent in HTTP requests. While less common in API requests, they're useful in API documentation to create deep links to specific sections. Unlike query parameters, fragments don't reload the page when changed."
+        
+      - question: "How do subdomains affect API endpoints?"
+        answer: "Subdomains appear before the main domain name (e.g., api.example.com instead of example.com). Many companies use dedicated subdomains for their APIs (like api.twitter.com) to separate API traffic from website traffic. This approach allows for independent scaling, different security policies, and clearer DNS management. In documentation, always clearly indicate which subdomain to use, especially if different environments (sandbox vs. production) use different subdomains."
+
+  - name: "URL Implementation & Best Practices"
+    items:
+      - question: "What are RESTful URL patterns and why are they important?"
+        answer: "RESTful URL patterns focus on representing resources rather than actions. They use nouns for resources (e.g., `/users` instead of `/getUsers`), rely on HTTP methods for actions, follow a hierarchical structure for related resources (e.g., `/users/123/orders`), and maintain consistency. Following these patterns creates intuitive, predictable APIs that are easier to learn, use, and maintain."
+
+      - question: "How should I handle spaces and special characters in URLs?"
+        answer: "Spaces and special characters in URLs must be URL-encoded (also called percent-encoding). Spaces become `%20` or `+`, while special characters like `&`, `?`, and `#` become `%26`, `%3F`, and `%23` respectively. For example, 'John Smith' becomes 'John%20Smith'. Most programming languages offer built-in functions for URL encoding (e.g., `encodeURIComponent()` in JavaScript). Always encode user-provided data before including it in URLs to prevent security issues."
+
+      - question: "What's the difference between path parameters and query parameters?"
+        answer: "Path parameters are part of the URL path (e.g., `/users/{userId}`) and are typically used to identify specific resources. They're required and directly affect which resource is accessed. Query parameters appear after the `?` (e.g., `/users?role=admin`) and are used for filtering, sorting, or modifying how resources are returned. They're often optional and don't fundamentally change which resource is being accessed. Path parameters are generally preferred for required, resource-identifying values."
+        
+      - question: "How long can URLs be before causing problems?"
+        answer: "While the HTTP specification doesn't define a maximum URL length, different browsers, servers, and proxies have various limits. A practical maximum length is about 2,000 characters, though some systems have lower limits. Extremely long URLs can cause issues like truncation, server errors, or broken links. To avoid problems, keep URLs under 2,000 characters, use POST requests for large data payloads, and consider implementing shortened URLs for sharing."
+        
+      - question: "How should API versioning be handled in URLs?"
+        answer: "There are several approaches to API versioning in URLs. The most common is path versioning (e.g., `/api/v1/users`), which is explicit and easily visible but technically not RESTful. Other methods include query parameter versioning (`/api/users?version=1`), custom header versioning (`API-Version: 1`), or content negotiation using the Accept header. Path versioning is most widely used for its simplicity and explicit nature, though header-based approaches are more technically correct from a RESTful perspective."
+
+  - name: "URL Security & Performance"
+    items:
+      - question: "How do URLs affect API security?"
+        answer: "URLs impact API security in several ways. First, sensitive data should never be included in URLs since they're often logged, cached, and visible in browser history. Second, URLs should use HTTPS to encrypt the entire connection, preventing man-in-the-middle attacks. Third, predictable resource IDs in URLs (like sequential numbers) can be vulnerable to enumeration attacks. Finally, URL parameters should be validated to prevent injection attacks. Always consider what information is exposed through your URL structure."
+
+      - question: "What are the SEO implications of URL structure for API documentation?"
+        answer: "A well-structured URL enhances SEO for API documentation. Use descriptive, keyword-rich paths that explain the content (e.g., `/docs/api/authentication` instead of `/d/a/auth`). Keep URLs relatively short, use hyphens for word separation (not underscores), maintain a logical hierarchy, and ensure consistency. Clean, semantic URLs improve search rankings, make documentation more discoverable, and provide better user experience through greater readability and memorability."
+
+      - question: "How does URL length impact API performance?"
+        answer: "Extremely long URLs can negatively impact performance in several ways. First, they increase the size of HTTP request headers, which can slow down requests, especially in high-volume scenarios. Second, very long URLs may exceed server or proxy limits, causing request failures. Third, lengthy URLs can increase DNS resolution time if they contain many subdomains. For optimal performance, keep URLs concise, use POST requests for large data payloads, and consider implementing pagination for large resource collections."
+        
+      - question: "What's the difference between absolute and relative URLs in API documentation?"
+        answer: "Absolute URLs include the complete path starting with the protocol and domain (e.g., `https://api.example.com/v1/users`), while relative URLs omit some parts and are interpreted relative to a base URL (e.g., `/v1/users` or `../products`). In API documentation, absolute URLs provide complete clarity but require updates if the domain changes. Relative URLs are more maintainable across environments but require context to understand. Best practice is to use absolute URLs for external references and relative URLs for internal links within the same documentation site."
+        
+      - question: "How do URL redirects affect API performance and usage?"
+        answer: "URL redirects (status codes 301, 302, 307, etc.) affect APIs in several ways. They add latency by requiring additional HTTP requests, which can significantly impact performance in mobile or low-bandwidth environments. For API clients, redirects may require additional handling logic, especially for maintaining authentication across redirects. While redirects are useful for API versioning transitions or domain migrations, they should be minimized in production APIs. If redirects are necessary, use 301 (permanent) redirects where appropriate to enable caching."
+
+  - name: "Advanced URL Concepts"
+    items:
+      - question: "What are URL templates and how are they used in API documentation?"
+        answer: "URL templates provide a format for describing parameterized URLs using placeholders. For example, instead of showing `/users/123`, a template would show `/users/{userId}`. Common formats include RFC 6570 URL Templates and OpenAPI's path templating. These templates clearly distinguish between fixed and variable parts of URLs, make parameters explicit, ensure consistency across documentation, and enable automatic code generation. Always include examples of both the template format and concrete, fully-expanded URLs in documentation."
+
+      - question: "How do URL patterns differ between REST, GraphQL, and SOAP APIs?"
+        answer: "Different API architectures use distinct URL patterns. REST APIs use multiple endpoints representing resources (`/users`, `/products/{id}`, etc.) with HTTP methods determining actions. GraphQL typically uses a single endpoint (e.g., `/graphql`) for all operations, with the request body specifying the data requirements. SOAP APIs often use a single endpoint with XML payloads and rely on the SOAP protocol. Understanding these differences helps technical writers document each API type appropriately and helps developers integrate with them correctly."
+
+      - question: "What are URI schemes and how do they relate to APIs?"
+        answer: "URI schemes appear at the beginning of URLs (like `https://`, `ftp://`, or `mailto:`) and specify the protocol or purpose of the resource. Beyond common web protocols, APIs might use specialized schemes like `ws://` or `wss://` for WebSockets, `data:` for embedding data directly in URLs, or custom schemes for mobile deep linking. When documenting APIs, always specify the required scheme and explain any non-standard schemes that might be used."
+        
+      - question: "How should internationalized domain names (IDNs) be handled in APIs?"
+        answer: "Internationalized Domain Names (IDNs) containing non-ASCII characters (like ü, é, or 汉字) require special handling in APIs. They must be converted to Punycode (ASCII representation) format before DNS resolution. For example, `例子.测试` becomes `xn--fsqu00a.xn--0zwm56d`. API clients should use libraries that handle this conversion automatically. When documenting APIs that support IDNs, provide examples in both formats and explain potential encoding issues, particularly for users in international markets."
+        
+      - question: "What is URL normalization and why is it important for APIs?"
+        answer: "URL normalization is the process of standardizing URLs to a canonical form by applying transformations like converting to lowercase, removing default ports, resolving relative references, and more. Normalized URLs are important for API caching, security checks, and preventing duplicate content. For example, `HTTP://example.COM:80/path/` and `http://example.com/path` should be treated as identical. API gateways and documentation should explain how URLs are normalized to help developers understand caching behavior and create consistent requests." 

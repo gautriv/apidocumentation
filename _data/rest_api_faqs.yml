@@ -1,0 +1,83 @@
+categories:
+  - name: "Basics & Concepts"
+    items:
+      - question: "What exactly is a REST API and why is it so popular?"
+        answer: "REST API is an architectural style for designing networked applications that uses simple HTTP requests. It's popular because it's stateless, scalable, and cacheable."
+
+      - question: "What's the difference between REST, SOAP, and GraphQL APIs?"
+        answer: "REST uses standard HTTP methods with multiple endpoints, SOAP is a more rigid protocol using XML, and GraphQL allows clients to request specific data through a single endpoint."
+
+      - question: "How does statelessness work in REST APIs?"
+        answer: "Statelessness means each request from a client contains all information needed to complete the request. The server doesn't store client context between requests, making REST APIs more reliable and scalable."
+        
+      - question: "What are the six constraints of REST architecture?"
+        answer: "The six constraints are: Client-Server architecture, Statelessness, Cacheability, Layered System, Uniform Interface, and Code on Demand (optional). These constraints define what makes an API truly RESTful."
+        
+      - question: "What is the difference between PUT and PATCH methods in REST APIs?"
+        answer: "PUT updates an entire resource by replacing it completely, while PATCH performs a partial update by modifying only specific fields of the resource. PATCH is more efficient when you only need to update a few attributes."
+        
+      - question: "What is idempotency in REST APIs and why is it important?"
+        answer: "Idempotency means that making the same request multiple times has the same effect as making it once. GET, PUT, and DELETE should be idempotent, while POST typically isn't. This property enhances reliability when network issues cause retries."
+
+  - name: "Implementation & Best Practices"
+    items:
+      - question: "What HTTP methods should I use for different actions in my REST API?"
+        answer: "GET for retrieving resources, POST for creating new resources, PUT for updating/replacing resources, PATCH for partial updates, and DELETE for removing resources."
+
+      - question: "How should I handle API versioning in my REST API?"
+        answer: "Common approaches include URL path versioning (/api/v1/), query parameters (?version=1), custom headers (API-Version: 1), or content negotiation (Accept: application/vnd.company.v1+json)."
+
+      - question: "How should I handle errors in my REST API?"
+        answer: "Use appropriate HTTP status codes (4xx for client errors, 5xx for server errors), provide consistent response structures with error details, and include helpful error messages without exposing sensitive information."
+        
+      - question: "What is the best practice for naming REST API endpoints?"
+        answer: "Use nouns (not verbs) that represent resources, use plurals for collections, keep URLs simple and descriptive, use kebab-case or camelCase consistently, and organize resources hierarchically when appropriate (e.g., /users/123/orders)."
+        
+      - question: "How do I implement pagination in a REST API?"
+        answer: "Common pagination approaches include: offset-based (?limit=20&offset=40), page-based (?page=3&per_page=25), and cursor-based (?after=resource_id). Include pagination metadata in responses with total counts and links to next/previous pages."
+        
+      - question: "What are best practices for RESTful URL design?"
+        answer: "Keep URLs simple and intuitive, use resource nouns not action verbs, organize hierarchically with logical nesting, be consistent with naming conventions, avoid query parameters for resource identification, and use HTTPS always."
+        
+      - question: "How should I implement search functionality in a REST API?"
+        answer: "Use query parameters for simple filters (?status=active&category=books), implement standard operators for complex queries, consider a dedicated search endpoint for advanced features, support sorting parameters, and paginate results."
+
+  - name: "Security & Performance"
+    items:
+      - question: "What are the most important security concerns for REST APIs?"
+        answer: "Implement proper authentication, always use HTTPS, validate all inputs, implement rate limiting, configure CORS correctly, avoid exposing sensitive data, and regularly rotate API keys."
+
+      - question: "How can I optimize REST API performance?"
+        answer: "Implement effective caching with proper headers, use pagination for large collections, enable compression, allow clients to specify needed fields, optimize database queries, and consider CDNs for static resources."
+        
+      - question: "What are the best authentication methods for REST APIs?"
+        answer: "Common authentication methods include OAuth 2.0 with JWT tokens, API keys for server-to-server communication, HTTP Basic Authentication (with HTTPS only), and session cookies for browser-based clients. OAuth 2.0 is recommended for most public APIs."
+        
+      - question: "How can I implement rate limiting in my REST API?"
+        answer: "Implement token bucket or leaky bucket algorithms, return 429 Too Many Requests status codes when limits are exceeded, include X-RateLimit headers showing limits and remaining requests, and offer tiered rate limits based on user plans."
+        
+      - question: "What caching strategies work best for REST APIs?"
+        answer: "Use ETags for validation caching, set appropriate Cache-Control headers, implement conditional requests (If-Modified-Since, If-None-Match), use Redis or Memcached for server-side caching, and consider cache invalidation strategies."
+        
+      - question: "How do I secure my REST API against common attacks?"
+        answer: "Protect against injection attacks with input validation, prevent CSRF with tokens, mitigate DDoS with rate limiting, use parameterized queries to prevent SQL injection, validate content types, and implement proper CORS policies."
+
+  - name: "Advanced Topics & Troubleshooting"
+    items:
+      - question: "What is HATEOAS and how does it improve REST APIs?"
+        answer: "HATEOAS (Hypermedia as the Engine of Application State) is a REST constraint where responses include links to related resources. It improves discoverability, enables self-documenting APIs, reduces client-server coupling, and allows APIs to evolve without breaking clients."
+        
+      - question: "How can I handle file uploads in a REST API?"
+        answer: "Use multipart/form-data for simple uploads, consider content-type: application/octet-stream for binary files, implement chunked uploads for large files, provide upload progress information, and support resumable uploads for reliability."
+        
+      - question: "What's the best approach for API documentation with REST?"
+        answer: "Use OpenAPI/Swagger for machine-readable specifications, provide interactive documentation with request/response examples, include authentication guides, document error responses, and keep documentation in sync with actual implementation."
+        
+      - question: "How do I debug REST API issues efficiently?"
+        answer: "Use tools like Postman or Insomnia for testing requests, implement detailed logging with correlation IDs, return descriptive error messages, use HTTP status codes properly, and consider adding a debug mode with verbose responses."
+        
+      - question: "How should I handle long-running operations in REST APIs?"
+        answer: "Implement asynchronous processing using the 202 Accepted status code, provide a way to check operation status via a URL in the response, use webhooks for completion notifications, consider polling with exponential backoff, and document timeout behaviors."
+        
+      - question: "What are common REST API design mistakes to avoid?"
+        answer: "Common mistakes include using verbs instead of nouns in URLs, ignoring HTTP status codes, not implementing proper error handling, creating inconsistent response structures, neglecting security concerns, and designing overly complex URL hierarchies." 
