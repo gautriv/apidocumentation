@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <style>
+    .device { fill: #f0f5ff; stroke: #3273dc; stroke-width: 2; rx: 8; ry: 8; }
+    .server { fill: #f5f0ff; stroke: #6633cc; stroke-width: 2; rx: 8; ry: 8; }
+    .cloud { fill: #f5f5f5; stroke: #666666; stroke-width: 2; }
+    .text { font-family: Arial, sans-serif; font-size: 14px; }
+    .title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; }
+    .arrow { fill: none; stroke: #3273dc; stroke-width: 2; marker-end: url(#arrowhead); }
+    .request { fill: none; stroke: #ff6633; stroke-width: 2; marker-end: url(#arrowhead); }
+    .response { fill: none; stroke: #33cc66; stroke-width: 2; marker-end: url(#arrowhead); }
+    .protocol { font-family: Arial, sans-serif; font-size: 12px; fill: #555; }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3273dc" />
+    </marker>
+  </defs>
+  
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3273dc">Internet Communication</text>
+  <text x="400" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#555">How Data Flows Between Clients and Servers</text>
+  
+  <!-- Cloud - Internet -->
+  <ellipse cx="400" cy="250" rx="180" ry="90" class="cloud" />
+  <text x="400" y="250" text-anchor="middle" class="title">Internet</text>
+  <text x="400" y="275" text-anchor="middle" class="text">Network Infrastructure</text>
+  
+  <!-- Client Devices -->
+  <rect x="50" y="120" width="120" height="80" class="device" />
+  <text x="110" y="150" text-anchor="middle" class="title">Desktop</text>
+  <text x="110" y="170" text-anchor="middle" class="text">Web Browser</text>
+  
+  <rect x="50" y="250" width="120" height="80" class="device" />
+  <text x="110" y="280" text-anchor="middle" class="title">Mobile</text>
+  <text x="110" y="300" text-anchor="middle" class="text">Native App</text>
+  
+  <rect x="50" y="380" width="120" height="80" class="device" />
+  <text x="110" y="410" text-anchor="middle" class="title">IoT Device</text>
+  <text x="110" y="430" text-anchor="middle" class="text">Embedded System</text>
+  
+  <!-- Server Side -->
+  <rect x="630" y="120" width="120" height="80" class="server" />
+  <text x="690" y="150" text-anchor="middle" class="title">Web Server</text>
+  <text x="690" y="170" text-anchor="middle" class="text">HTTP/HTTPS</text>
+  
+  <rect x="630" y="250" width="120" height="80" class="server" />
+  <text x="690" y="280" text-anchor="middle" class="title">API Server</text>
+  <text x="690" y="300" text-anchor="middle" class="text">REST/GraphQL</text>
+  
+  <rect x="630" y="380" width="120" height="80" class="server" />
+  <text x="690" y="410" text-anchor="middle" class="title">Database</text>
+  <text x="690" y="430" text-anchor="middle" class="text">Data Storage</text>
+  
+  <!-- Connection Lines -->
+  <!-- Desktop to Internet -->
+  <path d="M170 160 H220" class="arrow" />
+  <text x="195" y="150" text-anchor="middle" class="protocol">HTTP/S</text>
+  
+  <!-- Mobile to Internet -->
+  <path d="M170 290 H220" class="arrow" />
+  <text x="195" y="280" text-anchor="middle" class="protocol">HTTP/S</text>
+  
+  <!-- IoT to Internet -->
+  <path d="M170 420 H220" class="arrow" />
+  <text x="195" y="410" text-anchor="middle" class="protocol">MQTT</text>
+  
+  <!-- Internet to Web Server -->
+  <path d="M580 160 H630" class="arrow" />
+  
+  <!-- Internet to API Server -->
+  <path d="M580 290 H630" class="arrow" />
+  
+  <!-- Internet to Database -->
+  <path d="M580 420 H630" class="arrow" />
+  
+  <!-- Web Server to API Server -->
+  <path d="M690 200 V250" class="arrow" />
+  
+  <!-- API Server to Database -->
+  <path d="M690 330 V380" class="arrow" />
+  
+  <!-- Request/Response examples -->
+  <path d="M250 200 Q400 150 550 200" class="request" />
+  <text x="400" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#ff6633">HTTP Request</text>
+  
+  <path d="M550 220 Q400 270 250 220" class="response" />
+  <text x="400" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#33cc66">HTTP Response</text>
+  
+  <!-- Data packets -->
+  <rect x="360" y="310" width="80" height="30" rx="15" ry="15" fill="#fff" stroke="#666" />
+  <text x="400" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">Data Packets</text>
+  
+  <!-- Protocol stack -->
+  <rect x="50" y="480" width="700" height="1" stroke="#ccc" />
+  <text x="100" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">APPLICATION</text>
+  <text x="100" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">HTTP, HTTPS, FTP</text>
+  
+  <text x="250" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">TRANSPORT</text>
+  <text x="250" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">TCP, UDP</text>
+  
+  <text x="400" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">INTERNET</text>
+  <text x="400" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">IP, ICMP</text>
+  
+  <text x="550" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">LINK</text>
+  <text x="550" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Ethernet, WiFi</text>
+  
+  <text x="700" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">PHYSICAL</text>
+  <text x="700" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">Cables, Fiber, Radio</text>
+</svg> 

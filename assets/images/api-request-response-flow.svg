@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#f8f9fb" rx="15" ry="15"/>
+  
+  <!-- Client Column -->
+  <rect x="50" y="150" width="150" height="270" rx="5" ry="5" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="125" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">Client</text>
+  
+  <!-- API Gateway Column -->
+  <rect x="250" y="150" width="150" height="270" rx="5" ry="5" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="325" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">API Gateway</text>
+  
+  <!-- Server Column -->
+  <rect x="450" y="150" width="150" height="270" rx="5" ry="5" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="525" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">API Server</text>
+  
+  <!-- Database Column -->
+  <rect x="650" y="150" width="100" height="270" rx="5" ry="5" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="700" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2c3e50">Database</text>
+  
+  <!-- Flow Steps -->
+  <!-- 1. Client creates request -->
+  <rect x="65" y="170" width="120" height="40" rx="5" ry="5" fill="#e3f2fd" stroke="#2196F3" stroke-width="2"/>
+  <text x="125" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2c3e50">Create Request</text>
+  
+  <!-- 2. Client sends request to API Gateway -->
+  <path d="M185 190 L250 190" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="217" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4CAF50">HTTP Request</text>
+  
+  <!-- 3. API Gateway validates request -->
+  <rect x="265" y="170" width="120" height="40" rx="5" ry="5" fill="#e3f2fd" stroke="#2196F3" stroke-width="2"/>
+  <text x="325" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2c3e50">Validate Request</text>
+  
+  <!-- 4. API Gateway authenticates -->
+  <rect x="265" y="230" width="120" height="40" rx="5" ry="5" fill="#e8f5e9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="325" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2c3e50">Authenticate</text>
+  
+  <!-- 5. Route to API Server -->
+  <path d="M385 250 L450 250" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="417" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4CAF50">Route Request</text>
+  
+  <!-- 6. Process request -->
+  <rect x="465" y="230" width="120" height="40" rx="5" ry="5" fill="#e3f2fd" stroke="#2196F3" stroke-width="2"/>
+  <text x="525" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2c3e50">Process Request</text>
+  
+  <!-- 7. Database query -->
+  <path d="M585 250 L650 250" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="617" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4CAF50">Query</text>
+  
+  <!-- 8. Database returns data -->
+  <path d="M650 270 L585 270" stroke="#F44336" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text x="617" y="285" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#F44336">Return Data</text>
+  
+  <!-- 9. Format response -->
+  <rect x="465" y="290" width="120" height="40" rx="5" ry="5" fill="#fff3e0" stroke="#FF9800" stroke-width="2"/>
+  <text x="525" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2c3e50">Format Response</text>
+  
+  <!-- 10. Send to Gateway -->
+  <path d="M465 310 L385 310" stroke="#F44336" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text x="425" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#F44336">Response</text>
+  
+  <!-- 11. Process response -->
+  <rect x="265" y="290" width="120" height="40" rx="5" ry="5" fill="#fff3e0" stroke="#FF9800" stroke-width="2"/>
+  <text x="325" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2c3e50">Process Response</text>
+  
+  <!-- 12. Send to client -->
+  <path d="M265 310 L185 310" stroke="#F44336" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text x="225" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#F44336">HTTP Response</text>
+  
+  <!-- 13. Client handles response -->
+  <rect x="65" y="290" width="120" height="40" rx="5" ry="5" fill="#fff3e0" stroke="#FF9800" stroke-width="2"/>
+  <text x="125" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2c3e50">Handle Response</text>
+  
+  <!-- 14. UI update -->
+  <rect x="65" y="350" width="120" height="40" rx="5" ry="5" fill="#f3e5f5" stroke="#9C27B0" stroke-width="2"/>
+  <text x="125" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2c3e50">Update UI</text>
+  
+  <!-- Database Icon -->
+  <rect x="675" y="220" width="50" height="60" rx="5" ry="5" fill="#e8f5e9" stroke="#4CAF50" stroke-width="2"/>
+  <rect x="675" y="230" width="50" height="10" fill="#4CAF50"/>
+  <rect x="675" y="245" width="50" height="5" fill="#4CAF50" opacity="0.5"/>
+  <rect x="675" y="255" width="50" height="5" fill="#4CAF50" opacity="0.5"/>
+  <rect x="675" y="265" width="50" height="5" fill="#4CAF50" opacity="0.5"/>
+  
+  <!-- Arrow Markers -->
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4CAF50"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F44336"/>
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">API Request and Response Flow</text>
+  <text x="400" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#2c3e50">The complete request-response cycle in API communication</text>
+</svg> 

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <style>
+    .node { fill: #f0f5ff; stroke: #3273dc; stroke-width: 2; rx: 8; ry: 8; }
+    .array-node { fill: #f0fff5; stroke: #33cc66; stroke-width: 2; rx: 8; ry: 8; }
+    .primitive-node { fill: #fff5f0; stroke: #ff6633; stroke-width: 2; rx: 8; ry: 8; }
+    .connector { fill: none; stroke: #3273dc; stroke-width: 2; }
+    .array-connector { fill: none; stroke: #33cc66; stroke-width: 2; }
+    .text { font-family: Arial, sans-serif; font-size: 14px; }
+    .key { font-family: "Courier New", monospace; font-size: 14px; fill: #0066cc; }
+    .value { font-family: "Courier New", monospace; font-size: 14px; fill: #008800; }
+    .type { font-family: Arial, sans-serif; font-size: 12px; fill: #666; }
+    .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; }
+    .subtitle { font-family: Arial, sans-serif; font-size: 14px; }
+  </style>
+
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3273dc">JSON Structure Overview</text>
+  <text x="400" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#555">A visual guide to JSON data types and organization</text>
+  
+  <!-- Root object -->
+  <rect x="340" y="100" width="120" height="60" class="node" />
+  <text x="400" y="125" text-anchor="middle" class="title">JSON Object</text>
+  <text x="400" y="145" text-anchor="middle" class="text">Root element</text>
+  
+  <!-- Level 1 nodes -->
+  <!-- Object property -->
+  <rect x="100" y="220" width="160" height="60" class="node" />
+  <text x="180" y="245" text-anchor="middle" class="title">Nested Object</text>
+  <text x="180" y="265" text-anchor="middle" class="key">"user": { ... }</text>
+  
+  <!-- Array property -->
+  <rect x="320" y="220" width="160" height="60" class="array-node" />
+  <text x="400" y="245" text-anchor="middle" class="title">Array</text>
+  <text x="400" y="265" text-anchor="middle" class="key">"items": [ ... ]</text>
+  
+  <!-- String property -->
+  <rect x="540" y="220" width="160" height="60" class="primitive-node" />
+  <text x="620" y="245" text-anchor="middle" class="title">String</text>
+  <text x="620" y="265" text-anchor="middle" class="key">"name": "John"</text>
+  
+  <!-- Level 2 nodes for object -->
+  <rect x="30" y="340" width="120" height="50" class="primitive-node" />
+  <text x="90" y="360" text-anchor="middle" class="title">String</text>
+  <text x="90" y="375" text-anchor="middle" class="key">"firstName"</text>
+  
+  <rect x="170" y="340" width="120" height="50" class="primitive-node" />
+  <text x="230" y="360" text-anchor="middle" class="title">Number</text>
+  <text x="230" y="375" text-anchor="middle" class="key">"age": 30</text>
+  
+  <!-- Level 2 nodes for array -->
+  <rect x="320" y="340" width="160" height="50" class="primitive-node" />
+  <text x="400" y="360" text-anchor="middle" class="title">Array Elements</text>
+  <text x="400" y="375" text-anchor="middle" class="value">"red", "green", "blue"</text>
+  
+  <!-- Level 2 nodes for primitive -->
+  <rect x="540" y="340" width="160" height="50" class="primitive-node" opacity="0.6" />
+  <text x="620" y="360" text-anchor="middle" class="title">Other Primitives</text>
+  <text x="620" y="375" text-anchor="middle" class="value">true, false, null, 42</text>
+  
+  <!-- Connectors -->
+  <path d="M400 160 V180 H180 V220" class="connector" />
+  <path d="M400 160 V220" class="connector" />
+  <path d="M400 160 V180 H620 V220" class="connector" />
+  
+  <path d="M180 280 V300 H90 V340" class="connector" />
+  <path d="M180 280 V300 H230 V340" class="connector" />
+  
+  <path d="M400 280 V340" class="array-connector" />
+  
+  <!-- JSON Structure Legend -->
+  <rect x="50" y="420" width="700" height="60" fill="#f8f8f8" stroke="#ccc" stroke-width="1" rx="8" ry="8" />
+  <text x="400" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold">JSON Structure Rules</text>
+  
+  <text x="150" y="460" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">• Objects use { } brackets</text>
+  <text x="380" y="460" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">• Arrays use [ ] brackets</text>
+  <text x="580" y="460" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">• Values: strings, numbers, objects, arrays, true, false, null</text>
+  <text x="150" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">• All property names must be strings</text>
+  <text x="380" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">• Property-value pairs separated by :</text>
+  <text x="580" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">• Multiple entries separated by commas</text>
+</svg> 

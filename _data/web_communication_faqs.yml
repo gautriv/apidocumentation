@@ -1,0 +1,55 @@
+categories:
+  - name: "HTTP Basics"
+    items:
+      - question: "What is HTTP and how does it work?"
+        answer: "HTTP (Hypertext Transfer Protocol) is the foundation of data communication on the web. It's a request-response protocol where clients (browsers, apps) send requests to servers, which respond with requested resources. Each HTTP request contains a method (GET, POST, etc.), URL path, headers, and sometimes a body. Responses include a status code, headers, and usually a body containing the requested data."
+
+      - question: "What's the difference between HTTP and HTTPS?"
+        answer: "HTTPS (HTTP Secure) is HTTP with encryption. While both protocols handle client-server communication, HTTPS adds a security layer using TLS/SSL to encrypt all data transferred between client and server. This encryption prevents eavesdropping, tampering, and man-in-the-middle attacks. HTTPS also verifies server identity through digital certificates and is indicated by a padlock icon in browsers."
+
+      - question: "What are the most common HTTP methods and when should each be used?"
+        answer: "The most common HTTP methods are: GET (retrieve data, should be idempotent), POST (submit data, create resources), PUT (update resources by replacing them entirely), PATCH (partial resource updates), DELETE (remove resources), and OPTIONS (get supported methods). GET and POST are most frequent, with GET for data retrieval and POST for data submission. RESTful APIs typically use all methods to represent different operations on resources."
+
+  - name: "Web Communication Architecture"
+    items:
+      - question: "How does client-server communication work on the web?"
+        answer: "In client-server communication, clients (browsers, mobile apps) initiate requests to servers across the internet. Servers process these requests and return appropriate responses. This stateless model works through standardized protocols like HTTP, with clients rendering the received data. The process typically involves DNS resolution to find the server, establishing a TCP connection, sending the HTTP request, receiving and processing the response, and finally rendering content."
+
+      - question: "What is the role of APIs in web communication?"
+        answer: "APIs (Application Programming Interfaces) provide standardized ways for different software systems to communicate. In web communication, APIs enable clients to interact with server resources and services through defined endpoints and data formats. They abstract complex backend operations, allowing developers to access functionality without understanding implementation details. Web APIs typically use HTTP methods with JSON or XML data formats, following standards like REST or GraphQL."
+
+      - question: "What happens behind the scenes when you enter a URL in a browser?"
+        answer: "When you enter a URL, the browser first extracts the domain and performs DNS lookup to get the server's IP address. It then establishes a TCP connection with the server, potentially negotiating TLS for HTTPS. The browser sends an HTTP request to the server, which processes it and returns a response (typically HTML, CSS, JavaScript). The browser parses the HTML, fetches additional resources linked in the document, renders the page, and executes JavaScript. All this typically happens within seconds."
+
+  - name: "Web Communication Protocols"
+    items:
+      - question: "What is WebSocket and how does it differ from HTTP?"
+        answer: "WebSocket is a communication protocol providing full-duplex communication over a single, long-lived connection. Unlike HTTP's request-response model, WebSocket allows both client and server to send messages at any time after the initial handshake, without waiting for requests. This makes it ideal for real-time applications like chat, live updates, and gaming. WebSocket connections start as HTTP requests that upgrade to WebSocket protocol, maintaining persistent bidirectional data streams."
+
+      - question: "What is REST and why is it important for web communication?"
+        answer: "REST (Representational State Transfer) is an architectural style for designing networked applications. It emphasizes a stateless client-server relationship, standard operations on resources identified by URLs, and representation of resources (typically JSON or XML). REST is important because it provides a scalable, simple approach to API design that leverages existing web infrastructure and HTTP methods. RESTful systems are easy to understand and integrate with, making them the dominant paradigm for public APIs."
+
+      - question: "How does CORS work and why is it necessary?"
+        answer: "CORS (Cross-Origin Resource Sharing) is a security mechanism controlling how web pages in one domain access resources from another domain. It's necessary because browsers enforce the Same-Origin Policy, restricting cross-domain requests to prevent malicious sites from accessing sensitive data. CORS works through HTTP headers: when a site makes a cross-origin request, the browser adds an Origin header, and the server must respond with Access-Control-Allow-Origin headers specifying which origins are permitted to access its resources."
+
+  - name: "Performance and Optimization"
+    items:
+      - question: "What are HTTP status codes and why are they important?"
+        answer: "HTTP status codes are three-digit numbers in HTTP responses that indicate the request's outcome. They're grouped into five categories: 1xx (informational), 2xx (success), 3xx (redirection), 4xx (client errors), and 5xx (server errors). Common codes include 200 (OK), 404 (Not Found), and 500 (Internal Server Error). These codes are important because they help diagnose communication problems, automate error handling, and provide consistent status information across different services and applications."
+
+      - question: "How can web communication be optimized for better performance?"
+        answer: "Optimize web communication by minimizing request-response size (compression, minification), reducing the number of requests (bundling, spriting), using efficient data formats (JSON instead of XML), implementing caching strategies (browser cache, CDNs), utilizing HTTP/2 or HTTP/3 for multiplexing, employing connection pooling, optimizing DNS resolution, using asynchronous loading where appropriate, and implementing intelligent data prefetching. For APIs, consider pagination, partial responses, and optimizing query parameters."
+
+      - question: "What are cookies and how do they enhance web communication?"
+        answer: "Cookies are small pieces of data stored in the browser that websites can set and retrieve. They enhance web communication by enabling session management (keeping users logged in), personalization (remembering preferences), tracking user behavior, and maintaining state in the otherwise stateless HTTP protocol. Cookies are sent with every request to their associated domain through HTTP headers, allowing servers to recognize returning users and customize responses based on previous interactions or saved information."
+
+  - name: "Security Aspects"
+    items:
+      - question: "What is TLS/SSL and how does it secure web communication?"
+        answer: "TLS (Transport Layer Security) and its predecessor SSL (Secure Sockets Layer) are cryptographic protocols that secure web communications. They work by authenticating the server using digital certificates, establishing a secure session with key exchange mechanisms, and encrypting all data transferred between client and server. The process involves a TLS handshake where the client and server agree on encryption algorithms and keys. This protection ensures data confidentiality, integrity, and server authenticity."
+
+      - question: "What are common web communication security vulnerabilities?"
+        answer: "Common web communication vulnerabilities include: man-in-the-middle attacks (intercepting unencrypted traffic), cross-site scripting (XSS) injecting malicious code, cross-site request forgery (CSRF) tricking users into unwanted actions, injection attacks (SQL, command injection), insecure API endpoints, broken authentication mechanisms, sensitive data exposure through improper encryption, XML external entity attacks (XXE), using components with known vulnerabilities, and inadequate logging/monitoring that allows attacks to go undetected."
+
+      - question: "How does token-based authentication work in web APIs?"
+        answer: "In token-based authentication, the server generates a signed token (commonly JWT) containing user identity and permissions when a user logs in. The client stores this token and includes it in the Authorization header of subsequent requests. The server validates the token's signature and expiration before processing requests, without needing to store session data. This stateless approach scales well, works across domains, and is ideal for modern applications and microservices. Token revocation typically requires additional server-side mechanisms like blacklists." 

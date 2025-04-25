@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <style>
+    .process-box { fill: #f0f5ff; stroke: #3273dc; stroke-width: 2; rx: 4; ry: 4; }
+    .title-text { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #333; }
+    .desc-text { font-family: Arial, sans-serif; font-size: 12px; fill: #555; }
+    .arrow { fill: none; stroke: #3273dc; stroke-width: 2; marker-end: url(#arrowhead); }
+    .input-box { fill: #fff5f5; stroke: #ff6666; stroke-width: 1; rx: 4; ry: 4; }
+    .output-box { fill: #f5fff5; stroke: #66cc66; stroke-width: 1; rx: 4; ry: 4; }
+    .icon-circle { fill: #3273dc; rx: 18; ry: 18; }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3273dc" />
+    </marker>
+  </defs>
+  
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3273dc">API Documentation Process</text>
+  <text x="400" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#555">From planning to delivery</text>
+  
+  <!-- Process boxes -->
+  <g transform="translate(50, 120)">
+    <!-- Planning -->
+    <rect width="120" height="80" class="process-box" />
+    <text x="60" y="30" text-anchor="middle" class="title-text">1. Planning</text>
+    <text x="60" y="50" text-anchor="middle" class="desc-text">Requirements</text>
+    <text x="60" y="65" text-anchor="middle" class="desc-text">Audience Analysis</text>
+    
+    <!-- Content Creation -->
+    <g transform="translate(170, 0)">
+      <rect width="120" height="80" class="process-box" />
+      <text x="60" y="30" text-anchor="middle" class="title-text">2. Research</text>
+      <text x="60" y="50" text-anchor="middle" class="desc-text">API Analysis</text>
+      <text x="60" y="65" text-anchor="middle" class="desc-text">Use Case Definition</text>
+    </g>
+    
+    <!-- Design -->
+    <g transform="translate(340, 0)">
+      <rect width="120" height="80" class="process-box" />
+      <text x="60" y="30" text-anchor="middle" class="title-text">3. Design</text>
+      <text x="60" y="50" text-anchor="middle" class="desc-text">Information Architecture</text>
+      <text x="60" y="65" text-anchor="middle" class="desc-text">Template Creation</text>
+    </g>
+    
+    <!-- Content Creation -->
+    <g transform="translate(510, 0)">
+      <rect width="120" height="80" class="process-box" />
+      <text x="60" y="30" text-anchor="middle" class="title-text">4. Content Creation</text>
+      <text x="60" y="50" text-anchor="middle" class="desc-text">Write Documentation</text>
+      <text x="60" y="65" text-anchor="middle" class="desc-text">Code Examples</text>
+    </g>
+    
+    <!-- Review -->
+    <g transform="translate(510, 130)">
+      <rect width="120" height="80" class="process-box" />
+      <text x="60" y="30" text-anchor="middle" class="title-text">5. Review</text>
+      <text x="60" y="50" text-anchor="middle" class="desc-text">Technical Accuracy</text>
+      <text x="60" y="65" text-anchor="middle" class="desc-text">Quality Checks</text>
+    </g>
+    
+    <!-- Testing -->
+    <g transform="translate(340, 130)">
+      <rect width="120" height="80" class="process-box" />
+      <text x="60" y="30" text-anchor="middle" class="title-text">6. Testing</text>
+      <text x="60" y="50" text-anchor="middle" class="desc-text">Usability Testing</text>
+      <text x="60" y="65" text-anchor="middle" class="desc-text">Example Validation</text>
+    </g>
+    
+    <!-- Publishing -->
+    <g transform="translate(170, 130)">
+      <rect width="120" height="80" class="process-box" />
+      <text x="60" y="30" text-anchor="middle" class="title-text">7. Publishing</text>
+      <text x="60" y="50" text-anchor="middle" class="desc-text">Deployment</text>
+      <text x="60" y="65" text-anchor="middle" class="desc-text">Announcement</text>
+    </g>
+    
+    <!-- Maintenance -->
+    <g transform="translate(0, 130)">
+      <rect width="120" height="80" class="process-box" />
+      <text x="60" y="30" text-anchor="middle" class="title-text">8. Maintenance</text>
+      <text x="60" y="50" text-anchor="middle" class="desc-text">Updates</text>
+      <text x="60" y="65" text-anchor="middle" class="desc-text">Feedback Processing</text>
+    </g>
+    
+    <!-- Arrows -->
+    <path d="M120 40 H170" class="arrow" />
+    <path d="M290 40 H340" class="arrow" />
+    <path d="M460 40 H510" class="arrow" />
+    <path d="M570 80 V130" class="arrow" />
+    <path d="M510 170 H460" class="arrow" />
+    <path d="M340 170 H290" class="arrow" />
+    <path d="M170 170 H120" class="arrow" />
+    <path d="M60 130 V80" class="arrow" />
+    
+    <!-- Inputs -->
+    <rect x="10" y="-30" width="100" height="20" class="input-box" />
+    <text x="60" y="-18" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">API Specifications</text>
+    <path d="M60 -10 V0" class="arrow" />
+    
+    <rect x="180" y="-30" width="100" height="20" class="input-box" />
+    <text x="230" y="-18" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">Technical Details</text>
+    <path d="M230 -10 V0" class="arrow" />
+    
+    <rect x="350" y="-30" width="100" height="20" class="input-box" />
+    <text x="400" y="-18" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">User Needs</text>
+    <path d="M400 -10 V0" class="arrow" />
+    
+    <rect x="520" y="-30" width="100" height="20" class="input-box" />
+    <text x="570" y="-18" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">Style Guides</text>
+    <path d="M570 -10 V0" class="arrow" />
+    
+    <!-- Outputs -->
+    <rect x="10" y="220" width="100" height="20" class="output-box" />
+    <text x="60" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">Updated Documentation</text>
+    <path d="M60 220 V210" class="arrow" />
+    
+    <rect x="180" y="220" width="100" height="20" class="output-box" />
+    <text x="230" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">Live Documentation</text>
+    <path d="M230 220 V210" class="arrow" />
+    
+    <rect x="350" y="220" width="100" height="20" class="output-box" />
+    <text x="400" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">User Feedback</text>
+    <path d="M400 220 V210" class="arrow" />
+    
+    <rect x="520" y="220" width="100" height="20" class="output-box" />
+    <text x="570" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">Validated Content</text>
+    <path d="M570 220 V210" class="arrow" />
+  </g>
+</svg> 

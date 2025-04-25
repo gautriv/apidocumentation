@@ -1,0 +1,66 @@
+categories:
+  - name: "JSON Basics"
+    items:
+      - question: "What is JSON and what does it stand for?"
+        answer: "JSON stands for JavaScript Object Notation. It's a lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate. JSON is text-based, language-independent, and uses conventions familiar to programmers of the C-family of languages."
+
+      - question: "What are the main advantages of using JSON in API development?"
+        answer: "JSON offers several advantages: it's lightweight with minimal syntax overhead, human-readable, natively supported in JavaScript, easy to parse in virtually all programming languages, supports nested data structures, and has become the de facto standard for modern APIs, especially RESTful services."
+
+      - question: "What are the basic data types supported in JSON?"
+        answer: "JSON supports six basic data types: strings (text in double quotes), numbers (integers or decimals without quotes), booleans (true or false), objects (collections of key-value pairs in curly braces), arrays (ordered lists in square brackets), and null (representing no value)."
+
+  - name: "JSON Structure and Syntax"
+    items:
+      - question: "What is the correct syntax for a JSON object?"
+        answer: "A JSON object starts and ends with curly braces {}. Inside, it contains zero or more key-value pairs separated by commas. Each key is a string in double quotes, followed by a colon, and then a value. For example: {\"name\": \"John\", \"age\": 30, \"isActive\": true}"
+
+      - question: "How do I represent arrays in JSON?"
+        answer: "JSON arrays are ordered collections of values enclosed in square brackets []. Values in an array are separated by commas and can be of any valid JSON data type, including mixed types. For example: [1, \"apple\", true, {\"key\": \"value\"}, [2, 3]]"
+
+      - question: "What are the common syntax errors when writing JSON?"
+        answer: "Common JSON syntax errors include: using single quotes instead of double quotes for strings, including trailing commas after the last element in arrays or objects, using unquoted property names, including comments (not supported in JSON), omitting commas between elements, and using undefined or function values (not valid in JSON)."
+
+  - name: "Working with JSON in APIs"
+    items:
+      - question: "How do I parse JSON in different programming languages?"
+        answer: "Most languages have built-in JSON support: JavaScript uses JSON.parse() and JSON.stringify(), Python has json.loads() and json.dumps(), Java uses libraries like Jackson or Gson, PHP has json_decode() and json_encode(), and C# uses System.Text.Json or Newtonsoft.Json libraries. These functions convert between JSON strings and native language objects."
+
+      - question: "What is JSONP and when should it be used?"
+        answer: "JSONP (JSON with Padding) is a technique for requesting JSON data from a server in a different domain, bypassing same-origin policy restrictions. It wraps JSON in a function call that the client provides. JSONP should only be used when CORS isn't available and for GET requests only, as it has security limitations including potential for XSS attacks."
+
+      - question: "How do I handle nested or complex data structures in JSON?"
+        answer: "Nest complex data structures by embedding objects within objects or using arrays. For example: {\"user\": {\"name\": \"John\", \"address\": {\"city\": \"New York\"}}, \"orders\": [{\"id\": 123}, {\"id\": 456}]}. Access nested properties using dot notation (user.address.city) or bracket notation (user['address']['city'])."
+
+  - name: "JSON Best Practices"
+    items:
+      - question: "What are best practices for naming keys in JSON?"
+        answer: "Use consistent naming conventions (camelCase or snake_case), be descriptive but concise, avoid special characters, use nouns for object properties, use plural names for arrays of items, avoid reserved words, and maintain backward compatibility when evolving your API."
+
+      - question: "How should I handle date and time values in JSON?"
+        answer: "Since JSON doesn't have a native date type, use ISO 8601 formatted strings (YYYY-MM-DDThh:mm:ssZ) for dates and times. This format is widely recognized, sorts naturally, and includes timezone information. Alternatively, you can use Unix timestamps (seconds since epoch) for some use cases."
+
+      - question: "What is JSON Schema and how is it used?"
+        answer: "JSON Schema is a vocabulary that allows you to annotate and validate JSON documents. It's used to describe the structure and constraints of JSON data, enabling automatic validation, clear documentation, and code generation. JSON Schema documents themselves are written in JSON and can validate properties, types, required fields, and complex constraints."
+
+  - name: "JSON Security and Performance"
+    items:
+      - question: "What are common security concerns when working with JSON?"
+        answer: "Key security concerns include: injection attacks if JSON is improperly parsed or evaluated, protection of sensitive data in transmission using HTTPS, validation of all input to prevent malformed JSON attacks, guarding against excessive nesting or large payloads that could lead to DoS, and using proper content-type headers to prevent CSRF and XSSI attacks."
+
+      - question: "How can I optimize JSON for performance in APIs?"
+        answer: "Optimize JSON performance by minimizing payload size (removing unnecessary fields and whitespace), using pagination for large data sets, implementing compression (gzip/deflate), considering binary alternatives for very large payloads (like Protocol Buffers or MessagePack), and using efficient JSON parsers appropriate for your language environment."
+
+      - question: "What is the difference between JSON and JSONL?"
+        answer: "JSON (JavaScript Object Notation) typically represents a single object or array, while JSONL (JSON Lines) is a format where each line is a valid JSON value, usually an object. JSONL is ideal for streaming data or log files where you need to process records sequentially without loading the entire dataset into memory."
+        
+  - name: "JSON in Different Environments"
+    items:
+      - question: "How is JSON used in RESTful API communication?"
+        answer: "In RESTful APIs, JSON is typically used for request bodies and response payloads. Resources are represented as JSON objects, collections as JSON arrays, and the format allows for flexible resource representations. JSON's lightweight nature aligns well with REST principles, making it ideal for stateless communication and resource manipulation through HTTP methods."
+        
+      - question: "What's the difference between JSON and XML for API data?"
+        answer: "JSON is generally more concise than XML, using less markup and smaller payloads. JSON has native JavaScript support and simpler parsing in most languages. XML offers better support for namespaces, mixed content, and has stronger schema validation tools. JSON is typically used for data-centric applications, while XML may be preferred for document-centric use cases or in industries with established XML standards."
+        
+      - question: "How does JSON work with GraphQL APIs?"
+        answer: "JSON is the standard response format for GraphQL APIs. While the GraphQL query language is not JSON, the query responses are always returned as JSON. GraphQL's flexible query structure allows clients to specify exactly what JSON structure they want returned, eliminating over-fetching and under-fetching of data that's common with traditional RESTful APIs." 

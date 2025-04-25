@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <style>
+    .code-block { font-family: "Courier New", monospace; font-size: 13px; }
+    .comment { fill: #888; }
+    .keyword { fill: #0066cc; }
+    .string { fill: #008800; }
+    .function { fill: #9900cc; }
+    .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; }
+    .subtitle { font-family: Arial, sans-serif; font-size: 14px; }
+    .tab { fill: #f8f8f8; stroke: #ccc; stroke-width: 1; }
+    .active-tab { fill: white; stroke: #3273dc; stroke-width: 2; }
+    .tab-text { font-family: Arial, sans-serif; font-size: 14px; }
+    .panel { fill: white; stroke: #3273dc; stroke-width: 2; }
+  </style>
+  
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3273dc">Code Samples in API Documentation</text>
+  <text x="400" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#555">Showing the same API request in different programming languages</text>
+  
+  <!-- Tabs -->
+  <rect x="100" y="100" width="120" height="30" rx="5" ry="5" class="active-tab" />
+  <text x="160" y="120" text-anchor="middle" class="tab-text">JavaScript</text>
+  
+  <rect x="225" y="100" width="120" height="30" rx="5" ry="5" class="tab" />
+  <text x="285" y="120" text-anchor="middle" class="tab-text">Python</text>
+  
+  <rect x="350" y="100" width="120" height="30" rx="5" ry="5" class="tab" />
+  <text x="410" y="120" text-anchor="middle" class="tab-text">Java</text>
+  
+  <rect x="475" y="100" width="120" height="30" rx="5" ry="5" class="tab" />
+  <text x="535" y="120" text-anchor="middle" class="tab-text">cURL</text>
+  
+  <rect x="600" y="100" width="120" height="30" rx="5" ry="5" class="tab" />
+  <text x="660" y="120" text-anchor="middle" class="tab-text">PHP</text>
+  
+  <!-- Code panel -->
+  <rect x="100" y="130" width="620" height="330" class="panel" />
+  
+  <!-- JavaScript code -->
+  <text x="120" y="170" class="code-block comment">// Make a GET request to the API</text>
+  <text x="120" y="190" class="code-block">
+    <tspan class="keyword">fetch</tspan><tspan>(</tspan><tspan class="string">'https://api.example.com/v1/users'</tspan><tspan>, {</tspan>
+  </text>
+  <text x="130" y="210" class="code-block">
+    <tspan>method: </tspan><tspan class="string">'GET'</tspan><tspan>,</tspan>
+  </text>
+  <text x="130" y="230" class="code-block">
+    <tspan>headers: {</tspan>
+  </text>
+  <text x="140" y="250" class="code-block">
+    <tspan class="string">'Authorization'</tspan><tspan>: </tspan><tspan class="string">'Bearer YOUR_API_KEY'</tspan><tspan>,</tspan>
+  </text>
+  <text x="140" y="270" class="code-block">
+    <tspan class="string">'Content-Type'</tspan><tspan>: </tspan><tspan class="string">'application/json'</tspan>
+  </text>
+  <text x="130" y="290" class="code-block">
+    <tspan>}</tspan>
+  </text>
+  <text x="120" y="310" class="code-block">
+    <tspan>})</tspan>
+  </text>
+  <text x="120" y="330" class="code-block">
+    <tspan>.</tspan><tspan class="function">then</tspan><tspan>(response => response.json())</tspan>
+  </text>
+  <text x="120" y="350" class="code-block">
+    <tspan>.</tspan><tspan class="function">then</tspan><tspan>(data => {</tspan>
+  </text>
+  <text x="130" y="370" class="code-block">
+    <tspan class="function">console</tspan><tspan>.log(</tspan><tspan class="string">'Success:'</tspan><tspan>, data);</tspan>
+  </text>
+  <text x="120" y="390" class="code-block">
+    <tspan>})</tspan>
+  </text>
+  <text x="120" y="410" class="code-block">
+    <tspan>.</tspan><tspan class="function">catch</tspan><tspan>((error) => {</tspan>
+  </text>
+  <text x="130" y="430" class="code-block">
+    <tspan class="function">console</tspan><tspan>.error(</tspan><tspan class="string">'Error:'</tspan><tspan>, error);</tspan>
+  </text>
+  <text x="120" y="450" class="code-block">
+    <tspan>});</tspan>
+  </text>
+  
+  <!-- Action buttons at bottom -->
+  <rect x="550" y="460" width="150" height="30" rx="5" ry="5" fill="#3273dc" />
+  <text x="625" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Copy to clipboard</text>
+  
+  <rect x="390" y="460" width="150" height="30" rx="5" ry="5" fill="#f5f5f5" stroke="#ccc" stroke-width="1" />
+  <text x="465" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#333">Try it out</text>
+</svg> 

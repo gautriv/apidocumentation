@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300">
+  <style>
+    .text { font-family: Arial, sans-serif; font-size: 14px; }
+    .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; }
+    .box { fill: #f0f5ff; stroke: #3273dc; stroke-width: 2; rx: 8; ry: 8; }
+    .arrow { fill: none; stroke: #3273dc; stroke-width: 2; marker-end: url(#arrowhead); }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3273dc" />
+    </marker>
+  </defs>
+  
+  <rect x="10" y="120" width="140" height="60" class="box" />
+  <text x="80" y="145" text-anchor="middle" class="title">Planning</text>
+  <text x="80" y="165" text-anchor="middle" class="text">Audience & Scope</text>
+  
+  <rect x="190" y="120" width="140" height="60" class="box" />
+  <text x="260" y="145" text-anchor="middle" class="title">Authoring</text>
+  <text x="260" y="165" text-anchor="middle" class="text">Create Content</text>
+  
+  <rect x="370" y="120" width="140" height="60" class="box" />
+  <text x="440" y="145" text-anchor="middle" class="title">Review</text>
+  <text x="440" y="165" text-anchor="middle" class="text">Technical Accuracy</text>
+  
+  <rect x="550" y="120" width="140" height="60" class="box" />
+  <text x="620" y="145" text-anchor="middle" class="title">Publishing</text>
+  <text x="620" y="165" text-anchor="middle" class="text">Deploy & Share</text>
+  
+  <rect x="260" y="220" width="280" height="60" class="box" />
+  <text x="400" y="245" text-anchor="middle" class="title">Maintenance</text>
+  <text x="400" y="265" text-anchor="middle" class="text">Updates & Versioning</text>
+  
+  <path d="M150 150 H190" class="arrow" />
+  <path d="M330 150 H370" class="arrow" />
+  <path d="M510 150 H550" class="arrow" />
+  <path d="M620 180 V220 H540" class="arrow" />
+  <path d="M260 250 H180 V180" class="arrow" />
+  
+  <text x="400" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3273dc">API Documentation Journey</text>
+  <text x="400" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#555">From Planning to Continuous Improvement</text>
+</svg> 

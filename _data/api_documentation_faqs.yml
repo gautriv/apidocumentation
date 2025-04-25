@@ -1,0 +1,55 @@
+categories:
+  - name: "API Documentation Basics"
+    items:
+      - question: "What is API documentation and why is it important?"
+        answer: "API documentation is a technical content deliverable that describes how to effectively use and integrate with an API. It's important because it helps developers understand the API's capabilities, how to make requests, what responses to expect, and how to handle errors. Good documentation reduces the learning curve, minimizes support needs, increases adoption, and builds trust in your API."
+
+      - question: "What are the key components of good API documentation?"
+        answer: "Good API documentation includes: an introduction explaining the API's purpose, authentication details, clear endpoint descriptions, request parameters and examples, response formats and status codes, error handling information, rate limiting policies, SDK/client library information, versioning details, and a changelog. Interactive examples and a getting started guide are also valuable components."
+
+      - question: "What's the difference between reference documentation and guides in API docs?"
+        answer: "Reference documentation is technical and exhaustive, detailing every endpoint, parameter, and response in a structured way. Guides (including tutorials, how-tos, and conceptual explanations) are narrative content that explain how to accomplish specific tasks, provide context, and showcase practical use cases. Effective API documentation combines both approaches."
+
+  - name: "Documentation Formats and Standards"
+    items:
+      - question: "What is OpenAPI (formerly Swagger) and how is it used for API documentation?"
+        answer: "OpenAPI is a specification for machine-readable API description documents that standardizes how REST APIs are documented. It uses YAML or JSON format to describe endpoints, operations, parameters, responses, and authentication methods. OpenAPI documents can generate interactive documentation, client libraries, and server stubs, making it easier to maintain consistent documentation alongside API development."
+
+      - question: "What are common API documentation formats and tools?"
+        answer: "Common formats include OpenAPI/Swagger, RAML, API Blueprint, and GraphQL schemas. Popular documentation tools include Swagger UI, ReDoc, Stoplight, Postman, ReadMe, Apiary, GitBook, and Slate. Many teams also use static site generators like Jekyll, Hugo, or Docusaurus with custom templates designed for API documentation."
+
+      - question: "How does API documentation differ for REST, GraphQL, and SOAP APIs?"
+        answer: "REST API docs focus on endpoints, HTTP methods, and resource representations. GraphQL API docs center on the schema, types, queries, and mutations with less emphasis on endpoints. SOAP API docs feature WSDL files, XML schemas, and more formal contract definitions. REST docs are resource-oriented, GraphQL docs are query-oriented, and SOAP docs are function-oriented."
+
+  - name: "Creating Effective Documentation"
+    items:
+      - question: "What makes API documentation developer-friendly?"
+        answer: "Developer-friendly documentation is complete yet concise, well-organized with consistent formatting, includes plenty of examples, offers try-it-now features, is searchable, provides code samples in multiple languages, explains errors clearly, gets updated with the API, avoids jargon without being patronizing, and is accessible to developers at different skill levels."
+
+      - question: "How should API examples be structured in documentation?"
+        answer: "Effective API examples include a description of what the example demonstrates, the complete request (URL, headers, and body if applicable), the expected response, potential error responses, and code snippets in popular programming languages. Examples should progress from simple to complex and cover common use cases as well as edge cases."
+
+      - question: "What role do status codes and error messages play in API documentation?"
+        answer: "Status codes and error messages are crucial for troubleshooting. Documentation should list all possible status codes the API returns, explain what each means in the context of your API, provide error response schemas with error codes, messages, and additional details, and include examples of common error scenarios with guidance on how to resolve them."
+
+  - name: "Documentation Maintenance and Best Practices"
+    items:
+      - question: "How can teams keep API documentation up-to-date?"
+        answer: "Keep documentation current by: integrating it into the development workflow, generating portions from code when possible, using versioning for both API and docs, implementing doc reviews in the PR process, conducting regular audits, setting up automated testing to detect discrepancies, establishing ownership, and collecting user feedback to identify areas needing improvement."
+
+      - question: "What are best practices for documenting API changes and versioning?"
+        answer: "Document API versions clearly with each endpoint's supported versions, maintain separate documentation for major versions, provide a detailed changelog highlighting breaking vs. non-breaking changes, explain migration paths between versions, include deprecation notices with timelines, and offer side-by-side comparisons of endpoint behavior across versions when relevant."
+
+      - question: "How detailed should API documentation be?"
+        answer: "API documentation should be comprehensive without being overwhelming. Include all information needed to successfully use the API, but organize it so developers can find specific details quickly. Cover all endpoints, parameters, and responses, but use progressive disclosure (overview first, details on demand) to make the documentation approachable for new users while still being complete for advanced users."
+
+  - name: "Interactive Documentation"
+    items:
+      - question: "What is interactive API documentation and what are its benefits?"
+        answer: "Interactive API documentation allows developers to make live API calls directly from the docs page. Benefits include: allowing developers to experiment without writing code, providing immediate feedback on how the API works, demonstrating authentication flows, showing real responses, reducing the time to first successful API call, and increasing developer engagement with your API."
+
+      - question: "What tools are commonly used to create interactive API documentation?"
+        answer: "Popular tools for interactive API documentation include Swagger UI, ReDoc, Stoplight Studio, Postman Documentation, RapiDoc, ReadMe, Apiary, and Slate. Most of these tools support the OpenAPI specification and offer features like request builders, response visualization, authentication handling, and code snippet generation."
+
+      - question: "How can API sandboxes enhance documentation?"
+        answer: "API sandboxes provide a safe environment to test API calls without affecting production data. They enhance documentation by allowing developers to experiment freely, test edge cases, explore functionality without setting up authentication, receive realistic but safe responses, and understand the API behavior through hands-on experience rather than just reading about it." 

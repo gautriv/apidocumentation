@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <style>
+    .system-box { fill: #f0f5ff; stroke: #3273dc; stroke-width: 2; rx: 8; ry: 8; }
+    .translator-box { fill: #fff5f0; stroke: #ff6633; stroke-width: 2; rx: 8; ry: 8; }
+    .client-box { fill: #f0fff5; stroke: #33cc66; stroke-width: 2; rx: 8; ry: 8; }
+    .text { font-family: Arial, sans-serif; font-size: 14px; }
+    .title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; }
+    .arrow { fill: none; stroke: #3273dc; stroke-width: 2; marker-end: url(#arrowhead); }
+    .data-packet { fill: #e6e6e6; stroke: #999; stroke-width: 1; rx: 4; ry: 4; }
+    .code-text { font-family: "Courier New", monospace; font-size: 12px; }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3273dc" />
+    </marker>
+  </defs>
+  
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3273dc">API Translator</text>
+  <text x="400" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#555">Bridging Different Systems and Formats</text>
+  
+  <!-- System A -->
+  <rect x="50" y="150" width="160" height="100" class="system-box" />
+  <text x="130" y="180" text-anchor="middle" class="title">System A</text>
+  <text x="130" y="205" text-anchor="middle" class="text">Legacy Database</text>
+  <text x="130" y="225" text-anchor="middle" class="text">SOAP Protocol</text>
+  
+  <!-- API Translator -->
+  <rect x="320" y="120" width="160" height="160" class="translator-box" />
+  <text x="400" y="145" text-anchor="middle" class="title">API Translator</text>
+  <text x="400" y="170" text-anchor="middle" class="text">Format Conversion</text>
+  <text x="400" y="190" text-anchor="middle" class="text">Protocol Adaptation</text>
+  <text x="400" y="210" text-anchor="middle" class="text">Data Transformation</text>
+  <text x="400" y="230" text-anchor="middle" class="text">Security Bridge</text>
+  <text x="400" y="250" text-anchor="middle" class="text">Rate Limiting</text>
+  
+  <!-- Client Applications -->
+  <rect x="590" y="100" width="160" height="80" class="client-box" />
+  <text x="670" y="130" text-anchor="middle" class="title">Mobile App</text>
+  <text x="670" y="155" text-anchor="middle" class="text">REST API / JSON</text>
+  
+  <rect x="590" y="210" width="160" height="80" class="client-box" />
+  <text x="670" y="240" text-anchor="middle" class="title">Web Application</text>
+  <text x="670" y="265" text-anchor="middle" class="text">GraphQL</text>
+  
+  <!-- Data packets -->
+  <!-- System A to Translator -->
+  <rect x="230" y="130" width="70" height="40" class="data-packet" />
+  <text x="265" y="155" text-anchor="middle" class="code-text">XML Data</text>
+  
+  <!-- Translator to Mobile -->
+  <rect x="500" y="110" width="70" height="40" class="data-packet" />
+  <text x="535" y="135" text-anchor="middle" class="code-text">JSON Data</text>
+  
+  <!-- Translator to Web -->
+  <rect x="500" y="220" width="70" height="40" class="data-packet" />
+  <text x="535" y="245" text-anchor="middle" class="code-text">GraphQL</text>
+  
+  <!-- Arrows -->
+  <path d="M210 180 H320" class="arrow" />
+  <path d="M480 160 L590 140" class="arrow" />
+  <path d="M480 220 L590 240" class="arrow" />
+  
+  <!-- Transformation Process in the Middle -->
+  <rect x="320" y="320" width="160" height="60" fill="none" stroke="#3273dc" stroke-width="1" stroke-dasharray="5,3" rx="4" ry="4" />
+  <text x="400" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#3273dc">Transformation Process</text>
+  <text x="400" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#555">XML → JSON / GraphQL</text>
+  <path d="M400 280 V320" stroke="#3273dc" stroke-width="1" stroke-dasharray="5,3" />
+</svg> 

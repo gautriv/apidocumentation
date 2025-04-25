@@ -1,0 +1,66 @@
+categories:
+  - name: "API Request Basics"
+    items:
+      - question: "What are the components of an API request?"
+        answer: "An API request typically consists of: 1) An HTTP method (GET, POST, PUT, DELETE, etc.), 2) A URL endpoint that identifies the resource, 3) Headers containing metadata about the request, 4) Query parameters for filtering or pagination, 5) A request body (for POST, PUT, PATCH methods) containing data to be processed, and 6) Authentication credentials when required. Each component plays a specific role in communicating the client's intent to the server."
+
+      - question: "What are the common HTTP methods used in API requests and what do they do?"
+        answer: "The most common HTTP methods are: GET (retrieve resources without side effects), POST (create new resources or submit data for processing), PUT (replace existing resources completely), PATCH (update resources partially), DELETE (remove resources), OPTIONS (get information about communication options), and HEAD (retrieve headers only). GET and POST are most frequently used, with GET for data retrieval and POST for submissions, while RESTful APIs typically use all methods to represent different operations."
+
+      - question: "How do query parameters work in API requests?"
+        answer: "Query parameters are key-value pairs appended to the URL after a question mark (?) and separated by ampersands (&). They're used to filter results, specify sorting order, control pagination, or pass non-sensitive data. For example, in 'api.example.com/products?category=electronics&sort=price_asc&page=2', the query parameters are category, sort, and page. They're typically optional, don't change the resource location, and are most commonly used with GET requests."
+
+  - name: "API Response Fundamentals"
+    items:
+      - question: "What makes up a typical API response?"
+        answer: "A typical API response consists of: 1) Status code indicating success, failure, or other outcomes (e.g., 200 OK, 404 Not Found), 2) Response headers with metadata about the response, 3) Response body containing the requested data or error details (usually in JSON or XML format), 4) Pagination information for responses containing multiple records, and 5) Links to related resources following HATEOAS principles in RESTful APIs. Well-designed responses are consistent, provide clear error messages, and include all necessary data."
+
+      - question: "How should API responses be structured for best usability?"
+        answer: "For best usability, API responses should follow a consistent structure with: a clear status indicator (beyond just HTTP codes), descriptive error messages when needed, a data/payload section containing the primary response information, metadata including pagination details for collections, timestamps for time-sensitive data, and version information. A uniform response structure helps clients parse and handle responses predictably, improving developer experience and reducing integration errors."
+
+      - question: "What is pagination in API responses and why is it important?"
+        answer: "Pagination divides large sets of results into manageable chunks or 'pages' to optimize performance and usability. It's implemented using parameters like 'page' and 'limit' or 'offset' and 'count', with response metadata including the total count, next/previous page links, and current page information. Pagination is crucial for preventing massive response payloads, reducing server load, improving client performance, and providing a better user experience when displaying large datasets."
+
+  - name: "Status Codes and Error Handling"
+    items:
+      - question: "What are HTTP status codes and how are they used in API responses?"
+        answer: "HTTP status codes are three-digit numbers in API responses indicating the request outcome. They're grouped into five categories: 1xx (Informational), 2xx (Success), 3xx (Redirection), 4xx (Client Errors), and 5xx (Server Errors). Common codes include 200 (OK), 201 (Created), 400 (Bad Request), 401 (Unauthorized), 404 (Not Found), and 500 (Internal Server Error). Using standard status codes ensures clients can understand response outcomes and handle them appropriately."
+
+      - question: "What's the best practice for handling errors in API responses?"
+        answer: "Best practices for API error handling include: using appropriate HTTP status codes, providing a consistent error response structure with error codes, human-readable messages, and potentially debug information, distinguishing between validation errors and system errors, including request identifiers for tracking, documenting all possible errors, and avoiding exposing sensitive details like stack traces. A good error response helps developers quickly understand and resolve issues without needing additional support."
+
+      - question: "How should validation errors be represented in API responses?"
+        answer: "Validation errors should be returned with a 400 Bad Request status code and a response body containing: an overall error message, a structured list of field-specific errors identifying each invalid field, the nature of each validation failure (e.g., 'required', 'invalid format'), and suggested corrections when possible. For example: '{\"error\":\"Validation failed\",\"details\":[{\"field\":\"email\",\"message\":\"Invalid email format\"},{\"field\":\"age\",\"message\":\"Must be a positive number\"}]}'"
+
+  - name: "Headers and Content Types"
+    items:
+      - question: "What are important HTTP headers in API requests and responses?"
+        answer: "Key HTTP headers include: Content-Type (specifies the format of the data), Accept (indicates preferred response formats), Authorization (contains authentication credentials), User-Agent (identifies the client), Cache-Control (directs caching behavior), Content-Length (size of the body in bytes), ETag (resource version identifier), X-Request-ID (for request tracking), CORS headers (Access-Control-*) for cross-origin requests, and Rate-Limiting headers. These headers facilitate proper data handling, authentication, optimization, and debugging."
+
+      - question: "What is Content-Type and why is it important in API communication?"
+        answer: "Content-Type is an HTTP header that specifies the media type (format) of the request or response body. Common values include 'application/json', 'application/xml', and 'application/x-www-form-urlencoded'. It's crucial because it tells the server how to parse incoming request data and informs clients how to interpret the response body. Mismatched Content-Types can cause parsing errors, data corruption, and failed requests, as the recipient needs to know how to properly process the data."
+
+      - question: "How do I specify the response format I want from an API?"
+        answer: "To specify the desired response format from an API, use the Accept header in your request with the appropriate MIME type (e.g., 'Accept: application/json' or 'Accept: application/xml'). Some APIs also support format specification through URL extensions (/users.json) or query parameters (?format=json). If multiple formats are acceptable, you can include them in the Accept header with quality values to indicate preference: 'Accept: application/json;q=0.9, application/xml;q=0.8'."
+
+  - name: "Request and Response Bodies"
+    items:
+      - question: "When should I include a request body in an API call?"
+        answer: "Include a request body when: 1) Creating new resources (POST requests), 2) Updating existing resources (PUT/PATCH requests), 3) Performing complex operations that require structured data, 4) Submitting form data, or 5) Sending large amounts of data or binary content. GET and DELETE requests typically don't include bodies, although technically allowed. Always check the API documentation for specific requirements, as each API may have different expectations about when and how to use request bodies."
+
+      - question: "What data formats are commonly used in API request and response bodies?"
+        answer: "Common API data formats include: JSON (most prevalent, lightweight, JavaScript-friendly), XML (more verbose but with strong schema support), form data (application/x-www-form-urlencoded for simple forms or multipart/form-data for forms with files), plain text (text/plain for simple responses), binary data (application/octet-stream for files or media), and HTML (occasionally for human-readable responses). Modern APIs predominantly use JSON due to its simplicity, compact size, and universal language support."
+
+      - question: "How should I handle large responses from APIs?"
+        answer: "To handle large API responses: 1) Implement pagination to retrieve data in manageable chunks, 2) Use fields filtering/sparse fieldsets to request only needed data, 3) Enable compression (gzip/deflate) via Accept-Encoding header, 4) Stream the response rather than loading it entirely in memory, 5) Implement caching to avoid repeated large transfers, 6) Use asynchronous processing for very large datasets, and 7) Consider specialized data formats like Protocol Buffers for extremely large datasets. These approaches improve performance and prevent memory issues."
+
+  - name: "Authentication and Security"
+    items:
+      - question: "What are common authentication methods for API requests?"
+        answer: "Common API authentication methods include: API keys (sent via headers, query parameters, or in the request body), OAuth 2.0 (for delegated authorization using access tokens), JWT (JSON Web Tokens for stateless authentication), Basic Authentication (username/password encoded in headers), Bearer tokens (typically with OAuth), Digest Authentication (more secure version of Basic Auth), and HMAC (Hash-based Message Authentication Code). The choice depends on security requirements, client type, and whether third-party access is needed."
+
+      - question: "How should sensitive data be handled in API requests and responses?"
+        answer: "Handle sensitive data by: 1) Always using HTTPS/TLS encryption for transmission, 2) Never including passwords, tokens, or API keys in URLs, 3) Masking sensitive data in logs and error messages, 4) Not returning sensitive data in responses unless necessary, 5) Implementing proper authentication and authorization, 6) Using secure headers like Strict-Transport-Security and Content-Security-Policy, 7) Following data minimization principles, and 8) Considering field-level encryption for highly sensitive information."
+
+      - question: "What is CORS and how does it affect API requests?"
+        answer: "CORS (Cross-Origin Resource Sharing) is a security mechanism that controls how web applications on one domain can request resources from another domain. It affects API requests made from browsers by requiring servers to include specific headers (like Access-Control-Allow-Origin) that explicitly allow cross-origin requests. Without proper CORS headers, browsers will block requests to APIs from different domains, preventing frontend applications from accessing third-party APIs directly. CORS doesn't affect server-to-server communication or native mobile apps." 

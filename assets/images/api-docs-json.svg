@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <style>
+    .code { font-family: "Courier New", monospace; font-size: 14px; }
+    .comment { fill: #888; }
+    .key { fill: #0066cc; }
+    .string { fill: #008800; }
+    .number { fill: #ff6600; }
+    .boolean { fill: #9900cc; }
+    .null { fill: #999; }
+    .bracket { fill: #333; }
+    .panel { fill: white; stroke: #3273dc; stroke-width: 2; rx: 8; ry: 8; }
+    .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; }
+    .subtitle { font-family: Arial, sans-serif; font-size: 14px; }
+    .annotation { font-family: Arial, sans-serif; font-size: 12px; fill: #666; }
+    .highlight { fill: #f0f5ff; stroke: #3273dc; stroke-width: 1; rx: 4; ry: 4; }
+  </style>
+
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3273dc">API Documentation in JSON Format</text>
+  <text x="400" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#555">OpenAPI Specification Example</text>
+  
+  <!-- Main panel for the JSON code -->
+  <rect x="50" y="100" width="500" height="360" class="panel" />
+  
+  <!-- JSON content -->
+  <text x="70" y="130" class="code bracket">{</text>
+  <text x="80" y="150" class="code">
+    <tspan class="key">"openapi"</tspan><tspan class="bracket">: </tspan><tspan class="string">"3.0.0"</tspan><tspan class="bracket">,</tspan>
+  </text>
+  <text x="80" y="170" class="code">
+    <tspan class="key">"info"</tspan><tspan class="bracket">: {</tspan>
+  </text>
+  <text x="90" y="190" class="code">
+    <tspan class="key">"title"</tspan><tspan class="bracket">: </tspan><tspan class="string">"Sample Pet Store API"</tspan><tspan class="bracket">,</tspan>
+  </text>
+  <text x="90" y="210" class="code">
+    <tspan class="key">"version"</tspan><tspan class="bracket">: </tspan><tspan class="string">"1.0.0"</tspan><tspan class="bracket">,</tspan>
+  </text>
+  <text x="90" y="230" class="code">
+    <tspan class="key">"description"</tspan><tspan class="bracket">: </tspan><tspan class="string">"A sample API for pets"</tspan>
+  </text>
+  <text x="80" y="250" class="code bracket">},</text>
+  <text x="80" y="270" class="code">
+    <tspan class="key">"paths"</tspan><tspan class="bracket">: {</tspan>
+  </text>
+  <text x="90" y="290" class="code">
+    <tspan class="key">"/pets"</tspan><tspan class="bracket">: {</tspan>
+  </text>
+  <text x="100" y="310" class="code">
+    <tspan class="key">"get"</tspan><tspan class="bracket">: {</tspan>
+  </text>
+  <text x="110" y="330" class="code">
+    <tspan class="key">"summary"</tspan><tspan class="bracket">: </tspan><tspan class="string">"List all pets"</tspan><tspan class="bracket">,</tspan>
+  </text>
+  <text x="110" y="350" class="code">
+    <tspan class="key">"responses"</tspan><tspan class="bracket">: {</tspan>
+  </text>
+  <text x="120" y="370" class="code">
+    <tspan class="key">"200"</tspan><tspan class="bracket">: {</tspan>
+  </text>
+  <text x="130" y="390" class="code">
+    <tspan class="key">"description"</tspan><tspan class="bracket">: </tspan><tspan class="string">"A list of pets"</tspan>
+  </text>
+  <text x="120" y="410" class="code bracket">}</text>
+  <text x="110" y="430" class="code bracket">}</text>
+  <text x="100" y="450" class="code bracket">}</text>
+  <text x="70" y="470" class="code bracket">...</text>
+  
+  <!-- Annotations -->
+  <rect x="240" y="146" width="180" height="20" class="highlight" opacity="0.5" />
+  <path d="M420 156 H560 V105 H610" fill="none" stroke="#3273dc" stroke-width="1" />
+  <text x="650" y="110" text-anchor="middle" class="annotation">OpenAPI version specification</text>
+  
+  <rect x="94" y="226" width="200" height="20" class="highlight" opacity="0.5" />
+  <path d="M300 236 H560 V135 H610" fill="none" stroke="#3273dc" stroke-width="1" />
+  <text x="650" y="140" text-anchor="middle" class="annotation">API description in plain text</text>
+  
+  <rect x="90" y="290" width="300" height="20" class="highlight" opacity="0.5" />
+  <path d="M390 300 H560 V165 H610" fill="none" stroke="#3273dc" stroke-width="1" />
+  <text x="650" y="170" text-anchor="middle" class="annotation">Endpoint definition</text>
+  
+  <rect x="200" y="390" width="130" height="20" class="highlight" opacity="0.5" />
+  <path d="M330 400 H560 V195 H610" fill="none" stroke="#3273dc" stroke-width="1" />
+  <text x="650" y="200" text-anchor="middle" class="annotation">Response description</text>
+  
+  <!-- Right side panel with benefits -->
+  <rect x="580" y="230" width="170" height="200" class="panel" fill="#f0f5ff" />
+  <text x="665" y="255" text-anchor="middle" class="title" fill="#333" font-size="16">Benefits of JSON</text>
+  <text x="665" y="275" text-anchor="middle" class="subtitle" fill="#333" font-size="14">for API Documentation</text>
+  
+  <circle cx="600" cy="305" r="5" fill="#3273dc" />
+  <text x="610" y="310" class="subtitle" fill="#333">Machine-readable</text>
+  
+  <circle cx="600" cy="335" r="5" fill="#3273dc" />
+  <text x="610" y="340" class="subtitle" fill="#333">Code generation</text>
+  
+  <circle cx="600" cy="365" r="5" fill="#3273dc" />
+  <text x="610" y="370" class="subtitle" fill="#333">Tooling support</text>
+  
+  <circle cx="600" cy="395" r="5" fill="#3273dc" />
+  <text x="610" y="400" class="subtitle" fill="#333">Standardized</text>
+</svg> 

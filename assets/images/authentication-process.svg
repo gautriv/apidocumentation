@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <style>
+    .entity { fill: #f0f5ff; stroke: #3273dc; stroke-width: 2; rx: 8; ry: 8; }
+    .auth-server { fill: #f5f0ff; stroke: #6633cc; stroke-width: 2; rx: 8; ry: 8; }
+    .resource { fill: #f0fff5; stroke: #33cc66; stroke-width: 2; rx: 8; ry: 8; }
+    .text { font-family: Arial, sans-serif; font-size: 14px; }
+    .title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; }
+    .arrow { fill: none; stroke: #3273dc; stroke-width: 2; marker-end: url(#arrowhead); }
+    .auth-arrow { fill: none; stroke: #6633cc; stroke-width: 2; marker-end: url(#arrowhead); }
+    .access-arrow { fill: none; stroke: #33cc66; stroke-width: 2; marker-end: url(#arrowhead); }
+    .step { font-family: Arial, sans-serif; font-size: 12px; fill: #555; }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3273dc" />
+    </marker>
+  </defs>
+  
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3273dc">API Authentication Process</text>
+  <text x="400" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#555">OAuth 2.0 Authorization Flow</text>
+  
+  <!-- Client -->
+  <rect x="100" y="150" width="140" height="80" class="entity" />
+  <text x="170" y="180" text-anchor="middle" class="title">Client Application</text>
+  <text x="170" y="200" text-anchor="middle" class="text">Web or Mobile App</text>
+  
+  <!-- User -->
+  <rect x="100" y="300" width="140" height="80" class="entity" />
+  <text x="170" y="330" text-anchor="middle" class="title">End User</text>
+  <text x="170" y="350" text-anchor="middle" class="text">Resource Owner</text>
+  
+  <!-- Auth Server -->
+  <rect x="330" y="150" width="140" height="80" class="auth-server" />
+  <text x="400" y="180" text-anchor="middle" class="title">Authorization Server</text>
+  <text x="400" y="200" text-anchor="middle" class="text">Identity Provider</text>
+  
+  <!-- Resource Server -->
+  <rect x="560" y="150" width="140" height="80" class="resource" />
+  <text x="630" y="180" text-anchor="middle" class="title">Resource Server</text>
+  <text x="630" y="200" text-anchor="middle" class="text">API Endpoints</text>
+  
+  <!-- Arrows and Steps -->
+  <!-- 1. Authorization Request -->
+  <path d="M240 170 H330" class="arrow" />
+  <text x="285" y="160" text-anchor="middle" class="step">1. Authorization Request</text>
+  
+  <!-- 2. Authentication -->
+  <path d="M400 230 L400 280 L170 280" class="auth-arrow" />
+  <text x="285" y="270" text-anchor="middle" class="step">2. User Authentication</text>
+  
+  <!-- 3. Authorization Grant -->
+  <path d="M170 300 L170 280 L370 280 L370 230" class="auth-arrow" />
+  <text x="270" y="295" text-anchor="middle" class="step">3. Consent &amp; Authorization</text>
+  
+  <!-- 4. Access Token -->
+  <path d="M470 170 H560" class="auth-arrow" />
+  <text x="515" y="160" text-anchor="middle" class="step">4. Access Token</text>
+  
+  <!-- 5. Resource Access -->
+  <path d="M240 190 Q400 240 560 190" class="access-arrow" />
+  <text x="400" y="240" text-anchor="middle" class="step">5. API Request with Token</text>
+  
+  <!-- 6. Resource Response -->
+  <path d="M560 210 Q400 260 240 210" class="access-arrow" stroke-dasharray="5,3" />
+  <text x="400" y="260" text-anchor="middle" class="step">6. Protected Resource Response</text>
+  
+  <!-- Legend -->
+  <rect x="650" y="300" width="15" height="15" fill="#f0f5ff" stroke="#3273dc" stroke-width="2" />
+  <text x="670" y="313" font-family="Arial, sans-serif" font-size="12" fill="#333">Client/User</text>
+  
+  <rect x="650" y="325" width="15" height="15" fill="#f5f0ff" stroke="#6633cc" stroke-width="2" />
+  <text x="670" y="338" font-family="Arial, sans-serif" font-size="12" fill="#333">Authentication</text>
+  
+  <rect x="650" y="350" width="15" height="15" fill="#f0fff5" stroke="#33cc66" stroke-width="2" />
+  <text x="670" y="363" font-family="Arial, sans-serif" font-size="12" fill="#333">Resource Access</text>
+</svg> 

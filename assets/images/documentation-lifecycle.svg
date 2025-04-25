@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <style>
+    .phase { fill: #f0f5ff; stroke: #3273dc; stroke-width: 2; rx: 10; ry: 10; }
+    .phase-text { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #333; }
+    .desc-text { font-family: Arial, sans-serif; font-size: 12px; fill: #555; }
+    .arrow { fill: none; stroke: #3273dc; stroke-width: 2; marker-end: url(#arrowhead); }
+    .cycle-arrow { fill: none; stroke: #3273dc; stroke-width: 2; stroke-dasharray: 5,3; marker-end: url(#arrowhead); }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3273dc" />
+    </marker>
+  </defs>
+  
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3273dc">API Documentation Lifecycle</text>
+  <text x="400" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#555">A continuous process aligned with API development</text>
+  
+  <!-- Center circle -->
+  <circle cx="400" cy="250" r="70" fill="#3273dc" fill-opacity="0.1" stroke="#3273dc" stroke-width="2" />
+  <text x="400" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#3273dc">API</text>
+  <text x="400" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#3273dc">Documentation</text>
+  <text x="400" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#3273dc">Lifecycle</text>
+  
+  <!-- Planning phase -->
+  <rect x="180" y="120" width="140" height="70" class="phase" />
+  <text x="250" y="145" text-anchor="middle" class="phase-text">Planning</text>
+  <text x="250" y="165" text-anchor="middle" class="desc-text">Identify audience</text>
+  <text x="250" y="180" text-anchor="middle" class="desc-text">Define requirements</text>
+  
+  <!-- Development phase -->
+  <rect x="480" y="120" width="140" height="70" class="phase" />
+  <text x="550" y="145" text-anchor="middle" class="phase-text">Development</text>
+  <text x="550" y="165" text-anchor="middle" class="desc-text">Create content</text>
+  <text x="550" y="180" text-anchor="middle" class="desc-text">Code examples</text>
+  
+  <!-- Review phase -->
+  <rect x="580" y="250" width="140" height="70" class="phase" />
+  <text x="650" y="275" text-anchor="middle" class="phase-text">Review</text>
+  <text x="650" y="295" text-anchor="middle" class="desc-text">Accuracy check</text>
+  <text x="650" y="310" text-anchor="middle" class="desc-text">Quality assurance</text>
+  
+  <!-- Publishing phase -->
+  <rect x="480" y="380" width="140" height="70" class="phase" />
+  <text x="550" y="405" text-anchor="middle" class="phase-text">Publishing</text>
+  <text x="550" y="425" text-anchor="middle" class="desc-text">Release docs</text>
+  <text x="550" y="440" text-anchor="middle" class="desc-text">Announce updates</text>
+  
+  <!-- Feedback phase -->
+  <rect x="180" y="380" width="140" height="70" class="phase" />
+  <text x="250" y="405" text-anchor="middle" class="phase-text">Feedback</text>
+  <text x="250" y="425" text-anchor="middle" class="desc-text">Collect input</text>
+  <text x="250" y="440" text-anchor="middle" class="desc-text">Analyze usage</text>
+  
+  <!-- Maintenance phase -->
+  <rect x="80" y="250" width="140" height="70" class="phase" />
+  <text x="150" y="275" text-anchor="middle" class="phase-text">Maintenance</text>
+  <text x="150" y="295" text-anchor="middle" class="desc-text">Keep updated</text>
+  <text x="150" y="310" text-anchor="middle" class="desc-text">Version control</text>
+  
+  <!-- Arrow connections -->
+  <path d="M320 155 H480" class="arrow" />
+  <path d="M550 190 L600 250" class="arrow" />
+  <path d="M650 320 L580 380" class="arrow" />
+  <path d="M480 415 L320 415" class="arrow" />
+  <path d="M220 380 L150 320" class="arrow" />
+  <path d="M150 250 L200 190" class="cycle-arrow" />
+  
+  <!-- Labels -->
+  <text x="400" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#555">Define and plan</text>
+  <text x="635" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#555">Technical accuracy</text>
+  <text x="580" y="365" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#555">Distribute</text>
+  <text x="400" y="435" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#555">User reactions</text>
+  <text x="150" y="365" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#555">Improve</text>
+  <text x="135" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#555">Iterate</text>
+</svg> 

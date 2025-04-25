@@ -9,6 +9,27 @@ next_page:
 previous_page:
   url: /visualizingdatatypes.html
   title: "Visualizing Data Types"
+image: /assets/images/api-request-response.svg
+last_modified_at: 2023-10-15T09:00:00+00:00
+author_name: Technical Writing Expert
+author_description: Senior technical writer with 8+ years of experience documenting APIs and developer platforms
+author_expertise: 
+  - "API Documentation"
+  - "HTTP Protocol"
+  - "REST API Design"
+  - "Technical Communication"
+author_image: /assets/images/gaurav.svg
+reading_time: 15
+level: Intermediate
+speakable: true
+speakable_selectors:
+  - ".doc-content h1" 
+  - ".doc-content h2"
+  - ".doc-content p:first-of-type"
+  - "#what-is-an-api-request"
+  - "#what-is-an-api-response"
+  - "#http-methods"
+schema_markup: true
 ---
 
 So, you've met the [data types](/apidocumentation/visualizingdatatypes.html)—Boolean, Strings, Numbers, and their pals. Now, let's see them in action! APIs are all about communication: You send a **request**, and you get a **response**. Think of it like texting a friend—you ask a question (request), and they reply (response). Simple, right? 
@@ -23,7 +44,214 @@ Well, APIs work in the same way but with a bit more structure. Let's break it do
   content="New to API Communication?" content="If you're feeling a bit lost with all the technical jargon, don't worry! This chapter will guide you through API requests and responses step by step. By the end, you'll be making API calls like a pro!" 
 %}
 
-## What is an API Request?
+{% include optimized-image.html 
+  src="/assets/images/api-request-response-flow.svg" 
+  alt="API request and response flow diagram showing client, server, and data exchange" 
+  width="800" 
+  height="450" 
+  loading="lazy" 
+  class="centered"
+  caption="The complete request-response cycle in API communication" 
+%}
+
+<div class="interactive-api-demo">
+  <h3>Try It: Make an API Request</h3>
+  <div class="demo-controls">
+    <select id="api-method" class="api-control">
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+      <option value="PUT">PUT</option>
+      <option value="DELETE">DELETE</option>
+    </select>
+    <input type="text" id="api-endpoint" value="https://api.example.com/books" class="api-control" readonly>
+    <button id="send-api-btn" class="api-btn">Send Request</button>
+  </div>
+  <div class="demo-panels">
+    <div class="request-panel">
+      <h4>Request</h4>
+      <pre id="request-display" class="code-display">GET https://api.example.com/books
+Accept: application/json</pre>
+    </div>
+    <div class="response-panel">
+      <h4>Response</h4>
+      <pre id="response-display" class="code-display">// Click "Send Request" to see the response</pre>
+    </div>
+  </div>
+  <div id="api-status" class="status-message">Ready to send request</div>
+</div>
+
+<style>
+.interactive-api-demo {
+  background: #f8f9fb;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px 0;
+  border: 1px solid #e2e8f0;
+}
+.demo-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.api-control {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #cbd5e0;
+  font-family: monospace;
+}
+#api-method {
+  width: 100px;
+  background: #2c3e50;
+  color: white;
+  font-weight: bold;
+}
+#api-endpoint {
+  flex: 1;
+  min-width: 200px;
+}
+.api-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  background: #4a6ef5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+.demo-panels {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.request-panel, .response-panel {
+  flex: 1;
+  background: #1e293b;
+  border-radius: 6px;
+  padding: 15px;
+  min-width: 45%;
+}
+.request-panel h4, .response-panel h4 {
+  margin-top: 0;
+  color: #e2e8f0;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.code-display {
+  color: #e2e8f0;
+  margin: 0;
+  font-family: monospace;
+  white-space: pre-wrap;
+  font-size: 14px;
+}
+.status-message {
+  background: #e2e8f0;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  font-style: italic;
+}
+@media (max-width: 768px) {
+  .demo-panels {
+    flex-direction: column;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const methodSelect = document.getElementById('api-method');
+  const endpointInput = document.getElementById('api-endpoint');
+  const sendButton = document.getElementById('send-api-btn');
+  const requestDisplay = document.getElementById('request-display');
+  const responseDisplay = document.getElementById('response-display');
+  const statusMessage = document.getElementById('api-status');
+  
+  // Sample responses for different methods
+  const responses = {
+    GET: {
+      status: 200,
+      headers: "Content-Type: application/json\nCache-Control: max-age=3600",
+      body: '{\n  "books": [\n    {\n      "id": 1,\n      "title": "The Great Gatsby",\n      "author": "F. Scott Fitzgerald"\n    },\n    {\n      "id": 2,\n      "title": "To Kill a Mockingbird",\n      "author": "Harper Lee"\n    }\n  ],\n  "total": 2\n}'
+    },
+    POST: {
+      status: 201,
+      headers: "Content-Type: application/json\nLocation: /books/3",
+      body: '{\n  "id": 3,\n  "title": "1984",\n  "author": "George Orwell",\n  "created": true\n}'
+    },
+    PUT: {
+      status: 200,
+      headers: "Content-Type: application/json",
+      body: '{\n  "id": 1,\n  "title": "The Great Gatsby",\n  "author": "F. Scott Fitzgerald",\n  "updated": true\n}'
+    },
+    DELETE: {
+      status: 204,
+      headers: "",
+      body: ""
+    }
+  };
+  
+  // Sample request bodies
+  const requestBodies = {
+    GET: "",
+    POST: 'Content-Type: application/json\n\n{\n  "title": "1984",\n  "author": "George Orwell"\n}',
+    PUT: 'Content-Type: application/json\n\n{\n  "title": "The Great Gatsby",\n  "author": "F. Scott Fitzgerald"\n}',
+    DELETE: ""
+  };
+  
+  methodSelect.addEventListener('change', function() {
+    const method = methodSelect.value;
+    const endpoint = method === 'GET' ? 'https://api.example.com/books' : 
+                    (method === 'POST' ? 'https://api.example.com/books' : 
+                    'https://api.example.com/books/1');
+    
+    endpointInput.value = endpoint;
+    
+    // Update request display
+    requestDisplay.textContent = `${method} ${endpoint}\nAccept: application/json`;
+    
+    if (requestBodies[method]) {
+      requestDisplay.textContent += `\n\n${requestBodies[method]}`;
+    }
+    
+    // Reset response
+    responseDisplay.textContent = "// Click \"Send Request\" to see the response";
+    statusMessage.textContent = "Ready to send request";
+  });
+  
+  sendButton.addEventListener('click', function() {
+    // Show loading state
+    statusMessage.textContent = "Sending request...";
+    
+    // Simulate network delay
+    setTimeout(() => {
+      const method = methodSelect.value;
+      const response = responses[method];
+      
+      // Build response text
+      let responseText = `HTTP/1.1 ${response.status}`;
+      if (response.status === 200) responseText += " OK";
+      else if (response.status === 201) responseText += " Created";
+      else if (response.status === 204) responseText += " No Content";
+      
+      if (response.headers) {
+        responseText += `\n${response.headers}`;
+      }
+      
+      if (response.body) {
+        responseText += `\n\n${response.body}`;
+      }
+      
+      responseDisplay.textContent = responseText;
+      statusMessage.textContent = `Request complete! Received ${response.status} response`;
+    }, 800);
+  });
+});
+</script>
+
+## What is an API Request? {#what-is-an-api-request}
 
 Imagine you're at a restaurant. You tell the waiter, "I'd like a margherita pizza, please!" That's a **request**. The waiter (the API) takes your order, processes it, and brings back a pizza (the **response**).
 
@@ -34,7 +262,7 @@ An API request has a few main ingredients:
 - **Query Parameters:** These refine your request (like asking for extra cheese).
 - **Request Body (for some requests):** If you're sending data (like placing an order), it goes here.
 
-### Example: Making a GET Request to an API Endpoint
+### Example: Making a GET Request to an API Endpoint {#making-get-request}
 Let's say we want to find a book by its title.
 
 ```sh
@@ -59,16 +287,26 @@ Let's say we want to find a book by its title.
   </script>
 
 
-## What is an API Response?
+## What is an API Response? {#what-is-an-api-response}
 
 Great, you placed your order. Now the waiter brings back your pizza (hopefully the right one!). 
+
+{% include optimized-image.html 
+  src="/assets/images/api-response-structure.svg" 
+  alt="Structure of an API response showing status code, headers, and body" 
+  width="750" 
+  height="400" 
+  loading="lazy" 
+  class="centered"
+  caption="Anatomy of an API response with key components" 
+%}
 
 An API response usually includes:
 - **The Status Code:** A quick signal of whether the request was successful.
 - **Headers:** More details about the response.
 - **The Body:** The actual data you asked for (your pizza!).
 
-### Example: A JSON Response from an API
+### Example: A JSON Response from an API {#json-response-example}
 Here's what the API might return for our Harry Potter book request:
 
 ```json
@@ -82,217 +320,223 @@ Here's what the API might return for our Harry Potter book request:
 
 This is structured as [JSON](/apidocumentation/JSON101.html), one of the most common data formats used in modern APIs.
 
-## HTTP Methods: The Different Types of API Requests
+## HTTP Methods: The Different Types of API Requests {#http-methods}
 
 APIs aren't just about **getting** data; they can also **send, update, and delete** information. That's where HTTP methods come in.
 
-<div class="table-container">
-  <table class="custom-table">
-    <thead>
-      <tr>
-        <th class="method-column">HTTP Method</th>
-        <th>Purpose</th>
-        <th>Common Use Cases</th>
-        <th>Request Body?</th>
-        <th>Safe?</th>
-        <th>Idempotent?</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="highlight-row">
-        <td class="method get-method">GET</td>
-        <td>Retrieves data from the server</td>
-        <td>
-          <ul class="tight-list">
-            <li>Fetching resource details</li>
-            <li>Search operations</li>
-            <li>Listing collections</li>
-          </ul>
-        </td>
-        <td><span class="badge bg-danger">No</span></td>
-        <td><span class="badge bg-success">Yes</span></td>
-        <td><span class="badge bg-success">Yes</span></td>
-      </tr>
-      <tr>
-        <td class="method post-method">POST</td>
-        <td>Creates new data on the server</td>
-        <td>
-          <ul class="tight-list">
-            <li>Creating new resources</li>
-            <li>Submitting forms</li>
-            <li>Complex operations</li>
-          </ul>
-        </td>
-        <td><span class="badge bg-success">Yes</span></td>
-        <td><span class="badge bg-danger">No</span></td>
-        <td><span class="badge bg-danger">No</span></td>
-      </tr>
-      <tr class="highlight-row">
-        <td class="method put-method">PUT</td>
-        <td>Updates existing data (complete replacement)</td>
-        <td>
-          <ul class="tight-list">
-            <li>Updating all fields of a resource</li>
-            <li>Replacing existing resources</li>
-          </ul>
-        </td>
-        <td><span class="badge bg-success">Yes</span></td>
-        <td><span class="badge bg-danger">No</span></td>
-        <td><span class="badge bg-success">Yes</span></td>
-      </tr>
-      <tr>
-        <td class="method patch-method">PATCH</td>
-        <td>Partially updates existing data</td>
-        <td>
-          <ul class="tight-list">
-            <li>Updating specific fields</li>
-            <li>Partial modifications</li>
-          </ul>
-        </td>
-        <td><span class="badge bg-success">Yes</span></td>
-        <td><span class="badge bg-danger">No</span></td>
-        <td><span class="badge bg-warning">Sometimes</span></td>
-      </tr>
-      <tr class="highlight-row">
-        <td class="method delete-method">DELETE</td>
-        <td>Removes data from the server</td>
-        <td>
-          <ul class="tight-list">
-            <li>Deleting resources</li>
-            <li>Removing records</li>
-          </ul>
-        </td>
-        <td><span class="badge bg-warning">Sometimes</span></td>
-        <td><span class="badge bg-danger">No</span></td>
-        <td><span class="badge bg-success">Yes</span></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="http-methods-interactive">
+  <h3>Explore HTTP Methods</h3>
+  <div class="method-buttons">
+    <button class="method-btn get active" data-method="get">GET</button>
+    <button class="method-btn post" data-method="post">POST</button>
+    <button class="method-btn put" data-method="put">PUT</button>
+    <button class="method-btn patch" data-method="patch">PATCH</button>
+    <button class="method-btn delete" data-method="delete">DELETE</button>
+  </div>
+  <div class="method-info-container">
+    <div class="method-info" id="get-info">
+      <h4>GET Method</h4>
+      <p>Used to retrieve data from a specified resource. GET requests should be idempotent and have no side effects.</p>
+      <div class="method-example">
+        <h5>Example:</h5>
+        <code>GET https://api.example.com/users/123</code>
+        <p>Retrieves details about user with ID 123</p>
+      </div>
+      <div class="method-attributes">
+        <span class="attribute">Has Body: <span class="no">No</span></span>
+        <span class="attribute">Safe: <span class="yes">Yes</span></span>
+        <span class="attribute">Idempotent: <span class="yes">Yes</span></span>
+        <span class="attribute">Cacheable: <span class="yes">Yes</span></span>
+      </div>
+    </div>
+    
+    <div class="method-info hidden" id="post-info">
+      <h4>POST Method</h4>
+      <p>Used to submit data to be processed to a specified resource. Often used for creating new resources.</p>
+      <div class="method-example">
+        <h5>Example:</h5>
+        <code>POST https://api.example.com/users</code>
+        <p>Creates a new user with the data provided in the request body</p>
+      </div>
+      <div class="method-attributes">
+        <span class="attribute">Has Body: <span class="yes">Yes</span></span>
+        <span class="attribute">Safe: <span class="no">No</span></span>
+        <span class="attribute">Idempotent: <span class="no">No</span></span>
+        <span class="attribute">Cacheable: <span class="no">Rarely</span></span>
+      </div>
+    </div>
+    
+    <div class="method-info hidden" id="put-info">
+      <h4>PUT Method</h4>
+      <p>Used to update a resource or create it if it doesn't exist at a specified URL. Replaces the entire resource.</p>
+      <div class="method-example">
+        <h5>Example:</h5>
+        <code>PUT https://api.example.com/users/123</code>
+        <p>Updates user 123 with entirely new data, replacing all existing fields</p>
+      </div>
+      <div class="method-attributes">
+        <span class="attribute">Has Body: <span class="yes">Yes</span></span>
+        <span class="attribute">Safe: <span class="no">No</span></span>
+        <span class="attribute">Idempotent: <span class="yes">Yes</span></span>
+        <span class="attribute">Cacheable: <span class="no">No</span></span>
+      </div>
+    </div>
+    
+    <div class="method-info hidden" id="patch-info">
+      <h4>PATCH Method</h4>
+      <p>Used to apply partial modifications to a resource. Only updates the fields provided in the request.</p>
+      <div class="method-example">
+        <h5>Example:</h5>
+        <code>PATCH https://api.example.com/users/123</code>
+        <p>Updates only specific fields of user 123, leaving other fields unchanged</p>
+      </div>
+      <div class="method-attributes">
+        <span class="attribute">Has Body: <span class="yes">Yes</span></span>
+        <span class="attribute">Safe: <span class="no">No</span></span>
+        <span class="attribute">Idempotent: <span class="maybe">Sometimes</span></span>
+        <span class="attribute">Cacheable: <span class="no">No</span></span>
+      </div>
+    </div>
+    
+    <div class="method-info hidden" id="delete-info">
+      <h4>DELETE Method</h4>
+      <p>Used to remove a specified resource. Deletes the target resource.</p>
+      <div class="method-example">
+        <h5>Example:</h5>
+        <code>DELETE https://api.example.com/users/123</code>
+        <p>Removes the user with ID 123 from the system</p>
+      </div>
+      <div class="method-attributes">
+        <span class="attribute">Has Body: <span class="maybe">Sometimes</span></span>
+        <span class="attribute">Safe: <span class="no">No</span></span>
+        <span class="attribute">Idempotent: <span class="yes">Yes</span></span>
+        <span class="attribute">Cacheable: <span class="no">No</span></span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
-.table-container {
-  overflow-x: auto;
-  margin: 25px 0;
+.http-methods-interactive {
+  background: #f8f9fb;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 30px 0;
+  border: 1px solid #e2e8f0;
 }
-
-.custom-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  background: white;
-  font-size: 0.95rem;
+.method-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
 }
-
-.custom-table th {
-  background: #2c3e50;
-  color: white;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 16px;
-  text-align: left;
+.method-btn {
+  padding: 10px 20px;
+  border-radius: 4px;
   border: none;
-}
-
-.custom-table td {
-  padding: 12px 16px;
-  border-bottom: 1px solid #e9ecef;
-  vertical-align: middle;
-}
-
-.highlight-row {
-  background-color: #f8f9fa;
-}
-
-.method-column {
-  width: 120px;
-}
-
-.method {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  width: 80px;
-}
-
-.get-method {
-  background-color: #4CAF50;
-}
-
-.post-method {
-  background-color: #2196F3;
-}
-
-.put-method {
-  background-color: #FF9800;
-}
-
-.patch-method {
-  background-color: #9C27B0;
-}
-
-.delete-method {
-  background-color: #F44336;
-}
-
-.tight-list {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.badge {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
   font-weight: 600;
-}
-
-.bg-success {
-  background-color: #4CAF50;
   color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.8;
 }
+.method-btn:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+.method-btn.active {
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.get { background-color: #4CAF50; }
+.post { background-color: #2196F3; }
+.put { background-color: #FF9800; }
+.patch { background-color: #9C27B0; }
+.delete { background-color: #F44336; }
 
-.bg-warning {
-  background-color: #FF9800;
-  color: white;
+.method-info-container {
+  background: white;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
-
-.bg-danger {
-  background-color: #F44336;
-  color: white;
+.method-info {
+  display: block;
 }
+.method-info.hidden {
+  display: none;
+}
+.method-info h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #2d3748;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 10px;
+}
+.method-example {
+  background: #f1f5f9;
+  padding: 15px;
+  border-radius: 6px;
+  margin: 15px 0;
+}
+.method-example h5 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #4a5568;
+}
+.method-example code {
+  display: block;
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-family: monospace;
+  margin-bottom: 10px;
+}
+.method-attributes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+.attribute {
+  background: #f8f9fa;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+.yes { color: #38a169; font-weight: bold; }
+.no { color: #e53e3e; font-weight: bold; }
+.maybe { color: #dd6b20; font-weight: bold; }
 </style>
 
-{% include enhanced_note.html 
-  title="Important" 
-  type="info" 
-  collapsible=true 
-  expanded=true 
-  content="REST API Best Practice" content="In RESTful APIs, HTTP methods are mapped to CRUD operations: GET (Read), POST (Create), PUT/PATCH (Update), and DELETE (Delete). The 'Safe' property means the method doesn't change server state, while 'Idempotent' means multiple identical requests have the same effect as a single request." 
-%}
-
-### Example: A POST Request for Creating Resources
-
-```sh
-POST https://api.example.com/books Content-Type: application/json
-```
-
-```json
-{
-  "title": "The Hobbit",
-  "author": "J.R.R. Tolkien",
-  "published_year": 1937
-}
-```
-
-This tells the API: "Hey, add this book to the database!" The Content-Type header specifies we're sending [JSON](/JSON101.html) data.
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const methodButtons = document.querySelectorAll('.method-btn');
+  
+  methodButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove active class from all buttons
+      methodButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Add active class to clicked button
+      this.classList.add('active');
+      
+      // Get the method name
+      const method = this.getAttribute('data-method');
+      
+      // Hide all method info divs
+      document.querySelectorAll('.method-info').forEach(div => {
+        div.classList.add('hidden');
+      });
+      
+      // Show the selected method info
+      document.getElementById(`${method}-info`).classList.remove('hidden');
+    });
+  });
+});
+</script>
 
 ## Understanding API Status Codes
 
@@ -902,6 +1146,112 @@ When [documenting APIs](/apidocumentation/whatwritersdo.html), it's important to
 7. **Status codes**: Possible response codes and their meanings
 8. **Examples**: Sample requests and responses
 
+{% include enhanced_note.html 
+  title="Important" 
+  type="info" 
+  collapsible=true 
+  expanded=true 
+  content="REST API Best Practice" content="In RESTful APIs, HTTP methods are mapped to CRUD operations: GET (Read), POST (Create), PUT/PATCH (Update), and DELETE (Delete). The 'Safe' property means the method doesn't change server state, while 'Idempotent' means multiple identical requests have the same effect as a single request." 
+%}
+
+### Example: A POST Request for Creating Resources {#post-request-example}
+
+```sh
+POST https://api.example.com/books Content-Type: application/json
+```
+
+```json
+{
+  "title": "The Hobbit",
+  "author": "J.R.R. Tolkien",
+  "published_year": 1937
+}
+```
+
+This tells the API: "Hey, add this book to the database!" The Content-Type header specifies we're sending [JSON](/JSON101.html) data.
+
+## Understanding API Status Codes {#status-codes}
+
+When you get a text reply, sometimes it's all good, sometimes it's confusing, and sometimes it's just... an error. APIs use **status codes** to tell you how things went.
+
+## API Authentication and Security {#api-authentication}
+
+Many APIs require authentication to ensure only authorized users can access certain resources. Common authentication methods include:
+
+## How to Test API Requests {#testing-api-requests}
+
+Now that you understand API requests and responses, how do you test them? These tools will help you explore and validate APIs:
+
+## Common API Request and Response Patterns {#common-patterns}
+
+When working with APIs, you'll encounter several standard patterns in the requests and responses. Understanding these patterns helps you navigate API documentation more effectively and implement API integrations correctly.
+
+### Pagination in API Responses {#pagination}
+
+When dealing with large sets of data, APIs often use pagination to return results in manageable chunks:
+
+```json
+{
+  "books": [
+    { "id": 1, "title": "Book One" },
+    { "id": 2, "title": "Book Two" }
+  ],
+  "pagination": {
+    "total_items": 42,
+    "items_per_page": 2,
+    "current_page": 1,
+    "total_pages": 21,
+    "next_page": "/books?page=2",
+    "prev_page": null
+  }
+}
+```
+
+### Filtering and Sorting {#filtering-sorting}
+
+Most APIs allow you to refine your results through query parameters:
+
+- **Filtering**: `GET /books?genre=fantasy&year=2023`
+- **Sorting**: `GET /books?sort=title&order=asc`
+- **Field selection**: `GET /books?fields=title,author,year`
+
+### Error Handling {#error-handling}
+
+A well-designed API provides detailed error information:
+
+```json
+{
+  "error": {
+    "code": "validation_error",
+    "message": "The request contains invalid parameters",
+    "details": [
+      {
+        "field": "email",
+        "message": "Must be a valid email address"
+      }
+    ]
+  }
+}
+```
+
+## Best Practices for Working with API Requests and Responses {#best-practices}
+
+To ensure smooth interaction with APIs, follow these best practices:
+
+1. **Always check status codes** to understand if your request succeeded or failed
+2. **Validate request data** before sending it to prevent validation errors
+3. **Implement proper error handling** to gracefully manage API failures
+4. **Use request IDs** for tracking and debugging purposes
+5. **Cache responses** when appropriate to reduce unnecessary API calls
+6. **Handle rate limiting** by tracking API usage and implementing backoff strategies
+7. **Stay up-to-date** with API changes through changelogs and documentation
+
+{% include faq-section.html 
+  title="Frequently Asked Questions About API Requests and Responses"
+  description="Get answers to common questions about working with API requests and responses."
+  data_file="api_requests_responses_faqs"
+%}
+
 {% include key_takeaways.html content="
 <ul>
   <li>API requests contain an endpoint, HTTP method, headers, and sometimes a body</li>
@@ -914,14 +1264,82 @@ When [documenting APIs](/apidocumentation/whatwritersdo.html), it's important to
 </ul>
 " %}
 
-## Wrapping it up!
 Congrats! You now understand how API requests and responses work. Whether it's fetching data, sending new information, or handling errors, you've got the basics down.
 
 Now that you know how APIs send and receive data, it's time to document them effectively! In the next chapter, we'll dive into how to write clear and structured API documentation that developers will love. Get ready to level up your documentation skills!
 
+<div class="author-cta">
+  <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
+  <div class="author-message">
+    <h4>Did this API requests and responses guide help you?</h4>
+    <p>If you found this guide on API requests, responses, status codes, and authentication valuable, please share it with developers in your network. Your feedback helps improve our API documentation resources!</p>
+    <div class="social-share">
+      <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text=Excellent guide on mastering API requests and responses" class="share-button twitter">Share on Twitter</a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title=Understanding API Requests and Responses" class="share-button linkedin">Share on LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<style>
+.author-cta {
+  display: flex;
+  background: #f8f9fb;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px 0;
+  border: 1px solid #e2e8f0;
+  gap: 20px;
+  align-items: center;
+}
+.author-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.author-message {
+  flex: 1;
+}
+.author-message h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.author-message p {
+  margin-bottom: 12px;
+}
+.social-share {
+  display: flex;
+  gap: 10px;
+}
+.share-button {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
+}
+.twitter {
+  background: #1DA1F2;
+}
+.linkedin {
+  background: #0077B5;
+}
+@media (max-width: 600px) {
+  .author-cta {
+    flex-direction: column;
+    text-align: center;
+  }
+  .social-share {
+    justify-content: center;
+  }
+}
+</style>
+
 {% include related_resources.html 
-  title="API Communication Resources"
-  description="Expand your understanding of API requests and responses with these resources."
-  external_links="HTTP Status Codes Reference,https://developer.mozilla.org/en-US/docs/Web/HTTP/Status|HTTP Methods Explained,https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods"
-  tools="Postman API Platform,https://www.postman.com/|JSON Formatter and Validator,https://jsonformatter.curiousconcept.com/"
+  title="Essential API Request & Response Resources"
+  description="Deepen your understanding of API communication with these carefully selected resources."
+  external_links="HTTP Status Codes Reference,https://httpstatuses.com/|Mozilla HTTP Documentation,https://developer.mozilla.org/en-US/docs/Web/HTTP|API Security Best Practices,https://owasp.org/www-project-api-security/|JSON Schema Documentation,https://json-schema.org/"
+  tools="Postman API Platform,https://www.postman.com/|Insomnia REST Client,https://insomnia.rest/|HTTPie for API Testing,https://httpie.io/|JSON Formatter & Validator,https://jsonformatter.curiousconcept.com/"
 %}
