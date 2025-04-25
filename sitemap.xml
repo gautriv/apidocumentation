@@ -4,36 +4,55 @@ search: exclude
 ---
 
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   {% for post in site.posts %}
-  {% unless post.search == "exclude" %}
+  {% unless post.search == "exclude" or post.sitemap == false %}
   <url>
     <loc>{{site.url}}{{site.baseurl}}{{post.url}}</loc>
     <lastmod>{% if post.last_modified_at %}{{ post.last_modified_at | date_to_xmlschema }}{% else %}{{ post.date | date_to_xmlschema }}{% endif %}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>{% if post.sitemap_changefreq %}{{ post.sitemap_changefreq }}{% else %}monthly{% endif %}</changefreq>
+    <priority>{% if post.sitemap_priority %}{{ post.sitemap_priority }}{% else %}0.8{% endif %}</priority>
+    {% if post.image %}
+    <image:image>
+      <image:loc>{{site.url}}{{site.baseurl}}{{ post.image }}</image:loc>
+      <image:title>{% if post.image_alt %}{{ post.image_alt }}{% else %}{{ post.title }}{% endif %}</image:title>
+    </image:image>
+    {% endif %}
   </url>
   {% endunless %}
   {% endfor %}
 
   {% for page in site.pages %}
-  {% unless page.search == "exclude" or page.layout == "none" or page.url contains "assets" %}
+  {% unless page.search == "exclude" or page.sitemap == false or page.layout == "none" or page.url contains "assets" or page.url contains ".xml" %}
   <url>
     <loc>{{site.url}}{{site.baseurl}}{{ page.url | remove_first: site.baseurl }}</loc>
     <lastmod>{% if page.last_modified_at %}{{ page.last_modified_at | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>{% if page.url == "/" %}1.0{% else %}0.7{% endif %}</priority>
+    <changefreq>{% if page.sitemap_changefreq %}{{ page.sitemap_changefreq }}{% else %}monthly{% endif %}</changefreq>
+    <priority>{% if page.url == "/" %}1.0{% elsif page.sitemap_priority %}{{ page.sitemap_priority }}{% else %}0.7{% endif %}</priority>
+    {% if page.image %}
+    <image:image>
+      <image:loc>{{site.url}}{{site.baseurl}}{{ page.image }}</image:loc>
+      <image:title>{% if page.image_alt %}{{ page.image_alt }}{% else %}{{ page.title }}{% endif %}</image:title>
+    </image:image>
+    {% endif %}
   </url>
   {% endunless %}
   {% endfor %}
   
   {% for doc in site.docs %}
-  {% unless doc.search == "exclude" %}
+  {% unless doc.search == "exclude" or doc.sitemap == false %}
   <url>
     <loc>{{site.url}}{{site.baseurl}}{{doc.url | remove_first: site.baseurl }}</loc>
     <lastmod>{% if doc.last_modified_at %}{{ doc.last_modified_at | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <changefreq>{% if doc.sitemap_changefreq %}{{ doc.sitemap_changefreq }}{% else %}monthly{% endif %}</changefreq>
+    <priority>{% if doc.sitemap_priority %}{{ doc.sitemap_priority }}{% else %}0.9{% endif %}</priority>
+    {% if doc.image %}
+    <image:image>
+      <image:loc>{{site.url}}{{site.baseurl}}{{ doc.image }}</image:loc>
+      <image:title>{% if doc.image_alt %}{{ doc.image_alt }}{% else %}{{ doc.title }}{% endif %}</image:title>
+    </image:image>
+    {% endif %}
   </url>
   {% endunless %}
   {% endfor %}
