@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: doc
 title: "Core Web Vitals Guide: Boost Your SEO and CTR in 2023"
 description: "Learn how to check, optimize, and improve your Core Web Vitals for better search rankings and higher click-through rates (CTR). Complete step-by-step guide."
 keywords: Core Web Vitals, LCP, FID, CLS, PageSpeed, SEO optimization, website performance, CTR improvement

@@ -348,8 +348,8 @@ APIs aren't just about **getting** data; they can also **send, update, and delet
         <span class="attribute">Idempotent: <span class="yes">Yes</span></span>
         <span class="attribute">Cacheable: <span class="yes">Yes</span></span>
       </div>
-    </div>
-    
+</div>
+
     <div class="method-info hidden" id="post-info">
       <h4>POST Method</h4>
       <p>Used to submit data to be processed to a specified resource. Often used for creating new resources.</p>

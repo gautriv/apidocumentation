@@ -1,15 +1,33 @@
 ---
-title: What is an API? Understanding Application Programming Interfaces
-description: Explore what APIs are, how they work with requests and responses, and why they're essential for modern applications. Learn about real-world API examples in social media, weather apps, and e-commerce with clear, simple explanations.
-keywords: application programming interface, what is an API, how APIs work, API examples, REST API, API documentation, API requests and responses, API for beginners, types of APIs, web APIs, API integration, API communication, software integration, API developer guide, social media APIs, e-commerce APIs, weather APIs, modern technology APIs, API middleware, client-server communication, API technical writing, API user guide, API fundamentals, API basics, API explanation, API definition
-
-permalink: whatisanapi.html
+title: What is an API? Complete Beginner's Guide
+description: Understand what an API is, how APIs work, and why they're essential for modern software development. This comprehensive guide explains API concepts, types, and practical applications for beginners.
+keywords: API definition, What is an API, API basics, API for beginners, API examples, API request response, REST API, API types, API authentication, API authorization, API development, API testing, API integration, API best practices, API security, API endpoints, API documentation, API versioning, API design patterns, API lifecycle
+permalink: /whatisanapi.html
+summary: "This beginner-friendly guide explains APIs (Application Programming Interfaces) from the ground up. Learn what APIs are, how they enable software communication, different API types, and why they're critical for modern development. Perfect for those new to APIs who want to understand core concepts before diving into implementation."
 next_page:
   url: /whatwritersdo.html
   title: What do Technical Writers document?
 previous_page:
   url: /howinternetworks.html
   title: How the Internet Works?
+image: /assets/images/api-basics-og.svg
+last_modified_at: 2023-11-14T10:00:00+00:00
+author_name: API Foundations Expert
+author_description: Technical writer specializing in making complex API concepts accessible to beginners
+author_expertise: 
+  - "API Fundamentals"
+  - "Technical Documentation"
+  - "Developer Education"
+  - "API Onboarding"
+author_image: /assets/images/api-writer.svg
+reading_time: 10
+level: Beginner
+speakable: true
+speakable_selectors:
+  - ".doc-content h1" 
+  - ".doc-content h2"
+  - ".doc-content p:first-of-type"
+schema_markup: true
 ---
 
 Alright, let's dive into the world of APIs (aka the secret sauce of modern technology). API stands for Application Programming Interface, but let's not let the fancy name intimidate you. At its core, an API is just a set of rules that tells two software programs how to talk to each other. Yep, it's like a digital diplomacy guide!
@@ -101,11 +119,95 @@ Think of yourself as the ultimate guide, helping others navigate the digital wor
 
 So, ready to become the API documentation master? Let's keep going! The next stop: [Types of APIs]({{ '/typesofAPI.html' | relative_url }}). Get your explorer hat ready—this is going to be fun.
 
+{% include faq-section.html 
+  title="Frequently Asked Questions About APIs"
+  description="Get answers to common questions about API basics, including fundamental concepts, types, and practical applications."
+  data_file="api_basics_faqs"
+%}
+
 {% include key_takeaways.html content="
 <ul>
-  <li>An API (Application Programming Interface) is like a digital menu that helps software programs talk to each other.</li>
-  <li>It works through requests (what you want) and responses (what you get).</li>
-  <li>APIs are the reason our apps, websites, and gadgets work so smoothly together.</li>
-  <li>As a technical writer, you're here to make sure everyone understands how to use these magic menus.</li>
+  <li>APIs are interfaces that enable different software applications to communicate with each other</li>
+  <li>APIs abstract complexity by hiding implementation details while providing standardized access to functionality</li>
+  <li>Common API types include REST, SOAP, GraphQL, and Webhooks, each with specific use cases</li>
+  <li>API security is implemented through authentication (verifying identity) and authorization (granting access)</li>
+  <li>Well-designed APIs follow principles like consistency, clear documentation, and appropriate error handling</li>
+  <li>Understanding API versioning and backward compatibility is essential for maintaining smooth integrations</li>
 </ul>
 " %}
+
+<div class="author-cta">
+  <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
+  <div class="author-message">
+    <h4>Was this guide helpful?</h4>
+    <p>If you found this "What is an API?" guide valuable, please share it with your team or on social media. Your feedback helps us improve our content!</p>
+    <div class="social-share">
+      <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text=Check out this excellent API documentation guide" class="share-button twitter">Share on Twitter</a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title=Master API Documentation" class="share-button linkedin">Share on LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<style>
+.author-cta {
+  display: flex;
+  background: #f8f9fb;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px 0;
+  border: 1px solid #e2e8f0;
+  gap: 20px;
+  align-items: center;
+}
+.author-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.author-message {
+  flex: 1;
+}
+.author-message h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.author-message p {
+  margin-bottom: 12px;
+}
+.social-share {
+  display: flex;
+  gap: 10px;
+}
+.share-button {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
+}
+.twitter {
+  background: #1DA1F2;
+}
+.linkedin {
+  background: #0077B5;
+}
+@media (max-width: 600px) {
+  .author-cta {
+    flex-direction: column;
+    text-align: center;
+  }
+  .social-share {
+    justify-content: center;
+  }
+}
+</style>
+
+{% include related_resources.html 
+  title="Essential API Learning Resources"
+  description="Continue your API learning journey with these carefully selected resources."
+  external_links="MDN Web API Introduction,https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction|Guide to RESTful APIs,https://restfulapi.net/|API Design Guide,https://apiguide.readthedocs.io/en/latest/|API Security Best Practices,https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics"
+  tools="Postman API Platform,https://www.postman.com/|Swagger API Documentation Tools,https://swagger.io/|Insomnia API Client,https://insomnia.rest/|Apigee API Management,https://cloud.google.com/apigee"
+%}

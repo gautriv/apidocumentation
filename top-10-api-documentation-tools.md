@@ -1,6 +1,6 @@
 ---
-layout: default
-title: "10 Best API Documentation Tools in 2023 [Expert Picks]"
+layout: doc
+title: "10 Best API Documentation Tools in 2025 [Expert Picks]"
 description: "Discover the top 10 API documentation tools that technical writers and developers love. Compare features, pricing, and find the perfect tool for your project."
 keywords: API documentation tools, Swagger, Postman, ReadMe, Stoplight, best API tools, API documentation comparison, technical writing tools
 canonical: https://beingtechnicalwriter.com/apidocumentation/top-10-api-documentation-tools

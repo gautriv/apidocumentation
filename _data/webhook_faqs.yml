@@ -1,0 +1,42 @@
+categories:
+  - name: "Webhook Basics"
+    items:
+      - question: "What is a webhook and how does it differ from a REST API?"
+        answer: "A webhook is an event-driven API callback that sends data to your designated URL when specific events occur in a system. Unlike REST APIs (which are 'pull-based' where the client requests data), webhooks are 'push-based' - the server automatically sends data to the client when events happen, eliminating the need for constant polling."
+        
+      - question: "When should I use webhooks instead of REST APIs?"
+        answer: "Use webhooks when you need real-time notifications about events, want to reduce server load from frequent polling, need to create event-driven architectures, or want to integrate with third-party services efficiently. Webhooks are ideal for scenarios like payment processing notifications, CI/CD pipeline triggers, and real-time data synchronization."
+        
+      - question: "How secure are webhooks?"
+        answer: "Webhooks can be made very secure with proper implementation. Best practices include using HTTPS endpoints, implementing webhook signatures (using HMAC) to verify the sender, adding IP whitelisting when possible, and implementing proper request validation and rate limiting. Many webhook providers include a 'secret' that's used to validate that the webhook is coming from an authorized source."
+        
+      - question: "Can webhooks fail? What happens then?"
+        answer: "Yes, webhooks can fail if your endpoint is unavailable, returns an error response, or takes too long to respond. Most webhook providers implement a retry mechanism with exponential backoff (trying again after increasingly longer intervals). Many also offer webhook logs or a dashboard where you can view failed webhooks and manually trigger retries if needed."
+        
+  - name: "Implementation"
+    items:
+      - question: "How do I set up a webhook endpoint?"
+        answer: "To set up a webhook endpoint: 1) Create a publicly accessible HTTP endpoint on your server, 2) Configure it to accept POST requests, 3) Register this URL with the webhook provider, 4) Add logic to validate incoming webhooks (verify signatures), 5) Process the webhook payload data, and 6) Return a 200 OK response quickly (process data asynchronously if needed)."
+        
+      - question: "What's a webhook signature and why is it important?"
+        answer: "A webhook signature is a security mechanism where the webhook provider generates a digital signature using a shared secret key and includes it in the request headers. Your server can then verify this signature by performing the same calculation with your copy of the secret key. This ensures the webhook is legitimate and hasn't been tampered with, preventing replay attacks and unauthorized access."
+        
+      - question: "How should I handle webhook testing during development?"
+        answer: "For webhook testing: 1) Use tools like ngrok or localtunnel to expose your local development server to the internet, 2) Use webhook providers' testing tools if available, 3) Create a test environment in your webhook provider, 4) Log all incoming webhook data for debugging, 5) Implement proper error handling, and 6) Consider using a webhook testing service like Hookdeck or RequestBin for inspection and debugging."
+        
+      - question: "Can I filter which webhook events I receive?"
+        answer: "Yes, most webhook providers allow you to subscribe to specific event types rather than receiving all events. This is typically configured when setting up the webhook in the provider's dashboard. For example, you might choose to receive only 'payment.successful' events from a payment processor, rather than all payment-related events."
+        
+  - name: "Troubleshooting"
+    items:
+      - question: "Why am I not receiving webhook events?"
+        answer: "Common reasons for not receiving webhooks include: 1) Your endpoint is not publicly accessible, 2) Your server is returning non-2xx responses, 3) Your endpoint is taking too long to respond, 4) You haven't subscribed to the correct event types, 5) Your signature validation is failing, or 6) There are network/firewall issues blocking the webhook provider. Check your server logs and the webhook provider's dashboard for clues."
+        
+      - question: "How do I debug webhook issues?"
+        answer: "To debug webhook issues: 1) Check the webhook provider's logs or dashboard for failed delivery attempts, 2) Implement detailed logging in your webhook handler, 3) Use webhook inspection tools like RequestBin to see raw payloads, 4) Verify your signature validation code is correct, 5) Test with a simplified endpoint that just logs requests, and 6) Make sure your server is consistently responding with 2xx status codes quickly."
+        
+      - question: "Should my webhook handler process data synchronously or asynchronously?"
+        answer: "Most webhook best practices recommend responding to the webhook request quickly (within seconds) with a 200 OK status, then processing the data asynchronously in the background. This prevents timeouts, reduces the chance of missed webhooks due to processing errors, and allows the webhook provider to consider the delivery successful. Use task queues or background jobs for the actual data processing."
+        
+      - question: "What should I do about duplicate webhook events?"
+        answer: "Duplicate webhooks can occur due to retry mechanisms. To handle them: 1) Make your webhook processing idempotent (processing the same event multiple times doesn't cause issues), 2) Store webhook IDs and check for duplicates before processing, 3) Implement proper transaction handling to prevent partial processing, and 4) Use event timestamps to identify and potentially ignore outdated events." 
