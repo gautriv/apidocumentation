@@ -1,0 +1,78 @@
+# Questions for "API Authentication" chapter quiz
+# Each question has:
+# - question: The actual question text
+# - options: Array of possible answers (4 options)
+# - correctIndex: Zero-based index of the correct answer
+# - explanation: Detailed explanation of the correct answer
+
+- question: "What is the main difference between authentication and authorization?"
+  options:
+    - "Authentication is for mobile apps, authorization is for web apps"
+    - "Authentication verifies who you are, authorization determines what you can access"
+    - "Authentication is optional, authorization is required"
+    - "Authentication is for developers, authorization is for end-users"
+  correctIndex: 1
+  explanation: "Authentication is the process of verifying the identity of a user or system (who you are), while authorization determines what resources that authenticated entity can access (what you can do). Both processes are essential for API security but serve different purposes."
+
+- question: "Which authentication method is typically the most secure for API access?"
+  options:
+    - "Basic authentication"
+    - "API key in query parameters"
+    - "OAuth 2.0 with JWT"
+    - "IP address whitelisting"
+  correctIndex: 2
+  explanation: "OAuth 2.0 with JWT (JSON Web Tokens) is generally considered the most secure authentication method for APIs. It provides a standardized framework for token-based authentication with features like token expiration, scope limitations, and refresh mechanisms. Unlike basic auth or API keys, it doesn't require sending credentials with each request."
+
+- question: "Where should API keys be included in requests for maximum security?"
+  options:
+    - "In the URL as query parameters"
+    - "In request headers"
+    - "In the request body"
+    - "In cookies"
+  correctIndex: 1
+  explanation: "API keys should be included in request headers for maximum security. When placed in URL query parameters, API keys can be exposed in server logs, browser history, and referrer headers. Request headers aren't typically logged or cached, making them more secure for transmitting sensitive authentication credentials."
+
+- question: "What is the purpose of JWT (JSON Web Tokens) in API authentication?"
+  options:
+    - "To encrypt all API traffic"
+    - "To securely transmit information between parties as a compact, self-contained token"
+    - "To replace HTTPS with a more secure protocol"
+    - "To generate random API keys"
+  correctIndex: 1
+  explanation: "JWT allows secure information transmission between parties as a compact, self-contained token. The token itself contains encoded user data and claims, is digitally signed to ensure integrity, and can be verified without server-side sessions. JWTs are ideal for modern APIs because they enable stateless authentication."
+
+- question: "What is an OAuth 2.0 scope used for?"
+  options:
+    - "To limit the geographic regions where an API can be accessed"
+    - "To specify the IP addresses allowed to access an API"
+    - "To limit the permissions of the access token"
+    - "To define how long a session can remain active"
+  correctIndex: 2
+  explanation: "OAuth 2.0 scopes are used to limit the permissions of access tokens. Scopes define the specific resources and operations that an application is permitted to access, implementing the principle of least privilege. For example, a token might have 'read:contacts' scope but not 'write:contacts', allowing it to view but not modify contact data."
+
+- question: "What is a refresh token in OAuth 2.0?"
+  options:
+    - "A token used to obtain a new access token when the current one expires"
+    - "A token that refreshes the client's connection to the server"
+    - "A secondary API key used for backup authentication"
+    - "A token that clears the user's cached credentials"
+  correctIndex: 0
+  explanation: "A refresh token is used to obtain a new access token when the current one expires, without requiring the user to reauthenticate. This improves security by allowing access tokens to have short lifespans while maintaining a seamless user experience. Refresh tokens are typically longer-lived but should be stored securely and transmitted only to token endpoints."
+
+- question: "What is the primary security risk of using Basic Authentication for APIs?"
+  options:
+    - "It requires a database lookup for each request"
+    - "It sends credentials in base64 encoding with every request"
+    - "It doesn't work with mobile applications"
+    - "It requires more bandwidth than token-based methods"
+  correctIndex: 1
+  explanation: "The primary security risk of Basic Authentication is that it sends credentials (encoded in base64, not encrypted) with every request. This increases the exposure risk of credentials, especially if not used with HTTPS. Additionally, there's no built-in expiration mechanism, making it vulnerable if credentials are compromised, and it doesn't support authorization scopes."
+
+- question: "What is two-factor authentication (2FA) in the context of API security?"
+  options:
+    - "Using two different API keys for redundancy"
+    - "Requiring authentication at the network and application levels"
+    - "Combining something you know with something you have for verification"
+    - "Validating requests with two different servers"
+  correctIndex: 2
+  explanation: "Two-factor authentication (2FA) combines two different verification factors: typically something you know (like a password) with something you have (like a mobile device that receives verification codes). For APIs, this might involve a regular API key plus a time-based one-time password (TOTP). 2FA significantly enhances security by requiring multiple proof points of identity." 

@@ -1,0 +1,78 @@
+# Questions for "Advanced URL Anatomy" chapter quiz
+# Each question has:
+# - question: The actual question text
+# - options: Array of possible answers (4 options)
+# - correctIndex: Zero-based index of the correct answer
+# - explanation: Detailed explanation of the correct answer
+
+- question: "What is an endpoint in API documentation?"
+  options:
+    - "The destination server's physical location"
+    - "A complete URL that can be used to access a resource"
+    - "The final character in a URL string"
+    - "A type of query parameter"
+  correctIndex: 1
+  explanation: "An endpoint is a complete URL that can be used to access a resource. It includes the protocol (for example, HTTP or HTTPS), domain name, path, and query parameters (if any). The HTTP method is also typically included in the endpoint."
+
+- question: "What is the difference between an endpoint and a resource in API terminology?"
+  options:
+    - "There is no difference; the terms are interchangeable"
+    - "Endpoints are used for GET requests, resources for POST requests"
+    - "An endpoint is a complete URL, while a resource is a data object exposed by the API"
+    - "Endpoints are public, resources are private"
+  correctIndex: 2
+  explanation: "An endpoint is a complete URL that can be used to access a resource. A resource is a data object or entity that is exposed by an API. Resources are typically represented as JSON or XML objects in API responses and can be accessed through endpoints."
+
+- question: "What is URL encoding and why is it necessary?"
+  options:
+    - "It's a way to shorten URLs to save bandwidth"
+    - "It converts characters that aren't allowed in URLs into a format that is"
+    - "It's a method to encrypt sensitive data in URLs"
+    - "It compresses URL data for faster transmission"
+  correctIndex: 1
+  explanation: "URL encoding (also called percent-encoding) converts characters that aren't allowed in URLs into a format that is. Special characters like spaces, &, =, ?, and / are encoded into their percent-encoded forms (e.g., spaces become %20 or +). This is essential for APIs that handle user input or special characters."
+
+- question: "Which URL encoding is correct for a space character?"
+  options:
+    - "space"
+    - "#20"
+    - "%20"
+    - "_"
+  correctIndex: 2
+  explanation: "In URL encoding, spaces are commonly converted to %20. This ensures that spaces, which are not allowed in URLs, can be properly transmitted and interpreted by servers and clients."
+
+- question: "What is the difference between absolute and relative URLs in API documentation?"
+  options:
+    - "Absolute URLs are longer while relative URLs are shorter"
+    - "Absolute URLs include the full domain while relative URLs depend on a base URL"
+    - "Absolute URLs are only for production environments while relative URLs are for testing"
+    - "Absolute URLs support all HTTP methods while relative URLs only support GET"
+  correctIndex: 1
+  explanation: "Absolute URLs include the complete URL with protocol and domain (e.g., https://api.example.com/v1/users/12345), making them self-contained and unambiguous. Relative URLs (e.g., /v1/users/12345) are shorter and depend on a base URL, making them environment-agnostic and easier to maintain when base URLs change."
+
+- question: "Which of these is a security best practice for API URLs?"
+  options:
+    - "Include authentication credentials in the URL for easier access"
+    - "Use HTTP instead of HTTPS for faster performance"
+    - "Never include authentication credentials in URL parameters"
+    - "Make API URLs as long as possible for better security"
+  correctIndex: 2
+  explanation: "A critical security best practice is to never include authentication credentials in URL parameters. Authentication information should be placed in headers rather than URLs, as URLs can be logged, cached, and visible in browser history. For example, use 'Authorization: Bearer {token}' in headers instead of '/api/data?token=1234abc' in the URL."
+
+- question: "What is a common documentation challenge with deeply nested URLs?"
+  options:
+    - "They are too short to be meaningful"
+    - "They require too much server processing"
+    - "They can be difficult to understand and navigate"
+    - "They can't be used with certain HTTP methods"
+  correctIndex: 2
+  explanation: "Deeply nested URLs like '/organizations/123/departments/456/teams/789/members/101112' can be complex and difficult for developers to understand. A good documentation approach is to create a visual hierarchy diagram showing each path segment and its purpose, and possibly offer alternatives to deep nesting."
+
+- question: "What's the best way to document URL parameters in API documentation?"
+  options:
+    - "List them in paragraph form within the main text"
+    - "Create comprehensive parameter tables with descriptions and constraints"
+    - "Show examples without explaining individual parameters"
+    - "Provide only the required parameters, ignoring optional ones"
+  correctIndex: 1
+  explanation: "When documenting URL parameters, create comprehensive parameter tables that answer all possible developer questions. Include properties like name, description, location, data type, required status, default values, constraints, examples, and notes about edge cases or common errors." 

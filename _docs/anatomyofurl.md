@@ -660,6 +660,14 @@ In the [next part of our URL anatomy lesson]({{ '/anatomyofurltwo.html' | relati
 </ul>
 " %}
 
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of URL anatomy with this quiz."
+  quizDataFile="anatomyofurl_questions"
+  theme="blue"
+  animate=true
+%}
+
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
   <div class="author-message">
@@ -735,3 +743,4 @@ In the [next part of our URL anatomy lesson]({{ '/anatomyofurltwo.html' | relati
   external_links="URL Syntax Specification (RFC 3986),https://datatracker.ietf.org/doc/html/rfc3986|HTTP Status Codes Reference,https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
   tools="URL Parser and Decoder,https://www.urlencoder.org/|Postman URL Builder,https://www.postman.com/"
 %}
+

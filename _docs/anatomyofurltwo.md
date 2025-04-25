@@ -1058,6 +1058,15 @@ You've now learned advanced concepts of URL anatomy for API documentation. In th
 </ul>
 " %}
 
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of advanced URL concepts with this quiz."
+  quizDataFile="anatomyofurltwo_questions"
+  theme="blue"
+  animate=true
+%}
+
+
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
   <div class="author-message">
@@ -1126,6 +1135,7 @@ You've now learned advanced concepts of URL anatomy for API documentation. In th
   }
 }
 </style>
+
 
 {% include related_resources.html 
   title="Advanced URL Resources"

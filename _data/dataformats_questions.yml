@@ -1,0 +1,78 @@
+# Questions for "Understanding API Data Formats" chapter quiz
+# Each question has:
+# - question: The actual question text
+# - options: Array of possible answers (4 options)
+# - correctIndex: Zero-based index of the correct answer
+# - explanation: Detailed explanation of the correct answer
+
+- question: "What is the key difference between structured and unstructured data?"
+  options:
+    - "Structured data uses JSON, unstructured data uses XML"
+    - "Structured data is text-based, unstructured data is binary"
+    - "Structured data follows a predefined format, unstructured data lacks a specific format"
+    - "Structured data is smaller, unstructured data is larger"
+  correctIndex: 2
+  explanation: "Structured data follows a predefined format or schema with consistent organization, making it easily searchable and machine-readable. Unstructured data lacks a specific format or organization, making it more difficult to process programmatically. This distinction is important for API design as structured formats like JSON and XML allow for consistent data exchange."
+
+- question: "Which API data format is more lightweight and has become the most commonly used in modern APIs?"
+  options:
+    - "XML"
+    - "HTML"
+    - "CSV"
+    - "JSON"
+  correctIndex: 3
+  explanation: "JSON has become the most commonly used data format in modern APIs due to its lightweight nature, readability, and native compatibility with JavaScript. Its simpler syntax and smaller file size compared to XML make it ideal for high-performance applications and mobile contexts where bandwidth matters."
+
+- question: "What are the main advantages of XML over JSON as an API data format?"
+  options:
+    - "XML is always smaller in file size"
+    - "XML has broader language support than JSON"
+    - "XML offers stronger validation capabilities through schemas and DTDs"
+    - "XML is easier to read for non-developers"
+  correctIndex: 2
+  explanation: "XML offers stronger validation capabilities through XML Schema Definition (XSD) and Document Type Definition (DTD), allowing for precise data validation. This is particularly valuable in industries requiring strict data compliance like healthcare and finance. XML also supports namespaces and complex document structures that JSON can't easily represent."
+
+- question: "What is a key characteristic of structured data in an API response?"
+  options:
+    - "It always uses XML format"
+    - "It contains only text information"
+    - "It has a clear hierarchy and typed information"
+    - "It is always human-readable but not machine-readable"
+  correctIndex: 2
+  explanation: "Structured data has a clear hierarchy and typed information, making it easy to parse and process programmatically. This includes defined data types (strings, numbers, booleans), hierarchical organization, consistent field names, and predictable patterns that allow computers to efficiently process the information."
+
+- question: "In a REST API, which data format would typically be specified in the Content-Type header?"
+  options:
+    - "file/json"
+    - "application/json"
+    - "text/json"
+    - "data/json"
+  correctIndex: 1
+  explanation: "The Content-Type header in a REST API would typically specify 'application/json' for JSON data or 'application/xml' for XML data. This header tells the receiving system how to interpret the data being transferred. Using the correct MIME type ensures proper processing of the API request or response."
+
+- question: "How does JSON handle complex data types compared to XML?"
+  options:
+    - "JSON offers better support for complex data types than XML"
+    - "JSON and XML handle complex data types identically"
+    - "JSON has more limited support for complex data types than XML"
+    - "JSON doesn't support complex data types at all"
+  correctIndex: 2
+  explanation: "JSON has more limited support for complex data types compared to XML. While JSON handles arrays and nested objects well, it lacks features like namespaces, complex validation schemes, and mixed content models that XML provides. XML's more robust structure makes it better suited for complex document-oriented data that requires these advanced features."
+
+- question: "What's a key benefit of using JSON for API responses in web applications?"
+  options:
+    - "JSON requires no parsing in JavaScript"
+    - "JSON is the only format supported by modern browsers"
+    - "JSON is always more secure than other formats"
+    - "JSON files are always smaller than equivalent XML files"
+  correctIndex: 0
+  explanation: "A key benefit of JSON in web applications is that it requires no special parsing in JavaScript. Since JSON is based on JavaScript object syntax, it can be directly evaluated into JavaScript objects using JSON.parse(), eliminating the need for complex custom parsers. This native compatibility makes frontend development more efficient."
+
+- question: "What is a common approach to documenting data structures in API documentation?"
+  options:
+    - "Include only theoretical descriptions of each structure"
+    - "Provide examples, field descriptions, and data types for each structure"
+    - "Avoid documenting structures and let users figure them out"
+    - "Use only XML examples regardless of the actual API format"
+  correctIndex: 1
+  explanation: "Effective API documentation provides examples, field descriptions, and data types for each structure. This approach includes sample requests and responses, tables documenting each field with its data type and constraints, and explanations of how the structures relate to each other. This comprehensive documentation helps developers understand and efficiently implement the API." 

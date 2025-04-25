@@ -639,6 +639,15 @@ Congratulations! You're now **fluent in cURL**, ready to test APIs like a pro. Y
 
 In the next chapter, we'll put your skills to the test with [expert REST API exercises](/apidocumentation/expertrestexercise.html) that combine everything you've learned so far.
 
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of cURL for API testing with this quiz."
+  quizDataFile="curl_questions"
+  theme="blue"
+  animate=true
+%}
+
+
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
   <div class="author-message">
@@ -707,6 +716,7 @@ In the next chapter, we'll put your skills to the test with [expert REST API exe
   }
 }
 </style>
+
 
 
 {% include related_resources.html 

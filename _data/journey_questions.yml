@@ -1,0 +1,78 @@
+# Questions for "How the Internet Works?" chapter quiz
+# Each question has:
+# - question: The actual question text
+# - options: Array of possible answers (4 options)
+# - correctIndex: Zero-based index of the correct answer
+# - explanation: Detailed explanation of the correct answer
+
+- question: "What does a browser do when you type a URL and press Enter?"
+  options:
+    - "It immediately displays stored content from your computer"
+    - "It sends a request to a server asking for the information"
+    - "It creates new content based on the URL"
+    - "It connects directly to other users viewing the same content"
+  correctIndex: 1
+  explanation: "When you type a URL and press Enter, your browser sends a request to a server somewhere in the world that hosts that website. This request asks the server to send back the information needed to display the webpage."
+
+- question: "What is authentication in web communication?"
+  options:
+    - "A process to improve website loading speed"
+    - "The way websites are designed to look appealing"
+    - "The process of verifying your identity when accessing a website"
+    - "A method of compressing web data for faster transmission"
+  correctIndex: 2
+  explanation: "Authentication is the process where a website verifies who you are, typically through passwords, security tokens, or biometrics. This security measure ensures that only authorized users can access certain content or perform specific actions."
+
+- question: "Which technologies work together to transform plain data into a visually appealing webpage?"
+  options:
+    - "HTTP, DNS, and IP"
+    - "HTML, CSS, and JavaScript"
+    - "API, XML, and JSON"
+    - "Cookies, Cache, and Servers"
+  correctIndex: 1
+  explanation: "HTML, CSS, and JavaScript work together to transform plain data into a visually appealing webpage. HTML provides the structure, CSS adds styling and visual design, and JavaScript adds interactivity and dynamic functionality."
+
+- question: "What is a database in web architecture?"
+  options:
+    - "A tool that speeds up internet connections"
+    - "The physical server where websites are hosted"
+    - "A structured collection of information that websites store and retrieve data from"
+    - "A program that blocks unwanted content"
+  correctIndex: 2
+  explanation: "A database is a structured collection of information where websites and applications store and retrieve data. Think of it as a giant digital filing cabinet that organizes all the information a website needs to function properly."
+
+- question: "What role does an API play in web communication?"
+  options:
+    - "It encrypts all data to prevent security breaches"
+    - "It acts as an intermediary that allows different software systems to communicate"
+    - "It compresses images and videos for faster loading"
+    - "It tracks user behavior for marketing purposes"
+  correctIndex: 1
+  explanation: "An API (Application Programming Interface) acts as an intermediary that allows different software systems to communicate with each other. It defines the methods and data formats that applications can use to request and exchange information."
+
+- question: "Which of the following best describes the client-server model of the internet?"
+  options:
+    - "A system where all computers have equal roles and responsibilities"
+    - "A model where your device (client) requests information from specialized computers (servers)"
+    - "A network where information is stored primarily on users' devices"
+    - "A structure where content is created and shared directly between users"
+  correctIndex: 1
+  explanation: "The client-server model describes how your device (the client) requests information from specialized computers (servers) that store and process data. Servers respond to these requests by sending back the requested information, creating the foundation of web communication."
+
+- question: "What happens during DNS resolution when you visit a website?"
+  options:
+    - "Your browser compresses the website content"
+    - "The website's server authenticates your identity"
+    - "Your ISP calculates the fastest route to the website"
+    - "The domain name is converted to an IP address"
+  correctIndex: 3
+  explanation: "DNS (Domain Name System) resolution is the process of converting a human-readable domain name (like example.com) into a numeric IP address that computers use to identify each other on the network. This happens before your browser can connect to the website's server."
+
+- question: "Which protocol is the foundation of data communication on the World Wide Web?"
+  options:
+    - "FTP (File Transfer Protocol)"
+    - "SMTP (Simple Mail Transfer Protocol)"
+    - "HTTP/HTTPS (Hypertext Transfer Protocol)"
+    - "SSH (Secure Shell)"
+  correctIndex: 2
+  explanation: "HTTP (Hypertext Transfer Protocol) and its secure version HTTPS are the foundation of data communication on the World Wide Web. These protocols define how messages are formatted and transmitted between web browsers and servers." 

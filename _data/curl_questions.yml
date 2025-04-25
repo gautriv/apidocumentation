@@ -1,0 +1,78 @@
+# Questions for "Mastering cURL for API Testing and Documentation" chapter quiz
+# Each question has:
+# - question: The actual question text
+# - options: Array of possible answers (4 options)
+# - correctIndex: Zero-based index of the correct answer
+# - explanation: Detailed explanation of the correct answer
+
+- question: "What is cURL primarily used for in API development?"
+  options:
+    - "Creating API documentation"
+    - "Designing API interfaces"
+    - "Sending HTTP requests to APIs from the command line"
+    - "Monitoring API performance"
+  correctIndex: 2
+  explanation: "cURL (Client URL) is a command-line tool used for sending HTTP requests to APIs. It allows developers to test API endpoints, authenticate requests, send data payloads, and debug responses - all without writing code. It's like Postman but without the graphical user interface."
+
+- question: "Which flag is used to specify an HTTP method in a cURL command?"
+  options:
+    - "-H"
+    - "-X"
+    - "-d"
+    - "-F"
+  correctIndex: 1
+  explanation: "The -X flag is used to specify the HTTP method in a cURL command. For example: curl -X POST 'https://api.example.com/users' would send a POST request to the specified endpoint. Common methods include GET, POST, PUT, DELETE, and PATCH."
+
+- question: "How do you include a request header in a cURL command?"
+  options:
+    - "--header 'Name: Value'"
+    - "-h 'Name: Value'"
+    - "-H 'Name: Value'"
+    - "--head 'Name: Value'"
+  correctIndex: 2
+  explanation: "The -H flag is used to include request headers in cURL commands. For example: curl -X GET 'https://api.example.com' -H 'Authorization: Bearer your_token' -H 'Accept: application/json' would send a GET request with Authorization and Accept headers."
+
+- question: "What is the correct way to send JSON data in a POST request using cURL?"
+  options:
+    - "curl -X POST 'https://api.example.com' -b '{\"name\":\"John\"}'"
+    - "curl -X POST 'https://api.example.com' -j '{\"name\":\"John\"}'"
+    - "curl -X POST 'https://api.example.com' -d '{\"name\":\"John\"}' -H 'Content-Type: application/json'"
+    - "curl -X POST 'https://api.example.com' --json '{\"name\":\"John\"}'"
+  correctIndex: 2
+  explanation: "To send JSON data in a POST request, use the -d flag to specify the data payload and include the Content-Type: application/json header. The correct format is: curl -X POST 'https://api.example.com' -d '{\"name\":\"John\"}' -H 'Content-Type: application/json'"
+
+- question: "How do you specify query parameters in a cURL request?"
+  options:
+    - "Include them in the URL after a question mark"
+    - "Use the -q flag followed by key=value pairs"
+    - "Use the --query flag followed by key=value pairs"
+    - "Add them as headers with the -H flag"
+  correctIndex: 0
+  explanation: "To filter or sort data with query parameters in cURL, include them directly in the URL after a question mark. For example: curl -X GET 'https://api.example.com/users?limit=10&sort=desc&status=active' would send a GET request with three query parameters."
+
+- question: "Which flag is used to upload a file using cURL?"
+  options:
+    - "-U"
+    - "-F"
+    - "--file"
+    - "-d"
+  correctIndex: 1
+  explanation: "The -F flag allows you to upload files using multipart form data. For example: curl -X POST 'https://api.example.com/upload' -F 'file=@/path/to/myfile.jpg' -F 'description=My vacation photo' would upload a file along with a description field."
+
+- question: "How do you view verbose output of a cURL request for debugging?"
+  options:
+    - "--debug"
+    - "-log"
+    - "-v"
+    - "--verbose"
+  correctIndex: 2
+  explanation: "The -v flag (for verbose) shows the complete request and response flow, perfect for debugging API interactions. It displays headers sent and received, request data, timing, and more details about the HTTP transaction. This makes it easier to identify issues with API requests."
+
+- question: "Which flag would you use to follow HTTP redirects automatically in cURL?"
+  options:
+    - "-r"
+    - "-f"
+    - "-L"
+    - "--follow"
+  correctIndex: 2
+  explanation: "The -L flag is used to automatically follow HTTP redirects. When an API endpoint redirects to another URL (indicated by 301, 302, 307, or 308 status codes), cURL will follow that redirect and retrieve the content from the new location instead of just showing the redirect response." 

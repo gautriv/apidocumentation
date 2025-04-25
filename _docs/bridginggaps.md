@@ -637,6 +637,15 @@ Now that you've mastered these critical API concepts, you're ready to explore mo
 </ul>
 " %}
 
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of key API concepts with this quiz."
+  quizDataFile="bridginggaps_questions"
+  theme="blue"
+  animate=true
+%}
+
+
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
   <div class="author-message">
@@ -705,6 +714,7 @@ Now that you've mastered these critical API concepts, you're ready to explore mo
   }
 }
 </style>
+
 
 {% include related_resources.html 
   title="Advanced API Documentation Resources"

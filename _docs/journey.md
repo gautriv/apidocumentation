@@ -294,6 +294,15 @@ In this course, we're going to demystify how to write this magical map. By the e
 </ul>
 " %}
 
+{% include quiz.html 
+  id="journey"
+  title="Test Your Knowledge: How the Internet Works"
+  description="Let's see how well you understand the concepts of web communication. Select the best answer for each question."
+  questions=site.data.journey_questions
+  theme="blue"
+  animate=true
+%}
+
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
   <div class="author-message">

@@ -1,0 +1,78 @@
+# Questions for "Bridging the Gaps in API Documentation" chapter quiz
+# Each question has:
+# - question: The actual question text
+# - options: Array of possible answers (4 options)
+# - correctIndex: Zero-based index of the correct answer
+# - explanation: Detailed explanation of the correct answer
+
+- question: "What is the primary purpose of API rate limiting?"
+  options:
+    - "To make the API faster for all users"
+    - "To increase the cost of API usage"
+    - "To prevent abuse and ensure fair usage of resources"
+    - "To force users to upgrade to premium plans"
+  correctIndex: 2
+  explanation: "Rate limiting is a crucial API concept that controls how many requests a client can make within a specific time period. The primary purpose is to prevent abuse, ensure fair usage among all users, and manage infrastructure costs by controlling server load."
+
+- question: "Which of these is NOT a common pagination method used in APIs?"
+  options:
+    - "Offset-Limit pagination"
+    - "Cursor-based pagination"
+    - "Algorithm-rotation pagination"
+    - "Time-based pagination"
+  correctIndex: 2
+  explanation: "Common pagination methods include Offset-Limit (using limit and offset parameters), Page-based (using page numbers), Cursor-based (using a pointer to the next set), and Time-based (using timestamps). 'Algorithm-rotation pagination' is not a standard pagination method used in APIs."
+
+- question: "Which pagination method is best suited for large datasets with real-time data?"
+  options:
+    - "Offset-Limit pagination"
+    - "Page-based pagination"
+    - "Cursor-based pagination"
+    - "Fragment pagination"
+  correctIndex: 2
+  explanation: "Cursor-based pagination is best suited for real-time data and large datasets. Unlike offset-based methods that can have performance issues with large offsets, cursor-based pagination uses a pointer to the next set of results, making it efficient for datasets that change frequently."
+
+- question: "Which authentication method provides the highest level of security?"
+  options:
+    - "API Keys"
+    - "Basic Auth"
+    - "OAuth 2.0 / JWT"
+    - "Query parameters"
+  correctIndex: 2
+  explanation: "OAuth 2.0 and JWT (JSON Web Tokens) provide the highest level of security among these options. They offer features like token expiration, scope limitation, and delegation without sharing actual credentials. Basic Auth has low security as it sends credentials with each request, and API Keys offer medium security."
+
+- question: "What is the primary advantage of webhooks over polling?"
+  options:
+    - "Webhooks use less bandwidth by pushing data only when events occur"
+    - "Webhooks are easier to implement than polling"
+    - "Webhooks work with any programming language"
+    - "Webhooks don't require authentication"
+  correctIndex: 0
+  explanation: "Webhooks offer a significant advantage over polling by using a push-based delivery model that sends data only when events actually occur. This reduces unnecessary API calls, provides real-time updates, and is more efficient than polling, which requires frequent checking that often returns no new data."
+
+- question: "What information should be included in an API error response?"
+  options:
+    - "Only HTTP status code"
+    - "Status code and a generic message"
+    - "Error code, message, details, and documentation link"
+    - "The server's IP address for troubleshooting"
+  correctIndex: 2
+  explanation: "An effective API error response should include a unique error code (beyond HTTP status codes), a specific and actionable message explaining what went wrong, detailed information about the error (like which fields failed validation), and links to relevant documentation to help developers resolve the issue."
+
+- question: "What HTTP status code should be returned when a user has exceeded their rate limit?"
+  options:
+    - "401 Unauthorized"
+    - "403 Forbidden"
+    - "404 Not Found"
+    - "429 Too Many Requests"
+  correctIndex: 3
+  explanation: "429 Too Many Requests is the appropriate HTTP status code to return when a user has exceeded their rate limit. This status code specifically indicates that the user has sent too many requests in a given amount of time, prompting them to implement a backoff strategy or reduce request frequency."
+
+- question: "What is the difference between authentication and authorization in API security?"
+  options:
+    - "They are different terms for the same concept"
+    - "Authentication verifies identity, while authorization determines access rights"
+    - "Authentication is for APIs, authorization is for websites"
+    - "Authentication uses tokens, authorization uses passwords"
+  correctIndex: 1
+  explanation: "Authentication verifies the identity of a user or client (who they are), while authorization determines what resources they have access to (what they can do). Both are crucial for API security but serve different purposes in the access control process." 

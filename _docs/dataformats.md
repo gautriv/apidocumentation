@@ -348,6 +348,15 @@ In the upcoming chapters, we will delve deeper into these data types within the 
 </ul>
 " %}
 
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of API data formats with this quiz."
+  quizDataFile="dataformats_questions"
+  theme="blue"
+  animate=true
+%}
+
+
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
   <div class="author-message">
@@ -416,7 +425,6 @@ In the upcoming chapters, we will delve deeper into these data types within the 
   }
 }
 </style>
-
 
 
 {% include related_resources.html 
