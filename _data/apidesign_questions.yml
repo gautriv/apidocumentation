@@ -1,0 +1,89 @@
+- question: "What is a key consideration when designing APIs?"
+  options:
+    - "Making the API as complex as possible to showcase technical expertise"
+    - "Creating endpoints that serve multiple unrelated purposes"
+    - "Designing with the end user in mind"
+    - "Avoiding documentation until after implementation"
+  correct_answer: 2
+  explanation: "Designing with the end user in mind is a key consideration for effective API design. Understanding who will use your API and how they will use it helps create intuitive, user-friendly interfaces."
+
+- question: "Why is consistency important in API design?"
+  options:
+    - "It makes the API code easier to implement"
+    - "It reduces the learning curve for developers using the API"
+    - "It requires less documentation"
+    - "It allows for more frequent updates"
+  correct_answer: 1
+  explanation: "Consistency in naming conventions, error handling, parameter formats, and response structures reduces the learning curve for developers using the API. Once they learn one part of the API, they can apply that knowledge to other parts."
+
+- question: "What is the principle of 'least surprise' in API design?"
+  options:
+    - "APIs should include unexpected features to surprise users"
+    - "APIs should behave in ways that users would expect based on the documentation"
+    - "APIs should change frequently to keep users engaged"
+    - "APIs should limit the number of features to avoid overwhelming users"
+  correct_answer: 1
+  explanation: "The principle of 'least surprise' means that APIs should behave in ways that users would expect based on the documentation and common conventions. This makes the API more intuitive and reduces errors."
+
+- question: "What is the recommended approach for versioning APIs?"
+  options:
+    - "Never version APIs; just update them when needed"
+    - "Use a versioning strategy from the beginning"
+    - "Only version when major changes are needed"
+    - "Change the API URL for each minor update"
+  correct_answer: 1
+  explanation: "It's recommended to use a versioning strategy from the beginning, even for the first release. This establishes the pattern for future updates and prepares users for potential changes."
+
+- question: "Why should API endpoints be resource-oriented rather than action-oriented?"
+  options:
+    - "It's easier to implement"
+    - "It follows REST principles and makes the API more intuitive"
+    - "It allows for more endpoints"
+    - "It requires less documentation"
+  correct_answer: 1
+  explanation: "Resource-oriented endpoints follow REST principles, making the API more intuitive. This approach uses HTTP methods (GET, POST, PUT, DELETE) to indicate actions on resources, rather than embedding actions in the endpoint names."
+
+- question: "What is the benefit of following standard HTTP status codes in API responses?"
+  options:
+    - "It requires less documentation"
+    - "It's easier to implement"
+    - "It allows developers to leverage existing knowledge and tools"
+    - "It makes the API responses smaller"
+  correct_answer: 2
+  explanation: "Following standard HTTP status codes allows developers to leverage their existing knowledge and tools. Most developers are already familiar with common status codes (200 OK, 404 Not Found, etc.), so using these standards makes your API more intuitive."
+
+- question: "Which of the following is a best practice for API error handling?"
+  options:
+    - "Return a generic error message for all types of errors"
+    - "Provide detailed error messages with appropriate status codes and actionable information"
+    - "Only return errors for server-side issues"
+    - "Use HTTP status code 200 for all responses and include error details in the body"
+  correct_answer: 1
+  explanation: "Providing detailed error messages with appropriate status codes and actionable information helps developers understand what went wrong and how to fix it, improving the developer experience."
+
+- question: "What should API documentation include?"
+  options:
+    - "Just a list of endpoints and their parameters"
+    - "Only code examples"
+    - "Comprehensive information including authentication, endpoints, parameters, responses, errors, and examples"
+    - "A brief overview of the API's purpose"
+  correct_answer: 2
+  explanation: "Comprehensive API documentation should include authentication methods, endpoint details, parameter definitions, response formats, error handling, and code examples. This provides developers with all the information they need to use the API effectively."
+
+- question: "Why is it important to design APIs to be backward compatible?"
+  options:
+    - "To prevent the need for documentation updates"
+    - "To avoid having to implement versioning"
+    - "To minimize the impact on existing users when the API evolves"
+    - "To make the API code simpler"
+  correct_answer: 2
+  explanation: "Designing APIs to be backward compatible minimizes the impact on existing users when the API evolves. It ensures that applications using your API continue to work even as you add new features or make improvements."
+
+- question: "What is a recommended approach for API rate limiting?"
+  options:
+    - "Don't implement rate limiting to maximize API usage"
+    - "Implement strict limits without informing users"
+    - "Set limits, communicate them clearly, and provide information about current usage in responses"
+    - "Only implement rate limiting after experiencing server issues"
+  correct_answer: 2
+  explanation: "A good approach for API rate limiting is to set reasonable limits, communicate them clearly in the documentation, and provide information about current usage and limits in API responses. This helps prevent abuse while giving developers the information they need to work within the limits." 

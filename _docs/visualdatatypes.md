@@ -264,6 +264,14 @@ In the next chapter, we'll take all this knowledge and dive into real-life scena
 
 Get excited—it's time to connect the dots and bring your API documentation journey to the next level. See you there!
 
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of data types visualization with this quiz."
+  quizDataFile="visualdatatypes_questions"
+  theme="blue"
+  animate=true
+%}
+
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
   <div class="author-message">
@@ -332,6 +340,8 @@ Get excited—it's time to connect the dots and bring your API documentation jou
   }
 }
 </style>
+
+
 
 {% include related_resources.html 
   title="Data Type Resources"

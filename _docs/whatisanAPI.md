@@ -136,6 +136,14 @@ So, ready to become the API documentation master? Let's keep going! The next sto
 </ul>
 " %}
 
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of APIs with this quiz."
+  quizDataFile="whatisanapi_questions"
+  theme="blue"
+  animate=true
+%}
+
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
   <div class="author-message">
@@ -204,6 +212,7 @@ So, ready to become the API documentation master? Let's keep going! The next sto
   }
 }
 </style>
+
 
 {% include related_resources.html 
   title="Essential API Learning Resources"

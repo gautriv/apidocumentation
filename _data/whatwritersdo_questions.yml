@@ -1,0 +1,89 @@
+- question: "What is the primary role of an API documentation writer?"
+  options:
+    - "To write programming code for the API"
+    - "To create marketing materials for the API"
+    - "To bridge the gap between developers and API users"
+    - "To test the API for bugs and performance issues"
+  correct_answer: 2
+  explanation: "API documentation writers serve as bridges between the developers who create the API and the users who implement it. They translate technical functionality into clear, usable documentation."
+
+- question: "Which of the following is NOT typically a responsibility of API documentation writers?"
+  options:
+    - "Creating getting started guides"
+    - "Documenting endpoint references"
+    - "Writing code samples in various programming languages"
+    - "Developing the actual API functionality"
+  correct_answer: 3
+  explanation: "API documentation writers are responsible for creating documentation, not developing the actual API functionality. That is the job of API developers or engineers."
+
+- question: "What is a key skill needed for effective API documentation writing?"
+  options:
+    - "Expert-level programming in multiple languages"
+    - "Ability to translate technical concepts for different audiences"
+    - "Graphic design expertise"
+    - "Database administration"
+  correct_answer: 1
+  explanation: "While technical knowledge is important, a key skill for API documentation writers is the ability to translate complex technical concepts into clear, understandable content for different audience types."
+
+- question: "What type of content would typically be included in API reference documentation?"
+  options:
+    - "Marketing messages about the API's benefits"
+    - "Detailed descriptions of endpoints, parameters, and responses"
+    - "Complete tutorials for building applications"
+    - "Company history and mission statement"
+  correct_answer: 1
+  explanation: "API reference documentation typically includes detailed descriptions of all available endpoints, their parameters, expected responses, error codes, and other technical details needed for implementation."
+
+- question: "Why is it important for API documentation writers to understand the API users' needs?"
+  options:
+    - "To create marketing materials that will appeal to them"
+    - "To create documentation that addresses their specific use cases and questions"
+    - "To help design new API features"
+    - "To provide technical support"
+  correct_answer: 1
+  explanation: "Understanding API users' needs allows documentation writers to create content that directly addresses their use cases, answers their questions, and provides the right level of detail for their technical proficiency."
+
+- question: "Which of the following is an important aspect of API documentation that writers need to maintain?"
+  options:
+    - "Consistency in terminology and structure"
+    - "Complex technical jargon to impress users"
+    - "Long, comprehensive paragraphs explaining each concept"
+    - "Exclusive focus on expert-level users"
+  correct_answer: 0
+  explanation: "Consistency in terminology, structure, and formatting is crucial for usable documentation. It helps users navigate and understand the content more easily."
+
+- question: "What is the purpose of including code samples in API documentation?"
+  options:
+    - "To demonstrate the writer's programming expertise"
+    - "To increase the page count of the documentation"
+    - "To show practical implementations and help users get started quickly"
+    - "To replace the need for written explanations"
+  correct_answer: 2
+  explanation: "Code samples provide practical examples of how to use the API, helping users understand implementation details and get started quickly with real-world usage scenarios."
+
+- question: "How do API documentation writers typically collaborate with developers?"
+  options:
+    - "They rarely interact with the development team"
+    - "They work with developers to understand the API functionality and get technical details"
+    - "They supervise the developers' work"
+    - "They only review the final code before release"
+  correct_answer: 1
+  explanation: "API documentation writers collaborate closely with developers to understand the API's functionality, get technical details, clarify complex concepts, and ensure the documentation accurately reflects the implementation."
+
+- question: "What is a common challenge for API documentation writers?"
+  options:
+    - "Keeping documentation updated as the API evolves"
+    - "Having too much free time between releases"
+    - "Too much independence from the development team"
+    - "Excessive budgets for documentation tools"
+  correct_answer: 0
+  explanation: "A significant challenge for API documentation writers is keeping the documentation current and accurate as the API evolves, with new features added and existing functionality changed."
+
+- question: "Why is audience analysis important for API documentation writers?"
+  options:
+    - "To determine which users to ignore"
+    - "To tailor content to meet the needs of different user types"
+    - "To limit the scope of documentation"
+    - "To identify which features not to document"
+  correct_answer: 1
+  explanation: "Audience analysis helps writers tailor documentation to meet the needs of different user types, ensuring appropriate level of detail, relevant examples, and suitable explanations for each audience segment." 

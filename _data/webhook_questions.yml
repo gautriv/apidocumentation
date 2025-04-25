@@ -1,0 +1,152 @@
+- question: "What is a webhook?"
+  options:
+    - "A manual data transfer method"
+    - "A type of API authentication"
+    - "An automated callback that sends data to specified URLs when events occur"
+    - "A tool for testing API endpoints"
+  correct_answer: 2
+  explanation: "A webhook is an automated callback mechanism that sends data to specified URLs when certain events occur. It allows real-time data delivery without requiring the receiving application to constantly poll for updates."
+
+- question: "How do webhooks differ from traditional APIs?"
+  options:
+    - "Webhooks use different HTTP methods than APIs"
+    - "Webhooks push data when events occur, while traditional APIs require pulling data via requests"
+    - "Webhooks can only send small amounts of data"
+    - "Webhooks don't use HTTP protocols"
+  correct_answer: 1
+  explanation: "The key difference is that webhooks use a push model where data is automatically sent when events occur, while traditional APIs use a pull model requiring the client to make requests for data. This makes webhooks more efficient for real-time notifications."
+
+- question: "What is the typical flow of a webhook implementation?"
+  options:
+    - "User registers an endpoint, event occurs, server sends payload, endpoint processes data"
+    - "Server creates events, user manually retrieves data"
+    - "User sends data to server, server processes it, then returns it"
+    - "User makes repeated requests to check for new data"
+  correct_answer: 0
+  explanation: "The typical webhook flow involves a user registering a URL endpoint, an event occurring on the provider's system, the provider's server sending a payload to the registered URL, and the user's endpoint processing the received data."
+
+- question: "What is a common security measure used with webhooks?"
+  options:
+    - "Sending unencrypted data"
+    - "Using webhook signatures to verify the sender"
+    - "Allowing any URL to receive webhook data"
+    - "Disabling HTTPS"
+  correct_answer: 1
+  explanation: "Webhook signatures are a common security measure where the provider includes a hash (signature) in the request headers. This signature is created using a shared secret key and allows the receiver to verify the webhook came from the expected source."
+
+- question: "Why are retry mechanisms important for webhook delivery?"
+  options:
+    - "To increase server load"
+    - "To handle temporary failures in delivery due to network issues or endpoint downtime"
+    - "They are not important for webhooks"
+    - "To slow down webhook processing"
+  correct_answer: 1
+  explanation: "Retry mechanisms are essential for webhook delivery because they handle temporary failures that might occur due to network issues or endpoint downtime. This ensures critical event data isn't lost when temporary problems occur."
+
+- question: "What should a webhook endpoint return to indicate successful receipt of data?"
+  options:
+    - "An error message"
+    - "A 500 status code"
+    - "A 2xx HTTP status code"
+    - "No response"
+  correct_answer: 2
+  explanation: "A webhook endpoint should return a 2xx HTTP status code (like 200 OK) to indicate that it has successfully received the data. This signals to the webhook provider that the delivery was successful and no retry is needed."
+
+- question: "What is the purpose of webhook testing tools?"
+  options:
+    - "To create more webhooks"
+    - "To simulate webhook deliveries and test endpoint handling"
+    - "To block webhook deliveries"
+    - "To slow down webhook processing"
+  correct_answer: 1
+  explanation: "Webhook testing tools allow developers to simulate webhook deliveries without waiting for actual events to occur. This helps in testing the endpoint's ability to properly receive, validate, and process webhook payloads."
+
+- question: "Which of the following is a common use case for webhooks?"
+  options:
+    - "Manually transferring static data"
+    - "Real-time notifications about new orders in an e-commerce system"
+    - "Slowing down system responses"
+    - "Replacing database storage"
+  correct_answer: 1
+  explanation: "Real-time notifications about new orders in an e-commerce system is a common use case for webhooks. Other common uses include payment notifications, source code repository updates, IoT device events, and CRM updates."
+
+- question: "What is webhook payload validation?"
+  options:
+    - "Ignoring the data sent in webhooks"
+    - "Verifying the webhook data meets expected formats and comes from a trusted source"
+    - "Making webhooks slower"
+    - "Sending webhooks to multiple endpoints"
+  correct_answer: 1
+  explanation: "Webhook payload validation involves verifying that the received data meets the expected format and structure, and confirming it comes from a trusted source (often using webhook signatures). This helps prevent security issues and processing errors."
+
+- question: "What capability do webhooks enable that polling-based systems struggle with?"
+  options:
+    - "Data storage"
+    - "User authentication"
+    - "Real-time updates and immediate reactions to events"
+    - "Slower processing"
+  correct_answer: 2
+  explanation: "Webhooks enable real-time updates and immediate reactions to events, which polling-based systems struggle to provide efficiently. Polling requires frequent requests that waste resources when no updates are available, while webhooks deliver updates instantly when they occur."
+
+- question: "What is typically included in a webhook payload?"
+  options:
+    - "Only a notification that an event occurred"
+    - "The full database schema"
+    - "Event details, metadata, and relevant data about what triggered the webhook"
+    - "Programming language specific code"
+  correct_answer: 2
+  explanation: "A webhook payload typically includes details about the event that triggered it, metadata such as timestamps and IDs, and the relevant data about the resources or objects that were affected by the event."
+
+- question: "How should webhook endpoints typically respond to a webhook delivery?"
+  options:
+    - "With a detailed JSON response containing business logic results"
+    - "By triggering another webhook back to the sender"
+    - "With a 200 OK status code indicating successful receipt"
+    - "By immediately processing all data synchronously before responding"
+  correct_answer: 2
+  explanation: "Webhook endpoints should respond quickly with a 200 OK status code to acknowledge receipt of the webhook. Processing should happen asynchronously after acknowledgment to prevent timeouts."
+
+- question: "What is webhook security best practice for verifying the authenticity of webhook requests?"
+  options:
+    - "Accepting all incoming webhook data without verification"
+    - "Using signature validation with a shared secret"
+    - "Only accepting webhooks from localhost"
+    - "Changing endpoint URLs frequently"
+  correct_answer: 1
+  explanation: "A security best practice for webhooks is to use signature validation with a shared secret. The webhook provider includes a signature (hash) created with the payload and a secret key, allowing the receiver to verify authenticity."
+
+- question: "What is webhook retry logic?"
+  options:
+    - "A mechanism where webhook providers repeatedly attempt delivery if the endpoint is unavailable"
+    - "A process to validate webhook payload formats"
+    - "A technique to compress webhook data"
+    - "A method to prioritize webhook events"
+  correct_answer: 0
+  explanation: "Webhook retry logic is a mechanism implemented by webhook providers to automatically reattempt delivery when the receiving endpoint is unavailable or returns an error response, typically using exponential backoff to space retry attempts."
+
+- question: "When implementing a webhook consumer, what should you do with the webhook data upon receipt?"
+  options:
+    - "Always process it synchronously before responding"
+    - "Acknowledge receipt quickly, then process it asynchronously"
+    - "Forward it to all other systems in your architecture"
+    - "Store it in a database without processing"
+  correct_answer: 1
+  explanation: "When receiving a webhook, best practice is to acknowledge receipt quickly with a 200 response, then process the data asynchronously. This prevents timeout issues and ensures the sender knows the webhook was received."
+
+- question: "What is webhook versioning used for?"
+  options:
+    - "Tracking how many times a webhook has been sent"
+    - "Managing different versions of the webhook endpoint code"
+    - "Ensuring backward compatibility when webhook payload formats change"
+    - "Measuring webhook performance"
+  correct_answer: 2
+  explanation: "Webhook versioning is used to maintain backward compatibility when the structure or format of webhook payloads changes, allowing consumers time to adapt to new formats while continuing to support older ones."
+
+- question: "What is a webhook subscription?"
+  options:
+    - "A payment model for webhook services"
+    - "A registration process where consumers specify which events they want to receive webhooks for"
+    - "A method to categorize webhook types"
+    - "A way to monitor webhook traffic"
+  correct_answer: 1
+  explanation: "A webhook subscription is a registration process where consumers specify which events they want to receive notifications for, often including the endpoint URL, event types of interest, and sometimes authentication credentials." 

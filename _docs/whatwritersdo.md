@@ -325,6 +325,14 @@ Next up: [How Do Technical Writers Document APIs?]({{ '/informationgathering.htm
 </ul>
 " %}
 
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of the API documentation writer's role with this quiz."
+  quizDataFile="whatwritersdo_questions"
+  theme="blue"
+  animate=true
+%}
+
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
   <div class="author-message">

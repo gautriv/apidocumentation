@@ -1,0 +1,71 @@
+- question: "Which UI element is commonly used to represent a Boolean data type?"
+  options:
+    - "Text field"
+    - "Dropdown menu"
+    - "Checkbox or toggle switch"
+    - "Calendar picker"
+  correct_answer: 2
+  explanation: "Boolean data types are typically represented using checkboxes (checked for true, unchecked for false) or toggle switches (on for true, off for false) in user interfaces because they represent binary values."
+
+- question: "What is the most suitable UI element for a String data type when collecting a long-form response?"
+  options:
+    - "Single-line text field"
+    - "Multi-line text area"
+    - "Radio buttons"
+    - "Stepper (increment/decrement)"
+  correct_answer: 1
+  explanation: "For long-form String data, a multi-line text area is most appropriate as it provides space for paragraphs or longer text entries, while single-line text fields are better for short inputs like usernames."
+
+- question: "Which visual element would be most appropriate for representing a Number data type with a range of values?"
+  options:
+    - "Checkbox"
+    - "Slider"
+    - "Calendar"
+    - "Dropdown"
+  correct_answer: 1
+  explanation: "A slider is ideal for representing a Number data type with a range of values because it visually shows the minimum and maximum values while allowing users to select a specific point within that range."
+
+- question: "When visualizing a List (Array) data type where multiple selections are allowed, which UI element is most appropriate?"
+  options:
+    - "Radio buttons"
+    - "Single dropdown menu"
+    - "Multi-select list or checkboxes"
+    - "Toggle switch"
+  correct_answer: 2
+  explanation: "A multi-select list or checkboxes are appropriate for List data types when multiple selections are allowed, as they enable users to select multiple options from the available choices."
+
+- question: "What is the most user-friendly way to represent a Date data type in a user interface?"
+  options:
+    - "Free text input field"
+    - "Calendar picker"
+    - "Dropdown menus for day, month, and year"
+    - "Stepper controls"
+  correct_answer: 1
+  explanation: "A calendar picker is the most user-friendly way to represent Date data types because it prevents format inconsistencies by providing a visual interface for selecting dates rather than relying on text input."
+
+- question: "Which UI element is most appropriate for an Enum data type with a small number of options?"
+  options:
+    - "Checkbox list"
+    - "Text field"
+    - "Radio buttons"
+    - "Slider"
+  correct_answer: 2
+  explanation: "Radio buttons are most appropriate for Enum data types with a small number of options because they clearly show all available choices while enforcing the selection of only one option."
+
+- question: "What's a common visualization problem with Boolean data types according to the article?"
+  options:
+    - "Users entering invalid numeric values"
+    - "Users unsure if checkbox means 'true' when checked or unchecked"
+    - "Users trying to select multiple items"
+    - "Users entering dates in various formats"
+  correct_answer: 1
+  explanation: "A common visualization problem with Boolean data types is users being unsure whether a checkbox represents 'true' when checked or unchecked, which can be solved by adding clear labels next to the checkbox."
+
+- question: "According to the article, what's the recommended solution for date format inconsistency issues?"
+  options:
+    - "Add visible character counters"
+    - "Use sliders with visible min/max values"
+    - "Use calendar pickers instead of free text input"
+    - "Use radio buttons with clear labels"
+  correct_answer: 2
+  explanation: "To solve date format inconsistency issues, the article recommends using calendar pickers instead of free text input for dates, which prevents users from entering dates in various formats." 

@@ -1,0 +1,89 @@
+- question: "What is the primary focus of API reference documentation?"
+  options:
+    - "Explaining business use cases"
+    - "Providing step-by-step tutorials"
+    - "Detailing each endpoint, parameters, and response formats"
+    - "Comparing the API with competitors"
+  correct_answer: 2
+  explanation: "API reference documentation focuses on detailing each endpoint, including its parameters, request formats, response structures, and error codes. It serves as a comprehensive technical resource for developers implementing the API."
+
+- question: "What should be included in an API endpoint description?"
+  options:
+    - "Only the endpoint URL"
+    - "The URL, HTTP method, description, parameters, and response format"
+    - "Only error codes and responses"
+    - "Only authentication requirements"
+  correct_answer: 1
+  explanation: "A complete API endpoint description should include the endpoint URL, HTTP method (GET, POST, etc.), a description of what the endpoint does, required and optional parameters, and the response format including success and error responses."
+
+- question: "Why is it important to include example requests and responses in API documentation?"
+  options:
+    - "To increase the word count of the documentation"
+    - "Only to meet regulatory requirements"
+    - "To help developers understand the correct format and quickly implement the API"
+    - "To demonstrate the API's superiority over competitors"
+  correct_answer: 2
+  explanation: "Including example requests and responses helps developers understand the correct format for interacting with the API and see what to expect in return. This reduces implementation time, errors, and support requests."
+
+- question: "What is the purpose of code snippets in API documentation?"
+  options:
+    - "To demonstrate the API developer's coding skills"
+    - "To provide ready-to-use examples in various programming languages"
+    - "To restrict API usage to certain programming languages"
+    - "To obscure the technical details of the API"
+  correct_answer: 1
+  explanation: "Code snippets in API documentation provide ready-to-use examples in various programming languages, showing developers exactly how to implement API calls. This makes implementation faster and easier across different technology stacks."
+
+- question: "What should be included in parameter documentation for an API endpoint?"
+  options:
+    - "Only the parameter names"
+    - "Parameter names and their default values"
+    - "Names, data types, whether they're required, descriptions, and constraints"
+    - "Just a list of possible parameters without details"
+  correct_answer: 2
+  explanation: "Complete parameter documentation should include parameter names, data types, whether each parameter is required or optional, descriptions of what each parameter does, default values (if any), and any constraints or validation rules."
+
+- question: "How should error responses be documented in API documentation?"
+  options:
+    - "By providing a general message that errors might occur"
+    - "By listing only the most common HTTP status codes"
+    - "By documenting each possible error code with its meaning and suggested resolution"
+    - "By directing users to contact support for all errors"
+  correct_answer: 2
+  explanation: "Error responses should be documented comprehensively by listing each possible error code, along with its meaning, potential causes, and suggested resolutions. This helps developers handle errors properly and debug issues efficiently."
+
+- question: "What is the role of authentication information in API documentation?"
+  options:
+    - "To limit access to the documentation"
+    - "To explain how to securely access the API and provide necessary credentials"
+    - "To collect user information for marketing purposes"
+    - "Authentication details should never be included in documentation"
+  correct_answer: 1
+  explanation: "Authentication information in API documentation explains how to securely access the API, including the authentication method (API keys, OAuth, etc.), how to obtain credentials, and how to include them in requests. This is essential for developers to successfully use a secure API."
+
+- question: "Why is versioning important in API documentation?"
+  options:
+    - "To confuse competitors about the API roadmap"
+    - "To create more documentation work"
+    - "To clearly indicate changes and help developers handle transitions between versions"
+    - "It's not important; all APIs should just use the latest version"
+  correct_answer: 2
+  explanation: "Versioning in API documentation is crucial to clearly indicate changes between different API versions, helping developers understand what features are available in each version and manage transitions. This prevents breaking changes from disrupting existing integrations."
+
+- question: "What is an important practice for making API documentation more accessible?"
+  options:
+    - "Using complex technical jargon to sound professional"
+    - "Providing clear navigation, search functionality, and well-organized content"
+    - "Limiting access to paying customers only"
+    - "Including as much information as possible on a single page"
+  correct_answer: 1
+  explanation: "Making API documentation accessible involves providing clear navigation, search functionality, and well-organized content. This helps developers quickly find the information they need, reducing frustration and support requests."
+
+- question: "What is the benefit of including rate limit information in API documentation?"
+  options:
+    - "To discourage heavy API usage"
+    - "It's just a legal requirement with no practical benefit"
+    - "To help developers understand usage constraints and implement proper throttling"
+    - "To promote premium API plans with higher limits"
+  correct_answer: 2
+  explanation: "Including rate limit information helps developers understand the constraints on API usage and implement proper throttling in their applications. This prevents unexpected service disruptions and helps ensure a smooth user experience." 

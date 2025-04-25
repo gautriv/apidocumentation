@@ -1,0 +1,161 @@
+- question: "What does API stand for?"
+  options:
+    - "Application Programming Interface"
+    - "Advanced Program Integration"
+    - "Automated Programming Interface"
+    - "Application Process Integration"
+  correct_answer: 0
+  explanation: "API stands for Application Programming Interface. It's a set of rules that allows different software applications to communicate with each other."
+
+- question: "Which analogy best describes the role of an API?"
+  options:
+    - "A bridge connecting two islands"
+    - "A waiter in a restaurant taking orders between customers and the kitchen"
+    - "A translator between two people speaking different languages"
+    - "A librarian organizing books"
+  correct_answer: 1
+  explanation: "The waiter analogy is often used to describe APIs. Like a waiter who takes your order to the kitchen and brings back your food, an API takes requests from an application, delivers them to the system, and returns the response."
+
+- question: "What is the primary purpose of an API?"
+  options:
+    - "To create user interfaces"
+    - "To enable communication between different software systems"
+    - "To store data in databases"
+    - "To encrypt network traffic"
+  correct_answer: 1
+  explanation: "The primary purpose of an API is to enable communication between different software systems. APIs define the methods and data formats that applications can use to request and exchange information."
+
+- question: "Which of the following is a common type of web API?"
+  options:
+    - "SOAP API"
+    - "REST API"
+    - "GraphQL API"
+    - "All of the above"
+  correct_answer: 3
+  explanation: "SOAP, REST, and GraphQL are all common types of web APIs. Each has different characteristics and is used in various contexts depending on requirements."
+
+- question: "What does a REST API use to identify resources?"
+  options:
+    - "SQL queries"
+    - "XML documents"
+    - "URIs (Uniform Resource Identifiers)"
+    - "JavaScript functions"
+  correct_answer: 2
+  explanation: "REST APIs use URIs (Uniform Resource Identifiers) to identify resources. Each resource has a unique URI that clients use to interact with that resource."
+
+- question: "What HTTP method is typically used to retrieve data from a REST API?"
+  options:
+    - "GET"
+    - "POST"
+    - "PUT"
+    - "DELETE"
+  correct_answer: 0
+  explanation: "The GET HTTP method is typically used to retrieve data from a REST API. It requests a representation of a specified resource without modifying it."
+
+- question: "Which format is most commonly used for API responses in modern web APIs?"
+  options:
+    - "XML"
+    - "JSON"
+    - "HTML"
+    - "Plain text"
+  correct_answer: 1
+  explanation: "JSON (JavaScript Object Notation) is the most commonly used format for API responses in modern web APIs due to its lightweight nature, readability, and easy parsing in multiple programming languages."
+
+- question: "What is an API key primarily used for?"
+  options:
+    - "Encrypting API responses"
+    - "Compressing data"
+    - "Authentication and identification of API users"
+    - "Formatting response data"
+  correct_answer: 2
+  explanation: "API keys are primarily used for authentication and identification of API users. They help API providers track and control how their API is being used and by whom."
+
+- question: "What is API rate limiting?"
+  options:
+    - "A limit on how much data an API can return"
+    - "A restriction on how frequently API calls can be made"
+    - "A limit on the number of users who can access an API"
+    - "A restriction on the types of requests an API can handle"
+  correct_answer: 1
+  explanation: "API rate limiting is a restriction on how frequently API calls can be made. It helps prevent abuse, ensures fair usage, and maintains the performance and stability of the API service."
+
+- question: "What is API versioning used for?"
+  options:
+    - "To count how many times an API has been used"
+    - "To allow backward compatibility when APIs evolve"
+    - "To measure API performance"
+    - "To indicate how popular an API is"
+  correct_answer: 1
+  explanation: "API versioning is used to allow backward compatibility when APIs evolve. It enables developers to make changes to their APIs without breaking existing client applications."
+
+- question: "What is a REST API?"
+  options:
+    - "A programming language for creating APIs"
+    - "A database management system"
+    - "An architectural style for designing networked applications"
+    - "A security protocol for APIs"
+  correct_answer: 2
+  explanation: "REST (Representational State Transfer) is an architectural style for designing networked applications. REST APIs use HTTP requests to perform CRUD operations (Create, Read, Update, Delete) and follow specific principles like statelessness and a uniform interface."
+
+- question: "Which HTTP method is typically used to retrieve data from an API?"
+  options:
+    - "POST"
+    - "PUT"
+    - "GET"
+    - "DELETE"
+  correct_answer: 2
+  explanation: "The GET HTTP method is typically used to retrieve data from an API. It requests a specific resource without modifying any data on the server."
+
+- question: "What is an API endpoint?"
+  options:
+    - "The physical server hosting the API"
+    - "A specific URL where an API can be accessed"
+    - "The programming language used to create the API"
+    - "The company that owns the API"
+  correct_answer: 1
+  explanation: "An API endpoint is a specific URL where an API can be accessed. Each endpoint represents a specific function or resource that the API provides, and clients interact with the API by making requests to these endpoints."
+
+- question: "What does an API response typically contain?"
+  options:
+    - "Only status codes"
+    - "Only error messages"
+    - "Data in a structured format like JSON or XML, along with status codes"
+    - "Raw binary data"
+  correct_answer: 2
+  explanation: "An API response typically contains data in a structured format like JSON or XML, along with HTTP status codes that indicate the result of the request. The response may also include headers with additional metadata."
+
+- question: "Which of the following is NOT a common type of API?"
+  options:
+    - "Web API"
+    - "Library-based API"
+    - "Database API"
+    - "HTML API"
+  correct_answer: 3
+  explanation: "HTML API is not a common type of API. Common types include Web APIs (like REST and SOAP), Library-based APIs (programming interfaces in software libraries), Database APIs, and Operating System APIs."
+
+- question: "What is API authentication used for?"
+  options:
+    - "To make APIs faster"
+    - "To verify the identity of users or applications accessing the API"
+    - "To format API responses in JSON"
+    - "To create API documentation"
+  correct_answer: 1
+  explanation: "API authentication is used to verify the identity of users or applications accessing the API. It ensures that only authorized clients can access the API and helps protect sensitive data and functionality."
+
+- question: "What is a SOAP API?"
+  options:
+    - "A simplified version of REST APIs"
+    - "A protocol for accessing web services using simple HTTP without any structure"
+    - "A protocol that uses XML-based messaging for exchanging structured information"
+    - "An API specifically designed for mobile applications"
+  correct_answer: 2
+  explanation: "SOAP (Simple Object Access Protocol) is a protocol that uses XML-based messaging for exchanging structured information in web services. SOAP APIs are more rigid and formal than REST APIs, with strict standards and built-in error handling."
+
+- question: "What is the benefit of using APIs in software development?"
+  options:
+    - "They eliminate the need for databases"
+    - "They allow developers to leverage existing services without having to build everything from scratch"
+    - "They automatically fix bugs in code"
+    - "They make applications run offline"
+  correct_answer: 1
+  explanation: "A key benefit of using APIs is that they allow developers to leverage existing services without having to build everything from scratch. This promotes code reuse, saves development time, enables integration with third-party services, and helps create more feature-rich applications." 

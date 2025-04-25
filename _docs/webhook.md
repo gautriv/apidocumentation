@@ -701,6 +701,14 @@ ready to implement event-driven architectures in your APIs. In the next
 chapter, [Writing API Documentation](/apidocumentation/writingapi.html), 
 we'll explore broader techniques for creating effective API documentation.
 
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of webhooks with this quiz."
+  quizDataFile="webhook_questions"
+  theme="blue"
+  animate=true
+%}
+
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
   <div class="author-message">
@@ -769,6 +777,7 @@ we'll explore broader techniques for creating effective API documentation.
   }
 }
 </style>
+
 
 {% include related_resources.html 
   title="Essential Webhook Resources"

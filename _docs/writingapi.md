@@ -680,6 +680,15 @@ Great job! You now know **how to structure and write API documentation** that is
 
 In the subsequent chapters, we will practice documenting **APIs ([REST](/apidocumentation/restAPI.html), [Webhooks](/webhook.html), and OAuth)** and applying what we've learned.
 
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of API documentation best practices with this quiz."
+  quizDataFile="writingapi_questions"
+  theme="blue"
+  animate=true
+%}
+
+
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="API Documentation Expert" class="author-image">
   <div class="author-message">
