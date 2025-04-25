@@ -1,0 +1,42 @@
+categories:
+  - name: "Technical Writing Fundamentals"
+    items:
+      - question: "What skills do I need to become an API technical writer?"
+        answer: "To excel as an API technical writer, you need a combination of technical understanding, writing clarity, and empathy for developers. Key skills include basic programming knowledge, understanding of API concepts (HTTP, JSON, REST), excellent writing ability, ability to simplify complex concepts, attention to detail, and experience with documentation tools. You don't need to be a developer, but you should be comfortable reading code and understanding technical concepts."
+        
+      - question: "Do I need to be a programmer to document APIs?"
+        answer: "No, you don't need to be a professional programmer, but you should have basic technical literacy and be willing to learn. Understanding fundamental programming concepts, being able to read and understand code examples, and knowing how APIs work are essential. Many successful API technical writers come from non-programming backgrounds but develop the necessary technical skills through on-the-job learning and focused study."
+        
+      - question: "How do I get started in API documentation if I have no experience?"
+        answer: "Start by learning the fundamentals of APIs and documentation through free online resources. Take courses on platforms like Udemy or follow Tom Johnson's 'API Documentation Course.' Practice by documenting open-source APIs or creating sample documentation for public APIs. Build a portfolio showcasing these examples. Join communities like Write the Docs and API documentation forums. Consider obtaining certifications in technical writing or API development to boost your credentials."
+        
+      - question: "What's the difference between API documentation and regular technical documentation?"
+        answer: "API documentation focuses specifically on helping developers integrate with software interfaces, featuring code samples, endpoint references, and technical parameters. It's more structured and reference-oriented than general technical documentation. API docs typically include detailed request/response formats, authentication methods, and code examples in multiple programming languages. While both types require clarity and accuracy, API documentation demands deeper technical precision and developer-focused language."
+        
+  - name: "Documentation Process"
+    items:
+      - question: "How do I gather information for API documentation?"
+        answer: "Gather API information through multiple channels: interview developers who built the API, review API specifications (like OpenAPI/Swagger files), examine existing documentation, study the codebase directly, test the API endpoints yourself using tools like Postman, participate in API design meetings, and collect feedback from beta users. The most effective process usually combines direct interaction with developers and hands-on API testing."
+        
+      - question: "What should I do if the technical information I receive is incomplete or unclear?"
+        answer: "When faced with incomplete information: 1) Schedule a follow-up meeting with subject matter experts to clarify specific points, 2) Document your questions precisely and share them ahead of time, 3) Test the API yourself to fill knowledge gaps, 4) Review relevant code or specifications directly, 5) Create a draft with your current understanding and ask for verification, 6) Set up regular check-ins with developers during the documentation process, and 7) Establish a formal review process where technical experts verify accuracy."
+        
+      - question: "How do I balance technical accuracy with readability in API documentation?"
+        answer: "Balance technical accuracy with readability by knowing your audience well (adjust complexity based on their expertise), organizing content hierarchically (basic concepts first, then advanced), using visual aids like diagrams and examples, employing a consistent and clear terminology, providing real-world examples alongside technical details, maintaining precise technical information without jargon overload, and getting feedback from both technical and non-technical reviewers."
+        
+      - question: "How often should API documentation be updated?"
+        answer: "API documentation should be updated: 1) Whenever the API changes (new features, deprecations, bug fixes), 2) After receiving user feedback indicating confusion or missing information, 3) When security recommendations change, 4) During regular review cycles (quarterly or biannually), and 5) When supporting new use cases or integration patterns. Ideally, documentation updates should be directly tied to the development process, ensuring docs and code remain synchronized."
+        
+  - name: "Documentation Components"
+    items:
+      - question: "What are the essential components of API documentation?"
+        answer: "Essential API documentation components include: 1) Introduction and overview explaining the API's purpose and benefits, 2) Authentication and authorization details, 3) Base URL and versioning information, 4) Endpoint reference with methods, parameters, and examples, 5) Request and response formats with field descriptions, 6) Status and error codes with troubleshooting guidance, 7) Rate limits and quotas, 8) Code examples in multiple languages, 9) Step-by-step tutorials and use cases, and 10) API changelog to track updates."
+        
+      - question: "How detailed should API examples be?"
+        answer: "API examples should include complete, functional code that developers can copy and use with minimal modifications. Each example should show a realistic use case, include all required parameters and headers, demonstrate proper error handling, show both the request and expected response, and be available in multiple programming languages popular with your audience. Include comments explaining key parts of the code and how to customize it for different scenarios."
+        
+      - question: "How do I document API errors effectively?"
+        answer: "Document API errors by creating a comprehensive table of all possible error codes with their meanings and potential causes. For each error, include: the HTTP status code, error code/type, a clear description of what caused it, and specific steps for resolving it. Provide example error responses showing the exact format developers will receive. Group errors logically (authentication errors, validation errors, server errors), and include troubleshooting guidance for common error scenarios."
+        
+      - question: "What's the best way to organize API endpoint documentation?"
+        answer: "Organize API endpoint documentation by logical resource groups or business functions rather than alphabetically. For each endpoint, maintain a consistent structure that includes the HTTP method, URL path, description of purpose, authentication requirements, request parameters (path, query, headers, body), response format with status codes, and complete request/response examples. Use consistent formatting and navigation, with clear cross-references when endpoints are related to each other." 
