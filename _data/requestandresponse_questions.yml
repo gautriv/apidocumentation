@@ -1,0 +1,78 @@
+# Questions for "Understanding API Requests and Responses" chapter quiz
+# Each question has:
+# - question: The actual question text
+# - options: Array of possible answers (4 options)
+# - correctIndex: Zero-based index of the correct answer
+# - explanation: Detailed explanation of the correct answer
+
+- question: "What is an API request?"
+  options:
+    - "A document explaining how to use the API"
+    - "A message sent to the API server asking it to do something"
+    - "A payment made to use the API"
+    - "The code that runs on the API server"
+  correctIndex: 1
+  explanation: "An API request is a message sent from a client (like a mobile app or website) to an API server, asking it to perform an action. This message contains all the necessary information for the server to understand what's being asked, including the HTTP method, endpoint URL, headers, and sometimes a body with additional data."
+
+- question: "Which HTTP method would you use to create a new resource?"
+  options:
+    - "GET"
+    - "PUT"
+    - "POST"
+    - "DELETE"
+  correctIndex: 2
+  explanation: "The POST method is primarily used to create new resources in an API. When you send a POST request, you're typically asking the server to create something new (like a user account, blog post, or product entry) based on the data provided in the request body. This follows REST principles where POST is intended for creation operations."
+
+- question: "What is the main purpose of HTTP headers in API requests?"
+  options:
+    - "To make the request look professional"
+    - "To provide additional information about the request or the data being sent"
+    - "To encrypt the request data"
+    - "To replace the need for a request body"
+  correctIndex: 1
+  explanation: "HTTP headers provide additional information about the request or the data being sent. They contain metadata such as authentication credentials (Authorization), content format specifications (Content-Type), caching directives (Cache-Control), or accepted response formats (Accept). Headers help both the client and server understand how to process the request properly."
+
+- question: "What does a 404 status code in an API response indicate?"
+  options:
+    - "The request was successful"
+    - "The server encountered an error"
+    - "The requested resource was not found"
+    - "Authentication is required"
+  correctIndex: 2
+  explanation: "A 404 (Not Found) status code indicates that the requested resource does not exist on the server. This could mean the endpoint URL was incorrect, the resource has been deleted, or it never existed. It's a client error response, suggesting that the problem is with the request rather than the server."
+
+- question: "Which of the following is NOT typically included in an API request?"
+  options:
+    - "HTTP method"
+    - "Endpoint URL"
+    - "Headers"
+    - "Server processing time"
+  correctIndex: 3
+  explanation: "Server processing time is not included in an API request - it's actually a part of the response metadata that indicates how long the server took to process the request. API requests typically include the HTTP method (GET, POST, etc.), endpoint URL (the address of the resource), headers (metadata about the request), and sometimes a request body (containing data)."
+
+- question: "What is the purpose of the 'Accept' header in an API request?"
+  options:
+    - "To specify the authentication credentials"
+    - "To indicate which format the client wants to receive the response in"
+    - "To accept the terms of service for the API"
+    - "To accept potential errors in the response"
+  correctIndex: 1
+  explanation: "The 'Accept' header in an API request indicates which format the client wants to receive the response in. For example, 'Accept: application/json' tells the server that the client wants the response data formatted as JSON. This header helps in content negotiation between the client and server, ensuring the response comes in a format the client can process."
+
+- question: "What information would you typically find in the body of a successful API response?"
+  options:
+    - "Only error messages"
+    - "The server's internal logs"
+    - "The requested data or confirmation of action completion"
+    - "The server's IP address"
+  correctIndex: 2
+  explanation: "In a successful API response, the body typically contains the requested data (such as user information, product details, etc.) or confirmation that the requested action was completed successfully. For example, a GET request for a user might return user details in the body, while a POST request might return the newly created resource or a confirmation message."
+
+- question: "Which HTTP status code range indicates a successful API response?"
+  options:
+    - "100-199"
+    - "200-299"
+    - "300-399"
+    - "400-499"
+  correctIndex: 1
+  explanation: "HTTP status codes in the 200-299 range indicate successful responses. The most common success code is 200 (OK), but others include 201 (Created) for successful resource creation, 204 (No Content) for successful requests that don't return data, and 206 (Partial Content) for successful partial responses. These codes tell the client that the server processed the request correctly." 

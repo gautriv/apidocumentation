@@ -589,20 +589,27 @@ As promised, in our [upcoming chapter on URL anatomy]({{ '/anatomyofurl.html' | 
   title="Frequently Asked Questions About REST APIs"
   description="Get answers to the most commonly asked questions about REST APIs to help you understand, implement, and troubleshoot your API development."
   data_file="rest_api_faqs"
+  theme="blue"
+  animate=true
 %}
 
 {% include key_takeaways.html content="
 <ul>
-  <li>REST APIs are the most popular type of web API due to their simplicity and efficiency</li>
-  <li>Statelessness means each request to a REST API is independent, with the server maintaining no memory of previous interactions</li>
-  <li>Caching improves performance by storing frequently accessed resources for quicker retrieval</li>
-  <li>REST APIs have three main components: URL endpoints, HTTP verbs, and body messages</li>
-  <li>URL endpoints act as addresses to specific resources in your API</li>
-  <li>HTTP verbs (GET, POST, PUT, DELETE, PATCH) define the actions that can be performed on resources</li>
-  <li>The body message contains the data being sent or received in the API interaction</li>
-  <li>Understanding REST APIs is essential for both developers and technical writers</li>
+  <li>REST APIs use HTTP methods (GET, POST, PUT, DELETE) to perform operations on resources</li>
+  <li>Statelessness means each request contains all information needed, without relying on server-stored session data</li>
+  <li>Caching improves performance by storing frequently accessed data to reduce server load</li>
+  <li>URL endpoints in REST APIs typically represent resources, not actions</li>
+  <li>REST APIs use three main components: URL endpoints, HTTP verbs, and body messages</li>
+  <li>REST has become the dominant API style due to its simplicity, scalability, and use of standard web technologies</li>
 </ul>
 " %}
+
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of REST APIs with this quiz."
+  quizDataFile="restAPI_questions"
+%}
+
 
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
@@ -672,10 +679,3 @@ As promised, in our [upcoming chapter on URL anatomy]({{ '/anatomyofurl.html' | 
   }
 }
 </style>
-
-{% include related_resources.html 
-  title="Essential REST API Resources"
-  description="Deepen your understanding of REST APIs with these carefully selected resources."
-  external_links="RESTful API Design Best Practices,https://restfulapi.net/|HTTP Status Codes Reference,https://developer.mozilla.org/en-US/docs/Web/HTTP/Status|REST API Error Handling,https://www.baeldung.com/rest-api-error-handling-best-practices|REST API Authentication Methods,https://blog.postman.com/complete-guide-to-api-authentication"
-  tools="Postman REST Client,https://www.postman.com/|Swagger for REST API Documentation,https://swagger.io/tools/swagger-ui/|Insomnia API Client,https://insomnia.rest/|REST API Testing Tools,https://raygun.com/blog/best-rest-api-tools/"
-%}

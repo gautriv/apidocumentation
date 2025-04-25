@@ -700,16 +700,23 @@ Understanding JSON structure is essential for both developing and documenting AP
 
 {% include key_takeaways.html content="
 <ul>
-  <li>JSON (JavaScript Object Notation) is a lightweight data format used extensively in modern APIs</li>
-  <li>JSON objects use curly braces and key-value pairs to represent structured data</li>
-  <li>JSON arrays use square brackets to represent ordered collections of values</li>
+  <li>JSON is built on two main structures: objects (key-value pairs in curly braces) and arrays (ordered lists in square brackets)</li>
   <li>JSON supports six data types: strings, numbers, booleans, objects, arrays, and null</li>
-  <li>Nesting allows for creating complex data structures in JSON through combinations of objects and arrays</li>
-  <li>JSON is the standard format for data exchange in RESTful APIs and many other API types</li>
+  <li>JSON has become the dominant format for API data exchange due to its simplicity and compatibility with JavaScript</li>
+  <li>All string values and property names in JSON must use double quotes</li>
+  <li>Nested JSON structures can represent complex, hierarchical data relationships</li>
+  <li>JSON is more lightweight than XML, making it ideal for mobile and high-performance applications</li>
+  <li>Most programming languages have built-in support for parsing and generating JSON</li>
 </ul>
 " %}
 
 Understanding these JSON superpowers is key to navigating the superhero world of APIs. As we venture forth, we'll dive into real-life scenarios, showcasing how these JSON elements team up in actual API quests. Get ready for an epic journey ahead!
+
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of JSON in API development with this quiz."
+  quizDataFile="json_questions"
+%}
 
 <div class="practice-cta">
   <h3>Ready to Master JSON in APIs?</h3>

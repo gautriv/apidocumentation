@@ -1,0 +1,78 @@
+# Questions for "JSON in API Development" chapter quiz
+# Each question has:
+# - question: The actual question text
+# - options: Array of possible answers (4 options)
+# - correctIndex: Zero-based index of the correct answer
+# - explanation: Detailed explanation of the correct answer
+
+- question: "What are the two main structures that JSON is built on?"
+  options:
+    - "Classes and objects"
+    - "Objects and arrays"
+    - "Functions and variables"
+    - "Strings and numbers"
+  correctIndex: 1
+  explanation: "JSON (JavaScript Object Notation) is built on two primary structures: objects (collections of key-value pairs enclosed in curly braces {}) and arrays (ordered lists of values enclosed in square brackets []). These two structures provide the foundation for representing complex data in a readable, lightweight format."
+
+- question: "How are JSON objects represented in code?"
+  options:
+    - "Using parentheses ()"
+    - "Using square brackets []"
+    - "Using curly braces {}"
+    - "Using angle brackets <>"
+  correctIndex: 2
+  explanation: "JSON objects are represented using curly braces {}. Inside these braces, data is structured as key-value pairs where keys must be strings (in double quotes) followed by a colon, and values can be any valid JSON data type. For example: {\"name\": \"John\", \"age\": 30}."
+
+- question: "What data types are supported in JSON?"
+  options:
+    - "Only strings and numbers"
+    - "Strings, numbers, boolean, objects, arrays, and null"
+    - "Any data type supported by JavaScript"
+    - "Only objects and arrays"
+  correctIndex: 1
+  explanation: "JSON supports six data types: strings (in double quotes), numbers, booleans (true/false), objects (key-value pairs), arrays (ordered lists), and null. It doesn't support other JavaScript types like functions, dates, or undefined. This limited set of types ensures JSON remains simple and interoperable across different platforms."
+
+- question: "What is the correct way to represent a string in JSON?"
+  options:
+    - "'text'"
+    - "\"text\""
+    - "text"
+    - "`text`"
+  correctIndex: 1
+  explanation: "In JSON, strings must be enclosed in double quotes (\"). Single quotes (') or no quotes are not valid in JSON. This is different from JavaScript, where strings can use single or double quotes. For example, {\"name\": \"John\"} is valid JSON, but {name: 'John'} is not."
+
+- question: "What is nested JSON?"
+  options:
+    - "JSON with very long values"
+    - "JSON with multiple levels of objects and/or arrays inside other objects or arrays"
+    - "JSON stored in multiple files"
+    - "JSON that contains special characters"
+  correctIndex: 1
+  explanation: "Nested JSON refers to JSON structures that contain multiple levels, with objects and/or arrays embedded inside other objects or arrays. This nesting allows JSON to represent complex, hierarchical data relationships. For example, an object containing a user's details might have a nested object for their address, which in turn might contain an array of previous addresses."
+
+- question: "Why has JSON become the most popular format for API data exchange?"
+  options:
+    - "Because it's the oldest data format"
+    - "Because it's required by law for APIs"
+    - "Due to its lightweight nature, readability, and native compatibility with JavaScript"
+    - "Because it allows for executable code transfer"
+  correctIndex: 2
+  explanation: "JSON has become the dominant format for API data exchange due to its lightweight nature, human readability, and native compatibility with JavaScript (which powers web browsers). Its simpler syntax and smaller file size compared to XML make it ideal for high-performance applications and mobile contexts where bandwidth matters."
+
+- question: "What is a JSON array used for in APIs?"
+  options:
+    - "Only for storing numeric values"
+    - "For including JavaScript functions"
+    - "For organizing collections of data items"
+    - "For connecting to databases"
+  correctIndex: 2
+  explanation: "JSON arrays are used to organize collections or lists of data items in APIs. Arrays are perfect for representing multiple related items, such as a list of products, users, or any ordered collection. In REST APIs, arrays are commonly used to return collections of resources, like all posts from a blog or all users in a system."
+
+- question: "When working with JSON in APIs, what does the Content-Type header typically specify?"
+  options:
+    - "text/html"
+    - "application/json"
+    - "text/plain"
+    - "application/xml"
+  correctIndex: 1
+  explanation: "When working with JSON in APIs, the Content-Type header typically specifies 'application/json'. This tells the server or client that the body of the request or response contains JSON data, ensuring it's processed correctly. This MIME type is essential for proper API communication and helps the receiving system correctly parse the JSON data." 

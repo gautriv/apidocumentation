@@ -1,0 +1,78 @@
+# Questions for "How Technical Writers Document APIs" chapter quiz
+# Each question has:
+# - question: The actual question text
+# - options: Array of possible answers (4 options)
+# - correctIndex: Zero-based index of the correct answer
+# - explanation: Detailed explanation of the correct answer
+
+- question: "What is the first step in documenting an API?"
+  options:
+    - "Planning the documentation structure"
+    - "Understanding the API's purpose and functionality"
+    - "Creating code examples"
+    - "Testing the API endpoints"
+  correctIndex: 1
+  explanation: "Before writing any documentation, a technical writer must first understand what the API does, how it works, and why it exists. This provides the foundation for all subsequent documentation and ensures you can clearly explain the API's value to users."
+
+- question: "Why is identifying your audience important when documenting APIs?"
+  options:
+    - "To determine how many examples to include"
+    - "To decide on the pricing of the API"
+    - "To tailor the content, tone, and detail level appropriately"
+    - "To select which programming languages to use in examples"
+  correctIndex: 2
+  explanation: "Identifying your audience helps you tailor content appropriately. Different audiences (developers, product managers, business analysts) have different needs and technical backgrounds. For example, developers need detailed technical information, while product managers might need more high-level explanations of functionality and business value."
+
+- question: "What kind of information should you gather when documenting an API?"
+  options:
+    - "Only the endpoints and their parameters"
+    - "Just the error codes and troubleshooting tips"
+    - "Comprehensive information including purpose, endpoints, authentication, data formats, etc."
+    - "Marketing information about how the API compares to competitors"
+  correctIndex: 2
+  explanation: "Comprehensive information gathering is essential for effective API documentation. This includes understanding the API's purpose, key features, endpoints, authentication methods, data formats, error handling, rate limits, and usage guidelines. This ensures your documentation covers all aspects users need to successfully implement the API."
+
+- question: "What is a recommended structure for API documentation?"
+  options:
+    - "Introduction, Endpoints, Error Codes"
+    - "Marketing, Technical details, Support contacts"
+    - "Introduction, Getting Started, Authentication, Endpoints, Examples, Error Handling, Best Practices, FAQs"
+    - "Code examples only, organized by programming language"
+  correctIndex: 2
+  explanation: "A comprehensive API documentation structure typically includes an introduction explaining what the API does, getting started guides, authentication information, detailed endpoint references, examples showing real-world usage, error handling guidance, best practices for implementation, and frequently asked questions to address common issues."
+
+- question: "Why should you test the API yourself when documenting it?"
+  options:
+    - "To find bugs in the API code"
+    - "To gain first-hand experience and validate documentation accuracy"
+    - "To create performance benchmarks"
+    - "To check if the API is worth documenting"
+  correctIndex: 1
+  explanation: "Testing the API yourself gives you first-hand experience with how it works, helping you identify potential pain points, understand the user experience, and verify that your documentation is accurate. This hands-on approach ensures you're creating documentation that truly helps users implement the API correctly."
+
+- question: "What is the purpose of including code examples in API documentation?"
+  options:
+    - "To make the documentation look more professional"
+    - "To demonstrate your programming skills"
+    - "To show practical implementation and help users get started quickly"
+    - "To increase the word count of the documentation"
+  correctIndex: 2
+  explanation: "Code examples serve as practical demonstrations of how to use the API, helping users understand implementation details and get started quickly. Good examples show real-world use cases, proper error handling, and follow best practices, significantly reducing the learning curve for developers."
+
+- question: "When documenting API authentication, what should you include?"
+  options:
+    - "Just the authentication endpoint"
+    - "A complete step-by-step guide with security best practices"
+    - "Only the name of the authentication method used"
+    - "Just a link to general authentication documentation"
+  correctIndex: 1
+  explanation: "Authentication documentation should include comprehensive step-by-step instructions on how to authenticate with the API, including obtaining credentials, implementing the authentication flow, security best practices, token handling, and troubleshooting common authentication issues. This ensures users can securely implement API access."
+
+- question: "Why is clear error documentation important for APIs?"
+  options:
+    - "It's not important as most developers expect errors"
+    - "To help users understand and resolve problems they encounter"
+    - "Just to fulfill documentation requirements"
+    - "Only to reduce support tickets"
+  correctIndex: 1
+  explanation: "Clear error documentation helps users understand what went wrong and how to fix it when they encounter issues. Well-documented errors with codes, messages, causes, and resolution steps significantly improve developer experience, reduce frustration, and minimize the need for support assistance." 

@@ -1254,10 +1254,10 @@ To ensure smooth interaction with APIs, follow these best practices:
 
 {% include key_takeaways.html content="
 <ul>
-  <li>API requests contain an endpoint, HTTP method, headers, and sometimes a body</li>
-  <li>API responses include status codes, headers, and response data</li>
-  <li>Common HTTP methods are GET (retrieve), POST (create), PUT (update), DELETE (remove)</li>
-  <li>Status codes indicate success (2xx), client errors (4xx), or server errors (5xx)</li>
+  <li>API requests are messages sent to servers asking them to perform specific actions</li>
+  <li>API responses contain the data or confirmation sent back from the server</li>
+  <li>HTTP methods (GET, POST, PUT, DELETE) define the action to be performed</li>
+  <li>Status codes indicate the outcome of a request (200s for success, 400s for client errors, 500s for server errors)</li>
   <li>Authentication methods secure APIs against unauthorized access</li>
   <li>Tools like Postman, cURL, and Swagger help test and explore APIs</li>
   <li>Comprehensive API documentation includes endpoints, parameters, examples, and response schemas</li>
@@ -1267,6 +1267,12 @@ To ensure smooth interaction with APIs, follow these best practices:
 Congrats! You now understand how API requests and responses work. Whether it's fetching data, sending new information, or handling errors, you've got the basics down.
 
 Now that you know how APIs send and receive data, it's time to document them effectively! In the next chapter, we'll dive into how to write clear and structured API documentation that developers will love. Get ready to level up your documentation skills!
+
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of request and response with this quiz."
+  quizDataFile="requestandresponse_questions"
+%}
 
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">

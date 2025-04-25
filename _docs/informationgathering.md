@@ -363,18 +363,25 @@ Next up: [Explore Different Types of APIs]({{ '/typesofAPI.html' | relative_url 
 
 {% include key_takeaways.html content="
 <ul>
-  <li>Understand the API thoroughly before documenting it</li>
-  <li>Identify your specific audience and their technical needs</li>
-  <li>Set clear documentation goals that solve user problems</li>
-  <li>Gather comprehensive information from subject matter experts</li>
-  <li>Create a logical, user-friendly documentation structure</li>
-  <li>Write clear, concise content with practical examples</li>
-  <li>Include working code samples in multiple languages</li>
-  <li>Test the API documentation from the user perspective</li>
-  <li>Gather and incorporate feedback from stakeholders</li>
-  <li>Publish on appropriate platforms and maintain documentation</li>
+  <li>Understanding the API is the essential first step for creating effective documentation</li>
+  <li>Know your audience to tailor the documentation to their needs and technical level</li>
+  <li>Set clear goals for what users should be able to accomplish with your documentation</li>
+  <li>Structure your documentation logically with getting started guides, reference sections, and examples</li>
+  <li>Test everything yourself to ensure accuracy and identify user pain points</li>
+  <li>Use examples and code samples to illustrate key concepts and use cases</li>
+  <li>Regular review and updates keep documentation valuable as the API evolves</li>
 </ul>
 " %}
+
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of API documentation processes with this quiz."
+  quizDataFile="informationgathering_questions"
+  theme="blue"
+  animate=true
+%}
+
+
 
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">

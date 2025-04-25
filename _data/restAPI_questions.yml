@@ -1,0 +1,78 @@
+# Questions for "REST APIs Key Concepts and Structure" chapter quiz
+# Each question has:
+# - question: The actual question text
+# - options: Array of possible answers (4 options)
+# - correctIndex: Zero-based index of the correct answer
+# - explanation: Detailed explanation of the correct answer
+
+- question: "What does REST stand for in the context of APIs?"
+  options:
+    - "Remote Execution State Transfer"
+    - "Representational State Transfer"
+    - "Resource Endpoint Service Technology"
+    - "Responsive Endpoint State Tools"
+  correctIndex: 1
+  explanation: "REST stands for Representational State Transfer. It's an architectural style for designing networked applications that was introduced by Roy Fielding in 2000. REST uses a stateless, client-server, cacheable communications protocol - typically HTTP - and is now the dominant approach for building web APIs."
+
+- question: "What does 'statelessness' mean in REST APIs?"
+  options:
+    - "The API doesn't work consistently"
+    - "The server retains information about all previous requests"
+    - "Each request contains all information needed without relying on stored session data"
+    - "The API can only handle one request at a time"
+  correctIndex: 2
+  explanation: "Statelessness in REST means that each request from a client to a server must contain all the information needed to understand and process the request, without relying on stored session data on the server. The server doesn't retain any client state between requests. This makes REST APIs more scalable and reliable since the server doesn't need to manage session information."
+
+- question: "What are the three main components of a REST API?"
+  options:
+    - "Database, server, client"
+    - "URL endpoints, HTTP verbs, body messages"
+    - "HTML, CSS, JavaScript"
+    - "XML, JSON, YAML"
+  correctIndex: 1
+  explanation: "The three main components of a REST API are: URL endpoints (the addresses that identify resources), HTTP verbs (GET, POST, PUT, DELETE, etc. that define the action to perform), and body messages (the data sent to or received from the API, typically in JSON or XML format). Together, these components allow for complete interaction with resources on the server."
+
+- question: "Which of the following is a key benefit of caching in REST APIs?"
+  options:
+    - "It prevents unauthorized access"
+    - "It allows storing user credentials"
+    - "It improves performance by reducing database queries"
+    - "It enables complex session management"
+  correctIndex: 2
+  explanation: "A key benefit of caching in REST APIs is improved performance. By storing copies of frequently accessed resources, servers can respond to requests without having to fetch the data from the database every time. This reduces database load, decreases response times, and can significantly lower server costs, especially for high-traffic APIs."
+
+- question: "Which HTTP method would you use to update an existing resource in a REST API?"
+  options:
+    - "GET"
+    - "POST"
+    - "PUT or PATCH"
+    - "DELETE"
+  correctIndex: 2
+  explanation: "In a REST API, PUT or PATCH methods are used to update existing resources. PUT is typically used to replace an entire resource with new data, while PATCH is used for partial updates to a resource. These methods follow REST principles where operations that modify server data should use methods other than GET."
+
+- question: "What does a well-designed URL endpoint in a REST API typically represent?"
+  options:
+    - "A function to be executed"
+    - "A database table"
+    - "A resource or collection of resources"
+    - "A programming language"
+  correctIndex: 2
+  explanation: "In a well-designed REST API, URL endpoints typically represent resources or collections of resources. For example, '/users' might represent all users, while '/users/123' represents a specific user with ID 123. This resource-oriented approach is fundamental to REST design, focusing on the resources being manipulated rather than the actions performed on them."
+
+- question: "Why is HTTP the primary protocol used for REST APIs?"
+  options:
+    - "Because HTTP is the newest protocol available"
+    - "Because HTTP provides universal browser support and built-in operations that map well to CRUD actions"
+    - "Because HTTP is the only protocol that works on the internet"
+    - "Because HTTP has better security than other protocols"
+  correctIndex: 1
+  explanation: "HTTP is the primary protocol for REST APIs because it provides universal browser support and built-in operations (GET, POST, PUT, DELETE) that map naturally to CRUD (Create, Read, Update, Delete) actions on resources. HTTP is also stateless by default, which aligns with REST principles, and it's widely understood by developers and supported by existing infrastructure."
+
+- question: "What makes an API 'RESTful'?"
+  options:
+    - "It uses JSON for all data exchange"
+    - "It follows specific design principles like statelessness, client-server architecture, and uniform interface"
+    - "It requires authentication for all endpoints"
+    - "It runs on a specific server technology"
+  correctIndex: 1
+  explanation: "An API is considered 'RESTful' when it follows specific design principles outlined by Roy Fielding, including statelessness, client-server architecture, cacheability, layered system design, and a uniform interface. These principles make APIs more scalable, easier to maintain, and more predictable for developers to work with, regardless of the specific implementation details." 

@@ -537,15 +537,23 @@ Intrigued by the fascinating world of APIs? Well, guess what? There's more to ex
 
 {% include key_takeaways.html content="
 <ul>
-  <li>There are six broad categories of APIs, with web service APIs being the most commonly documented</li>
-  <li>Web service APIs include REST, SOAP, GraphQL, WebSockets, JSON-RPC, XML-RPC, and gRPC</li>
-  <li>REST APIs use simple HTTP methods and are known for being straightforward and scalable</li>
-  <li>SOAP APIs follow strict protocols for reliable message exchange</li>
-  <li>GraphQL allows clients to request exactly the data they need in a single query</li>
-  <li>WebSockets enable real-time, bidirectional communication</li>
-  <li>As a technical writer, you'll primarily focus on documenting web service APIs (80-90% of API documentation)</li>
+  <li>Web service APIs like REST, SOAP, GraphQL, and WebSockets are the most commonly documented API types</li>
+  <li>REST APIs are the most popular due to their simplicity, using HTTP methods and standard URLs</li>
+  <li>SOAP APIs offer a more standardized approach with stricter protocols and XML formatting</li>
+  <li>GraphQL allows clients to request exactly the data they need, reducing over-fetching</li>
+  <li>WebSockets provide real-time, bi-directional communication through persistent connections</li>
+  <li>gRPC is optimized for high-performance microservices communication</li>
+  <li>Different API types serve different use cases and technical requirements</li>
 </ul>
 " %}
+
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of different API types with this quiz."
+  quizDataFile="typesofAPI_questions"
+  theme="blue"
+  animate=true
+%}
 
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">

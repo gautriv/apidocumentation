@@ -1,0 +1,78 @@
+# Questions for "Types of APIs" chapter quiz
+# Each question has:
+# - question: The actual question text
+# - options: Array of possible answers (4 options)
+# - correctIndex: Zero-based index of the correct answer
+# - explanation: Detailed explanation of the correct answer
+
+- question: "What are the six broad categories of APIs mentioned in the chapter?"
+  options:
+    - "Web, Mobile, Desktop, Cloud, Enterprise, IoT"
+    - "Web service, Library-based, Class-based, OS functions, Object remoting, Hardware"
+    - "REST, SOAP, GraphQL, WebSockets, JSON-RPC, XML-RPC"
+    - "Public, Private, Partner, Composite, Internal, External"
+  correctIndex: 1
+  explanation: "The chapter categorizes APIs into six broad types: Web service APIs (like REST, SOAP, GraphQL), Library-based APIs (ready-made toolboxes for programmers), Class-based APIs (Object-Oriented), Functions or routines in an OS, Object remoting APIs, and Hardware APIs. This categorization helps in understanding the diverse landscape of APIs used in modern technology."
+
+- question: "Which type of API is the most commonly documented by technical writers?"
+  options:
+    - "Hardware APIs"
+    - "OS function APIs"
+    - "Web service APIs"
+    - "Class-based APIs"
+  correctIndex: 2
+  explanation: "Web service APIs are the most commonly documented by technical writers, accounting for 80-90% of API documentation work. These include REST, SOAP, GraphQL, WebSockets, and other web-based APIs that allow different applications to communicate over the internet. They require clear documentation to help developers integrate them effectively into their applications."
+
+- question: "What is the key characteristic of a REST API?"
+  options:
+    - "It uses complex protocols for data transfer"
+    - "It requires special software to implement"
+    - "It uses simple HTTP methods and URLs for communication"
+    - "It only works with JavaScript applications"
+  correctIndex: 2
+  explanation: "The key characteristic of a REST API is that it uses simple HTTP methods (GET, POST, PUT, DELETE) and URLs to communicate. REST (Representational State Transfer) APIs are designed to be stateless and use standard web protocols, making them easy to implement across different platforms and programming languages."
+
+- question: "How does a SOAP API differ from a REST API?"
+  options:
+    - "SOAP is newer than REST"
+    - "SOAP is less secure than REST"
+    - "SOAP uses a stricter, more standardized protocol with built-in error handling"
+    - "SOAP can only be used on mobile devices"
+  correctIndex: 2
+  explanation: "SOAP (Simple Object Access Protocol) differs from REST in that it uses a stricter, more standardized protocol with built-in error handling and security features. SOAP APIs rely exclusively on XML for message format, can work over different protocols (not just HTTP), and often have formal contracts defined through WSDL (Web Services Description Language), making them common in enterprise environments requiring strict standards."
+
+- question: "What is the main advantage of GraphQL over traditional REST APIs?"
+  options:
+    - "GraphQL is always faster"
+    - "GraphQL lets clients request exactly the data they need"
+    - "GraphQL is easier to implement on the server"
+    - "GraphQL uses less bandwidth regardless of the query"
+  correctIndex: 1
+  explanation: "The main advantage of GraphQL over traditional REST APIs is that it allows clients to request exactly the data they need, no more and no less. This helps prevent over-fetching (getting more data than needed) and under-fetching (having to make multiple requests to get all needed data), making it particularly useful for complex applications with varying data requirements."
+
+- question: "What makes WebSocket APIs different from other Web service APIs?"
+  options:
+    - "They're easier to implement"
+    - "They're more secure by default"
+    - "They establish persistent connections for real-time, bi-directional communication"
+    - "They only work on certain browsers"
+  correctIndex: 2
+  explanation: "WebSocket APIs are different because they establish persistent connections between client and server, enabling real-time, bi-directional communication. Unlike traditional request-response patterns in REST or SOAP, WebSockets allow continuous data flow in both directions once a connection is established, making them ideal for applications requiring live updates like chat applications, gaming, or financial trading platforms."
+
+- question: "What is gRPC and when would it be most beneficial?"
+  options:
+    - "A type of database that works well with APIs"
+    - "A high-performance RPC framework ideal for microservices and low-latency communication"
+    - "A simple API protocol for beginners"
+    - "A security protocol for web APIs"
+  correctIndex: 1
+  explanation: "gRPC is a high-performance Remote Procedure Call (RPC) framework developed by Google. It's most beneficial for microservices architectures and scenarios requiring low-latency, highly efficient communication between services. gRPC uses Protocol Buffers (protobuf) for serializing structured data and HTTP/2 for transport, offering features like bi-directional streaming, flow control, and multiplexing multiple requests over a single connection."
+
+- question: "Which API type would be best suited for a real-time collaborative document editing application?"
+  options:
+    - "REST API"
+    - "SOAP API"
+    - "WebSocket API"
+    - "JSON-RPC API"
+  correctIndex: 2
+  explanation: "A WebSocket API would be best suited for a real-time collaborative document editing application. WebSockets provide the persistent, bi-directional communication needed to instantly sync changes between multiple users editing the same document. This allows all users to see edits from others as they happen without requiring frequent polling, providing a smooth collaborative experience with minimal latency." 
