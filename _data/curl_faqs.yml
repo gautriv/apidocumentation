@@ -1,0 +1,70 @@
+categories:
+  - name: "cURL Basics"
+    items:
+      - question: "What is cURL and why is it useful for API testing?"
+        answer: "cURL (Client URL) is a command-line tool for making HTTP requests to APIs. It's useful for API testing because it allows you to test endpoints without writing code, works on almost all operating systems, and provides powerful debugging capabilities through the command line."
+
+      - question: "How do I install cURL on my system?"
+        answer: "cURL comes pre-installed on most macOS and Linux systems. For Windows, you can download it from the official website (curl.se) or install it via package managers like Chocolatey (choco install curl) or Windows Subsystem for Linux. Verify installation by typing 'curl --version' in your terminal."
+
+      - question: "What's the difference between cURL and wget?"
+        answer: "While both are command-line tools for HTTP requests, cURL supports more protocols beyond HTTP/HTTPS, offers better support for APIs with various authentication methods, and focuses on data transfer. wget is primarily designed for downloading files and websites, with better recursive downloading capabilities."
+        
+      - question: "How can I make cURL commands more readable?"
+        answer: "Break long commands into multiple lines using the backslash character (\\) at the end of each line. Use indentation for clarity, especially for multiple headers or data fields. You can also save frequently used commands in shell scripts for reuse."
+
+  - name: "Making Requests with cURL"
+    items:
+      - question: "How do I make different types of HTTP requests with cURL?"
+        answer: "Use the -X flag followed by the HTTP method: 'curl -X GET url' for GET, 'curl -X POST url' for POST, 'curl -X PUT url' for PUT, 'curl -X DELETE url' for DELETE, and 'curl -X PATCH url' for PATCH requests. GET is the default method if -X is not specified."
+
+      - question: "How do I add headers to my cURL requests?"
+        answer: "Use the -H flag followed by the header name and value: 'curl -H \"Content-Type: application/json\" -H \"Authorization: Bearer token123\" url'. You can add multiple headers by using multiple -H flags."
+
+      - question: "How do I include query parameters in my cURL requests?"
+        answer: "Add query parameters directly to the URL: 'curl https://api.example.com/users?limit=10&sort=desc'. For parameters with special characters, you can use URL encoding or place the URL in quotes."
+        
+      - question: "How can I see the complete HTTP response including headers?"
+        answer: "Use the -i flag to include response headers: 'curl -i https://api.example.com'. For even more detail, use -v (verbose mode) which shows the complete request and response including headers: 'curl -v https://api.example.com'."
+
+  - name: "Working with Data"
+    items:
+      - question: "How do I send JSON data in a cURL request?"
+        answer: "Use the -d flag followed by your JSON data in quotes: 'curl -X POST https://api.example.com -d '{\"name\":\"John\",\"email\":\"john@example.com\"}' -H \"Content-Type: application/json\"'. For complex JSON, consider storing it in a file and using -d @filename.json."
+
+      - question: "How do I send form data in a cURL request?"
+        answer: "Use --data-urlencode to properly handle special characters in form fields: 'curl -X POST https://api.example.com/login --data-urlencode \"username=john\" --data-urlencode \"password=s3cur3!\"'. Multiple fields are automatically formatted correctly."
+
+      - question: "How do I upload files with cURL?"
+        answer: "Use the -F flag for form-based file uploads: 'curl -X POST https://api.example.com/upload -F \"file=@/path/to/file.pdf\" -F \"description=My Document\"'. The @ symbol indicates a file path rather than literal text."
+        
+      - question: "How do I download files with cURL?"
+        answer: "Use curl with the -o flag to specify the output filename: 'curl -o filename.pdf https://api.example.com/files/download'. For large files, add --progress-bar to see download progress: 'curl --progress-bar -o filename.pdf url'."
+
+  - name: "Authentication with cURL"
+    items:
+      - question: "How do I use Basic Authentication with cURL?"
+        answer: "Use the -u flag followed by username:password: 'curl -u username:password https://api.example.com'. For security, you can omit the password and cURL will prompt you to enter it: 'curl -u username https://api.example.com'."
+
+      - question: "How do I use API keys or tokens with cURL?"
+        answer: "Add them as headers: 'curl -H \"Authorization: Bearer your_token\" https://api.example.com' for Bearer tokens, or 'curl -H \"X-API-Key: your_api_key\" https://api.example.com' for API keys. Some APIs might require them as query parameters instead."
+
+      - question: "How can I use OAuth 2.0 with cURL?"
+        answer: "First obtain an access token from the authorization server, then include it in your requests as a Bearer token: 'curl -H \"Authorization: Bearer your_oauth_token\" https://api.example.com'. The token acquisition process varies by provider and may require multiple cURL commands."
+        
+      - question: "How do I handle cookies with cURL?"
+        answer: "Use --cookie-jar to save cookies: 'curl --cookie-jar cookies.txt https://api.example.com/login -d \"username=user&password=pass\"'. Then use --cookie to use those cookies in subsequent requests: 'curl --cookie cookies.txt https://api.example.com/profile'."
+
+  - name: "Debugging and Troubleshooting"
+    items:
+      - question: "How can I debug API responses with cURL?"
+        answer: "Use -v (verbose) flag to see detailed request and response information: 'curl -v https://api.example.com'. For even more details, use -vv or -vvv. To focus only on headers, use -I for just response headers: 'curl -I https://api.example.com'."
+
+      - question: "How do I handle redirects in cURL?"
+        answer: "Use the -L flag to follow redirects: 'curl -L https://api.example.com'. This is useful when APIs redirect to authentication services or when dealing with URL shorteners. You can limit the number of redirects with --max-redirs: 'curl -L --max-redirs 5 url'."
+
+      - question: "How can I time my API requests with cURL?"
+        answer: "Use the -w (write-out) flag with timing variables: 'curl -w \"\\nTotal time: %{time_total}s\\n\" https://api.example.com'. This helps identify performance issues. For a complete timing breakdown, try 'curl -w \"@curl-format.txt\" url' with a custom format file."
+        
+      - question: "How do I save cURL response to a file?"
+        answer: "Use the -o flag for saving to a specific file: 'curl -o response.json https://api.example.com'. To save with the same name as the remote file, use -O: 'curl -O https://example.com/file.zip'. For only saving on successful responses, add the --fail option." 

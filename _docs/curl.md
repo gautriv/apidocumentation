@@ -9,9 +9,32 @@ next_page:
 previous_page:
   url: /keyconcepts.html
   title: "Key API Concepts"
+image: /assets/images/api-docs-curl.svg
+last_modified_at: 2023-10-18T09:00:00+00:00
+author_name: Technical Writing Expert
+author_description: Senior technical writer specializing in API documentation and command line tools
+author_expertise: 
+  - "API Documentation"
+  - "Technical Writing"
+  - "cURL"
+  - "Command Line Tools"
+reading_time: 15
+level: Intermediate
+speakable: true
+speakable_selectors:
+  - ".doc-content h1" 
+  - ".doc-content h2"
+  - ".doc-content p:first-of-type"
 ---
 
 You've already tackled **API fundamentals**—rate limits, authentication, pagination, and error handling. Now, it's time to **level up** and **master cURL**, the command-line Swiss Army knife for API testing. 
+
+{% include trivia.html 
+  type="tech" 
+  icon="fa-terminal" 
+  title="cURL History" 
+  content="Daniel Stenberg created cURL in 1997, and it's now installed on billions of devices worldwide. The name originally stood for 'Client for URLs' but is now simply known as cURL, a versatile tool that supports dozens of protocols beyond HTTP."
+%}
 
 {% include enhanced_note.html 
   title="Why Every API Professional Needs cURL" 
@@ -510,11 +533,181 @@ cURL is an incredibly powerful tool for:
       (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
 
-## Next Steps
+<div class="interactive-quiz">
+  <h3>Test Your cURL Knowledge</h3>
+  <div class="quiz-question">
+    <p>What cURL command would you use to send a POST request with JSON data and include the response headers in the output?</p>
+    <button class="quiz-button" onclick="toggleAnswer()">Show Answer</button>
+    <div class="quiz-answer" id="quiz-answer" style="display: none;">
+      <p><strong>Command:</strong></p>
+      <pre><code>curl -X POST "https://api.example.com/endpoint" \
+     -H "Content-Type: application/json" \
+     -d '{"key":"value"}' \
+     -i</code></pre>
+      <p><strong>Explanation:</strong></p>
+      <ul>
+        <li><code>-X POST</code> specifies the POST method</li>
+        <li><code>-H "Content-Type: application/json"</code> sets the content type header</li>
+        <li><code>-d '{"key":"value"}'</code> provides the JSON data payload</li>
+        <li><code>-i</code> includes the response headers in the output</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleAnswer() {
+    var answerDiv = document.getElementById('quiz-answer');
+    var button = document.querySelector('.quiz-button');
+    
+    if (answerDiv.style.display === 'none') {
+      answerDiv.style.display = 'block';
+      button.textContent = 'Hide Answer';
+    } else {
+      answerDiv.style.display = 'none';
+      button.textContent = 'Show Answer';
+    }
+  }
+</script>
+
+<style>
+  .interactive-quiz {
+    background-color: #f0f7fb;
+    border-left: 5px solid #3a87ad;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 0 8px 8px 0;
+  }
+  
+  .interactive-quiz h3 {
+    color: #3a87ad;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  
+  .quiz-question p {
+    margin-bottom: 10px;
+  }
+  
+  .quiz-button {
+    background-color: #3a87ad;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .quiz-button:hover {
+    background-color: #2a6d8e;
+  }
+  
+  .quiz-answer {
+    margin-top: 15px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 3px solid #28a745;
+  }
+  
+  .quiz-answer pre {
+    background-color: #f6f8fa;
+    padding: 12px;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  
+  .quiz-answer code {
+    font-family: monospace;
+  }
+  
+  .quiz-answer ul {
+    margin-bottom: 0;
+  }
+</style>
+
+{% include faq-section.html 
+  title="Frequently Asked Questions About cURL for API Testing"
+  description="Get answers to common questions about using cURL for API testing and documentation."
+  data_file="curl_faqs"
+%}
 
 Congratulations! You're now **fluent in cURL**, ready to test APIs like a pro. You're fully prepared for **intermediate and advanced-level API documentation challenges**.
 
 In the next chapter, we'll put your skills to the test with [expert REST API exercises](/apidocumentation/expertrestexercise.html) that combine everything you've learned so far.
+
+<div class="author-cta">
+  <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
+  <div class="author-message">
+    <h4>Level Up Your API Testing Skills</h4>
+    <p>Has this cURL guide helped you master API testing from the command line? Bookmark it for reference or share it with your team to improve your API documentation workflow!</p>
+    <div class="social-share">
+      <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text=Check out this comprehensive guide to mastering cURL for API testing and documentation" class="share-button twitter">Share on Twitter</a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title=Mastering cURL for API Testing and Documentation" class="share-button linkedin">Share on LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<style>
+.author-cta {
+  display: flex;
+  background: #f8f9fb;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px 0;
+  border: 1px solid #e2e8f0;
+  gap: 20px;
+  align-items: center;
+}
+.author-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.author-message {
+  flex: 1;
+}
+.author-message h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.author-message p {
+  margin-bottom: 12px;
+}
+.social-share {
+  display: flex;
+  gap: 10px;
+}
+.share-button {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
+}
+.twitter {
+  background: #1DA1F2;
+}
+.linkedin {
+  background: #0077B5;
+}
+@media (max-width: 600px) {
+  .author-cta {
+    flex-direction: column;
+    text-align: center;
+  }
+  .social-share {
+    justify-content: center;
+  }
+}
+</style>
+
 
 {% include related_resources.html 
   title="API Testing Resources"
@@ -522,3 +715,4 @@ In the next chapter, we'll put your skills to the test with [expert REST API exe
   external_links="Official cURL Documentation,https://curl.se/docs/|HTTP Status Code Reference,https://developer.mozilla.org/en-US/docs/Web/HTTP/Status|JSON Formatter for API Responses,https://jsonformatter.org/"
   tools="Postman API Platform,https://www.postman.com/|jq - JSON processor,https://stedolan.github.io/jq/|HTTPie - Modern HTTP Client,https://httpie.io/"
 %}
+

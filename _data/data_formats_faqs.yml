@@ -1,0 +1,70 @@
+categories:
+  - name: "Structured vs. Unstructured Data"
+    items:
+      - question: "What's the difference between structured and unstructured data in API communication?"
+        answer: "Structured data follows a predefined format with organized fields (like JSON or XML), making it easy to search and process. Unstructured data lacks a predefined format (like text documents, images, or videos) and requires more processing to extract meaningful information. APIs typically use structured formats for request and response data."
+
+      - question: "Why do most modern APIs use structured data formats?"
+        answer: "Modern APIs use structured data formats because they provide consistent, predictable ways to exchange information between systems. Structured formats like JSON and XML allow for validation, easy parsing, clear documentation, and efficient machine processing, which are essential for reliable API communication."
+
+      - question: "How do APIs handle unstructured data like images or documents?"
+        answer: "APIs typically handle unstructured data by either converting it to a structured format (like base64 encoding for binary data), providing metadata in a structured format while the actual content is transferred separately, or using multipart requests that combine structured metadata with unstructured content."
+        
+      - question: "What are key considerations when choosing between different data formats for an API?"
+        answer: "Key considerations include audience needs (developer preferences), payload size (efficiency), human readability, language compatibility, schema validation requirements, industry standards in your domain, parsing performance, and extensibility for future changes."
+
+  - name: "JSON Format"
+    items:
+      - question: "Why has JSON become the dominant format for modern APIs?"
+        answer: "JSON has become dominant because it's lightweight (smaller payload size), easy to read and write for humans, natively compatible with JavaScript (making it ideal for web applications), simple to parse in virtually all programming languages, and supports nested data structures while remaining less verbose than alternatives like XML."
+
+      - question: "What are the basic data types supported in JSON?"
+        answer: "JSON supports six basic data types: strings (text in double quotes), numbers (integers or decimals without quotes), booleans (true or false), objects (collections of key-value pairs in curly braces), arrays (ordered lists in square brackets), and null (representing no value)."
+
+      - question: "How do I represent nested or complex data structures in JSON?"
+        answer: "Nest complex data structures by embedding objects within objects or using arrays. For example: {\"user\": {\"name\": \"John\", \"address\": {\"city\": \"New York\"}}, \"orders\": [{\"id\": 123}, {\"id\": 456}]}. This creates hierarchical data that can represent relationships and groupings."
+        
+      - question: "What are some common JSON parsing errors developers encounter?"
+        answer: "Common JSON parsing errors include missing or extra commas between elements, trailing commas (not allowed in standard JSON), using single quotes instead of double quotes for strings, unescaped special characters in strings, and improperly formatted numeric values (like including currency symbols)."
+
+  - name: "XML Format"
+    items:
+      - question: "When should I use XML instead of JSON in API development?"
+        answer: "Consider using XML when you need strong validation through schemas (XSD), are working with enterprise systems that have XML infrastructure, require document-centric data representation with mixed content, need support for namespaces to avoid conflicts, or when working in industries with established XML standards (like SOAP, finance, or healthcare)."
+
+      - question: "How does XML structure differ from JSON?"
+        answer: "XML uses opening and closing tags (<tag></tag>) to define elements, with attributes in the opening tags. It's hierarchical like JSON but more verbose. XML requires proper nesting of elements, supports namespaces (to avoid naming conflicts), and all values are technically strings unless validated against a schema."
+
+      - question: "What advantages does XML offer for API documentation?"
+        answer: "XML offers self-documenting structure through element names and attributes, supports inline documentation with comments, has robust schema validation (XSD) that can serve as documentation, supports namespaces that clarify data ownership, and has extensive tooling for transformation and validation."
+        
+      - question: "How do SOAP APIs use XML differently than REST APIs?"
+        answer: "SOAP APIs use XML in a highly structured format with specific elements like Envelope, Header, and Body tags, along with strict schemas and type definitions. REST APIs using XML are typically more flexible and lightweight, focusing on representing resources rather than adhering to the SOAP protocol structure."
+
+  - name: "Data Types in APIs"
+    items:
+      - question: "How should date and time values be formatted in API requests and responses?"
+        answer: "Use the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) for dates and times in APIs. This format is internationally recognized, avoids ambiguity (like MM/DD/YY vs. DD/MM/YY confusion), sorts chronologically as strings, and includes timezone information to prevent misinterpretation across different regions."
+
+      - question: "How do APIs handle custom or complex data types?"
+        answer: "APIs handle custom data types by composing them from basic types (objects, arrays, strings, numbers) and documenting their structure. For example, a 'Product' type might be represented as a JSON object with specific properties. Some APIs also use type definition languages or schemas (like JSON Schema or OpenAPI) to formally define these structures."
+
+      - question: "What's the best way to represent numeric values with currency in APIs?"
+        answer: "Store and transmit currency values as numbers (preferably decimal/float for accuracy with cents), include a separate currency code field (using ISO 4217 codes like 'USD', 'EUR'), and document the precision/rounding rules. Don't embed currency symbols in the numeric value itself, and consider using string representations for financial calculations that require exact precision."
+        
+      - question: "How should boolean values be represented consistently across different data formats?"
+        answer: "In JSON and most modern formats, use the literals true and false (lowercase, without quotes). In XML, since all values are strings, use consistent values like 'true'/'false', '1'/'0', or 'yes'/'no', but document your convention. Avoid using various representations interchangeably (like mixing 'Y/N' and 'true/false') within the same API."
+
+  - name: "Best Practices"
+    items:
+      - question: "How should I document data format requirements in API documentation?"
+        answer: "Document data formats with clear example requests and responses, tables showing field names/types/requirements, syntax highlighting, validation rules and constraints, handling of null values, and common errors with solutions. Include schemas when available (like JSON Schema or OpenAPI definitions) and explain format-specific features."
+
+      - question: "What are best practices for handling null or empty values in API data formats?"
+        answer: "Be consistent about null vs. empty values (e.g., null vs. empty string vs. omitting the field). Document whether fields can be null and what null means in your context. Consider omitting optional fields entirely rather than setting them to null to reduce payload size, and verify that your clients can handle missing fields appropriately."
+
+      - question: "How can I validate that my API request or response matches the expected data format?"
+        answer: "Use schema validation tools like JSON Schema or XML Schema (XSD) to define and validate your data structures. Implement server-side validation to verify incoming requests. Consider providing validation tools to API users, and use data formats that have built-in validation capabilities. Write comprehensive tests that cover edge cases and invalid inputs."
+        
+      - question: "What internationalization considerations should I keep in mind for API data formats?"
+        answer: "Use UTF-8 encoding for all text data to support international characters. Format dates and times with ISO 8601 and include timezone information. Separate user-displayed text from data using locale identifiers where needed. Consider right-to-left language support, currency formatting requirements, and number formatting conventions (decimal/thousands separators) for different regions." 

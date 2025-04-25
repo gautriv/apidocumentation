@@ -1,0 +1,70 @@
+categories:
+  - name: "Rate Limiting"
+    items:
+      - question: "Why do APIs implement rate limits?"
+        answer: "APIs implement rate limits to prevent abuse, ensure fair usage among all clients, and manage infrastructure costs. This protects the API from malicious attacks and prevents resource hogging by single clients."
+
+      - question: "What information is typically included in rate limit headers?"
+        answer: "Rate limit headers typically include the total request limit (X-RateLimit-Limit), remaining requests in the current time window (X-RateLimit-Remaining), and when the limit will reset (X-RateLimit-Reset)."
+
+      - question: "What is a backoff strategy and when should I use one?"
+        answer: "A backoff strategy is a technique for handling rate limit errors by progressively increasing the delay between retry attempts. You should implement backoff strategies when making multiple API requests to avoid hitting rate limits and to gracefully handle 429 (Too Many Requests) responses."
+        
+      - question: "How can I monitor my API usage to avoid hitting rate limits?"
+        answer: "Monitor your API usage by tracking rate limit headers in responses, implementing monitoring dashboards, setting up alerts when approaching limits, and distributing requests evenly across time periods rather than making bursts of requests."
+
+  - name: "Pagination"
+    items:
+      - question: "What are the different pagination methods in APIs and when should each be used?"
+        answer: "Common pagination methods include offset-limit (simple for smaller datasets), page-based (good for user interfaces), cursor-based (efficient for large datasets and real-time data), and time-based (ideal for event logs and activity feeds). Choose based on your data characteristics and performance requirements."
+
+      - question: "How does cursor-based pagination differ from offset-based pagination?"
+        answer: "Cursor-based pagination uses a pointer (cursor) to the last item retrieved, while offset-based uses a numeric offset. Cursor-based pagination offers better performance with large datasets, handles concurrent updates better, and avoids the 'skipped item' problem, but cannot jump to arbitrary positions."
+
+      - question: "What should a well-designed pagination response include?"
+        answer: "A well-designed pagination response should include the data array, total item count, total page count, current page position, and links to next and previous pages. This helps clients navigate through large datasets efficiently."
+        
+      - question: "What are the performance implications of different pagination approaches?"
+        answer: "Offset-based pagination becomes inefficient with large offsets as databases must scan through all skipped rows. Cursor-based pagination maintains consistent performance regardless of position. Page-based pagination inherits offset limitations. Time-based pagination is efficient when indexing by timestamps."
+
+  - name: "Authentication & Security"
+    items:
+      - question: "What's the difference between authentication and authorization in APIs?"
+        answer: "Authentication verifies the identity of a user or client (who you are), while authorization determines what resources they have permission to access (what you can do). Both are crucial components of API security."
+
+      - question: "When should I use API Keys vs. OAuth 2.0?"
+        answer: "Use API Keys for simple server-to-server communication, internal APIs, or when security requirements are moderate. Use OAuth 2.0 for third-party integrations, user-authorized access to protected resources, or when fine-grained permission control is needed."
+
+      - question: "How does JWT authentication work in APIs?"
+        answer: "JWT (JSON Web Token) authentication works by encoding user identity and permissions into a signed token that the client sends with each request. The server verifies the token's signature and extracts user information without needing to query a database, making it ideal for stateless authentication in microservices."
+        
+      - question: "What are best practices for securing API keys?"
+        answer: "Never expose API keys in client-side code or public repositories, use environment variables to store keys, implement key rotation policies, restrict keys by IP address when possible, use HTTPS for all API communication, and limit each key's permissions to only what's necessary."
+
+  - name: "Webhooks"
+    items:
+      - question: "What are webhooks and how do they differ from traditional APIs?"
+        answer: "Webhooks are HTTP callbacks that notify external systems when specific events occur. Unlike traditional APIs where clients pull data by making requests, webhooks push data to clients when events happen, enabling real-time updates and event-driven architecture."
+
+      - question: "How can I secure my webhook implementation?"
+        answer: "Secure webhooks by using HTTPS, implementing signature verification to validate the webhook source, including timestamps to prevent replay attacks, using secrets unique to each webhook subscription, and implementing IP filtering when appropriate."
+
+      - question: "What retry logic should I implement for webhook delivery?"
+        answer: "Implement an exponential backoff strategy that increases the delay between retries, set a maximum number of retry attempts, maintain a dead letter queue for failed deliveries, and provide manual retry mechanisms in your admin interface."
+        
+      - question: "How should I test my webhook implementation?"
+        answer: "Test webhooks using webhook testing tools (like Webhook.site or RequestBin), implement a development environment that can receive webhooks, simulate various event types and error conditions, and verify signature validation works correctly."
+
+  - name: "Error Handling"
+    items:
+      - question: "What makes a good API error response?"
+        answer: "A good API error response includes a clear HTTP status code, a unique error code beyond the HTTP status, a human-readable error message, relevant debugging details, a request identifier for troubleshooting, and links to documentation when helpful."
+
+      - question: "How should I handle validation errors in my API responses?"
+        answer: "Handle validation errors by returning a 400 Bad Request status code, providing a structured error response that includes the specific fields with errors, explaining validation requirements that weren't met, and offering examples of correct values when appropriate."
+
+      - question: "What's the difference between 4xx and 5xx error codes?"
+        answer: "4xx error codes indicate client errors (problems with the request that the client can fix), while 5xx error codes indicate server errors (problems on the API side). This distinction helps developers understand if they need to fix their request or if they should report an issue to the API provider."
+        
+      - question: "How should clients handle 429 (Too Many Requests) errors?"
+        answer: "Clients should implement exponential backoff retry logic, respect the Retry-After header if provided, consider reducing their request rate, cache responses when possible to reduce API calls, and potentially upgrade to plans with higher rate limits if consistently hitting limits." 
