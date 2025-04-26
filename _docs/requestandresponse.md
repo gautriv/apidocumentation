@@ -1272,6 +1272,8 @@ Now that you know how APIs send and receive data, it's time to document them eff
   title="Test Your Knowledge"
   description="Check your understanding of request and response with this quiz."
   quizDataFile="requestandresponse_questions"
+  theme="blue"
+  animate=true
 %}
 
 <div class="author-cta">

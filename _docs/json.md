@@ -716,6 +716,8 @@ Understanding these JSON superpowers is key to navigating the superhero world of
   title="Test Your Knowledge"
   description="Check your understanding of JSON in API development with this quiz."
   quizDataFile="json_questions"
+  theme="blue"
+  animate=true
 %}
 
 <div class="practice-cta">
