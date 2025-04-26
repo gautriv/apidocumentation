@@ -512,6 +512,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+{% include quiz.html
+  title="Test Your Knowledge"
+  description="Check your understanding of XML in API development with this quiz."
+  quizDataFile="xml_questions"
+  theme="blue"
+  animate=true
+%}
+
 <div class="author-cta">
   <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Data Format Specialist" class="author-image">
   <div class="author-message">
@@ -580,6 +588,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 }
 </style>
+
+
 
 {% include related_resources.html 
   title="Essential XML and API Resources"
