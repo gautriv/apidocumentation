@@ -133,6 +133,60 @@
 .progress-message[data-progress="100"] {
   color: #f59e0b;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .course-progress {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .progress-header {
+    gap: 0.75rem;
+  }
+  
+  .progress-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .progress-icon i {
+    font-size: 1rem;
+  }
+  
+  .progress-message {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .progress-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .progress-stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .progress-message {
+    font-size: 0.9rem;
+  }
+  
+  .progress-text {
+    font-size: 0.8rem;
+  }
+  
+  .progress-percentage {
+    font-size: 0.9rem;
+  }
+  
+  .progress-details {
+    font-size: 0.8rem;
+  }
+}
 </style>
 
 <script>
