@@ -13,6 +13,20 @@ previous_page:
 
 Now that you've mastered the **basics of webhook documentation**, it's time to tackle **more complex scenarios** that reflect real-world implementation challenges. These intermediate exercises will push your technical writing skills further and prepare you for advanced webhook documentation tasks.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+
 ## What These Exercises Cover
 
 These intermediate-level exercises focus on the following advanced webhook documentation concepts:
@@ -67,6 +81,21 @@ Each intermediate exercise:
 <div class="note-box" markdown="1">
 **Pro Tip:** These exercises simulate webhook documentation challenges from actual API platforms. Try solving each one before viewing the solution, and compare your approach to the provided solution.
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
 
 ## Exercise Collection
 

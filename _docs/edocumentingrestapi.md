@@ -23,6 +23,19 @@ So far, you've built a **strong foundation** in API documentation. You've learne
   content="These expert-level exercises simulate actual documentation tasks you might encounter as a senior technical writer. They include incomplete information, complex architectures, and emerging technologies - just like in the real world." 
 %}
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## What You'll Document in These Expert Exercises
 
 In this chapter, you'll work through **5 sophisticated exercises** that will prepare you for advanced API documentation roles:
@@ -93,6 +106,19 @@ These exercises represent the cutting edge of API technologies and documentation
     </tbody>
   </table>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## Exercise Overview
 
@@ -221,6 +247,19 @@ These exercises represent the cutting edge of API technologies and documentation
 }
 </style>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Strategies for Tackling Expert-Level Documentation
 
 These exercises are intentionally challenging. Here are some strategies to approach them effectively:
@@ -233,6 +272,19 @@ These exercises are intentionally challenging. Here are some strategies to appro
 6. **Use visual aids** - Diagrams, flowcharts, and other visuals can explain complex relationships
 
 Remember that expert-level API documentation isn't just about documenting what exists—it's about helping developers understand why it exists and how to use it effectively.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## Let's Begin!
 
@@ -263,6 +315,19 @@ Each exercise below can be expanded to view the requirements and solution. These
 {% include e_exe_5.html %}  
 </div>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Addressing Incomplete Information
 
 In real-world API documentation, technical writers often receive incomplete information from developers. When you encounter gaps in these exercises, consider:
@@ -272,6 +337,19 @@ In real-world API documentation, technical writers often receive incomplete info
 - What additional sections might you add to improve clarity?
 
 This skill—identifying and filling information gaps—is essential for expert-level technical writers.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## What's Next?
 

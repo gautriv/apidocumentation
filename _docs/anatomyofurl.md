@@ -278,7 +278,6 @@ Understanding URL structure is critical for API documentation, as each component
   "
 %}
 
-
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
       crossorigin="anonymous"></script>
   <!-- AddTitleOne -->
@@ -341,6 +340,19 @@ Now that you've explored each part of a URL in detail, let's review some additio
   questions=site.data.questions.fragment
 %}
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Why Understanding URL Anatomy Matters in API Documentation
 
 As a technical writer documenting APIs, understanding URL structure is fundamental. When users interact with APIs, they need to know exactly how to structure their requests, which components are required, and what each component does.
@@ -364,6 +376,19 @@ As a technical writer documenting APIs, understanding URL structure is fundament
   type="success" 
   content="When documenting APIs, always break down URLs into their component parts, explaining the purpose of each element. Provide clear examples showing how the components work together in different scenarios, and include parameter tables that detail all possible options and their effects on the response."
 %}
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## URL Structure in Different API Types
 

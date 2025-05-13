@@ -87,6 +87,19 @@ You've **built and tested APIs with authentication, error handling, and logging*
   </table>
 </div>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Setting Up Your Expert API Environment
 
 Before we begin, let's install all the libraries needed for our enhanced API:
@@ -102,6 +115,19 @@ Each package serves a specific purpose:
 - **flask-limiter**: API rate limiting
 - **flasgger**: Swagger documentation
 - **pyyaml**: YAML configuration support
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## Step 1: Implementing JWT Authentication
 
@@ -288,6 +314,19 @@ Use Postman to test the JWT authentication flow:
   content="In a production application, never store passwords in plain text. Use a strong hashing algorithm like bcrypt with password salting. The example above is simplified for demonstration purposes." 
 %}
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Step 2: Implementing Role-Based Access Control (RBAC)
 
 Different users should have different access rights. Let's implement RBAC to restrict certain endpoints to admin users only.
@@ -392,6 +431,20 @@ Test the role-based access control with different user accounts:
   </div>
 </div>
 
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Step 3: Rate Limiting for API Protection
 
 To prevent abuse and ensure fair usage, implement rate limiting on your API endpoints:
@@ -463,6 +516,20 @@ Test the rate limiting by making multiple requests in quick succession:
 }</pre>
   </div>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 
 ## Step 4: Professional API Documentation
 
@@ -754,6 +821,19 @@ code {
 }
 </style>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Advanced Topics for Enterprise APIs
 
 Now that you have a solid foundation for expert-level APIs, consider these advanced topics:
@@ -805,6 +885,20 @@ def get_cached_data():
   <li>Consider performance optimization with caching for production environments</li>
 </ul>
 " %}
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## What's Next?
 

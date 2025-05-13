@@ -73,6 +73,19 @@ Each expert exercise:
 **Pro Tip:** These exercises reflect actual documentation challenges from major API platforms. The solutions demonstrate how to effectively communicate complex webhook concepts to both technical implementers and business stakeholders.
 </div>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Exercise Collection
 
 {% include ewb_exe_1.html %} <br>

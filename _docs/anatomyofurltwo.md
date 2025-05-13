@@ -237,19 +237,6 @@ Let's see everything in detail. Select the appropriate tabs for more information
 
 Now that we've covered the basics of endpoints and resources, let's explore some advanced URL concepts that are crucial for creating effective, secure, and user-friendly API documentation.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
 ### URL Encoding: Making Special Characters Safe
 
 Have you ever noticed that spaces in URLs are replaced with `%20` or `+`? That's URL encoding in action! 

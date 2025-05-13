@@ -46,7 +46,18 @@ Meet **Boolean**, the straightforward sentinel of the data world. This type oper
 
 _Imagine a checkbox labeled "Enable Dark Mode." If it's checked, your interface dons a sleek, dark theme. If not, it stays light and bright._
 
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## **String Data Type: The Textual Storyteller**
 
@@ -60,6 +71,20 @@ Next up is **String**, the data type that loves to express itself through text. 
 - **Username**: [________________]
 
 *Picture a text box prompting you to enter your "Favorite Quote." That's String inviting you to share some wisdom.*
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 
 ## **Number Data Type: The Numerical Navigator**
 
@@ -100,6 +125,19 @@ Enter **List**, also known as an Array. This type is like a well-curated playlis
 
 *Imagine a survey asking you to select your hobbies from a list of checkboxes. Each tick adds to the List.*
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## **Date and Time Data Type: The Temporal Tracker**
 
 Meet **Date and Time**, the schedulers of the data world. They keep track of when events occur. APIs often use standardized formats like ISO 8601 (YYYY-MM-DD) for dates.
@@ -113,6 +151,19 @@ Meet **Date and Time**, the schedulers of the data world. They keep track of whe
 
 *Think of booking a flight and selecting your departure date from a calendar. That's Date and Time guiding your journey.*
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## **Enum Data Type: The Exclusive Selector**
 
 Last but not least, **Enum** (short for Enumeration) represents a set of predefined values. It's like choosing your character class in a game—you have specific options. In [REST APIs](/restAPI.html), enums often define allowed values for parameters.
@@ -125,6 +176,19 @@ Last but not least, **Enum** (short for Enumeration) represents a set of predefi
 - **Select Gender**: ( ) Male ( ) Female ( ) Other
 
 *Imagine setting your user profile and selecting your country from a dropdown list. That's Enum in action.*
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## Common Data Type Visualization Problems and Solutions
 
@@ -221,6 +285,19 @@ Last but not least, **Enum** (short for Enumeration) represents a set of predefi
   color: #0073b7;
 }
 </style>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## Data Types in API Documentation: Making the Abstract Concrete
 

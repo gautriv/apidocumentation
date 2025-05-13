@@ -22,6 +22,19 @@ Now, it's time to **level up** and tackle **more complex API documentation chall
   content="These intermediate exercises will challenge you to document more complex API scenarios including authentication flows, error handling, and multi-endpoint systems. You'll develop the skills needed to document enterprise-grade APIs used in real-world applications." 
 %}
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## What You'll Practice in These Exercises
 
 In this chapter, you'll work through **5 challenging exercises** that will develop your advanced API documentation skills:
@@ -92,6 +105,19 @@ These exercises address the complexities you'll encounter when documenting produ
     </tbody>
   </table>
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## Exercise Overview
 
@@ -220,6 +246,20 @@ These exercises address the complexities you'll encounter when documenting produ
 }
 </style>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+
 ## Tips for Mastering Intermediate Exercises
 
 To successfully document these more complex APIs, keep these advanced practices in mind:
@@ -230,6 +270,22 @@ To successfully document these more complex APIs, keep these advanced practices 
 4. **Include error recovery guidance** - Don't just list error codes; explain how to resolve common issues
 5. **Address security concerns** - Document best practices for securely using the API
 6. **Consider different use cases** - Show examples for multiple scenarios developers might encounter
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+
 
 ## Let's Get Started!
 
@@ -259,6 +315,21 @@ Each exercise below can be expanded to view the requirements and solution. Take 
   <h3><span class="exercise-number">5</span> Documenting an Analytics API</h3>
 {% include i_exe_5.html %}  
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  
 
 ## What's Next?
 

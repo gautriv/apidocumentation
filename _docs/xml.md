@@ -40,6 +40,20 @@ Hey, awesome learner! You've already conquered [APIs](/apidocumentation/whatisan
   content="While JSON has become more popular for modern APIs due to its simplicity, XML remains crucial for enterprise systems, SOAP services, and many legacy applications. Understanding both formats is essential for comprehensive API work." 
 %}
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+
 ## Cracking the Code of XML
 
 Unlike the easy-breezy vibe of JSON, XML loves order and precision. Imagine a super organized library – each book tagged and labeled, chapters and sections neatly defined. That's XML for you – data neatly organized within tags, creating a tree-like structure with attributes adding details like leaves and bark.
@@ -100,6 +114,20 @@ Attributes are like special notes attached to an element, providing extra inform
 In this example, `<book>` is the main container, and `genre` and `price` are attributes offering details about the book.
 
 Now, let's dive into the different data types XML can handle.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 
 ## XML Data Types: Structured Information
 
@@ -196,6 +224,21 @@ When working with [API requests and responses](/apidocumentation/requestandrespo
   </div>
 </div>
 
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+
 ## Navigating Nesting in XML: Creating Complex Structures
 
 In XML, nesting means placing elements inside other elements, forming a hierarchical or tree-like structure. This allows for representing complex relationships and structured data, particularly useful in enterprise-level APIs and [SOAP web services](/apidocumentation/typesofAPI.html).
@@ -256,6 +299,19 @@ In XML, nesting means placing elements inside other elements, forming a hierarch
 
    This example shows multiple nesting levels representing the organizational structure of a company.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## XML in SOAP API Communication
 
 XML plays a central role in SOAP (Simple Object Access Protocol) web services, which are commonly used in enterprise environments. SOAP messages are structured in XML format, providing a standardized way to exchange information.
@@ -295,6 +351,19 @@ XML plays a central role in SOAP (Simple Object Access Protocol) web services, w
    </soapenv:Body>
 </soapenv:Envelope>
 ```
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## XML vs JSON: When to Use Which Format
 

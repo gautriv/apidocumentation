@@ -23,6 +23,19 @@ This section is all about **getting your hands dirty with real API documentation
   content="These exercises are designed to simulate real-world API documentation tasks. You'll apply everything you've learned about documenting endpoints, parameters, requests, and responses to practical scenarios that technical writers face daily." 
 %}
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## What You'll Practice in These Exercises
 
 In this chapter, you'll work through **5 practical exercises** that will strengthen your API documentation skills:
@@ -58,6 +71,19 @@ Each exercise follows this structure:
 4. A **sample solution** for comparison after you complete your attempt
 
 This format mirrors how you'll receive API documentation assignments in the real world, where you'll often get technical information and need to transform it into clear, developer-friendly documentation.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## Exercise Overview
 
@@ -212,6 +238,19 @@ Before diving into the exercises, keep these best practices in mind:
 
 Remember, there's no single "perfect" way to document an API. Your solution might differ from the provided one while still being excellent. The goal is to practice communicating technical information clearly and consistently.
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Let's Get Started!
 
 Each exercise below can be expanded to view the requirements and solution. Challenge yourself to complete each one before looking at the solution.
@@ -240,6 +279,19 @@ Each exercise below can be expanded to view the requirements and solution. Chall
   <h3><span class="exercise-number">5</span> Documenting a Payment Processing API</h3>
 {% include b_exe_5.html %}  
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## What's Next?
 

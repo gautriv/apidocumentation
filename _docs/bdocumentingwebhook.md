@@ -13,6 +13,19 @@ previous_page:
 
 You've learned how **webhooks work, how they differ from REST APIs, and how to document them effectively.** Now, it's time to **put your skills to the test** with these practical documentation exercises!
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## What Will You Learn?
 
 These hands-on exercises will help you develop critical webhook documentation skills:
@@ -63,6 +76,19 @@ This chapter contains **5 hands-on exercises** that simulate real-world API docu
 <div class="note-box" markdown="1">
 **Pro Tip:** Try completing each exercise before checking the solution. This approach will help you develop your documentation skills more effectively.
 </div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## Exercise Collection
 

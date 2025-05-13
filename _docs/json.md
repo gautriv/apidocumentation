@@ -206,6 +206,20 @@ Objects are your go-to for describing things with lots of details – think user
 }
 ```
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+
 ## JSON Arrays: Organizing Collections in APIs {#json-arrays}
 
 Now, imagine a shopping list – that's a JSON array! It's an ordered lineup of goodies, all wrapped up in square brackets `[]`.
@@ -245,6 +259,19 @@ Arrays are perfect for making lists – like products, categories, or anything t
 ```
 
 Now, let's talk about the superheroes of JSON – its data types!
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## JSON Data Types: The Essential Elements {#json-data-types}
 
@@ -472,6 +499,19 @@ Understanding JSON data types is crucial when working with API requests and resp
 
    The "superpower" key embraces null, signaling a superhero power vacuum.
 
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Nesting in JSON: Creating Complex API Data Structures {#nesting-in-json}
 
 Picture nesting as superheroes forming squads – one inside the other, creating a power-packed hierarchy. API responses often contain deeply nested structures to represent complex relationships.
@@ -679,6 +719,19 @@ document.addEventListener('DOMContentLoaded', function() {
      ]
    }
    ```
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## JSON in API Communication
 

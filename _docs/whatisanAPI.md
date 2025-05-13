@@ -36,7 +36,9 @@ Imagine you've just walked into a cozy little restaurant. You're starving, but l
 
 All you do is pick up the menu, choose your favorite dish (extra cheese, of course), and pass your order to the waiter. The waiter takes your order to the kitchen, where the magic happens. Moments later, the waiter comes back with your food, and you devour it like a champion.
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+In the tech world, the menu is like the API, the waiter is the API in action, and the kitchen is the backend system. You don't need to understand the backend (how the chef works); you just make a request, and the API handles the rest.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
       crossorigin="anonymous"></script>
   <!-- AddTitleOne -->
   <ins class="adsbygoogle"
@@ -48,8 +50,6 @@ All you do is pick up the menu, choose your favorite dish (extra cheese, of cour
   <script>
       (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
-
-In the tech world, the menu is like the API, the waiter is the API in action, and the kitchen is the backend system. You don't need to understand the backend (how the chef works); you just make a request, and the API handles the rest.
 
 ## Why Are APIs Such Big Deals in Modern Technology?
 
@@ -64,6 +64,19 @@ APIs allow different programs to share information, like two apps chatting over 
 - When you post that perfect beach sunset on Instagram, the app talks to its servers via—you guessed it—APIs.
 
 In short, APIs are the middlemen making your digital life effortless. They're why you can order pizza, stream movies, and stalk your ex on social media (don't do that) without breaking a sweat.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## The Two Sides of APIs: Understanding Requests and Responses
 
@@ -110,6 +123,20 @@ APIs aren't just tech mumbo jumbo—they're everywhere! Here are a few ways you 
 2. **Weather Applications**: When you check the weather, the app sends an API request to a weather server. The response? Temperature, rain chances, and all the cloudy details.
 
 3. **E-commerce Platforms**: You click on a product, and boom—the app uses an API to fetch details like price, stock availability, and shipping info.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 
 ## Why Understanding APIs Matters for Your Career
 

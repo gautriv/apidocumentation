@@ -39,11 +39,37 @@ Think of your browser as your trusty sidekick, aiding you on a digital adventure
 
 <img src="./assets/gif/commptwo.gif" alt="Internet working process - server responding to browser requests" title="How servers respond to browser requests">
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Step 1: Asking Nicely - Telling the Computer What You Want {#step-1-asking-nicely}
 
 Picture this: you're sitting on your couch, craving answers (or tacos, but let's stick with answers for now). You type something into your browser, like, "How do penguins flirt?" (Yes, they really do have moves.) Your browser nods, cracks its knuckles, and says, "Got it, boss!"
 
 Off it goes, sprinting to a server somewhere in the world to ask, "Hey, do you have any penguin flirting tips?" It's like your browser is that friend who always knows someone who knows someone who has what you need. The ultimate wingman.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## Step 2: Proving You're You - Authentication in Web Communication {#step-2-authentication}
 
@@ -61,10 +87,37 @@ So, your browser turns to you and whispers, "Hey, they want proof. Give me your 
   caption="The authentication process: how websites verify your identity" 
 %}
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Step 3: Showing Your Secret Code - Secure Data Exchange {#step-3-secure-exchange}
 
 <br>
 You type in your secret code (password), and your browser hands it to the server. If it checks out, the server says, "Alright, come on in!"
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 
 ## Step 4: The Great Info Hunt – How Servers Process Requests {#step-4-info-hunt}
 
@@ -224,11 +277,38 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Step 5: Making It Look Nice - Browser Rendering Process {#step-5-rendering}
 
 When the info arrives, it's not exactly glamorous. Think plain, unseasoned tofu. That's where your browser's dream team—HTML, CSS, and JavaScript—comes in. These guys are like the Queer Eye of the internet. They take that plain data and transform it into a stunning, user-friendly webpage.
 
 Without them? Every site would look like a badly formatted Word document. Yikes.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 
 ## Step 6: Magic Storage Place - Database Systems in Web Architecture {#step-6-databases}
 
@@ -270,6 +350,20 @@ Think of the API as a clever translator, fluent in both "browser language" and "
 The API knows the rules of the game. It says, "Hey, browser, here's how the server likes to be spoken to," and vice versa. This way, your browser can ask for information, and the server can respond in a way that your browser can easily understand.
 
 In simple terms, the API is the bridge that helps different parts of the web world work together. Without this translator, your browser and the server might struggle to communicate effectively, and we wouldn't get the seamless online experience we've come to expect.
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
 
 ## The Treasure Map – Understanding API Documentation {#treasure-map}
 

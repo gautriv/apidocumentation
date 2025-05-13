@@ -286,6 +286,19 @@ The Web service API encompasses:
 }
 </style>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## REST API (Representational State Transfer) {#rest-api}
 
 So, first up, we have the REST API. Imagine it as the simplest way to design apps that talk to each other over the internet. It's like going to a restaurant with a menu. You pick what you want (using simple commands like GET, POST, PUT, or DELETE), and the kitchen (the server) gets it ready and serves it to you. REST is known for being straightforward, scalable, and it works with pretty much anything on the web.
@@ -300,10 +313,36 @@ So, first up, we have the REST API. Imagine it as the simplest way to design app
   caption="REST API: Simple client-server communication using HTTP methods" 
 %}
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## SOAP API (Simple Object Access Protocol) {#soap-api}
 
 Next, we've got the SOAP API. This one is a bit like sending letters, but with strict rules. Everything has to be in a specific order and format, just like how you need to write an address on an envelope in a particular way. SOAP is all about strong security and reliability, making sure your message gets to the right place.
 
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## GraphQL {#graphql}
 
@@ -422,9 +461,36 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## WebSocket {#websocket}
 
 Moving on to WebSockets. These are like having a phone call where you can talk and listen at the same time. It's different from traditional mail (like sending letters) or email (where you send a message and wait for a response). WebSockets are great for real-time stuff like chatting and live updates.
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
 ## JSON-RPC and XML-RPC {#rpc}
 

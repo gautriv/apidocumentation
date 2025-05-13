@@ -22,13 +22,26 @@ last_modified_at: 2023-08-30T12:00:00+00:00
   "offers": {
     "@type": "Offer",
     "price": "0",
-    "priceCurrency": "USD"
+    "priceCurrency": "USD",
+    "category": "Technical Writing",
+    "availability": "http://schema.org/InStock",
+    "pricingType": "https://schema.org/Free"
   },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.8",
     "reviewCount": "152"
-  }
+  },
+  "hasCourseInstance": [
+    {
+      "@type": "CourseInstance",
+      "name": "API Documentation Course - Online Self-Paced",
+      "courseMode": "online",
+      "courseWorkload": "3-5 hours per week, 4-6 weeks",
+      "startDate": "2024-01-01",
+      "endDate": "2025-12-31"
+    }
+  ]
 }
 </script>
 

@@ -21,6 +21,19 @@ You've already **built and tested a basic API** in the beginner section. Now, it
   content="In this intermediate guide, you'll enhance your basic API with real-world features that professional APIs require. These enhancements will make your API more flexible, secure, and maintainable—exactly what production applications need." 
 %}
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## What You'll Implement in This Guide
 
 By the end of this intermediate tutorial, you'll have added these critical API features:
@@ -280,6 +293,19 @@ Test your API authentication in Postman:
   content="In a real-world application, you would store API keys securely in a database and use environment variables rather than hardcoding them in your source code." 
 %}
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
 ## Professional API Documentation
 
 Well-organized documentation is crucial for developers using your API. Let's move the Swagger documentation to a separate file.
@@ -531,6 +557,20 @@ def add_user():
 if __name__ == '__main__':
     app.run(debug=True)
 ```
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
+      crossorigin="anonymous"></script>
+  <!-- AddTitleOne -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7149683584202371"
+      data-ad-slot="7422872052"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
 
 ## Key Features of Your Intermediate API
 
