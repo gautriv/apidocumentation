@@ -37,7 +37,7 @@ last_modified_at: 2023-08-30T12:00:00+00:00
       "@type": "CourseInstance",
       "name": "API Documentation Course - Online Self-Paced",
       "courseMode": "online",
-      "courseWorkload": "3-5 hours per week, 4-6 weeks",
+      "courseWorkload": "PT4H",
       "startDate": "2024-01-01",
       "endDate": "2025-12-31"
     }
