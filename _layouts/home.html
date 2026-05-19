@@ -3,25 +3,156 @@ layout: default
 ---
 <!-- HERO -->
 <section class="gradient-stroke">
-  <div class="max-w-6xl mx-auto px-6 pt-20 pb-24 grid md:grid-cols-12 gap-10 items-center">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 pb-20 sm:pb-24 grid md:grid-cols-12 gap-10 items-center">
     <div class="md:col-span-7">
       <div class="text-xs tracking-[0.2em] uppercase font-medium mb-6">
         <span id="eyebrow-default" class="text-copper">For technical writers, in the age of agents</span>
-        <span id="eyebrow-personal" class="text-sage hidden">Welcome back, <span class="hero-name">friend</span> — Maya saved your spot.</span>
+        <span id="eyebrow-personal" class="text-sage hidden">Welcome back, <span class="hero-name">friend</span> &mdash; Maya saved your spot.</span>
       </div>
       <h1 class="h-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] font-medium mb-6">
         Write API docs that <em class="text-copper not-italic font-semibold">humans, developers,</em> and <em class="text-sage not-italic font-semibold">agents</em> all want to read.
       </h1>
       <p class="text-lg md:text-xl text-ink/70 leading-relaxed max-w-xl mb-8">
-        A free, opinionated course rewritten for 2026 — from REST fundamentals to MCP, function-calling, and writing docs that LLMs can actually use. Taught through one running example: the <strong class="text-ink">Greenfield Library API</strong>.
+        A free, opinionated course rewritten for 2026 &mdash; from REST fundamentals to <span class="gloss" data-tip="Model Context Protocol — how agents discover and call tools">MCP</span>, function-calling, and writing docs that <span class="gloss" data-tip="Large Language Models — GPT, Claude, Gemini, et al.">LLMs</span> can actually use. Taught through one running example: the <strong class="text-ink">Greenfield Library API</strong>.
       </p>
       <div class="flex flex-wrap items-center gap-4 mb-6">
         <a href="#start" onclick="startCourse(event)" class="bg-ink text-cream px-6 py-3 rounded-full text-base font-medium hover:bg-ink/85">Start the course</a>
         <a href="#curriculum" class="border border-ink/20 px-6 py-3 rounded-full text-base font-medium hover:bg-ink/5">View curriculum</a>
       </div>
       <div class="flex items-center gap-3 text-sm text-ink/60">
-        <div class="flex"><span class="text-copper">★★★★★</span></div>
-        <span>4.8 · 152 reviews · 36 lessons · Free, forever · No sign-in</span>
+        <div class="flex"><span class="text-copper">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+        <span>4.8 &middot; 152 reviews &middot; 36 lessons &middot; Free, forever &middot; No sign-in</span>
+      </div>
+    </div>
+
+    <!-- Morph card: animated OpenAPI YAML → AI-generated prose -->
+    <div class="md:col-span-5">
+      <div class="relative" style="transform: rotate(-1.5deg);">
+        <div class="absolute -inset-2 rounded-2xl blur-xl" style="background: linear-gradient(135deg, rgba(184,92,56,0.30), rgba(90,122,100,0.20));"></div>
+        <div class="relative bg-ink text-cream rounded-2xl p-5 shadow-2xl border border-ink/40 font-mono text-[13px] leading-relaxed">
+          <div class="flex items-center gap-1.5 mb-4">
+            <span class="inline-block w-2.5 h-2.5 rounded-full" style="background:#ff5f56"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full" style="background:#ffbd2e"></span>
+            <span class="inline-block w-2.5 h-2.5 rounded-full" style="background:#27c93f"></span>
+            <span class="ml-3 text-cream/40 text-xs">greenfield.yaml &mdash; ai-rewriter</span>
+          </div>
+          <div class="relative min-h-[210px]">
+            <pre class="morph-from absolute inset-0 whitespace-pre-wrap"><span style="color:#7dd3fc">/books/{id}</span>:
+  <span style="color:#fbbf77">get</span>:
+    <span style="color:#a3e635">summary</span>: Get a book by id
+    <span style="color:#a3e635">parameters</span>:
+      - <span style="color:#a3e635">name</span>: id
+        <span style="color:#a3e635">in</span>: path
+        <span style="color:#a3e635">required</span>: true
+        <span style="color:#a3e635">schema</span>:
+          <span style="color:#a3e635">type</span>: string
+    <span style="color:#a3e635">responses</span>:
+      <span style="color:#fbbf77">'200'</span>:
+        <span style="color:#a3e635">description</span>: OK<span class="blink">&#9612;</span></pre>
+            <p class="morph-to absolute inset-0 font-sans text-cream/95 text-[15px] leading-snug">
+              <strong class="text-copper">GET /books/&#123;id&#125;</strong><br/>
+              Fetch a single book from the Greenfield Library.<br/><br/>
+              <span class="text-cream/60">Use this when a reader scans a barcode or an agent resolves a citation. Returns title, author, due date, and the hold queue length so your UI can show "3 ahead of you" without a second round-trip.</span><span class="blink">&#9612;</span>
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-cream/10 flex items-center justify-between text-xs text-cream/50">
+            <span>&#8635; OpenAPI &rarr; Prose (live preview)</span>
+            <span class="text-sage">Claude &middot; Haiku</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- "Continue where you left off" — shows only when localStorage name is set -->
+<section class="name-only max-w-6xl mx-auto px-4 sm:px-6 -mt-10 mb-6 hidden">
+  <div class="bg-cream border border-sage/30 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 shadow-sm">
+    <div class="w-12 h-12 rounded-full bg-sage/15 flex items-center justify-center shrink-0">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a7a64" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    </div>
+    <div class="flex-1">
+      <div class="text-xs uppercase tracking-wider text-sage font-mono mb-1">Picking up where you left off, <span class="hero-name">friend</span></div>
+      <div class="h-display text-xl">Lesson 03 &mdash; The internet, the short version</div>
+      <div class="text-ink/55 text-sm mt-0.5">You're 18% through. About 8 minutes to the next "AI co-pilot tip."</div>
+    </div>
+    <a href="{{ '/howinternetworks.html' | relative_url }}" class="bg-ink text-cream px-5 py-2.5 rounded-full text-sm font-medium hover:bg-ink/85 shrink-0">Continue &rarr;</a>
+  </div>
+</section>
+
+<!-- Editorial pull-quote -->
+<section class="border-y border-ink/10 bg-ink/[0.015]">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
+    <p class="h-display text-2xl md:text-3xl italic text-ink/85 leading-snug">
+      "The next decade of API documentation isn't about <span class="text-copper not-italic">writing more</span> &mdash; it's about writing so that <span class="text-sage not-italic">an agent at 2am</span> can use your API without paging a human."
+    </p>
+    <p class="text-sm tracking-wider uppercase text-ink/50 mt-6">&mdash; Maya, Lesson 14</p>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
+  <div class="grid md:grid-cols-12 gap-12 mb-16">
+    <div class="md:col-span-4">
+      <div class="text-xs tracking-[0.2em] uppercase text-copper font-medium mb-3">What's inside</div>
+      <h2 class="h-display text-4xl font-medium leading-tight">Eight modules. Thirty-six lessons. One opinionated point of view.</h2>
+    </div>
+    <div class="md:col-span-7 md:col-start-6">
+      <p class="text-lg text-ink/70 leading-relaxed">
+        Every lesson rewritten with AI as a thread &mdash; not a chapter you skip to. You'll learn REST the old-fashioned way (because the fundamentals didn't change), then carry the same fictional <em class="text-sage not-italic">Greenfield Library API</em> through structured outputs, function-calling, and MCP servers.
+      </p>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-10">
+    <article class="border-t border-ink pt-6">
+      <div class="font-mono text-sm text-copper mb-3">01</div>
+      <h3 class="h-display text-2xl font-medium mb-3">Fundamentals that still matter</h3>
+      <p class="text-ink/70 leading-relaxed text-[15px]">REST, HTTP, auth, JSON, and the request-response dance &mdash; taught the way a senior writer would actually teach a junior, not the way Wikipedia would.</p>
+    </article>
+    <article class="border-t border-ink pt-6">
+      <div class="font-mono text-sm text-copper mb-3">02</div>
+      <h3 class="h-display text-2xl font-medium mb-3">Modern shapes</h3>
+      <p class="text-ink/70 leading-relaxed text-[15px]">Streaming, SSE, WebSockets, gRPC, GraphQL, AsyncAPI &mdash; the API shapes that didn't exist when most courses were written.</p>
+    </article>
+    <article class="border-t border-ink pt-6">
+      <div class="font-mono text-sm text-copper mb-3">03</div>
+      <h3 class="h-display text-2xl font-medium mb-3">AI-native docs</h3>
+      <p class="text-ink/70 leading-relaxed text-[15px]">Writing for LLMs, MCP, function-calling schemas, agent-friendly errors, and the AI co-pilot tip in every single lesson.</p>
+    </article>
+  </div>
+</section>
+
+<!-- MEET MAYA -->
+<section id="maya" class="border-y border-ink/10 bg-cream">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 grid md:grid-cols-12 gap-12 items-center">
+    <div class="md:col-span-4">
+      <div class="relative">
+        <div class="absolute -inset-3 rounded-3xl" style="background: linear-gradient(135deg, rgba(184,92,56,0.15), rgba(90,122,100,0.10));"></div>
+        <div class="relative bg-ink rounded-3xl overflow-hidden" style="aspect-ratio: 4/5;">
+          <div class="absolute inset-0" style="background: linear-gradient(135deg, #0c1a2b, #0c1a2b, rgba(184,92,56,0.40));"></div>
+          <svg viewBox="0 0 200 250" class="absolute inset-0 w-full h-full opacity-90">
+            <defs>
+              <radialGradient id="g1" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#fbf8f3" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#fbf8f3" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="200" height="250" fill="url(#g1)"/>
+            <circle cx="100" cy="90" r="38" fill="#fbf8f3" fill-opacity="0.85"/>
+            <path d="M40 250 Q40 160 100 160 Q160 160 160 250 Z" fill="#fbf8f3" fill-opacity="0.85"/>
+            <text x="100" y="240" text-anchor="middle" font-family="Newsreader" font-style="italic" font-size="14" fill="#0c1a2b" opacity="0.55">Maya, your guide</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="md:col-span-8">
+      <div class="text-xs tracking-[0.2em] uppercase text-copper font-medium mb-3">Meet your guide</div>
+      <h2 class="h-display text-4xl md:text-5xl font-medium leading-tight mb-6">Hi <span class="hero-name name-only-inline" style="display:none">friend</span> &mdash; I'm <span class="text-copper">Maya</span>.</h2>
+      <div class="font-serif text-lg text-ink/85 leading-relaxed space-y-4">
+        <p>I've documented APIs at three companies you've probably used today. This course is the one I wish I'd had when I started &mdash; opinionated, honest about the boring parts, and built around one fictional API (the Greenfield Library) instead of a different vague example in every lesson.</p>
+        <p>The big change in 2026: I'm not your only co-author anymore. An LLM is reading these docs alongside you, and almost certainly reading yours too. So every lesson ends with an <strong>AI co-pilot tip</strong> &mdash; the actual thing I'd do, with the actual model, today.</p>
+        <p class="text-base text-ink/55 font-sans not-italic">I write one lesson a week. I answer questions in the floating chat. I send one email when a new lesson lands. That's the whole deal.</p>
       </div>
     </div>
   </div>
@@ -29,16 +160,18 @@ layout: default
 
 <!-- CURRICULUM -->
 <section id="curriculum" class="border-b border-ink/10 bg-ink/[0.015]">
-  <div class="max-w-6xl mx-auto px-6 py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
     <div class="text-xs tracking-[0.2em] uppercase text-copper font-medium mb-3">The arc</div>
     <h2 class="h-display text-4xl font-medium mb-12 max-w-2xl">Eight modules, in the order a working writer would actually need them.</h2>
 
     <ol class="space-y-0">
       {% for module in site.data.modules %}
       <li class="grid md:grid-cols-12 gap-6 py-6 border-t border-ink/15 hover:bg-ink/[0.02] transition-colors {% if forloop.last %}border-b{% endif %}">
-        <div class="md:col-span-1 font-mono text-sm {% if module.isNew %}text-copper{% else %}text-ink/50{% endif %}">{{ module.n }} {% if module.isNew %}NEW{% endif %}</div>
+        <div class="md:col-span-1 font-mono text-sm {% if module.isNew %}text-copper{% else %}text-ink/50{% endif %}">{{ module.n }}{% if module.isNew %} NEW{% endif %}</div>
         <div class="md:col-span-4 h-display text-xl font-medium">{{ module.title }}</div>
-        <div class="md:col-span-6 text-ink/65 text-[15px]">Lessons inside this module: {{ module.lessons | size }}</div>
+        <div class="md:col-span-6 text-ink/65 text-[15px]">
+          {%- for lesson in module.lessons -%}{{ lesson.title }}{%- unless forloop.last %} &middot; {% endunless -%}{%- endfor -%}
+        </div>
         <div class="md:col-span-1 text-right text-ink/40 text-sm font-mono">{{ module.lessons | size }} lessons</div>
       </li>
       {% endfor %}
@@ -46,10 +179,43 @@ layout: default
   </div>
 </section>
 
+<!-- SAMPLE LESSON PREVIEW -->
+<section id="sample" class="max-w-4xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
+  <div class="text-xs tracking-[0.2em] uppercase text-copper font-medium mb-3">Read a sample</div>
+  <h2 class="h-display text-4xl font-medium mb-2">Lesson 14 &mdash; Writing docs for LLMs</h2>
+  <div class="text-ink/50 text-sm mb-10 font-mono">~9 min read &middot; Maya &middot; Module 7 &mdash; AI-native documentation</div>
+
+  <div class="font-serif text-ink leading-relaxed space-y-6">
+    <p class="text-2xl text-ink/80 italic">It's 4 p.m. on a Thursday<span class="name-only-inline" style="display:none">, <span class="hero-name">friend</span></span>. A developer Slacks you: <span class="not-italic font-mono text-base bg-ink/5 px-2 py-0.5 rounded">"hey what does <span class="gloss" data-tip="Too Many Requests — you, specifically, are over your rate limit">429</span> mean again 😅"</span>. You answer them in five seconds. Now imagine that same question, three thousand times a day, asked by an agent.</p>
+    <p>The good news: writing for LLMs is mostly just <em>writing well</em>, with the dial turned up on a few specific things. Predictable structure. Errors that contain the recovery action. No ironic asides about how flaky the rate-limiter is.</p>
+    <p class="text-sm text-copper not-italic font-sans uppercase tracking-wider !mt-8">Continue reading &rarr;</p>
+  </div>
+</section>
+
+<!-- SPONSORED CARD -->
+<section id="tools" class="max-w-6xl mx-auto px-4 sm:px-6 pb-20 sm:pb-24">
+  <div class="border border-ink/10 rounded-2xl p-6 sm:p-8 bg-cream relative">
+    <div class="absolute top-4 right-5 text-[10px] tracking-[0.2em] uppercase text-ink/40 font-mono">Sponsored</div>
+    <div class="grid md:grid-cols-12 gap-6 sm:gap-8 items-center">
+      <div class="md:col-span-2">
+        <div class="w-16 h-16 rounded-2xl bg-ink/5 flex items-center justify-center font-serif text-2xl font-semibold text-ink">A</div>
+      </div>
+      <div class="md:col-span-7">
+        <div class="text-xs tracking-wider uppercase text-ink/50 mb-1 font-mono">Recommended tool</div>
+        <h3 class="h-display text-2xl font-medium mb-1">Build OpenAPI specs alongside your lessons.</h3>
+        <p class="text-ink/65">An editor that previews your spec, generates SDKs, and renders agent-friendly reference docs.</p>
+      </div>
+      <div class="md:col-span-3 md:text-right">
+        <a href="#" class="inline-block bg-ink text-cream px-5 py-2.5 rounded-full text-sm font-medium hover:bg-ink/85">Try it free &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- NEWSLETTER -->
 <section id="start" class="border-y border-ink/10 bg-ink text-cream">
-  <div class="max-w-3xl mx-auto px-6 py-20 text-center">
-    <h2 class="h-display text-4xl font-medium mb-4"><span class="name-only-inline"><span class="hero-name">Friend</span> — n</span><span class="default-only">N</span>ew lessons, in your inbox.</h2>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
+    <h2 class="h-display text-4xl font-medium mb-4"><span class="name-only-inline" style="display:none"><span class="hero-name">Friend</span> &mdash; n</span><span class="default-only">N</span>ew lessons, in your inbox.</h2>
     <p class="text-cream/70 mb-8 max-w-xl mx-auto">No course-bro upsells. About one email every two weeks when a new lesson goes live or a tool changes.</p>
     <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault();">
       <input type="email" placeholder="you@work.email" class="flex-1 bg-cream/10 border border-cream/20 rounded-full px-5 py-3 text-cream placeholder-cream/40 focus:outline-none focus:border-copper" />
