@@ -1,4 +1,7 @@
 ---
+module: 3
+lesson: 4
+slug: idocumentingwebhook
 title: Intermediate Webhook Documentation Exercises
 description: Take your webhook documentation skills to the next level with our intermediate exercises. Learn to document complex event systems, security measures, conditional triggers, and rate-limiting with practical, hands-on examples.
 keywords: Webhooks, API documentation, Webhook API writing, Webhook authentication, Webhook security, Webhook best practices, API writing exercises, API reference documentation, Webhook event handling, Webhook signature verification, API technical writing, Rate limiting, Conditional triggers, Webhook batch processing

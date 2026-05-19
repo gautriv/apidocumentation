@@ -1,5 +1,8 @@
 ---
-layout: doc
+module: 3
+lesson: 5
+slug: index
+layout: default
 title: API Documentation Course - Learn API Documentation Step by Step
 description: A comprehensive guide to creating world-class API documentation. Learn REST APIs, OpenAPI/Swagger, authentication, testing, and best practices.
 keywords: API documentation, technical writing, REST API, OpenAPI, Swagger, API testing, developer documentation, API reference, API guides

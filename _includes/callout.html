@@ -1,4 +1,8 @@
-<div markdown="span" class="bs-callout bs-callout-{{include.type}}">{{include.content}}</div>
-
-
-
+<div class="callout callout--{{ include.variant | default: 'info' }} flex gap-4 p-4 rounded-lg bg-ink/5 border-l-4 border-copper my-6">
+  <div class="callout-icon shrink-0">
+    {% if include.variant == 'tip' %}💡{% elsif include.variant == 'warning' %}⚠️{% else %}ℹ️{% endif %}
+  </div>
+  <div class="callout-content text-[15px] leading-relaxed">
+    {{ include.content | default: "" }}
+  </div>
+</div>

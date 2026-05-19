@@ -1,0 +1,10 @@
+{% if site.adsense.enabled_in_dev or jekyll.environment == 'production' %}
+<div class="ad-container my-8 min-h-[100px] flex justify-center bg-ink/[0.02] border border-ink/5 rounded p-2">
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-layout="in-article"
+       data-ad-format="{{ include.format | default: 'auto' }}"
+       data-ad-client="{{ site.adsense.client_id }}"
+       data-ad-slot="{{ include.slot }}"></ins>
+</div>
+{% endif %}

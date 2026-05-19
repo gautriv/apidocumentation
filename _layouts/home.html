@@ -1,83 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% include seo-optimization.html %}
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto+Mono&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ "/favicon.ico" | relative_url }}" type="image/x-icon">
-    
-    <!-- Scripts -->
-    <script src="{{ "/assets/js/main.js" | relative_url }}" defer></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-     crossorigin="anonymous"></script>
-    
-    <!-- Google Analytics -->
-    {% include google_analytics.html %}
-    
-    <!-- Google AdSense -->
-    {% include adsense.html %}
-</head>
-<body>
-    <div class="page-wrapper">
-        <!-- Header -->
-        {% include header.html %}
-        
-        <!-- Course Progress (only shown on module pages) -->
-        {% if page.progress %}
-        <div class="course-progress-container">
-            <div class="container">
-                <div class="progress-info">
-                    <span class="progress-label">Module Progress</span>
-                    <span class="progress-percentage">{{ page.progress }}%</span>
-                </div>
-                <div class="progress-bar-container">
-                    <div class="progress-bar progress-{{ page.progress | default: 0 }}"></div>
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        
-        <!-- Main Content -->
-        <main class="main-content">
-            {{ content }}
-        </main>
-        
-        <!-- Footer -->
-        {% include footer.html %}
-                    </div>
-                    
-    <!-- Appreciate Modal -->
-    {% include appreciate-modal.html %}
+---
+layout: default
+---
+<!-- HERO -->
+<section class="gradient-stroke">
+  <div class="max-w-6xl mx-auto px-6 pt-20 pb-24 grid md:grid-cols-12 gap-10 items-center">
+    <div class="md:col-span-7">
+      <div class="text-xs tracking-[0.2em] uppercase font-medium mb-6">
+        <span id="eyebrow-default" class="text-copper">For technical writers, in the age of agents</span>
+        <span id="eyebrow-personal" class="text-sage hidden">Welcome back, <span class="hero-name">friend</span> — Maya saved your spot.</span>
+      </div>
+      <h1 class="h-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] font-medium mb-6">
+        Write API docs that <em class="text-copper not-italic font-semibold">humans, developers,</em> and <em class="text-sage not-italic font-semibold">agents</em> all want to read.
+      </h1>
+      <p class="text-lg md:text-xl text-ink/70 leading-relaxed max-w-xl mb-8">
+        A free, opinionated course rewritten for 2026 — from REST fundamentals to MCP, function-calling, and writing docs that LLMs can actually use. Taught through one running example: the <strong class="text-ink">Greenfield Library API</strong>.
+      </p>
+      <div class="flex flex-wrap items-center gap-4 mb-6">
+        <a href="#start" onclick="startCourse(event)" class="bg-ink text-cream px-6 py-3 rounded-full text-base font-medium hover:bg-ink/85">Start the course</a>
+        <a href="#curriculum" class="border border-ink/20 px-6 py-3 rounded-full text-base font-medium hover:bg-ink/5">View curriculum</a>
+      </div>
+      <div class="flex items-center gap-3 text-sm text-ink/60">
+        <div class="flex"><span class="text-copper">★★★★★</span></div>
+        <span>4.8 · 152 reviews · 36 lessons · Free, forever · No sign-in</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
-    <script src="{{ "/assets/js/appreciate.js" | relative_url }}"></script>
-    
-    <!-- Schema.org JSON-LD structured data -->
-    {% if page.layout == 'home' %}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "{{ site.title }}",
-      "url": "{{ site.url }}{{ site.baseurl }}/",
-      "logo": "{{ site.url }}{{ site.baseurl }}{{ site.logo }}",
-      "sameAs": [
-        {% for social in site.social.links %}
-          "{{ social }}"{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
-    }
-    </script>
-    {% endif %}
-</body>
-</html> 
+<!-- CURRICULUM -->
+<section id="curriculum" class="border-b border-ink/10 bg-ink/[0.015]">
+  <div class="max-w-6xl mx-auto px-6 py-24">
+    <div class="text-xs tracking-[0.2em] uppercase text-copper font-medium mb-3">The arc</div>
+    <h2 class="h-display text-4xl font-medium mb-12 max-w-2xl">Eight modules, in the order a working writer would actually need them.</h2>
+
+    <ol class="space-y-0">
+      {% for module in site.data.modules %}
+      <li class="grid md:grid-cols-12 gap-6 py-6 border-t border-ink/15 hover:bg-ink/[0.02] transition-colors {% if forloop.last %}border-b{% endif %}">
+        <div class="md:col-span-1 font-mono text-sm {% if module.isNew %}text-copper{% else %}text-ink/50{% endif %}">{{ module.n }} {% if module.isNew %}NEW{% endif %}</div>
+        <div class="md:col-span-4 h-display text-xl font-medium">{{ module.title }}</div>
+        <div class="md:col-span-6 text-ink/65 text-[15px]">Lessons inside this module: {{ module.lessons | size }}</div>
+        <div class="md:col-span-1 text-right text-ink/40 text-sm font-mono">{{ module.lessons | size }} lessons</div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="start" class="border-y border-ink/10 bg-ink text-cream">
+  <div class="max-w-3xl mx-auto px-6 py-20 text-center">
+    <h2 class="h-display text-4xl font-medium mb-4"><span class="name-only-inline"><span class="hero-name">Friend</span> — n</span><span class="default-only">N</span>ew lessons, in your inbox.</h2>
+    <p class="text-cream/70 mb-8 max-w-xl mx-auto">No course-bro upsells. About one email every two weeks when a new lesson goes live or a tool changes.</p>
+    <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault();">
+      <input type="email" placeholder="you@work.email" class="flex-1 bg-cream/10 border border-cream/20 rounded-full px-5 py-3 text-cream placeholder-cream/40 focus:outline-none focus:border-copper" />
+      <button class="bg-copper text-cream px-6 py-3 rounded-full font-medium hover:bg-copper/85">Subscribe</button>
+    </form>
+  </div>
+</section>

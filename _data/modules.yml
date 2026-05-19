@@ -1,0 +1,97 @@
+# Canonical curriculum — drives the sidebar nav, in-page chrome, and prev/next.
+# Edit here when a lesson is added, renamed, or reordered.
+# `slug` is the URL fragment after site.baseurl. Existing lesson `permalink:`
+# values are preserved verbatim so we don't break SEO/ad revenue.
+# `isNew` shows the "NEW" pill in the curriculum/sidebar.
+# `placeholder: true` marks lessons not yet written.
+
+- n: "01"
+  title: "Foundations"
+  slug: "foundations"
+  isNew: false
+  lessons:
+    - { slug: "howinternetworks.html", title: "The internet, the short version", reading: "10 min" }
+    - { slug: "whatisanapi.html", title: "What an API actually is", reading: "10 min" }
+    - { slug: "whatwritersdo.html", title: "What an API writer does in 2026", reading: "8 min" }
+    - { slug: "informationgathering.html", title: "Information gathering — and interviewing the codebase", reading: "15 min" }
+    - { slug: "audiences-humans-and-agents.html", title: "Audiences: humans, devs, and agents", reading: "—", placeholder: true }
+
+- n: "02"
+  title: "REST, HTTP, and the dance"
+  slug: "rest-http"
+  isNew: false
+  lessons:
+    - { slug: "restAPI.html", title: "REST principles", reading: "12 min" }
+    - { slug: "typesofAPI.html", title: "Types of APIs", reading: "10 min" }
+    - { slug: "anatomyofurl.html", title: "Anatomy of a URL (part 1)", reading: "15 min" }
+    - { slug: "anatomyofurltwo.html", title: "Anatomy of a URL (part 2)", reading: "12 min" }
+    - { slug: "apirequestsresponses.html", title: "Request & response", reading: "15 min" }
+    - { slug: "curl.html", title: "cURL — and why you should still know it", reading: "15 min" }
+    - { slug: "auth-incl-agents.html", title: "Auth: keys, OAuth, mTLS, and what agents need", reading: "—", placeholder: true }
+
+- n: "03"
+  title: "Data shapes"
+  slug: "data-shapes"
+  isNew: false
+  lessons:
+    - { slug: "JSON101.html", title: "JSON like you mean it", reading: "12 min" }
+    - { slug: "XML101.html", title: "XML, and when you'll still meet it", reading: "12 min" }
+    - { slug: "dataformats.html", title: "Data formats overview", reading: "10 min" }
+    - { slug: "visualizingdatatypes.html", title: "Visualizing data types", reading: "8 min" }
+    - { slug: "json-schema-for-llms.html", title: "Schemas LLMs love: structured outputs", reading: "—", placeholder: true }
+
+- n: "04"
+  title: "Writing the docs"
+  slug: "writing-docs"
+  isNew: false
+  lessons:
+    - { slug: "writingapi.html", title: "The bones of an endpoint reference", reading: "10 min" }
+    - { slug: "keyconcepts.html", title: "Bridging the dev/writer gap", reading: "18 min" }
+    - { slug: "openapi-without-tears.html", title: "OpenAPI without tears", reading: "—", placeholder: true }
+    - { slug: "samples-that-dont-rot.html", title: "Code samples that don't rot", reading: "—", placeholder: true }
+    - { slug: "errors-that-help.html", title: "Errors that actually help", reading: "—", placeholder: true }
+
+- n: "05"
+  title: "Webhooks & async"
+  slug: "webhooks"
+  isNew: false
+  lessons:
+    - { slug: "webhooks.html", title: "What webhooks are", reading: "15 min" }
+    - { slug: "beginnerwebhookexercises.html", title: "Documenting webhooks — beginner", reading: "12 min" }
+    - { slug: "intermediatewebhookexercises.html", title: "Documenting webhooks — intermediate", reading: "14 min" }
+    - { slug: "expertwebhookexercises.html", title: "Documenting webhooks — expert", reading: "18 min" }
+    - { slug: "asyncapi-event-driven.html", title: "AsyncAPI & event-driven docs", reading: "—", placeholder: true }
+
+- n: "06"
+  title: "Modern API shapes"
+  slug: "modern-shapes"
+  isNew: true
+  lessons:
+    - { slug: "streaming-and-sse.html", title: "Streaming APIs & Server-Sent Events", reading: "—", placeholder: true }
+    - { slug: "websockets-for-realtime.html", title: "WebSockets for realtime", reading: "—", placeholder: true }
+    - { slug: "graphql-docs-in-practice.html", title: "GraphQL docs in practice", reading: "—", placeholder: true }
+    - { slug: "grpc-and-protobuf.html", title: "gRPC and Protobuf — when, why, how to document", reading: "—", placeholder: true }
+
+- n: "07"
+  title: "AI-native documentation"
+  slug: "ai-native"
+  isNew: true
+  lessons:
+    - { slug: "writing-docs-for-llms.html", title: "Writing docs for LLMs: agent-friendly patterns", reading: "—", placeholder: true }
+    - { slug: "mcp-what-it-is.html", title: "Model Context Protocol: what it is, why you care", reading: "—", placeholder: true }
+    - { slug: "tool-use-schemas.html", title: "Function-calling & tool-use schemas", reading: "—", placeholder: true }
+    - { slug: "prompt-engineering-for-docs.html", title: "Prompt-engineering for doc generation", reading: "—", placeholder: true }
+    - { slug: "ai-doc-assistant.html", title: "Building an AI doc assistant for your docs site", reading: "—", placeholder: true }
+
+- n: "08"
+  title: "Practice & ship"
+  slug: "practice"
+  isNew: false
+  lessons:
+    - { slug: "beginnerrestapiexercises.html", title: "Document a REST API — beginner pass", reading: "30 min" }
+    - { slug: "intermediaterestapiexercises.html", title: "Document a REST API — intermediate pass", reading: "45 min" }
+    - { slug: "expertrestapiexercises.html", title: "Document a REST API — expert pass", reading: "60 min" }
+    - { slug: "beginnertestingapi.html", title: "Testing your API in Postman — beginner", reading: "20 min" }
+    - { slug: "intermediatetestingapi.html", title: "Testing your API in Postman — intermediate", reading: "30 min" }
+    - { slug: "expertapitesting.html", title: "Testing your API in Postman — expert", reading: "40 min" }
+    - { slug: "finalwords.html", title: "Course completion + portfolio guide", reading: "8 min" }

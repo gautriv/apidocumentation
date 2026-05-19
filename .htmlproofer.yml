@@ -1,0 +1,6 @@
+---
+:assume_extension: true
+:disable_external: true
+:enforce_https: false
+:ignore_urls:
+  - "/example.com/"

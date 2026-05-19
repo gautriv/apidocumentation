@@ -1,4 +1,7 @@
 ---
+module: 1
+lesson: 4
+slug: bdocumentingwebhook
 title: Webhook Documentation Exercises for Beginners
 description: Master webhook documentation with our hands-on exercises covering real-world scenarios. Learn to document webhook registration, events, payloads, security, and best practices through interactive exercises with solutions.
 keywords: Webhooks, API documentation, Webhook API writing, Webhook authentication, Webhook security, Webhook best practices, API writing exercises, API reference documentation, Webhook event handling, Webhook signature verification, API technical writing, Webhook payload documentation, Event-driven architecture

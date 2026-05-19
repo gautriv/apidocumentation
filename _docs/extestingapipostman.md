@@ -1,4 +1,7 @@
 ---
+module: 3
+lesson: 2
+slug: extestingapipostman
 title: Expert REST API Development Guide
 description: Master enterprise-grade API development with JWT authentication, role-based access control, database integration, rate limiting, and performance optimization. Learn how to build production-ready APIs with Flask.
 keywords: ["REST API development", "API security", "API authentication", "Postman API testing", "Flask API development", "Python API", "JWT authentication", "Role-Based Access Control (RBAC)", "API logging", "API rate limiting", "API documentation exercises", "API reference", "API performance optimization", "database integration", "SQLite", "caching", "API testing", "enterprise API", "production API"]

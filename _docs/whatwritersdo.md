@@ -1,4 +1,7 @@
 ---
+module: 6
+lesson: 1
+slug: whatwritersdo
 title: What Technical Writers Document in API Documentation
 description: Discover the essential elements technical writers document in API documentation, including endpoints, methods, parameters, requests, responses, examples, error messages, authentication, and rate limits. Learn how API documentation serves as the crucial guidebook for developers.
 keywords: API documentation components, technical writing for APIs, API endpoints documentation, API methods documentation, API parameters, API request response documentation, API error messages, API authentication documentation, rate limits documentation, reference API documentation, API documentation best practices, API documentation guide, technical writer role, API documentation structure, RESTful API documentation, API documentation examples, API reference guide, API technical writing, developer documentation, API endpoints, API methods, API parameters, API requests, API responses, API error codes, API authentication

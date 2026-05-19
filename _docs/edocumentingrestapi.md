@@ -1,4 +1,7 @@
 ---
+module: 2
+lesson: 5
+slug: edocumentingrestapi
 title: Expert REST API Documentation Exercises
 description: Master complex API documentation with these 5 expert-level exercises. Practice documenting GraphQL, gRPC, API versioning, security, and performance optimization for real-world scenarios.
 keywords: REST API documentation, API writing exercises, API reference, API documentation practice, API documentation test, API writing test, Technical Writing API exercises, API documentation challenges, API documentation best practices, hands-on API documentation, advanced API writing, API error handling, API authentication, API versioning, OAuth documentation, GraphQL API documentation, gRPC API documentation, API security, API performance optimization, API deprecation, real-world API documentation

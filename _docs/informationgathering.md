@@ -1,4 +1,7 @@
 ---
+module: 4
+lesson: 1
+slug: informationgathering
 title: How Technical Writers Document APIs
 description: Master the methodical approach technical writers use to create effective API documentation, from understanding APIs to publishing and maintaining documentation that developers love.
 keywords: API documentation process, technical writing for APIs, API documentation best practices, API documentation methodology, information gathering for API docs, documenting REST APIs, how to write API documentation, API documentation examples, API documentation structure, API documentation planning, API documentation testing, API documentation review, API documentation maintenance, API documentation strategy, technical writer workflow, documentation tools for APIs, API documentation templates, user-centered documentation, developer-friendly documentation, API reference guides, API getting started guides, code sample documentation, API error documentation, documenting authentication, API documentation platforms

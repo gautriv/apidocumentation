@@ -8,6 +8,12 @@ source "https://rubygems.org"
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
 gem "jekyll", "~> 4.3.4"
+# Ruby 3.5+ / 4.0 dropped these from the standard library; Jekyll 4.x still requires them.
+gem "logger"
+gem "csv"
+gem "base64"
+# CI uses this to catch broken links / missing alts / bad meta.
+gem "html-proofer", "~> 5.0", group: :test
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
 # gem "github-pages", group: :jekyll_plugins
@@ -17,6 +23,7 @@ group :jekyll_plugins do
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
   gem "jekyll-toc"
+  gem "jekyll-redirect-from"
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem

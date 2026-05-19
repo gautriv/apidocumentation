@@ -1,0 +1,12 @@
+<div class="flex items-center justify-between mt-12 pt-6 border-t border-ink/10">
+  <div class="prev">
+    {% if page.previous_page %}
+      <a href="{{ site.baseurl }}{{ page.previous_page.url }}" class="text-ink/60 hover:text-ink">← Previous</a>
+    {% endif %}
+  </div>
+  <div class="next">
+    {% if page.next_page %}
+      <a href="{{ site.baseurl }}{{ page.next_page.url }}" class="text-ink font-medium hover:text-copper">Next →</a>
+    {% endif %}
+  </div>
+</div>

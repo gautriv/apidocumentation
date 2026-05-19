@@ -1,4 +1,7 @@
 ---
+module: 2
+lesson: 2
+slug: course-completion
 title: 🎉 Congratulations
 description: Your journey from beginner to expert in API documentation is complete. Celebrate your achievement and discover resources to further advance your API documentation skills.
 keywords: API documentation, API documentation certification, API documentation course completion, Technical writing certification, API documentation mastery, API documentation portfolio, API technical writing, API documentation resources, REST API documentation, Webhook documentation, API reference documentation, OpenAPI documentation, API documentation best practices

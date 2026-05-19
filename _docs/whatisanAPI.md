@@ -1,4 +1,7 @@
 ---
+module: 5
+lesson: 5
+slug: whatisanAPI
 title: What is an API? Complete Beginner's Guide
 description: Understand what an API is, how APIs work, and why they're essential for modern software development. This comprehensive guide explains API concepts, types, and practical applications for beginners.
 keywords: API definition, What is an API, API basics, API for beginners, API examples, API request response, REST API, API types, API authentication, API authorization, API development, API testing, API integration, API best practices, API security, API endpoints, API documentation, API versioning, API design patterns, API lifecycle
