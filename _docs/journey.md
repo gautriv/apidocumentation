@@ -11,444 +11,117 @@ next_page:
   title: What an API actually is
 ---
 
-Welcome to the digital jungle! You've probably used the internet a thousand times today already (yes, including right now). But have you ever wondered how this magic actually works? I mean, how does typing "funny panda GIFs" into your browser magically bring up exactly what you want?
+{% comment %}block:1{% endcomment %}
+<!-- DRAFT block 1: diary opener. Will be filled in Task 12. -->
 
-Think of your browser as your trusty sidekick, aiding you on a digital adventure. You've got questions, and the web holds the answers. But, how do they all communicate?
+{% comment %}block:2{% endcomment %}
+<!-- DRAFT block 2: today you will leave with. Will be filled in Task 13. -->
 
-<img src="./assets/gif/commpone.gif" alt="Internet working process - browser sending requests to server" title="How web browsers communicate with servers">
+<!-- AD SLOT 1 (between blocks 2 and 3) inserted in Task 18 -->
 
-<img src="./assets/gif/commptwo.gif" alt="Internet working process - server responding to browser requests" title="How servers respond to browser requests">
+{% comment %}block:3{% endcomment %}
+## What just happened, exactly
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+The web is built on a conversation between two pieces of software. The piece of software that asks for information is the caller. Sometimes the caller is your browser. Sometimes it is a phone app you opened this morning. Sometimes it is a script someone wrote to back up their photos. The web does not care which.
 
-## Step 1: Asking Nicely - Telling the Computer What You Want {#step-1-asking-nicely}
+The caller asks a question. That question is the request. The piece of software that listens for the request and decides what to send back is the server.
 
-Picture this: you're sitting on your couch, craving answers (or tacos, but let's stick with answers for now). You type something into your browser, like, "How do penguins flirt?" (Yes, they really do have moves.) Your browser nods, cracks its knuckles, and says, "Got it, boss!"
+When Devon refreshed the catalog, his browser sent a request to Greenfield's server. The server looked up the books, packaged the answer into a webpage, and sent it back. That answer is the response.
 
-Off it goes, sprinting to a server somewhere in the world to ask, "Hey, do you have any penguin flirting tips?" It's like your browser is that friend who always knows someone who knows someone who has what you need. The ultimate wingman.
+Every response includes a number that tells the caller if the request succeeded. That number is the status code.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+{% capture mermaid_src %}
+sequenceDiagram
+  participant Browser
+  participant Greenfield as Greenfield catalog server
+  Browser->>Greenfield: GET /catalog
+  Greenfield-->>Browser: "200 OK with HTML"
+{% endcapture %}
+{% include mermaid.html content=mermaid_src alt="The browser sends a GET request for the catalog. Greenfield returns a 200 OK response with HTML." %}
 
-## Step 2: Proving You're You - Authentication in Web Communication {#step-2-authentication}
+Look at the diagram. Which arrow is the request?
 
-But wait—before handing over the goods, the server might raise an eyebrow and ask, "Who are you, and how do I know you're not a robot?" Classic server skepticism.
+{% comment %}block:4{% endcomment %}
+## How we write down one interaction
 
-So, your browser turns to you and whispers, "Hey, they want proof. Give me your password." You oblige, typing in your super-secret code (hopefully not "password123"), and voilà—the server nods approvingly. "You're in. No robots allowed."
+The smallest useful artifact a writer of API documentation can produce is a description of one interaction. Two messages: what the caller sent and what came back.
 
-{% include optimized-image.html 
-  src="/assets/images/authentication-process.svg" 
-  alt="Web authentication process diagram showing login and verification steps" 
-  width="700" 
-  height="400" 
-  loading="lazy" 
-  class="centered"
-  caption="The authentication process: how websites verify your identity" 
-%}
+We write these messages using four pieces of information: the method, the path, the status code, and the body. The method, the headers, and the status code are details that support the path.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+Personally, I would always lead with the path. The path tells the caller what they are looking for. Method and status code tell you how the question was asked and how it was answered. Everything else is detail.
 
-## Step 3: Showing Your Secret Code - Secure Data Exchange {#step-3-secure-exchange}
+The catalog page Devon refreshed is part of Greenfield's public website at `greenfield.lib`. It is not an API. The future API ships in a few lessons at `api.greenfield.lib/v1`.
 
-<br>
-You type in your secret code (password), and your browser hands it to the server. If it checks out, the server says, "Alright, come on in!"
+The request:
+```http
+GET /catalog HTTP/1.1
+Host: greenfield.lib
+```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+The response:
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html
 
+<html>...</html>
+```
 
-## Step 4: The Great Info Hunt – How Servers Process Requests {#step-4-info-hunt}
+{% include interactive-svg.html slug="journey" alt="Two cards labeled REQUEST and RESPONSE. The request card shows GET /catalog with the Host header. The response card shows the 200 OK status, the Content-Type header, and the HTML body. Hover or tap any element to see what it is." %}
 
-Now the server gets to work. It dives into its database, a huge digital filing cabinet, and searches for exactly what you asked for. Imagine a librarian sprinting through rows of books, muttering, "Penguins... penguins... ah, here it is!" The server grabs the info, wraps it up neatly, and sends it back to your browser. Mission accomplished. 
+By hovering over the diagram, you learned exactly what each part of the message does.
 
-<div class="interactive-demo">
-  <h4>Try it yourself: How HTTP Requests Work</h4>
-  <div class="demo-container">
-    <div class="demo-controls">
-      <button id="send-request-btn" class="btn-primary">Send Request</button>
-      <button id="reset-demo-btn" class="btn-secondary">Reset</button>
-    </div>
-    <div class="demo-visualization">
-      <div id="browser" class="demo-item">Browser</div>
-      <div id="request-arrow" class="arrow right hidden">→</div>
-      <div id="server" class="demo-item">Server</div>
-      <div id="response-arrow" class="arrow left hidden">←</div>
-    </div>
-    <div id="request-status" class="demo-status">Click "Send Request" to start</div>
-  </div>
-</div>
+{% comment %}block:5{% endcomment %}
+## Try it on Greenfield
 
-<style>
-.interactive-demo {
-  background: #f8f9fb;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 30px 0;
-  border: 1px solid #e2e8f0;
-}
-.demo-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.demo-controls {
-  display: flex;
-  gap: 10px;
-}
-.btn-primary, .btn-secondary {
-  padding: 8px 16px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-}
-.btn-primary {
-  background: #4a6ef5;
-  color: white;
-}
-.btn-secondary {
-  background: #e2e8f0;
-  color: #4a5568;
-}
-.demo-visualization {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  margin: 20px 0;
-}
-.demo-item {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  border: 2px solid #4a6ef5;
-  flex: 1;
-  text-align: center;
-  font-weight: bold;
-}
-.arrow {
-  font-size: 24px;
-  font-weight: bold;
-  color: #4a6ef5;
-  transition: opacity 0.5s;
-}
-.right {
-  transform: scaleX(1);
-}
-.left {
-  transform: scaleX(-1);
-}
-.hidden {
-  opacity: 0;
-}
-.demo-status {
-  background: white;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #e2e8f0;
-  min-height: 40px;
-  text-align: center;
-  font-style: italic;
-}
-</style>
+{% capture exercise %}
+**Five minutes, in your terminal.**
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const sendRequestBtn = document.getElementById('send-request-btn');
-  const resetDemoBtn = document.getElementById('reset-demo-btn');
-  const requestArrow = document.getElementById('request-arrow');
-  const responseArrow = document.getElementById('response-arrow');
-  const requestStatus = document.getElementById('request-status');
-  const browser = document.getElementById('browser');
-  const server = document.getElementById('server');
-  
-  let demoRunning = false;
-  
-  sendRequestBtn.addEventListener('click', function() {
-    if (demoRunning) return;
-    
-    demoRunning = true;
-    sendRequestBtn.disabled = true;
-    
-    // Step 1: Send request
-    requestStatus.textContent = "Browser: Sending request to server...";
-    browser.style.background = "#e3f2fd";
-    setTimeout(() => {
-      requestArrow.classList.remove('hidden');
-      
-      // Step 2: Server processes
-      setTimeout(() => {
-        requestStatus.textContent = "Server: Processing request...";
-        server.style.background = "#fffde7";
-        
-        // Step 3: Server sends response
-        setTimeout(() => {
-          requestStatus.textContent = "Server: Sending response back to browser...";
-          responseArrow.classList.remove('hidden');
-          
-          // Step 4: Browser renders response
-          setTimeout(() => {
-            requestStatus.textContent = "Browser: Received response! Rendering the page...";
-            browser.style.background = "#e8f5e9";
-            
-            // Complete
-            setTimeout(() => {
-              requestStatus.textContent = "Process complete! The browser displays the requested information.";
-              sendRequestBtn.disabled = false;
-              demoRunning = false;
-            }, 1500);
-          }, 1000);
-        }, 1200);
-      }, 800);
-    }, 500);
-  });
-  
-  resetDemoBtn.addEventListener('click', function() {
-    requestArrow.classList.add('hidden');
-    responseArrow.classList.add('hidden');
-    browser.style.background = "white";
-    server.style.background = "white";
-    requestStatus.textContent = "Click \"Send Request\" to start";
-    sendRequestBtn.disabled = false;
-    demoRunning = false;
-  });
-});
-</script>
+Greenfield does not have an API for you to call yet. We will get there. In the meantime, every public web server speaks the same request and response shape.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+Pick any public API you have heard of. If you do not have one in mind, run this:
 
-## Step 5: Making It Look Nice - Browser Rendering Process {#step-5-rendering}
+```bash
+curl -v https://api.github.com
+```
 
-When the info arrives, it's not exactly glamorous. Think plain, unseasoned tofu. That's where your browser's dream team—HTML, CSS, and JavaScript—comes in. These guys are like the Queer Eye of the internet. They take that plain data and transform it into a stunning, user-friendly webpage.
+In the verbose output, find:
 
-Without them? Every site would look like a badly formatted Word document. Yikes.
+- A line starting with `>` showing what you sent.
+- A line starting with `< HTTP/` showing the status code.
+- The JSON body at the end.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+Then write one sentence. For example: "I sent GET / to api.github.com. The server responded with 200 OK and a JSON body listing the available endpoints."
 
+If you can write that sentence in your own words, you have written your first atomic unit of API documentation.
 
-## Step 6: Magic Storage Place - Database Systems in Web Architecture {#step-6-databases}
+If you see `403 rate limit exceeded`, switch to another public API and try again. GitHub caps unauthenticated traffic at 60 requests an hour per IP.
+{% endcapture %}
+{% include callout.html variant="exercise" body=exercise %}
 
-Behind the scenes, all the magic starts in the database—a giant vault of information. Imagine it as the Hogwarts library, minus the floating candles but with equally nerdy spells like SQL. Whenever the server needs something, it waves its wand (okay, it types a query), and poof—the info is retrieved. No owls required.
+{% comment %}block:6{% endcomment %}
+## The trap nobody warns you about
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+{% capture trap %}
+The trap is thinking of "the internet" as one transaction.
 
-## Step 7: Middleman Talk - API Communication Explained {#step-7-middleman-talk}
+When you visit the Greenfield catalog page, your browser does not send one request. It sends about sixty. One for the HTML, one for the stylesheet, one for the logo, one for each book cover, one for the analytics script, one for the font file. By the time the page is rendered, there is a long ledger of requests and responses in your browser's network panel.
 
-Sometimes, your browser and the server need a helper to ensure everyone understands each other. 
+Devon's version, which he says approximately once a month: "When you say 'I visited a website', what you actually did was send a couple hundred requests. The illusion of one transaction is the browser's job, not the internet's."
 
-Confused?
+This matters for documentation. When a caller says "the page failed", they usually mean one specific request in that ledger failed. The whole page rarely fails as a unit. As a writer, your job is to make the ledger inspectable.
+{% endcapture %}
+{% include callout.html variant="warning" body=trap %}
 
-Imagine your browser and the server are like two friends from different countries. They both want to chat and share information, but there's a language barrier. That's where our hero comes in – the API, short for Application Programming Interface.
+{% comment %}block:7{% endcomment %}
+<!-- DRAFT block 7: words for standups. Will be filled in Task 14. -->
 
-Think of the API as a clever translator, fluent in both "browser language" and "server language." Its job is to make sure your browser and the server can talk and understand each other effortlessly. It's like the helpful friend who steps in, ensuring smooth communication between two people who speak different languages.
+{% comment %}block:8{% endcomment %}
+<!-- DRAFT block 8: AI co-pilot tip. Will be filled in Task 15. -->
 
-{% include optimized-image.html 
-  src="/assets/images/api-translator.svg" 
-  alt="API acting as a translator between browser and server" 
-  width="800" 
-  height="450" 
-  loading="lazy" 
-  class="centered"
-  caption="APIs: The universal translators of the internet" 
-%}
+<!-- AD SLOT 2 (between blocks 8 and 9) inserted in Task 18 -->
 
-The API knows the rules of the game. It says, "Hey, browser, here's how the server likes to be spoken to," and vice versa. This way, your browser can ask for information, and the server can respond in a way that your browser can easily understand.
+{% comment %}block:9{% endcomment %}
+<!-- DRAFT block 9: before you go. Will be filled in Task 16. -->
 
-In simple terms, the API is the bridge that helps different parts of the web world work together. Without this translator, your browser and the server might struggle to communicate effectively, and we wouldn't get the seamless online experience we've come to expect.
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-  
-
-## The Treasure Map – Understanding API Documentation {#treasure-map}
-
-Now, APIs are amazing, but they're not mind readers. They need instructions—like a treasure map—to know what they're supposed to do. And that's where you come in. API documentation is the ultimate guide for developers, showing them how to use APIs to build cool stuff without breaking anything (hopefully).
-
-In this course, we're going to demystify how to write this magical map. By the end, you'll be an API documentation wizard, capable of guiding developers through the wildest API jungles. Ready to channel your inner Gandalf? Let's go!
-
-{% include faq-section.html 
-  title="Frequently Asked Questions About Web Communication"
-  description="Get answers to the most commonly asked questions about how the internet and web communication works."
-  data_file="web_communication_faqs"
-%}
-
-{% include key_takeaways.html content="
-<ul>
-  <li>The internet works through a conversation between your browser (client) and servers</li>
-  <li>Authentication ensures secure communication between browsers and servers</li>
-  <li>Servers retrieve information from databases based on requests</li>
-  <li>HTML, CSS, and JavaScript transform data into visually appealing webpages</li>
-  <li>APIs act as translators between different systems, allowing them to communicate</li>
-  <li>API documentation serves as the instruction manual for developers to use APIs effectively</li>
-</ul>
-" %}
-
-{% include quiz.html 
-  id="journey"
-  title="Test Your Knowledge: How the Internet Works"
-  description="Let's see how well you understand the concepts of web communication. Select the best answer for each question."
-  questions=site.data.journey_questions
-  theme="blue"
-  animate=true
-%}
-
-<div class="author-cta">
-  <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
-  <div class="author-message">
-    <h4>Was this guide helpful?</h4>
-    <p>If you found this this guide valuable, please share it with your colleagues or on social media. Your feedback helps us improve our content!</p>
-    <div class="social-share">
-      <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text=Check out this excellent guide on how internet works" class="share-button twitter">Share on Twitter</a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title=Understanding how internet works" class="share-button linkedin">Share on LinkedIn</a>
-    </div>
-  </div>
-</div>
-
-<style>
-.author-cta {
-  display: flex;
-  background: #f8f9fb;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 30px 0;
-  border: 1px solid #e2e8f0;
-  gap: 20px;
-  align-items: center;
-}
-.author-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.author-message {
-  flex: 1;
-}
-.author-message h4 {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-.author-message p {
-  margin-bottom: 12px;
-}
-.social-share {
-  display: flex;
-  gap: 10px;
-}
-.share-button {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: white;
-}
-.twitter {
-  background: #1DA1F2;
-}
-.linkedin {
-  background: #0077B5;
-}
-@media (max-width: 600px) {
-  .author-cta {
-    flex-direction: column;
-    text-align: center;
-  }
-  .social-share {
-    justify-content: center;
-  }
-}
-</style>
-
-{% include related_resources.html 
-  title="Learn More About Web Technologies"
-  description="Expand your knowledge about how the internet works with these resources."
-  external_links="How DNS Works,https://www.cloudflare.com/learning/dns/what-is-dns/|Browser Rendering Process,https://developers.google.com/web/fundamentals/performance/critical-rendering-path|HTTP Protocol Explained,https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"
-  tools="HTTP Status Code Reference,https://httpstatuses.com/|Web Request Test Tool,https://reqbin.com/|Browser DevTools Guide,https://developers.google.com/web/tools/chrome-devtools"
-%}
+{% comment %}block:10{% endcomment %}
+<!-- DRAFT block 10: next week + signoff. Will be filled in Task 17. -->
