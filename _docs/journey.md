@@ -29,7 +29,7 @@ That "something else" is the part of the web that everyone uses and nobody learn
 - The atomic unit. How to describe one interaction in writing.
 - An AI prompt that turns a `curl -v` dump into labels.
 
-<!-- AD SLOT 1 (between blocks 2 and 3) inserted in Task 18 -->
+{% include ad-slot.html slot="2222222222" format="auto" %}
 
 {% comment %}block:3{% endcomment %}
 ## What just happened, exactly
@@ -153,7 +153,7 @@ OUTPUT:
 
 **What to watch for.** GPT will sometimes collapse repetitive lines into one with "... (and so on)". Ask it to expand if you want every line. GPT may also add commentary about what "should" come next. Ignore the speculation. Trust only the lines that are actually in your output.
 
-<!-- AD SLOT 2 (between blocks 8 and 9) inserted in Task 18 -->
+{% include ad-slot.html slot="3333333333" format="auto" %}
 
 {% comment %}block:9{% endcomment %}
 ## Before you go
