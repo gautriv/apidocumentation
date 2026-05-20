@@ -26,6 +26,7 @@
     - { slug: "anatomyofurl.html", title: "Anatomy of a URL (part 1)", reading: "15 min" }
     - { slug: "anatomyofurltwo.html", title: "Anatomy of a URL (part 2)", reading: "12 min" }
     - { slug: "apirequestsresponses.html", title: "Request & response", reading: "15 min" }
+    - { slug: "pagination-idempotency-rate-limits.html", title: "Pagination, idempotency, rate limits", reading: "—", placeholder: true }
     - { slug: "curl.html", title: "cURL — and why you should still know it", reading: "15 min" }
     - { slug: "auth-incl-agents.html", title: "Auth: keys, OAuth, mTLS, and what agents need", reading: "—", placeholder: true }
 
@@ -45,6 +46,7 @@
   slug: "writing-docs"
   isNew: false
   lessons:
+    - { slug: "quickstart-that-ships.html", title: "Quickstart that ships in 5 minutes", reading: "—", placeholder: true }
     - { slug: "writingapi.html", title: "The bones of an endpoint reference", reading: "10 min" }
     - { slug: "keyconcepts.html", title: "Bridging the dev/writer gap", reading: "18 min" }
     - { slug: "openapi-without-tears.html", title: "OpenAPI without tears", reading: "—", placeholder: true }
@@ -81,6 +83,7 @@
     - { slug: "mcp-what-it-is.html", title: "Model Context Protocol: what it is, why you care", reading: "—", placeholder: true }
     - { slug: "tool-use-schemas.html", title: "Function-calling & tool-use schemas", reading: "—", placeholder: true }
     - { slug: "prompt-engineering-for-docs.html", title: "Prompt-engineering for doc generation", reading: "—", placeholder: true }
+    - { slug: "eval-driven-docs.html", title: "Eval-driven docs: testing docs the way you test code", reading: "—", placeholder: true }
     - { slug: "ai-doc-assistant.html", title: "Building an AI doc assistant for your docs site", reading: "—", placeholder: true }
 
 - n: "08"

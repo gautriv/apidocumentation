@@ -1,17 +1,17 @@
 ---
 module: 4
-lesson: 2
+lesson: 3
 slug: bridginggaps
 title: Bridging the Gaps in API Documentation
 description: Master critical API concepts like rate limiting, pagination, authentication, webhooks, and error handling to create world-class API documentation. Learn expert-level techniques for technical writers.
 keywords: REST API documentation, API writing exercises, API reference, API documentation practice, API documentation test, API writing test, Technical Writing API exercises, API documentation challenges, API documentation best practices, hands-on API documentation, advanced API writing, API error handling, API authentication, API rate limits, API pagination, API security, API webhooks, API debugging, JWT authentication, OAuth implementation, cursor-based pagination, API throttling
 permalink: /keyconcepts.html
 next_page:
-  url: /curl.html
-  title: "Working with cURL"
+  url: /webhooks.html
+  title: "What webhooks are"
 previous_page:
-  url: /beginnerrestapiexercises.html
-  title: "Beginner REST API Exercises"
+  url: /writingapi.html
+  title: "The bones of an endpoint reference"
 image: /assets/images/api-docs-concepts.svg
 last_modified_at: 2023-10-20T09:00:00+00:00
 author_name: Technical Writing Expert

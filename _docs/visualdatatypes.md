@@ -9,11 +9,11 @@ keywords: data types visualization, API data types UI, Boolean visualization, St
 permalink: /visualizingdatatypes.html
 
 next_page:
-  url: /apirequestsresponses.html
-  title: "Understanding API Requests and Responses"
+  url: /quickstart-that-ships.html
+  title: "Quickstart that ships in 5 minutes"
 previous_page:
-  url: /XML101.html
-  title: "XML and Its Data Types"
+  url: /dataformats.html
+  title: "Data formats overview"
 ---
 
 So, you've come this far in your journey—bravo! 

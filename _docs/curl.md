@@ -1,17 +1,17 @@
 ---
 module: 2
-lesson: 6
+lesson: 7
 slug: curl
 title: Mastering cURL for API Testing and Documentation
 description: Learn how to use cURL to test API endpoints, authenticate requests, send data payloads, and debug responses. Essential command line techniques for technical writers and developers working with REST APIs.
 keywords: REST API documentation, API writing exercises, API reference, API documentation practice, API documentation test, API writing test, Technical Writing API exercises, API documentation challenges, API documentation best practices, hands-on API documentation, advanced API writing, API error handling, API authentication, cURL API testing, API debugging, command-line API testing, cURL commands, API request headers, API payloads, HTTP methods cURL
 permalink: /curl.html
 next_page:
-  url: /beginnerrestapiexercises.html
-  title: "Beginner REST API Documentation Exercises"
+  url: /JSON101.html
+  title: "JSON like you mean it"
 previous_page:
-  url: /keyconcepts.html
-  title: "Key API Concepts"
+  url: /pagination-idempotency-rate-limits.html
+  title: "Pagination, idempotency, rate limits"
 image: /assets/images/api-docs-curl.svg
 last_modified_at: 2023-10-18T09:00:00+00:00
 author_name: Technical Writing Expert
