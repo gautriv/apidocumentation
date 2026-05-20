@@ -125,15 +125,46 @@ This matters for documentation. When a caller says "the page failed", they usual
 {% include callout.html variant="warning" body=trap %}
 
 {% comment %}block:7{% endcomment %}
-<!-- DRAFT block 7: words for standups. Will be filled in Task 14. -->
+## Words you can drop in standups now
+
+- {% include glossary-term.html term="caller" %}: Use this when you mean the software making the request, whatever it is. "The caller is misbehaving" works for a browser, a mobile app, or a script. You will also hear "client" used the same way; we use "caller" in this course.
+- {% include glossary-term.html term="request" %}: Use this when you mean what the caller sent. "Did the request go through?" is more precise than "did it work?"
+- {% include glossary-term.html term="response" %}: Use this when you mean what came back from the server. "What did the response say?" beats "what did the page say?"
+- {% include glossary-term.html term="status code" %}: Use this when you want to be specific about what the server said. "We got a 404" is more useful than "the call failed".
+- {% include glossary-term.html term="server" %}: Use this when you mean the software that receives the request and decides what to send back. "Server returned a 500" is more useful than "the website broke".
 
 {% comment %}block:8{% endcomment %}
-<!-- DRAFT block 8: AI co-pilot tip. Will be filled in Task 15. -->
+## Today's prompt for your AI assistant
+
+GPT, this time.
+
+**The situation.** You ran your first `curl -v` and the output scrolled past more lines than you expected. Some lines start with `>`, some with `<`, some with `*`. You can read a few of them. Most look like a wall of text.
+
+**The prompt, exactly as written:**
+
+```text
+Below is the verbose output of a curl command. Label every line as either request, response, or metadata. For each line, in one sentence, say what the line is telling me. Do not summarize. Label line by line.
+
+OUTPUT:
+[paste curl output here]
+```
+
+**What to expect back.** A line by line annotation. The first lines (starting with `*`) are usually connection setup: DNS resolution, TLS handshake. Lines starting with `>` are what your terminal sent to the server. Lines starting with `<` are what the server sent back. After the response headers there is usually a blank line, then the body.
+
+**What to watch for.** GPT will sometimes collapse repetitive lines into one with "... (and so on)". Ask it to expand if you want every line. GPT may also add commentary about what "should" come next. Ignore the speculation. Trust only the lines that are actually in your output.
 
 <!-- AD SLOT 2 (between blocks 8 and 9) inserted in Task 18 -->
 
 {% comment %}block:9{% endcomment %}
-<!-- DRAFT block 9: before you go. Will be filled in Task 16. -->
+## Before you go
+
+Suppose Greenfield wanted to make its catalog available the way GitHub does. Where would that conversation start?
+
+Answer it in your head before you read the next lesson.
 
 {% comment %}block:10{% endcomment %}
-<!-- DRAFT block 10: next week + signoff. Will be filled in Task 17. -->
+## Next week at Greenfield
+
+By next Tuesday, an old friend of Devon's stops by the branch with a returned book and a question.
+
+{% include signoff.html %}
