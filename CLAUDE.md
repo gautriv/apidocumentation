@@ -9,10 +9,64 @@ The free **API Documentation Course** published at `https://beingtechnicalwriter
 Modernization is phased:
 - **Phase 0 (done):** Design direction picked — see `design-mockups/a-stripe.html` (homepage) and `a-stripe-lesson.html` (lesson page).
 - **Phase 1 (structurally done):** New layout shell, Tailwind, design tokens, data-driven nav, name-modal personalization, Cmd+K palette stub, AI chat widget stub, ad-slot scaffolding, legacy cleanup. See `design-mockups/MIGRATION_PLAN.md` for the file-by-file checklist.
-- **Phase 2 (next):** Lesson-by-lesson rewrites in Maya's voice, GA4-traffic-first. New lessons for Module 6 (Modern API shapes) and Module 7 (AI-native documentation). **Source of truth: `docs/superpowers/specs/2026-05-19-phase-2-content-rewrite-design.md`.** That spec is canonical for the lesson template, the voice rules, the AI tell ban list, the rewrite order, the Definition of Done, the visual production pipeline, the prerequisites, and the Greenfield universe.
+- **Phase 2 (in progress):** Lesson-by-lesson rewrites in Maya's voice. **Source of truth: `docs/superpowers/specs/2026-05-19-phase-2-content-rewrite-design.md`.** That spec is canonical for the lesson template, the voice rules, the AI tell ban list, the Definition of Done, the visual production pipeline, the prerequisites, and the Greenfield universe.
+  - **Pilot shipped (2026-05-20):** `whatisanapi.html` (Module 1 Lesson 2). Live at `https://beingtechnicalwriter.com/apidocumentation/whatisanapi.html`. Infrastructure (signoff, interactive-svg framework, voice linter, mermaid theme, callout exercise variant, greenfield-bible) all landed in the same merge.
+  - **Phasing decision (2026-05-20, overrides spec Section 4):** Rewrite all 42 remaining lessons **in curricular order** (Module 1 Lesson 1 next, then Module 1 Lesson 3, then Module 1 Lesson 4, and so on through Module 8). Skip the spec's GA4-traffic-first ordering and skip the 14-day-or-500-pageviews wait. Reason: tell one complete user story across the arc, not jump around by traffic. Risk accepted: if a spec issue surfaces mid-batch, fixes will be applied across all already-written lessons rather than caught at lesson 14.
+  - **Per-lesson workflow** still follows spec Section 5: brainstorm → 10-block outline → draft → SVG + Mermaid → voice pass via `scripts/voice-check.rb` → PR with DoD checklist → human review (Gaurav).
+  - **Plans live at:** `docs/superpowers/plans/`. The pilot plan is at `docs/superpowers/plans/2026-05-20-phase-2-pilot.md`; future per-lesson or per-module plans go in the same directory.
 - **Phase 3 (when Phase 2 lands):** Final legacy cleanup once every lesson is migrated off the restored `*_exe_*.html` / `enhanced_note.html` / `key_takeaways.html` includes.
 
 Parent plan: `~/.claude/plans/i-prepared-this-api-proud-codd.md` (off-repo).
+
+## Next-lesson queue (curricular order)
+
+The order Phase 2 will rewrite the remaining lessons. Strike through after merge; the queue is the source of truth for what is next.
+
+1. `_docs/howinternetworks.md` — Module 1 Lesson 1, "The internet, the short version"
+2. (`whatisanapi.md` — done, shipped 2026-05-20)
+3. `_docs/whatwritersdo.md` — Module 1 Lesson 3, "What an API writer does in 2026"
+4. `_docs/informationgathering.md` — Module 1 Lesson 4, "Information gathering and interviewing the codebase"
+5. *new* `_docs/audiences-humans-and-agents.md` — Module 1 Lesson 5, placeholder slot
+6. `_docs/restAPI.md` — Module 2 Lesson 1, "REST principles"
+7. `_docs/typesofAPI.md` — Module 2 Lesson 2, "Types of APIs"
+8. `_docs/anatomyofurl.md` — Module 2 Lesson 3, "Anatomy of a URL (part 1)"
+9. `_docs/anatomyofurltwo.md` — Module 2 Lesson 4, "Anatomy of a URL (part 2)"
+10. `_docs/requestandresponse.md` — Module 2 Lesson 5, "Request and response" (note: source file is `requestandresponse.md`, slug in modules.yml is `apirequestsresponses.html`; preserve the permalink, fix the slug-to-filename mismatch during rewrite)
+11. `_docs/curl.md` — Module 2 Lesson 6, "cURL and why you should still know it"
+12. *new* `_docs/auth-incl-agents.md` — Module 2 Lesson 7, placeholder slot
+13. `_docs/json.md` — Module 3 Lesson 1, "JSON like you mean it" (slug mismatch: source is `json.md`, modules.yml has `JSON101.html`)
+14. `_docs/xml.md` — Module 3 Lesson 2 (slug mismatch with `XML101.html`)
+15. `_docs/dataformats.md` — Module 3 Lesson 3
+16. `_docs/visualdatatypes.md` — Module 3 Lesson 4 (slug mismatch with `visualizingdatatypes.html`)
+17. *new* `_docs/json-schema-for-llms.md` — Module 3 Lesson 5, placeholder
+18. `_docs/writingapi.md` — Module 4 Lesson 1
+19. `_docs/bridginggaps.md` — Module 4 Lesson 2 (slug mismatch with `keyconcepts.html`)
+20. *new* `_docs/openapi-without-tears.md` — Module 4 Lesson 3, placeholder
+21. *new* `_docs/samples-that-dont-rot.md` — Module 4 Lesson 4, placeholder
+22. *new* `_docs/errors-that-help.md` — Module 4 Lesson 5, placeholder (defines the canonical error catalog used by all later lessons)
+23. `_docs/webhook.md` — Module 5 Lesson 1 (slug mismatch with `webhooks.html`)
+24. `_docs/bdocumentingwebhook.md` — Module 5 Lesson 2 (slug mismatch)
+25. `_docs/idocumentingwebhook.md` — Module 5 Lesson 3 (slug mismatch)
+26. `_docs/edocumentingwebhook.md` — Module 5 Lesson 4 (slug mismatch)
+27. *new* `_docs/asyncapi-event-driven.md` — Module 5 Lesson 5, placeholder
+28. *new* `_docs/streaming-and-sse.md` — Module 6 Lesson 1, placeholder
+29. *new* `_docs/websockets-for-realtime.md` — Module 6 Lesson 2, placeholder
+30. *new* `_docs/graphql-docs-in-practice.md` — Module 6 Lesson 3, placeholder
+31. *new* `_docs/grpc-and-protobuf.md` — Module 6 Lesson 4, placeholder
+32. *new* `_docs/writing-docs-for-llms.md` — Module 7 Lesson 1, placeholder
+33. *new* `_docs/mcp-what-it-is.md` — Module 7 Lesson 2, placeholder
+34. *new* `_docs/tool-use-schemas.md` — Module 7 Lesson 3, placeholder
+35. *new* `_docs/prompt-engineering-for-docs.md` — Module 7 Lesson 4, placeholder
+36. *new* `_docs/ai-doc-assistant.md` — Module 7 Lesson 5, placeholder
+37. `_docs/bdocumentingrestapi.md` — Module 8 Lesson 1 (slug mismatch)
+38. `_docs/idocumentingrestapi.md` — Module 8 Lesson 2 (slug mismatch)
+39. `_docs/edocumentingrestapi.md` — Module 8 Lesson 3 (slug mismatch)
+40. `_docs/btestingapipostman.md` — Module 8 Lesson 4 (slug mismatch)
+41. `_docs/itestingapipostman.md` — Module 8 Lesson 5 (slug mismatch)
+42. `_docs/extestingapipostman.md` — Module 8 Lesson 6 (slug mismatch with `expertapitesting.html`)
+43. `_docs/course-completion.md` — Module 8 Lesson 7 (slug mismatch with `finalwords.html`)
+
+The "slug mismatch" notes above mean the source filename does not match the slug in `_data/modules.yml`. During rewrite, decide per-lesson whether to rename the source file (like the pilot did, using the case-rename two-step) or to live with the mismatch. The OG image generator at `scripts/generate-og.mjs` derives the filename from the source, so a rename is the cleanest path for OG image consistency.
 
 ## Local dev
 
