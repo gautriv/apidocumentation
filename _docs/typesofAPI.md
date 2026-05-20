@@ -1,5 +1,5 @@
 ---
-module: 5
+module: 2
 lesson: 2
 slug: typesofAPI
 title: Types of APIs - A Complete Overview

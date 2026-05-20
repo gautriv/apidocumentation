@@ -1,6 +1,6 @@
 ---
-module: 2
-lesson: 2
+module: 8
+lesson: 7
 slug: course-completion
 title: 🎉 Congratulations
 description: Your journey from beginner to expert in API documentation is complete. Celebrate your achievement and discover resources to further advance your API documentation skills.

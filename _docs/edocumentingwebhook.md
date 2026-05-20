@@ -1,6 +1,6 @@
 ---
-module: 3
-lesson: 1
+module: 5
+lesson: 4
 slug: edocumentingwebhook
 title: Expert Webhook Documentation Exercises | Advanced Integration & Enterprise-Scale Solutions
 description: Master complex webhook architectures with our expert-level exercises. Tackle versioning strategies, high-throughput systems, multi-tenant architectures, and enterprise compliance requirements.

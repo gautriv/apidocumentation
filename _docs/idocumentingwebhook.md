@@ -1,6 +1,6 @@
 ---
-module: 3
-lesson: 4
+module: 5
+lesson: 3
 slug: idocumentingwebhook
 title: Intermediate Webhook Documentation Exercises
 description: Take your webhook documentation skills to the next level with our intermediate exercises. Learn to document complex event systems, security measures, conditional triggers, and rate-limiting with practical, hands-on examples.

@@ -1,6 +1,6 @@
 ---
-module: 3
-lesson: 2
+module: 8
+lesson: 6
 slug: extestingapipostman
 title: Expert REST API Development Guide
 description: Master enterprise-grade API development with JWT authentication, role-based access control, database integration, rate limiting, and performance optimization. Learn how to build production-ready APIs with Flask.

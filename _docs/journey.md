@@ -1,6 +1,6 @@
 ---
-module: 4
-lesson: 3
+module: 1
+lesson: 1
 slug: journey
 title: How the Internet Works? Understanding Web Communication in Simple Terms
 description: A comprehensive guide explaining how the internet works, including browsers, servers, APIs, HTTP requests, and data flow in simple, engaging language for beginners and technical writers.

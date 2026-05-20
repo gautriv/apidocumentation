@@ -1,6 +1,6 @@
 ---
 module: 5
-lesson: 4
+lesson: 1
 slug: webhook
 title: Webhooks API Documentation Guide
 description: Learn how webhooks deliver real-time notifications instead of requiring constant API polling. This guide explains webhook implementation, security, best practices, and documentation standards for modern APIs.

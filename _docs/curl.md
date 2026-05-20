@@ -1,6 +1,6 @@
 ---
 module: 2
-lesson: 3
+lesson: 6
 slug: curl
 title: Mastering cURL for API Testing and Documentation
 description: Learn how to use cURL to test API endpoints, authenticate requests, send data payloads, and debug responses. Essential command line techniques for technical writers and developers working with REST APIs.

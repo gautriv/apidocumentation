@@ -1,6 +1,6 @@
 ---
-module: 6
-lesson: 2
+module: 4
+lesson: 1
 slug: writingapi
 title: Writing Effective API Documentation - A Complete Guide
 description: Learn how to create clear, comprehensive API documentation that developers love. This guide covers structure, authentication, endpoints, parameters, examples, and best practices for technical writers.

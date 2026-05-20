@@ -1,6 +1,6 @@
 ---
-module: 4
-lesson: 4
+module: 3
+lesson: 1
 slug: json
 title: JSON in API Development
 description: Master JSON format for API development - learn about JSON objects, arrays, data types, and nesting. A comprehensive guide for developers and technical writers working with API payloads and responses.

@@ -1,6 +1,6 @@
 ---
-module: 1
-lesson: 5
+module: 4
+lesson: 2
 slug: bridginggaps
 title: Bridging the Gaps in API Documentation
 description: Master critical API concepts like rate limiting, pagination, authentication, webhooks, and error handling to create world-class API documentation. Learn expert-level techniques for technical writers.

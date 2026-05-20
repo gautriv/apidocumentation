@@ -1,6 +1,6 @@
 ---
-module: 1
-lesson: 2
+module: 2
+lesson: 4
 slug: anatomyofurltwo
 title: Advanced URL Anatomy in API Documentation
 description: Master the advanced components of URL structure in API documentation - endpoints, resources, HTTP methods, status codes, and authentication. Learn how each element enhances API functionality and why understanding these advanced URL concepts is essential for effective API integration and documentation.

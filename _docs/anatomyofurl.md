@@ -1,6 +1,6 @@
 ---
-module: 1
-lesson: 1
+module: 2
+lesson: 3
 slug: anatomyofurl
 title: Understanding URL Anatomy - The Building Blocks of API Endpoints
 description: Master the essential components of URL structure in API documentation - protocols, domains, paths, query parameters, and fragments. Learn how each element functions and why understanding URL anatomy is crucial for effective API integration and documentation.

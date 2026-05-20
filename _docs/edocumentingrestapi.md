@@ -1,6 +1,6 @@
 ---
-module: 2
-lesson: 5
+module: 8
+lesson: 3
 slug: edocumentingrestapi
 title: Expert REST API Documentation Exercises
 description: Master complex API documentation with these 5 expert-level exercises. Practice documenting GraphQL, gRPC, API versioning, security, and performance optimization for real-world scenarios.

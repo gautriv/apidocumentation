@@ -30,6 +30,9 @@ module.exports = {
         cream: '#fbf8f3',
         copper: '#b85c38',
         sage: '#5a7a64'
+      },
+      maxWidth: {
+        '8xl': '88rem'
       }
     }
   },

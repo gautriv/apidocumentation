@@ -5,10 +5,10 @@
       <button onclick="toggleSheet()" class="text-ink/55 text-lg leading-none w-8 h-8 flex items-center justify-center">×</button>
     </div>
     <nav class="p-3 space-y-1 text-sm">
-      <a href="#curriculum" onclick="toggleSheet()" class="block px-3 py-2 rounded-md hover:bg-ink/5">Curriculum</a>
-      <a href="#maya" onclick="toggleSheet()" class="block px-3 py-2 rounded-md hover:bg-ink/5">Meet Maya</a>
-      <a href="#sample" onclick="toggleSheet()" class="block px-3 py-2 rounded-md hover:bg-ink/5">Sample lesson</a>
-      <a href="#tools" onclick="toggleSheet()" class="block px-3 py-2 rounded-md hover:bg-ink/5">Tools</a>
+      <a href="{{ site.baseurl }}/#curriculum" onclick="toggleSheet()" class="block px-3 py-2 rounded-md hover:bg-ink/5">Curriculum</a>
+      <a href="{{ site.baseurl }}/#maya" onclick="toggleSheet()" class="block px-3 py-2 rounded-md hover:bg-ink/5">Meet Maya</a>
+      <a href="{{ site.baseurl }}/#sample" onclick="toggleSheet()" class="block px-3 py-2 rounded-md hover:bg-ink/5">Sample lesson</a>
+      {% if site.sponsor.enabled %}<a href="{{ site.baseurl }}/#tools" onclick="toggleSheet()" class="block px-3 py-2 rounded-md hover:bg-ink/5">Tools</a>{% endif %}
       <div class="pt-3 mt-3 border-t border-ink/10">
         <a href="{{ '/howinternetworks.html' | relative_url }}" onclick="toggleSheet(); startCourse(event)" class="block bg-ink text-cream text-center px-4 py-2.5 rounded-full font-medium">Start free →</a>
       </div>

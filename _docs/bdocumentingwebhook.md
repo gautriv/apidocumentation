@@ -1,6 +1,6 @@
 ---
-module: 1
-lesson: 4
+module: 5
+lesson: 2
 slug: bdocumentingwebhook
 title: Webhook Documentation Exercises for Beginners
 description: Master webhook documentation with our hands-on exercises covering real-world scenarios. Learn to document webhook registration, events, payloads, security, and best practices through interactive exercises with solutions.

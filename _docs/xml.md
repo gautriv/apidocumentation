@@ -1,6 +1,6 @@
 ---
-module: 6
-lesson: 3
+module: 3
+lesson: 2
 slug: xml
 title: XML in API Development
 description: Master XML format for API development - learn about XML elements, attributes, data types, and nesting. A comprehensive guide for developers and technical writers working with XML-based APIs and SOAP web services.

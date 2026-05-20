@@ -1,6 +1,6 @@
 ---
-module: 1
-lesson: 3
+module: 8
+lesson: 1
 slug: bdocumentingrestapi
 title: Beginner REST API Documentation Exercises
 description: Master the art of API documentation with these 5 practical exercises. Learn to document endpoints, parameters, authentication, and error responses with real-world scenarios designed for beginners.

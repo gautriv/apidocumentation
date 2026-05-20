@@ -1,6 +1,6 @@
 ---
-module: 5
-lesson: 3
+module: 3
+lesson: 4
 slug: visualdatatypes
 title: Visualizing Data Types in API Documentation
 description: Learn how common API data types (Boolean, String, Number, List, Date/Time, Enum) are visualized in user interfaces. An essential guide for API documentation, helping technical writers and developers represent abstract data concepts visually.

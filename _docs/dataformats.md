@@ -1,6 +1,6 @@
 ---
-module: 2
-lesson: 4
+module: 3
+lesson: 3
 slug: dataformats
 title: Understanding Data Formats in API Communication
 description: Master the essential data formats used in modern APIs including JSON, XML, and other structured data types. Learn how data formats facilitate effective API communication and why choosing the right format matters for developers and technical writers.

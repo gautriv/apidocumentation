@@ -1,6 +1,6 @@
 ---
-module: 4
-lesson: 2
+module: 8
+lesson: 5
 slug: itestingapipostman
 title: Intermediate REST API Development and Testing
 description: Learn to enhance your REST API with dynamic parameters, authentication, error handling, logging, and professional documentation. This hands-on guide builds on basic API concepts to create production-ready services.

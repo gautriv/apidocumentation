@@ -1,6 +1,6 @@
 ---
-module: 4
-lesson: 1
+module: 1
+lesson: 4
 slug: informationgathering
 title: How Technical Writers Document APIs
 description: Master the methodical approach technical writers use to create effective API documentation, from understanding APIs to publishing and maintaining documentation that developers love.

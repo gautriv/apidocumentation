@@ -1,5 +1,5 @@
 ---
-module: 5
+module: 2
 lesson: 1
 slug: restAPI
 title: REST APIs Key Concepts and Structure

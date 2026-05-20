@@ -1,6 +1,6 @@
 ---
-module: 3
-lesson: 3
+module: 8
+lesson: 2
 slug: idocumentingrestapi
 title: Intermediate REST API Documentation Exercises
 description: Level up your API documentation skills with these 5 intermediate exercises. Learn to document complex APIs with authentication, error handling, pagination, and security best practices.

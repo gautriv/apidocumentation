@@ -1,6 +1,6 @@
 ---
-module: 2
-lesson: 1
+module: 8
+lesson: 4
 slug: btestingapipostman
 title: Developing and Testing a REST API for Beginners
 description: Learn how to build, document, and test your own REST API using Python Flask and Postman. This step-by-step tutorial covers creating endpoints, implementing CRUD operations, and documenting with Swagger.

@@ -11,10 +11,10 @@
         </a>
       </div>
       <nav class="hidden md:flex items-center gap-7 text-sm text-ink/70">
-        <a href="#curriculum" class="hover:text-ink">Curriculum</a>
-        <a href="#maya" class="hover:text-ink">Meet Maya</a>
-        <a href="#sample" class="hover:text-ink">Sample</a>
-        <a href="#tools" class="hover:text-ink">Tools</a>
+        <a href="{{ site.baseurl }}/#curriculum" class="hover:text-ink">Curriculum</a>
+        <a href="{{ site.baseurl }}/#maya" class="hover:text-ink">Meet Maya</a>
+        <a href="{{ site.baseurl }}/#sample" class="hover:text-ink">Sample</a>
+        {% if site.sponsor.enabled %}<a href="{{ site.baseurl }}/#tools" class="hover:text-ink">Tools</a>{% endif %}
       </nav>
       <div class="flex items-center gap-2 sm:gap-3">
         <button onclick="openCmdK()" class="hidden md:flex items-center gap-2 text-sm text-ink/55 border border-ink/15 rounded-full px-3 py-1.5 hover:bg-ink/5">

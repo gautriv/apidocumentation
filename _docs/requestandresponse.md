@@ -1,5 +1,5 @@
 ---
-module: 4
+module: 2
 lesson: 5
 slug: requestandresponse
 title: Understanding API Requests and Responses
