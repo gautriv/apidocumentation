@@ -4,6 +4,11 @@ on:
   push:
     branches: ["modernize-phase-1", "master"]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
