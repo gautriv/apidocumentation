@@ -1,3 +1,29 @@
-<div class="text-xs uppercase tracking-wider text-ink/50 font-mono mb-4">
-  Module {{ page.module }} · Lesson {{ page.lesson }}
-</div>
+{% if page.collection == 'docs' or page.layout == 'doc' %}
+  <!-- Breadcrumb -->
+  <nav class="text-sm text-ink/55 mb-4 flex items-center gap-2 flex-wrap">
+    <a href="{{ site.baseurl }}/" class="hover:text-ink">Course</a>
+    <span class="text-ink/30">/</span>
+    <a href="{{ site.baseurl }}/#curriculum" class="hover:text-ink">Module {{ page.module }}</a>
+    <span class="text-ink/30">/</span>
+    <span class="text-ink/85">Lesson {{ page.lesson }}</span>
+  </nav>
+
+  <!-- Title block -->
+  <header class="mb-8">
+    {% if page.module == 1 and page.lesson == 2 %}
+    <div class="flex flex-wrap items-center gap-2 mb-4">
+      <span class="bg-copper/10 text-copper text-xs font-medium uppercase tracking-wider px-2.5 py-1 rounded-full">New for 2026</span>
+      <span class="bg-ink/5 text-ink/65 text-xs font-medium uppercase tracking-wider px-2.5 py-1 rounded-full">AI-native</span>
+    </div>
+    {% endif %}
+    <h1 class="h-display text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.05] mb-5">{{ page.title }}</h1>
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink/60">
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-full bg-copper text-cream flex items-center justify-center font-serif text-xs font-semibold">M</span>
+        <span>By Maya</span>
+      </div>
+      <span class="text-ink/30 hidden sm:inline">&middot;</span>
+      <span class="font-mono text-xs">{% if page.reading_time %}{{ page.reading_time }}{% else %}10{% endif %} min read</span>
+    </div>
+  </header>
+{% endif %}

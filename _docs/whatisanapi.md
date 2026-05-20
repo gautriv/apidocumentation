@@ -13,7 +13,6 @@ next_page:
   url: /whatwritersdo.html
   title: What an API writer does in 2026
 ---
-# What an API actually is
 
 {% comment %}block:1{% endcomment %}
 Tuesday evening at the branch. I was at the desk updating index cards for the new arrivals. Sam, an old friend of Devon's, came in returning a book and stayed to chat. He watched me for a minute. "You know you could just expose this as an API, right?"
