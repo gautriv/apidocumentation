@@ -25,6 +25,9 @@
         </article>
         {% include helpful.html %}
         {% include ad-slot.html slot="0987654321" format="auto" %}
+        {% if page.collection == 'docs' or page.layout == 'doc' %}
+          {% include giscus.html %}
+        {% endif %}
         {% include prev-next.html %}
         {% include edit-on-github.html %}
       </div>

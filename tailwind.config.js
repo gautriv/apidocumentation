@@ -13,6 +13,9 @@ module.exports = {
   // JS toggles these on/off at runtime — Tailwind can't see them via static scanning.
   safelist: [
     'name-only', 'tip-open', 'show', 'has-name', 'sheet-open',
+    'border-ink', 'border-copper', 'border-sage',
+    'text-ink', 'text-copper', 'text-sage',
+    'callout--tip', 'callout--warning', 'callout--recap', 'callout--exercise', 'callout--note',
     { pattern: /^(text|bg|border)-(ink|cream|copper|sage)\/(5|10|15|20|25|30|40|45|50|55|60|65|70|75|80|85|90)$/ }
   ],
   theme: {

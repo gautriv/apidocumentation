@@ -1,5 +1,10 @@
-<div class="mermaid">{{ include.content }}</div>
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, theme: 'default' });
-</script>
+<figure class="mermaid-figure my-8" aria-label="{{ include.alt | default: 'Diagram' }}">
+  <pre class="mermaid">{{ include.content }}</pre>
+  {%- unless page.mermaid_loaded -%}
+    <script type="module" src="{{ '/assets/js/mermaid-init.js' | relative_url }}"></script>
+    {%- assign page.mermaid_loaded = true -%}
+  {%- endunless -%}
+  <noscript>
+    <pre class="mermaid-source text-xs text-ink/60 font-mono p-3 bg-cream/50 rounded">{{ include.content | escape }}</pre>
+  </noscript>
+</figure>

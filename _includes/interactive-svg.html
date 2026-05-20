@@ -1,0 +1,16 @@
+{%- assign svg_path = '/assets/svg/' | append: include.slug | append: '/main.svg' -%}
+<figure class="interactive-svg my-8" aria-label="{{ include.alt | default: 'Interactive diagram' }}">
+  <div class="svg-wrapper relative max-w-full overflow-hidden" style="position:relative;">
+    {% include_file {{ svg_path }} %}
+  </div>
+  {%- if include.caption -%}
+    <figcaption class="text-sm text-ink/60 mt-2">{{ include.caption }}</figcaption>
+  {%- endif -%}
+  <noscript>
+    <p class="text-xs text-ink/60 mt-2">This diagram is interactive when JavaScript is on. The static view shows the default state: {{ include.alt }}</p>
+  </noscript>
+  {%- unless page.interactive_svg_loaded -%}
+    <script type="module" src="{{ '/assets/js/interactive-svg.js' | relative_url }}"></script>
+    {%- assign page.interactive_svg_loaded = true -%}
+  {%- endunless -%}
+</figure>

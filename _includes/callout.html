@@ -1,8 +1,14 @@
-<div class="callout callout--{{ include.variant | default: 'info' }} flex gap-4 p-4 rounded-lg bg-ink/5 border-l-4 border-copper my-6">
-  <div class="callout-icon shrink-0">
-    {% if include.variant == 'tip' %}💡{% elsif include.variant == 'warning' %}⚠️{% else %}ℹ️{% endif %}
+{%- assign variant = include.variant | default: 'note' -%}
+{%- case variant -%}
+  {%- when 'tip' -%}{%- assign label = 'Tip' -%}{%- assign accent = 'sage' -%}
+  {%- when 'warning' -%}{%- assign label = 'Watch out' -%}{%- assign accent = 'copper' -%}
+  {%- when 'recap' -%}{%- assign label = 'Recap' -%}{%- assign accent = 'ink' -%}
+  {%- when 'exercise' -%}{%- assign label = 'Try this' -%}{%- assign accent = 'copper' -%}
+  {%- else -%}{%- assign label = 'Note' -%}{%- assign accent = 'ink' -%}
+{%- endcase -%}
+<aside class="callout callout--{{ variant }} my-8 p-5 rounded-md bg-cream/60 border-l-4 border-{{ accent }}">
+  <div class="callout-label uppercase tracking-wider text-xs font-semibold text-{{ accent }} mb-2">{{ label }}</div>
+  <div class="callout-body text-[15px] leading-relaxed text-ink/90 font-serif">
+    {{ include.body | default: include.content | default: '' }}
   </div>
-  <div class="callout-content text-[15px] leading-relaxed">
-    {{ include.content | default: "" }}
-  </div>
-</div>
+</aside>

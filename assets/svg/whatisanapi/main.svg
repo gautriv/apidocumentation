@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" style="max-width:100%;height:auto;" data-svg-pattern="toggle" data-states="Vague,Documented" tabindex="0" role="switch" aria-checked="false" aria-label="Toggle between a vague API description and a documented endpoint reference">
+  <title>Vague description versus documented reference</title>
+  <desc>Two side-by-side panels. The left panel shows a vague description. The right panel, revealed after toggling, shows the documented reference with method, path, parameters, sample request, and sample response.</desc>
+
+  <style>
+    .panel { fill: #fbf8f3; stroke: #0c1a2b; stroke-width: 1.5; rx: 4; }
+    .panel-title { font-family: Georgia, serif; font-size: 18px; fill: #0c1a2b; font-weight: bold; }
+    .panel-body { font-family: 'SF Mono', Menlo, monospace; font-size: 13px; fill: #0c1a2b; }
+    .panel-prose { font-family: Georgia, serif; font-size: 14px; fill: #0c1a2b; }
+    .label-vague { fill: #b85c38; }
+    .label-doc { fill: #5a7a64; }
+    .toggle-hint { font-family: Georgia, serif; font-size: 12px; fill: #0c1a2b; opacity: 0.65; }
+
+    .panel-vague { opacity: 1; }
+    .panel-doc { opacity: 0.15; }
+    svg[data-state="Documented"] .panel-vague { opacity: 0.15; }
+    svg[data-state="Documented"] .panel-doc { opacity: 1; }
+
+    svg:focus { outline: none; }
+    svg:focus-visible { outline: 2px solid #b85c38; outline-offset: 4px; }
+  </style>
+
+  <rect x="0" y="0" width="800" height="500" fill="#FFFFFF" />
+
+  <text x="400" y="30" text-anchor="middle" class="toggle-hint">Click the diagram or press Enter to toggle. Current state shown at the bottom.</text>
+
+  <g class="panel-vague">
+    <rect class="panel" x="40" y="60" width="720" height="380" />
+    <text x="60" y="95" class="panel-title label-vague">A vague description</text>
+    <text x="60" y="140" class="panel-prose">GET /books</text>
+    <text x="60" y="170" class="panel-prose">Returns books from the catalog.</text>
+    <text x="60" y="220" class="panel-prose" opacity="0.7">(That is the whole description.)</text>
+    <text x="60" y="280" class="panel-prose" font-style="italic">A caller cannot tell:</text>
+    <text x="80" y="310" class="panel-prose">- which query parameters are allowed</text>
+    <text x="80" y="335" class="panel-prose">- what the response looks like</text>
+    <text x="80" y="360" class="panel-prose">- which status codes can come back</text>
+    <text x="80" y="385" class="panel-prose">- how to authenticate the call</text>
+  </g>
+
+  <g class="panel-doc">
+    <rect class="panel" x="40" y="60" width="720" height="380" />
+    <text x="60" y="95" class="panel-title label-doc">A documented endpoint reference</text>
+    <text x="60" y="130" class="panel-body">GET /books?q={query}</text>
+    <text x="60" y="155" class="panel-body">Authorization: Bearer $GF_TOKEN</text>
+    <text x="60" y="195" class="panel-body" font-weight="bold">Parameters</text>
+    <text x="60" y="218" class="panel-body">q  string  required  search term</text>
+    <text x="60" y="258" class="panel-body" font-weight="bold">Sample response (200 OK)</text>
+    <text x="60" y="281" class="panel-body">{ "results": [</text>
+    <text x="60" y="301" class="panel-body">    { "id": "bk_184932",</text>
+    <text x="60" y="321" class="panel-body">      "title": "The quiet thriller" } ],</text>
+    <text x="60" y="341" class="panel-body">  "total": 1 }</text>
+    <text x="60" y="385" class="panel-body" font-weight="bold">Errors: 401 unauthorized, 429 too many requests</text>
+  </g>
+
+  <text x="400" y="470" text-anchor="middle" class="panel-prose" font-weight="bold">Showing: <tspan class="toggle-label">Vague</tspan></text>
+</svg>
