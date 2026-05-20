@@ -1,0 +1,16 @@
+  <div id="sheet-backdrop" onclick="toggleSheet()" class="fixed inset-0 z-40 bg-ink/30 md:hidden opacity-0 pointer-events-none transition-opacity duration-200"></div>
+  <aside id="sheet" class="fixed top-0 left-0 bottom-0 w-[85vw] max-w-[340px] bg-cream border-r border-ink/10 z-40 md:hidden overflow-y-auto -translate-x-full transition-transform duration-250">
+    <div class="p-5 border-b border-ink/10 flex items-center justify-between">
+      <span class="font-serif text-lg font-semibold">Menu</span>
+      <button onclick="toggleSheet()" class="text-ink/55 text-lg leading-none w-8 h-8 flex items-center justify-center">×</button>
+    </div>
+    <nav class="p-3 space-y-1 text-sm">
+      <a href="#curriculum" onclick="toggleSheet()" class="block px-3 py-2 rounded-md hover:bg-ink/5">Curriculum</a>
+      <a href="#maya" onclick="toggleSheet()" class="block px-3 py-2 rounded-md hover:bg-ink/5">Meet Maya</a>
+      <a href="#sample" onclick="toggleSheet()" class="block px-3 py-2 rounded-md hover:bg-ink/5">Sample lesson</a>
+      <a href="#tools" onclick="toggleSheet()" class="block px-3 py-2 rounded-md hover:bg-ink/5">Tools</a>
+      <div class="pt-3 mt-3 border-t border-ink/10">
+        <a href="#start" onclick="toggleSheet(); startCourse(event)" class="block bg-ink text-cream text-center px-4 py-2.5 rounded-full font-medium">Start free →</a>
+      </div>
+    </nav>
+  </aside>

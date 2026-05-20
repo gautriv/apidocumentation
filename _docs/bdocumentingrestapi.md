@@ -1,4 +1,7 @@
 ---
+module: 1
+lesson: 3
+slug: bdocumentingrestapi
 title: Beginner REST API Documentation Exercises
 description: Master the art of API documentation with these 5 practical exercises. Learn to document endpoints, parameters, authentication, and error responses with real-world scenarios designed for beginners.
 keywords: REST API documentation, API writing exercises, API reference, API documentation practice, API documentation test, API writing test, Technical Writing API exercises, API documentation challenges, API documentation best practices, hands-on API documentation, beginner API documentation, API endpoints, API parameters, API authentication, API error responses, API troubleshooting, API examples, API request documentation, API response documentation

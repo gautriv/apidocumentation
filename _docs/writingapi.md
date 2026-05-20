@@ -1,4 +1,7 @@
 ---
+module: 6
+lesson: 2
+slug: writingapi
 title: Writing Effective API Documentation - A Complete Guide
 description: Learn how to create clear, comprehensive API documentation that developers love. This guide covers structure, authentication, endpoints, parameters, examples, and best practices for technical writers.
 keywords: API documentation, API reference documentation, writing API documentation, API endpoints documentation, API parameters, API authentication documentation, API request examples, API response examples, API documentation structure, REST API documentation, API documentation best practices, developer-friendly API docs, OpenAPI documentation, Swagger documentation, API reference guide, API technical writing, documenting API responses, API documentation template, API code examples, API error handling documentation, endpoint documentation, API status codes, API workflow documentation, API documentation tools, API developer portal

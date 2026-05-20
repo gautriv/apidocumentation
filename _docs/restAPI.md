@@ -1,4 +1,7 @@
 ---
+module: 5
+lesson: 1
+slug: restAPI
 title: REST APIs Key Concepts and Structure
 description: Learn about REST APIs, the superstar of web APIs. Explore key concepts like statelessness and caching, and understand the three main components of REST APIs - URL endpoints, HTTP verbs, and body messages - with real-world examples.
 keywords: REST API, RESTful API, REST architecture, statelessness in REST, REST API caching, REST API documentation, API endpoints, HTTP verbs, API request body, REST vs SOAP, RESTful web services, API URL structure, REST API examples, REST API components, GET request, POST request, DELETE request, PUT request, PATCH request, JSON in REST API, REST API best practices, stateless API design, REST API authentication, API design patterns, REST API response codes, troubleshoot REST APIs, debugging REST APIs, REST API error handling, REST API versioning, REST API security, REST API authentication, REST API rate limiting

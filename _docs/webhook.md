@@ -1,4 +1,7 @@
 ---
+module: 5
+lesson: 4
+slug: webhook
 title: Webhooks API Documentation Guide
 description: Learn how webhooks deliver real-time notifications instead of requiring constant API polling. This guide explains webhook implementation, security, best practices, and documentation standards for modern APIs.
 keywords: Webhooks, API documentation, Webhook vs REST API, API reference, Webhook best practices, API integration, Webhook security, API event-driven architecture, event-driven APIs, real-time notifications, API callbacks, webhook payload, webhook authentication, webhook verification, webhook endpoint setup, webhook signatures, webhook testing, webhook troubleshooting, webhook debugging, webhook retry logic, idempotent webhooks

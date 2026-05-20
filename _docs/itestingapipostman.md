@@ -1,4 +1,7 @@
 ---
+module: 4
+lesson: 2
+slug: itestingapipostman
 title: Intermediate REST API Development and Testing
 description: Learn to enhance your REST API with dynamic parameters, authentication, error handling, logging, and professional documentation. This hands-on guide builds on basic API concepts to create production-ready services.
 keywords: REST API development, API testing, API documentation exercises, API reference, API development practice, API authentication, Postman API testing, Flask API development, Python API, API security, hands-on API documentation, API error handling, API logging, API performance optimization, intermediate API development, API parameters, API key authentication, API validation, API query parameters, Swagger documentation, OpenAPI

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>interactive-svg framework tests</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: 40px auto; }
+    .case { border: 1px solid #ccc; padding: 16px; margin: 16px 0; }
+    .case h3 { margin: 0 0 8px; }
+    .result { padding: 8px; margin-top: 8px; }
+    .pass { background: #d4edda; }
+    .fail { background: #f8d7da; }
+    .svg-host { background: #f7f5f0; padding: 8px; }
+  </style>
+</head>
+<body>
+  <h1>interactive-svg framework tests</h1>
+  <p>Open in a browser. Each test prints PASS or FAIL.</p>
+
+  <div class="case" id="case-click-step">
+    <h3>click-step: advances state on click and on Enter key</h3>
+    <div class="svg-host">
+      <svg data-svg-pattern="click-step" data-steps="3" viewBox="0 0 200 80" width="200" height="80" tabindex="0">
+        <rect class="step" data-step="0" x="10" y="10" width="60" height="60" fill="#B27744" />
+        <rect class="step" data-step="1" x="80" y="10" width="60" height="60" fill="#ccc" />
+        <rect class="step" data-step="2" x="150" y="10" width="60" height="60" fill="#ccc" />
+      </svg>
+    </div>
+    <div class="result" id="result-click-step"></div>
+  </div>
+
+  <div class="case" id="case-toggle">
+    <h3>toggle: clicking flips data-state between A and B</h3>
+    <div class="svg-host">
+      <svg data-svg-pattern="toggle" viewBox="0 0 200 80" width="200" height="80" tabindex="0">
+        <text x="100" y="50" text-anchor="middle" class="toggle-label">A</text>
+      </svg>
+    </div>
+    <div class="result" id="result-toggle"></div>
+  </div>
+
+  <div class="case" id="case-hover">
+    <h3>hover-tooltip: focus on element shows tooltip with its data-tooltip</h3>
+    <div class="svg-host">
+      <svg data-svg-pattern="hover-tooltip" viewBox="0 0 200 80" width="200" height="80">
+        <circle cx="50" cy="40" r="20" fill="#7C8C73" data-tooltip="Greenfield" tabindex="0" />
+      </svg>
+    </div>
+    <div class="result" id="result-hover"></div>
+  </div>
+
+  <div class="case" id="case-slider">
+    <h3>slider: dragging input updates label and dispatches change</h3>
+    <div class="svg-host">
+      <svg data-svg-pattern="slider" data-min="0" data-max="10" data-start="3" viewBox="0 0 200 80" width="200" height="80">
+        <text x="100" y="50" text-anchor="middle" class="slider-value">3</text>
+        <foreignObject x="20" y="60" width="160" height="20">
+          <input type="range" class="slider-input" min="0" max="10" value="3" />
+        </foreignObject>
+      </svg>
+    </div>
+    <div class="result" id="result-slider"></div>
+  </div>
+
+  <script type="module">
+    import { initInteractiveSvgs, _testHooks } from './interactive-svg.js';
+    initInteractiveSvgs();
+
+    const assert = (id, cond, msg) => {
+      const el = document.getElementById(id);
+      el.textContent = (cond ? 'PASS: ' : 'FAIL: ') + msg;
+      el.className = 'result ' + (cond ? 'pass' : 'fail');
+    };
+
+    // click-step
+    const cs = document.querySelector('#case-click-step svg');
+    cs.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    assert('result-click-step', cs.dataset.currentStep === '1', 'state advanced to 1 after click (got ' + cs.dataset.currentStep + ')');
+
+    // toggle
+    const tg = document.querySelector('#case-toggle svg');
+    const initialState = tg.dataset.state;
+    tg.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    assert('result-toggle', tg.dataset.state !== initialState, 'state flipped after click (was ' + initialState + ', now ' + tg.dataset.state + ')');
+
+    // hover-tooltip
+    const hv = document.querySelector('#case-hover circle');
+    hv.dispatchEvent(new FocusEvent('focus', { bubbles: true }));
+    const tip = document.querySelector('.svg-tooltip');
+    assert('result-hover', tip && tip.textContent === 'Greenfield', 'tooltip text matches data-tooltip (got ' + (tip && tip.textContent) + ')');
+
+    // slider
+    const sl = document.querySelector('#case-slider .slider-input');
+    sl.value = '7';
+    sl.dispatchEvent(new Event('input', { bubbles: true }));
+    const lbl = document.querySelector('#case-slider .slider-value');
+    assert('result-slider', lbl.textContent === '7', 'label updates on slider input (got ' + lbl.textContent + ')');
+  </script>
+</body>
+</html>

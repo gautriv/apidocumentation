@@ -1,4 +1,7 @@
 ---
+module: 4
+lesson: 3
+slug: journey
 title: How the Internet Works? Understanding Web Communication in Simple Terms
 description: A comprehensive guide explaining how the internet works, including browsers, servers, APIs, HTTP requests, and data flow in simple, engaging language for beginners and technical writers.
 keywords: how internet works, internet communication, browser server interaction, client server model, HTTP requests, API communication, web servers, internet infrastructure, web browsers, data transfer, internet protocols, internet technology, browser requests, server response, DNS system, internet basics, web development fundamentals, API integration, network communication, internet architecture, technical writing, API documentation process, data exchange, internet security, internet authentication, database interaction, HTML CSS JavaScript, user interface rendering, API documentation

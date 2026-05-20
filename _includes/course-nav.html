@@ -1,0 +1,33 @@
+{%- comment -%}
+  Course nav driven by _data/modules.yml.
+  Auto-opens the module containing the current page; highlights the current lesson.
+  page.url returns e.g. "/whatisanapi.html"; we strip the leading slash for slug comparison.
+{%- endcomment -%}
+{%- assign current = page.url | remove_first: "/" -%}
+<nav class="course-nav text-sm">
+  {% for m in site.data.modules %}
+    {%- assign in_module = false -%}
+    {%- for l in m.lessons -%}{%- if l.slug == current -%}{%- assign in_module = true -%}{%- endif -%}{%- endfor -%}
+    <details class="mb-2 group" {% if in_module %}open{% endif %}>
+      <summary class="flex items-center gap-2 py-1.5 px-2 rounded-md cursor-pointer hover:bg-ink/5 list-none">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="transition-transform group-open:rotate-90 text-ink/45"><polyline points="9 18 15 12 9 6"/></svg>
+        <span class="font-mono text-[10px] text-ink/40 w-5">{{ m.n }}</span>
+        <span class="font-medium text-ink">{{ m.title }}</span>
+        {% if m.isNew %}<span class="ml-auto text-[9px] bg-copper/10 text-copper px-1.5 py-0.5 rounded uppercase tracking-wider font-mono">New</span>{% endif %}
+      </summary>
+      <ul class="mt-1 space-y-0.5">
+        {% for l in m.lessons %}
+          {%- assign is_current = false -%}
+          {%- if l.slug == current %}{%- assign is_current = true -%}{%- endif -%}
+          <li>
+            {% if l.placeholder %}
+              <span class="block pl-9 pr-2 py-1 text-ink/30 italic" title="Lesson coming in Phase 2">{{ l.title }}</span>
+            {% else %}
+              <a href="{{ site.baseurl }}/{{ l.slug }}" class="block pl-9 pr-2 py-1 rounded-md {% if is_current %}bg-copper/10 text-copper font-medium{% else %}text-ink/65 hover:text-ink hover:bg-ink/5{% endif %}">{{ l.title }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </details>
+  {% endfor %}
+</nav>

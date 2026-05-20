@@ -1,4 +1,7 @@
 ---
+module: 4
+lesson: 5
+slug: requestandresponse
 title: Understanding API Requests and Responses
 description: Learn how API requests and responses work, including HTTP methods, status codes, headers, and body formats. A complete guide for technical writers and developers to understand the core of API communication.
 keywords: API request, API response, API status codes, HTTP methods, GET request, POST request, PUT request, DELETE request, REST API communication, HTTP headers, API parameters, request body, response body, JSON response, status code 200, status code 404, API testing tools, cURL commands, Postman API testing, API authentication, API errors, API troubleshooting, API documentation best practices, API examples

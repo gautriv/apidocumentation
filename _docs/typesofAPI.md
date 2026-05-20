@@ -1,4 +1,7 @@
 ---
+module: 5
+lesson: 2
+slug: typesofAPI
 title: Types of APIs - A Complete Overview
 description: Discover the different types of APIs including REST, SOAP, GraphQL, WebSockets, JSON-RPC, XML-RPC, and gRPC. Learn how each API type works, their key features, and when to use them in your projects.
 keywords: types of APIs, REST API, SOAP API, GraphQL API, WebSocket API, JSON-RPC API, XML-RPC API, gRPC API, web service APIs, library-based APIs, class-based APIs, API comparison, API technologies, modern API types, API integration, API documentation, API architecture, API protocols, real-time APIs, microservice APIs, API communication patterns, API development, RESTful web services, API design patterns

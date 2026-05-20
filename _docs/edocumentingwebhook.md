@@ -1,4 +1,7 @@
 ---
+module: 3
+lesson: 1
+slug: edocumentingwebhook
 title: Expert Webhook Documentation Exercises | Advanced Integration & Enterprise-Scale Solutions
 description: Master complex webhook architectures with our expert-level exercises. Tackle versioning strategies, high-throughput systems, multi-tenant architectures, and enterprise compliance requirements.
 keywords: Webhooks, API documentation, Webhook API writing, Webhook versioning, Webhook architecture, Enterprise webhooks, Webhook compliance, Multi-tenant webhooks, Webhook governance, Webhook patterns, API technical writing, Advanced webhook patterns, Webhook deprecation, Webhook migration, High-throughput webhooks

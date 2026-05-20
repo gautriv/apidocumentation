@@ -1,0 +1,59 @@
+name: Lesson PR gate
+
+on:
+  pull_request:
+    paths:
+      - '_docs/**.md'
+      - '_data/glossary.yml'
+      - 'scripts/voice-check.rb'
+      - 'scripts/test_voice_check.rb'
+      - 'scripts/voice-check.sh'
+      - '.github/workflows/voice-check.yml'
+
+jobs:
+  voice-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Run linter test suite
+        run: ruby scripts/test_voice_check.rb
+      - name: Identify changed lesson files
+        id: changed
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          changed=$(git diff --name-only "$base"...HEAD -- '_docs/*.md' || true)
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$changed" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+      - name: Run voice-check on changed lessons
+        if: steps.changed.outputs.files != ''
+        run: |
+          echo "${{ steps.changed.outputs.files }}" | xargs -r ruby scripts/voice-check.rb
+      - name: Build site (so HTMLProofer has something to scan)
+        if: steps.changed.outputs.files != ''
+        run: |
+          npm ci || npm install
+          npm run build:css
+          bundle exec jekyll build
+      - name: HTMLProofer on changed lessons
+        if: steps.changed.outputs.files != ''
+        run: |
+          # Map _docs/<slug>.md to _site/<slug>.html and run htmlproofer against just those.
+          targets=$(echo "${{ steps.changed.outputs.files }}" | sed -E 's#^_docs/(.*)\.md$#_site/\1.html#' | tr '\n' ' ')
+          gem install html-proofer
+          htmlproofer $targets \
+            --no-enforce-https \
+            --ignore-status-codes "999" \
+            --ignore-urls "/^https:\/\/api\.greenfield\.lib/,/^http:\/\/localhost/" \
+            --allow-missing-href

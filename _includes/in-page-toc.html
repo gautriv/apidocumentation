@@ -1,0 +1,35 @@
+<div class="sticky top-24">
+  <div class="text-xs tracking-[0.2em] uppercase text-ink/40 font-mono mb-4">On this page</div>
+  <nav id="in-page-toc" class="text-sm space-y-2 border-l border-ink/10 pl-4">
+    <!-- JS injected -->
+  </nav>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toc = document.getElementById('in-page-toc');
+    const headings = document.querySelectorAll('article.prose h2, article.prose h3');
+    if (!toc || headings.length === 0) return;
+    
+    let tocHTML = '';
+    headings.forEach((heading, i) => {
+      if (!heading.id) heading.id = `section-${i}`;
+      const level = heading.tagName === 'H3' ? 'ml-4 text-ink/55' : 'text-ink/85 font-medium';
+      tocHTML += `<a href="#${heading.id}" class="block hover:text-copper transition-colors ${level}" data-toc-target="${heading.id}">${heading.textContent}</a>`;
+    });
+    toc.innerHTML = tocHTML;
+    
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('#in-page-toc a').forEach(a => a.classList.remove('text-copper', 'font-medium'));
+          const link = document.querySelector(`#in-page-toc a[data-toc-target="${entry.target.id}"]`);
+          if (link) {
+            link.classList.add('text-copper', 'font-medium');
+          }
+        }
+      });
+    }, { rootMargin: '-10% 0px -80% 0px' });
+    
+    headings.forEach(h => observer.observe(h));
+  });
+</script>

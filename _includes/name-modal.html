@@ -1,0 +1,15 @@
+  <div id="name-modal" class="fixed inset-0 z-50 bg-ink/40 backdrop-blur-sm flex items-center justify-center p-6 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="name-card bg-cream rounded-3xl shadow-2xl max-w-md w-full p-8 transform translate-y-3 scale-95 transition-transform duration-200">
+      <div class="text-xs tracking-[0.2em] uppercase text-copper font-medium mb-3">Before we start</div>
+      <h3 class="h-display text-3xl font-medium mb-3">What should Maya call you?</h3>
+      <p class="text-ink/65 text-[15px] leading-relaxed mb-6">No sign-in. No password. Just a first name we'll store on your device so Maya can stop saying "friend."</p>
+      <form onsubmit="saveName(event)" class="space-y-3">
+        <input id="name-input" type="text" placeholder="Your first name" maxlength="30" autofocus class="w-full bg-cream border border-ink/20 rounded-full px-5 py-3 focus:outline-none focus:border-copper" />
+        <div class="flex items-center gap-2">
+          <button type="submit" class="flex-1 bg-ink text-cream px-5 py-3 rounded-full font-medium hover:bg-ink/85">Start the course →</button>
+          <button type="button" onclick="closeNameModal(true)" class="px-5 py-3 text-ink/55 hover:text-ink text-sm">Skip</button>
+        </div>
+      </form>
+      <p class="text-xs text-ink/40 mt-4">Stored in your browser only. Clear any time from the footer.</p>
+    </div>
+  </div>

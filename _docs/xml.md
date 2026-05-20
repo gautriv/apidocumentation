@@ -1,4 +1,7 @@
 ---
+module: 6
+lesson: 3
+slug: xml
 title: XML in API Development
 description: Master XML format for API development - learn about XML elements, attributes, data types, and nesting. A comprehensive guide for developers and technical writers working with XML-based APIs and SOAP web services.
 keywords: [XML, XML in APIs, XML elements, XML attributes, XML data types, eXtensible Markup Language, nested XML, SOAP XML, XML schema, XML structure, XML parsing, XML validation, XML vs JSON, XML format, XML tags, XML hierarchical structure, XML document structure, XML API requests, XML API responses, XML SOAP messages, XML namespaces, XML DTD, enterprise APIs, legacy systems integration, XML serialization, XML deserialization, complex data structures]

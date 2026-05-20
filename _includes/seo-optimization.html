@@ -9,12 +9,14 @@
 <!-- Resource Hints for Performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-<link rel="preload" href="{{ "/assets/css/styles.css" | relative_url }}" as="style">
-<link rel="preload" href="{{ "/assets/js/main.js" | relative_url }}" as="script">
+<link rel="preload" href="{{ '/assets/css/main.css' | relative_url }}" as="style">
+<link rel="preload" href="{{ '/assets/js/main.js' | relative_url }}" as="script">
 <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+<!-- Fonts — Newsreader (display serif), Inter (UI), JetBrains Mono (code) -->
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- Canonical URL -->
 {% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}">{% else %}<link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url | replace:'index.html','' }}">{% endif %}
@@ -24,15 +26,15 @@
 <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url | replace:'index.html','' }}">
 <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
 <meta property="og:description" content="{% if page.description %}{{ page.description | truncate: 160 }}{% else %}{{ site.description | truncate: 160 }}{% endif %}">
-<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{% if page.image %}{{ page.image }}{% else %}/assets/images/api-docs-og.jpg{% endif %}">
-{% if site.facebook.app_id %}<meta property="fb:app_id" content="{{ site.facebook.app_id }}">{% endif %}
+<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{% if page.slug %}/assets/images/og/{{ page.slug }}.png{% elsif page.image %}{{ page.image }}{% else %}/assets/images/api-docs-og.jpg{% endif %}">
+{% if site.facebook.publisher %}<meta property="article:publisher" content="{{ site.facebook.publisher }}">{% endif %}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="{{ site.twitter.card }}">
 <meta name="twitter:site" content="@{{ site.twitter.username }}">
 <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
 <meta name="twitter:description" content="{% if page.description %}{{ page.description | truncate: 160 }}{% else %}{{ site.description | truncate: 160 }}{% endif %}">
-<meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{% if page.image %}{{ page.image }}{% else %}/assets/images/api-docs-og.jpg{% endif %}">
+<meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{% if page.slug %}/assets/images/og/{{ page.slug }}.png{% elsif page.image %}{{ page.image }}{% else %}/assets/images/api-docs-og.jpg{% endif %}">
 
 <!-- Mobile Web App -->
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -98,4 +100,11 @@
   gtag('js', new Date());
   gtag('config', '{{ site.google_analytics }}');
 </script>
+{% endif %}
+
+<!-- AdSense Auto Ads & Consent -->
+{% if site.adsense.enabled_in_dev or jekyll.environment == 'production' %}
+  {% include consent-banner.html %}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense.client_id }}" crossorigin="anonymous"></script>
+  <script src="{{ '/assets/js/ad-loader.js' | relative_url }}" defer></script>
 {% endif %} 

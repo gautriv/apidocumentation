@@ -21,16 +21,25 @@
 title: "API Documentation Course | Learn REST API Documentation"
 email: trivedi.gaurav30@gmail.com
 description: >-
-  Master API documentation with our comprehensive course. Learn RESTful API documentation, 
+  Master API documentation with our comprehensive course. Learn RESTful API documentation,
   OpenAPI/Swagger, and industry best practices. Boost your technical writing career today.
 baseurl: "/apidocumentation" # the subpath of your site, e.g. /blog
 url: "https://beingtechnicalwriter.com" # the base hostname & protocol for your site, e.g. http://example.com
 author: Technical Writing Expert
 logo: /assets/images/api-docs-logo.png
 
+# Analytics (referenced by _includes/seo-optimization.html)
+google_analytics: "G-8VQGBYV0J6"
+
+# Cloudflare Web Analytics — set in repo secrets, read by _includes/cloudflare-analytics.html
+cloudflare_analytics_token: ""
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
+sass:
+  style: compressed
+  sass_dir: _sass
 kramdown:
   input: GFM
   syntax_highlighter: rouge
@@ -41,13 +50,16 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 # SEO settings
+adsense:
+  client_id: "ca-pub-7149683584202371"
+  enabled_in_dev: false
 twitter:
   username: beingtechwriter
   card: summary_large_image
 facebook:
-  app_id: 12345678910
   publisher: https://www.facebook.com/beingtechwriter
   admins: beingtechwriter
 social:
@@ -68,6 +80,11 @@ exclude:
   - node_modules/
   - vendor/
   - README.md
+  - CLAUDE.md
+  - design-mockups/
+  - cloudflare-worker/
+  - scripts/
+  - .github/
 
 # Collections
 collections:
@@ -81,7 +98,7 @@ defaults:
       path: ""
       type: "docs"
     values:
-      layout: "doc"
+      layout: "default"
   - scope:
       path: "_posts"
       type: "posts"
