@@ -1,37 +1,14 @@
 ---
+title: The internet, the short version
+permalink: /howinternetworks.html
 module: 1
 lesson: 1
 slug: journey
-title: How the Internet Works? Understanding Web Communication in Simple Terms
-description: A comprehensive guide explaining how the internet works, including browsers, servers, APIs, HTTP requests, and data flow in simple, engaging language for beginners and technical writers.
-keywords: how internet works, internet communication, browser server interaction, client server model, HTTP requests, API communication, web servers, internet infrastructure, web browsers, data transfer, internet protocols, internet technology, browser requests, server response, DNS system, internet basics, web development fundamentals, API integration, network communication, internet architecture, technical writing, API documentation process, data exchange, internet security, internet authentication, database interaction, HTML CSS JavaScript, user interface rendering, API documentation
-permalink: howinternetworks.html
+reading_time: 14
+description: The smallest useful unit of API documentation. Request, response, status code, and how to describe one interaction in writing.
 next_page:
   url: /whatisanapi.html
-  title: What is an API?
-previous_page:
-  url: /documentation.html
-  title: API Documentation
-image: /assets/images/internet-communication.svg
-last_modified_at: 2023-10-15T09:00:00+00:00
-author_name: Technical Writing Expert
-author_description: Senior technical writer with 8+ years of experience documenting APIs and developer platforms
-author_expertise: 
-  - "Web Technologies"
-  - "Internet Protocols"
-  - "API Communication"
-  - "Technical Writing"
-author_image: /assets/images/gaurav.svg
-reading_time: 10
-level: Beginner
-speakable: true
-speakable_selectors:
-  - ".doc-content h1" 
-  - ".doc-content h2"
-  - ".doc-content p:first-of-type"
-  - "#step-1-asking-nicely"
-  - "#step-7-middleman-talk"
-schema_markup: true
+  title: What an API actually is
 ---
 
 Welcome to the digital jungle! You've probably used the internet a thousand times today already (yes, including right now). But have you ever wondered how this magic actually works? I mean, how does typing "funny panda GIFs" into your browser magically bring up exactly what you want?
