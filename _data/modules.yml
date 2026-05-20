@@ -10,7 +10,7 @@
   slug: "foundations"
   isNew: false
   lessons:
-    - { slug: "howinternetworks.html", title: "The internet, the short version", reading: "10 min" }
+    - { slug: "howinternetworks.html", title: "The internet, the short version", reading: "14 min" }
     - { slug: "whatisanapi.html", title: "What an API actually is", reading: "10 min" }
     - { slug: "whatwritersdo.html", title: "What an API writer does in 2026", reading: "8 min" }
     - { slug: "informationgathering.html", title: "Information gathering — and interviewing the codebase", reading: "15 min" }

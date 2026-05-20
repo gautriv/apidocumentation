@@ -80,6 +80,7 @@ function initHoverTooltip(svg) {
   }
 
   const targets = svg.querySelectorAll('[data-tooltip]');
+  const hide = () => { tip.style.display = 'none'; delete tip.dataset.target; };
   targets.forEach(t => {
     if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '0');
     const show = () => {
@@ -87,12 +88,25 @@ function initHoverTooltip(svg) {
       tip.style.display = 'block';
       t.setAttribute('aria-describedby', 'svg-tip');
       tip.id = 'svg-tip';
+      tip.dataset.target = t.getAttribute('data-tooltip');
     };
-    const hide = () => { tip.style.display = 'none'; };
     t.addEventListener('mouseenter', show);
     t.addEventListener('mouseleave', hide);
     t.addEventListener('focus', show);
     t.addEventListener('blur', hide);
+    t.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isShownForThis = tip.style.display === 'block' && tip.dataset.target === t.getAttribute('data-tooltip');
+      if (isShownForThis) {
+        hide();
+      } else {
+        show();
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!svg.contains(e.target)) hide();
   });
 }
 
