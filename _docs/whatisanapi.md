@@ -1,252 +1,137 @@
 ---
-module: 5
-lesson: 5
-slug: whatisanAPI
-title: What is an API? Complete Beginner's Guide
-description: Understand what an API is, how APIs work, and why they're essential for modern software development. This comprehensive guide explains API concepts, types, and practical applications for beginners.
-keywords: API definition, What is an API, API basics, API for beginners, API examples, API request response, REST API, API types, API authentication, API authorization, API development, API testing, API integration, API best practices, API security, API endpoints, API documentation, API versioning, API design patterns, API lifecycle
+title: What an API actually is
 permalink: /whatisanapi.html
-summary: "This beginner-friendly guide explains APIs (Application Programming Interfaces) from the ground up. Learn what APIs are, how they enable software communication, different API types, and why they're critical for modern development. Perfect for those new to APIs who want to understand core concepts before diving into implementation."
-next_page:
-  url: /whatwritersdo.html
-  title: What do Technical Writers document?
+module: 1
+lesson: 2
+slug: whatisanapi
+reading_time: 14
+description: A first look at what an API is, written through a small library shipping its first endpoint. Concept, contract, and the one page reference doc that makes it usable.
 previous_page:
   url: /howinternetworks.html
-  title: How the Internet Works?
-image: /assets/images/api-basics-og.svg
-last_modified_at: 2023-11-14T10:00:00+00:00
-author_name: API Foundations Expert
-author_description: Technical writer specializing in making complex API concepts accessible to beginners
-author_expertise: 
-  - "API Fundamentals"
-  - "Technical Documentation"
-  - "Developer Education"
-  - "API Onboarding"
-author_image: /assets/images/api-writer.svg
-reading_time: 10
-level: Beginner
-speakable: true
-speakable_selectors:
-  - ".doc-content h1" 
-  - ".doc-content h2"
-  - ".doc-content p:first-of-type"
-schema_markup: true
+  title: The internet, the short version
+next_page:
+  url: /whatwritersdo.html
+  title: What an API writer does in 2026
 ---
+{% comment %}block:1{% endcomment %}
+Tuesday evening at the branch. I was at the desk updating index cards for the new arrivals. Sam, an old friend of Devon's, came in returning a book and stayed to chat. He watched me for a minute. "You know you could just expose this as an API, right?"
 
-Alright, let's dive into the world of APIs (aka the secret sauce of modern technology). API stands for Application Programming Interface, but let's not let the fancy name intimidate you. At its core, an API is just a set of rules that tells two software programs how to talk to each other. Yep, it's like a digital diplomacy guide!
+I laughed. Then I stopped laughing, because Sam was looking at the cards the way an engineer looks at things that have been done by hand for too long.
 
-Imagine you've just walked into a cozy little restaurant. You're starving, but let's be real—you have no clue what's going on in the kitchen. You don't know where the chef got the vegetables, how they're chopping onions without crying, or why the pasta sauce smells so divine. And guess what? You don't need to know!
+This week, the index cards are still there. By next Tuesday, they will not be. This lesson is for you on the day someone asks the same question about your project.
 
-All you do is pick up the menu, choose your favorite dish (extra cheese, of course), and pass your order to the waiter. The waiter takes your order to the kitchen, where the magic happens. Moments later, the waiter comes back with your food, and you devour it like a champion.
+{% comment %}block:2{% endcomment %}
+**Today you will leave with:**
 
-In the tech world, the menu is like the API, the waiter is the API in action, and the kitchen is the backend system. You don't need to understand the backend (how the chef works); you just make a request, and the API handles the rest.
+- A clear, one paragraph definition of what an API is, in plain English.
+- The shape of a one page endpoint reference you can apply to any API.
+- A prompt that turns an engineer's verbal description into a first draft reference doc.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+{% include ad-slot.html slot="2222222222" format="auto" %}
 
-## Why Are APIs Such Big Deals in Modern Technology?
+{% comment %}block:3{% endcomment %}
+An API is a contract between two pieces of software. When you build a system like the Greenfield Library, you have data. Borrowers want to see that data. Instead of letting borrower apps rummage around in the database directly, you expose an API. The API defines exactly who can ask for what, and exactly what arrives back in return.
 
-Think about all the apps and websites you use every day—social media, online shopping, weather apps, food delivery. Ever wondered how they work together so seamlessly? APIs are the glue holding this digital ecosystem together.
+The rules of engagement matter. A caller sends a request to the server asking for data or asking to change data. The server processes it and sends back a response. That response always includes a status code, which is a three digit number like 200 or 404 that tells the caller if the {% include glossary-term.html term="request" %} succeeded or failed. 
 
-APIs allow different programs to share information, like two apps chatting over coffee. For example:
+This strict {% include glossary-term.html term="contract" %} is what makes modern software possible. When you know the rules, you can automate anything. A human reading a web page can adapt if a button moves, but a script making a {% include glossary-term.html term="request" %} will crash if the data shape changes without warning. That is why developers obsess over the details of their endpoints. They are promising that the {% include glossary-term.html term="response" %} will look exactly like they documented it.
 
-- When you book an Uber, it pulls location data using Google Maps' API.
+If a borrower app wants to find a book, it talks to the Greenfield API base URL `https://api.greenfield.lib/v1` and accesses the `/books` resource. 
 
-- When you buy something online, the store might check your payment details using a payment gateway API.
+{% capture mermaid_src %}
+sequenceDiagram
+  participant Borrower as Borrower app
+  participant Greenfield
+  Borrower->>Greenfield: GET /books?q=thriller
+  Greenfield-->>Borrower: 200 OK and a list of books
+{% endcapture %}
+{% include mermaid.html content=mermaid_src alt="A borrower app sends a GET request to Greenfield and receives a 200 response with a list of books." %}
 
-- When you post that perfect beach sunset on Instagram, the app talks to its servers via—you guessed it—APIs.
+Take a look at the diagram. Which arrow is the {% include glossary-term.html term="response" %}? The second arrow, where Greenfield replies with a 200 {% include glossary-term.html term="status code" %}, is what the caller has been waiting for.
 
-In short, APIs are the middlemen making your digital life effortless. They're why you can order pizza, stream movies, and stalk your ex on social media (don't do that) without breaking a sweat.
+{% comment %}block:4{% endcomment %}
+When developers build a {% include glossary-term.html term="contract" %}, someone has to write down the rules. That is where we come in. The core of API documentation is the one page endpoint reference. 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+A reference page must contain seven specific pieces of information to be useful. Missing even one of these details will break a caller's integration. First, you need the HTTP method and the path. For Greenfield, the method is GET and the path is `/books`. Second, you need the authentication rules. Can anyone search for books, or do they need a token? Third, you need the parameters. How does the caller filter the list to only show thrillers? Fourth, you need a sample request that they can copy and paste into their terminal to test it out. Fifth, you need a sample response showing exactly what the data looks like. Finally, you need to list the error responses so the caller knows what happens when things go wrong.
 
-## The Two Sides of APIs: Understanding Requests and Responses
+Personally, I would always put the sample response above the error table. Callers want to see the happy path first. If they want to know what a 400 error looks like, they will scroll down.
 
-<div class="gif-container">
-  <img src="./assets/gif/Request&Response.gif" alt="API Request and Response cycle visualization" title="How API requests and responses work between client and server">
-</div>
+Let us look at what the Greenfield `/books` endpoint looks like in practice. Here is a sample request showing how a caller filters the list:
 
-Let's return to our restaurant analogy for a sec. APIs operate in two simple steps: Requests and Responses.
+```http
+GET /books?q=thriller HTTP/1.1
+Host: api.greenfield.lib
+Authorization: Bearer $GF_TOKEN
+```
 
-### **API Requests – "I Want This!"**
+And here is the sample response they receive:
 
-Remember when you told the waiter what you wanted for dinner? That's a request. In API terms, one program asks another program for something specific. For example:
-
-- You open a weather app and type in your city's name. That's a request.
-
-- Your Spotify app asks the server for the next song on your playlist. Another request!
-
-### **API Responses – "Here's What You Ordered!"**
-
-Once your request is made, the kitchen (backend system) cooks up the response. Just like the waiter brings you a plate of spaghetti, the API delivers the requested info back to you. For example:
-
-- Your weather app responds with the day's forecast: sunny, 25°C, and no rain. (Time to hit the beach!)
-- Your Spotify server responds with "Shake It Off" by Taylor Swift. (Dance party, anyone?)
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-## APIs in Action: Real-World API Examples
-
-APIs aren't just tech mumbo jumbo—they're everywhere! Here are a few ways you interact with them daily (without even realizing it):
-
-1. **Social Media Integration**: Ever shared a YouTube link on Facebook and seen a neat preview pop up? That's the API at work, fetching data about the video (title, thumbnail, etc.) and displaying it.
-
-2. **Weather Applications**: When you check the weather, the app sends an API request to a weather server. The response? Temperature, rain chances, and all the cloudy details.
-
-3. **E-commerce Platforms**: You click on a product, and boom—the app uses an API to fetch details like price, stock availability, and shipping info.
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-
-## Why Understanding APIs Matters for Your Career
-
-Here's the thing: APIs aren't just for developers. If you're a technical writer, you're the person who explains how these magic menus work. You create the instructions that help developers (your users) understand how to make requests, get responses, and avoid mistakes like ordering pizza from a sushi kitchen.
-
-Think of yourself as the ultimate guide, helping others navigate the digital world. With great APIs comes great documentation responsibility. And that's where this course comes in!
-
-So, ready to become the API documentation master? Let's keep going! The next stop: [Types of APIs]({{ '/typesofAPI.html' | relative_url }}). Get your explorer hat ready—this is going to be fun.
-
-{% include faq-section.html 
-  title="Frequently Asked Questions About APIs"
-  description="Get answers to common questions about API basics, including fundamental concepts, types, and practical applications."
-  data_file="api_basics_faqs"
-%}
-
-{% include key_takeaways.html content="
-<ul>
-  <li>APIs are interfaces that enable different software applications to communicate with each other</li>
-  <li>APIs abstract complexity by hiding implementation details while providing standardized access to functionality</li>
-  <li>Common API types include REST, SOAP, GraphQL, and Webhooks, each with specific use cases</li>
-  <li>API security is implemented through authentication (verifying identity) and authorization (granting access)</li>
-  <li>Well-designed APIs follow principles like consistency, clear documentation, and appropriate error handling</li>
-  <li>Understanding API versioning and backward compatibility is essential for maintaining smooth integrations</li>
-</ul>
-" %}
-
-{% include quiz.html
-  title="Test Your Knowledge"
-  description="Check your understanding of APIs with this quiz."
-  quizDataFile="whatisanapi_questions"
-  theme="blue"
-  animate=true
-%}
-
-<div class="author-cta">
-  <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
-  <div class="author-message">
-    <h4>Was this guide helpful?</h4>
-    <p>If you found this "What is an API?" guide valuable, please share it with your team or on social media. Your feedback helps us improve our content!</p>
-    <div class="social-share">
-      <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text=Check out this excellent API documentation guide" class="share-button twitter">Share on Twitter</a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title=Master API Documentation" class="share-button linkedin">Share on LinkedIn</a>
-    </div>
-  </div>
-</div>
-
-<style>
-.author-cta {
-  display: flex;
-  background: #f8f9fb;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 30px 0;
-  border: 1px solid #e2e8f0;
-  gap: 20px;
-  align-items: center;
+```json
+{
+  "results": [
+    { "id": "bk_184932", "title": "The quiet thriller", "available_branches": ["branch_north"] }
+  ],
+  "total": 1
 }
-.author-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.author-message {
-  flex: 1;
-}
-.author-message h4 {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-.author-message p {
-  margin-bottom: 12px;
-}
-.social-share {
-  display: flex;
-  gap: 10px;
-}
-.share-button {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: white;
-}
-.twitter {
-  background: #1DA1F2;
-}
-.linkedin {
-  background: #0077B5;
-}
-@media (max-width: 600px) {
-  .author-cta {
-    flex-direction: column;
-    text-align: center;
-  }
-  .social-share {
-    justify-content: center;
-  }
-}
-</style>
+```
 
+The difference between a vague description and a strict reference is massive. A vague guide says "the endpoint returns books." A proper reference tells a script exactly what keys to parse. 
 
-{% include related_resources.html 
-  title="Essential API Learning Resources"
-  description="Continue your API learning journey with these carefully selected resources."
-  external_links="MDN Web API Introduction,https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction|Guide to RESTful APIs,https://restfulapi.net/|API Design Guide,https://apiguide.readthedocs.io/en/latest/|API Security Best Practices,https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics"
-  tools="Postman API Platform,https://www.postman.com/|Swagger API Documentation Tools,https://swagger.io/|Insomnia API Client,https://insomnia.rest/|Apigee API Management,https://cloud.google.com/apigee"
-%}
+{% include interactive-svg.html slug="whatisanapi" alt="Two versions of the same endpoint description side by side. The vague version says 'returns books'. The documented version shows the method, path, parameters, sample request, and sample response. Click or press Enter to toggle between them." %}
+
+You can see the difference immediately. Writing an API reference means you are documenting the literal machine interface. It has to be perfect. 
+
+{% comment %}block:5{% endcomment %}
+{% capture exercise %}
+**Five minutes, at your desk.** Take the request and response from the previous section. Open a doc tool of your choice. Write a one paragraph reference for `GET /books`. Cover: what it returns, what `q` does, what a `200` response looks like, what a `401` response means.
+
+When you finish, ask yourself: could a caller make this request and read the response without asking you a question?
+{% endcapture %}
+{% include callout.html variant="exercise" body=exercise %}
+
+{% comment %}block:6{% endcomment %}
+{% capture trap %}
+The trap is the description that reads well in a blog post and falls apart the second someone tries to call the endpoint. "Returns books from the catalog" is a sentence a marketing site can publish. It is not documentation.
+
+Devon's version, which he says approximately once a week: "If a caller reads it and still has to come find me, you wrote prose, not documentation." Fine. He is right.
+
+The fix is concrete: every reference page answers four questions before it does anything else. What method and path. What goes in. What comes back on the happy path. What comes back when something is wrong.
+{% endcapture %}
+{% include callout.html variant="warning" body=trap %}
+
+{% comment %}block:7{% endcomment %}
+**Words you can drop in a standup now:**
+
+- {% include glossary-term.html term="contract" %}: Use this when you mean the rules both sides agreed to about what gets sent and what comes back. Stronger than "API" when you want to make the point that breaking it breaks callers.
+- {% include glossary-term.html term="endpoint" %}: Use this when you mean a single URL plus method, not an entire API. "We are adding an endpoint" is precise. "We are adding an API" is usually not what you mean.
+- {% include glossary-term.html term="response shape" %}: Use this when you mean the structure of the JSON body, not the status code. "The response shape is changing" is a heads up that callers will need to update.
+- {% include glossary-term.html term="status code" %}: Use this when you want to be specific about what the server said. Saying "we got a 404" is more useful than "the call failed".
+- {% include glossary-term.html term="agent" %}: Use this when the caller is a piece of software acting on behalf of a person, not a person directly. The distinction matters from this lesson forward.
+
+{% comment %}block:8{% endcomment %}
+**Today's prompt for your AI assistant** (Claude, this time).
+
+The situation. You have a 5 minute Slack message from an engineer describing a new endpoint, and you need a first draft of the reference page by tomorrow.
+
+The prompt, exactly as written:
+
+```text
+I have a description of a new API endpoint from one of our engineers. Below is the transcript. Read it, then produce a first draft of the endpoint reference page covering: method and path, authentication, parameters (with types and whether they are required), a sample request, a sample 200 response, and the most likely error responses. Flag in a separate "Questions for the engineer" section anything you had to guess. Do not invent fields you cannot see in the transcript.
+
+TRANSCRIPT:
+[paste the engineer's description here]
+```
+
+What to expect back. A structured first draft. Often the method, path, and sample request are usable as is. Parameters and error responses are often partial; that is fine.
+
+What to watch for. Claude will sometimes invent field names that sound plausible. The "questions for the engineer" section is the safety net. If that section is empty, the assistant probably guessed; ask it again with "be more conservative about what you assume".
+
+{% include ad-slot.html slot="3333333333" format="auto" %}
+
+{% comment %}block:9{% endcomment %}
+**Before you go.** Look back at the sample `GET /books` response in this lesson. If a caller wants to know whether `thriller` is the only valid value for `q`, where in the reference would they look? Answer it in your head before you read the next lesson.
+
+{% comment %}block:10{% endcomment %}
+**Next week at Greenfield.** Sam comes back with a question that does not have an obvious answer: who, on staff, owns the docs once the API is real?
+
+{% include signoff.html %}
