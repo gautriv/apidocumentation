@@ -47,8 +47,48 @@ module VoiceCheck
     violations.concat(check_ai_tells(masked_body))
     violations.concat(check_signoff(body))
     violations.concat(check_block_markers(body))
+    violations.concat(check_glossary_terms(body, path))
 
     violations.each { |v| v[:file] = path }
+    violations
+  end
+
+  # Walks up from the lesson file to find the repo root (the directory
+  # containing _data/glossary.yml). Returns nil if not found.
+  def find_glossary_path(start_path)
+    dir = File.expand_path(File.dirname(start_path))
+    5.times do
+      candidate = File.join(dir, '_data', 'glossary.yml')
+      return candidate if File.exist?(candidate)
+      dir = File.dirname(dir)
+    end
+    nil
+  end
+
+  @glossary_cache = {}
+
+  def known_glossary_terms(glossary_path)
+    return [] unless glossary_path && File.exist?(glossary_path)
+    @glossary_cache ||= {}
+    @glossary_cache[glossary_path] ||= begin
+      data = YAML.safe_load(File.read(glossary_path), permitted_classes: [Date, Time]) || []
+      data.map { |e| e['term'].to_s }
+    end
+  end
+
+  def check_glossary_terms(body, path)
+    glossary_path = find_glossary_path(path)
+    return [] unless glossary_path
+    known = known_glossary_terms(glossary_path)
+    violations = []
+    body.each_line.with_index(1) do |line, lineno|
+      line.scan(/\{%\s*include\s+glossary-term\.html\s+term=["']([^"']+)["']\s*%\}/) do |match|
+        term = match[0]
+        unless known.include?(term)
+          violations << { rule: 'undefined-glossary-term', matched: term, line: lineno }
+        end
+      end
+    end
     violations
   end
 

@@ -3,13 +3,18 @@ require 'tempfile'
 require_relative 'voice-check'
 
 class VoiceCheckTest < Minitest::Test
+  # Write into _docs/ so the linter's find_glossary_path walker can locate
+  # the real _data/glossary.yml. Use a name guaranteed to be ignored by site
+  # builds (prefixed with _).
+  REPO_ROOT = File.expand_path('..', __dir__)
+  DOCS_DIR = File.join(REPO_ROOT, '_docs')
+
   def lint(content)
-    f = Tempfile.new(['lesson', '.md'])
-    f.write(content)
-    f.close
-    VoiceCheck.lint_file(f.path)
+    path = File.join(DOCS_DIR, "_voicecheck_test_#{$$}_#{rand(1_000_000)}.md")
+    File.write(path, content)
+    VoiceCheck.lint_file(path)
   ensure
-    f.unlink if f
+    File.unlink(path) if path && File.exist?(path)
   end
 
   def test_passes_clean_minimal_lesson
@@ -117,6 +122,20 @@ class VoiceCheckTest < Minitest::Test
     content = base_lesson.sub('reading_time: 10', '')
     violations = lint(content)
     assert violations.any? { |v| v[:rule] == 'missing-frontmatter' && v[:matched] == 'reading_time' }, violations.inspect
+  end
+
+  def test_flags_undefined_glossary_term
+    # The lesson links a term ("nonexistent-term") that does not exist in _data/glossary.yml.
+    content = base_lesson.sub('Diary opener.', 'Words like {% include glossary-term.html term="nonexistent-term" %} should fail.')
+    violations = lint(content)
+    assert violations.any? { |v| v[:rule] == 'undefined-glossary-term' && v[:matched] == 'nonexistent-term' }, violations.inspect
+  end
+
+  def test_allows_defined_glossary_term
+    # JWT exists in _data/glossary.yml; the include should pass the new check.
+    content = base_lesson.sub('Diary opener.', 'Tokens like {% include glossary-term.html term="JWT" %} are fine.')
+    violations = lint(content)
+    refute violations.any? { |v| v[:rule] == 'undefined-glossary-term' }, violations.inspect
   end
 
   def base_lesson
