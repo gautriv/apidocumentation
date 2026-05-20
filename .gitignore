@@ -4,6 +4,8 @@ _site/
 .claude
 design-mockups
 plan.md
+CLAUDE.md
+docs/superpowers/
 
 # Node + Tailwind
 node_modules/
