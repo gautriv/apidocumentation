@@ -12,10 +12,22 @@ next_page:
 ---
 
 {% comment %}block:1{% endcomment %}
-<!-- DRAFT block 1: diary opener. Will be filled in Task 12. -->
+## The day you start noticing it
+
+I am sitting in the back office at Greenfield Library on a Tuesday afternoon. Devon refreshes the staff catalog page on his monitor. Three books had been borrowed since lunch. The page already knew.
+
+"It used to be paper. I miss the paper. Don't tell Priya," Devon says.
+
+I have written API documentation for ten years and I had never thought to ask the question that came to me at that moment. How did the page know? The browser is just a screen. It has to talk to something else.
+
+That "something else" is the part of the web that everyone uses and nobody learns. Today is the day you learn it.
 
 {% comment %}block:2{% endcomment %}
-<!-- DRAFT block 2: today you will leave with. Will be filled in Task 13. -->
+## Today you will leave with
+
+- Request, response, and status code in plain English.
+- The atomic unit. How to describe one interaction in writing.
+- An AI prompt that turns a `curl -v` dump into labels.
 
 <!-- AD SLOT 1 (between blocks 2 and 3) inserted in Task 18 -->
 
