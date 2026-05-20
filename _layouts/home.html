@@ -170,7 +170,14 @@ layout: default
         <div class="md:col-span-1 font-mono text-sm {% if module.isNew %}text-copper{% else %}text-ink/50{% endif %}">{{ module.n }}{% if module.isNew %} NEW{% endif %}</div>
         <div class="md:col-span-4 h-display text-xl font-medium">{{ module.title }}</div>
         <div class="md:col-span-6 text-ink/65 text-[15px]">
-          {%- for lesson in module.lessons -%}{{ lesson.title }}{%- unless forloop.last %} &middot; {% endunless -%}{%- endfor -%}
+          {%- for lesson in module.lessons -%}
+            {% if lesson.placeholder %}
+              <span class="text-ink/40" title="Coming in Phase 2">{{ lesson.title }}</span>
+            {% else %}
+              <a href="{{ site.baseurl }}/{{ lesson.slug }}" class="hover:text-copper hover:underline underline-offset-4 decoration-ink/20 transition-colors">{{ lesson.title }}</a>
+            {% endif %}
+            {%- unless forloop.last %} &middot; {% endunless -%}
+          {%- endfor -%}
         </div>
         <div class="md:col-span-1 text-right text-ink/40 text-sm font-mono">{{ module.lessons | size }} lessons</div>
       </li>
