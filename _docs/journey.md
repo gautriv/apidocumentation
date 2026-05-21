@@ -14,11 +14,11 @@ next_page:
 {% comment %}block:1{% endcomment %}
 ## The day you start noticing it
 
-I am sitting in the back office at Greenfield Library on a Tuesday afternoon. Devon refreshes the staff catalog page on his monitor. Three books had been borrowed since lunch. The page already knew.
+I am sitting in the back office at Greenfield Library on a Tuesday afternoon. Across the table, Devon, the staff engineer, refreshes the catalog on his monitor. Three books had been borrowed since lunch. The catalog already knew.
 
-"It used to be paper. I miss the paper. Don't tell Priya," Devon says.
+"It used to be paper. I miss the paper. Don't tell Priya," Devon says. (Priya runs product at Greenfield. She is the one who pushed the team off the cards.)
 
-I have written API documentation for ten years and I had never thought to ask the question that came to me at that moment. How did the page know? The browser is just a screen. It has to talk to something else.
+I have written API documentation for ten years and I had never thought to ask the question that came to me at that moment. How did the catalog know? The browser is just a screen. It has to talk to something else.
 
 That "something else" is the part of the web that everyone uses and nobody learns. Today is the day you learn it.
 
@@ -34,13 +34,13 @@ That "something else" is the part of the web that everyone uses and nobody learn
 {% comment %}block:3{% endcomment %}
 ## What just happened, exactly
 
-The web is built on a conversation between two pieces of software. The piece of software that asks for information is the caller. Sometimes the caller is your browser. Sometimes it is a phone app you opened this morning. Sometimes it is a script someone wrote to back up their photos. The web does not care which.
+The web is built on a conversation between two pieces of software. The piece of software that asks for information is the caller. Sometimes the caller is your browser. Sometimes it is a phone app you opened this morning. Sometimes it is a script someone wrote to back up their photos. The web does not care which. What unifies them is the shape of the conversation: ask a question, hear an answer.
 
-The caller asks a question. That question is the request. The piece of software that listens for the request and decides what to send back is the server.
+The caller asks a question. That question is the request. The piece of software that listens for the request and decides what to send back is the server. A server can be one machine or a fleet of them. From the caller's side, it is one address you can talk to.
 
-When Devon refreshed the catalog, his browser sent a request to Greenfield's server. The server looked up the books, packaged the answer into a webpage, and sent it back. That answer is the response.
+When Devon refreshed the catalog, his browser sent a request to Greenfield's server. The server looked up the books, formatted the answer as HTML, and sent that HTML back. The whole round trip took less than a second. That answer is the response.
 
-Every response includes a number that tells the caller if the request succeeded. That number is the status code.
+Every response carries a number that tells the caller if the request succeeded. That number is the status code. There are about sixty status codes in common use, grouped by their first digit. 200 means it worked. 404 means the path the caller asked for is not there. 500 means something on the server broke. Devon's catalog refresh came back as a 200. If the server had crashed during the request, the browser would have seen a 500 instead.
 
 {% capture mermaid_src %}
 sequenceDiagram
@@ -56,21 +56,23 @@ Look at the diagram. Which arrow is the request?
 {% comment %}block:4{% endcomment %}
 ## How we write down one interaction
 
-The smallest useful artifact a writer of API documentation can produce is a description of one interaction. Two messages: what the caller sent and what came back.
+The smallest useful artifact a writer of API documentation can produce is a description of one interaction. Two messages: what the caller sent and what came back. Get that one description right and every page after it has a foundation to stand on. Get it wrong and the rest of the doc inherits the confusion.
 
-We write these messages using four pieces of information: the method, the path, the status code, and the body. The method, the headers, and the status code are details that support the path.
+Every interaction has four labeled pieces: the method, the path, the status code, and the body. Each one has a job. The path names what the caller is asking about. The method names how. The status code names what the server decided. The body is the actual content of the message, what the caller wanted to send or receive.
 
-Personally, I would always lead with the path. The path tells the caller what they are looking for. Method and status code tell you how the question was asked and how it was answered. Everything else is detail.
+Personally, I would always lead with the path. The path tells the caller what they are looking for. Method and status code tell you how the question was asked and how it was answered. The body is the payload. Everything else is detail.
 
-The catalog page Devon refreshed is part of Greenfield's public website at `greenfield.lib`. It is not an API. The future API ships in a few lessons at `api.greenfield.lib/v1`.
+Why the path matters most: a reader scanning your docs for "how do I get the list of branches?" will search for `/branches`. They will not search for `GET`. They will find your page, see the path, and only then look at the method to learn whether they need to send GET or POST. Lead with what the reader is hunting for.
 
-The request:
+The catalog Devon refreshed is part of Greenfield's public website at `greenfield.lib`. It is not an API. The future Greenfield API ships in a few lessons at `api.greenfield.lib/v1`. The shape of the conversation is the same in both worlds. Caller sends a request. Server returns a response with a status code and a body. Whether the body is HTML or JSON, whether the path is `/catalog` or `/books`, the four pieces are the same.
+
+The request looks like this:
 ```http
 GET /catalog HTTP/1.1
 Host: greenfield.lib
 ```
 
-The response:
+The response looks like this:
 ```http
 HTTP/1.1 200 OK
 Content-Type: text/html
@@ -78,9 +80,11 @@ Content-Type: text/html
 <html>...</html>
 ```
 
+The lines that start with a word and a colon (`Host:`, `Content-Type:`) are headers. Headers carry the context a message needs to be understood: which site the caller is asking about, what kind of body is coming back, whether authentication is in play. You will see headers in every interaction from here on. We will cover them properly in Module 2.
+
 {% include interactive-svg.html slug="journey" alt="Two cards labeled REQUEST and RESPONSE. The request card shows GET /catalog with the Host header. The response card shows the 200 OK status, the Content-Type header, and the HTML body. Hover or tap any element to see what it is." %}
 
-Explore the diagram. Each label reveals one sentence about what that part of the message does.
+Explore the diagram. Each label reveals one sentence about what that part of the message does. The same labels show up on every API interaction in the rest of this course. Recognize them now and what follows becomes a matter of variation, not new vocabulary.
 
 {% comment %}block:5{% endcomment %}
 ## Try it on Greenfield
