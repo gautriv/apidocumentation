@@ -31,9 +31,9 @@ Then I learned to read the codebase first.
 
 An endpoint reference has four information sources. The route handler (the function the server runs when a call to this endpoint comes in) tells you what the endpoint does. The {% include glossary-term.html term="schema" %} tells you what it sends back. The tests tell you what the team has promised it will not do. The {% include glossary-term.html term="SME" %}, the engineer who built the endpoint, tells you the why, the history, and the intent. Three of the four live in the codebase. One is a person.
 
-Some reference fields have more than one source. When two sources agree on a field, that field is a contract worth documenting carefully. When they disagree, you have a question for the SME. This is what makes the four sources a system rather than a list.
+Some fields on the doc page have more than one source. When two sources agree on a field, that field is a contract worth documenting carefully. When they disagree, you have a question for the SME. This is what makes the four sources a system rather than a list.
 
-I count four. You may find a fifth in your codebase. The order matters more than the count. Read the three before you book the fourth. Reading code first does not skip the SME interview. It makes the SME interview the most productive twenty minutes of your week.
+I count four. You may find a fifth in your codebase. The order matters more than the count. Read the three before you book the fourth. Reading code first does not skip the SME interview. It makes the SME interview the sharpest twenty minutes of your week.
 
 {% capture mermaid_src %}
 sequenceDiagram
