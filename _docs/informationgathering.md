@@ -54,7 +54,74 @@ sequenceDiagram
 Look at the diagram. Which source tells you the response shape? Which one tells you why the field is called `available_branches` and not just `branches`? The second question is the one only Devon can answer; the diagram makes the asymmetry visible.
 
 {% comment %}block:4{% endcomment %}
-<!-- TODO: Block 4 how we read each one. Drafted in Task 6. -->
+## How we read each one
+
+The code below is Python with Flask. Your codebase may be Node or Go. The four sources are the same in any stack.
+
+**The route handler.** I open `routes/books.py`. I knew from Devon's coffee description that the endpoint took a search term and returned books. The handler confirms it.
+
+```python
+@app.get("/v1/books")
+def search_books():
+    q = request.args.get("q")
+    if not q:
+        return {"error": "q is required"}, 400
+    limit = min(int(request.args.get("limit", 25)), 100)
+    results = catalog.search(q, limit=limit)
+    return {"results": results, "total": len(results)}, 200
+```
+
+But the handler also shows `limit=25` defaulting and a cap at `min(limit, 100)`. Devon did not mention either number. First revelation: the endpoint has pagination behavior the SME forgot to mention.
+
+**The schema.** I open `openapi.yaml`. I expect the schema to match the handler. It does not.
+
+```yaml
+/v1/books:
+  get:
+    parameters:
+      - name: q
+        in: query
+        required: true
+        schema: { type: string }
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                results:
+                  type: array
+                  items: { type: object }
+                total:
+                  type: integer
+```
+
+The schema declares `q` as required and the 200 response shape, but it does not declare `limit` at all. Second revelation: the schema and the handler disagree. This is what last week's lesson meant when it said the codebase has opinions. The handler and the schema disagree, and the code's opinion is louder than the schema's silence.
+
+**The tests.** I open `tests/test_books.py`.
+
+```python
+def test_missing_q_returns_400(client):
+    r = client.get("/v1/books")
+    assert r.status_code == 400
+
+def test_limit_over_100_is_capped(client):
+    r = client.get("/v1/books?q=ursula&limit=500")
+    assert len(r.json["results"]) <= 100
+```
+
+One test asserts `400` when `q` is missing, so the 400 is contractual, not implementation accident. Another sends `limit=500` and asserts the response has at most 100 results, so the cap at 100 is contractual too. Third revelation: the tests pin which behaviors are promises and which are details. The 100 cap is a promise. The default of 25 is currently silent.
+
+**The SME conversation.** I look at the clock. By 9:50 I have read all three code sources. I pull a sticky note from Devon's monitor frame and write three short questions: why 25 and not 50 as the default; why 400 instead of 422 for missing `q`; whether `limit` belongs in the OpenAPI schema or whether the team plans to remove it from the handler. None of these are answerable from code. All three fit on one sticky note.
+
+Three sources took twenty minutes. The questions for Devon fit on a sticky note. When he is back at 10:10, the conversation is sharper than any 60 minute kickoff meeting could be.
+
+I had been ready to write the doc page before reading the code. Reading the code, I realized I had been ready to write a wrong doc page.
+
+{% include interactive-svg.html slug="informationgathering" alt="Sources map for one endpoint reference. A sketched doc page in the centre is connected to four labeled source boxes around it: the route handler, the schema, the tests, and the engineer. Hover any source to see the one sentence it contributes." %}
+
+Hover any source box. Each one shows you what it contributes to the doc page. Some doc page fields are touched by more than one source. Those are the contracts.
 
 {% comment %}block:5{% endcomment %}
 <!-- TODO: Block 5 exercise. Drafted in Task 7. -->
