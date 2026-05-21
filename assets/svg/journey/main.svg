@@ -1,12 +1,13 @@
-<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" data-svg-pattern="hover-tooltip" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 20 800 290" preserveAspectRatio="xMidYMid meet" data-svg-pattern="hover-tooltip" xmlns="http://www.w3.org/2000/svg">
   <style>
     .card { fill: #F2EFE8; stroke: #1B1B1B; stroke-width: 2px; rx: 4px; }
     .card-title { font-family: sans-serif; font-weight: bold; font-size: 14px; fill: #6B8E7F; letter-spacing: 1px; }
     .text { font-family: monospace; font-size: 16px; fill: #1B1B1B; }
     .arrow { stroke: #B45F3B; stroke-width: 2px; marker-end: url(#arrowhead); }
-    .interactive { cursor: pointer; }
-    .interactive rect { fill: transparent; stroke: #B45F3B; stroke-width: 1px; stroke-dasharray: 2 2; rx: 2px; }
-    .interactive:hover rect, .interactive:focus rect { fill: rgba(180, 95, 59, 0.1); stroke-dasharray: none; }
+    .interactive { cursor: pointer; pointer-events: all; }
+    .interactive rect { fill: rgba(255, 255, 255, 0.01); stroke: #B45F3B; stroke-width: 1px; stroke-dasharray: 2 2; rx: 2px; pointer-events: all; }
+    .interactive text { pointer-events: all; }
+    .interactive:hover rect, .interactive:focus rect { fill: rgba(180, 95, 59, 0.12); stroke-dasharray: none; }
     g[tabindex="0"]:focus { outline: 2px solid #B45F3B; outline-offset: 2px; }
     @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
   </style>

@@ -8,6 +8,22 @@
   body.sheet-open { overflow: hidden; }
   body.sheet-open #sheet { transform: translateX(0); }
   body.sheet-open #sheet-backdrop { opacity: 1; pointer-events: auto; }
+
+  /* Mermaid: undo Tailwind Typography's dark pre styling so the
+     rendered diagram inherits page colors, not slate-800. */
+  .prose pre.mermaid,
+  .mermaid-figure pre.mermaid {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+  }
+  .prose pre.mermaid::before,
+  .prose pre.mermaid::after { content: none; }
+  .mermaid-figure { background: transparent; }
 }
 
 @layer utilities {
