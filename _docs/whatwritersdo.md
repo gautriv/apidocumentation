@@ -1,439 +1,178 @@
 ---
+title: What an API writer does in 2026
+permalink: /whatwritersdo.html
 module: 1
 lesson: 3
 slug: whatwritersdo
-title: What Technical Writers Document in API Documentation
-description: Discover the essential elements technical writers document in API documentation, including endpoints, methods, parameters, requests, responses, examples, error messages, authentication, and rate limits. Learn how API documentation serves as the crucial guidebook for developers.
-keywords: API documentation components, technical writing for APIs, API endpoints documentation, API methods documentation, API parameters, API request response documentation, API error messages, API authentication documentation, rate limits documentation, reference API documentation, API documentation best practices, API documentation guide, technical writer role, API documentation structure, RESTful API documentation, API documentation examples, API reference guide, API technical writing, developer documentation, API endpoints, API methods, API parameters, API requests, API responses, API error codes, API authentication
-permalink: whatwritersdo.html
-summary: "This guide explains what technical writers document when creating API documentation. Learn about the key elements that make up comprehensive API documentation, including endpoints, methods, parameters, requests and responses, error codes, and authentication requirements. Perfect for new technical writers starting in API documentation."
-next_page:
-  url: /informationgathering.html
-  title: How do Technical Writers document?
+reading_time: 14
+description: An API writer in 2026 writes for two readers, humans and agents. What that means for the same doc page, and an AI prompt that reads a draft twice.
 previous_page:
   url: /whatisanapi.html
-  title: What is an API?
-image: /assets/images/tech-writer-og.svg
-last_modified_at: 2023-11-10T10:00:00+00:00
-author_name: Documentation Specialist
-author_description: Technical writer with 10+ years of experience documenting developer platforms
-author_expertise: 
-  - "API Documentation"
-  - "Developer Experience"
-  - "Technical Writing"
-  - "Information Architecture"
-author_image: /assets/images/technical-writer.svg
-reading_time: 8
-level: Beginner
-speakable: true
-speakable_selectors:
-  - ".doc-content h1" 
-  - ".doc-content h2"
-  - ".doc-content p:first-of-type"
-schema_markup: true
+  title: What an API actually is
+next_page:
+  url: /informationgathering.html
+  title: Information gathering and interviewing the codebase
 ---
 
-So, you're probably sitting there thinking, _"Okay, I know APIs are like menus or maps, but what exactly does a technical writer do with them? Do we just stare at code all day and hope inspiration strikes?"_
+{% comment %}block:1{% endcomment %}
+## The day Priya pulled me into the conference room
 
-Not quite! Let me guide you through this chapter, where we'll uncover the role of technical writers in the API world. If you're feeling a little lost in the terminology, don't worry—that's why we're here. By the end of this, you'll know exactly what technical writers document and why they're the unsung heroes of the developer world.
+Two days after Sam left, Priya pulls me into the Greenfield conference room and turns her monitor toward me. Two graphs are stacked on the screen. The top one is labeled "humans". The bottom one is labeled "agents". The agent line is rising.
 
-{% include enhanced_note.html 
-  title="Technical Writer's Role" 
-  type="important" 
-  collapsible=true 
-  expanded=true 
-  content="Technical writers are the bridge between complex API functionality and developer understanding. They transform technical specifications into clear, usable documentation that guides developers through API implementation." 
-%}
+"Three weeks ago I would have called this a bot problem. Now it is a customer. I am of two minds about it," Priya says. (Priya is the product manager. She owns the analytics seat. She is the one who notices traffic patterns first.)
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+I have written API documentation for ten years. For eight of them I was writing for one kind of reader. Today, looking at Priya's graphs, I realize the job changed when the second line started climbing.
 
-## APIs Are Like New Cities
-Picture this: You've just landed in a brand-new city. You're excited to explore, but you have no idea where the best coffee shops are, which streets to avoid, or how to navigate the subway system. Wandering around aimlessly might sound adventurous, but let's be real—you'd much rather have a map, a guidebook, or even a friendly local to point you in the right direction.
+This lesson is what changed. And what stayed the same.
 
-Now, imagine an API as that new city. It's full of possibilities, but without clear directions, it's easy to get lost. That's where we, the technical writers, step in. We create the "guidebook" for APIs, making sure developers know exactly how to get from point A to point B without a detour to frustration-ville.
+{% comment %}block:2{% endcomment %}
+## Today you will leave with
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+- Why an API writer in 2026 writes for two readers, not one.
+- What each reader takes from the same page.
+- An AI prompt that reads a draft twice and reports what each one missed.
 
-{% include optimized-image.html 
-  src="/assets/images/api-city-map.svg" 
-  alt="Visualization of API documentation as a city map" 
-  width="800" 
-  height="500" 
-  loading="lazy" 
-  class="centered"
-  caption="Technical writers create the guidebooks that help developers navigate the API city" 
-%}
+{% include ad-slot.html slot="2222222222" format="auto" %}
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+{% comment %}block:3{% endcomment %}
+## The rule that changed the job
 
-## The Reference API Document: Your Developer's Guidebook
+A human reader is a developer. They scan your page for the one sentence that says what the endpoint does, a working code sample they can drop into their terminal, and an English description of what each error means. They read the prose because that is what they understand. The whole reading takes maybe ninety seconds.
 
-Let's say your project team just created a shiny new endpoint (more on that in a second) and they turn to you, the technical writer, saying, "We need documentation!" Here's what they really mean: "Please make sense of this technical stuff so developers don't bombard us with questions."
+An agent reader is software. Not the software that calls the API itself (that is the caller, from Lesson 1). An agent reader is software trying to figure out how to call the API. Code generators reading your docs to scaffold a client library. AI coding assistants reading over a developer's shoulder, suggesting the next line. Tool calling loops inside language models that have to consume a schema before they can act. The agent does not read prose. It reads structure.
 
-So, what exactly goes into this guidebook? Let's break it down:
+The rise of the second reader is recent. Tool use in language models became practical in 2024. The Model Context Protocol shipped that same year. By the time Priya pulled me into the conference room, agent traffic on the Greenfield public site was rising every week. It was not a fringe number. It was the second line on her graph.
 
-### 1. Endpoints: The API's Address Book
-Endpoints are the URLs developers use to interact with the API. Think of them as addresses on a map. Each endpoint leads to a specific resource or action. For example:
-- **GET** `/users`: Fetch a list of users.
-- **POST** `/users`: Create a new user.
+Both readers visit the same doc page. They take different things home. The human takes a working call. The agent takes a contract.
 
-Endpoints tell developers, "Here's where you can find what you're looking for."
+{% capture mermaid_src %}
+sequenceDiagram
+  participant Doc as One doc page
+  participant Human as Human reader
+  participant Agent as Agent reader
+  Doc->>Human: prose, quickstart, sample to copy
+  Doc->>Agent: schema, types, error codes
+{% endcapture %}
+{% include mermaid.html content=mermaid_src alt="One doc page delivers prose, a quickstart, and a sample to a human reader. The same page delivers schema, types, and error codes to an agent reader." %}
 
-### 2. Methods: The Actions You Can Take
-Methods are like verbs—they define what you can do with an endpoint. The most common ones are:
-- **GET**: Retrieve data.
-- **POST**: Add new data.
-- **PUT**: Update existing data.
-- **DELETE**: Remove data.
+Look at the diagram. What are the two extractions? And which one would your last doc page have served well?
 
-Think of these as the API's rules of engagement. Each endpoint may allow one or more methods.
+{% comment %}block:4{% endcomment %}
+## One doc page, two reads
 
+Let me show you what I mean. Here is a tiny version of a Greenfield API reference page. Greenfield does not have this endpoint yet. It will, soon. Treat the page as if it were live.
 
-### 3. Parameters: The Special Requests
-Parameters are like specific instructions you give to the waiter. For instance, "I'll have the pizza, but hold the olives." In API terms, these are the values passed in a request, such as:
-- **Query parameters**: `?userID=123` (specifies which user's data you want).
-- **Path parameters**: `/users/{userID}` (the `{userID}` is dynamic and changes based on your request).
+```markdown
+### GET /books
+Search the Greenfield catalog.
 
-### 4. Requests and Their Bodies: The Ask
-When a program interacts with an API, it sends a request. Sometimes, this request includes a "body," which is just a fancy way of saying "extra details." For example:
+curl https://api.greenfield.lib/v1/books?q=ursula
 
-```json
+**Query parameters**
+- q (string, required). Search term.
+
+**Response 200**
 {
-  "name": "Jane Doe",
-  "email": "jane.doe@example.com"
+  "results": [
+    { "id": "bk_184932", "title": "...", "available_branches": ["branch_north"] }
+  ],
+  "total": 1
 }
-```
-This is what the API reads to figure out what you want.
 
-### 5. Responses and Their Bodies: The Reply
-After the request, the API responds. The response includes the requested data (if all goes well) or an error message (if something breaks). For example:
-
-```json
-{
-  "status": "success",
-  "data": {
-    "userID": 123,
-    "name": "Jane Doe"
-  }
-}
-```
-### 6. Examples: The Show-and-Tell
-Developers love examples. They're like cheat codes for APIs. You provide sample requests and responses so developers can hit the ground running. For instance:
-
-- Request: `GET /users/123`
-- Response:
-
-```json
-{
-  "id": 123,
-  "name": "Jane Doe"
-}
+**Errors**
+- 401 Unauthorized. Missing or invalid token.
+- 429 Rate limited. Slow down.
 ```
 
-### 7. Error Messages: The Bad News
-No one likes errors, but they're inevitable. Your job is to document the possible error messages and what they mean. For example:
+A human reads this page from the top. The heading tells them what they are looking at. The English line under it tells them this endpoint searches the catalog. The curl line is what they will copy and adapt. The errors section is what they will check when something goes wrong. They are scanning. They want to make one working call before their next meeting.
 
-- Error 400: Bad Request (you messed up the request).
-- Error 401: Unauthorized (you forgot your API key).
-- Error 500: Internal Server Error (the API messed up).
+An agent reads the same page differently. The heading is metadata, used to look up the right endpoint. The English line is intent, used to confirm the agent matched the user's question to the right page. The parameter list is type information: `q` is a string, `q` is required. The response sample is a contract: the agent now knows what fields to expect, what types they are, and what shape it can pass to the next call. The error codes are decision points. `401` means stop and ask the caller for a token. `429` means back off and retry.
 
-Bonus points if you include troubleshooting tips for each error!
+Both readers find what they need on the same page. They just lock onto different parts of it.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+Personally, I treat the schema as the source of truth. I write the structure first: parameter list, response shape, error codes. I write the prose around it. Both readers respect the schema. Only one reads the prose. Skip the structure and you ship a page that only humans can use. Skip the prose and the humans bounce.
 
-### 8. Authentication: The Bouncer at the Club
-Before a developer can access an API, they often need to prove they're allowed in. This is called authentication, and it usually involves:
+The schema is also inspectable. An agent can read the response sample, parse it as JSON, and infer the shape on its own. A human can read the same sample and see what to expect. The same artifact teaches both, with no extra effort from you. That is the trick. The structure is not a tax. It is the part that does the most teaching.
 
-- API keys
-- OAuth tokens
-- Usernames and passwords
+If you have ever wondered why the best API docs feel "easy to read" without feeling thin, that is why. The structure carries the weight. The prose makes the structure approachable. Take either one out and the page tips over.
 
-Think of this as the API saying, "No entry without ID!"
+The new job is not to write less. It is to write twice as much, layered correctly. Structure as the bones, prose as the skin. Both readers walk away with what they came for.
 
-### 9. Rate Limits: The Speed Bumps
-Rate limits are restrictions on how many requests a developer can make in a given time. For example, "You can only send 100 requests per minute." It's like a speed limit for APIs, ensuring no one abuses the system.
+{% include interactive-svg.html slug="whatwritersdo" alt="A mocked Greenfield GET /books reference page with two annotation layers. The HUMAN layer highlights the curl line, the English error descriptions, and the one sentence summary. The AGENT layer highlights the parameter types, the response schema, and the integer error codes. A toggle switches between the two views." %}
 
-<div class="interactive-demo">
-  <h4>Try it yourself: Identify Documentation Components</h4>
-  <div class="demo-container">
-    <div class="demo-controls">
-      <button id="start-quiz-btn" class="btn-primary">Start Quiz</button>
-    </div>
-    <div class="demo-output">
-      <div id="quiz-container">Click "Start Quiz" to test your knowledge about API documentation components</div>
-      <div id="quiz-result"></div>
-    </div>
-  </div>
-</div>
+Tap the toggle in the diagram. The HUMAN highlights show what a developer's eye lands on. The AGENT highlights show what an agent's parser locks onto. Same page. Two reads.
 
-<style>
-.interactive-demo {
-  background: #f8f9fb;
-  border-radius: 8px;
-  padding: 15px;
-  margin: 25px 0;
-  border: 1px solid #e2e8f0;
-}
-.demo-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-.demo-controls {
-  display: flex;
-  gap: 10px;
-}
-.btn-primary, .btn-secondary {
-  padding: 8px 16px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-}
-.btn-primary {
-  background: #4a6ef5;
-  color: white;
-}
-.btn-secondary {
-  background: #e2e8f0;
-  color: #4a5568;
-}
-.demo-output {
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 4px;
-  padding: 10px;
-  min-height: 80px;
-}
-</style>
+{% comment %}block:5{% endcomment %}
+## Try it on Greenfield
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const startQuizBtn = document.getElementById('start-quiz-btn');
-  const quizContainer = document.getElementById('quiz-container');
-  const quizResult = document.getElementById('quiz-result');
-  
-  const quizQuestions = [
-    {
-      question: "Which component describes the URLs used to interact with an API?",
-      options: ["Parameters", "Endpoints", "Methods", "Responses"],
-      answer: "Endpoints"
-    },
-    {
-      question: "What are HTTP verbs like GET, POST, PUT, DELETE called in API documentation?",
-      options: ["Actions", "Verbs", "Methods", "Commands"],
-      answer: "Methods"
-    },
-    {
-      question: "What do we call restrictions on how many requests a developer can make in a given time?",
-      options: ["Throttling", "Rate Limits", "Quota", "Usage Caps"],
-      answer: "Rate Limits"
-    }
-  ];
-  
-  let currentQuestion = 0;
-  let score = 0;
-  
-  startQuizBtn.addEventListener('click', function() {
-    currentQuestion = 0;
-    score = 0;
-    showQuestion();
-  });
-  
-  function showQuestion() {
-    if (currentQuestion < quizQuestions.length) {
-      const q = quizQuestions[currentQuestion];
-      let optionsHTML = '';
-      
-      q.options.forEach((option, index) => {
-        optionsHTML += `<button class="option-btn btn-secondary" data-index="${index}">${option}</button>`;
-      });
-      
-      quizContainer.innerHTML = `
-        <div class="question">${q.question}</div>
-        <div class="options">${optionsHTML}</div>
-      `;
-      
-      document.querySelectorAll('.option-btn').forEach(button => {
-        button.addEventListener('click', checkAnswer);
-      });
-    } else {
-      showResults();
-    }
-  }
-  
-  function checkAnswer(e) {
-    const selectedOption = e.target.textContent;
-    const correctAnswer = quizQuestions[currentQuestion].answer;
-    
-    if (selectedOption === correctAnswer) {
-      score++;
-    }
-    
-    currentQuestion++;
-    showQuestion();
-  }
-  
-  function showResults() {
-    quizContainer.innerHTML = `Quiz completed!`;
-    quizResult.innerHTML = `You scored ${score} out of ${quizQuestions.length}`;
-  }
-});
-</script>
+{% capture exercise %}
+<p><strong>Five minutes, in your browser.</strong></p>
+<p>Pick any API documentation page you have on a bookmark. Stripe is great. So is GitHub, Twilio, Linear, or any docs site you respect. Open one page for one endpoint.</p>
+<p>Read it twice.</p>
+<p><strong>First pass, as a developer.</strong> You are trying to make one working call before your next meeting. Where is the working code sample? Where is the description of each error? How long does it take to find each one?</p>
+<p><strong>Second pass, as an agent.</strong> You are an automated reader that has to parse the response into a schema before deciding what to do next. Where is the JSON schema? Where are the parameter types declared? How long does it take to find each one?</p>
+<p>Note which pass was harder. That is where the page is failing one of its readers.</p>
+{% endcapture %}
+{% include callout.html variant="exercise" body=exercise %}
 
-Technical writers also document other aspects of APIs, such as the overall architecture, the security features, and the limitations. They strive to create documentation that is clear, concise, and accurate.
+{% comment %}block:6{% endcomment %}
+## The trap nobody warns you about
 
-Here are some additional examples of what you might document in an API:
+{% capture trap %}
+<p>The trap is hearing "writing for agents" and thinking it means abandoning prose.</p>
+<p>It does not. Both readers need both. Agents read prose to understand intent. Humans read structure to understand boundaries. The page that ships only the structure reads as a database dump. The page that ships only the prose reads as a marketing brochure. Both fail the same way. They leave half the audience behind.</p>
+<p>Devon's version, which I have heard him say more than once: "If a human cannot read your schema and an agent cannot read your prose, you have two failures, not one improvement."</p>
+<p>This matters for documentation. The new job is not to write less. It is to write twice as much, layered correctly. Structure as the bones, prose as the skin. Both readers walk away with what they came for.</p>
+{% endcapture %}
+{% include callout.html variant="warning" body=trap %}
 
-* The required permissions for each method.
-* The expected format of the data that is passed to and returned by the API.
-* The error codes that can be returned by the API and their meanings.
-* The best practices for using the API.
-* The limitations of the API.
+{% comment %}block:7{% endcomment %}
+## Words you can drop in standups now
 
-So, just make sure you know what we document, how we do it; it's something we will talk about later in the course. In essence, Technical Writers craft an essential guide that empowers everyone to understand, navigate, and make the most of the API world.
+- {% include glossary-term.html term="reader" %}: Use this when you mean either of the two parties consuming your doc page. "Who is the reader here?" forces a question you should be asking already.
+- {% include glossary-term.html term="agent" %}: Use this when you mean software calling an API on someone's behalf. "The agent could not parse the response" is more useful than "the integration broke".
+- {% include glossary-term.html term="contract" %}: Use this when you mean the rules two pieces of software agreed to about a call. "We are about to change the contract" gets a different reaction than "we are about to change the API".
+- {% include glossary-term.html term="response shape" %}: Use this when you mean the structure of what the server sends back, separate from the status code. "The shape changed" tells the right people the right thing.
+- {% include glossary-term.html term="endpoint" %}: Use this when you mean one URL plus one method (like `GET /books`). "Which endpoint is timing out?" beats "which call is slow".
 
-Next up: [How Do Technical Writers Document APIs?]({{ '/informationgathering.html' | relative_url }}) Get ready to uncover the tricks of the trade!
+{% comment %}block:8{% endcomment %}
+## Today's prompt for your AI assistant
 
-{% include faq-section.html 
-  title="Frequently Asked Questions About API Documentation"
-  description="Get answers to common questions about what technical writers document in APIs and how they create effective documentation."
-  data_file="tech_writer_faqs"
-%}
+Claude, this lesson.
 
-{% include key_takeaways.html content="
-<ul>
-  <li>A reference API document includes endpoints, methods, parameters, requests, responses, examples, error messages, authentication, and rate limits.</li>
-  <li>As a technical writer, your job is to make APIs easy to navigate and use, essentially creating a developer's guidebook.</li>
-  <li>Properly documented APIs save development time, reduce support burden, and improve developer experience.</li>
-  <li>Each component of API documentation serves a specific purpose in helping developers understand how to interact with the API.</li>
-</ul>
-" %}
+**The situation.** You have a draft of one doc page. Maybe it is your first reference page for a new endpoint. Maybe it is a page you have been told to modernize for agents. You want to know if the page serves both readers or only one. You do not want a vague pat on the back. You want specific lines.
 
-{% include quiz.html
-  title="Test Your Knowledge"
-  description="Check your understanding of the API documentation writer's role with this quiz."
-  quizDataFile="whatwritersdo_questions"
-  theme="blue"
-  animate=true
-%}
+**The prompt, exactly as written:**
 
-<div class="author-cta">
-  <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
-  <div class="author-message">
-    <h4>Was this guide helpful?</h4>
-    <p>If you found this guide on what technical writers document valuable, please share it with your team or on social media. Your feedback helps us improve our content!</p>
-    <div class="social-share">
-      <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text=Learn what technical writers document in APIs" class="share-button twitter">Share on Twitter</a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title=Technical Writing for APIs" class="share-button linkedin">Share on LinkedIn</a>
-    </div>
-  </div>
-</div>
+```text
+Below is a draft of an API documentation page. Read it twice.
 
-<style>
-.author-cta {
-  display: flex;
-  background: #f8f9fb;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 30px 0;
-  border: 1px solid #e2e8f0;
-  gap: 20px;
-  align-items: center;
-}
-.author-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.author-message {
-  flex: 1;
-}
-.author-message h4 {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-.author-message p {
-  margin-bottom: 12px;
-}
-.social-share {
-  display: flex;
-  gap: 10px;
-}
-.share-button {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: white;
-}
-.twitter {
-  background: #1DA1F2;
-}
-.linkedin {
-  background: #0077B5;
-}
-@media (max-width: 600px) {
-  .author-cta {
-    flex-direction: column;
-    text-align: center;
-  }
-  .social-share {
-    justify-content: center;
-  }
-}
-</style>
+First read: pretend you are a developer who has 60 seconds to make one working API call. Tell me what you find and what is missing. Quote specific lines that helped or confused you.
 
-{% include related_resources.html 
-  title="Essential Technical Writing Resources"
-  description="Enhance your technical writing skills with these carefully selected resources."
-  external_links="Google's Technical Writing Guidelines,https://developers.google.com/tech-writing|API Documentation Best Practices,https://idratherbewriting.com/learnapidoc/|Write the Docs Community,https://www.writethedocs.org/|The Good Docs Project,https://thegooddocsproject.dev/"
-  tools="Postman API Documentation Tools,https://www.postman.com/|Swagger OpenAPI Documentation,https://swagger.io/|ReadMe Developer Hub,https://readme.com/|Stoplight API Design Platform,https://stoplight.io/"
-%}
+Second read: pretend you are an automated reader that has to parse the response into a schema before deciding what to do next. Tell me what you find and what is missing. Quote specific lines.
+
+Be specific. Do not summarize. If something is missing, name what is missing.
+
+PAGE:
+[paste your draft here]
+```
+
+**What to expect back.** Two passes, each one quoting specific lines. The developer pass usually flags missing code samples or missing English error descriptions. The agent pass usually flags missing types, missing response schemas, or status codes mentioned only in prose.
+
+**What to watch for.** Claude will sometimes paper over gaps politely with "this page is well structured overall". Push back: "name three specific lines that confused either reader." The polite version is not useful. The specific one is.
+
+{% include ad-slot.html slot="3333333333" format="auto" %}
+
+{% comment %}block:9{% endcomment %}
+## Before you go
+
+Where does the parameter types information for `GET /books` come from? Who actually knows what fields are in the 200 response?
+
+Answer it in your head before you read the next lesson.
+
+{% comment %}block:10{% endcomment %}
+## Next week at Greenfield
+
+Next week, I sit down with the codebase. The codebase does all the talking. The codebase has opinions.
+
+{% include signoff.html %}

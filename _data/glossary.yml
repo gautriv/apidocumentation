@@ -37,3 +37,6 @@
 - term: "server"
   definition: "The piece of software that receives a request and decides what to send back. Sits at a URL the caller knows."
   link: "#"
+- term: "reader"
+  definition: "The party consuming a piece of documentation. In 2026, a reader is either a human (a developer, support engineer, or another writer) or an agent (software trying to figure out how to call the API: code generators, AI assistants, tool-use loops). A page that serves only one is leaving the other behind."
+  link: "#"
