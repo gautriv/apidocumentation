@@ -27,22 +27,22 @@
   <rect class="card" x="20" y="50" width="360" height="250" />
   <text x="40" y="80" class="card-title">REQUEST</text>
   
-  <g class="interactive" tabindex="0" data-tooltip="The HTTP method. The verb. We will cover methods properly in Module 2." aria-label="The HTTP method. The verb. We will cover methods properly in Module 2.">
+  <g class="interactive" tabindex="0" role="button" data-tooltip="The HTTP method. The verb. We will cover methods properly in Module 2." aria-label="The HTTP method. The verb. We will cover methods properly in Module 2.">
     <rect x="35" y="100" width="40" height="25" />
     <text x="40" y="118" class="text">GET</text>
   </g>
   
-  <g class="interactive" tabindex="0" data-tooltip="The path. What the caller is asking about. Lesson 1's main idea." aria-label="The path. What the caller is asking about. Lesson 1's main idea.">
+  <g class="interactive" tabindex="0" role="button" data-tooltip="The path. What the caller is asking about. Lesson 1's main idea." aria-label="The path. What the caller is asking about. Lesson 1's main idea.">
     <rect x="80" y="100" width="85" height="25" />
     <text x="85" y="118" class="text">/catalog</text>
   </g>
   
-  <g class="interactive" tabindex="0" data-tooltip="The protocol and version. The shape of the conversation, agreed once and reused." aria-label="The protocol and version. The shape of the conversation, agreed once and reused.">
+  <g class="interactive" tabindex="0" role="button" data-tooltip="The protocol and version. The shape of the conversation, agreed once and reused." aria-label="The protocol and version. The shape of the conversation, agreed once and reused.">
     <rect x="170" y="100" width="85" height="25" />
     <text x="175" y="118" class="text">HTTP/1.1</text>
   </g>
   
-  <g class="interactive" tabindex="0" data-tooltip="Tells the server which site you mean, in case one machine hosts many." aria-label="Tells the server which site you mean, in case one machine hosts many.">
+  <g class="interactive" tabindex="0" role="button" data-tooltip="Tells the server which site you mean, in case one machine hosts many." aria-label="Tells the server which site you mean, in case one machine hosts many.">
     <rect x="35" y="130" width="200" height="25" />
     <text x="40" y="148" class="text">Host: greenfield.lib</text>
   </g>
@@ -53,17 +53,17 @@
   
   <text x="440" y="118" class="text">HTTP/1.1</text>
   
-  <g class="interactive" tabindex="0" data-tooltip="The status code. Three digits and a short phrase. 200 means it worked." aria-label="The status code. Three digits and a short phrase. 200 means it worked.">
+  <g class="interactive" tabindex="0" role="button" data-tooltip="The status code. Three digits and a short phrase. 200 means it worked." aria-label="The status code. Three digits and a short phrase. 200 means it worked.">
     <rect x="525" y="100" width="70" height="25" />
     <text x="530" y="118" class="text">200 OK</text>
   </g>
   
-  <g class="interactive" tabindex="0" data-tooltip="A header naming the kind of body coming back. HTML in this case." aria-label="A header naming the kind of body coming back. HTML in this case.">
+  <g class="interactive" tabindex="0" role="button" data-tooltip="A header naming the kind of body coming back. HTML in this case." aria-label="A header naming the kind of body coming back. HTML in this case.">
     <rect x="435" y="130" width="220" height="25" />
     <text x="440" y="148" class="text">Content-Type: text/html</text>
   </g>
   
-  <g class="interactive" tabindex="0" data-tooltip="The body. What the caller actually wanted. HTML, JSON, an image. Anything." aria-label="The body. What the caller actually wanted. HTML, JSON, an image. Anything.">
+  <g class="interactive" tabindex="0" role="button" data-tooltip="The body. What the caller actually wanted. HTML, JSON, an image. Anything." aria-label="The body. What the caller actually wanted. HTML, JSON, an image. Anything.">
     <rect x="435" y="190" width="130" height="25" />
     <text x="440" y="208" class="text">&lt;html&gt;...&lt;/html&gt;</text>
   </g>
