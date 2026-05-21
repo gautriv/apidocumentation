@@ -80,7 +80,7 @@ Content-Type: text/html
 
 {% include interactive-svg.html slug="journey" alt="Two cards labeled REQUEST and RESPONSE. The request card shows GET /catalog with the Host header. The response card shows the 200 OK status, the Content-Type header, and the HTML body. Hover or tap any element to see what it is." %}
 
-By hovering over the diagram, you learned exactly what each part of the message does.
+Explore the diagram. Each label reveals one sentence about what that part of the message does.
 
 {% comment %}block:5{% endcomment %}
 ## Try it on Greenfield
