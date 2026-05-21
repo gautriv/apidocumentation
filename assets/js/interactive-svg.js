@@ -69,45 +69,87 @@ function initToggle(svg) {
 }
 
 function initHoverTooltip(svg) {
-  let tip = svg.querySelector('.svg-tooltip');
+  // Shared tooltip lives on <body> so overflow:hidden on ancestor
+  // wrappers cannot clip it. One tooltip is reused across all targets
+  // and all hover-tooltip SVGs on the page.
+  let tip = document.body.querySelector('.svg-tooltip-shared');
   if (!tip) {
     tip = document.createElement('div');
-    tip.className = 'svg-tooltip';
+    tip.className = 'svg-tooltip-shared';
     tip.setAttribute('role', 'tooltip');
-    tip.style.cssText = 'position:absolute;background:#1B1B1B;color:#F2EFE8;padding:4px 8px;font-size:12px;border-radius:3px;pointer-events:none;display:none;z-index:10;';
-    svg.parentElement.style.position = svg.parentElement.style.position || 'relative';
-    svg.parentElement.appendChild(tip);
+    Object.assign(tip.style, {
+      position: 'absolute',
+      pointerEvents: 'none',
+      background: '#1B1B1B',
+      color: '#F2EFE8',
+      padding: '8px 12px',
+      fontSize: '13px',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      lineHeight: '1.45',
+      borderRadius: '4px',
+      maxWidth: '280px',
+      boxShadow: '0 6px 18px rgba(12, 26, 43, 0.18)',
+      zIndex: '1000',
+      display: 'none',
+      opacity: '0',
+      transition: 'opacity 0.12s ease'
+    });
+    document.body.appendChild(tip);
   }
 
+  const place = (targetEl) => {
+    const r = targetEl.getBoundingClientRect();
+    tip.style.display = 'block';
+    const tr = tip.getBoundingClientRect();
+    const pad = 8;
+    let left = r.left + r.width / 2 - tr.width / 2 + window.scrollX;
+    let top = r.top - tr.height - 10 + window.scrollY;
+    if (r.top < tr.height + 12) {
+      top = r.bottom + 10 + window.scrollY;
+    }
+    const minLeft = pad + window.scrollX;
+    const maxLeft = window.scrollX + window.innerWidth - tr.width - pad;
+    left = Math.max(minLeft, Math.min(left, maxLeft));
+    tip.style.left = left + 'px';
+    tip.style.top = top + 'px';
+  };
+
+  const hide = () => {
+    tip.style.opacity = '0';
+    tip.style.display = 'none';
+    delete tip.dataset.active;
+  };
+
+  const show = (targetEl) => {
+    tip.textContent = targetEl.getAttribute('data-tooltip');
+    place(targetEl);
+    requestAnimationFrame(() => { tip.style.opacity = '1'; });
+    tip.dataset.active = targetEl.getAttribute('data-tooltip');
+  };
+
   const targets = svg.querySelectorAll('[data-tooltip]');
-  const hide = () => { tip.style.display = 'none'; delete tip.dataset.target; };
   targets.forEach(t => {
     if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '0');
-    const show = () => {
-      tip.textContent = t.getAttribute('data-tooltip');
-      tip.style.display = 'block';
-      t.setAttribute('aria-describedby', 'svg-tip');
-      tip.id = 'svg-tip';
-      tip.dataset.target = t.getAttribute('data-tooltip');
-    };
-    t.addEventListener('mouseenter', show);
+    t.addEventListener('mouseenter', () => show(t));
     t.addEventListener('mouseleave', hide);
-    t.addEventListener('focus', show);
+    t.addEventListener('focus', () => show(t));
     t.addEventListener('blur', hide);
     t.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isShownForThis = tip.style.display === 'block' && tip.dataset.target === t.getAttribute('data-tooltip');
-      if (isShownForThis) {
-        hide();
-      } else {
-        show();
-      }
+      const sameTarget = tip.dataset.active === t.getAttribute('data-tooltip')
+        && tip.style.display !== 'none';
+      if (sameTarget) hide();
+      else show(t);
     });
   });
 
   document.addEventListener('click', (e) => {
     if (!svg.contains(e.target)) hide();
   });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') hide();
+  });
+  window.addEventListener('scroll', hide, { passive: true });
 }
 
 function initSlider(svg) {

@@ -1,6 +1,6 @@
 {%- assign svg_path = '/assets/svg/' | append: include.slug | append: '/main.svg' -%}
 <figure class="interactive-svg my-8" aria-label="{{ include.alt | default: 'Interactive diagram' }}">
-  <div class="svg-wrapper relative max-w-full overflow-hidden" style="position:relative;">
+  <div class="svg-wrapper relative max-w-full" style="position:relative;">
     {% include_file {{ svg_path }} %}
   </div>
   {%- if include.caption -%}
