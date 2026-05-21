@@ -1,37 +1,17 @@
 ---
+title: Information gathering and interviewing the codebase
+permalink: /informationgathering.html
 module: 1
 lesson: 4
 slug: informationgathering
-title: How Technical Writers Document APIs
-description: Master the methodical approach technical writers use to create effective API documentation, from understanding APIs to publishing and maintaining documentation that developers love.
-keywords: API documentation process, technical writing for APIs, API documentation best practices, API documentation methodology, information gathering for API docs, documenting REST APIs, how to write API documentation, API documentation examples, API documentation structure, API documentation planning, API documentation testing, API documentation review, API documentation maintenance, API documentation strategy, technical writer workflow, documentation tools for APIs, API documentation templates, user-centered documentation, developer-friendly documentation, API reference guides, API getting started guides, code sample documentation, API error documentation, documenting authentication, API documentation platforms
-permalink: informationgathering.html
-next_page:
-  url: /typesofAPI.html
-  title: Types of APIs
+reading_time: 16
+description: An API writer in 2026 reads the codebase before the engineer. Four sources, the order to read them, and a Cursor prompt for one endpoint.
 previous_page:
   url: /whatwritersdo.html
-  title: What do Technical Writers document?
-image: /assets/images/api-documentation-process.svg
-last_modified_at: 2023-10-15T09:00:00+00:00
-author_name: Technical Writing Expert
-author_description: Senior technical writer with 8+ years of experience documenting APIs and developer platforms
-author_expertise: 
-  - "API Documentation"
-  - "Technical Documentation"
-  - "Information Architecture"
-  - "Developer Experience"
-author_image: /assets/images/gaurav.svg
-reading_time: 15
-level: Beginner
-speakable: true
-speakable_selectors:
-  - ".doc-content h1" 
-  - ".doc-content h2"
-  - ".doc-content p:first-of-type"
-  - "#understand-the-api"
-  - "#know-your-audience"
-schema_markup: true
+  title: What an API writer does in 2026
+next_page:
+  url: /audiences-humans-and-agents.html
+  title: Audiences, humans and agents
 ---
 
 API documentation is essential for helping users understand and use APIs effectively. However, writing good API documentation can be a challenging task. This chapter will teach you the best practices for writing API documentation, from understanding your audience to researching the API to testing your documentation.
