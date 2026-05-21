@@ -9,6 +9,6 @@
 <aside class="callout callout--{{ variant }} my-8 p-5 rounded-md bg-cream/60 border-l-4 border-{{ accent }}">
   <div class="callout-label uppercase tracking-wider text-xs font-semibold text-{{ accent }} mb-2">{{ label }}</div>
   <div class="callout-body text-[15px] leading-relaxed text-ink/90 font-serif">
-    {{ include.body | default: include.content | default: '' }}
+    {{ include.body | default: include.content | default: '' | markdownify }}
   </div>
 </aside>
