@@ -11,7 +11,7 @@ previous_page:
   title: What an API writer does in 2026
 next_page:
   url: /audiences-humans-and-agents.html
-  title: Audiences, humans and agents
+  title: "Audiences: humans, devs, and agents"
 ---
 
 API documentation is essential for helping users understand and use APIs effectively. However, writing good API documentation can be a challenging task. This chapter will teach you the best practices for writing API documentation, from understanding your audience to researching the API to testing your documentation.
