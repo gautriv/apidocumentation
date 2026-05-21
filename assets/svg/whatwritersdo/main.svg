@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" preserveAspectRatio="xMidYMid meet" style="max-width:100%;height:auto;" data-svg-pattern="toggle" data-states="HUMAN,AGENT" tabindex="0" role="switch" aria-checked="false" aria-label="Toggle the doc page annotations between the HUMAN reader's view and the AGENT reader's view">
+  <title>One doc page seen by two readers</title>
+  <desc>A mocked Greenfield GET /books reference page in the center. Two annotation layers overlay it. The HUMAN layer highlights the summary, the working code sample, and the English error descriptions. The AGENT layer highlights the parameter types, the response schema, and the integer error codes. Toggle to switch which annotations are visible.</desc>
+
+  <style>
+    .page { fill: #fbf8f3; stroke: #0c1a2b; stroke-width: 1.5; rx: 4; }
+    .page-heading { font-family: 'SF Mono', Menlo, monospace; font-size: 16px; fill: #0c1a2b; font-weight: bold; }
+    .page-prose { font-family: Georgia, serif; font-size: 14px; fill: #0c1a2b; }
+    .page-code { font-family: 'SF Mono', Menlo, monospace; font-size: 13px; fill: #0c1a2b; }
+    .page-section { font-family: Georgia, serif; font-size: 13px; fill: #0c1a2b; font-weight: bold; }
+    .toggle-hint { font-family: Georgia, serif; font-size: 12px; fill: #0c1a2b; opacity: 0.65; }
+    .state-label { font-family: Georgia, serif; font-size: 14px; fill: #0c1a2b; font-weight: bold; }
+    .anno-human { font-family: Georgia, serif; font-size: 12px; fill: #b85c38; font-style: italic; }
+    .anno-agent { font-family: Georgia, serif; font-size: 12px; fill: #5a7a64; font-style: italic; }
+
+    .layer-human { opacity: 1; transition: opacity 0.2s ease; }
+    .layer-agent { opacity: 0.12; transition: opacity 0.2s ease; }
+    svg[data-state="AGENT"] .layer-human { opacity: 0.12; }
+    svg[data-state="AGENT"] .layer-agent { opacity: 1; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .layer-human, .layer-agent { transition: none; }
+    }
+
+    svg:focus { outline: none; }
+    svg:focus-visible { outline: 2px solid #b85c38; outline-offset: 4px; }
+  </style>
+
+  <rect x="0" y="0" width="800" height="520" fill="#FFFFFF" />
+
+  <text x="400" y="28" text-anchor="middle" class="toggle-hint">Click the diagram or press Enter to toggle. Current view shown at the bottom.</text>
+
+  <!-- Mocked doc page (always visible) -->
+  <rect class="page" x="180" y="55" width="440" height="400" />
+  <text x="200" y="90" class="page-heading">GET /books</text>
+  <text x="200" y="115" class="page-prose">Search the Greenfield catalog.</text>
+  <text x="200" y="150" class="page-code">curl https://api.greenfield.lib/v1/books?q=ursula</text>
+  <text x="200" y="185" class="page-section">Query parameters</text>
+  <text x="200" y="206" class="page-code">q (string, required). Search term.</text>
+  <text x="200" y="241" class="page-section">Response 200</text>
+  <text x="200" y="262" class="page-code">{ "results": [</text>
+  <text x="200" y="280" class="page-code">    { "id": "bk_184932",</text>
+  <text x="200" y="298" class="page-code">      "title": "...",</text>
+  <text x="200" y="316" class="page-code">      "available_branches": [...] } ],</text>
+  <text x="200" y="334" class="page-code">  "total": 1 }</text>
+  <text x="200" y="369" class="page-section">Errors</text>
+  <text x="200" y="390" class="page-code">401 Unauthorized. Missing or invalid token.</text>
+  <text x="200" y="408" class="page-code">429 Rate limited. Slow down.</text>
+
+  <!-- HUMAN layer: copper highlights and annotations on prose-friendly bits -->
+  <g class="layer-human">
+    <rect x="195" y="100" width="280" height="22" fill="#b85c38" opacity="0.16" rx="2" />
+    <rect x="195" y="135" width="410" height="22" fill="#b85c38" opacity="0.16" rx="2" />
+    <rect x="195" y="375" width="400" height="22" fill="#b85c38" opacity="0.16" rx="2" />
+    <rect x="195" y="393" width="270" height="22" fill="#b85c38" opacity="0.16" rx="2" />
+
+    <text x="170" y="115" text-anchor="end" class="anno-human">first sentence</text>
+    <text x="170" y="150" text-anchor="end" class="anno-human">copy this</text>
+    <text x="170" y="390" text-anchor="end" class="anno-human">what each error</text>
+    <text x="170" y="404" text-anchor="end" class="anno-human">means in English</text>
+
+    <line x1="170" y1="115" x2="195" y2="115" stroke="#b85c38" stroke-width="1" />
+    <line x1="170" y1="150" x2="195" y2="150" stroke="#b85c38" stroke-width="1" />
+    <line x1="170" y1="395" x2="195" y2="395" stroke="#b85c38" stroke-width="1" />
+  </g>
+
+  <!-- AGENT layer: sage highlights and annotations on structural bits -->
+  <g class="layer-agent">
+    <rect x="218" y="191" width="180" height="22" fill="#5a7a64" opacity="0.16" rx="2" />
+    <rect x="195" y="247" width="410" height="95" fill="#5a7a64" opacity="0.10" rx="2" />
+    <rect x="195" y="375" width="32" height="22" fill="#5a7a64" opacity="0.2" rx="2" />
+    <rect x="195" y="393" width="32" height="22" fill="#5a7a64" opacity="0.2" rx="2" />
+
+    <text x="630" y="206" class="anno-agent">type declaration</text>
+    <text x="630" y="295" class="anno-agent">the response shape:</text>
+    <text x="630" y="312" class="anno-agent">the contract</text>
+    <text x="630" y="390" class="anno-agent">decision codes:</text>
+    <text x="630" y="404" class="anno-agent">401 → stop, 429 → wait</text>
+
+    <line x1="608" y1="206" x2="630" y2="206" stroke="#5a7a64" stroke-width="1" />
+    <line x1="608" y1="295" x2="630" y2="295" stroke="#5a7a64" stroke-width="1" />
+    <line x1="608" y1="395" x2="630" y2="395" stroke="#5a7a64" stroke-width="1" />
+  </g>
+
+  <text x="400" y="490" text-anchor="middle" class="state-label">Reading as: <tspan class="toggle-label">HUMAN</tspan></text>
+</svg>
