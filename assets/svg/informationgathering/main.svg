@@ -1,5 +1,80 @@
-<!-- placeholder: replaced in Task 14 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" aria-label="Sources map placeholder — full interactive version coming in Task 14">
-  <rect width="800" height="500" fill="#faf8f4" rx="8"/>
-  <text x="400" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#6b7280">Interactive sources map — coming soon</text>
+<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" data-svg-pattern="hover-tooltip" xmlns="http://www.w3.org/2000/svg" aria-label="Sources map showing how the route handler, schema, tests, and engineer each contribute to one doc page.">
+  <style>
+    .doc-page { fill: #fbf8f3; stroke: #0c1a2b; stroke-width: 1.5; rx: 4; }
+    .source-box { fill: #fbf8f3; stroke: #b85c38; stroke-width: 1.5; rx: 4; }
+    .field-hotspot { fill: rgba(255, 255, 255, 0.01); stroke: #b85c38; stroke-width: 1; stroke-dasharray: 2 2; rx: 2; pointer-events: all; }
+    .interactive { cursor: pointer; pointer-events: all; }
+    .interactive:hover .field-hotspot, .interactive:focus .field-hotspot { fill: rgba(184, 92, 56, 0.12); stroke-dasharray: none; }
+    .interactive:hover .source-box, .interactive:focus .source-box { fill: rgba(184, 92, 56, 0.10); }
+    .connector { stroke: #5a7a64; stroke-width: 1.5; fill: none; }
+    .doc-heading { font-family: 'SF Mono', Menlo, monospace; font-size: 14px; fill: #0c1a2b; font-weight: bold; }
+    .doc-code { font-family: 'SF Mono', Menlo, monospace; font-size: 12px; fill: #0c1a2b; }
+    .doc-section { font-family: Georgia, serif; font-size: 12px; fill: #0c1a2b; font-weight: bold; }
+    .source-label { font-family: Georgia, serif; font-size: 15px; fill: #0c1a2b; font-weight: bold; text-anchor: middle; }
+    .source-sub { font-family: Georgia, serif; font-size: 11px; fill: #0c1a2b; opacity: 0.7; text-anchor: middle; font-style: italic; }
+    g[tabindex="0"]:focus { outline: 2px solid #0c1a2b; outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+
+  <rect x="0" y="0" width="800" height="500" fill="#FFFFFF"/>
+
+  <g aria-hidden="true">
+    <path class="connector" d="M 170 100 Q 215 140 270 165" />
+    <path class="connector" d="M 630 100 Q 585 140 540 175" />
+    <path class="connector" d="M 630 100 Q 585 160 540 230" />
+    <path class="connector" d="M 170 400 Q 215 380 270 380" />
+    <path class="connector" d="M 170 400 Q 215 320 270 230" />
+    <path class="connector" d="M 630 400 Q 585 380 540 350" />
+  </g>
+
+  <rect class="doc-page" x="260" y="80" width="280" height="340" />
+  <text x="280" y="110" class="doc-heading">GET /v1/books</text>
+  <line x1="280" y1="120" x2="520" y2="120" stroke="#0c1a2b" stroke-width="0.5" opacity="0.3"/>
+
+  <text x="280" y="150" class="doc-section">curl</text>
+  <text x="280" y="170" class="doc-code">/v1/books?q=ursula</text>
+
+  <text x="280" y="200" class="doc-section">Query parameters</text>
+  <text x="280" y="220" class="doc-code">q (string, required)</text>
+
+  <text x="280" y="250" class="doc-section">Response 200</text>
+  <text x="280" y="270" class="doc-code">{ results: [...],</text>
+  <text x="280" y="288" class="doc-code">  total: int }</text>
+
+  <text x="280" y="320" class="doc-section">Errors</text>
+  <text x="280" y="340" class="doc-code">400 q is required</text>
+
+  <g class="interactive" tabindex="0" role="button" data-tooltip="Route handler declared this path and this method." aria-label="GET /v1/books: route handler declared this path and this method.">
+    <rect class="field-hotspot" x="275" y="98" width="150" height="22" />
+  </g>
+  <g class="interactive" tabindex="0" role="button" data-tooltip="Schema marked q required. The handler also returns 400 if it is missing." aria-label="q string required: schema marked q required. The handler also returns 400 if it is missing.">
+    <rect class="field-hotspot" x="275" y="208" width="180" height="22" />
+  </g>
+  <g class="interactive" tabindex="0" role="button" data-tooltip="Schema declared the shape. Tests verified two specific cases." aria-label="200 response: schema declared the shape. Tests verified two specific cases.">
+    <rect class="field-hotspot" x="275" y="258" width="170" height="40" />
+  </g>
+  <g class="interactive" tabindex="0" role="button" data-tooltip="Tests pinned this contract. The handler implements it." aria-label="400 error: tests pinned this contract. The handler implements it.">
+    <rect class="field-hotspot" x="275" y="328" width="170" height="22" />
+  </g>
+
+  <g class="interactive" tabindex="0" role="button" data-tooltip="The function the server runs when the call comes in. You learn what fields exist and how they default." aria-label="route handler: the function the server runs when the call comes in. You learn what fields exist and how they default.">
+    <rect class="source-box" x="30" y="70" width="140" height="60" />
+    <text x="100" y="100" class="source-label">route handler</text>
+    <text x="100" y="118" class="source-sub">routes/books.py</text>
+  </g>
+  <g class="interactive" tabindex="0" role="button" data-tooltip="The team's written promise about the response shape. You learn the contract." aria-label="schema: the team's written promise about the response shape. You learn the contract.">
+    <rect class="source-box" x="630" y="70" width="140" height="60" />
+    <text x="700" y="100" class="source-label">schema</text>
+    <text x="700" y="118" class="source-sub">openapi.yaml</text>
+  </g>
+  <g class="interactive" tabindex="0" role="button" data-tooltip="Every behavior the team has agreed not to break. You learn the edges." aria-label="tests: every behavior the team has agreed not to break. You learn the edges.">
+    <rect class="source-box" x="30" y="370" width="140" height="60" />
+    <text x="100" y="400" class="source-label">tests</text>
+    <text x="100" y="418" class="source-sub">tests/test_books.py</text>
+  </g>
+  <g class="interactive" tabindex="0" role="button" data-tooltip="The engineer who built it. You learn the why and the history." aria-label="SME: the engineer who built it. You learn the why and the history.">
+    <rect class="source-box" x="630" y="370" width="140" height="60" />
+    <text x="700" y="400" class="source-label">SME</text>
+    <text x="700" y="418" class="source-sub">Devon</text>
+  </g>
 </svg>
