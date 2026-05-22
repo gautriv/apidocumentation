@@ -1,587 +1,225 @@
 ---
+title: Information gathering and interviewing the codebase
+permalink: /informationgathering.html
 module: 1
 lesson: 4
 slug: informationgathering
-title: How Technical Writers Document APIs
-description: Master the methodical approach technical writers use to create effective API documentation, from understanding APIs to publishing and maintaining documentation that developers love.
-keywords: API documentation process, technical writing for APIs, API documentation best practices, API documentation methodology, information gathering for API docs, documenting REST APIs, how to write API documentation, API documentation examples, API documentation structure, API documentation planning, API documentation testing, API documentation review, API documentation maintenance, API documentation strategy, technical writer workflow, documentation tools for APIs, API documentation templates, user-centered documentation, developer-friendly documentation, API reference guides, API getting started guides, code sample documentation, API error documentation, documenting authentication, API documentation platforms
-permalink: informationgathering.html
-next_page:
-  url: /typesofAPI.html
-  title: Types of APIs
+reading_time: 16
+description: An API writer in 2026 reads the codebase before the engineer. Four sources, the order to read them, and a Cursor prompt for one endpoint.
 previous_page:
   url: /whatwritersdo.html
-  title: What do Technical Writers document?
-image: /assets/images/api-documentation-process.svg
-last_modified_at: 2023-10-15T09:00:00+00:00
-author_name: Technical Writing Expert
-author_description: Senior technical writer with 8+ years of experience documenting APIs and developer platforms
-author_expertise: 
-  - "API Documentation"
-  - "Technical Documentation"
-  - "Information Architecture"
-  - "Developer Experience"
-author_image: /assets/images/gaurav.svg
-reading_time: 15
-level: Beginner
-speakable: true
-speakable_selectors:
-  - ".doc-content h1" 
-  - ".doc-content h2"
-  - ".doc-content p:first-of-type"
-  - "#understand-the-api"
-  - "#know-your-audience"
-schema_markup: true
+  title: What an API writer does in 2026
+next_page:
+  url: /audiences-humans-and-agents.html
+  title: "Audiences: humans, devs, and agents"
 ---
 
-API documentation is essential for helping users understand and use APIs effectively. However, writing good API documentation can be a challenging task. This chapter will teach you the best practices for writing API documentation, from understanding your audience to researching the API to testing your documentation.
-
-{% include enhanced_note.html 
-  title="For Beginners" 
-  type="info" 
-  collapsible=true 
-  expanded=true 
-  content="If you're diving into this chapter and finding some of the technical terms a bit daunting, don't sweat it—that's perfectly fine! We haven't covered them yet, and my main goal in this chapter is to give you a sneak peek into how you'll kickstart your journey in documenting APIs once you become an expert. As we progress through the course, we'll delve deep into the nitty-gritty details of these terms and technologies." 
-%}
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-## 1. Understand the API {#understand-the-api}
-
-Imagine this: You're handed a mysterious gadget. It's shiny, looks powerful, but you have no idea what it does. What's the first thing you'd do? Yep, figure out what it's for!
-
-APIs are like that gadget—they solve specific problems and serve specific purposes. Your job is to understand what the API does, how it works, and why it's awesome.
-
-- **Ask Questions!** What's the API's purpose? What problems does it solve? Who uses it?
-- Get your hands dirty! Test the API yourself, chat with developers, and dive into any existing documentation (even if it's messy—this is where you shine!).
-- Pro tip: Don't be afraid to ask "silly" questions. Some of the best documentation starts with, "What the heck does this do?"
-
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-
-## 2. Know Your Audience {#know-your-audience}
-
-Let's pause for a moment. You're not just writing for the sake of writing. You're creating something that real people—developers, product managers, or analysts—will use. So, let's figure out who these people are.
-
-- **Developers:** They want the details. Endpoints, parameters, authentication—give them all the nuts and bolts.
-- **Product Managers:** They're more interested in the big picture. How will this API improve the product? What are the use cases?
-- **Business Analysts:** They might want a mix—some functionality details, but also how this API solves business problems.
-
-Think of it like planning a speech: Are you talking to a room full of tech wizards or a group of curious business folks? Tailor your tone and content accordingly.
-
-{% include optimized-image.html 
-  src="/assets/images/api-documentation-audience.svg" 
-  alt="Different audience segments for API documentation" 
-  width="700" 
-  height="400" 
-  loading="lazy" 
-  class="centered"
-  caption="Understanding the diverse audience for your API documentation" 
-%}
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-
-
-## 3. Set Documentation Goals {#set-documentation-goals}
-
-Imagine being handed a map with no "X marks the spot." Frustrating, right? That's why you need to set clear goals for your documentation.
-
-Ask yourself:
-- What should someone be able to do after reading this?
-- Should they be able to make their first API call? Understand common errors? Master advanced features?
-
-For example:
-- Goal 1: Help users get started with the API in under 10 minutes.
-- Goal 2: Reduce support tickets by clearly documenting error messages.
-
-When you know your goals, the documentation practically writes itself (okay, not quite, but it helps a ton).
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-
-## 4. Gather API Information (The detective work begins) {#gather-api-information}
-
-* Once you've identified your audience and documentation objectives, you can start obtaining API data.
-
-    - To obtain important API information, work with Subject Matter Experts (SMEs) and other stakeholders.
-    - Ask relevant questions.
-
-    {% include enhanced_dropdown.html 
-      title="Example API Documentation Questions" 
-      type="primary"
-      icon="fa-question-circle"
-      animation="slide"
-      content="
-      <div class='dropdown-question-section'>
-        <p><strong>API Purpose and Functionality:</strong></p>
-        <p><em>Example Question:</em> 'Could you explain in simple terms what this API is designed to do and why it's important?'</p>
-
-        <p><strong>Key Features and Endpoints:</strong></p>
-        <p><em>Example Question:</em> 'What are the primary features or functionalities that developers can access through this API?'</p>
-
-        <p><strong>Programming Languages and Frameworks:</strong></p>
-        <p><em>Example Question:</em> 'Do developers typically use specific programming languages or frameworks when integrating with this API?'</p>
-
-        <p><strong>Authentication and Security:</strong></p>
-        <p><em>Example Question:</em> 'What authentication methods or security measures are in place to protect the API and user data?'</p>
-
-        <p><strong>Rate Limits and Usage Guidelines:</strong></p>
-        <p><em>Example Question:</em> 'Are there any rate limits or usage guidelines that developers need to be aware of to prevent abuse of the API?'</p>
-
-        <p><strong>Data Formats and Response Types:</strong></p>
-        <p><em>Example Question:</em> 'What data formats does the API accept and return (e.g., JSON, XML), and how should developers handle responses?'</p>
-      </div>
-      <style>
-        .dropdown-question-section p { margin-bottom: 10px; }
-        .dropdown-question-section p:last-child { margin-bottom: 0; }
-        .dropdown-question-section strong { color: #007bff; }
-        .dropdown-question-section em { font-style: italic; color: #555; }
-      </style>
-      "
-    %}
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-## 5. Plan Your API Documentation Structure {#plan-documentation-structure}
-
-Think of your documentation like a house. You need a solid foundation and clear rooms where everything belongs. Here's a tried-and-true structure:
-
-1. **Introduction:** What's the API about? Why should users care?
-2. **Getting Started:** How to sign up, get an API key, and make the first request.
-3. **Authentication:** Explain the security basics (e.g., API keys, OAuth).
-4. **Endpoints and Methods:** Break down each endpoint with supported methods (GET, POST, etc.).
-5. **Examples and Use Cases:** Real-world examples that show users how to achieve their goals.
-6. **Error Handling:** Common errors and how to fix them.
-7. **Best Practices:** Tips for using the API effectively.
-8. **FAQs:** Answer the most common questions.
-
-If that seems like a lot, don't worry! Start simple, then expand as you go.
-
-<div class="interactive-demo">
-  <h4>Try it yourself: Documentation Structure Builder</h4>
-  <div class="demo-container">
-    <div class="demo-controls">
-      <button id="add-section-btn" class="btn-primary">Add Section</button>
-      <button id="reset-btn" class="btn-secondary">Reset</button>
-    </div>
-    <div class="demo-output">
-      <ul id="doc-structure">
-        <li>Introduction</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<style>
-.interactive-demo {
-  background: #f8f9fb;
-  border-radius: 8px;
-  padding: 15px;
-  margin: 25px 0;
-  border: 1px solid #e2e8f0;
-}
-.demo-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-.demo-controls {
-  display: flex;
-  gap: 10px;
-}
-.btn-primary, .btn-secondary {
-  padding: 8px 16px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-}
-.btn-primary {
-  background: #4a6ef5;
-  color: white;
-}
-.btn-secondary {
-  background: #e2e8f0;
-  color: #4a5568;
-}
-.demo-output {
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 4px;
-  padding: 10px;
-  min-height: 80px;
-}
-#doc-structure {
-  margin: 0;
-  padding-left: 20px;
-}
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const addSectionBtn = document.getElementById('add-section-btn');
-  const resetBtn = document.getElementById('reset-btn');
-  const docStructure = document.getElementById('doc-structure');
-  
-  const sections = [
-    'Introduction',
-    'Getting Started',
-    'Authentication',
-    'Endpoints and Methods',
-    'Examples and Use Cases',
-    'Error Handling',
-    'Best Practices',
-    'FAQs'
-  ];
-  
-  let currentIndex = 1;
-  
-  addSectionBtn.addEventListener('click', function() {
-    if (currentIndex < sections.length) {
-      const li = document.createElement('li');
-      li.textContent = sections[currentIndex];
-      docStructure.appendChild(li);
-      currentIndex++;
-      
-      if (currentIndex >= sections.length) {
-        addSectionBtn.disabled = true;
-        addSectionBtn.textContent = "All Sections Added";
-      }
-    }
-  });
-  
-  resetBtn.addEventListener('click', function() {
-    docStructure.innerHTML = '<li>Introduction</li>';
-    currentIndex = 1;
-    addSectionBtn.disabled = false;
-    addSectionBtn.textContent = "Add Section";
-  });
-});
-</script>
-
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-
-
-## 6. Write Clearly and Concisely (Keep it simple) {#write-clearly}
-
-Good documentation isn't about sounding smart—it's about being understood. Here's how to do that:
-
-- Use plain language. If you can say something in 10 words instead of 20, do it.
-- Avoid jargon. If you must use technical terms, explain them.
-- Add examples! A single example can clarify what 10 paragraphs of text can't.
-- Keep your tone consistent. If your introduction is friendly, don't suddenly turn robotic in the error handling section.
-
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-## 7. Include Code Samples in API Documentation {#include-code-samples}
-
-Want to win the hearts of developers? Give them working code samples. Think of it as giving them a recipe instead of just describing the dish.
-
-- Include samples in multiple programming languages if possible (e.g., Python, JavaScript, Java).
-- Test the samples yourself to make sure they work.
-- Use comments in the code to explain what's happening.
-
-{% include optimized-image.html 
-  src="/assets/images/code-samples-example.svg" 
-  alt="Example of code samples in multiple programming languages" 
-  width="750" 
-  height="450" 
-  loading="lazy" 
-  class="centered"
-  caption="Effective code samples in multiple programming languages" 
-%}
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-## 8. Test the API Documentation (Become the User) {#test-documentation}
-
-Here's a secret: Testing the API yourself isn't just helpful—it's *essential*. By putting yourself in the user's shoes, you'll catch errors, clarify steps, and build empathy for their experience.
-
-{% include enhanced_note.html 
-  title="Testing Tools" 
-  type="success" 
-  content="
-  <div class='tools-list'>
-    <div class='tool-item'>
-      <strong><a href='https://www.postman.com/' target='_blank'>Postman</a>:</strong> Great for testing and visualizing API requests.
-    </div>
-    <div class='tool-item'>
-      <strong><a href='https://swagger.io/tools/swagger-ui/' target='_blank'>Swagger UI</a>:</strong> Handy for interactive API documentation.
-    </div>
-    <div class='tool-item'>
-      <strong>cURL:</strong> Perfect for command-line testing.
-    </div>
-    <div class='tool-item'>
-      <strong><a href='https://insomnia.rest/' target='_blank'>Insomnia</a>:</strong> A lightweight, user-friendly API testing tool.
-    </div>
-  </div>
-  <style>
-    .tools-list { display: flex; flex-wrap: wrap; gap: 12px; }
-    .tool-item { background: #f8f9fa; padding: 8px 12px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); flex: 1 1 45%; }
-    .tool-item a { color: #007bff; text-decoration: none; }
-    .tool-item a:hover { text-decoration: underline; }
-  </style>
-  " 
-%}
-
-Create a simple test plan and run through every scenario. If something feels confusing to you, it'll definitely confuse your users.
-
-Make a test plan and run extensive tests to validate the API's functioning.
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-
-## 9. Review and Gather Documentation Feedback {#review-documentation}
-
-Writing is only half the battle—getting feedback is where the magic happens.
-
-- Share your draft with developers, SMEs, or even a small group of external users.
-- Ask questions like:
-  - "Does this make sense?"
-  - "Are the examples helpful?"
-  - "What's missing?"
-
-Be open to constructive criticism. Every bit of feedback makes your documentation stronger.
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-## 10. Publish and Maintain API Documentation {#publish-maintain-documentation}
-
-Congrats! You've written amazing API documentation. Now, it's time to share it with the world.
-
-- Choose a platform to host it (e.g., Swagger, Postman, GitHub Pages).
-- Update it regularly. APIs evolve, and your documentation should, too.
-- Notify users of major changes. A quick email or update log goes a long way.
-
-Keep in mind that proper API documentation is an ongoing process. It should change in tandem with the API and your users' requirements. Update and improve your documentation on a regular basis to ensure it stays a helpful resource for developers.
-
-{% include optimized-image.html 
-  src="/assets/images/documentation-lifecycle.svg" 
-  alt="API documentation lifecycle showing creation, testing, publishing, and maintenance" 
-  width="800" 
-  height="400" 
-  loading="lazy" 
-  class="centered"
-  caption="The continuous lifecycle of API documentation" 
-%}
-
-Next up: [Explore Different Types of APIs]({{ '/typesofAPI.html' | relative_url }}) that you might document as a technical writer.
-
-{% include faq-section.html 
-  title="Frequently Asked Questions About API Documentation"
-  description="Get answers to the most commonly asked questions about creating effective API documentation."
-  data_file="api_documentation_faqs"
-%}
-
-{% include key_takeaways.html content="
-<ul>
-  <li>Understanding the API is the essential first step for creating effective documentation</li>
-  <li>Know your audience to tailor the documentation to their needs and technical level</li>
-  <li>Set clear goals for what users should be able to accomplish with your documentation</li>
-  <li>Structure your documentation logically with getting started guides, reference sections, and examples</li>
-  <li>Test everything yourself to ensure accuracy and identify user pain points</li>
-  <li>Use examples and code samples to illustrate key concepts and use cases</li>
-  <li>Regular review and updates keep documentation valuable as the API evolves</li>
-</ul>
-" %}
-
-{% include quiz.html
-  title="Test Your Knowledge"
-  description="Check your understanding of API documentation processes with this quiz."
-  quizDataFile="informationgathering_questions"
-  theme="blue"
-  animate=true
-%}
-
-
-
-<div class="author-cta">
-  <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
-  <div class="author-message">
-    <h4>Was this guide helpful?</h4>
-    <p>If you found this API documentation guide valuable, please share it with your colleagues or on social media. Your feedback helps us improve our content!</p>
-    <div class="social-share">
-      <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text=Check out this excellent API documentation guide" class="share-button twitter">Share on Twitter</a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title=Master API Documentation" class="share-button linkedin">Share on LinkedIn</a>
-    </div>
-  </div>
-</div>
-
-<style>
-.author-cta {
-  display: flex;
-  background: #f8f9fb;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 30px 0;
-  border: 1px solid #e2e8f0;
-  gap: 20px;
-  align-items: center;
-}
-.author-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.author-message {
-  flex: 1;
-}
-.author-message h4 {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-.author-message p {
-  margin-bottom: 12px;
-}
-.social-share {
-  display: flex;
-  gap: 10px;
-}
-.share-button {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: white;
-}
-.twitter {
-  background: #1DA1F2;
-}
-.linkedin {
-  background: #0077B5;
-}
-@media (max-width: 600px) {
-  .author-cta {
-    flex-direction: column;
-    text-align: center;
-  }
-  .social-share {
-    justify-content: center;
-  }
-}
-</style>
-
-{% include related_resources.html 
-  title="Essential API Documentation Resources"
-  description="Expand your knowledge with these carefully selected API documentation resources."
-  external_links="API Documentation Best Practices,https://swagger.io/blog/api-documentation/best-practices-in-api-documentation/|OpenAPI Specification Guide,https://swagger.io/specification/|API Style Guides from Top Companies,https://github.com/filipipol/API-Style-Guides|Using Markdown for API Documentation,https://www.markdownguide.org/getting-started/"
-  tools="Swagger Editor,https://editor.swagger.io/|Stoplight Studio,https://stoplight.io/studio/|Redocly,https://redoc.ly/|API Documentation Generators,https://nordicapis.com/10-tools-to-simplify-api-documentation-efforts/"
-%}
+{% comment %}block:1{% endcomment %}
+## Last week I told you the codebase has opinions
+
+Today we find out which ones.
+
+I am at Devon's desk on Tuesday morning of story week 2. The new `GET /books` endpoint is on his branch; it ships this afternoon at four. He swivels his monitor toward me, points at the branch, then the schema file, then the test file.
+
+"Code is on my branch, tests pass, error handling is regrettable but documented, see what you find. I have a standup. Back in forty minutes."
+
+He leaves.
+
+I think I know what `GET /books` does. Devon described it to me over coffee a week ago. By the time he is back, I will know one thing I did not. Not from a meeting.
+
+What I am about to do in the next forty minutes is the work most writers leave until Thursday's kickoff meeting. Today you do it first.
+
+{% comment %}block:2{% endcomment %}
+## Today you will leave with
+
+- Where the information for an endpoint actually lives in a codebase.
+- Three sharper questions to walk into your engineer interview with.
+- A Cursor prompt that points at one endpoint and surfaces what the doc page needs.
+
+{% include ad-slot.html slot="2222222222" format="auto" %}
+
+{% comment %}block:3{% endcomment %}
+## The four sources
+
+For my first eight years writing API docs, I did this the wrong way. I would book the engineer for an hour, sit down with a notebook, and ask them to tell me about the endpoint. The engineer gave me broad strokes. I asked the wrong follow up questions because I did not yet know the territory. I left with surface answers and had to come back for the specifics, by which time the engineer had shipped two more things and forgotten the first one.
+
+Then I learned to read the codebase first.
+
+An endpoint reference has four information sources. The route handler (the function the server runs when a call to this endpoint comes in) tells you what the endpoint does. The {% include glossary-term.html term="schema" %} tells you what it sends back. The tests tell you what the team has promised it will not do. The {% include glossary-term.html term="SME" %}, the engineer who built the endpoint, tells you the why, the history, and the intent. Three of the four live in the codebase. One is a person.
+
+Some fields on the doc page have more than one source. When two sources agree on a field, that field is a contract worth documenting carefully. When they disagree, you have a question for the SME. This is what makes the four sources a system rather than a list.
+
+I count four. You may find a fifth in your codebase. The order matters more than the count. Read the three before you book the fourth. Reading code first does not skip the SME interview. It makes the SME interview the sharpest twenty minutes of your week.
+
+{% capture mermaid_src %}
+sequenceDiagram
+  participant Maya
+  participant Code as Codebase
+  participant Devon
+  Maya->>Code: read route handler
+  Code-->>Maya: types, fields, defaults
+  Maya->>Code: read schema
+  Code-->>Maya: response shape
+  Maya->>Code: read tests
+  Code-->>Maya: what we have promised
+  Maya->>Devon: three sharp questions
+  Devon-->>Maya: history, intent, future
+{% endcapture %}
+{% include mermaid.html content=mermaid_src alt="Maya consults the codebase three times for the route handler, the schema, and the tests before bringing the remaining questions to Devon. The order matters: code first, person last." %}
+
+Look at the diagram. Which source tells you the response shape? Which one tells you why the field is called `available_branches` and not just `branches`? The second question is the one only Devon can answer; the diagram makes the asymmetry visible.
+
+{% comment %}block:4{% endcomment %}
+## How we read each one
+
+The code below is Python with Flask. Your codebase may be Node or Go. The four sources are the same in any stack.
+
+**The route handler.** I open `routes/books.py`. I knew from Devon's coffee description that the endpoint took a search term and returned books. The handler confirms it.
+
+```python
+@app.get("/v1/books")
+def search_books():
+    q = request.args.get("q")
+    if not q:
+        return {"error": "q is required"}, 400
+    limit = min(int(request.args.get("limit", 25)), 100)
+    results = catalog.search(q, limit=limit)
+    return {"results": results, "total": len(results)}, 200
+```
+
+But the handler also shows `limit=25` defaulting and a cap at `min(limit, 100)`. Devon did not mention either number. First revelation: the endpoint has pagination behavior the SME forgot to mention.
+
+**The schema.** I open `openapi.yaml`. I expect the schema to match the handler. It does not.
+
+```yaml
+/v1/books:
+  get:
+    parameters:
+      - name: q
+        in: query
+        required: true
+        schema: { type: string }
+    responses:
+      '200':
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                results:
+                  type: array
+                  items: { type: object }
+                total:
+                  type: integer
+```
+
+The schema declares `q` as required and the 200 response shape, but it does not declare `limit` at all. Second revelation: the schema and the handler disagree. This is what last week's lesson meant when it said the codebase has opinions. The handler and the schema disagree, and the code's opinion is louder than the schema's silence.
+
+**The tests.** I open `tests/test_books.py`.
+
+```python
+def test_missing_q_returns_400(client):
+    r = client.get("/v1/books")
+    assert r.status_code == 400
+
+def test_limit_over_100_is_capped(client):
+    r = client.get("/v1/books?q=ursula&limit=500")
+    assert len(r.json["results"]) <= 100
+```
+
+One test asserts `400` when `q` is missing, so the 400 is contractual, not implementation accident. Another sends `limit=500` and asserts the response has at most 100 results, so the cap at 100 is contractual too. Third revelation: the tests pin which behaviors are promises and which are details. The 100 cap is a promise. The default of 25 is currently silent.
+
+**The SME conversation.** I look at the clock. By 9:50 I have read all three code sources. I pull a sticky note from Devon's monitor frame and write three short questions: why 25 and not 50 as the default; why 400 instead of 422 for missing `q`; whether `limit` belongs in the OpenAPI schema or whether the team plans to remove it from the handler. None of these are answerable from code. All three fit on one sticky note.
+
+Three sources took twenty minutes. The questions for Devon fit on a sticky note. When he is back at 10:10, the conversation is sharper than any 60 minute kickoff meeting could be.
+
+I had been ready to write the doc page before reading the code. Reading the code, I realized I had been ready to write a wrong doc page.
+
+{% include interactive-svg.html slug="informationgathering" alt="Sources map for one endpoint reference. A sketched doc page in the centre is connected to four labeled source boxes around it: the route handler, the schema, the tests, and the engineer. Hover any source to see the one sentence it contributes." %}
+
+Hover any source box. Each one shows you what it contributes to the doc page. Some doc page fields are touched by more than one source. Those are the contracts.
+
+{% comment %}block:5{% endcomment %}
+## Try it on Greenfield
+
+{% capture exercise %}
+**Five minutes, in a real repo.**
+
+Pick any open source API project. If you do not have one in mind, clone `tiangolo/full-stack-fastapi-postgresql`. It is a well maintained FastAPI tutorial repo with both handlers and tests in one project, small enough to scan in five minutes.
+
+If the repo has a README, it usually names the routes file. If not, grep for the URL path you saw in the docs.
+
+Read one endpoint's route handler. Then find the test file for that endpoint and read one test case.
+
+Write down one thing the tests told you that the route handler did not. Write down one question you would still ask the engineer.
+
+That question is the one you would have wasted twenty minutes of the kickoff meeting figuring out you needed to ask.
+{% endcapture %}
+{% include callout.html variant="exercise" body=exercise %}
+
+{% comment %}block:6{% endcomment %}
+## The trap nobody warns you about
+
+{% capture trap %}
+The trap is treating the codebase as the whole truth. The codebase tells you what is. It does not tell you why. It does not tell you what was almost shipped and rejected. It does not tell you the agreement that lives only in a Slack thread from two years ago.
+
+I first heard Devon's line on this the week after a postmortem at his last job. The runbook had disagreed with what the on call had actually done during the rollback. A PM asked why the doc had not been updated. Devon said: "The code is honest. People are kind." Then he changed the subject.
+
+Both are needed. Both leave different gaps. The writer's job is to know which gap lives where.
+
+If you work in GraphQL or gRPC, the sources have different names but the count is the same. Resolver, schema in `.graphql`, tests, SME. Method, `.proto`, tests, SME. Read the three before you book the fourth.
+{% endcapture %}
+{% include callout.html variant="warning" body=trap %}
+
+{% comment %}block:7{% endcomment %}
+## Words you can drop in standups now
+
+- {% include glossary-term.html term="source of truth" %}: Use this when you mean the authoritative version of X. "OpenAPI is the source of truth for the schema" settles a debate that "we should agree on the schema" does not.
+- {% include glossary-term.html term="SME" %}: Use this when you mean the person who owns the answers your code cannot give you. "I have three questions for the SME" beats "I will ask around."
+- {% include glossary-term.html term="schema" %}: Use this when you mean the structural description of the data, separate from any one example of it. "The schema changed" is different from "this response changed."
+- {% include glossary-term.html term="OpenAPI" %}: Use this when you mean the standard for describing REST APIs in YAML or JSON, or the file in your repo that holds that description. "Check OpenAPI" is what you say when the question is about contract, not behavior.
+
+{% comment %}block:8{% endcomment %}
+## Today's prompt for your AI assistant
+
+Cursor, this time.
+
+**The situation.** You have your team's codebase open in your editor and one endpoint to document. You want everything I gathered this morning, faster.
+
+**The prompt, exactly as written:**
+
+```text
+You are reading this codebase as if you were a senior technical writer documenting one endpoint.
+
+The endpoint is GET /v1/books.
+
+In one pass, find and report:
+
+1. The route handler. File path and line. Path params and query params it accepts, with types and defaults.
+2. The response schema. File path and line. The exact 200 response shape.
+3. The tests. File path and line. Every error case the tests cover.
+4. Every status code this endpoint can return (from code, tests, or error catalog if your codebase has one).
+5. Three questions a human engineer would still need to answer that this code does not.
+
+Quote line numbers. Do not summarize.
+```
+
+**What to expect back.** A report, file by file, with line numbers, because Cursor has the files open. If something is missing from the codebase, Cursor will say so.
+
+**What to watch for.** Cursor will mechanically list items one to three and hedge on five. Press it on five with "name three questions, do not generalize." The hedged version is not useful. The specific one is.
+
+{% include ad-slot.html slot="3333333333" format="auto" %}
+
+{% comment %}block:9{% endcomment %}
+## Before you go
+
+Maya saw the 25 item default and the 100 item cap. Should both numbers show up in the doc page, and for which reader: the developer copying a snippet, or the chatbot summarizing the endpoint for a borrower?
+
+Answer it in your head before you read the next lesson.
+
+{% comment %}block:10{% endcomment %}
+## Next week at Greenfield
+
+A borrower stops in with a complaint that has nothing to do with the books on the shelf. A chatbot has been reading her the wrong call numbers.
+
+{% include signoff.html %}

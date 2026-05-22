@@ -13,7 +13,7 @@
     - { slug: "howinternetworks.html", title: "The internet, the short version", reading: "14 min" }
     - { slug: "whatisanapi.html", title: "What an API actually is", reading: "10 min" }
     - { slug: "whatwritersdo.html", title: "What an API writer does in 2026", reading: "14 min" }
-    - { slug: "informationgathering.html", title: "Information gathering — and interviewing the codebase", reading: "15 min" }
+    - { slug: "informationgathering.html", title: "Information gathering and interviewing the codebase", reading: "16 min" }
     - { slug: "audiences-humans-and-agents.html", title: "Audiences: humans, devs, and agents", reading: "—", placeholder: true }
 
 - n: "02"
