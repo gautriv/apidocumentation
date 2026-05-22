@@ -15,10 +15,26 @@ next_page:
 ---
 
 {% comment %}block:1{% endcomment %}
-<!-- TODO: Block 1 diary opener. Drafted in Task 9. -->
+## Last week I told you the codebase has opinions
+
+Today we find out which ones.
+
+I am at Devon's desk on Tuesday morning of story week 2. The new `GET /books` endpoint is on his branch; it ships this afternoon at four. He swivels his monitor toward me, points at the branch, then the schema file, then the test file.
+
+"Code is on my branch, tests pass, error handling is regrettable but documented, see what you find. I have a standup. Back in forty minutes."
+
+He leaves.
+
+I think I know what `GET /books` does. Devon described it to me over coffee a week ago. By the time he is back, I will know one thing I did not. Not from a meeting.
+
+What I am about to do in the next forty minutes is the work most writers leave until Thursday's kickoff meeting. Today you do it first.
 
 {% comment %}block:2{% endcomment %}
-<!-- TODO: Block 2 promise. Drafted in Task 10. -->
+## Today you will leave with
+
+- Where the information for an endpoint actually lives in a codebase.
+- Three sharper questions to walk into your engineer interview with.
+- A Cursor prompt that points at one endpoint and surfaces what the doc page needs.
 
 {% include ad-slot.html slot="2222222222" format="auto" %}
 
@@ -124,21 +140,86 @@ I had been ready to write the doc page before reading the code. Reading the code
 Hover any source box. Each one shows you what it contributes to the doc page. Some doc page fields are touched by more than one source. Those are the contracts.
 
 {% comment %}block:5{% endcomment %}
-<!-- TODO: Block 5 exercise. Drafted in Task 7. -->
+## Try it on Greenfield
+
+{% capture exercise %}
+**Five minutes, in a real repo.**
+
+Pick any open source API project. If you do not have one in mind, clone `tiangolo/full-stack-fastapi-postgresql`. It is a well maintained FastAPI tutorial repo with both handlers and tests in one project, small enough to scan in five minutes.
+
+If the repo has a README, it usually names the routes file. If not, grep for the URL path you saw in the docs.
+
+Read one endpoint's route handler. Then find the test file for that endpoint and read one test case.
+
+Write down one thing the tests told you that the route handler did not. Write down one question you would still ask the engineer.
+
+That question is the one you would have wasted twenty minutes of the kickoff meeting figuring out you needed to ask.
+{% endcapture %}
+{% include callout.html variant="exercise" body=exercise %}
 
 {% comment %}block:6{% endcomment %}
-<!-- TODO: Block 6 the trap. Drafted in Task 8. -->
+## The trap nobody warns you about
+
+{% capture trap %}
+The trap is treating the codebase as the whole truth. The codebase tells you what is. It does not tell you why. It does not tell you what was almost shipped and rejected. It does not tell you the agreement that lives only in a Slack thread from two years ago.
+
+I first heard Devon's line on this the week after a postmortem at his last job. The runbook had disagreed with what the on call had actually done during the rollback. A PM asked why the doc had not been updated. Devon said: "The code is honest. People are kind." Then he changed the subject.
+
+Both are needed. Both leave different gaps. The writer's job is to know which gap lives where.
+
+If you work in GraphQL or gRPC, the sources have different names but the count is the same. Resolver, schema in `.graphql`, tests, SME. Method, `.proto`, tests, SME. Read the three before you book the fourth.
+{% endcapture %}
+{% include callout.html variant="warning" body=trap %}
 
 {% comment %}block:7{% endcomment %}
-<!-- TODO: Block 7 standup terms. Drafted in Task 11. -->
+## Words you can drop in standups now
+
+- {% include glossary-term.html term="source of truth" %}: Use this when you mean the authoritative version of X. "OpenAPI is the source of truth for the schema" settles a debate that "we should agree on the schema" does not.
+- {% include glossary-term.html term="SME" %}: Use this when you mean the person who owns the answers your code cannot give you. "I have three questions for the SME" beats "I will ask around."
+- {% include glossary-term.html term="schema" %}: Use this when you mean the structural description of the data, separate from any one example of it. "The schema changed" is different from "this response changed."
+- {% include glossary-term.html term="OpenAPI" %}: Use this when you mean the standard for describing REST APIs in YAML or JSON, or the file in your repo that holds that description. "Check OpenAPI" is what you say when the question is about contract, not behavior.
 
 {% comment %}block:8{% endcomment %}
-<!-- TODO: Block 8 Cursor co-pilot tip. Drafted in Task 12. -->
+## Today's prompt for your AI assistant
+
+Cursor, this time.
+
+**The situation.** You have your team's codebase open in your editor and one endpoint to document. You want everything I gathered this morning, faster.
+
+**The prompt, exactly as written:**
+
+```text
+You are reading this codebase as if you were a senior technical writer documenting one endpoint.
+
+The endpoint is GET /v1/books.
+
+In one pass, find and report:
+
+1. The route handler. File path and line. Path params and query params it accepts, with types and defaults.
+2. The response schema. File path and line. The exact 200 response shape.
+3. The tests. File path and line. Every error case the tests cover.
+4. Every status code this endpoint can return (from code, tests, or error catalog if your codebase has one).
+5. Three questions a human engineer would still need to answer that this code does not.
+
+Quote line numbers. Do not summarize.
+```
+
+**What to expect back.** A report, file by file, with line numbers, because Cursor has the files open. If something is missing from the codebase, Cursor will say so.
+
+**What to watch for.** Cursor will mechanically list items one to three and hedge on five. Press it on five with "name three questions, do not generalize." The hedged version is not useful. The specific one is.
 
 {% include ad-slot.html slot="3333333333" format="auto" %}
 
 {% comment %}block:9{% endcomment %}
-<!-- TODO: Block 9 self-check. Drafted in Task 13. -->
+## Before you go
+
+Maya saw the 25 item default and the 100 item cap. Should both numbers show up in the doc page, and for which reader: the developer copying a snippet, or the chatbot summarizing the endpoint for a borrower?
+
+Answer it in your head before you read the next lesson.
 
 {% comment %}block:10{% endcomment %}
-<!-- TODO: Block 10 teaser + signoff. Drafted in Task 13. -->
+## Next week at Greenfield
+
+A borrower stops in with a complaint that has nothing to do with the books on the shelf. A chatbot has been reading her the wrong call numbers.
+
+{% include signoff.html %}
