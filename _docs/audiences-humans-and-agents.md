@@ -4,7 +4,8 @@ permalink: /audiences-humans-and-agents.html
 module: 1
 lesson: 5
 slug: audiences-humans-and-agents
-description: This lesson is being written. In the meantime, jump ahead to REST principles in Module 2.
+reading_time: 15
+description: Your API doc page has three audiences: devs, agents, and humans. A borrower walks in with a chatbot mistranslating her call numbers.
 previous_page:
   url: /informationgathering.html
   title: Information gathering and interviewing the codebase
