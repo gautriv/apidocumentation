@@ -65,7 +65,52 @@ sequenceDiagram
 Look at the diagram. Find the doc page. It is the one I get paid to write. Now look at where Mira is. The page reaches her only through what Atlas said.
 
 {% comment %}block:4{% endcomment %}
-<!-- TODO: Block 4 how we fix the page. Drafted in Task 6. -->
+## How we fix the page
+
+Writing for three readers does not mean writing three pages. It means adding three small things to one page. I write the description text and the prose paragraph. Devon adds them to the schema and pushes.
+
+**The schema description.** The `call_number` field in our {% include glossary-term.html term="schema" %} has no {% include glossary-term.html term="description" %} on it. A description is the sentence on a {% include glossary-term.html term="OpenAPI" %} field that explains what the field is. In 2026 it is also the sentence agents read at runtime. I write one. Devon adds it to `openapi.yaml`:
+
+```yaml
+call_number:
+  type: string
+  description: |
+    Dewey decimal subject classification for the title.
+    Not a shelf location. Branches shelve fiction alphabetically by author.
+  example: "813.5"
+```
+
+The field now carries a sentence the agent can quote. "Not a shelf location" is the clause that does the work. An agent reading the schema sees the disambiguation. An agent that does not read the schema sees nothing different yet. That is what the next two edits are for.
+
+**The realistic example.** The legacy doc page shows the response keys with no values. I add an {% include glossary-term.html term="example response" %} with real Greenfield data. A book that exists. A branch that exists. A call number that resolves cleanly:
+
+```json
+{
+  "results": [
+    {
+      "id": "bk_184932",
+      "title": "The Quiet Library",
+      "available_branches": ["branch_north"],
+      "call_number": "813.5"
+    }
+  ],
+  "total": 1
+}
+```
+
+A dev who copies this snippet sees the shape AND the kind of value `call_number` carries. "813.5" reads as a Dewey number to anyone who has been near a library. The example does what no field description can. It shows the value as a number, in context.
+
+**The prose disambiguation.** Below the example response, one paragraph on the doc page itself:
+
+> The `call_number` field returns the Dewey decimal subject classification for the title. It is useful for filtering or grouping titles by subject. It is not a shelf location. Branches shelve fiction alphabetically by author. If you are writing an interface that tells a borrower where to find a book, do not read this field back to them as a location.
+
+The last sentence is the agent aware sentence. It is written for the dev shipping a chatbot AND for the chatbot reading the prose at runtime. Two readers, one paragraph.
+
+Three edits. One page. The next Mira gets an answer that means what it says.
+
+The toggle below shows the two reading acts on the same response. Mira does not read the page; she appears in Atlas's pane as what Atlas told her.
+
+{% include interactive-svg.html slug="audiences-humans-and-agents" alt="Same response JSON, two reader lenses. Toggle between Dev and Atlas. Dev sees all four fields and identifies call_number 813.5 as a Dewey number, then ships. Atlas sees only call_number 813.5 and quotes it literally to Mira; Mira walks to a shelf that does not exist." %}
 
 {% comment %}block:5{% endcomment %}
 <!-- TODO: Block 5 exercise. Drafted in Task 7. -->
