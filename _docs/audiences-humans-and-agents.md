@@ -113,7 +113,18 @@ The toggle below shows the two reading acts on the same response. Mira does not 
 {% include interactive-svg.html slug="audiences-humans-and-agents" alt="Same response JSON, two reader lenses. Toggle between Dev and Atlas. Dev sees all four fields and identifies call_number 813.5 as a Dewey number, then ships. Atlas sees only call_number 813.5 and quotes it literally to Mira; Mira walks to a shelf that does not exist." %}
 
 {% comment %}block:5{% endcomment %}
-<!-- TODO: Block 5 exercise. Drafted in Task 7. -->
+## Try it on Greenfield
+
+{% capture exercise %}
+**Five minutes, in any reference page you have shipped or use regularly.** GitHub's `GET /repos/{owner}/{repo}` is a useful shape: many fields, some ambiguous. `parent`, `source`, `default_branch` all reward a literal reading badly.
+
+Pick one field in the response. Read its value out loud the way an agent would: just the field name and the value, no surrounding sentence. So if the response includes `default_branch: "main"`, you say "default branch main" to your friend.
+
+(Borrow a friend who reads everything too literally. You probably have a candidate in mind.)
+
+Is what your friend just heard a sentence a human would understand? If you can hear them ask "main what?", your doc page has a description to write, an example to enrich, or a sentence to put in the prose.
+{% endcapture %}
+{% include callout.html variant="exercise" body=exercise %}
 
 {% comment %}block:6{% endcomment %}
 <!-- TODO: Block 6 the trap. Drafted in Task 8. -->
