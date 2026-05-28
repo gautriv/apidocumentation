@@ -153,7 +153,12 @@ The earlier the fix, the cheaper. Rename before shipping: minutes. Description a
 {% include callout.html variant="warning" body=trap %}
 
 {% comment %}block:7{% endcomment %}
-<!-- TODO: Block 7 standup chips. Drafted in Task 11. -->
+## Words you can drop in standups now
+
+- {% include glossary-term.html term="audience" %}: Use this when you mean a class of reader, not a single person. "The doc page has three audiences" settles a debate that "we should think about who reads this" does not.
+- {% include glossary-term.html term="description" %}: Use this when you mean the sentence on an OpenAPI schema field that explains it. "Add a description to that field" is what you say when an agent quoted a value back wrong.
+- {% include glossary-term.html term="example response" %}: Use this when you mean a realistic JSON sample on the doc page, not a placeholder. "The example response is stale" is different from "the field changed."
+- {% include glossary-term.html term="user agent" %}: Use this when you mean the string a caller sends to identify itself. "Check the user agents on the access log" is how you find out whether your readers are humans or software.
 
 {% comment %}block:8{% endcomment %}
 <!-- TODO: Block 8 Gemini AI co pilot tip. Drafted in Task 12. -->
