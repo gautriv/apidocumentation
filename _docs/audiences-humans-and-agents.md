@@ -127,7 +127,18 @@ Is what your friend just heard a sentence a human would understand? If you can h
 {% include callout.html variant="exercise" body=exercise %}
 
 {% comment %}block:6{% endcomment %}
-<!-- TODO: Block 6 the trap. Drafted in Task 8. -->
+## The trap
+
+{% capture trap %}
+The trap is writing for the agent at the expense of the dev. Stuff every field with four sentences of warnings to the agent, and the dev's eyes glaze over. They copy the wrong example anyway.
+
+My rule: the description does only the work the field name cannot. If the name is unambiguous, the description is short or absent. If the name is ambiguous, like `call_number`, the description does the disambiguation.
+
+You can also rename the field. `dewey_classification` would have prevented this whole week. I do not rename here because the field is already in production and renames are expensive. In your codebase, before the API ships, rename first; describe second.
+
+The earlier the fix, the cheaper. Rename before shipping: minutes. Description after shipping: an hour. Prose paragraph: a week of agreeing on what to write. And the thing you do not get back is Mira's morning.
+{% endcapture %}
+{% include callout.html variant="warning" body=trap %}
 
 {% comment %}block:7{% endcomment %}
 <!-- TODO: Block 7 standup chips. Drafted in Task 11. -->
