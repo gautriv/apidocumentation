@@ -194,7 +194,13 @@ confuse you?
 {% include ad-slot.html slot="3333333333" format="auto" %}
 
 {% comment %}block:9{% endcomment %}
-<!-- TODO: Block 9 self check. Drafted in Task 13. -->
+## Before you go
+
+Pick one field in your own doc page. Read its value the way Atlas would: just the field name and the value. Did you just say a sentence Mira would understand?
 
 {% comment %}block:10{% endcomment %}
-<!-- TODO: Block 10 teaser + signoff. Drafted in Task 13. -->
+## Next week at Greenfield
+
+Next week Devon shows me why it is `GET /books` and not `POST /search`. The answer involves letters from 1969.
+
+{% include signoff.html %}
