@@ -15,7 +15,15 @@ next_page:
 ---
 
 {% comment %}block:1{% endcomment %}
-<!-- TODO: Block 1 diary opener. Drafted in Task 9. -->
+## Mira wants the book
+
+It is Monday morning of story week 3. The `GET /v1/books` endpoint Devon shipped on Tuesday has been live almost a week. I am at the branch for my usual Monday morning with Devon; I have claimed a small corner table near the front window.
+
+Mira walks up to the front desk. "The system says you have *The Quiet Library*. Your chatbot said it's at 813.5. There is no 813.5." The librarian walks her to fiction. Mira leaves with the book.
+
+I pull up the doc page on my phone. The example response shows `call_number: "813.5"`. There is no description on the field. There is no sentence on the page about what a call number is.
+
+Last week I asked you which reader the doc page is for: the developer or the chatbot. Today I learned there are three. Her name is Mira.
 
 {% comment %}block:2{% endcomment %}
 <!-- TODO: Block 2 promise. Drafted in Task 10. -->
