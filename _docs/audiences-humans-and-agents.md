@@ -161,7 +161,35 @@ The earlier the fix, the cheaper. Rename before shipping: minutes. Description a
 - {% include glossary-term.html term="user agent" %}: Use this when you mean the string a caller sends to identify itself. "Check the user agents on the access log" is how you find out whether your readers are humans or software.
 
 {% comment %}block:8{% endcomment %}
-<!-- TODO: Block 8 Gemini AI co pilot tip. Drafted in Task 12. -->
+## Today's prompt for your AI assistant
+
+Gemini, this time.
+
+**The situation.** You have your doc page open and you want to know what an agent will do with it before a borrower does. Gemini's long context handles a doc page plus a sample response in one pass.
+
+**The prompt, exactly as written:**
+
+```text
+You are going to read this API doc page three times.
+
+Doc page: [paste the page, including the response example]
+
+First read: as a developer integrating this API. List the three things
+you need from the page to write working code.
+
+Second read: as a chatbot that has called the endpoint and received the
+response. For each field in the response, write the exact sentence you
+would say back to a user when reporting that field's value. Quote the
+field value verbatim. Do not interpret.
+
+Third read: as a human user receiving the chatbot's answer from the
+second read. For each sentence, would you understand it? What would
+confuse you?
+```
+
+**What to expect back.** An answer in three sections. The middle section is the one that catches problems. If the chatbot's literal sentence reads as weird, your page has a description to write.
+
+**What to watch for.** Gemini will sometimes flatten the three reads into one summary. Press it on the literal pass with "do not interpret; just quote." The summarized version is not useful. The literal one is.
 
 {% include ad-slot.html slot="3333333333" format="auto" %}
 
