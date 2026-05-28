@@ -26,7 +26,11 @@ I pull up the doc page on my phone. The example response shows `call_number: "81
 Last week I asked you which reader the doc page is for: the developer or the chatbot. Today I learned there are three. Her name is Mira.
 
 {% comment %}block:2{% endcomment %}
-<!-- TODO: Block 2 promise. Drafted in Task 10. -->
+## Today you will leave with
+
+- The three readers of every API doc page.
+- A three edit pattern (schema description, realistic example, one prose sentence) for any ambiguous field.
+- A Gemini prompt that reads your page the way an agent will.
 
 {% include ad-slot.html slot="2222222222" format="auto" %}
 
