@@ -63,7 +63,34 @@ Look at the diagram. Find the cache. It is the one Atlas does not know about and
 {% comment %}block:4{% endcomment %}
 ## Put the promise first
 
-<!-- TODO block:4 -->
+Every endpoint's reference page names what the verb commits to in the first three words after the H2. Greenfield's reference page for `/v1/books` opens like this:
+
+> **`GET`. Safe. Cacheable.**
+
+Then the curl. Then a short description of what the endpoint returns. Then the response fields. The verb's promises come first because they are what every reader needs first. The dev wants to copy a snippet. The agent wants to know whether to retry. The cache wants to know whether to store.
+
+Here is the canonical call:
+
+```bash
+$ curl -H "Authorization: Bearer $GF_TOKEN" \
+       "https://api.greenfield.lib/v1/books?q=mystery"
+```
+
+The `200` returns a results array. One of those results is `bk_184932`, *The Quiet Library*, available at `branch_north`.
+
+Now picture the same page for `POST /search`. Same data in, same data out. The differences are in three short bullets.
+
+- **Cache.** Nothing held by default. Every call hits the origin.
+- **Retries.** The retry after a flaky network is no longer safe. Two identical retries can create two of whatever the server thinks `POST` does.
+- **Access log.** The query lives in the body, which most loggers drop on the floor. You can no longer see which agent asked which question by reading the log.
+
+That names what the doc page owes. A `POST /search` page owes the caller three short lines on the page. This looks like a search. Here is why we POST. Here is what you lose.
+
+Below is the same request in two states. Click to toggle. Watch the five rows flip.
+
+{% include interactive-svg.html slug="restAPI" alt="A toggle between two HTTP requests for the same data. State GET shows the request line GET /v1/books?q=mystery with five rows below: URL = full query visible; cache = hit on the second call; retry = safe; access log = method, path, and query; bookmark = works. State POST shows the request line POST /search with body containing q equals mystery and the same five rows flipped: URL = method and path only; cache = miss every time; retry = not safe; access log = method and path; bookmark = does not work. The toggle is the whole SVG; click or press Enter to switch states." %}
+
+The doc page that names what the verb commits to gives every reader, including Asha and Atlas and the cache, a chance to understand what the call will do before it does it.
 
 {% comment %}block:5{% endcomment %}
 <!-- TODO block:5 -->
