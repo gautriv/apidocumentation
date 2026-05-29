@@ -32,7 +32,9 @@ Last week Mira walked into the branch with a chatbot quoting `813.5`. This morni
 {% comment %}block:2{% endcomment %}
 ## Today you will leave with
 
-<!-- TODO block:2 -->
+- The four agreements every HTTP verb makes.
+- The doc pattern that puts the verb's promise first.
+- A GPT prompt that audits one of yours.
 
 {% include ad-slot.html slot="lesson-mid-1" format="auto" %}
 
