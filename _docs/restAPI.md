@@ -101,7 +101,14 @@ The exercise is not about catching the doc page out. It is about noticing whethe
 {% include callout.html variant="exercise" body=body %}
 
 {% comment %}block:6{% endcomment %}
-<!-- TODO block:6 -->
+{% capture body %}
+`POST /search` exists in production at Stripe, Algolia, Elasticsearch, every endpoint where the filter tree will not fit in a URL. The convention is a default, not a religion.
+
+Devon's rule: break the rule when you have a reason. Do not break it by accident. The first version of Greenfield's `/v1/books` endpoint accepted a JSON body on `POST` because Devon copied a tutorial. The cache never served it. The access log never showed the query. Asha would not have written to him about that version. She would have written to ask why everything was slow.
+
+When you ship a search endpoint that does not fit the agreements, the doc page is where you pay the difference. Three short lines on the page. This looks like a search. Here is why we POST. Here is what you lose.
+{% endcapture %}
+{% include callout.html variant="warning" body=body %}
 
 {% comment %}block:7{% endcomment %}
 ## Words you can drop in standups now
