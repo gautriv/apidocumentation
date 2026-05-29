@@ -29,7 +29,36 @@ next_page:
 {% comment %}block:3{% endcomment %}
 ## Every verb is an agreement
 
-<!-- TODO block:3 -->
+Every HTTP verb is an agreement.
+
+Take `GET`. Across every cache, every browser, every agent reading the URL, `GET` means "read this thing." The verb carries the meaning. That is the first agreement: {% include glossary-term.html term="uniform interface" %}. Asha at Marginalia, the cache between her stack and ours, Greenfield's access log, your browser when you bookmark something. They all read `GET` the same way, because the convention is shared.
+
+The second agreement is about what the URL names. `/v1/books` names a thing, the catalog. The query string is how you look at it. `?q=mystery` is the lens. `POST /search` flips that: the URL names the action, the body holds the thing. Resources first, actions in the verb. That is resource orientation.
+
+The third agreement is {% include glossary-term.html term="cacheable" %}. `GET` responses are cacheable by default. `POST` responses are not. When Atlas calls `/books?q=mystery` twenty times an hour, every cache between Atlas and Greenfield can serve the second call onwards from a copy. Greenfield's origin sees one of those calls. The other nineteen never reach it.
+
+The fourth agreement is being {% include glossary-term.html term="safe" %}. `GET` promises not to change server state. Safe means retryable after a flaky network, prefetchable by a browser, loggable with the query, bookmarkable. `POST` makes no such promise. Safety and cacheability are not two separate ideas. A safe verb is naturally cacheable, because the response does not depend on side effects.
+
+Every request stands alone, carrying enough to be understood without context. That is the property the other four rely on. It is called statelessness, and you have already seen it in every Greenfield call: each request carries its own bearer token, its own query, its own headers. The server holds nothing for you between calls.
+
+The current HTTP method spec is RFC 9110. Steve Crocker wrote the first RFC in April 1969. The chain is unbroken. 55 years of agreement is why your browser knows what `GET` means without asking. {% include glossary-term.html term="REST" %} is the discipline of using HTTP the way the RFCs say to.
+
+{% capture mermaid_src %}
+sequenceDiagram
+  participant Atlas
+  participant Cache
+  participant API as Greenfield API
+  Atlas->>Cache: GET /v1/books?q=mystery
+  Cache->>API: miss; fetch
+  API-->>Cache: 200 with results
+  Cache-->>Atlas: 200 with results
+  Note over Cache: cache populated
+  Atlas->>Cache: GET /v1/books?q=mystery (again)
+  Cache-->>Atlas: 200 with results (cached)
+{% endcapture %}
+{% include mermaid.html content=mermaid_src alt="Atlas calls GET /v1/books?q=mystery. The cache misses on the first call, fetches from Greenfield's origin, returns the 200 to Atlas, and stores the response. On the second call Atlas asks the cache for the same URL and gets the cached 200 back without the origin being contacted. The cache sits between Atlas and the origin in the call path." %}
+
+Look at the diagram. Find the cache. It is the one Atlas does not know about and benefits from anyway.
 
 {% comment %}block:4{% endcomment %}
 ## Put the promise first
