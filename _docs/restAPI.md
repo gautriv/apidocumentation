@@ -152,11 +152,11 @@ Here is an HTTP method and path: `GET /v1/customers/{id}/subscriptions`. Audit i
 {% comment %}block:9{% endcomment %}
 ## Before you go
 
-<!-- TODO block:9 -->
+Could Greenfield have shipped this catalog without REST? Picture the same `/v1/books?q=mystery` call in a different shape.
 
 {% comment %}block:10{% endcomment %}
 ## Next week at Greenfield
 
-<!-- TODO block:10 -->
+Next week Devon walks me through three other API shapes Greenfield could have shipped, and he has opinions about all three.
 
 {% include signoff.html %}
