@@ -1,6 +1,75 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" style="max-width:100%;height:auto;" data-svg-pattern="toggle" data-states="GET,POST" tabindex="0" role="switch" aria-checked="false" aria-label="Stub. Real SVG ships in Task 14.">
-  <title>Stub SVG for M2L1; real toggle SVG ships in Task 14.</title>
-  <desc>Placeholder so the lesson build does not 404 on the interactive-svg include. Replaced in Task 14 with the GET vs POST toggle described in the spec.</desc>
-  <rect x="0" y="0" width="800" height="500" fill="#FFFFFF" />
-  <text x="400" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#0c1a2b">Interactive SVG placeholder. Real SVG ships in Task 14.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" style="max-width:100%;height:auto;" data-svg-pattern="toggle" data-states="GET,POST" tabindex="0" role="switch" aria-checked="false" aria-label="Toggle the request between GET /v1/books?q=mystery and POST /search to see how URL, cache, retry, access log, and bookmark behave in each state.">
+  <title>GET vs POST. The same data, two contracts.</title>
+  <desc>A toggle between two HTTP requests for the same data. State GET shows the request line GET /v1/books?q=mystery and five rows: URL = full query visible; cache = hit on the second call; retry = safe; access log = method, path, and query; bookmark = works. State POST shows the request line POST /search with body q equals mystery and the same five rows flipped: URL = method and path only; cache = miss every time; retry = not safe; access log = method and path; bookmark = does not work. Click the diagram or press Enter to switch states.</desc>
+
+  <style>
+    .label { font-family: Georgia, serif; font-size: 14px; fill: #0c1a2b; }
+    .label-bold { font-family: Georgia, serif; font-size: 14px; fill: #0c1a2b; font-weight: bold; }
+    .request-line { font-family: 'SF Mono', Menlo, monospace; font-size: 16px; fill: #0c1a2b; }
+    .body-line { font-family: 'SF Mono', Menlo, monospace; font-size: 14px; fill: #0c1a2b; opacity: 0.85; }
+    .state-label { font-family: Georgia, serif; font-size: 18px; fill: #b85c38; font-weight: bold; }
+    .toggle-hint { font-family: Georgia, serif; font-size: 12px; fill: #0c1a2b; opacity: 0.65; }
+    .row-label { font-family: Georgia, serif; font-size: 14px; fill: #0c1a2b; font-weight: bold; }
+    .row-value-get { font-family: Georgia, serif; font-size: 14px; fill: #0c1a2b; }
+    .row-value-post { font-family: Georgia, serif; font-size: 14px; fill: #0c1a2b; }
+
+    .layer-get { opacity: 1; transition: opacity 0.2s ease; }
+    .layer-post { opacity: 0; transition: opacity 0.2s ease; }
+    svg[data-state="POST"] .layer-get { opacity: 0; }
+    svg[data-state="POST"] .layer-post { opacity: 1; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .layer-get, .layer-post { transition: none; }
+    }
+
+    svg:focus { outline: none; }
+    svg:focus-visible { outline: 2px solid #b85c38; outline-offset: 4px; }
+  </style>
+
+  <rect x="0" y="0" width="800" height="500" fill="#FFFBF1" />
+
+  <text x="400" y="28" text-anchor="middle" class="toggle-hint">Click the diagram or press Enter to toggle. Current state shown at the top.</text>
+
+  <g class="layer-get">
+    <text x="400" y="60" text-anchor="middle" class="state-label">GET</text>
+    <text x="60" y="105" class="request-line">GET /v1/books?q=mystery</text>
+  </g>
+
+  <g class="layer-post">
+    <text x="400" y="60" text-anchor="middle" class="state-label">POST</text>
+    <text x="60" y="105" class="request-line">POST /search</text>
+    <text x="60" y="128" class="body-line">{ "q": "mystery" }</text>
+  </g>
+
+  <line x1="60" y1="150" x2="740" y2="150" stroke="#0c1a2b" stroke-width="1" opacity="0.2" />
+
+  <g>
+    <text x="60" y="190" class="row-label">URL</text>
+    <text x="60" y="210" class="row-value-get layer-get">full query visible</text>
+    <text x="60" y="210" class="row-value-post layer-post">method and path only</text>
+  </g>
+
+  <g>
+    <text x="60" y="250" class="row-label">Cache</text>
+    <text x="60" y="270" class="row-value-get layer-get">hit on the second call</text>
+    <text x="60" y="270" class="row-value-post layer-post">miss every time</text>
+  </g>
+
+  <g>
+    <text x="60" y="310" class="row-label">Retry</text>
+    <text x="60" y="330" class="row-value-get layer-get">safe</text>
+    <text x="60" y="330" class="row-value-post layer-post">not safe; may create twice</text>
+  </g>
+
+  <g>
+    <text x="60" y="370" class="row-label">Access log</text>
+    <text x="60" y="390" class="row-value-get layer-get">method, path, and query</text>
+    <text x="60" y="390" class="row-value-post layer-post">method and path</text>
+  </g>
+
+  <g>
+    <text x="60" y="430" class="row-label">Bookmark</text>
+    <text x="60" y="450" class="row-value-get layer-get">works</text>
+    <text x="60" y="450" class="row-value-post layer-post">does not work</text>
+  </g>
 </svg>
