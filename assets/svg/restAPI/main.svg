@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" style="max-width:100%;height:auto;" data-svg-pattern="toggle" data-states="GET,POST" tabindex="0" role="switch" aria-checked="false" aria-label="Stub. Real SVG ships in Task 14.">
+  <title>Stub SVG for M2L1; real toggle SVG ships in Task 14.</title>
+  <desc>Placeholder so the lesson build does not 404 on the interactive-svg include. Replaced in Task 14 with the GET vs POST toggle described in the spec.</desc>
+  <rect x="0" y="0" width="800" height="500" fill="#FFFFFF" />
+  <text x="400" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#0c1a2b">Interactive SVG placeholder. Real SVG ships in Task 14.</text>
+</svg>
