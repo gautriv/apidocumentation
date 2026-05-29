@@ -93,7 +93,12 @@ Below is the same request in two states. Click to toggle. Watch the five rows fl
 The doc page that names what the verb commits to gives every reader, including Asha and Atlas and the cache, a chance to understand what the call will do before it does it.
 
 {% comment %}block:5{% endcomment %}
-<!-- TODO block:5 -->
+{% capture body %}
+Open the reference page for one endpoint in any public API doc: Stripe's `/v1/customers`, GitHub's `/repos`, OpenAI's `/v1/chat/completions`, your choice. Find the verb. Read the first three sentences after the verb. Did the page name what the verb commits to: is it safe, is it cacheable, what happens if you retry? Write three sentences in your notes: the verb, the page's answer, your judgment. If the page did not say what the verb commits to, that is the finding. Write that down.
+
+The exercise is not about catching the doc page out. It is about noticing whether the page told you what the call would do before you made it.
+{% endcapture %}
+{% include callout.html variant="exercise" body=body %}
 
 {% comment %}block:6{% endcomment %}
 <!-- TODO block:6 -->
