@@ -125,7 +125,10 @@ When you ship a search endpoint that does not fit the agreements, the doc page i
 {% comment %}block:7{% endcomment %}
 ## Words you can drop in standups now
 
-<!-- TODO block:7 -->
+- **{% include glossary-term.html term="REST" %}.** Use this when someone asks "is our API REST." The real question is "do we follow the HTTP conventions."
+- **{% include glossary-term.html term="safe" %}.** Use this when you mean "I can call this and nothing on the server changes."
+- **{% include glossary-term.html term="cacheable" %}.** Use this when you mean "the cache holds this for me by default, so my next call is fast."
+- **{% include glossary-term.html term="uniform interface" %}.** Use this when you mean "every reader of this URL, including browsers, agents, and caches, knows what to do without us telling them."
 
 {% include ad-slot.html slot="lesson-mid-2" format="auto" %}
 
