@@ -135,7 +135,19 @@ When you ship a search endpoint that does not fit the agreements, the doc page i
 {% comment %}block:8{% endcomment %}
 ## AI co pilot tip
 
-<!-- TODO block:8 -->
+GPT, this time.
+
+**The situation.** You have an endpoint on your desk and you want a second opinion on whether the verb matches the action. Useful before a doc page goes out. Useful when an engineer pushes a PR and the verb feels off.
+
+**The prompt** (copy box):
+
+```text
+Here is an HTTP method and path: `GET /v1/customers/{id}/subscriptions`. Audit it against four REST principles: uniform interface, resource orientation, cacheability, safety. For each, say in one sentence whether the choice fits. If you would pick a different verb, name it and explain in one sentence why. Do not hedge.
+```
+
+**What to expect back.** Four short lines, one per principle, and a verdict. The verdict either confirms the verb or names a replacement.
+
+**What to watch for.** GPT sometimes hedges with "both are valid." Push back: "pick one and defend it." The hedged answer is not useful. The defended one is. If the verdict is "GET is correct," ask for one case where POST would be the right call. That second pass forces the model off the default and gives you the trap from block 6 in the model's own words.
 
 {% comment %}block:9{% endcomment %}
 ## Before you go
