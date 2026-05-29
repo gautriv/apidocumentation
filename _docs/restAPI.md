@@ -17,7 +17,17 @@ next_page:
 {% comment %}block:1{% endcomment %}
 ## Marginalia writes in
 
-<!-- TODO block:1 -->
+Tuesday morning of story week 4. Devon pinged me yesterday. *Marginalia wrote in. Come by tomorrow morning, I want to think out loud.* I find him at his desk with one tab open. Asha's email is on screen.
+
+> *Hi Devon,*
+>
+> *Any chance you could expose `POST /search`? Our internal stack expects to send a query in a JSON body and we are doing string surgery on our side to fit your URL. If you are open to it we can send a spec.*
+>
+> *Asha*
+
+Devon types *We are not building Algolia.* into the reply. He looks at it. He deletes it. He kept the version where it stayed in his head.
+
+Last week Mira walked into the branch with a chatbot quoting `813.5`. This morning a Marginalia engineer wants us to switch verbs. Today you need to know why Devon is saying no, because next week you write the docs for Greenfield's new advanced filter endpoint, and the choice will be yours.
 
 {% comment %}block:2{% endcomment %}
 ## Today you will leave with
