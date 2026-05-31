@@ -26,7 +26,9 @@ Last week Asha wanted `POST /search` and Devon walked me through the verb. This 
 {% comment %}block:2{% endcomment %}
 ## Today you will leave with
 
-<!-- TODO block:2 -->
+- How to recognize four API shapes by their request envelopes.
+- What each shape commits to in one sentence.
+- What the docs' first page owes the reader, shape by shape.
 
 {% include ad-slot.html slot="lesson-mid-1" format="auto" %}
 
