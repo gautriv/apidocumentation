@@ -1,6 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" style="max-width:100%;height:auto;" data-svg-pattern="hover-tooltip" role="img" aria-label="Stub. Real SVG ships in Task 11.">
-  <title>Stub SVG for M2L2; real 4-cell hover-tooltip whiteboard ships in Task 11.</title>
-  <desc>Placeholder so the lesson build does not 404 on the interactive-svg include. Replaced in Task 11 with the four-shape comparison described in the spec.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" style="max-width:100%;height:auto;" data-svg-pattern="hover-tooltip" role="img" aria-label="Devon's whiteboard rendered as four cells comparing REST (the actual), SOAP, GraphQL, and gRPC. Each cell shows the shape's request envelope. Hover or tap a cell for the counterfactual Asha email.">
+  <title>Four API shapes: REST as the actual; SOAP, GraphQL, gRPC as counterfactuals</title>
+  <desc>Devon's whiteboard sketch comparing four API shapes. Top left: REST with a copper badge reading the actual, showing the request line GET /v1/books?q=mystery. Top right: SOAP with a stylized XML envelope wrapping a Search for mystery. Bottom left: GraphQL with POST /graphql and a query for books. Bottom right: gRPC with SearchBooks called for mystery as a binary call over HTTP/2. The REST cell is emphasized with a 2px copper border; the other three cells have 1px sage borders. Hovering or tapping a cell reveals the counterfactual Asha email for that shape and what Greenfield's reply would owe back.</desc>
+
   <rect x="0" y="0" width="800" height="600" fill="#fbf8f3" />
-  <text x="400" y="300" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#0c1a2b">Interactive SVG placeholder. Real SVG ships in Task 11.</text>
+
+  <!-- Cell 1: REST (top-left, emphasized as 'the actual') -->
+  <g tabindex="0" role="button" aria-label="REST cell, the actual shape Greenfield ships" data-tooltip='Asha emailed Devon asking for POST /search. Devon politely declined. The verb stays GET, the URL stays /v1/books?q=mystery. The cache holds it. Atlas calls it twenty times an hour.' transform="translate(16, 16)">
+    <rect width="376" height="276" fill="#fbf8f3" stroke="#b85c38" stroke-width="2" rx="4" />
+    <!-- Badge: "the actual" -->
+    <g transform="translate(280, 16)">
+      <rect width="80" height="22" rx="11" fill="#b85c38" />
+      <text x="40" y="15" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#fbf8f3">the actual</text>
+    </g>
+    <!-- Label -->
+    <text x="20" y="44" font-family="Georgia, serif" font-size="22" fill="#b85c38" font-weight="bold">REST</text>
+    <!-- Request envelope -->
+    <text x="20" y="150" font-family="ui-monospace, Menlo, monospace" font-size="14" fill="#0c1a2b">GET /v1/books?q=mystery</text>
+  </g>
+
+  <!-- Cell 2: SOAP (top-right) -->
+  <g tabindex="0" role="button" aria-label="SOAP cell, counterfactual" data-tooltip='Asha would have asked: "send us the WSDL." Marginalia would have generated a client from the WSDL. Every Atlas call to find a book would have wrapped the query in an XML envelope. The cache would have stayed out of it.' transform="translate(408, 16)">
+    <rect width="376" height="276" fill="#fbf8f3" stroke="#5a7a64" stroke-width="1" rx="4" />
+    <!-- Label -->
+    <text x="20" y="44" font-family="Georgia, serif" font-size="22" fill="#0c1a2b" font-weight="bold">SOAP</text>
+    <!-- Request envelope (3-line stylized XML) -->
+    <text x="20" y="130" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#0c1a2b">&lt;soap:Envelope&gt;</text>
+    <text x="40" y="152" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#0c1a2b">&lt;Search&gt;mystery&lt;/Search&gt;</text>
+    <text x="20" y="174" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#0c1a2b">&lt;/soap:Envelope&gt;</text>
+  </g>
+
+  <!-- Cell 3: GraphQL (bottom-left) -->
+  <g tabindex="0" role="button" aria-label="GraphQL cell, counterfactual" data-tooltip='Asha would have asked for the schema. Atlas would have written a query asking for exactly the fields it needed. One URL for every call. The cache would have stayed out of it because every call is a POST.' transform="translate(16, 308)">
+    <rect width="376" height="276" fill="#fbf8f3" stroke="#5a7a64" stroke-width="1" rx="4" />
+    <!-- Label -->
+    <text x="20" y="44" font-family="Georgia, serif" font-size="22" fill="#0c1a2b" font-weight="bold">GraphQL</text>
+    <!-- Request envelope (2 lines) -->
+    <text x="20" y="140" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#0c1a2b">POST /graphql</text>
+    <text x="20" y="162" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#0c1a2b">query { books(q: "mystery") { title } }</text>
+  </g>
+
+  <!-- Cell 4: gRPC (bottom-right) -->
+  <g tabindex="0" role="button" aria-label="gRPC cell, counterfactual" data-tooltip='Asha would have asked for the proto file. Marginalia would have built the generated Atlas client from it. The call would have gone binary over HTTP/2. Any browser without grpc-web could not have called it. Any proxy not speaking HTTP/2 would have dropped the connection.' transform="translate(408, 308)">
+    <rect width="376" height="276" fill="#fbf8f3" stroke="#5a7a64" stroke-width="1" rx="4" />
+    <!-- Label -->
+    <text x="20" y="44" font-family="Georgia, serif" font-size="22" fill="#0c1a2b" font-weight="bold">gRPC</text>
+    <!-- Request envelope (2 lines) -->
+    <text x="20" y="140" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#0c1a2b">SearchBooks(query: "mystery")</text>
+    <text x="20" y="166" font-family="ui-monospace, Menlo, monospace" font-size="12" fill="#5a7a64">(binary over HTTP/2)</text>
+  </g>
 </svg>
