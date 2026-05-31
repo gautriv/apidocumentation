@@ -1,701 +1,145 @@
 ---
+title: "Types of APIs"
+permalink: /typesofAPI.html
 module: 2
 lesson: 2
 slug: typesofAPI
-title: Types of APIs - A Complete Overview
-description: Discover the different types of APIs including REST, SOAP, GraphQL, WebSockets, JSON-RPC, XML-RPC, and gRPC. Learn how each API type works, their key features, and when to use them in your projects.
-keywords: types of APIs, REST API, SOAP API, GraphQL API, WebSocket API, JSON-RPC API, XML-RPC API, gRPC API, web service APIs, library-based APIs, class-based APIs, API comparison, API technologies, modern API types, API integration, API documentation, API architecture, API protocols, real-time APIs, microservice APIs, API communication patterns, API development, RESTful web services, API design patterns
-permalink: typesofAPI.html
-summary: "Here I introduce the different types of APIs, including REST APIs, SOAP APIs, GraphQL, WebSockets, JSON-RPC, XML-RPC, and gRPC. It explains each type of API in a simple and easy-to-understand way, using analogies and examples. The article also discusses the applications of each type of API."
-next_page:
-  url: /restAPI.html
-  title: "More on REST APIs"
+reading_time: 14
+description: "Four API shapes a writer recognizes in 2026. Why Greenfield is REST, what SOAP, GraphQL, and gRPC would have cost instead."
 previous_page:
-  url: /informationgathering.html
-  title: "How do Technical Writers document?"
-image: /assets/images/api-types-overview.svg
-last_modified_at: 2023-10-15T09:00:00+00:00
-author_name: Technical Writing Expert
-author_description: Senior technical writer with 8+ years of experience documenting APIs and developer platforms
-author_expertise: 
-  - "API Documentation"
-  - "Web Services"
-  - "Integration Technologies"
-  - "Technical Writing"
-author_image: /assets/images/gaurav.svg
-reading_time: 10
-level: Beginner
-speakable: true
-speakable_selectors:
-  - ".doc-content h1" 
-  - ".doc-content h2"
-  - ".doc-content p:first-of-type"
-  - "#rest-api"
-  - "#graphql"
-  - "#websocket"
-schema_markup: true
+  url: /restAPI.html
+  title: "REST principles"
+next_page:
+  url: /anatomyofurl.html
+  title: "Anatomy of a URL (part 1)"
 ---
 
-Now that you know what we document and how we document, it's time to explore the diverse world of APIs, and I'll explain them in a way that's easy to grasp.
+{% comment %}block:1{% endcomment %}
+## Three other shapes
 
-We've six broad categories of APIs:
+Tuesday morning of story week 5. Devon pinged me Friday. *Come by Tuesday morning, I want to whiteboard three shapes we passed on.* I find him at the small whiteboard near his desk. Four sketches up: REST, SOAP, GraphQL, gRPC. Under SOAP he has written "1998" and below that, "still in production at your bank."
 
-1. **Web service APIs:** These are like the superheroes of the internet. They help all sorts of websites and apps talk to each other. Some cool ones are REST, SOAP, GraphQL, and more.
+He turns. "Last week was one argument. Today is three."
 
-2. **Library-based APIs:** Think of these as ready-made toolboxes for programmers. They come with handy tools (functions or classes) for doing specific jobs, like building stuff in a video game.
+Last week Asha wanted `POST /search` and Devon walked me through the verb. This morning he wants to show me the three shapes Greenfield could have shipped instead. Today you need to know which shape Greenfield is, because you start the advanced filter assignment this week, and a word on the doc page only means what it means once you know the shape.
 
-3. **Class-based APIs (Object-Oriented):** These are like special toolboxes that organize their tools in a very neat and organized way, just like how your toys might be sorted into different boxes.
+{% comment %}block:2{% endcomment %}
+## Today you will leave with
 
-4. **Functions or routines in an OS:** The operating system (the boss of your computer) shares some secret codes with programmers. These codes help programs use the computer's special powers.
+- How to recognize four API shapes by their request envelopes.
+- What each shape commits to in one sentence.
+- What the docs' first page owes the reader, shape by shape.
 
-5. **Object remoting APIs:** Imagine if you could send messages to your friends using magic spells. Object remoting APIs are like those spells, making objects in different places talk to each other.
+{% include ad-slot.html slot="lesson-mid-1" format="auto" %}
 
-6. **Hardware APIs:** These are the keys to unlock the superpowers of your computer's hardware, like the graphics card or the sound system.
+{% comment %}block:3{% endcomment %}
+## Every shape is a set of commitments
 
-{% include optimized-image.html 
-  src="/assets/images/api-categories-overview.svg" 
-  alt="Six categories of APIs: Web service, Library-based, Class-based, OS functions, Object remoting, and Hardware APIs" 
-  width="800" 
-  height="500" 
-  loading="lazy" 
-  class="centered"
-  caption="The six main categories of APIs that power modern technology" 
-%}
+Every shape is a set of commitments. An API picks one. Each shape commits the server, the client, the cache, and the doc page to a particular way of working. The shape is the contract.
 
-In this tutorial, we are more interested in understanding Web service APIs. Why? Because 80-90% of the time, you are going to document Web service APIs only.
+Take {% include glossary-term.html term="SOAP" %} first. SOAP is XML in an envelope. Each call sends an envelope with a header and a body. The SOAPAction header tells the server which operation to run. The contract is a WSDL file. The cache stays out of it (every call is a POST to one URL). If Greenfield had shipped SOAP, Asha's email would have been "send us the WSDL" and Marginalia would have generated a client from it.
 
-<div class="animated-infographic">
-  <img src="./assets/gif/webAPIs.gif" alt="Different types of Web APIs including REST, SOAP, GraphQL, and WebSockets" title="Web API types and their relationships" loading="lazy" class="responsive-image">
-  <div class="caption">Animation illustrating the different types of Web APIs and how they relate to each other</div>
-</div>
+{% include glossary-term.html term="GraphQL" %} next. GraphQL is one endpoint, usually `POST /graphql`, with the query in the body. The contract is the schema. The cache stays out of it by default (every call is a POST). If Greenfield had shipped GraphQL, Asha would have asked for the schema and her code would have written a query for the fields she needed.
 
-<style>
-.animated-infographic {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 30px 0;
-}
-.responsive-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-.caption {
-  font-style: italic;
-  color: #666;
-  text-align: center;
-  font-size: 0.9rem;
-  margin-top: 10px;
-  max-width: 600px;
-}
-</style>
+{% include glossary-term.html term="gRPC" %} last. gRPC is binary over HTTP/2. The contract is a `.proto` file and the wire format is Protocol Buffers. The client is generated from the proto. The cost is HTTP/2 support all the way down: browsers without `grpc-web` cannot talk to it, proxies that do not speak HTTP/2 drop the connection, and the cache cannot read it. If Greenfield had shipped gRPC, Asha would have asked for the proto file and Marginalia would have built the generated client into the Atlas service.
 
-The Web service API encompasses:
+Two shapes Devon does not sketch this morning. WebSocket is a connection model, not a request shape, and gets its own lesson in Module 6. The older RPC family that gRPC modernized is more concept than working choice today.
 
-* REST API
-* SOAP API
-* GraphQL
-* WebSockets
-* JSON-RPC
-* XML-RPC
-* gRPC
+{% include glossary-term.html term="REST" %} is the shape Greenfield ships. REST commits to HTTP verbs, URLs, and a body that is usually JSON. The cache holds GETs by default. The schema is optional. Greenfield ships OpenAPI alongside. REST's commitments happen to fit a public catalog API for an open web. That is why Greenfield is REST.
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+{% capture mermaid_src %}
+sequenceDiagram
+  participant Atlas
+  participant API as Greenfield GraphQL
+  Atlas->>API: POST /graphql
+  Note over Atlas,API: Body carries a GraphQL query
+  API-->>Atlas: 200 with data matching the query
+  Note over API: One URL for everything. The query in the body says what to do.
+{% endcapture %}
+{% include mermaid.html content=mermaid_src alt="A sequence diagram. Atlas calls POST /graphql on Greenfield's GraphQL server. The request body carries a GraphQL query that asks for books matching mystery and asks for their title field. The server returns a 200 response with the data shaped to match the query. The diagram annotates that GraphQL uses one endpoint for everything and the query in the body says what to do. The cache is not depicted because by default it sits outside the call path." %}
 
-<div class="api-types-comparison">
-  <h3>Web Service API Types at a Glance</h3>
-  <div class="types-grid">
-    <div class="api-type-card">
-      <div class="type-header rest">
-        <h4>REST API</h4>
-        <span class="popularity">Most Popular</span>
-      </div>
-      <div class="type-content">
-        <p class="type-description">Simple, stateless communication using HTTP methods and URLs</p>
-        <div class="type-attributes">
-          <div class="attribute"><span>Data Format:</span> JSON, XML</div>
-          <div class="attribute"><span>Protocol:</span> HTTP/HTTPS</div>
-          <div class="attribute"><span>Best For:</span> Public APIs, web apps</div>
-          <div class="attribute"><span>Learning Curve:</span> Low</div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="api-type-card">
-      <div class="type-header soap">
-        <h4>SOAP API</h4>
-        <span class="popularity">Enterprise</span>
-      </div>
-      <div class="type-content">
-        <p class="type-description">Strict, standardized protocol with built-in error handling and security</p>
-        <div class="type-attributes">
-          <div class="attribute"><span>Data Format:</span> XML only</div>
-          <div class="attribute"><span>Protocol:</span> HTTP, SMTP, etc.</div>
-          <div class="attribute"><span>Best For:</span> Financial services, enterprise</div>
-          <div class="attribute"><span>Learning Curve:</span> High</div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="api-type-card">
-      <div class="type-header graphql">
-        <h4>GraphQL</h4>
-        <span class="popularity">Rising Star</span>
-      </div>
-      <div class="type-content">
-        <p class="type-description">Query language that lets clients request exactly the data they need</p>
-        <div class="type-attributes">
-          <div class="attribute"><span>Data Format:</span> JSON</div>
-          <div class="attribute"><span>Protocol:</span> HTTP/HTTPS</div>
-          <div class="attribute"><span>Best For:</span> Complex UIs, mobile apps</div>
-          <div class="attribute"><span>Learning Curve:</span> Medium</div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="api-type-card">
-      <div class="type-header websocket">
-        <h4>WebSocket</h4>
-        <span class="popularity">Real-time</span>
-      </div>
-      <div class="type-content">
-        <p class="type-description">Persistent connection allowing bi-directional real-time data flow</p>
-        <div class="type-attributes">
-          <div class="attribute"><span>Data Format:</span> Any (often JSON)</div>
-          <div class="attribute"><span>Protocol:</span> WS/WSS</div>
-          <div class="attribute"><span>Best For:</span> Chat, live updates, gaming</div>
-          <div class="attribute"><span>Learning Curve:</span> Medium</div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="api-type-card">
-      <div class="type-header rpc">
-        <h4>JSON-RPC/XML-RPC</h4>
-        <span class="popularity">Specialized</span>
-      </div>
-      <div class="type-content">
-        <p class="type-description">Simple remote procedure call protocols with minimal methods</p>
-        <div class="type-attributes">
-          <div class="attribute"><span>Data Format:</span> JSON or XML</div>
-          <div class="attribute"><span>Protocol:</span> HTTP, TCP</div>
-          <div class="attribute"><span>Best For:</span> Simple remote calls</div>
-          <div class="attribute"><span>Learning Curve:</span> Medium-Low</div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="api-type-card">
-      <div class="type-header grpc">
-        <h4>gRPC</h4>
-        <span class="popularity">Performance-focused</span>
-      </div>
-      <div class="type-content">
-        <p class="type-description">High-performance RPC framework using Protocol Buffers and HTTP/2</p>
-        <div class="type-attributes">
-          <div class="attribute"><span>Data Format:</span> Protocol Buffers</div>
-          <div class="attribute"><span>Protocol:</span> HTTP/2</div>
-          <div class="attribute"><span>Best For:</span> Microservices, low latency</div>
-          <div class="attribute"><span>Learning Curve:</span> High</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+Look at the diagram. GraphQL puts the question in the body. The body carries `query { books(q: "mystery") { title } }`. One endpoint, one POST, the query says what to do. The cache stays out of it.
 
-<style>
-.api-types-comparison {
-  margin: 40px 0;
-}
-.api-types-comparison h3 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #2d3748;
-}
-.types-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-.api-type-card {
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  background: white;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.api-type-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-}
-.type-header {
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-}
-.type-header h4 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-.popularity {
-  font-size: 0.8rem;
-  padding: 4px 8px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.2);
-}
-.rest { background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); }
-.soap { background: linear-gradient(135deg, #3F51B5 0%, #1A237E 100%); }
-.graphql { background: linear-gradient(135deg, #E91E63 0%, #880E4F 100%); }
-.websocket { background: linear-gradient(135deg, #00BCD4 0%, #006064 100%); }
-.rpc { background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); }
-.grpc { background: linear-gradient(135deg, #9C27B0 0%, #4A148C 100%); }
+{% comment %}block:4{% endcomment %}
+## Name the shape on page one
 
-.type-content {
-  padding: 15px;
-}
-.type-description {
-  margin-top: 0;
-  margin-bottom: 15px;
-  color: #4a5568;
-  font-size: 0.95rem;
-}
-.type-attributes {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.attribute {
-  font-size: 0.9rem;
-  color: #4a5568;
-}
-.attribute span {
-  font-weight: bold;
-  color: #2d3748;
-}
-</style>
+Every API doc has a first page. Its first sentence tells the reader what shape they are reading. Greenfield's reads "Greenfield is a REST API." Three words. Every reader after that sentence knows what to expect: a list of resources, HTTP verbs, JSON, and a cache that holds GETs.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+The shape decides what the first page owes the reader.
 
-## REST API (Representational State Transfer) {#rest-api}
+A REST doc owes a resource list with verbs and paths, a base URL, an auth section, and one sample per resource that shows a successful call. A GraphQL doc owes a schema overview, a list of queries and mutations at the top level, and a playground link so the reader can run a query without writing code. A gRPC doc owes the proto file, the service list, and a code sample per supported language because the client is generated, not written. A SOAP doc owes the WSDL URL, an envelope template, and a list of operations the WSDL declares.
 
-So, first up, we have the REST API. Imagine it as the simplest way to design apps that talk to each other over the internet. It's like going to a restaurant with a menu. You pick what you want (using simple commands like GET, POST, PUT, or DELETE), and the kitchen (the server) gets it ready and serves it to you. REST is known for being straightforward, scalable, and it works with pretty much anything on the web.
+Greenfield's first page does the REST owing list. It opens with "Greenfield is a REST API," lists the six resources, and shows one `GET` example with a JSON response:
 
-{% include optimized-image.html 
-  src="/assets/images/rest-api-illustration.svg" 
-  alt="REST API visualization showing client-server communication with HTTP methods" 
-  width="700" 
-  height="350" 
-  loading="lazy" 
-  class="centered"
-  caption="REST API: Simple client-server communication using HTTP methods" 
-%}
+```bash
+$ curl -H "Authorization: Bearer $GF_TOKEN" \
+       "https://api.greenfield.lib/v1/books?q=mystery"
+```
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+The page does the recognition work so the reader does not have to do it.
 
-## SOAP API (Simple Object Access Protocol) {#soap-api}
+Devon's whiteboard appears below as a diagram. Four shapes, four request envelopes, one cell per shape. The REST cell is the actual shape Greenfield ships. The other three are counterfactual. Hover or tap a shape to read what Asha's email to Greenfield would have looked like in that shape. The hover text is the same content as the prose above, expressed as a short counterfactual. The prose and the hover are interchangeable.
 
-Next, we've got the SOAP API. This one is a bit like sending letters, but with strict rules. Everything has to be in a specific order and format, just like how you need to write an address on an envelope in a particular way. SOAP is all about strong security and reliability, making sure your message gets to the right place.
+{% include interactive-svg.html slug="typesofAPI" alt="Devon's whiteboard rendered as a four cell grid. In the top left, REST shows the request line GET /v1/books?q=mystery, with a small badge in the upper right reading the actual to mark it as the shape Greenfield ships. In the top right, SOAP shows the same query wrapped in an XML envelope with a SOAPAction header. In the bottom left, GraphQL shows POST /graphql with a body containing a query for books filtered by mystery, returning the title field. In the bottom right, gRPC shows SearchBooks called with the argument mystery, with a note that the call is binary over HTTP/2. Each cell has a label and a hover region. Hovering or tapping a cell reveals the counterfactual Asha email for that shape and what Greenfield's reply would owe back. Without hovering, the four request envelopes are all visible side by side." %}
 
+The recognition pattern is small. Read the first sentence of the docs. Look at the request envelope of one endpoint. You have placed the API. Once you have placed it, every subsequent decision (which page to write, which sample to ship, which header to call out) follows the shape's owing list.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+{% comment %}block:5{% endcomment %}
+{% capture body %}
+Open three public API doc home pages: Stripe at `stripe.com/docs/api`, GitHub's GraphQL API at `docs.github.com/graphql`, and gRPC's quickstart at `grpc.io/docs/what-is-grpc`. For each, find the first sentence or heading. Name the shape. Then pick one thing the page does because of the shape: a playground, a schema overview, a resource list with verbs, or a `.proto` reference. Write three lines per page: shape, evidence, one consequence.
 
-## GraphQL {#graphql}
+Skipped SOAP on purpose. Most SOAP lives behind enterprise firewalls. If you can find a public SOAP doc home page in under a minute, the WSDL pointer is what you are looking for.
+{% endcapture %}
+{% include callout.html variant="exercise" body=body %}
 
-Now, let's talk about GraphQL. It's like ordering a customised pizza. You get to choose exactly what toppings you want, and you won't get anything else. With GraphQL, you request just the data you need in a single go. It's super flexible and efficient, especially when you don't want to waste time or data.
+{% comment %}block:6{% endcomment %}
+{% capture body %}
+Plenty of APIs say they are REST. Many are not. They use HTTP, they return JSON, they have URLs. They also have `POST /users/123/activate`, `POST /products/find`, `GET /api/v1/get_user?id=123`. That is RPC underneath, with a REST sticker on the box.
 
-<div class="interactive-demo">
-  <h4>Try it yourself: GraphQL vs REST Data Fetching</h4>
-  <div class="demo-container">
-    <div class="demo-tabs">
-      <button id="rest-tab" class="demo-tab active">REST API</button>
-      <button id="graphql-tab" class="demo-tab">GraphQL</button>
-    </div>
-    <div class="demo-content">
-      <div id="rest-content" class="tab-content active">
-        <h5>With REST API: Need 3 separate requests</h5>
-        <pre class="code-block">GET /api/user/123
-// Returns all user fields, even if you need only name
+Devon's check: read the URL pattern of three random endpoints. If the URLs name actions (`/activate`, `/find`, `/get_user`), the API is RPC in a REST jacket. The doc owes the reader an operation list, not a resource list. Pretending the API is REST when it is not makes the doc lie about what every call commits to.
 
-GET /api/user/123/posts
-// Returns all posts from user
+The shape is what the API does, not what the marketing page says it does.
+{% endcapture %}
+{% include callout.html variant="warning" body=body %}
 
-GET /api/user/123/followers
-// Returns all followers of user</pre>
-      </div>
-      <div id="graphql-content" class="tab-content">
-        <h5>With GraphQL: 1 request, only what you need</h5>
-        <pre class="code-block">query {
-  user(id: "123") {
-    name
-    posts {
-      title
-      date
-    }
-    followers {
-      name
-    }
-  }
-}</pre>
-      </div>
-    </div>
-  </div>
-</div>
+{% comment %}block:7{% endcomment %}
+## Words you can drop in standups now
 
-<style>
-.interactive-demo {
-  background: #f8f9fb;
-  border-radius: 8px;
-  padding: 15px;
-  margin: 25px 0;
-  border: 1px solid #e2e8f0;
-}
-.demo-container {
-  display: flex;
-  flex-direction: column;
-}
-.demo-tabs {
-  display: flex;
-  gap: 2px;
-  margin-bottom: 15px;
-}
-.demo-tab {
-  padding: 8px 16px;
-  background: #e2e8f0;
-  border: none;
-  border-radius: 4px 4px 0 0;
-  cursor: pointer;
-  font-weight: 500;
-}
-.demo-tab.active {
-  background: #4a6ef5;
-  color: white;
-}
-.tab-content {
-  display: none;
-  padding: 15px;
-  background: #1e293b;
-  border-radius: 0 4px 4px 4px;
-  color: #e2e8f0;
-}
-.tab-content.active {
-  display: block;
-}
-.tab-content h5 {
-  margin-top: 0;
-  color: white;
-  margin-bottom: 10px;
-}
-.code-block {
-  margin: 0;
-  font-family: monospace;
-  white-space: pre;
-  overflow-x: auto;
-}
-</style>
+{% include glossary-term.html term="SOAP" %}. Use this when someone says "the integration is SOAP" and you want to nod and ask "do you have the WSDL."
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const restTab = document.getElementById('rest-tab');
-  const graphqlTab = document.getElementById('graphql-tab');
-  const restContent = document.getElementById('rest-content');
-  const graphqlContent = document.getElementById('graphql-content');
-  
-  restTab.addEventListener('click', function() {
-    restTab.classList.add('active');
-    graphqlTab.classList.remove('active');
-    restContent.classList.add('active');
-    graphqlContent.classList.remove('active');
-  });
-  
-  graphqlTab.addEventListener('click', function() {
-    graphqlTab.classList.add('active');
-    restTab.classList.remove('active');
-    graphqlContent.classList.add('active');
-    restContent.classList.remove('active');
-  });
-});
-</script>
+{% include glossary-term.html term="GraphQL" %}. Use this when someone says "they have a GraphQL endpoint" and you want to know what to ask for next: the schema.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+{% include glossary-term.html term="gRPC" %}. Use this when someone says "the service is gRPC" and you want to ask "are we generating clients from the proto."
 
-## WebSocket {#websocket}
+{% include glossary-term.html term="request envelope" %}. Use this when you mean "the shape of one call before the response comes back."
 
-Moving on to WebSockets. These are like having a phone call where you can talk and listen at the same time. It's different from traditional mail (like sending letters) or email (where you send a message and wait for a response). WebSockets are great for real-time stuff like chatting and live updates.
+{% include ad-slot.html slot="lesson-mid-2" format="auto" %}
 
+{% comment %}block:8{% endcomment %}
+## AI co pilot tip
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+Tool: GitHub Copilot Chat (the chat panel in VS Code or your IDE of choice).
 
-## JSON-RPC and XML-RPC {#rpc}
+**The situation.** You inherit a codebase or a public schema link and you want to know which shape you are looking at before you write a single doc word. Useful when an engineer hands you a `.proto` file and assumes you can read it.
 
-Now, let's talk about JSON-RPC and XML-RPC. These are like asking a friend to do something specific for you, and your friend knows exactly what you want. It's a way for one program to request a particular action from another program. These types are handy because they can work with different programming languages, making them a good choice for big, distributed systems.
+**The prompt** (paste into Copilot Chat with the schema or doc file open):
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7149683584202371"
-      crossorigin="anonymous"></script>
-  <!-- AddTitleOne -->
-  <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7149683584202371"
-      data-ad-slot="7422872052"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+```text
+This file is part of an API. Tell me which shape this API is: REST, GraphQL, gRPC, SOAP, or something else. Quote the line that gave it away. Then in one sentence, name what that shape commits to.
+```
 
-## gRPC {#grpc}
+**What to expect back.** A shape name, a quoted line, and one commitment sentence. Three lines.
 
-Last but not least, gRPC. Think of gRPC like sending a super efficient and structured letter with a built-in translator. It makes sure both the sender and the receiver understand each other perfectly. gRPC is known for high performance and strong typing, which means it's fast and reliable.
+**What to watch for.** Copilot Chat sometimes says "this could be REST or RPC over HTTP." That hedging is the trap from block 6: an API that says REST in the marketing page but ships RPC underneath. Push back: "name the shape based on the URL patterns in this file, not the marketing." The second pass usually picks one and defends it. If it still hedges, the file probably is RPC in a REST jacket. If Copilot paraphrases instead of quoting, ask again: "give me the literal line."
 
-<div class="api-selection-guide">
-  <h3>Documentation Considerations for Different API Types</h3>
-  <div class="selection-questions">
-    <div class="question">
-      <h4>Documenting WebSocket APIs</h4>
-      <p class="answer"><strong>Key challenges:</strong> Explaining event-based communication flows, documenting connection states and error handling.</p>
-      <p class="answer"><strong>Focus areas:</strong> Connection lifecycle, event types, message formats, and providing clear sequence diagrams.</p>
-    </div>
-    
-    <div class="question">
-      <h4>Documenting GraphQL APIs</h4>
-      <p class="answer"><strong>Key challenges:</strong> Explaining schema concepts, documenting nested relationships between types.</p>
-      <p class="answer"><strong>Focus areas:</strong> Interactive query explorers, schema documentation, mutation examples, and query variables usage.</p>
-    </div>
-    
-    <div class="question">
-      <h4>Documenting SOAP APIs</h4>
-      <p class="answer"><strong>Key challenges:</strong> Explaining complex XML structures and WSDL files to users.</p>
-      <p class="answer"><strong>Focus areas:</strong> Request/response XML examples, security implementations, error codes, and WSDL explanation.</p>
-    </div>
-    
-    <div class="question">
-      <h4>Documenting gRPC APIs</h4>
-      <p class="answer"><strong>Key challenges:</strong> Explaining Protocol Buffers and streaming concepts to users less familiar with them.</p>
-      <p class="answer"><strong>Focus areas:</strong> .proto file structure, service definitions, language-specific client examples, and stream handling patterns.</p>
-    </div>
-  </div>
-</div>
+{% comment %}block:9{% endcomment %}
+## Before you go
 
-<style>
-.api-selection-guide {
-  background: #f8f9fb;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 30px 0;
-  border: 1px solid #e2e8f0;
-}
-.api-selection-guide h3 {
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #2d3748;
-}
-.selection-questions {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.question {
-  background: white;
-  border-radius: 6px;
-  padding: 15px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-.question h4 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  color: #4a6ef5;
-}
-.answer {
-  margin: 5px 0;
-}
-.answer strong {
-  color: #2d3748;
-}
-.answer a {
-  color: #4a6ef5;
-  text-decoration: none;
-}
-.answer a:hover {
-  text-decoration: underline;
-}
-</style>
+Pick a public API doc you remember reading. In two sentences, name the shape and name one thing the page does because of the shape.
 
-Intrigued by the fascinating world of APIs? Well, guess what? There's more to explore in the next chapter, where we dive deeper into the **superstar of APIs** - [REST APIs]({{ '/restAPI.html' | relative_url }}). Get ready for an exciting journey into its intricacies and applications. Stay tuned, and let's unravel the secrets together!
+{% comment %}block:10{% endcomment %}
+## Next week at Greenfield
 
-{% include enhanced_note.html 
-  title="Documentation Strategy Tip" 
-  type="info" 
-  content="When documenting different API types, adapt your approach to highlight the most critical aspects of each: For REST, focus on resource relationships and status codes; for GraphQL, emphasize schema and query construction; for WebSockets, illustrate event sequences; for SOAP, provide detailed request/response examples. Always include authentication details, error handling, and code samples appropriate to each API paradigm."
-%}
+Next week we open the URL the catalog actually ships under and read it left to right. Devon has feelings about every part of it.
 
-{% include faq-section.html 
-  title="Frequently Asked Questions About API Types"
-  description="Get answers to common questions about different API types and when to use them."
-  data_file="api_types_faqs"
-%}
-
-{% include key_takeaways.html content="
-<ul>
-  <li>Web service APIs like REST, SOAP, GraphQL, and WebSockets are the most commonly documented API types</li>
-  <li>REST APIs are the most popular due to their simplicity, using HTTP methods and standard URLs</li>
-  <li>SOAP APIs offer a more standardized approach with stricter protocols and XML formatting</li>
-  <li>GraphQL allows clients to request exactly the data they need, reducing over-fetching</li>
-  <li>WebSockets provide real-time, bi-directional communication through persistent connections</li>
-  <li>gRPC is optimized for high-performance microservices communication</li>
-  <li>Different API types serve different use cases and technical requirements</li>
-</ul>
-" %}
-
-{% include quiz.html
-  title="Test Your Knowledge"
-  description="Check your understanding of different API types with this quiz."
-  quizDataFile="typesofAPI_questions"
-  theme="blue"
-  animate=true
-%}
-
-<div class="author-cta">
-  <img src="{{ site.baseurl }}/assets/images/gaurav.svg" alt="Technical Writing Expert" class="author-image">
-  <div class="author-message">
-    <h4>Did this API types guide help you?</h4>
-    <p>If you found this comparison of REST, SOAP, GraphQL, and other API architectures valuable, please share it with your network. Your feedback helps us create better resources for API developers!</p>
-    <div class="social-share">
-      <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text=Great guide explaining different API types and when to use them" class="share-button twitter">Share on Twitter</a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title=Comparing API Architectures: REST, GraphQL, SOAP and more" class="share-button linkedin">Share on LinkedIn</a>
-    </div>
-  </div>
-</div>
-
-<style>
-.author-cta {
-  display: flex;
-  background: #f8f9fb;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 30px 0;
-  border: 1px solid #e2e8f0;
-  gap: 20px;
-  align-items: center;
-}
-.author-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.author-message {
-  flex: 1;
-}
-.author-message h4 {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-.author-message p {
-  margin-bottom: 12px;
-}
-.social-share {
-  display: flex;
-  gap: 10px;
-}
-.share-button {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: white;
-}
-.twitter {
-  background: #1DA1F2;
-}
-.linkedin {
-  background: #0077B5;
-}
-@media (max-width: 600px) {
-  .author-cta {
-    flex-direction: column;
-    text-align: center;
-  }
-  .social-share {
-    justify-content: center;
-  }
-}
-</style>
-
-{% include related_resources.html 
-  title="Learn More About API Types"
-  description="Expand your knowledge with these carefully selected resources about different API types."
-  external_links="REST API Best Practices,https://restfulapi.net/|GraphQL Official Documentation,https://graphql.org/learn/|WebSockets Protocol,https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API|gRPC Introduction,https://grpc.io/docs/what-is-grpc/introduction/"
-  tools="Postman API Platform,https://www.postman.com/|GraphiQL Explorer,https://github.com/graphql/graphiql|WebSocket Testing Tools,https://www.piesocket.com/websocket-tester|Protocol Buffers Reference,https://developers.google.com/protocol-buffers"
-%}
+{% include signoff.html %}
