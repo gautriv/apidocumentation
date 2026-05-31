@@ -57,7 +57,26 @@ Look at the diagram. GraphQL puts the question in the body. The body carries `qu
 {% comment %}block:4{% endcomment %}
 ## Name the shape on page one
 
-<!-- TODO block:4 -->
+Every API doc has a first page. Its first sentence tells the reader what shape they are reading. Greenfield's reads "Greenfield is a REST API." Three words. Every reader after that sentence knows what to expect: a list of resources, HTTP verbs, JSON, and a cache that holds GETs.
+
+The shape decides what the first page owes the reader.
+
+A REST doc owes a resource list with verbs and paths, a base URL, an auth section, and one sample per resource that shows a successful call. A GraphQL doc owes a schema overview, a list of queries and mutations at the top level, and a playground link so the reader can run a query without writing code. A gRPC doc owes the proto file, the service list, and a code sample per supported language because the client is generated, not written. A SOAP doc owes the WSDL URL, an envelope template, and a list of operations the WSDL declares.
+
+Greenfield's first page does the REST owing list. It opens with "Greenfield is a REST API," lists the six resources, and shows one `GET` example with a JSON response:
+
+```bash
+$ curl -H "Authorization: Bearer $GF_TOKEN" \
+       "https://api.greenfield.lib/v1/books?q=mystery"
+```
+
+The page does the recognition work so the reader does not have to do it.
+
+Devon's whiteboard appears below as a diagram. Four shapes, four request envelopes, one cell per shape. The REST cell is the actual shape Greenfield ships. The other three are counterfactual. Hover or tap a shape to read what Asha's email to Greenfield would have looked like in that shape. The hover text is the same content as the prose above, expressed as a short counterfactual. The prose and the hover are interchangeable.
+
+{% include interactive-svg.html slug="typesofAPI" alt="Devon's whiteboard rendered as a four cell grid. In the top left, REST shows the request line GET /v1/books?q=mystery, with a small badge in the upper right reading the actual to mark it as the shape Greenfield ships. In the top right, SOAP shows the same query wrapped in an XML envelope with a SOAPAction header. In the bottom left, GraphQL shows POST /graphql with a body containing a query for books filtered by mystery, returning the title field. In the bottom right, gRPC shows SearchBooks called with the argument mystery, with a note that the call is binary over HTTP/2. Each cell has a label and a hover region. Hovering or tapping a cell reveals the counterfactual Asha email for that shape and what Greenfield's reply would owe back. Without hovering, the four request envelopes are all visible side by side." %}
+
+The recognition pattern is small. Read the first sentence of the docs. Look at the request envelope of one endpoint. You have placed the API. Once you have placed it, every subsequent decision (which page to write, which sample to ship, which header to call out) follows the shape's owing list.
 
 {% comment %}block:5{% endcomment %}
 <!-- TODO block:5 -->
