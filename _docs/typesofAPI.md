@@ -118,7 +118,19 @@ The shape is what the API does, not what the marketing page says it does.
 {% comment %}block:8{% endcomment %}
 ## AI co pilot tip
 
-<!-- TODO block:8 -->
+Tool: GitHub Copilot Chat (the chat panel in VS Code or your IDE of choice).
+
+**The situation.** You inherit a codebase or a public schema link and you want to know which shape you are looking at before you write a single doc word. Useful when an engineer hands you a `.proto` file and assumes you can read it.
+
+**The prompt** (paste into Copilot Chat with the schema or doc file open):
+
+```text
+This file is part of an API. Tell me which shape this API is: REST, GraphQL, gRPC, SOAP, or something else. Quote the line that gave it away. Then in one sentence, name what that shape commits to.
+```
+
+**What to expect back.** A shape name, a quoted line, and one commitment sentence. Three lines.
+
+**What to watch for.** Copilot Chat sometimes says "this could be REST or RPC over HTTP." That hedging is the trap from block 6: an API that says REST in the marketing page but ships RPC underneath. Push back: "name the shape based on the URL patterns in this file, not the marketing." The second pass usually picks one and defends it. If it still hedges, the file probably is RPC in a REST jacket. If Copilot paraphrases instead of quoting, ask again: "give me the literal line."
 
 {% comment %}block:9{% endcomment %}
 ## Before you go
