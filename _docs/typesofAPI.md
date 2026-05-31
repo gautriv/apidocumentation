@@ -140,6 +140,6 @@ Pick a public API doc you remember reading. In two sentences, name the shape and
 {% comment %}block:10{% endcomment %}
 ## Next week at Greenfield
 
-<!-- TODO block:10 -->
+Next week we open the URL the catalog actually ships under and read it left to right. Devon has feelings about every part of it.
 
 {% include signoff.html %}
