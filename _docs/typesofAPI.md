@@ -105,7 +105,13 @@ The shape is what the API does, not what the marketing page says it does.
 {% comment %}block:7{% endcomment %}
 ## Words you can drop in standups now
 
-<!-- TODO block:7 -->
+{% include glossary-term.html term="SOAP" %}. Use this when someone says "the integration is SOAP" and you want to nod and ask "do you have the WSDL."
+
+{% include glossary-term.html term="GraphQL" %}. Use this when someone says "they have a GraphQL endpoint" and you want to know what to ask for next: the schema.
+
+{% include glossary-term.html term="gRPC" %}. Use this when someone says "the service is gRPC" and you want to ask "are we generating clients from the proto."
+
+{% include glossary-term.html term="request envelope" %}. Use this when you mean "the shape of one call before the response comes back."
 
 {% include ad-slot.html slot="lesson-mid-2" format="auto" %}
 
