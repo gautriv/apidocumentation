@@ -17,7 +17,11 @@ next_page:
 {% comment %}block:1{% endcomment %}
 ## Three other shapes
 
-<!-- TODO block:1 -->
+Tuesday morning of story week 5. Devon pinged me Friday. *Come by Tuesday morning, I want to whiteboard three shapes we passed on.* I find him at the small whiteboard near his desk. Four sketches up: REST, SOAP, GraphQL, gRPC. Under SOAP he has written "1998" and below that, "still in production at your bank."
+
+He turns. "Last week was one argument. Today is three."
+
+Last week Asha wanted `POST /search` and Devon walked me through the verb. This morning he wants to show me the three shapes Greenfield could have shipped instead. Today you need to know which shape Greenfield is, because you start the advanced filter assignment this week, and a word on the doc page only means what it means once you know the shape.
 
 {% comment %}block:2{% endcomment %}
 ## Today you will leave with
