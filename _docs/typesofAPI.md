@@ -87,7 +87,14 @@ Skipped SOAP on purpose. Most SOAP lives behind enterprise firewalls. If you can
 {% include callout.html variant="exercise" body=body %}
 
 {% comment %}block:6{% endcomment %}
-<!-- TODO block:6 -->
+{% capture body %}
+Plenty of APIs say they are REST. Many are not. They use HTTP, they return JSON, they have URLs. They also have `POST /users/123/activate`, `POST /products/find`, `GET /api/v1/get_user?id=123`. That is RPC underneath, with a REST sticker on the box.
+
+Devon's check: read the URL pattern of three random endpoints. If the URLs name actions (`/activate`, `/find`, `/get_user`), the API is RPC in a REST jacket. The doc owes the reader an operation list, not a resource list. Pretending the API is REST when it is not makes the doc lie about what every call commits to.
+
+The shape is what the API does, not what the marketing page says it does.
+{% endcapture %}
+{% include callout.html variant="warning" body=body %}
 
 {% comment %}block:7{% endcomment %}
 ## Words you can drop in standups now
