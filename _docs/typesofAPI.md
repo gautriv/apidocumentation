@@ -135,7 +135,7 @@ This file is part of an API. Tell me which shape this API is: REST, GraphQL, gRP
 {% comment %}block:9{% endcomment %}
 ## Before you go
 
-<!-- TODO block:9 -->
+Pick a public API doc you remember reading. In two sentences, name the shape and name one thing the page does because of the shape.
 
 {% comment %}block:10{% endcomment %}
 ## Next week at Greenfield
