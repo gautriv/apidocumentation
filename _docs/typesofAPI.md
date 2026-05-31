@@ -79,7 +79,12 @@ Devon's whiteboard appears below as a diagram. Four shapes, four request envelop
 The recognition pattern is small. Read the first sentence of the docs. Look at the request envelope of one endpoint. You have placed the API. Once you have placed it, every subsequent decision (which page to write, which sample to ship, which header to call out) follows the shape's owing list.
 
 {% comment %}block:5{% endcomment %}
-<!-- TODO block:5 -->
+{% capture body %}
+Open three public API doc home pages: Stripe at `stripe.com/docs/api`, GitHub's GraphQL API at `docs.github.com/graphql`, and gRPC's quickstart at `grpc.io/docs/what-is-grpc`. For each, find the first sentence or heading. Name the shape. Then pick one thing the page does because of the shape: a playground, a schema overview, a resource list with verbs, or a `.proto` reference. Write three lines per page: shape, evidence, one consequence.
+
+Skipped SOAP on purpose. Most SOAP lives behind enterprise firewalls. If you can find a public SOAP doc home page in under a minute, the WSDL pointer is what you are looking for.
+{% endcapture %}
+{% include callout.html variant="exercise" body=body %}
 
 {% comment %}block:6{% endcomment %}
 <!-- TODO block:6 -->
