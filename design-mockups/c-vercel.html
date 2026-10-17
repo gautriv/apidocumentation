@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Documentation Course — Vercel-Clean mockup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'media',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+    body {
+      background: #ffffff;
+      color: #0a0a0a;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0a0a0a; color: #fafafa; }
+    }
+    .text-balance { text-wrap: balance; }
+    .dotted-grid {
+      background-image: radial-gradient(circle, rgba(0,0,0,0.07) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+    @media (prefers-color-scheme: dark) {
+      .dotted-grid {
+        background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+      }
+    }
+    .gradient-text {
+      background: linear-gradient(120deg, #0a0a0a 30%, #525252 70%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    @media (prefers-color-scheme: dark) {
+      .gradient-text {
+        background: linear-gradient(120deg, #fafafa 30%, #a3a3a3 70%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    }
+    .iso-orbit { animation: orbit 18s linear infinite; transform-origin: center; }
+    @keyframes orbit { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- NAV -->
+  <header class="border-b border-black/10 dark:border-white/10 sticky top-0 bg-white/70 dark:bg-black/70 backdrop-blur-md z-40">
+    <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 font-semibold tracking-tight">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 22h20Z"/></svg>
+        <span>API Documentation Course</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm text-black/70 dark:text-white/70">
+        <a href="#curriculum" class="hover:text-black dark:hover:text-white">Curriculum</a>
+        <a href="#features" class="hover:text-black dark:hover:text-white">Features</a>
+        <a href="#tools" class="hover:text-black dark:hover:text-white">Tools</a>
+        <a href="#changelog" class="hover:text-black dark:hover:text-white">Changelog</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button class="hidden md:flex items-center gap-2 text-sm text-black/55 dark:text-white/55 border border-black/10 dark:border-white/10 rounded-md px-3 py-1.5 hover:bg-black/5 dark:hover:bg-white/5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          Search
+          <kbd class="text-xs font-mono opacity-50">⌘K</kbd>
+        </button>
+        <a href="#start" class="bg-black text-white dark:bg-white dark:text-black px-4 py-1.5 rounded-md text-sm font-medium hover:opacity-90">Start free</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative">
+    <div class="absolute inset-0 dotted-grid opacity-50 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]"></div>
+    <div class="relative max-w-4xl mx-auto px-6 pt-24 pb-20 text-center">
+      <div class="inline-flex items-center gap-2 text-xs font-medium bg-black/5 dark:bg-white/10 rounded-full px-3 py-1 mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+        Free · Updated for 2026 · Lesson 14 just shipped
+      </div>
+
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] text-balance mb-6">
+        <span class="gradient-text">A free course on writing API docs — rewritten for the age of AI.</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-black/65 dark:text-white/65 leading-relaxed max-w-2xl mx-auto mb-9">
+        REST fundamentals, modern API shapes, and the AI-native patterns nobody's teaching yet. Eight modules, thirty-six lessons, one running example, zero filler.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+        <a href="#start" class="bg-black text-white dark:bg-white dark:text-black px-6 py-3 rounded-md text-base font-medium hover:opacity-90 inline-flex items-center gap-2">Start free <span>→</span></a>
+        <a href="#curriculum" class="border border-black/15 dark:border-white/15 px-6 py-3 rounded-md text-base font-medium hover:bg-black/5 dark:hover:bg-white/5">Browse curriculum</a>
+      </div>
+
+      <!-- Isometric API diagram -->
+      <div class="relative max-w-2xl mx-auto h-64 mt-4">
+        <svg viewBox="0 0 600 260" class="w-full h-full">
+          <defs>
+            <linearGradient id="boxg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(0,0,0,0.06)"/>
+              <stop offset="100%" stop-color="rgba(0,0,0,0.02)"/>
+            </linearGradient>
+            <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 z" fill="currentColor" opacity="0.5"/>
+            </marker>
+          </defs>
+          <!-- Client -->
+          <g transform="translate(50,90)">
+            <rect width="120" height="80" rx="10" fill="url(#boxg)" stroke="currentColor" stroke-opacity="0.2"/>
+            <text x="60" y="40" text-anchor="middle" font-family="Inter" font-weight="600" font-size="14" fill="currentColor">Client</text>
+            <text x="60" y="58" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="currentColor" opacity="0.5">cURL · SDK · LLM</text>
+          </g>
+          <!-- Server -->
+          <g transform="translate(430,90)">
+            <rect width="120" height="80" rx="10" fill="url(#boxg)" stroke="currentColor" stroke-opacity="0.2"/>
+            <text x="60" y="40" text-anchor="middle" font-family="Inter" font-weight="600" font-size="14" fill="currentColor">API</text>
+            <text x="60" y="58" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="currentColor" opacity="0.5">/books/{id}</text>
+          </g>
+          <!-- Request arrow -->
+          <g class="text-black dark:text-white">
+            <path d="M175,115 L425,115" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+            <text x="300" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="currentColor" opacity="0.6">GET /books/42</text>
+          </g>
+          <!-- Response arrow -->
+          <g class="text-black dark:text-white">
+            <path d="M425,145 L175,145" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+            <text x="300" y="165" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="currentColor" opacity="0.6">200 · {"title":"…"}</text>
+          </g>
+          <!-- Floating circles for life -->
+          <g class="iso-orbit text-black dark:text-white">
+            <circle cx="300" cy="40" r="3" fill="currentColor" opacity="0.4"/>
+            <circle cx="300" cy="220" r="3" fill="currentColor" opacity="0.2"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO STRIP -->
+  <section class="border-y border-black/10 dark:border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-3 text-black/35 dark:text-white/35 text-sm font-semibold tracking-wide">
+      <span>Trusted by writers at</span>
+      <span>STRIPE</span><span>POSTMAN</span><span>FIGMA</span><span>SCALAR</span><span>VERCEL</span><span>NEON</span>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="max-w-6xl mx-auto px-6 py-24">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-4 text-balance">Everything a 2026 docs course should have.</h2>
+      <p class="text-black/60 dark:text-white/60 text-lg max-w-xl mx-auto">And the things every other course is still pretending isn't a real category yet.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="border border-black/10 dark:border-white/10 rounded-xl p-6 bg-black/[0.02] dark:bg-white/[0.02]">
+        <div class="w-10 h-10 rounded-lg bg-black text-white dark:bg-white dark:text-black flex items-center justify-center mb-4">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Ask the course</h3>
+        <p class="text-black/60 dark:text-white/60 text-sm leading-relaxed">A floating AI chat trained on every lesson. Stuck? Ask, get the right paragraph, keep moving.</p>
+      </div>
+      <div class="border border-black/10 dark:border-white/10 rounded-xl p-6 bg-black/[0.02] dark:bg-white/[0.02]">
+        <div class="w-10 h-10 rounded-lg bg-black text-white dark:bg-white dark:text-black flex items-center justify-center mb-4">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Live OpenAPI playground</h3>
+        <p class="text-black/60 dark:text-white/60 text-sm leading-relaxed">Edit a spec, hit the endpoint, see the response — inside the lesson. No tab-juggling.</p>
+      </div>
+      <div class="border border-black/10 dark:border-white/10 rounded-xl p-6 bg-black/[0.02] dark:bg-white/[0.02]">
+        <div class="w-10 h-10 rounded-lg bg-black text-white dark:bg-white dark:text-black flex items-center justify-center mb-4">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Progress &amp; certificate</h3>
+        <p class="text-black/60 dark:text-white/60 text-sm leading-relaxed">localStorage tracks your progress; a printable PDF certificate when you finish.</p>
+      </div>
+      <div class="border border-black/10 dark:border-white/10 rounded-xl p-6 bg-black/[0.02] dark:bg-white/[0.02]">
+        <div class="w-10 h-10 rounded-lg bg-black text-white dark:bg-white dark:text-black flex items-center justify-center mb-4">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Cmd+K everywhere</h3>
+        <p class="text-black/60 dark:text-white/60 text-sm leading-relaxed">Jump to any lesson, glossary entry, or exercise in two keystrokes.</p>
+      </div>
+      <div class="border border-black/10 dark:border-white/10 rounded-xl p-6 bg-black/[0.02] dark:bg-white/[0.02]">
+        <div class="w-10 h-10 rounded-lg bg-black text-white dark:bg-white dark:text-black flex items-center justify-center mb-4">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Hover-anywhere glossary</h3>
+        <p class="text-black/60 dark:text-white/60 text-sm leading-relaxed">JWT, mTLS, MCP, gRPC — hover the term in any lesson to see the definition.</p>
+      </div>
+      <div class="border border-black/10 dark:border-white/10 rounded-xl p-6 bg-black/[0.02] dark:bg-white/[0.02]">
+        <div class="w-10 h-10 rounded-lg bg-black text-white dark:bg-white dark:text-black flex items-center justify-center mb-4">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Offline-first PWA</h3>
+        <p class="text-black/60 dark:text-white/60 text-sm leading-relaxed">Install to your dock; read lessons on the plane. Dark mode that respects your system.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section id="curriculum" class="max-w-6xl mx-auto px-6 py-24 border-t border-black/10 dark:border-white/10">
+    <div class="text-center mb-14">
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-3 text-balance">The curriculum.</h2>
+      <p class="text-black/60 dark:text-white/60 text-lg max-w-xl mx-auto">Eight modules in the order you'd actually want to learn them. Take it linearly, or jump in at Module 7 if you came here for the AI part.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
+      <a href="#" class="flex items-start gap-4 p-5 rounded-lg border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 transition-colors">
+        <span class="font-mono text-sm text-black/40 dark:text-white/40 mt-0.5">01</span>
+        <div>
+          <h3 class="font-semibold mb-1">Foundations <span class="text-xs text-black/40 dark:text-white/40 font-normal font-mono">· 5 lessons</span></h3>
+          <p class="text-sm text-black/55 dark:text-white/55">APIs, the writer's job, audience, info-gathering.</p>
+        </div>
+      </a>
+      <a href="#" class="flex items-start gap-4 p-5 rounded-lg border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 transition-colors">
+        <span class="font-mono text-sm text-black/40 dark:text-white/40 mt-0.5">02</span>
+        <div>
+          <h3 class="font-semibold mb-1">REST, HTTP, and the dance <span class="text-xs text-black/40 dark:text-white/40 font-normal font-mono">· 6 lessons</span></h3>
+          <p class="text-sm text-black/55 dark:text-white/55">REST, URLs, requests, cURL, auth (incl. agents).</p>
+        </div>
+      </a>
+      <a href="#" class="flex items-start gap-4 p-5 rounded-lg border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 transition-colors">
+        <span class="font-mono text-sm text-black/40 dark:text-white/40 mt-0.5">03</span>
+        <div>
+          <h3 class="font-semibold mb-1">Data shapes <span class="text-xs text-black/40 dark:text-white/40 font-normal font-mono">· 4 lessons</span></h3>
+          <p class="text-sm text-black/55 dark:text-white/55">JSON, XML, viz, JSON Schema for LLM outputs.</p>
+        </div>
+      </a>
+      <a href="#" class="flex items-start gap-4 p-5 rounded-lg border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 transition-colors">
+        <span class="font-mono text-sm text-black/40 dark:text-white/40 mt-0.5">04</span>
+        <div>
+          <h3 class="font-semibold mb-1">Writing the docs <span class="text-xs text-black/40 dark:text-white/40 font-normal font-mono">· 5 lessons</span></h3>
+          <p class="text-sm text-black/55 dark:text-white/55">Endpoints, OpenAPI, samples, errors.</p>
+        </div>
+      </a>
+      <a href="#" class="flex items-start gap-4 p-5 rounded-lg border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 transition-colors">
+        <span class="font-mono text-sm text-black/40 dark:text-white/40 mt-0.5">05</span>
+        <div>
+          <h3 class="font-semibold mb-1">Webhooks &amp; async <span class="text-xs text-black/40 dark:text-white/40 font-normal font-mono">· 4 lessons</span></h3>
+          <p class="text-sm text-black/55 dark:text-white/55">Webhooks (B/I/E), AsyncAPI, events.</p>
+        </div>
+      </a>
+      <a href="#" class="flex items-start gap-4 p-5 rounded-lg border border-green-500/30 hover:border-green-500/60 transition-colors bg-green-500/[0.03]">
+        <span class="font-mono text-sm text-green-600 dark:text-green-400 mt-0.5">06</span>
+        <div>
+          <h3 class="font-semibold mb-1">Modern API shapes <span class="text-xs text-green-600 dark:text-green-400 font-normal font-mono">· NEW · 4 lessons</span></h3>
+          <p class="text-sm text-black/55 dark:text-white/55">Streaming, SSE, WebSockets, GraphQL, gRPC.</p>
+        </div>
+      </a>
+      <a href="#" class="flex items-start gap-4 p-5 rounded-lg border border-green-500/30 hover:border-green-500/60 transition-colors bg-green-500/[0.03] md:col-span-2">
+        <span class="font-mono text-sm text-green-600 dark:text-green-400 mt-0.5">07</span>
+        <div>
+          <h3 class="font-semibold mb-1">AI-native documentation <span class="text-xs text-green-600 dark:text-green-400 font-normal font-mono">· NEW · headline · 5 lessons</span></h3>
+          <p class="text-sm text-black/55 dark:text-white/55">Writing for LLMs · MCP · Tool-use schemas · Prompt-engineering · Building your own AI doc assistant.</p>
+        </div>
+      </a>
+      <a href="#" class="flex items-start gap-4 p-5 rounded-lg border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 transition-colors md:col-span-2">
+        <span class="font-mono text-sm text-black/40 dark:text-white/40 mt-0.5">08</span>
+        <div>
+          <h3 class="font-semibold mb-1">Practice &amp; ship <span class="text-xs text-black/40 dark:text-white/40 font-normal font-mono">· 4 lessons</span></h3>
+          <p class="text-sm text-black/55 dark:text-white/55">Document a full REST API at beginner / intermediate / expert + portfolio guide.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- TOOLS (AdSense-integrated) -->
+  <section id="tools" class="max-w-6xl mx-auto px-6 py-20 border-t border-black/10 dark:border-white/10">
+    <div class="text-center mb-10">
+      <div class="text-xs uppercase tracking-[0.2em] text-black/40 dark:text-white/40 font-mono mb-3">Sponsored · Tools we recommend</div>
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Built alongside the course.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="border border-black/10 dark:border-white/10 rounded-xl p-5 flex flex-col">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-md bg-black/5 dark:bg-white/5 flex items-center justify-center font-bold">P</div>
+          <div>
+            <div class="font-semibold">Postman</div>
+            <div class="text-xs text-black/40 dark:text-white/40 font-mono">free · API platform</div>
+          </div>
+        </div>
+        <p class="text-sm text-black/60 dark:text-white/60 mb-4 flex-1">Design, test, and document your API in one workspace.</p>
+        <a href="#" class="text-sm font-medium text-black dark:text-white hover:underline">Try Postman →</a>
+      </div>
+      <div class="border border-black/10 dark:border-white/10 rounded-xl p-5 flex flex-col">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-md bg-black/5 dark:bg-white/5 flex items-center justify-center font-bold">S</div>
+          <div>
+            <div class="font-semibold">Scalar</div>
+            <div class="text-xs text-black/40 dark:text-white/40 font-mono">free · open source</div>
+          </div>
+        </div>
+        <p class="text-sm text-black/60 dark:text-white/60 mb-4 flex-1">Beautiful, agent-friendly OpenAPI reference docs out of the box.</p>
+        <a href="#" class="text-sm font-medium text-black dark:text-white hover:underline">See Scalar →</a>
+      </div>
+      <div class="border border-black/10 dark:border-white/10 rounded-xl p-5 flex flex-col">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-md bg-black/5 dark:bg-white/5 flex items-center justify-center font-bold">C</div>
+          <div>
+            <div class="font-semibold">Claude</div>
+            <div class="text-xs text-black/40 dark:text-white/40 font-mono">$0–$20 · LLM</div>
+          </div>
+        </div>
+        <p class="text-sm text-black/60 dark:text-white/60 mb-4 flex-1">Draft, review, and translate docs — the AI co-pilot referenced in every lesson.</p>
+        <a href="#" class="text-sm font-medium text-black dark:text-white hover:underline">Open Claude →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="start" class="max-w-3xl mx-auto px-6 py-24 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-5 text-balance">
+      <span class="gradient-text">Start with Lesson 01. Free, forever.</span>
+    </h2>
+    <p class="text-black/60 dark:text-white/60 text-lg mb-9">One quick email, one immediate first lesson, one unsubscribe link in every footer.</p>
+    <form class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
+      <input type="email" placeholder="you@work.email" class="flex-1 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-md px-4 py-3 text-base focus:outline-none focus:border-black/30 dark:focus:border-white/30" />
+      <button class="bg-black text-white dark:bg-white dark:text-black px-6 py-3 rounded-md font-medium hover:opacity-90">Begin →</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-black/10 dark:border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-black/50 dark:text-white/50">
+      <div>© 2026 Being Technical Writer · Built with Jekyll, shipped on GitHub Pages.</div>
+      <div class="flex items-center gap-5">
+        <a href="#" class="hover:text-black dark:hover:text-white">Privacy</a>
+        <a href="#" class="hover:text-black dark:hover:text-white">RSS</a>
+        <a href="#" class="hover:text-black dark:hover:text-white">GitHub</a>
+        <a href="#" class="hover:text-black dark:hover:text-white">X</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

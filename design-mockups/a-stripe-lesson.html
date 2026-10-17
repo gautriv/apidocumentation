@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 14 — Writing docs for LLMs · API Documentation Course</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Newsreader', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            ink: '#0c1a2b',
+            cream: '#fbf8f3',
+            copper: '#b85c38',
+            sage: '#5a7a64'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #fbf8f3; color: #0c1a2b; }
+    .h-display { font-family: 'Newsreader', serif; font-feature-settings: 'ss01' on; letter-spacing: -0.02em; }
+    /* Reading progress */
+    #progress-bar { height: 3px; background: linear-gradient(90deg, #b85c38, #5a7a64); width: 0; transition: width 0.1s linear; }
+    /* Glossary */
+    .gloss { border-bottom: 1px dotted rgba(184,92,56,0.55); cursor: help; }
+    .gloss:hover, .gloss.tip-open { color: #b85c38; }
+    /* Tooltip — works on both hover and tap */
+    [data-tip] { position: relative; }
+    [data-tip]:hover::after, [data-tip].tip-open::after {
+      content: attr(data-tip);
+      position: absolute;
+      top: calc(100% + 6px); left: 50%;
+      transform: translateX(-50%);
+      background: #0c1a2b; color: #fbf8f3;
+      padding: 6px 10px; border-radius: 6px;
+      font-size: 12px; font-family: 'Inter', sans-serif;
+      max-width: 240px; white-space: normal; text-align: center;
+      z-index: 50; box-shadow: 0 6px 20px -6px rgba(0,0,0,0.3);
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .blink { animation: blink 1.1s infinite step-end; }
+    /* Mobile sheet */
+    body.sheet-open { overflow: hidden; }
+    #sheet { transform: translateX(-100%); transition: transform 0.25s ease; }
+    body.sheet-open #sheet { transform: translateX(0); }
+    body.sheet-open #sheet-backdrop { opacity: 1; pointer-events: auto; }
+    #sheet-backdrop { opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+    /* AI chat */
+    .chat-bubble { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .chat-bubble:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -10px rgba(12,26,43,0.25); }
+    #ai-chat-panel.show { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+    /* Cmd+K */
+    #cmdk.show { opacity: 1; pointer-events: auto; }
+    #cmdk.show .cmdk-card { transform: translateY(0) scale(1); }
+    /* Code tabs */
+    .code-tab[data-active="true"] { background: #0c1a2b; color: #fbf8f3; }
+    .code-tab[data-active="false"] { color: #0c1a2b; opacity: 0.55; }
+    /* TOC active */
+    .toc-item[data-active="true"] { color: #b85c38; }
+    .toc-item[data-active="true"]::before { background: #b85c38; }
+    .toc-item::before { content: ''; display: inline-block; width: 2px; height: 12px; margin-right: 8px; background: rgba(12,26,43,0.15); vertical-align: middle; }
+    /* AI co-pilot tip — distinctive callout */
+    .ai-tip {
+      background: linear-gradient(120deg, rgba(184,92,56,0.06), rgba(90,122,100,0.06));
+      border: 1px solid rgba(184,92,56,0.25);
+    }
+    /* prose-like spacing */
+    .lesson-prose > * + * { margin-top: 1.4em; }
+    .lesson-prose h2 { font-family: 'Newsreader', serif; font-size: 1.875rem; line-height: 1.2; letter-spacing: -0.01em; margin-top: 2.5em; }
+    .lesson-prose h2 a.anchor { opacity: 0; transition: opacity 0.15s; margin-left: 0.4em; color: #b85c38; font-size: 0.75em; }
+    .lesson-prose h2:hover a.anchor { opacity: 1; }
+    .lesson-prose p { font-family: 'Newsreader', serif; font-size: 1.1875rem; line-height: 1.7; color: rgba(12,26,43,0.88); }
+    .lesson-prose ul { font-family: 'Newsreader', serif; font-size: 1.1875rem; line-height: 1.7; padding-left: 1.5em; }
+    .lesson-prose ul li { list-style: disc; color: rgba(12,26,43,0.88); margin-top: 0.5em; }
+    .lesson-prose code { font-family: 'JetBrains Mono', monospace; font-size: 0.875em; background: rgba(12,26,43,0.06); padding: 0.1em 0.35em; border-radius: 4px; }
+    /* Mobile-only helpers */
+    @media (max-width: 1023px) {
+      .desktop-only { display: none !important; }
+    }
+    @media (min-width: 1024px) {
+      .mobile-only { display: none !important; }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- Reading progress -->
+  <div id="progress-bar" class="fixed top-0 left-0 z-50"></div>
+
+  <!-- TOP NAV -->
+  <header class="border-b border-ink/10 sticky top-0 bg-cream/85 backdrop-blur-md z-30">
+    <div class="max-w-[1400px] mx-auto px-4 lg:px-6 py-3.5 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <button onclick="toggleSheet()" class="lg:hidden p-1.5 -ml-1 text-ink/70 hover:text-ink" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <a href="a-stripe.html" class="flex items-center gap-2 font-serif text-lg lg:text-xl font-semibold">
+          <span class="inline-block w-2 h-2 rounded-full bg-copper"></span>
+          <span class="hidden sm:inline">API Documentation Course</span>
+          <span class="sm:hidden">API Docs</span>
+        </a>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="openCmdK()" class="hidden md:flex items-center gap-2 text-sm text-ink/55 border border-ink/15 rounded-full px-3 py-1.5 hover:bg-ink/5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Search</span>
+          <kbd class="text-xs font-mono opacity-60">⌘K</kbd>
+        </button>
+        <button onclick="openCmdK()" class="md:hidden p-1.5 text-ink/70 hover:text-ink" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <div class="name-only items-center gap-2 bg-sage/10 border border-sage/25 rounded-full pl-3 pr-1 py-1 text-sm hidden">
+          <span class="text-ink/75">Hi, <span id="nav-name" class="font-medium text-ink">friend</span></span>
+          <button onclick="resetName()" class="text-ink/40 hover:text-copper text-xs px-2 py-0.5 rounded-full hover:bg-cream">×</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE SHEET (sidebar) -->
+  <div id="sheet-backdrop" onclick="toggleSheet()" class="fixed inset-0 z-40 bg-ink/30 lg:hidden"></div>
+  <aside id="sheet" class="fixed top-0 left-0 bottom-0 w-[85vw] max-w-[340px] bg-cream border-r border-ink/10 z-40 lg:hidden overflow-y-auto">
+    <div class="p-5 border-b border-ink/10 flex items-center justify-between">
+      <span class="font-serif text-lg font-semibold">Course nav</span>
+      <button onclick="toggleSheet()" class="text-ink/55 text-lg leading-none">×</button>
+    </div>
+    <div class="p-3" id="sheet-nav"></div>
+  </aside>
+
+  <!-- LAYOUT -->
+  <div class="max-w-[1400px] mx-auto px-4 lg:px-6 py-6 lg:py-10 grid lg:grid-cols-[260px_1fr_240px] xl:grid-cols-[280px_1fr_260px] gap-6 lg:gap-10">
+
+    <!-- LEFT: COURSE NAV (desktop) -->
+    <aside class="desktop-only">
+      <div class="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2">
+        <div id="desktop-nav"></div>
+      </div>
+    </aside>
+
+    <!-- CENTER: LESSON CONTENT -->
+    <article class="min-w-0">
+
+      <!-- Breadcrumb -->
+      <nav class="text-sm text-ink/55 mb-4 flex items-center gap-2 flex-wrap">
+        <a href="a-stripe.html" class="hover:text-ink">Course</a>
+        <span class="text-ink/30">/</span>
+        <a href="a-stripe.html#curriculum" class="hover:text-ink">Module 7 — AI-native documentation</a>
+        <span class="text-ink/30">/</span>
+        <span class="text-ink/85">Lesson 14</span>
+      </nav>
+
+      <!-- Title block -->
+      <header class="mb-8">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <span class="bg-copper/10 text-copper text-xs font-medium uppercase tracking-wider px-2.5 py-1 rounded-full">New for 2026</span>
+          <span class="bg-ink/5 text-ink/65 text-xs font-medium uppercase tracking-wider px-2.5 py-1 rounded-full">AI-native</span>
+        </div>
+        <h1 class="h-display text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.05] mb-5">Writing docs for <span class="text-copper">LLMs</span>.</h1>
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink/60">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-full bg-copper text-cream flex items-center justify-center font-serif text-xs font-semibold">M</span>
+            <span>By Maya</span>
+          </div>
+          <span class="text-ink/30 hidden sm:inline">·</span>
+          <span class="font-mono text-xs">9 min read</span>
+          <span class="text-ink/30 hidden sm:inline">·</span>
+          <span class="font-mono text-xs">Last updated 2026-04-30</span>
+        </div>
+      </header>
+
+      <!-- In-content ad (after the meta, before first H2 — best viewability + AdSense-friendly) -->
+      <aside class="mb-10 border border-dashed border-ink/15 rounded-xl px-5 py-3 flex items-center justify-between gap-4 bg-ink/[0.02]">
+        <div class="text-[10px] tracking-[0.2em] uppercase text-ink/40 font-mono shrink-0">Ad</div>
+        <div class="text-xs text-ink/40 font-mono">[ AdSense slot · in-content · 728×90 / responsive ]</div>
+        <div class="text-[10px] tracking-[0.2em] uppercase text-ink/40 font-mono shrink-0">Sponsored</div>
+      </aside>
+
+      <!-- LESSON BODY -->
+      <div class="lesson-prose">
+        <p class="text-2xl text-ink/85 italic !mt-0" style="font-family:'Newsreader',serif; line-height:1.55;">It's 4 p.m. on a Thursday<span class="name-only-inline">, <span class="hero-name">friend</span></span>. A developer Slacks you: <span class="not-italic font-mono text-base bg-ink/5 px-2 py-0.5 rounded">"hey what does <span class="gloss" data-tip="429 Too Many Requests — you, specifically, are over your rate limit">429</span> mean again 😅"</span>. You answer them in five seconds. Now imagine that same question, three thousand times a day, asked by an agent.</p>
+
+        <p>The good news: writing for LLMs is mostly just <em>writing well</em>, with the dial turned up on a few specific things. Predictable structure. Errors that contain the recovery action. No ironic asides about how flaky the rate-limiter is.</p>
+
+        <p>The slightly harder news is that "writing well" is the part most teams skip, because the API ships first and the docs ship "soon." So this lesson is going to feel like it's about <span class="gloss" data-tip="Large Language Models">LLMs</span>, and it kind of is, but really it's about a discipline you should have had anyway.</p>
+
+        <h2 id="why-this-matters">Why this matters <a href="#why-this-matters" class="anchor">#</a></h2>
+
+        <p>When a human reads a <code>429</code>, they see "oh I got rate-limited, let me retry in a minute." When an agent reads a <code>429</code>, it sees — whatever your error <code>description</code> literally says. If you wrote <em>"Request limited"</em>, congratulations: the agent now thinks the <em>request itself</em> was malformed and won't retry.</p>
+
+        <!-- Mermaid-style diagram (SVG placeholder) -->
+        <figure class="!mt-8 border border-ink/10 rounded-2xl bg-cream p-5 lg:p-7 overflow-x-auto">
+          <svg viewBox="0 0 720 220" class="w-full max-w-2xl mx-auto" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+                <path d="M0,0 L9,4.5 L0,9 z" fill="#0c1a2b" opacity="0.55"/>
+              </marker>
+              <linearGradient id="boxg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="rgba(12,26,43,0.06)"/>
+                <stop offset="100%" stop-color="rgba(12,26,43,0.02)"/>
+              </linearGradient>
+            </defs>
+            <!-- Agent box -->
+            <rect x="30" y="80" width="140" height="60" rx="10" fill="url(#boxg)" stroke="#0c1a2b" stroke-opacity="0.25"/>
+            <text x="100" y="105" text-anchor="middle" font-family="Inter" font-weight="600" font-size="14" fill="#0c1a2b">Agent</text>
+            <text x="100" y="124" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#0c1a2b" opacity="0.55">claude · gpt · …</text>
+            <!-- API box -->
+            <rect x="290" y="80" width="140" height="60" rx="10" fill="url(#boxg)" stroke="#0c1a2b" stroke-opacity="0.25"/>
+            <text x="360" y="105" text-anchor="middle" font-family="Inter" font-weight="600" font-size="14" fill="#0c1a2b">Greenfield API</text>
+            <text x="360" y="124" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#0c1a2b" opacity="0.55">/books/{id}</text>
+            <!-- Decision box -->
+            <rect x="550" y="80" width="140" height="60" rx="10" fill="url(#boxg)" stroke="#0c1a2b" stroke-opacity="0.25"/>
+            <text x="620" y="100" text-anchor="middle" font-family="Inter" font-weight="600" font-size="14" fill="#0c1a2b">Recovery</text>
+            <text x="620" y="119" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#0c1a2b" opacity="0.55">retry · backoff · stop</text>
+            <!-- Arrows -->
+            <path d="M170,100 L290,100" stroke="#0c1a2b" stroke-opacity="0.45" fill="none" marker-end="url(#arr)"/>
+            <text x="230" y="92" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#0c1a2b" opacity="0.65">GET</text>
+            <path d="M430,120 L550,120" stroke="#b85c38" stroke-opacity="0.7" fill="none" marker-end="url(#arr)" stroke-width="1.4"/>
+            <text x="490" y="112" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#b85c38">429 + structured body</text>
+            <path d="M620,80 Q620,30 360,30 Q100,30 100,80" stroke="#5a7a64" stroke-opacity="0.55" fill="none" stroke-dasharray="3,3" marker-end="url(#arr)"/>
+            <text x="360" y="20" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5a7a64">decides + retries</text>
+          </svg>
+          <figcaption class="text-center text-xs text-ink/45 mt-3 font-mono">Figure 1 — The agent's job isn't to retry. It's to <em>decide whether</em> to retry.</figcaption>
+        </figure>
+
+        <h2 id="the-greenfield-rule">The Greenfield rule <a href="#the-greenfield-rule" class="anchor">#</a></h2>
+
+        <p>Here's how we document the same error in the <strong>Greenfield Library API</strong>, before and after. Try toggling the language tabs.</p>
+
+        <!-- Code block with language tabs -->
+        <div class="!mt-6 rounded-2xl overflow-hidden border border-ink/10 bg-ink text-cream">
+          <div class="flex items-center justify-between px-4 py-2.5 border-b border-cream/10 bg-ink/95">
+            <div class="flex items-center gap-1">
+              <button class="code-tab text-xs font-mono px-3 py-1 rounded-md transition-colors" data-active="true" onclick="setTab(this, 'curl')">cURL</button>
+              <button class="code-tab text-xs font-mono px-3 py-1 rounded-md transition-colors" data-active="false" onclick="setTab(this, 'js')">JavaScript</button>
+              <button class="code-tab text-xs font-mono px-3 py-1 rounded-md transition-colors" data-active="false" onclick="setTab(this, 'py')">Python</button>
+            </div>
+            <button onclick="copyCode(this)" class="text-xs font-mono text-cream/55 hover:text-cream flex items-center gap-1.5">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="p-5 text-[13px] leading-relaxed overflow-x-auto font-mono" data-pane="curl">$ curl https://api.greenfield.lib/v1/books/42 \
+    -H "Authorization: Bearer $TOKEN"
+
+HTTP/2 429 Too Many Requests
+Retry-After: 30
+Content-Type: application/json
+
+{
+  "error": "rate_limited",
+  "message": "You've made 100 requests in 60s; ceiling is 60.",
+  "retry_after_seconds": 30,
+  "docs": "https://docs.greenfield.lib/errors/rate_limited"
+}</pre>
+          <pre class="hidden p-5 text-[13px] leading-relaxed overflow-x-auto font-mono" data-pane="js">const res = await fetch('https://api.greenfield.lib/v1/books/42', {
+  headers: { Authorization: `Bearer ${token}` }
+});
+
+if (res.status === 429) {
+  const body = await res.json();
+  // body.retry_after_seconds is reliable for agents AND humans
+  await sleep(body.retry_after_seconds * 1000);
+  return retry();
+}</pre>
+          <pre class="hidden p-5 text-[13px] leading-relaxed overflow-x-auto font-mono" data-pane="py">import time, requests
+
+r = requests.get(
+    "https://api.greenfield.lib/v1/books/42",
+    headers={"Authorization": f"Bearer {token}"},
+)
+
+if r.status_code == 429:
+    body = r.json()
+    time.sleep(body["retry_after_seconds"])
+    return retry()</pre>
+        </div>
+
+        <p>Notice three things in the response body that weren't there before: a stable machine-readable <code>error</code> code, a <code>retry_after_seconds</code> integer (agents will parse this; humans will appreciate it), and a <code>docs</code> URL the agent can fetch when it's unsure.</p>
+
+        <!-- Tip callout -->
+        <aside class="!mt-8 rounded-2xl border-l-4 border-sage bg-sage/5 p-5 lg:p-6">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full bg-sage/20 text-sage flex items-center justify-center shrink-0 mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-wider text-sage font-semibold mb-1.5 font-mono">Tip</div>
+              <p class="!mt-0 text-[16px] !leading-snug">Always include <code>retry_after_seconds</code> as an <em>integer</em>. <code>Retry-After</code> as a header is fine for humans, but parsers (and agents) keep getting it wrong when it's an HTTP date.</p>
+            </div>
+          </div>
+        </aside>
+
+        <h2 id="the-most-common-mistake">The most common mistake <a href="#the-most-common-mistake" class="anchor">#</a></h2>
+
+        <p>Teams put their best error explanations in the <em>prose</em> docs and skimp on the API response. That's exactly backwards. An agent in production never reads your prose. It reads what comes back over the wire.</p>
+
+        <!-- Warning callout -->
+        <aside class="!mt-6 rounded-2xl border-l-4 border-copper bg-copper/5 p-5 lg:p-6">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-full bg-copper/20 text-copper flex items-center justify-center shrink-0 mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-wider text-copper font-semibold mb-1.5 font-mono">Watch out</div>
+              <p class="!mt-0 text-[16px] !leading-snug">If the only place a recovery hint exists is in your prose docs, treat that as <em>undocumented</em>. The wire is the contract.</p>
+            </div>
+          </div>
+        </aside>
+
+        <h2 id="recap">Recap <a href="#recap" class="anchor">#</a></h2>
+        <ul>
+          <li><code>429</code> is the user's problem; <code>503</code> is the server's. Never blur them.</li>
+          <li>Error descriptions are read by agents, not just humans.</li>
+          <li>Include machine-readable recovery hints (<code>retry_after_seconds</code>, stable error codes, docs URLs) in the response body.</li>
+          <li>Prose docs are for humans; the wire is for everything.</li>
+        </ul>
+
+        <!-- AI co-pilot tip (the headline callout in every lesson) -->
+        <aside class="ai-tip !mt-10 rounded-3xl p-6 lg:p-8">
+          <div class="flex items-center gap-2 mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b85c38" stroke-width="2.2"><path d="M12 2l1.6 4.6L18 8l-4.4 1.4L12 14l-1.6-4.6L6 8l4.4-1.4z"/><circle cx="18" cy="18" r="2.5"/><circle cx="6" cy="18" r="2.5"/></svg>
+            <div class="text-xs uppercase tracking-[0.2em] text-copper font-semibold font-mono">AI co-pilot tip — try this today</div>
+          </div>
+          <h3 class="h-display text-2xl font-medium mb-3">Run your top 5 errors through Claude.</h3>
+          <p class="text-[17px] !mt-0 leading-relaxed">Paste your five most common error responses into Claude and ask: <em>"For each of these, write a 1-sentence description that an agent reading it could turn into a correct retry decision."</em></p>
+          <p class="text-[17px] leading-relaxed">Then compare with what you have. The ones where Claude's version is materially clearer? Those are the ones to ship this week. Don't ship Claude's words verbatim — ship your judgement, informed by them.</p>
+          <div class="mt-5 flex flex-wrap items-center gap-3">
+            <a href="#" class="bg-ink text-cream px-4 py-2 rounded-full text-sm font-medium hover:bg-ink/85">Open in Claude →</a>
+            <a href="#" class="text-sm text-copper font-medium hover:underline">See the full prompt</a>
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- Was this helpful? -->
+      <div class="mt-16 pt-10 border-t border-ink/10 flex flex-col sm:flex-row items-center gap-4 sm:justify-between">
+        <div class="text-sm text-ink/65">Was this lesson helpful?</div>
+        <div class="flex items-center gap-2">
+          <button onclick="vote(this,'up')" class="border border-ink/15 rounded-full px-4 py-2 text-sm hover:bg-sage/10 hover:border-sage/30 flex items-center gap-2">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10v12"/><path d="M15 5.88 14 12h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 24H7v-12l4-9.5A1 1 0 0 1 12.94 2 3 3 0 0 1 15 5.88z"/></svg>
+            Yes
+          </button>
+          <button onclick="vote(this,'down')" class="border border-ink/15 rounded-full px-4 py-2 text-sm hover:bg-copper/10 hover:border-copper/30 flex items-center gap-2">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 14V2"/><path d="M9 18.12 10 12H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 0H17v12l-4 9.5a1 1 0 0 1-1.94-.5 3 3 0 0 1-2.06-2.88z"/></svg>
+            Could be better
+          </button>
+        </div>
+      </div>
+
+      <!-- Prev / Next -->
+      <nav class="mt-12 grid sm:grid-cols-2 gap-3">
+        <a href="#" class="border border-ink/10 rounded-2xl p-5 hover:border-ink/30 transition-colors">
+          <div class="text-xs uppercase tracking-wider text-ink/45 font-mono mb-1">← Lesson 13</div>
+          <div class="h-display text-lg font-medium">Schemas that LLMs love</div>
+          <div class="text-sm text-ink/55 mt-1">Structured outputs &amp; JSON Schema for agent-readable responses.</div>
+        </a>
+        <a href="#" class="border border-ink/10 rounded-2xl p-5 hover:border-ink/30 transition-colors text-right">
+          <div class="text-xs uppercase tracking-wider text-ink/45 font-mono mb-1">Lesson 15 →</div>
+          <div class="h-display text-lg font-medium">Model Context Protocol</div>
+          <div class="text-sm text-ink/55 mt-1">What MCP is, why it matters, and how to document an MCP server.</div>
+        </a>
+      </nav>
+
+      <!-- Edit / share -->
+      <div class="mt-10 flex flex-wrap items-center justify-between gap-4 text-sm text-ink/55">
+        <a href="https://github.com/" class="inline-flex items-center gap-2 hover:text-ink">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4 18.3 4.3 18.3 4.3c.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.9 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          Edit this lesson on GitHub
+        </a>
+        <div class="flex items-center gap-3">
+          <a href="#" class="hover:text-ink">Copy link</a>
+          <a href="#" class="hover:text-ink">Share</a>
+        </div>
+      </div>
+
+      <!-- Comments (giscus placeholder) -->
+      <section class="mt-16 pt-10 border-t border-ink/10">
+        <h2 class="h-display text-2xl font-medium mb-2">Discussion</h2>
+        <p class="text-ink/55 mb-6 text-sm">Powered by GitHub Discussions via giscus. No tracking, no ads — sign in with GitHub to comment.</p>
+        <div class="border border-dashed border-ink/15 rounded-2xl p-8 text-center text-ink/45 text-sm">
+          [ giscus widget loads here — beingtechwriter/apidocumentation/discussions ]
+        </div>
+      </section>
+
+    </article>
+
+    <!-- RIGHT: TOC + AD RAIL (desktop) -->
+    <aside class="desktop-only">
+      <div class="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto flex flex-col gap-6">
+        <div>
+          <div class="text-[10px] uppercase tracking-[0.2em] text-ink/40 font-mono mb-3">On this page</div>
+          <ol class="space-y-1.5 text-sm">
+            <li><a href="#why-this-matters" class="toc-item text-ink/65 hover:text-ink" data-active="true">Why this matters</a></li>
+            <li><a href="#the-greenfield-rule" class="toc-item text-ink/65 hover:text-ink" data-active="false">The Greenfield rule</a></li>
+            <li><a href="#the-most-common-mistake" class="toc-item text-ink/65 hover:text-ink" data-active="false">The most common mistake</a></li>
+            <li><a href="#recap" class="toc-item text-ink/65 hover:text-ink" data-active="false">Recap</a></li>
+          </ol>
+        </div>
+
+        <!-- Sticky ad rail -->
+        <div class="border border-dashed border-ink/15 rounded-xl p-4 bg-ink/[0.02] text-center">
+          <div class="text-[10px] tracking-[0.2em] uppercase text-ink/40 font-mono mb-2">Sponsored</div>
+          <div class="text-xs text-ink/40 font-mono py-12">[ AdSense slot · sidebar · 300×250 ]</div>
+        </div>
+
+        <!-- Progress card -->
+        <div class="name-only border border-sage/30 bg-sage/[0.04] rounded-xl p-4 hidden">
+          <div class="text-[10px] uppercase tracking-[0.2em] text-sage font-mono mb-2">Your progress</div>
+          <div class="text-sm text-ink/75 mb-2">Lesson 14 of 36 · Module 7</div>
+          <div class="h-1.5 bg-ink/10 rounded-full overflow-hidden">
+            <div class="h-full bg-sage" style="width: 38%"></div>
+          </div>
+          <div class="text-xs text-ink/45 mt-2 font-mono">38% complete — keep going, <span class="hero-name">friend</span>.</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- FLOATING AI CHAT -->
+  <div class="fixed bottom-6 right-6 z-40">
+    <button id="ai-bubble" onclick="toggleChat()" class="chat-bubble bg-ink text-cream rounded-full pl-3 sm:pl-4 pr-4 sm:pr-5 py-3 shadow-xl flex items-center gap-2 sm:gap-3 hover:bg-ink/90">
+      <span class="w-8 h-8 rounded-full bg-copper text-cream flex items-center justify-center font-serif text-base font-semibold">M</span>
+      <span class="hidden sm:inline text-sm">Ask Maya</span>
+    </button>
+    <div id="ai-chat-panel" class="absolute bottom-16 right-0 w-[min(380px,calc(100vw-3rem))] origin-bottom-right opacity-0 pointer-events-none -translate-y-2 scale-95 transition-all duration-200 bg-cream border border-ink/10 rounded-2xl shadow-2xl overflow-hidden">
+      <div class="bg-ink text-cream px-5 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-copper text-cream flex items-center justify-center font-serif font-semibold">M</span>
+          <div>
+            <div class="text-sm font-medium">Maya (the AI co-pilot)</div>
+            <div class="text-xs text-cream/55 font-mono">on Lesson 14 · claude-haiku</div>
+          </div>
+        </div>
+        <button onclick="toggleChat()" class="text-cream/60 hover:text-cream text-lg leading-none">×</button>
+      </div>
+      <div class="p-5 bg-cream max-h-[300px] overflow-auto text-[14px] text-ink/65 italic">
+        Hi <span class="hero-name name-only-inline">friend</span> — ask anything about this lesson. I'll cite the paragraph.
+      </div>
+      <div class="border-t border-ink/10 p-3 bg-cream">
+        <form class="flex items-center gap-2" onsubmit="event.preventDefault(); alert('Mockup — wired to a Cloudflare Worker + Claude Haiku in the live build.');">
+          <input type="text" placeholder="Ask Maya about this lesson…" class="flex-1 bg-ink/5 rounded-full px-4 py-2 text-sm focus:outline-none focus:bg-ink/[0.08]" />
+          <button class="bg-ink text-cream rounded-full w-9 h-9 flex items-center justify-center hover:bg-ink/85">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- CMD+K -->
+  <div id="cmdk" class="fixed inset-0 z-50 bg-ink/40 backdrop-blur-sm flex items-start justify-center p-4 lg:p-6 pt-[15vh] opacity-0 pointer-events-none transition-opacity duration-150">
+    <div class="cmdk-card bg-cream rounded-2xl shadow-2xl max-w-xl w-full overflow-hidden transform translate-y-2 scale-[0.98] transition-transform duration-150">
+      <div class="flex items-center gap-3 px-5 py-4 border-b border-ink/10">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0c1a2b" stroke-opacity="0.55" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search lessons, glossary, exercises…" class="flex-1 bg-transparent focus:outline-none text-base" />
+        <button onclick="closeCmdK()" class="text-xs text-ink/40 font-mono">ESC</button>
+      </div>
+      <div class="max-h-[50vh] overflow-auto py-2">
+        <div class="px-5 py-1.5 text-[10px] uppercase tracking-[0.2em] text-ink/40 font-mono">Lessons</div>
+        <a href="#" class="flex items-center gap-3 px-5 py-2 hover:bg-ink/5"><span class="font-mono text-xs text-ink/40 w-8">L13</span><span class="flex-1">Schemas that LLMs love</span></a>
+        <a href="#" class="flex items-center gap-3 px-5 py-2 hover:bg-ink/5 bg-ink/[0.03]"><span class="font-mono text-xs text-copper w-8">L14</span><span class="flex-1">Writing docs for LLMs (this page)</span></a>
+        <a href="#" class="flex items-center gap-3 px-5 py-2 hover:bg-ink/5"><span class="font-mono text-xs text-ink/40 w-8">L15</span><span class="flex-1">Model Context Protocol</span></a>
+        <div class="px-5 py-1.5 mt-2 text-[10px] uppercase tracking-[0.2em] text-ink/40 font-mono">In this page</div>
+        <a href="#why-this-matters" onclick="closeCmdK()" class="flex items-center gap-3 px-5 py-2 hover:bg-ink/5"><span class="font-mono text-xs text-ink/40 w-8">§</span><span class="flex-1">Why this matters</span></a>
+        <a href="#the-greenfield-rule" onclick="closeCmdK()" class="flex items-center gap-3 px-5 py-2 hover:bg-ink/5"><span class="font-mono text-xs text-ink/40 w-8">§</span><span class="flex-1">The Greenfield rule</span></a>
+        <a href="#recap" onclick="closeCmdK()" class="flex items-center gap-3 px-5 py-2 hover:bg-ink/5"><span class="font-mono text-xs text-ink/40 w-8">§</span><span class="flex-1">Recap</span></a>
+      </div>
+      <div class="border-t border-ink/10 px-5 py-2.5 text-xs text-ink/45 font-mono flex items-center justify-between">
+        <span>↑↓ navigate · ↵ open · ESC close</span>
+        <span>Pagefind</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const NAME_KEY = 'apidocs.firstName';
+
+    // Shared module data — would come from _data/modules.yml in Jekyll
+    const MODULES = [
+      { n: 1, title: 'Foundations', lessons: ['What an API is', 'What writers do in 2026', 'The internet, short', 'Audiences: humans + agents', 'Information gathering'] },
+      { n: 2, title: 'REST, HTTP & the dance', lessons: ['REST principles', 'API types', 'URL anatomy', 'Request & response', 'cURL', 'Auth'] },
+      { n: 3, title: 'Data shapes', lessons: ['JSON', 'XML', 'Visualizing data', 'JSON Schema for LLMs'] },
+      { n: 4, title: 'Writing the docs', lessons: ['Endpoint anatomy', 'OpenAPI without tears', 'Samples that don’t rot', 'Errors that help', 'Dev/writer gap'] },
+      { n: 5, title: 'Webhooks & async', lessons: ['Webhook basics', 'Documenting (B)', 'Documenting (I)', 'Documenting (E)'] },
+      { n: 6, title: 'Modern API shapes', lessons: ['Streaming & SSE', 'WebSockets', 'GraphQL', 'gRPC & Protobuf'], isNew: true },
+      { n: 7, title: 'AI-native documentation', lessons: ['Writing docs for LLMs', 'MCP', 'Tool-use schemas', 'Prompt engineering', 'AI doc assistant'], isNew: true, current: 0 },
+      { n: 8, title: 'Practice & ship', lessons: ['Beginner pass', 'Intermediate pass', 'Expert pass', 'Portfolio'] }
+    ];
+
+    function renderNav(targetId) {
+      const t = document.getElementById(targetId);
+      if (!t) return;
+      t.innerHTML = MODULES.map(m => {
+        const lessons = m.lessons.map((title, i) => {
+          const isCurrent = m.n === 7 && i === 0;
+          return `<a href="#" class="block pl-7 pr-2 py-1.5 text-sm rounded-md ${isCurrent ? 'bg-copper/10 text-copper font-medium' : 'text-ink/65 hover:text-ink hover:bg-ink/5'}">${title}</a>`;
+        }).join('');
+        const isOpen = m.n === 7;
+        return `
+          <details ${isOpen ? 'open' : ''} class="group mb-1">
+            <summary class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-ink/5 cursor-pointer list-none">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="transition-transform group-open:rotate-90 text-ink/45"><polyline points="9 18 15 12 9 6"/></svg>
+              <span class="font-mono text-[10px] text-ink/40 w-5">0${m.n}</span>
+              <span class="text-sm font-medium">${m.title}</span>
+              ${m.isNew ? '<span class="ml-auto text-[9px] bg-copper/10 text-copper px-1.5 py-0.5 rounded uppercase tracking-wider font-mono">New</span>' : ''}
+            </summary>
+            <div class="mt-1">${lessons}</div>
+          </details>`;
+      }).join('');
+    }
+    renderNav('desktop-nav');
+    renderNav('sheet-nav');
+
+    // Personalization
+    function loadName() { try { return localStorage.getItem(NAME_KEY) || ''; } catch (e) { return ''; } }
+    function clearNameStr() { try { localStorage.removeItem(NAME_KEY); } catch (e) {} }
+    function applyName(name) {
+      const t = (name || '').trim();
+      const has = !!t;
+      document.body.classList.toggle('has-name', has);
+      document.querySelectorAll('.hero-name').forEach(el => el.textContent = t || 'friend');
+      const navName = document.getElementById('nav-name');
+      if (navName) navName.textContent = t || 'friend';
+      document.querySelectorAll('.name-only-inline').forEach(el => el.style.display = has ? '' : 'none');
+      const pill = document.querySelector('header .name-only.items-center');
+      if (pill) { pill.classList.toggle('hidden', !has); pill.classList.toggle('flex', has); }
+      document.querySelectorAll('.name-only:not(.items-center)').forEach(el => el.classList.toggle('hidden', !has));
+    }
+    function resetName() { clearNameStr(); applyName(''); }
+    applyName(loadName());
+
+    // Sheet
+    function toggleSheet() { document.body.classList.toggle('sheet-open'); }
+
+    // Reading progress
+    function updateProgress() {
+      const article = document.querySelector('article');
+      if (!article) return;
+      const rect = article.getBoundingClientRect();
+      const total = rect.height - window.innerHeight;
+      const scrolled = -rect.top;
+      const pct = Math.max(0, Math.min(100, (scrolled / total) * 100));
+      document.getElementById('progress-bar').style.width = pct + '%';
+      // Update TOC active section
+      const headings = article.querySelectorAll('h2[id]');
+      let current = headings[0];
+      headings.forEach(h => {
+        if (h.getBoundingClientRect().top < 120) current = h;
+      });
+      if (current) {
+        document.querySelectorAll('.toc-item').forEach(a => {
+          a.setAttribute('data-active', a.getAttribute('href') === '#' + current.id ? 'true' : 'false');
+        });
+      }
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+
+    // Code tabs
+    function setTab(btn, lang) {
+      const block = btn.closest('.rounded-2xl');
+      block.querySelectorAll('.code-tab').forEach(b => b.setAttribute('data-active', 'false'));
+      btn.setAttribute('data-active', 'true');
+      block.querySelectorAll('[data-pane]').forEach(p => p.classList.toggle('hidden', p.getAttribute('data-pane') !== lang));
+    }
+    function copyCode(btn) {
+      const block = btn.closest('.rounded-2xl');
+      const active = block.querySelector('[data-pane]:not(.hidden)');
+      if (!active) return;
+      navigator.clipboard?.writeText(active.textContent.trim());
+      const label = btn.querySelector('span');
+      const prev = label.textContent;
+      label.textContent = 'Copied!';
+      setTimeout(() => label.textContent = prev, 1600);
+    }
+    function vote(btn, dir) {
+      btn.style.background = dir === 'up' ? 'rgba(90,122,100,0.15)' : 'rgba(184,92,56,0.15)';
+      btn.disabled = true;
+      const wrap = btn.parentElement;
+      const msg = document.createElement('span');
+      msg.className = 'text-sm text-ink/55';
+      msg.textContent = dir === 'up' ? 'Thanks!' : 'Noted — Maya will revisit.';
+      wrap.replaceWith(msg);
+    }
+
+    // Cmd+K
+    function openCmdK() { document.getElementById('cmdk').classList.add('show'); }
+    function closeCmdK() { document.getElementById('cmdk').classList.remove('show'); }
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        document.getElementById('cmdk').classList.toggle('show');
+      } else if (e.key === 'Escape') {
+        closeCmdK();
+        document.getElementById('ai-chat-panel').classList.remove('show');
+        if (document.body.classList.contains('sheet-open')) toggleSheet();
+      }
+    });
+
+    // Tap-to-toggle tooltips (mobile)
+    document.querySelectorAll('[data-tip]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        // Don't intercept anchor navigation
+        if (el.tagName === 'A' || el.tagName === 'BUTTON') return;
+        document.querySelectorAll('[data-tip].tip-open').forEach(o => { if (o !== el) o.classList.remove('tip-open'); });
+        el.classList.toggle('tip-open');
+        e.stopPropagation();
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('[data-tip].tip-open').forEach(o => o.classList.remove('tip-open'));
+    });
+
+    // Chat
+    function toggleChat() { document.getElementById('ai-chat-panel').classList.toggle('show'); }
+  </script>
+</body>
+</html>
